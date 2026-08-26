@@ -17,6 +17,11 @@ The human remains responsible for:
 
 Rather than building a fully autonomous research agent, this project treats human oversight as part of the architecture. Every research run is explicitly initiated by a human, operates within defined limits, and returns control at meaningful decision points.
 
+## Project Documentation
+
+- [Build Plan](docs/BUILD_PLAN.md)
+- [Claude Code Prompt Log](docs/claude_code_prompt_log.md)
+
 ## Core Principle
 
 The system follows a simple design philosophy:
