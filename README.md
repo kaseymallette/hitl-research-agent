@@ -140,6 +140,11 @@ The initial implementation will use:
 - **DeepEval** — evaluation framework
 - **Git + GitHub** — version control and project history
 - **Claude Code** — AI-assisted development
+- **uv** — dependency management and virtual environments
+- **Ruff** — linting and formatting
+- **mypy** — static type checking
+- **pre-commit** — git hooks enforcing lint/type checks before commit
+- **GitHub Actions** — continuous integration
 
 Later phases will introduce:
 
@@ -192,6 +197,36 @@ Convert the working pipeline into a stateful human-in-the-loop research agent wi
 **Current stage: Phase 0 — Getting Started**
 
 The project is currently being designed and initialized. The research architecture has been defined, and implementation will proceed incrementally so that each component can be tested before additional agentic behavior is introduced.
+
+## Development Setup
+
+**Prerequisites:** [uv](https://docs.astral.sh/uv/) (manages the Python 3.12 interpreter automatically — no separate Python install needed) and git 2.31 or later (required for `pre-commit` compatibility).
+
+1. Install `uv`:
+   ```bash
+   brew install uv
+   ```
+   (See the [uv installation guide](https://docs.astral.sh/uv/getting-started/installation/) for non-Homebrew options.)
+
+2. Install dependencies and create the virtual environment:
+   ```bash
+   uv sync
+   ```
+
+3. Install git hooks (runs ruff and mypy automatically on commit):
+   ```bash
+   uv run pre-commit install
+   ```
+
+### Running checks locally
+
+```bash
+uv run pytest                       # run tests
+uv run ruff check .                 # lint
+uv run ruff format --check .        # check formatting
+uv run mypy src                     # type-check
+uv run pre-commit run --all-files   # run all hooks against the whole repo
+```
 
 ## Why This Project
 
