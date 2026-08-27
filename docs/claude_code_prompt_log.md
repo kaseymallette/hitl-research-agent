@@ -2,7 +2,7 @@
 
 ## Phase 0 — Build Plan
 
-### 1. Read project documentation
+### 1. Read Project Documentation
 
 **Prompt:**         
 Read README.md and familiarize yourself with the project. Do not write or modify code yet. I want to create a separate BUILD_PLAN.md that turns the project roadmap into an engineering implementation plan. We will develop the plan collaboratively, one phase at a time. For each phase, help me identify the goal, architectural decisions, technologies, implementation tasks, tests, and acceptance criteria. Do not move to later phases or make architectural decisions without discussing them with me first.
@@ -10,7 +10,7 @@ Read README.md and familiarize yourself with the project. Do not write or modify
 **Response:**            
 Claude proposed Phase 0 infrastructure using uv, Ruff, mypy, pre-commit, pytest, GitHub Actions, Pydantic settings, and a src/ package layout.
 
-### 2. Review changes
+### 2. Review Changes   
 
 **Prompt:**         
 I made a few changes since your last pass:
@@ -24,7 +24,7 @@ Please re-read those files and use the current repo state as the source of truth
 **Response:**            
 Claude found and corrected several documentation inconsistencies, including the moved README link, Hatchling configuration, `.python-version`, Python version constraints, and deferred dependencies. It also confirmed `hitl-research-agent` as the project name, `hitl_research_agent` as the Python module, and Python 3.12-only CI.
 
-### 3. Confirm clear project boundaries
+### 3. Confirm Project Boundaries
 
 **Prompt:**         
 Before we begin Phase 0 implementation, I want to establish a clear approval boundary for this project.
@@ -109,7 +109,7 @@ Approve the local `mypy` hook, major-version GitHub Actions tags, deferring the 
 **Response:**               
 Claude created the pre-commit and CI configuration, then identified a local Git version incompatibility that prevented `pre-commit` from running. It recommended upgrading Git and confirmed the CI workflow itself was unaffected.
 
-### 12. Fix Git incompatibility
+### 12. Fix Git Incompatibility
 
 **Prompt:**             
 Approve `brew upgrade git`. After upgrading, rerun the pre-commit verification and report the result. Do not make any other repo changes.
@@ -153,3 +153,39 @@ Claude verified 8 of 9 Phase 0 acceptance criteria, including a clean-clone `uv 
 
 **Prompt:**                 
 I pushed the Phase 0 changes to `main`. Verify the remaining Phase 0 acceptance criterion and report the result.
+
+**Response:**               
+Claude identified that `astral-sh/setup-uv` no longer publishes floating major-version tags after v7, causing CI to fail before tests ran. It proposed pinning the action to the current immutable `v10.0.1` release.
+
+### 18. Commit Fix
+
+**Prompt:**               
+Replace `astral-sh/setup-uv@v10` with the immutable SHA for `v10.0.1`, commit the fix, and rerun CI. Do not make any other changes.
+
+**Response:**          
+Claude updated the CI workflow to pin `setup-uv` to the immutable `v10.0.1` SHA and committed the fix locally. The automated push timed out due to a local credential prompt, so the repository was left one commit ahead of `origin/main`.
+
+### 19. Run Acceptance Criteria 
+
+**Prompt:**          
+I pushed commit `1c5112f` to `main`. Verify the GitHub Actions CI run and report whether the final Phase 0 acceptance criterion passes.
+
+**Response:**           
+Claude verified the GitHub Actions run for commit `1c5112f` and confirmed that every CI step passed. All 9 Phase 0 acceptance criteria are now verified, and Phase 0 is complete.
+
+### 20. Review Claude Code Prompt Log
+
+**Prompt:**          
+Review `docs/claude_code_prompt_log.md` and evaluate our Phase 0 workflow.
+
+Tell me:
+- what worked well
+- where the prompts were unnecessarily repetitive
+- where the approval boundaries were useful
+- where we could safely batch more work in Phase 1
+- what you would change about the workflow going forward
+
+Do not modify any files.
+
+**Response:**           
+Claude reviewed the Phase 0 workflow and found that the approval boundaries and execution-based verification worked well, but the process was more granular than necessary. It recommended batching work by decision complexity, consolidating verification at batch boundaries, defaulting to SHA-pinned GitHub Actions, and leaving commits and pushes to me unless explicitly requested.
