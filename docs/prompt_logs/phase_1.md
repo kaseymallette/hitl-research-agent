@@ -253,3 +253,65 @@ Do not make any additional changes yet.
 
 **Response:**
 Claude acknowledged that the prompt-log modification was an expected user-authored change and saved the workflow calibration for future turns. It confirmed that it would preserve concurrent user edits and made no additional file changes.
+
+### 15. Fix the prompt-log organization
+
+**Prompt:** Actually, let’s fix the prompt-log organization now. I committed the current documentation changes, so the working tree should provide a clean baseline.
+
+Split `docs/claude_code_prompt_log.md` into this structure:
+
+* `docs/claude_code_prompt_log.md` — a short index explaining the purpose of the logs and linking to the available phase files
+* `docs/prompt_logs/phase_0.md` — all existing Phase 0 prompt-log content
+* `docs/prompt_logs/phase_1.md` — all existing Phase 1 prompt-log content
+
+Preserve the existing prompt and response content, ordering, headings, and phase-local numbering. Do not summarize or rewrite the migrated entries.
+
+Check the README and other documentation for references to the existing prompt log. Because `docs/claude_code_prompt_log.md` will remain as the index, update other files only if a link would otherwise become incorrect.
+
+Do not modify `docs/BUILD_PLAN.md`, implement Phase 1, commit, or push. After completing the split, verify that no prompt-log entries were lost or duplicated and report every file created or modified.
+
+**Response:**
+Claude split the original prompt log into `docs/prompt_logs/phase_0.md` and `docs/prompt_logs/phase_1.md`, then replaced `docs/claude_code_prompt_log.md` with a short index linking to both files. It preserved the original phase content byte for byte and verified that no entries were lost or duplicated.
+
+Claude confirmed that the existing README link remains valid because the original prompt-log path now serves as the index. It did not modify the README, build plan, code, configuration, or any other files.
+
+**Outcome:**
+The prompt logs were successfully reorganized by phase within the approved scope.
+
+### 16. Update Concurrent Prompt-Log Editing Guidance
+
+**Prompt:** Thank you! You handled the prompt-log split carefully. I appreciate that you preserved everything exactly, verified that no entries were lost or duplicated, checked the existing links, and kept the changes within scope.
+
+One small update for future turns: I’ll continue editing the active phase-specific prompt log under `docs/prompt_logs/` while we work. Please treat those changes as expected user-authored edits, preserve them, and mention them briefly when relevant.
+
+Please update the existing memory about concurrent prompt-log edits to reflect the new file structure rather than creating a duplicate memory. No file changes are needed.
+
+**Response:** Claude updated the existing memory without creating a duplicate, recording that the index remains static while active phase logs contain expected user-authored edits that should be preserved and mentioned briefly.
+
+### 17. Implement the Phase 1 Research Data Model
+
+**Prompt:** Implement the complete Phase 1 Research Data Model according to the finalized Phase 1 section in `docs/BUILD_PLAN.md`.
+
+Create the approved model modules, public exports, and test suite. Implement the documented fields, validation rules, cross-field validators, and tests. You may make minor implementation-level adjustments for valid Pydantic syntax, imports, typing, or formatting. If a material architectural change becomes necessary, stop and discuss it with me first.
+
+After implementation, run:
+
+* `uv run pytest`
+* `uv run ruff check .`
+* `uv run ruff format --check .`
+* `uv run mypy src`
+* `pre-commit run --all-files`
+
+Report the files changed, any implementation adjustments, and the result of each check. Leave committing and pushing to me.
+
+**Response:**
+Claude implemented the complete Phase 1 Research Data Model, creating the approved production modules, public exports, and five corresponding test modules. It made only minor implementation-level adjustments for reusable typing, test helpers, strict type annotations, modern UTC syntax, and automated formatting. All 46 tests, Ruff checks, formatting checks, mypy validation, and pre-commit hooks passed. The active Phase 1 prompt log was preserved, and nothing was committed or pushed.
+
+**Outcome:**
+The approved Phase 1 architecture was successfully translated into tested, type-checked code without material deviation.
+
+### 18. Re-run Tests on the Final Working Tree
+
+**Prompt:** Thanks! The Phase 1 implementation and verification results look good. Since Ruff modified some implementation files after the initial pytest run, please rerun `uv run pytest` once against the final formatted working tree and report the result. No other action is needed.
+
+**Response:** 46 passed, 0 failed, against the final formatted working tree.
