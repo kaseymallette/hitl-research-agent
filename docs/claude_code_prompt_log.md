@@ -12,3 +12,4 @@ locally within that phase.
 
 - [Phase 0 — Getting Started](prompt_logs/phase_0.md)
 - [Phase 1 — Research Data Model](prompt_logs/phase_1.md)
+- [Phase 2 — Single-Source Analysis](prompt_logs/phase_2.md)
