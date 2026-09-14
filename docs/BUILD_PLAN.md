@@ -168,7 +168,7 @@ schema definition and validation only: no LLM calls, no persistence, no I/O.
   `SourceAnalysis` composes focused sub-models (`Provenance`, `Methodology`,
   `Claim`, `Evidence`, and the `InterpretedStatement` subclasses) rather than
   being one model with primitive-typed fields. This makes each piece
-  independently testable and reusable — later phases (e.g. Phase 5
+  independently testable and reusable — later phases (e.g. Phase 6
   cross-source synthesis) will want to compare `Claim`/`Evidence` instances
   across sources without depending on a single monolithic shape.
 
@@ -417,18 +417,22 @@ Import direction is a strict DAG: `_base` is a leaf; `provenance`,
 
 *To be planned.*
 
-## Phase 5 — Cross-Source Synthesis
+## Phase 5 — Source Discovery and Ingestion
 
 *To be planned.*
 
-## Phase 6 — Research Knowledge Base and RAG
+## Phase 6 — Cross-Source Synthesis
 
 *To be planned.*
 
-## Phase 7 — Retrieval Evaluation
+## Phase 7 — Research Knowledge Base and RAG
 
 *To be planned.*
 
-## Phase 8 — LangGraph Orchestration
+## Phase 8 — Retrieval Evaluation
+
+*To be planned.*
+
+## Phase 9 — LangGraph Orchestration
 
 *To be planned.*

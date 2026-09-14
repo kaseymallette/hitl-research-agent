@@ -36,27 +36,29 @@ Those decisions remain with the researcher.
 
 ## Research Workflow
 
-The long-term workflow is:
+The runtime architecture is:
 
-```text
-Research Question
-      ↓
-Source Retrieval
-      ↓
-Structured Analysis
-      ↓
-Evaluation
-      ↓
-Human Review
-      ↓
-Accepted Research Store
-      ↓
-Cross-Source Synthesis
-      ↓
-Human Interpretation
-      ↓
-Next Research Question
+```mermaid
+flowchart TD
+    RQ["Human-defined research question"] --> SD["Question-aware external source discovery"]
+    SD --> IN["Source ingestion and provenance"]
+    IN --> SA["Question-independent single-source analysis"]
+    SA --> EV["Evaluation"]
+    EV --> HR["Human review"]
+    HR --> RS["Accepted research store"]
+    PA["Human-selected project tag"] --> SY["Question-independent cross-source synthesis"]
+    RS --> SY
+    SY --> HI["Human interpretation"]
 ```
+
+- **External source discovery** uses the human's research question to find potentially relevant sources.
+- **Source ingestion** retrieves or loads the selected source, normalizes its content, and records provenance.
+- **Single-source analysis** does not receive the research question. It reconstructs the source on its own terms so the resulting `SourceAnalysis` remains reusable across future inquiries and across projects.
+- **Cross-source synthesis** does not receive the research question either. It operates on the accepted analyses sharing a human-selected project tag — comparing them to identify agreements, disagreements, methodological differences, proposed solutions, limitations, and unresolved questions — without being directed toward a desired conclusion.
+
+The human then interprets this question-independent synthesis, decides what matters, draws broader inferences, and chooses the next research direction.
+
+The finished agent will perform source discovery and ingestion within human-defined boundaries. Manually supplied sources are only an implementation-stage bridge while those capabilities are developed.
 
 Human checkpoints are intentional parts of the system rather than emergency overrides.
 
@@ -156,6 +158,8 @@ The project intentionally adds these capabilities incrementally rather than begi
 
 ## Development Roadmap
 
+These phases reflect implementation order, not runtime order. The analysis, evaluation, and review components are built first using manually supplied, controlled sources; automated source discovery and ingestion (Phase 5) are connected to that already-validated downstream pipeline afterward.
+
 ### Phase 0 — Getting Started
 
 Set up the repository, development environment, Claude Code workflow, project documentation, and implementation plan.
@@ -176,27 +180,31 @@ Add DeepEval faithfulness, citation evaluation, and custom research-specific eva
 
 Build the accept, reject, revise, and rerun checkpoint that determines which analyses enter the research store.
 
-### Phase 5 — Cross-Source Synthesis
+### Phase 5 — Source Discovery and Ingestion
 
-Compare accepted sources to identify agreement, disagreement, methodological differences, proposed solutions, evidence strength, and research gaps.
+Find external sources relevant to a human-defined research question, retrieve or load their content, normalize it for analysis, tag it with the relevant project, and construct verified provenance records.
 
-### Phase 6 — Research Knowledge Base and RAG
+### Phase 6 — Cross-Source Synthesis
+
+Compare accepted source analyses sharing a project tag — independent of any specific research question — to identify agreements, disagreements, methodological differences, proposed solutions, limitations, and unresolved questions.
+
+### Phase 7 — Research Knowledge Base and RAG
 
 Store accepted research, add embeddings, and retrieve relevant prior evidence for new research questions.
 
-### Phase 7 — Retrieval Evaluation
+### Phase 8 — Retrieval Evaluation
 
 Evaluate whether the RAG system retrieves the correct evidence separately from whether the model generates a faithful synthesis.
 
-### Phase 8 — LangGraph Orchestration
+### Phase 9 — LangGraph Orchestration
 
 Convert the working pipeline into a stateful human-in-the-loop research agent with approval checkpoints, retries, persistence, and explicit resource limits.
 
 ## Project Status
 
-**Current stage: Phase 0 — Getting Started**
+**Current stage: Phase 2 — Single-Source Analysis**
 
-The project is currently being designed and initialized. The research architecture has been defined, and implementation will proceed incrementally so that each component can be tested before additional agentic behavior is introduced.
+Phase 0 (project scaffolding and toolchain) and Phase 1 (the research data model) are complete. Implementation is proceeding incrementally so that each component can be tested before additional agentic behavior is introduced.
 
 ## Development Setup
 
