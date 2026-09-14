@@ -140,15 +140,15 @@ function end-to-end before any research logic is written.
 
 ### Acceptance Criteria
 
-- [ ] `.python-version` and `pyproject.toml` agree on Python 3.12.
-- [ ] `uv sync` installs a working environment from a clean clone.
-- [ ] `uv run pytest` passes locally.
-- [ ] `uv run ruff check .` and `uv run ruff format --check .` pass.
-- [ ] `uv run mypy src` passes.
-- [ ] `pre-commit run --all-files` passes.
-- [ ] Pushing a commit/PR triggers GitHub Actions CI and it passes.
-- [ ] README documents how a new contributor sets up the dev environment.
-- [ ] No research/domain logic exists yet beyond the settings scaffold —
+- [x] `.python-version` and `pyproject.toml` agree on Python 3.12.
+- [x] `uv sync` installs a working environment from a clean clone.
+- [x] `uv run pytest` passes locally.
+- [x] `uv run ruff check .` and `uv run ruff format --check .` pass.
+- [x] `uv run mypy src` passes.
+- [x] `pre-commit run --all-files` passes.
+- [x] Pushing a commit/PR triggers GitHub Actions CI and it passes.
+- [x] README documents how a new contributor sets up the dev environment.
+- [x] No research/domain logic exists yet beyond the settings scaffold —
       Phase 0 stays scoped to toolchain and structure.
 
 ---
@@ -372,37 +372,37 @@ Import direction is a strict DAG: `_base` is a leaf; `provenance`,
 
 ### Acceptance Criteria
 
-- [ ] All models (`Provenance`, `Methodology`, `InterpretedStatement` and its
+- [x] All models (`Provenance`, `Methodology`, `InterpretedStatement` and its
       five subclasses, `Evidence`, `Claim`, `SourceAnalysis`) are importable
       from `hitl_research_agent.models`.
-- [ ] `SourceAnalysis` composes `Provenance`, an optional `Methodology`, a
+- [x] `SourceAnalysis` composes `Provenance`, an optional `Methodology`, a
       `ResearchProblem`, one or more `Claim`s (each with ≥1 `Evidence`), and
       the four interpretive-statement lists.
-- [ ] Every interpretive field carries `statement_origin`; `Methodology`
+- [x] Every interpretive field carries `statement_origin`; `Methodology`
       carries it independently.
-- [ ] All models reject unrecognized fields.
-- [ ] Required and provided-optional text fields reject empty/whitespace-only
+- [x] All models reject unrecognized fields.
+- [x] Required and provided-optional text fields reject empty/whitespace-only
       values and store the stripped value.
-- [ ] List fields use independent per-instance defaults — no shared mutable
+- [x] List fields use independent per-instance defaults — no shared mutable
       defaults.
-- [ ] `central_claims` and `Claim.evidence` each require at least one item.
-- [ ] `retrieved_at` and `analyzed_at` both reject timezone-naive datetimes
+- [x] `central_claims` and `Claim.evidence` each require at least one item.
+- [x] `retrieved_at` and `analyzed_at` both reject timezone-naive datetimes
       and are documented as distinct events.
-- [ ] `Evidence.relationship_to_claim == "claim_grounding"` is only valid
+- [x] `Evidence.relationship_to_claim == "claim_grounding"` is only valid
       when `evidence_form == "verbatim"`.
-- [ ] An `author_stated` `Claim` requires ≥1 `claim_grounding` evidence item;
+- [x] An `author_stated` `Claim` requires ≥1 `claim_grounding` evidence item;
       a `model_inferred` `Claim` must not contain any.
-- [ ] `source_id` is documented as stable/reusable across re-analysis;
+- [x] `source_id` is documented as stable/reusable across re-analysis;
       `SourceAnalysis.id` and `analyzed_at` are fresh per analysis result and
       unique across instances.
-- [ ] `source_type` includes all ten finalized categories.
-- [ ] A complete `SourceAnalysis` round-trips through JSON without data loss,
+- [x] `source_type` includes all ten finalized categories.
+- [x] A complete `SourceAnalysis` round-trips through JSON without data loss,
       preserving subclass identity.
-- [ ] Full check suite passes: `pytest`, `ruff check`, `ruff format --check`,
+- [x] Full check suite passes: `pytest`, `ruff check`, `ruff format --check`,
       `mypy src`.
-- [ ] No extraction, evaluation, or storage logic exists yet — Phase 1 stays
+- [x] No extraction, evaluation, or storage logic exists yet — Phase 1 stays
       scoped to schema definition and validation.
-- [ ] No revision-link, review-status, evaluation-result, or schema-version
+- [x] No revision-link, review-status, evaluation-result, or schema-version
       fields exist yet.
 
 ## Phase 2 — Single-Source Analysis
