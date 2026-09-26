@@ -35,10 +35,57 @@ Revise the Phase 2 proposal based on these points. Do not modify any files or wr
 **Response:**
 Claude confirmed that Phase 2 needs three extraction models so the LLM generates research content without generating application-owned IDs, timestamps, or provenance. It proposed a NormalizedSource input, one whole-source model call with a configurable size limit, deterministic checking of verbatim evidence, and one correction attempt for invalid output. It also proposed retaining model and token-usage metadata through an AnalysisResult wrapper. Two decisions remained: the public return type and the OpenAI model.
 
-### 3. Choose the Return Type, Model, and Source Input
+### 3. Use GPT-6 Sol
 
-**Prompt:** I approve returning an AnalysisResult rather than a bare SourceAnalysis. The result should contain the completed analysis, the model used, total input tokens, total output tokens, and attempt_count. If the model needs its one correction attempt, the token totals should include both calls. Do not add other metadata unless it is necessary, and explain why before adding it.
+**Prompt:** I approve returning an `AnalysisResult` rather than a bare `SourceAnalysis`. It should contain the completed analysis, the model used, total input tokens, total output tokens, and `attempt_count`. If a correction attempt is needed, the token totals should include both calls. Do not add other metadata without explaining why it is necessary first.
 
-Use gpt-5.6-terra as the default model, while allowing it to be changed through Settings. Confirm which configuration parameters that model currently supports. In particular, do not assume that temperature=0.0 is appropriate just because it was used with older models. Recommend whether we should set a reasoning-effort value for this extraction task and explain the choice in plain language.
+Use `gpt-6-sol` as the default model, configurable through `Settings`. This replaces the earlier `gpt-5.6-terra` selection. Start with `medium` reasoning and omit `temperature` and other sampling parameters unsupported with reasoning enabled.
 
-Use SourceDocument rather than RawSource or NormalizedSource. Phase 2 needs a document containing source text and provenance, but it does not need to define the normalization process that Phase 5 will eventually perform.
+Check the current official documentation:
+- https://developers.openai.com/api/docs/models/gpt-6-sol
+- https://developers.openai.com/api/docs/guides/latest-model
+
+Use the Responses API with OpenAI’s native structured output through LangChain. Verify how the current LangChain integration selects that API, supplies the strict output schema, and exposes token usage—including when output fails validation. Do not assume older configuration examples apply.
+
+Use `SourceDocument` rather than `RawSource` or `NormalizedSource`. It should contain source text and provenance without defining the normalization process that Phase 5 will eventually perform.
+
+Review the updated Phase 2 section of `docs/BUILD_PLAN.md`, then revise your architecture proposal around these decisions. Explain any remaining compatibility issues or design choices in plain language, particularly extraction-schema reuse and source-size limits.
+
+Do not modify files, install dependencies, make paid API calls, or write the finalized build plan yet. End with only the decisions that still genuinely require my input.
+
+**Response:**
+Claude reported verifying GPT-6 Sol’s availability, pricing, structured-output support, and `medium` reasoning against the official documentation. It recommended explicitly setting `use_responses_api=True`, omitting incompatible sampling-parameter settings, and using LangChain’s `with_structured_output(ExtractedAnalysis, method="json_schema", strict=True, include_raw=True)`. It explained that retaining the raw response allows token usage to be accumulated across a locally invalid first response and its correction attempt. It left the exact generated Responses API request payload to be checked without a paid call during implementation.
+
+Claude retained the proposed `ExtractedEvidence`, `ExtractedClaim`, and `ExtractedAnalysis` split to separate model-generated research content from application-owned fields. It revised its earlier character-count proposal to recommend adding `tiktoken` and capping source text at 150,000 tokens, citing the higher whole-request pricing above 272,000 input tokens. It asked for approval of the proposed limit and tokenizer dependency. These remain proposals, not accepted decisions. Claude acknowledged the existing user edits and reported no file changes.
+
+**Open Issues:**
+The source-size limit and `tiktoken` dependency remain undecided. The generated request payload still needs inspection, and Claude’s claims about tokenizer precision and usage availability across failure cases need review before finalizing the plan.
+
+### 4. Keep Phase 2 Simple
+
+**Prompt:** Your Phase 2 proposal is getting too detailed for this stage. Please give me a short recommendation on the two choices you raised: a sensible source-size limit for our initial documents, and whether we need `tiktoken` now. Explain each in plain language. A rough, conservative limit is fine; we can refine it after testing real sources.
+
+For the rest, use the simplest approach that fits our agreed Phase 2 scope. Check schema compatibility and handle failures during implementation. Don't promise exact token counts when an API call fails before a response arrives.
+
+Please explain your recommendation in plain language so I can understand the tradeoff. Do not change files or write the final build plan yet.
+
+**Response:**
+Claude recommended a provisional 200,000-character limit on source text, checked before calling the model. Longer documents would produce a clear error rather than being truncated. It recommended deferring `tiktoken` because a rough character guard is enough for the initial controlled sources, while tokenizer setup would add complexity to offline tests. The limit should be revisited after testing real sources. Claude will handle schema compatibility, failures, and token accounting during implementation, without reporting usage for a call that returned no response. No files were changed and no dependencies were installed.
+
+### 5. Finalize the Phase 2 Build Plan
+
+**Prompt:** I accept your Phase 2 recommendations: start with a 200,000-character limit on `SourceDocument.text`, reject longer sources clearly before the model call, and defer `tiktoken`. Treat the limit as provisional and adjustable after testing real sources. Please now turn the agreed Phase 2 design into the finalized Phase 2 section of `docs/BUILD_PLAN.md`, following the structure used for Phases 0 and 1: goal, architectural decisions, technologies, implementation tasks, tests, and acceptance criteria.
+
+Keep the plan focused on one manually supplied source, GPT-6 Sol, the `AnalysisResult` we approved, native structured output, verbatim evidence checks, and one correction attempt for invalid analysis. Technical API retries should remain separate. Let the application supply provenance, IDs, and timestamps. Do not add evaluation, human review, storage, discovery, chunking, or orchestration. Resolve routine schema and failure-handling details in the plan using your judgment, and describe them plainly. Preserve the completed Phase 0 and 1 sections and my edits to the prompt log. Do not implement code, install dependencies, make API calls, commit, or push. After editing, briefly tell me what you added and flag any decision you truly cannot make without me.
+
+**Response:**
+Claude replaced the Phase 2 placeholder in `docs/BUILD_PLAN.md` with a complete plan covering the agreed input and output models, field ownership, GPT-6 Sol configuration, structured extraction, source-size guard, evidence checking, correction policy, implementation tasks, tests, and acceptance criteria. It recorded the 200,000-character limit as provisional and left the acceptance criteria unchecked because Phase 2 has not been implemented. Claude reported changing only the build plan, leaving Phase 0 and 1 intact, and making no code changes, dependency installations, API calls, commits, or pushes. It reported no remaining architectural decisions requiring user input.
+
+### 6. Implement Phase 2
+
+**Prompt:** Implement Phase 2 according to the finalized Phase 2 section of `docs/BUILD_PLAN.md`. Add the extraction code, configuration, required dependencies, and meaningful offline tests. Use fake model responses in the normal test suite; do not make paid API calls. Check that the LangChain structured-output schema and request configuration work as planned without sending a request. Handle parsing failures clearly as part of the agreed failure policy. Make routine implementation choices yourself; if the plan requires a material architectural change, explain it before making that change.
+
+Preserve the existing Phase 0 and 1 code and my edits to `README.md` and `docs/prompt_logs/phase_2.md`. After implementation, run `uv run pytest`, `uv run ruff check .`, `uv run ruff format --check .`, and `uv run mypy src`. Update the Phase 2 acceptance checkboxes only for criteria you verified. Briefly report what changed, the check results, and any remaining limitation in plain language. Do not commit or push.
+
+**Response:**
+Claude implemented the Phase 2 extraction package, configuration, dependencies, and offline tests. It reported 66 passing tests, clean Ruff lint and formatting checks, and clean mypy checks. It verified that the extraction schema converts to OpenAI's strict format and that the LangChain pipeline can be constructed without sending a request. The tests used fake model responses; no OpenAI API call was made. Claude noted that refusal and incomplete-response handling still needs confirmation against a real response, and the provisional 200,000-character source limit has not been tested against representative documents. It checked the Phase 2 acceptance criteria, made no commit or push, and preserved the existing README and prompt-log edits.

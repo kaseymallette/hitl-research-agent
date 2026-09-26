@@ -407,7 +407,284 @@ Import direction is a strict DAG: `_base` is a leaf; `provenance`,
 
 ## Phase 2 — Single-Source Analysis
 
-*To be planned.*
+### Goal
+
+Use an LLM to convert one manually supplied source into a validated
+`SourceAnalysis`, without receiving the human's research question and without
+a `project_tag`. Manually supplied sources remain an implementation-stage
+bridge until Phase 5 adds real discovery and ingestion. Evaluation, human
+review, persistence, source discovery, cross-source synthesis, RAG, and
+orchestration all remain out of scope for later phases.
+
+### Architectural Decisions
+
+- **Input: `SourceDocument`**
+  `SourceDocument` holds `text` and a `Provenance`. It deliberately does not
+  define or claim anything about the normalization process Phase 5 will
+  eventually perform — it only states Phase 2's own input contract, which
+  Phase 5 can satisfy however it ends up working.
+
+- **Field ownership stays split between the model and the application**
+  The model generates research content only: `research_problem`,
+  `central_claims` (with their evidence), `methodology`, `assumptions`,
+  `limitations`, `proposed_solutions`, and `open_questions`. The application
+  supplies everything else: all of `Provenance`, `SourceAnalysis.id`,
+  `SourceAnalysis.analyzed_at`, and every `Claim.id`/`Evidence.id`. The
+  finalized Phase 1 models are not refactored to fit the LLM output format.
+
+- **Three new extraction schemas, not a parallel model hierarchy**
+  `Evidence` and `Claim` each carry one application-owned `id: UUID` field
+  that has no legitimate value for the model to produce — that is the *only*
+  reason either needs a twin. `ExtractedEvidence` and `ExtractedClaim`
+  reproduce their fields minus `id`; `ExtractedAnalysis` is the container
+  extraction schema, differing from `SourceAnalysis` only in using
+  `list[ExtractedClaim]` and omitting `id`/`provenance`/`analyzed_at`. Every
+  other Phase 1 content model — `Methodology` and the five
+  `InterpretedStatement` subclasses (`ResearchProblem`, `Assumption`,
+  `Limitation`, `ProposedSolution`, `OpenQuestion`) — is reused unchanged:
+  none of them carry an application-owned field, and their optional
+  (`X | None = None`) and defaulted (`Field(default_factory=list)`) fields
+  both convert cleanly to OpenAI's strict-schema pattern (every property
+  required; optionality expressed as nullability, not omission). `Provenance`
+  is not part of the extraction schema at all — it is pure input.
+  `ExtractedEvidence`/`ExtractedClaim` carry no cross-field validators of
+  their own; Pydantic's `model_validator`s cannot be expressed in JSON Schema
+  regardless of which model carries them, so validation happens once, in one
+  place, when real `Claim`/`Evidence`/`SourceAnalysis` objects are assembled
+  from the extracted data after the model call returns.
+
+- **Return type: `AnalysisResult`**
+  `analyze_source()` returns `AnalysisResult` — the completed `SourceAnalysis`
+  plus `model`, `input_tokens`, `output_tokens`, and `attempt_count` — rather
+  than a bare `SourceAnalysis`, so call-level facts have somewhere to live
+  without adding schema-version or call-provenance fields to Phase 1. Token
+  totals are summed across both calls whenever the one correction attempt
+  fires. No further metadata is added without explaining why it's needed
+  first.
+
+- **Model and call configuration**
+  Default model `gpt-6-sol` (configurable via `Settings`), `medium` reasoning
+  effort (also configurable), the OpenAI Responses API selected explicitly
+  (`use_responses_api=True`) rather than relied on implicitly, and native
+  structured output via `with_structured_output(ExtractedAnalysis,
+  method="json_schema", strict=True, include_raw=True)`. `temperature`,
+  `top_p`, and `top_logprobs` are omitted entirely rather than defaulted,
+  since they are documented as incompatible with reasoning enabled — not
+  merely unnecessary. `include_raw=True` is required, not optional: it is
+  how token usage and refusal/incomplete status are recovered regardless of
+  whether the model's output parses or validates successfully. `gpt-6-sol`'s
+  quality on real MVP sources is unmeasured; the model stays configurable so
+  a later evaluation can compare it against `gpt-6-astra` for difficult
+  sources or `gpt-6-luna` for lower-cost processing. No automatic model
+  routing is planned for Phase 2.
+
+- **Source-size limit: 200,000 characters, checked before any model call**
+  `SourceDocument.text` longer than 200,000 characters is rejected
+  immediately with a clear error — no truncation, no chunking. The limit is
+  sized to comfortably cover a single long-form report, which is what the
+  MVP source types (papers, government/industry reports, articles) are
+  expected to look like, not to sit just under any pricing or context-window
+  boundary. It is an explicit placeholder, not a validated number — no
+  representative sources exist in the repository yet, so it has not been
+  tested against real MVP material and should be revisited once it has been.
+  A plain character count is used rather than an exact token count; adding a
+  tokenizer dependency for more precision is deferred until real sources show
+  the character estimate is actually too loose.
+
+- **Deterministic verbatim-grounding check**
+  Any `Evidence`/`ExtractedEvidence` with `evidence_form="verbatim"` must
+  literally appear in the source text (case/whitespace-normalized substring
+  match). This is a mechanical check, not a faithfulness *evaluation* — it
+  belongs to producing a valid analysis, not to the broader evaluation work
+  planned for Phase 3. `Evidence.locator` remains free-text, since manually
+  supplied plain-text sources have no reliable pagination to point to more
+  precisely.
+
+- **Failure handling distinguishes four outcomes, not two**
+  *Invalid analysis* — parses, but fails the verbatim-grounding check or
+  Phase 1's own cross-field validation when real `Claim`/`Evidence`/
+  `SourceAnalysis` objects are assembled — is the only outcome eligible for
+  the one correction attempt: the specific failure is fed back to the model
+  once, and if it still fails, `SourceAnalysisValidationError` is raised with
+  both attempts' usage accumulated. *Refusal* (the response's `refusal`
+  field is set) and *incomplete output* (`status="incomplete"`, e.g. the
+  reasoning-plus-output budget was exhausted) each raise their own error
+  immediately without consuming the correction attempt — neither leaves
+  anything a retry could meaningfully correct. *Technical failure* (network
+  error, timeout, rate limit, server error) never returns a response at all,
+  so it carries no usage to record; it is handled by the API client's own
+  transport-level retry, a separate and independently bounded budget from
+  the one semantic correction attempt, and never produces an `AnalysisResult`.
+  `AnalysisResult.input_tokens`/`output_tokens` are the exact sum of
+  `usage_metadata` from every call that returned a response and was
+  evaluated (never a fabricated value standing in for an unknown one), and
+  `attempt_count` counts only those calls — both fields describe exactly
+  what was observed, not a guarantee of what OpenAI billed if a response
+  was generated but never received.
+
+- **Dependencies: `langchain-core` and `langchain-openai` only**
+  Not the full `langchain` meta-package — Phase 2 needs `ChatOpenAI` and
+  structured-output binding, nothing from chains/agents/retrievers. No
+  tokenizer dependency yet (see the source-size decision above).
+
+### Technologies Introduced
+
+| Tool | Purpose |
+|---|---|
+| `langchain-core` | `Runnable`/chat-model abstractions the pipeline is written against |
+| `langchain-openai` | `ChatOpenAI`, Responses API selection, native structured output |
+
+### Module Layout
+
+```
+src/hitl_research_agent/extraction/
+  __init__.py     # re-exports analyze_source, SourceDocument, AnalysisResult, errors
+  schemas.py       # SourceDocument, ExtractedEvidence, ExtractedClaim, ExtractedAnalysis
+  prompts.py        # system prompt + human-message construction
+  grounding.py        # verbatim evidence-in-source check
+  pipeline.py           # analyze_source(): size guard, model call, retry, assembly
+  errors.py              # SourceAnalysisError hierarchy
+
+tests/extraction/
+  test_schemas.py
+  test_grounding.py
+  test_pipeline.py
+```
+
+`extraction` is named to avoid colliding with the existing
+`models/analysis.py` module. It depends on `models` (reusing `Provenance`,
+`Methodology`, the `InterpretedStatement` subclasses, `Claim`, `Evidence`,
+`SourceAnalysis`) and on `config.Settings`; nothing in `models/` depends on
+`extraction`.
+
+### Implementation Tasks
+
+1. `extraction/schemas.py` — `SourceDocument`, `ExtractedEvidence`,
+   `ExtractedClaim`, `ExtractedAnalysis`.
+2. `extraction/errors.py` — `SourceAnalysisError` base, plus
+   `SourceAnalysisValidationError`, `SourceAnalysisRefusedError`,
+   `SourceAnalysisIncompleteError`, `SourceAnalysisExtractionError`.
+3. `extraction/grounding.py` — the verbatim substring-match check.
+4. `extraction/prompts.py` — the system prompt (question-independent
+   reconstruction; `statement_origin`/`evidence_form`/`relationship_to_claim`
+   semantics) and a human-message builder (source text plus
+   `source_title`/`source_type` framing from `Provenance`).
+5. `extraction/pipeline.py` — `analyze_source(source: SourceDocument, *,
+   model: Runnable | None = None) -> AnalysisResult`: enforces the
+   200,000-character limit before any model call; constructs a default
+   `ChatOpenAI` from `Settings` when `model` is not supplied; invokes with
+   `include_raw=True`; classifies the outcome (invalid analysis / refusal /
+   incomplete / technical failure); performs the one correction attempt for
+   invalid analysis; assembles real `Claim`/`Evidence`/`SourceAnalysis`
+   objects from the extracted data so Phase 1 validation runs; accumulates
+   token usage into `AnalysisResult`.
+6. Extend `config.Settings` with `openai_model: str = "gpt-6-sol"`,
+   `openai_reasoning_effort: str = "medium"`, and
+   `max_source_characters: int = 200_000`, all overridable via environment.
+7. `extraction/__init__.py` — re-export the public entry point, schemas, and
+   error types.
+8. `tests/extraction/` — one test file per concern (see Tests below), all
+   exercised through an injected fake model.
+9. Add `langchain-core` and `langchain-openai` to `pyproject.toml`.
+10. Confirm `ruff check`, `ruff format --check`, `mypy src`, and `pytest` all
+    pass against the new package.
+
+### Validation and Failure-Handling Rules
+
+- `SourceDocument.text` longer than `Settings.max_source_characters` raises
+  before any model call; Phase 2 never truncates or chunks a source.
+- The model call uses `method="json_schema"`, `strict=True`, and
+  `include_raw=True`; `temperature`, `top_p`, and `top_logprobs` are never
+  passed alongside `reasoning_effort`.
+- Every `verbatim` evidence item is checked against the source text
+  (case/whitespace-normalized substring match); a failed match is invalid
+  analysis, not a separate failure category.
+- Real `Claim`/`Evidence`/`SourceAnalysis` objects are constructed from the
+  extracted data after every successful model call, so Phase 1's existing
+  cross-field validators (`claim_grounding` ⇄ `verbatim`, `author_stated` ⇄
+  grounding evidence, non-empty required lists) run unchanged; a
+  `ValidationError` here is also invalid analysis.
+- Invalid analysis gets exactly one correction attempt, with the specific
+  validation or grounding failure fed back to the model. Refusal, incomplete
+  output, and technical failure are each terminal on the first occurrence —
+  none of them consume or extend the one correction attempt.
+- Technical (transport-level) retries belong to the API client, are bounded
+  independently of the one correction attempt, and never appear in
+  `AnalysisResult` — a technical failure raises before any result is built.
+- `AnalysisResult.input_tokens`/`output_tokens` sum `usage_metadata` from
+  exactly the calls counted in `attempt_count`; no other value is added or
+  assumed.
+
+### Tests
+
+**`tests/extraction/test_schemas.py`**
+- `SourceDocument` rejects empty/whitespace-only `text`.
+- `ExtractedEvidence`/`ExtractedClaim`/`ExtractedAnalysis` construct
+  successfully from valid data and carry no `id` field.
+
+**`tests/extraction/test_grounding.py`**
+- Verbatim evidence text present in the source (after normalization) passes.
+- Verbatim evidence text absent from the source fails.
+- Paraphrased evidence is not checked against the source text.
+- Matching is case- and whitespace-insensitive.
+
+**`tests/extraction/test_pipeline.py`**
+- Source text over `max_source_characters` raises before the injected model
+  is ever invoked.
+- A fake model returning valid extracted content on the first call produces
+  an `AnalysisResult` with `attempt_count == 1` and correctly summed usage.
+- A fake model returning invalid analysis (grounding or Phase 1 validation
+  failure) on the first call and valid content on the second produces
+  `attempt_count == 2` with usage summed across both calls.
+- A fake model returning invalid analysis on both calls raises
+  `SourceAnalysisValidationError` after exactly one retry — never more.
+- A fake model returning a refusal raises `SourceAnalysisRefusedError`
+  immediately, with no correction attempt.
+- A fake model returning `status="incomplete"` raises
+  `SourceAnalysisIncompleteError` immediately, with no correction attempt.
+- A fake model raising a transport-level exception raises
+  `SourceAnalysisExtractionError`, and no `AnalysisResult` is produced.
+- `Settings.openai_model`, `openai_reasoning_effort`, and
+  `max_source_characters` default to `"gpt-6-sol"`, `"medium"`, and `200_000`
+  respectively, and are overridable.
+
+### Acceptance Criteria
+
+- [x] `analyze_source(source: SourceDocument, ...) -> AnalysisResult` is
+      implemented and importable from `hitl_research_agent.extraction`.
+- [x] The application — never the model — supplies `Provenance`, every `id`
+      field, and `SourceAnalysis.analyzed_at`/`id`.
+- [x] Exactly three new schemas exist (`ExtractedEvidence`, `ExtractedClaim`,
+      `ExtractedAnalysis`); every other Phase 1 content model is reused
+      unchanged, and no finalized Phase 1 model is modified.
+- [x] `SourceDocument.text` over `max_source_characters` (200,000 by default)
+      raises before any model call; no truncation or chunking exists
+      anywhere in Phase 2.
+- [x] The extraction call is configured for the Responses API, `gpt-6-sol`
+      (default, configurable), `medium` reasoning (default, configurable),
+      native structured output (`method="json_schema"`, `strict=True`), and
+      omits `temperature`/`top_p`/`top_logprobs`. Verified by constructing
+      the real `ChatOpenAI` + `with_structured_output` pipeline offline and
+      inspecting the strict schema it generates (see Tests); not verified
+      against a live response, since no paid API call was made.
+- [x] Every `verbatim` evidence item is checked against the source text; a
+      failed match is treated as invalid analysis.
+- [x] Invalid analysis receives exactly one correction attempt with the
+      specific failure fed back to the model; refusal, incomplete output,
+      and technical failure each raise their own distinct exception without
+      consuming that attempt.
+- [x] Technical retries are handled separately from the one correction
+      attempt and never contribute a fabricated token count.
+- [x] `AnalysisResult` reports `model`, `input_tokens`, `output_tokens`, and
+      `attempt_count` accurately, summed only across calls that returned a
+      response.
+- [x] All tests run against an injected fake model — no real network or API
+      calls occur in the default test suite.
+- [x] Full check suite passes: `pytest`, `ruff check`, `ruff format --check`,
+      `mypy src`.
+- [x] No evaluation, human review, persistence, source discovery,
+      cross-source synthesis, chunking, or orchestration logic exists yet —
+      Phase 2 stays scoped to single-source extraction.
 
 ## Phase 3 — Evaluation
 

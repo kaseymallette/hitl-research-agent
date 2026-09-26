@@ -137,7 +137,8 @@ The initial implementation will use:
 
 - **Python** — core application language
 - **LangChain** — model integration and structured AI operations
-- **OpenAI API** — initial model provider
+- **OpenAI API** — initial model provider; GPT-6 Sol (`gpt-6-sol`) is the
+  planned Phase 2 default, configurable through `Settings`
 - **Pydantic** — structured research schemas and validation
 - **DeepEval** — evaluation framework
 - **Git + GitHub** — version control and project history
@@ -205,6 +206,12 @@ Convert the working pipeline into a stateful human-in-the-loop research agent wi
 **Current stage: Phase 2 — Single-Source Analysis**
 
 Phase 0 (project scaffolding and toolchain) and Phase 1 (the research data model) are complete. Implementation is proceeding incrementally so that each component can be tested before additional agentic behavior is introduced.
+
+Phase 2 is in architectural planning; the LLM integration is not implemented
+yet. The agreed starting configuration is GPT-6 Sol with medium reasoning,
+using the Responses API and native structured output. See the
+[Phase 2 build plan](docs/BUILD_PLAN.md#phase-2--single-source-analysis) for
+recorded decisions and remaining design work.
 
 ## Development Setup
 
