@@ -412,9 +412,16 @@ Import direction is a strict DAG: `_base` is a leaf; `provenance`,
 Use an LLM to convert one manually supplied source into a validated
 `SourceAnalysis`, without receiving the human's research question and without
 a `project_tag`. Manually supplied sources remain an implementation-stage
-bridge until Phase 5 adds real discovery and ingestion. Evaluation, human
-review, persistence, source discovery, cross-source synthesis, RAG, and
-orchestration all remain out of scope for later phases.
+bridge until Phase 5 adds real discovery and ingestion. Phase 2 includes
+argument reconstruction, evidence and citation extraction, assumptions,
+limitations, and provisional assessments of whether the paper's reasons
+support its conclusions, returned as JSON — presenting that analysis to a
+reader is not part of Phase 2. Phase 3 evaluates the quality of our
+analysis; Phase 4 implements the accept/reject/revise workflow. Those
+automated evaluation and review workflows, research-store persistence,
+source discovery, cross-source synthesis, RAG, and orchestration remain
+later work. Saving development outputs and manually reviewing them are part
+of Phase 2 validation, not the later research-store workflow.
 
 ### Architectural Decisions
 
@@ -463,8 +470,8 @@ orchestration all remain out of scope for later phases.
   first.
 
 - **Model and call configuration**
-  Default model `gpt-6-sol` (configurable via `Settings`), `medium` reasoning
-  effort (also configurable), the OpenAI Responses API selected explicitly
+  Default model `gpt-6-astra` at `low` reasoning effort (both configurable
+  via `Settings`), the OpenAI Responses API selected explicitly
   (`use_responses_api=True`) rather than relied on implicitly, and native
   structured output via `with_structured_output(ExtractedAnalysis,
   method="json_schema", strict=True, include_raw=True)`. `temperature`,
@@ -472,11 +479,18 @@ orchestration all remain out of scope for later phases.
   since they are documented as incompatible with reasoning enabled — not
   merely unnecessary. `include_raw=True` is required, not optional: it is
   how token usage and refusal/incomplete status are recovered regardless of
-  whether the model's output parses or validates successfully. `gpt-6-sol`'s
-  quality on real MVP sources is unmeasured; the model stays configurable so
-  a later evaluation can compare it against `gpt-6-astra` for difficult
-  sources or `gpt-6-luna` for lower-cost processing. No automatic model
-  routing is planned for Phase 2.
+  whether the model's output parses or validates successfully.
+
+  This default was chosen after running the same paper, prompt, and schema
+  through `gpt-6-sol` at `medium` and `high` reasoning and `gpt-6-astra` at
+  `low` and `medium`, all without a correction attempt or failure. Astra at
+  medium produced useful analysis too, but Astra at low expressed its
+  `support_assessment` reasoning in language the project owner found easier
+  to understand and act on. Since this is a human-in-the-loop tool, that
+  usability difference — not measured accuracy, which none of these runs
+  established — decided the default. The model and reasoning effort remain
+  fully configurable via `Settings`; no automatic model routing is planned
+  for Phase 2.
 
 - **Source-size limit: 200,000 characters, checked before any model call**
   `SourceDocument.text` longer than 200,000 characters is rejected
@@ -484,9 +498,9 @@ orchestration all remain out of scope for later phases.
   sized to comfortably cover a single long-form report, which is what the
   MVP source types (papers, government/industry reports, articles) are
   expected to look like, not to sit just under any pricing or context-window
-  boundary. It is an explicit placeholder, not a validated number — no
-  representative sources exist in the repository yet, so it has not been
-  tested against real MVP material and should be revisited once it has been.
+  boundary. It remains an unvalidated placeholder. The supplied paper is well below
+  the limit; its successful runs do not validate the limit for large or
+  representative MVP sources.
   A plain character count is used rather than an exact token count; adding a
   tokenizer dependency for more precision is deferred until real sources show
   the character estimate is actually too loose.
@@ -522,10 +536,68 @@ orchestration all remain out of scope for later phases.
   what was observed, not a guarantee of what OpenAI billed if a response
   was generated but never received.
 
+- **Output: JSON only**
+  `analyze_source()` returns `AnalysisResult`; nothing renders it. A Markdown
+  renderer (`extraction/report.py`) was built, used to review several
+  development runs, and removed after the project owner rejected its
+  quote-hiding behavior and asked that analytical quality be addressed before
+  any presentation layer. No renderer replaces it; a presentation can be
+  designed later if one is needed. Every saved `AnalysisResult` JSON from
+  development runs is preserved for direct comparison.
+
 - **Dependencies: `langchain-core` and `langchain-openai` only**
   Not the full `langchain` meta-package — Phase 2 needs `ChatOpenAI` and
-  structured-output binding, nothing from chains/agents/retrievers. No
-  tokenizer dependency yet (see the source-size decision above).
+  structured-output binding, nothing from chains/agents/retrievers. No direct
+  tokenizer dependency or tokenizer-based size guard is added. `tiktoken`
+  is present transitively in the lockfile; the guard uses character count.
+
+- **Citations: a `Citation` model attached to `Evidence`**
+  `Evidence.citations: list[Citation]` records what the source itself cites
+  in connection with that evidence (`citation_text`, and `reference_entry`
+  only when a matching entry exists in the source's own reference list —
+  never invented). `Citation` carries no application-owned field, so the
+  extraction-time `ExtractedEvidence` reuses it directly rather than needing
+  a twin. This is a deliberate extension of a finalized Phase 1 file
+  (`models/claim.py`), made because citation tracking is genuine research
+  content Phase 1 was missing, not a Phase 2 convenience. A citation only
+  means the source cites that work — Phase 2 performs no retrieval or
+  verification of it.
+
+- **`Claim.support_assessment`: a provisional, model-authored judgment of
+  argument sufficiency**
+  For a claim important to the argument, whose own wording makes a strong or
+  consequential commitment (necessity, causal, generalizing, predictive, or
+  prescriptive language), the model may add `support_assessment`: a
+  passage-referenced judgment of whether the reasons offered across
+  the source actually meet that claim's stated strength and scope. Most
+  claims will not have one — selection is by importance and by what the
+  claim's wording commits to, not by matching a keyword. The assessment must
+  do real work, not return a bare label: state what the claim commits to,
+  cite the specific supporting passages and locations, distinguish an
+  announced aim from a developed argument, name any bridging assumption it
+  identifies (added to `assumptions` as `model_inferred`, connected
+  explicitly to the claim that needs it), and say plainly when the material
+  is insufficient to decide rather than forcing a verdict. It must recognize
+  well-supported claims as readily as gaps — the goal is calibrated
+  judgment, not routine criticism. This is always the model's own analysis,
+  never something the source states, and never a claim that a cited work has
+  been verified; it is not mechanically checked the way grounding and
+  citations are, so its presence in a result is not evidence of its quality.
+  **`support_assessment: null` means the claim was not assessed — nothing
+  more.** It is never a judgment that the claim is well-supported and never
+  a claim that no issue exists; the schema, the prompt, and this document
+  all define it the same way, so its absence on most claims is not
+  interpretable as a clean bill of health for them.
+  A second content extension of the Phase 1 models, for the same reason as
+  citations: this is genuine analytical content the project's stated purpose
+  (helping a human read critically) requires, not a Phase 2-only workaround.
+  Four short, unfamiliar calibration examples — a justified strong
+  conclusion, an incomplete elimination, an unstated premise, and a case with
+  insufficient information — are prepared in
+  [`docs/phase2_support_assessment_calibration.md`](phase2_support_assessment_calibration.md).
+  Live calibration results are recorded under Verification Status below;
+  passing the offline plumbing tests here is not evidence that a live model
+  can do this analysis well.
 
 ### Technologies Introduced
 
@@ -538,10 +610,10 @@ orchestration all remain out of scope for later phases.
 
 ```
 src/hitl_research_agent/extraction/
-  __init__.py     # re-exports analyze_source, SourceDocument, AnalysisResult, errors
+  __init__.py     # re-exports analyze_source, schemas, errors
   schemas.py       # SourceDocument, ExtractedEvidence, ExtractedClaim, ExtractedAnalysis
   prompts.py        # system prompt + human-message construction
-  grounding.py        # verbatim evidence-in-source check
+  grounding.py        # evidence, citation-marker, and reference-entry checks
   pipeline.py           # analyze_source(): size guard, model call, retry, assembly
   errors.py              # SourceAnalysisError hierarchy
 
@@ -549,6 +621,7 @@ tests/extraction/
   test_schemas.py
   test_grounding.py
   test_pipeline.py
+  test_prompts.py
 ```
 
 `extraction` is named to avoid colliding with the existing
@@ -564,11 +637,13 @@ tests/extraction/
 2. `extraction/errors.py` — `SourceAnalysisError` base, plus
    `SourceAnalysisValidationError`, `SourceAnalysisRefusedError`,
    `SourceAnalysisIncompleteError`, `SourceAnalysisExtractionError`.
-3. `extraction/grounding.py` — the verbatim substring-match check.
+3. `extraction/grounding.py` — normalized substring checks for verbatim
+   evidence, citation markers, and supplied reference entries.
 4. `extraction/prompts.py` — the system prompt (question-independent
    reconstruction; `statement_origin`/`evidence_form`/`relationship_to_claim`
-   semantics) and a human-message builder (source text plus
-   `source_title`/`source_type` framing from `Provenance`).
+   semantics; citation capture; the `support_assessment` reading method) and
+   a human-message builder (source text plus `source_title`/`source_type`
+   framing from `Provenance`).
 5. `extraction/pipeline.py` — `analyze_source(source: SourceDocument, *,
    model: Runnable | None = None) -> AnalysisResult`: enforces the
    200,000-character limit before any model call; constructs a default
@@ -578,16 +653,19 @@ tests/extraction/
    invalid analysis; assembles real `Claim`/`Evidence`/`SourceAnalysis`
    objects from the extracted data so Phase 1 validation runs; accumulates
    token usage into `AnalysisResult`.
-6. Extend `config.Settings` with `openai_model: str = "gpt-6-sol"`,
-   `openai_reasoning_effort: str = "medium"`, and
+6. Extend `config.Settings` with `openai_model: str = "gpt-6-astra"`,
+   `openai_reasoning_effort: str = "low"`, and
    `max_source_characters: int = 200_000`, all overridable via environment.
-7. `extraction/__init__.py` — re-export the public entry point, schemas, and
-   error types.
+7. `extraction/__init__.py` — re-export the analysis entry point, schemas,
+   and error types.
 8. `tests/extraction/` — one test file per concern (see Tests below), all
    exercised through an injected fake model.
 9. Add `langchain-core` and `langchain-openai` to `pyproject.toml`.
 10. Confirm `ruff check`, `ruff format --check`, `mypy src`, and `pytest` all
     pass against the new package.
+11. Prepare the four calibration examples with expected reasoning kept
+    separate from model input; record live outcomes separately from offline
+    checks.
 
 ### Validation and Failure-Handling Rules
 
@@ -599,6 +677,12 @@ tests/extraction/
 - Every `verbatim` evidence item is checked against the source text
   (case/whitespace-normalized substring match); a failed match is invalid
   analysis, not a separate failure category.
+- Citation markers and nonempty reference entries must occur somewhere in
+  the source after normalization. Failed matches enter the same one-correction
+  path as failed quotations. These checks establish textual occurrence, not
+  correct citation-to-claim attribution, argumentative support, or the truth
+  of a cited work. Assessment prose and its passage references are not
+  mechanically validated by these checks.
 - Real `Claim`/`Evidence`/`SourceAnalysis` objects are constructed from the
   extracted data after every successful model call, so Phase 1's existing
   cross-field validators (`claim_grounding` ⇄ `verbatim`, `author_stated` ⇄
@@ -627,8 +711,14 @@ tests/extraction/
 - Verbatim evidence text absent from the source fails.
 - Paraphrased evidence is not checked against the source text.
 - Matching is case- and whitespace-insensitive.
+- Citation markers and provided reference entries must occur in the source;
+  a marker may occur outside the attached evidence text.
 
 **`tests/extraction/test_pipeline.py`**
+- `Claim.support_assessment` and any assumption it names survive assembly
+  into the final `SourceAnalysis` unchanged, and default to unset/empty when
+  not provided. Plumbing only — proves the data flows through, says nothing
+  about whether a live model can produce a sound assessment.
 - Source text over `max_source_characters` raises before the injected model
   is ever invoked.
 - A fake model returning valid extracted content on the first call produces
@@ -645,8 +735,75 @@ tests/extraction/
 - A fake model raising a transport-level exception raises
   `SourceAnalysisExtractionError`, and no `AnalysisResult` is produced.
 - `Settings.openai_model`, `openai_reasoning_effort`, and
-  `max_source_characters` default to `"gpt-6-sol"`, `"medium"`, and `200_000`
+  `max_source_characters` default to `"gpt-6-astra"`, `"low"`, and `200_000`
   respectively, and are overridable.
+
+**Prompt tests**
+- `test_prompts.py` checks the presence of extraction and assessment
+  instructions; these tests do not measure live reasoning quality.
+- Strict-schema and offline model-construction tests exercise compatibility
+  without contacting the API. Model tests cover citations and assessments.
+
+### Verification Status
+
+Nine live calls exist on the Masri–Snoswell paper: development iterations
+v1–v4 (predating `support_assessment`; v4 adds citation capture and is the
+only one of the nine that used the one correction attempt), and four
+model/reasoning comparison runs — `gpt-6-sol` at `medium` and `high`,
+`gpt-6-astra` at `low` and `medium` — each including `support_assessment`
+and each succeeding without a correction attempt. All nine established that
+the pipeline runs end to end on this source; none produced a refusal or an
+incomplete-output response, so that handling remains unverified against a
+real captured response, and the 200,000-character cap remains an unvalidated
+placeholder — this source used about 14% of it.
+
+The four calibration examples in
+[`docs/phase2_support_assessment_calibration.md`](phase2_support_assessment_calibration.md)
+were run once, against `gpt-6-sol` at `medium` reasoning — the default in
+place at the time, since replaced. Three of four assessments matched their
+expected reasoning: the incomplete-elimination example named the specific
+missing exhaustiveness premise; the unstated-premise example identified and
+connected the correct bridging assumption to its claim; the
+insufficient-information example correctly declined to force a verdict on a
+bare, isolated sentence. The fourth — built to be a justified, well-supported
+conclusion — was **not** recognized as such: the model treated the
+exhaustiveness of its two considered alternatives as an unproven premise
+rather than affirming the argument, even though that dichotomy is close to
+definitional in its technical domain. That is the specific failure mode
+(reflexive gap-finding over recognizing sound arguments) this calibration
+exists to catch, and it was caught, not resolved. `gpt-6-astra` at `low`
+reasoning — the model now shipped as the default — has never itself been run
+against these four examples; the finding above is evidence about the
+previous default, not the current one.
+
+### Known Limitations and Later Evaluation Targets
+
+Documented gaps to evaluate later, not omissions to fix inside Phase 2:
+
+- **Analytical quality is not established.** The recognizing-a-well-supported-
+  conclusion finding above is unresolved and untested against the current
+  default model.
+- **Assessment selection is not shown to be consistent.** How many claims
+  received a `support_assessment`, and which ones, varied across the six
+  live runs that include this field, without a controlled comparison of why;
+  nothing confirms this converges on the same claims for the same source
+  across models, reasoning levels, or repeated runs.
+- **Claim granularity varies substantially by model and reasoning effort** on
+  the identical source and prompt — recorded runs produced between 18 and 30
+  central claims. Whether that reflects genuine differences in what each
+  configuration finds worth extracting, or unprincipled variation, is
+  unresolved.
+- **Only one source has been analyzed.** Every finding above comes from one
+  ~28,000-character philosophy/AI-ethics preprint. Behavior on harder,
+  longer, more technical, or differently structured papers is untested.
+- **A future presentation must distinguish paraphrased evidence from direct
+  quotations clearly.** `Evidence.evidence_form` already records this, but
+  nothing renders it now that the report renderer has been removed. This is
+  a requirement for whenever a presentation layer is designed, not a reason
+  to build one now.
+
+These belong to Phase 3's evaluation work and to a future presentation
+design, not to additional Phase 2 features.
 
 ### Acceptance Criteria
 
@@ -654,19 +811,31 @@ tests/extraction/
       implemented and importable from `hitl_research_agent.extraction`.
 - [x] The application — never the model — supplies `Provenance`, every `id`
       field, and `SourceAnalysis.analyzed_at`/`id`.
-- [x] Exactly three new schemas exist (`ExtractedEvidence`, `ExtractedClaim`,
-      `ExtractedAnalysis`); every other Phase 1 content model is reused
-      unchanged, and no finalized Phase 1 model is modified.
+- [x] Three extraction-only content schemas exist (`ExtractedEvidence`,
+      `ExtractedClaim`, `ExtractedAnalysis`). `Citation` is a shared content
+      model reused directly, not a fourth extraction-only schema.
+      `SourceDocument` and `AnalysisResult` are input/output wrappers.
+      Every other Phase 1 content model is reused
+      unchanged. `Claim`/`Evidence` (Phase 1) have since been deliberately
+      extended twice — `Evidence.citations` and `Claim.support_assessment` —
+      each because it is genuine research content the schema was missing,
+      documented as its own decision above rather than left unstated.
 - [x] `SourceDocument.text` over `max_source_characters` (200,000 by default)
       raises before any model call; no truncation or chunking exists
       anywhere in Phase 2.
-- [x] The extraction call is configured for the Responses API, `gpt-6-sol`
-      (default, configurable), `medium` reasoning (default, configurable),
+- [x] The extraction call is configured for the Responses API, `gpt-6-astra`
+      (default, configurable), `low` reasoning (default, configurable),
       native structured output (`method="json_schema"`, `strict=True`), and
       omits `temperature`/`top_p`/`top_logprobs`. Verified by constructing
       the real `ChatOpenAI` + `with_structured_output` pipeline offline and
-      inspecting the strict schema it generates (see Tests); not verified
-      against a live response, since no paid API call was made.
+      inspecting the strict schema it generates (see Tests). Recorded live
+      runs on the supplied paper exercised successful output, including a
+      correction attempt in the v4 citations run; the four model/reasoning
+      comparison runs (`gpt-6-sol` at `medium` and `high`, `gpt-6-astra` at
+      `low` and `medium`) each succeeded without one. The default was chosen
+      from that comparison for the usability of Astra-low's assessment
+      language, not from a quality comparison. Live refusal/incomplete
+      handling remains unverified.
 - [x] Every `verbatim` evidence item is checked against the source text; a
       failed match is treated as invalid analysis.
 - [x] Invalid analysis receives exactly one correction attempt with the
@@ -682,9 +851,37 @@ tests/extraction/
       calls occur in the default test suite.
 - [x] Full check suite passes: `pytest`, `ruff check`, `ruff format --check`,
       `mypy src`.
-- [x] No evaluation, human review, persistence, source discovery,
-      cross-source synthesis, chunking, or orchestration logic exists yet —
-      Phase 2 stays scoped to single-source extraction.
+- [x] No automated analysis-quality evaluation, accept/reject review
+      workflow, research-store persistence, source discovery, cross-source
+      synthesis, chunking, or orchestration is implemented in Phase 2.
+      Single-source analytical assessments are in scope; presenting them to
+      a reader is not — Phase 2 returns JSON only.
+- [x] `Claim.support_assessment` and any assumption it names survive
+      extraction, assembly, and the saved analysis unchanged. The prompt
+      instructs selection by importance and wording, not keyword matching.
+      Data flow is verified offline; selection quality is not established
+      by fixture tests.
+- [ ] A live model can produce assessments matching the reasoning quality in
+      `docs/phase2_support_assessment_calibration.md`'s four examples.
+      **Not met.** The four examples were run once, against `gpt-6-sol` at
+      `medium` (see Verification Status): three matched their expected
+      reasoning, one did not — the model did not recognize a justified,
+      well-supported conclusion as such. This criterion stays unchecked
+      rather than being marked passed to close the phase; it is carried
+      forward as a Known Limitation and a Phase 3 evaluation target, and the
+      current default (`gpt-6-astra` at `low`) has not been tested against
+      it at all.
+
+### Phase 2 Status: Complete, With Documented Limitations
+
+Phase 2 is functionally complete: `analyze_source()` runs end to end against
+a real source with the current default (`gpt-6-astra`, `low` reasoning),
+producing a validated `SourceAnalysis` with claims, evidence, citations, and
+provisional support assessments, entirely as JSON. All acceptance criteria
+above are met except the one left explicitly unchecked. That gap, and the
+items under Known Limitations and Later Evaluation Targets, are carried
+forward rather than resolved here — they are Phase 3's evaluation work, not
+grounds to keep adding to Phase 2. Phase 3 — Evaluation is next.
 
 ## Phase 3 — Evaluation
 
