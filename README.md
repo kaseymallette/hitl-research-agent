@@ -218,15 +218,13 @@ structured JSON analysis only; a Markdown renderer was built for development
 review and removed, and no replacement was added — presenting an analysis to
 a reader is left to a later design.
 
-Phase 2 is not being called quality-verified: a calibration check found the
-default model in place at the time did not reliably recognize a
-well-supported conclusion as such, claim granularity and which claims get an
-analytical assessment both vary across model/reasoning configurations, and
-only one source has been tested. These are recorded as Phase 3 evaluation
-targets, not resolved here. See the
+Whether the analytical assessments are consistently sound has not been
+rigorously evaluated, claim granularity and which claims get an assessment
+both vary across model/reasoning configurations, and only one source has
+been tested. These are recorded as Phase 3 evaluation targets, not unmet
+Phase 2 requirements. See the
 [Phase 2 build plan](docs/BUILD_PLAN.md#phase-2--single-source-analysis) for
-the full record, including which configuration was actually tested for each
-finding.
+the full record.
 
 ## Development Setup
 

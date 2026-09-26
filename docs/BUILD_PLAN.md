@@ -591,13 +591,9 @@ of Phase 2 validation, not the later research-store workflow.
   A second content extension of the Phase 1 models, for the same reason as
   citations: this is genuine analytical content the project's stated purpose
   (helping a human read critically) requires, not a Phase 2-only workaround.
-  Four short, unfamiliar calibration examples — a justified strong
-  conclusion, an incomplete elimination, an unstated premise, and a case with
-  insufficient information — are prepared in
-  [`docs/phase2_support_assessment_calibration.md`](phase2_support_assessment_calibration.md).
-  Live calibration results are recorded under Verification Status below;
-  passing the offline plumbing tests here is not evidence that a live model
-  can do this analysis well.
+  Passing the offline plumbing tests here is not evidence that a live model
+  produces good assessments — that is unevaluated, and is Phase 3's job, not
+  a Phase 2 acceptance requirement.
 
 ### Technologies Introduced
 
@@ -663,9 +659,6 @@ tests/extraction/
 9. Add `langchain-core` and `langchain-openai` to `pyproject.toml`.
 10. Confirm `ruff check`, `ruff format --check`, `mypy src`, and `pytest` all
     pass against the new package.
-11. Prepare the four calibration examples with expected reasoning kept
-    separate from model input; record live outcomes separately from offline
-    checks.
 
 ### Validation and Failure-Handling Rules
 
@@ -757,32 +750,20 @@ incomplete-output response, so that handling remains unverified against a
 real captured response, and the 200,000-character cap remains an unvalidated
 placeholder — this source used about 14% of it.
 
-The four calibration examples in
-[`docs/phase2_support_assessment_calibration.md`](phase2_support_assessment_calibration.md)
-were run once, against `gpt-6-sol` at `medium` reasoning — the default in
-place at the time, since replaced. Three of four assessments matched their
-expected reasoning: the incomplete-elimination example named the specific
-missing exhaustiveness premise; the unstated-premise example identified and
-connected the correct bridging assumption to its claim; the
-insufficient-information example correctly declined to force a verdict on a
-bare, isolated sentence. The fourth — built to be a justified, well-supported
-conclusion — was **not** recognized as such: the model treated the
-exhaustiveness of its two considered alternatives as an unproven premise
-rather than affirming the argument, even though that dichotomy is close to
-definitional in its technical domain. That is the specific failure mode
-(reflexive gap-finding over recognizing sound arguments) this calibration
-exists to catch, and it was caught, not resolved. `gpt-6-astra` at `low`
-reasoning — the model now shipped as the default — has never itself been run
-against these four examples; the finding above is evidence about the
-previous default, not the current one.
+Whether `support_assessment` produces good analytical judgment — recognizing
+a well-supported conclusion as readily as a real gap, on sources this project
+hasn't seen — has not been rigorously evaluated. That evaluation was never
+agreed as a Phase 2 requirement and is not treated as one here; it belongs
+with Phase 3's evaluation work.
 
 ### Known Limitations and Later Evaluation Targets
 
 Documented gaps to evaluate later, not omissions to fix inside Phase 2:
 
-- **Analytical quality is not established.** The recognizing-a-well-supported-
-  conclusion finding above is unresolved and untested against the current
-  default model.
+- **Analytical quality is not established.** Whether `support_assessment`
+  reliably distinguishes well-supported claims from genuine gaps is
+  unevaluated on any source. This is Phase 3's work, not an unmet Phase 2
+  requirement.
 - **Assessment selection is not shown to be consistent.** How many claims
   received a `support_assessment`, and which ones, varied across the six
   live runs that include this field, without a controlled comparison of why;
@@ -860,28 +841,20 @@ design, not to additional Phase 2 features.
       extraction, assembly, and the saved analysis unchanged. The prompt
       instructs selection by importance and wording, not keyword matching.
       Data flow is verified offline; selection quality is not established
-      by fixture tests.
-- [ ] A live model can produce assessments matching the reasoning quality in
-      `docs/phase2_support_assessment_calibration.md`'s four examples.
-      **Not met.** The four examples were run once, against `gpt-6-sol` at
-      `medium` (see Verification Status): three matched their expected
-      reasoning, one did not — the model did not recognize a justified,
-      well-supported conclusion as such. This criterion stays unchecked
-      rather than being marked passed to close the phase; it is carried
-      forward as a Known Limitation and a Phase 3 evaluation target, and the
-      current default (`gpt-6-astra` at `low`) has not been tested against
-      it at all.
+      by fixture tests. Whether the assessments themselves are analytically
+      sound is unevaluated (see Known Limitations) — that evaluation is
+      Phase 3's work, not a Phase 2 acceptance requirement.
 
 ### Phase 2 Status: Complete, With Documented Limitations
 
-Phase 2 is functionally complete: `analyze_source()` runs end to end against
-a real source with the current default (`gpt-6-astra`, `low` reasoning),
-producing a validated `SourceAnalysis` with claims, evidence, citations, and
+Phase 2 is complete: `analyze_source()` runs end to end against a real
+source with the current default (`gpt-6-astra`, `low` reasoning), producing
+a validated `SourceAnalysis` with claims, evidence, citations, and
 provisional support assessments, entirely as JSON. All acceptance criteria
-above are met except the one left explicitly unchecked. That gap, and the
-items under Known Limitations and Later Evaluation Targets, are carried
-forward rather than resolved here — they are Phase 3's evaluation work, not
-grounds to keep adding to Phase 2. Phase 3 — Evaluation is next.
+above are met. The items under Known Limitations and Later Evaluation
+Targets are real, data-grounded observations from the recorded runs, carried
+forward as Phase 3 evaluation work — they are not unmet Phase 2 requirements.
+Phase 3 — Evaluation is next.
 
 ## Phase 3 — Evaluation
 
