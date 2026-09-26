@@ -20,10 +20,14 @@ from hitl_research_agent.extraction.schemas import (
     ExtractedEvidence,
     SourceDocument,
 )
-from hitl_research_agent.models.interpreted import ResearchProblem
+from hitl_research_agent.models.citation import Citation
+from hitl_research_agent.models.interpreted import Assumption, ResearchProblem
 from hitl_research_agent.models.provenance import Provenance
 
-SOURCE_TEXT = "Data centers used 1.7 billion gallons of water in 2023 for cooling."
+SOURCE_TEXT = (
+    "Data centers used 1.7 billion gallons of water in 2023 for cooling "
+    "[Lee, 2021]. Lee, K. Cooling Systems Report. 2021."
+)
 
 
 class FakeStructuredModel:
@@ -141,7 +145,7 @@ def test_valid_first_attempt_returns_result_with_attempt_count_one() -> None:
     assert result.attempt_count == 1
     assert result.input_tokens == 100
     assert result.output_tokens == 50
-    assert result.model == "gpt-6-sol"
+    assert result.model == "gpt-6-astra"
     assert len(model.calls) == 1
 
 
@@ -225,3 +229,115 @@ def test_missing_usage_metadata_raises_rather_than_reporting_zero() -> None:
 
     with pytest.raises(SourceAnalysisExtractionError):
         analyze_source(_source(), model=model, settings=_settings())
+
+
+def _extracted_analysis_with_citation(*, reference_entry: str | None) -> ExtractedAnalysis:
+    return ExtractedAnalysis(
+        research_problem=ResearchProblem(
+            text="Why do data centers use freshwater?", statement_origin="author_stated"
+        ),
+        central_claims=[
+            ExtractedClaim(
+                text="Data centers used 1.7 billion gallons of water in 2023.",
+                statement_origin="author_stated",
+                evidence=[
+                    ExtractedEvidence(
+                        text="1.7 billion gallons of water",
+                        evidence_form="verbatim",
+                        relationship_to_claim="claim_grounding",
+                        citations=[
+                            Citation(citation_text="Lee, 2021", reference_entry=reference_entry)
+                        ],
+                    )
+                ],
+            )
+        ],
+    )
+
+
+def test_citations_survive_assembly_into_the_final_analysis() -> None:
+    extracted = _extracted_analysis_with_citation(
+        reference_entry="Lee, K. Cooling Systems Report. 2021."
+    )
+    model = FakeStructuredModel([_response(parsed=extracted)])
+
+    result = analyze_source(_source(), model=model, settings=_settings())
+
+    assert result.attempt_count == 1
+    citations = result.analysis.central_claims[0].evidence[0].citations
+    assert len(citations) == 1
+    assert citations[0].citation_text == "Lee, 2021"
+    assert citations[0].reference_entry == "Lee, K. Cooling Systems Report. 2021."
+
+
+def test_unverifiable_citation_triggers_one_correction_attempt() -> None:
+    invalid = _extracted_analysis_with_citation(
+        reference_entry="Nguyen, T. An Invented Study. 1999."
+    )
+    model = FakeStructuredModel(
+        [
+            _response(parsed=invalid),
+            _response(parsed=_valid_extracted_analysis()),
+        ]
+    )
+
+    result = analyze_source(_source(), model=model, settings=_settings())
+
+    assert result.attempt_count == 2
+    correction_call = model.calls[1]
+    assert "Invented Study" in correction_call[-1].content
+
+
+def test_support_assessment_and_its_assumption_survive_assembly() -> None:
+    """Plumbing only: proves a support_assessment and a connected assumption
+    written by an (injected, fake) model reach the final SourceAnalysis
+    unchanged. This says nothing about whether a live model can produce a
+    sound assessment — that requires a real run, not a fixture."""
+    extracted = ExtractedAnalysis(
+        research_problem=ResearchProblem(
+            text="Why do data centers use freshwater?", statement_origin="author_stated"
+        ),
+        central_claims=[
+            ExtractedClaim(
+                text="Data centers used 1.7 billion gallons of water in 2023.",
+                statement_origin="author_stated",
+                evidence=[
+                    ExtractedEvidence(
+                        text="1.7 billion gallons of water",
+                        evidence_form="verbatim",
+                        relationship_to_claim="claim_grounding",
+                    )
+                ],
+                support_assessment=(
+                    "The passage states the figure but does not explain how it was measured; "
+                    "an assumption about measurement reliability is needed to accept it as stated."
+                ),
+            )
+        ],
+        assumptions=[
+            Assumption(
+                text=(
+                    "The cited water-use figure was measured reliably enough to state without "
+                    "qualification."
+                ),
+                statement_origin="model_inferred",
+            )
+        ],
+    )
+    model = FakeStructuredModel([_response(parsed=extracted)])
+
+    result = analyze_source(_source(), model=model, settings=_settings())
+
+    claim = result.analysis.central_claims[0]
+    assert claim.support_assessment == (
+        "The passage states the figure but does not explain how it was measured; "
+        "an assumption about measurement reliability is needed to accept it as stated."
+    )
+    assert len(result.analysis.assumptions) == 1
+    assert result.analysis.assumptions[0].statement_origin == "model_inferred"
+
+
+def test_support_assessment_defaults_to_none_when_not_provided() -> None:
+    model = FakeStructuredModel([_response(parsed=_valid_extracted_analysis())])
+    result = analyze_source(_source(), model=model, settings=_settings())
+    assert result.analysis.central_claims[0].support_assessment is None
