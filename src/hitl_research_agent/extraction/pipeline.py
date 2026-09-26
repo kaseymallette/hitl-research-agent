@@ -18,7 +18,7 @@ from .errors import (
     SourceAnalysisValidationError,
     SourceTooLargeError,
 )
-from .grounding import find_ungrounded_verbatim_evidence
+from .grounding import find_ungrounded_verbatim_evidence, find_unverifiable_citations
 from .prompts import build_correction_messages, build_messages
 from .schemas import AnalysisResult, ExtractedAnalysis, SourceDocument
 
@@ -111,6 +111,7 @@ def _assemble_analysis(
     extracted: ExtractedAnalysis, provenance: Provenance, source_text: str
 ) -> SourceAnalysis:
     problems = find_ungrounded_verbatim_evidence(extracted.central_claims, source_text)
+    problems += find_unverifiable_citations(extracted.central_claims, source_text)
     if problems:
         raise _InvalidAnalysis(problems)
     try:
@@ -118,10 +119,12 @@ def _assemble_analysis(
             Claim(
                 text=claim.text,
                 statement_origin=claim.statement_origin,
+                support_assessment=claim.support_assessment,
                 evidence=[
                     Evidence(
                         text=evidence.text,
                         locator=evidence.locator,
+                        citations=evidence.citations,
                         evidence_form=evidence.evidence_form,
                         relationship_to_claim=evidence.relationship_to_claim,
                     )

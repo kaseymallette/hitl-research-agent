@@ -4,6 +4,7 @@ from pydantic import Field
 
 from ..models._base import NonEmptyStr, ResearchBaseModel
 from ..models.analysis import SourceAnalysis
+from ..models.citation import Citation
 from ..models.interpreted import (
     Assumption,
     Limitation,
@@ -33,6 +34,7 @@ class ExtractedEvidence(ResearchBaseModel):
 
     text: NonEmptyStr
     locator: NonEmptyStr | None = None
+    citations: list[Citation] = Field(default_factory=list)
     evidence_form: Literal["verbatim", "paraphrased"] = Field(
         description=(
             "Whether this evidence text is a verbatim quotation from the "
@@ -73,6 +75,20 @@ class ExtractedClaim(ResearchBaseModel):
         )
     )
     evidence: list[ExtractedEvidence] = Field(min_length=1)
+    support_assessment: NonEmptyStr | None = Field(
+        default=None,
+        description=(
+            "A provisional, passage-grounded judgment, for human review, of "
+            "whether the reasons offered elsewhere in this analysis meet this "
+            "claim's own stated strength and scope. Always your own critical "
+            "assessment, never something the source itself states, and never "
+            "a claim that a cited work has been verified. Reserved for claims "
+            "whose importance to the argument and whose own wording call for "
+            "this scrutiny; most claims will not have one. Leaving this unset "
+            "means the claim was not assessed — never that it is well-"
+            "supported or that no issue was found."
+        ),
+    )
 
 
 class ExtractedAnalysis(ResearchBaseModel):

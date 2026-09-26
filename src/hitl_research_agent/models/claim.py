@@ -4,6 +4,7 @@ from uuid import UUID, uuid4
 from pydantic import Field, model_validator
 
 from ._base import NonEmptyStr, ResearchBaseModel
+from .citation import Citation
 from .interpreted import InterpretedStatement
 
 
@@ -11,6 +12,17 @@ class Evidence(ResearchBaseModel):
     id: UUID = Field(default_factory=uuid4)
     text: NonEmptyStr
     locator: NonEmptyStr | None = None
+    citations: list[Citation] = Field(
+        default_factory=list,
+        description=(
+            "Works the source cites in connection with this evidence. A "
+            "citation marker may sit next to the quoted or paraphrased "
+            "passage rather than inside it, so this is not required to be a "
+            "substring of `text`. Distinct from Provenance: these record "
+            "what the source cites, not a work this system has retrieved or "
+            "verified."
+        ),
+    )
     evidence_form: Literal["verbatim", "paraphrased"] = Field(
         description=(
             "Whether this evidence text is a verbatim quotation from the "
@@ -43,6 +55,20 @@ class Evidence(ResearchBaseModel):
 class Claim(InterpretedStatement):
     id: UUID = Field(default_factory=uuid4)
     evidence: list[Evidence] = Field(min_length=1)
+    support_assessment: NonEmptyStr | None = Field(
+        default=None,
+        description=(
+            "A provisional, passage-grounded judgment, for human review, of "
+            "whether the reasons offered elsewhere in this analysis meet this "
+            "claim's own stated strength and scope. Always the model's own "
+            "critical assessment, never something the source itself states, "
+            "and never a claim that a cited work has been verified. Reserved "
+            "for claims whose importance to the argument and whose own "
+            "wording call for this scrutiny; most claims will not have one. "
+            "None means the claim was not assessed — it is not a judgment "
+            "that the claim is well-supported or that no issue was found."
+        ),
+    )
 
     @model_validator(mode="after")
     def _validate_grounding_consistency(self) -> "Claim":

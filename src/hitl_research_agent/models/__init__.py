@@ -1,4 +1,5 @@
 from .analysis import SourceAnalysis
+from .citation import Citation
 from .claim import Claim, Evidence
 from .interpreted import (
     Assumption,
@@ -13,6 +14,7 @@ from .provenance import Provenance
 
 __all__ = [
     "Assumption",
+    "Citation",
     "Claim",
     "Evidence",
     "InterpretedStatement",
