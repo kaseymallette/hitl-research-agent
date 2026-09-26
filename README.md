@@ -137,8 +137,9 @@ The initial implementation will use:
 
 - **Python** — core application language
 - **LangChain** — model integration and structured AI operations
-- **OpenAI API** — initial model provider; GPT-6 Sol (`gpt-6-sol`) is the
-  planned Phase 2 default, configurable through `Settings`
+- **OpenAI API** — initial model provider; GPT-6 Astra (`gpt-6-astra`) at
+  `low` reasoning effort is the Phase 2 default, configurable through
+  `Settings`
 - **Pydantic** — structured research schemas and validation
 - **DeepEval** — evaluation framework
 - **Git + GitHub** — version control and project history
@@ -203,15 +204,29 @@ Convert the working pipeline into a stateful human-in-the-loop research agent wi
 
 ## Project Status
 
-**Current stage: Phase 2 — Single-Source Analysis**
+**Current stage: Phase 2 — Single-Source Analysis is complete, with documented limitations. Phase 3 — Evaluation is next.**
 
 Phase 0 (project scaffolding and toolchain) and Phase 1 (the research data model) are complete. Implementation is proceeding incrementally so that each component can be tested before additional agentic behavior is introduced.
 
-Phase 2 is in architectural planning; the LLM integration is not implemented
-yet. The agreed starting configuration is GPT-6 Sol with medium reasoning,
-using the Responses API and native structured output. See the
+Phase 2's LLM integration is implemented and runs end to end against a real
+source, using GPT-6 Astra at `low` reasoning effort by default — chosen,
+after comparing it against GPT-6 Sol and GPT-6 Astra at other reasoning
+levels on the same paper, for how readable its analytical assessments are to
+the researcher reviewing them, not from a measured quality difference. Both
+the model and reasoning effort remain configurable. Phase 2 returns a
+structured JSON analysis only; a Markdown renderer was built for development
+review and removed, and no replacement was added — presenting an analysis to
+a reader is left to a later design.
+
+Phase 2 is not being called quality-verified: a calibration check found the
+default model in place at the time did not reliably recognize a
+well-supported conclusion as such, claim granularity and which claims get an
+analytical assessment both vary across model/reasoning configurations, and
+only one source has been tested. These are recorded as Phase 3 evaluation
+targets, not resolved here. See the
 [Phase 2 build plan](docs/BUILD_PLAN.md#phase-2--single-source-analysis) for
-recorded decisions and remaining design work.
+the full record, including which configuration was actually tested for each
+finding.
 
 ## Development Setup
 
