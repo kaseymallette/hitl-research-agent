@@ -1,0 +1,23 @@
+# Provenance manifest for the Phase 3 sources, confirmed by the project owner.
+# Unknown fields stay unset. Only sources prepared so far are listed here.
+sources:
+  - slug: li_et_al_2025_making_ai_less_thirsty
+    pdf: data/phase_3/li_et_al_2025_making_ai_less_thirsty.pdf
+    source_title: "Making AI Less 'Thirsty': Uncovering and addressing the secret water footprint of AI models"
+    source_authors: [Pengfei Li, Jianyi Yang, Mohammad A. Islam, Shaolei Ren]
+    publication_date: null
+    source_type: other
+    doi: 10.1145/3724499
+    publisher: Communications of the ACM (ACM)
+    url: "https://dl.acm.org/doi/pdf/10.1145/3724499?download=true"
+    retrieved_at: "2026-10-13T06:19:34+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: first page of the PDF (title and subtitle)
+      source_authors: first-page byline
+      doi: "first page ('DOI:10.1145/3724499')"
+      publisher: "page footers ('COMMUNICATIONS OF THE ACM', JULY 2025, VOL. 68, NO. 7); ACM named as publisher, not independently confirmed"
+      publication_date: "unset: the PDF prints only the July 2025 issue, not a day"
+      source_type: "'other': a magazine-style feature in Communications of the ACM; the PDF does not state whether it was peer reviewed"
+      url: "macOS download metadata (kMDItemWhereFroms, first entry) recorded on the PDF file"
+      retrieved_at: "macOS/Chrome download timestamp (com.apple.quarantine) of the PDF file, 2026-10-13 06:19:34 UTC; matches the file creation time"
