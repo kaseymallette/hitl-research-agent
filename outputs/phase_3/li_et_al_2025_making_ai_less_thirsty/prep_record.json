@@ -1,0 +1,121 @@
+{
+  "slug": "li_et_al_2025_making_ai_less_thirsty",
+  "pdf_path": "data/phase_3/li_et_al_2025_making_ai_less_thirsty.pdf",
+  "pdf_sha256": "f64c9d0d0fe96817411cbac0fbed1a9167437bbde9f808ff7107ef55ea8856ea",
+  "pdf_pages": 8,
+  "prepared_source": "source.md",
+  "prepared_source_sha256": "6e44202fb428f0dbb25976d59e6dabc2bcb463e2ce450ff07cb80986695e4e04",
+  "prepared_source_characters": 40454,
+  "max_source_characters_setting": 200000,
+  "size_check": {
+    "characters": 40454,
+    "limit": 200000,
+    "within_limit": true,
+    "checked_at_utc": "2026-10-13T08:05:50.652991+00:00"
+  },
+  "is_excerpt": false,
+  "tools": {
+    "pymupdf": "1.28.2",
+    "pymupdf4llm_used_for_extraction": false,
+    "note": "Text read with PyMuPDF dict blocks; pymupdf4llm was only used to probe the PDF and compare. Installed ephemerally with `uv run --no-project --with pymupdf4llm`; the project's pyproject.toml and uv.lock were not changed."
+  },
+  "provenance_basis": {
+    "source_title": "first page of the PDF (title and subtitle)",
+    "source_authors": "first-page byline",
+    "doi": "first page ('DOI:10.1145/3724499')",
+    "publisher": "page footers ('COMMUNICATIONS OF THE ACM', JULY 2025, VOL. 68, NO. 7) and copyright line; ACM named as the journal publisher, not independently confirmed",
+    "publication_date": "left unset: only the issue (July 2025) is printed in the PDF, not a day; none invented",
+    "source_type": "'other': a magazine-style feature in Communications of the ACM ('sustainability' section); the PDF does not state whether it was peer reviewed",
+    "url": "left unset: the original download location is not recorded",
+    "retrieved_at": "local PDF file modification time, used as a proxy; the true download time is not recorded",
+    "pdf_file_mtime_utc": "2026-10-13T06:19:34.295511+00:00"
+  },
+  "transcriptions": [
+    {
+      "id": "T1",
+      "kind": "figure",
+      "label": "Figure 1 (datacenter water schematic)",
+      "pdf_page": 4,
+      "journal_page": 57,
+      "image": "images/pdf_p04_figure1.png",
+      "page_image": "images/pdf_p04_page.png",
+      "produced_by": "local visual inspection by the assistant; no paid vision call",
+      "not_recoverable": "arrow directions and the meaning of the tap icon are the transcriber's reading of the drawing; the figure has no numeric data"
+    },
+    {
+      "id": "T2",
+      "kind": "figure",
+      "label": "Figure 2 (a)-(c) carbon/water efficiency and fuel mixes",
+      "pdf_page": 7,
+      "journal_page": 60,
+      "image": "images/pdf_p07_figure2.png",
+      "page_image": "images/pdf_p07_page.png",
+      "produced_by": "local visual inspection by the assistant; no paid vision call",
+      "not_recoverable": "coordinates of ~20 unlabeled scatter points, exact hourly values in (b) and (c), exact series values; all plotted values are visual estimates"
+    },
+    {
+      "id": "E1",
+      "kind": "equation",
+      "pdf_page": 5,
+      "journal_page": 58,
+      "image": "images/pdf_p05_page.png",
+      "produced_by": "local visual inspection; text layer was garbled"
+    },
+    {
+      "id": "E2",
+      "kind": "equation",
+      "pdf_page": 6,
+      "journal_page": 59,
+      "image": "images/pdf_p06_page.png",
+      "produced_by": "local visual inspection; text layer was garbled"
+    },
+    {
+      "id": "E3",
+      "kind": "equation",
+      "pdf_page": 6,
+      "journal_page": 59,
+      "image": "images/pdf_p06_page.png",
+      "produced_by": "local visual inspection; text layer was garbled"
+    },
+    {
+      "id": "E4",
+      "kind": "equation",
+      "pdf_page": 6,
+      "journal_page": 59,
+      "image": "images/pdf_p06_page.png",
+      "produced_by": "local visual inspection; text layer was garbled"
+    }
+  ],
+  "extracted_tables": [
+    {
+      "id": "Table 1",
+      "pdf_page": 6,
+      "journal_page": 59,
+      "rows": 18,
+      "columns": 11,
+      "image": "images/pdf_p06_table1.png",
+      "method": "cell values read directly from the PDF text layer (not transcribed); two-level column header restructured by hand into one row; every row compared with the page image"
+    }
+  ],
+  "marker_syntax": {
+    "transcription_blocks": "<<<TRANSCRIPTION id kind=... pdf_page=... image=... produced_by=...>>> ... <<<END TRANSCRIPTION id>>> (block form for figures, inline form for equations)",
+    "extracted_table": "<<<EXTRACTED TABLE 1 ...>>> ... <<<END EXTRACTED TABLE 1>>>",
+    "superscripts": "<sup>..</sup> marks superscript citation markers and footnote letters"
+  },
+  "normalizations_applied": [
+    "reading order assigned per page from the three-column layout; figure/table placed where it sits on the page",
+    "page markers '[PDF page N]' added at the start of each page; sentences that continue across a page break are left split at the marker",
+    "line breaks joined; end-of-line hyphenation repaired unless the hyphenated compound occurs unbroken elsewhere in the document",
+    "bold run-in headings marked with **; bullet glyph replaced by '-'",
+    "footnotes a and b moved to the end of their page and labeled; pull quotes moved to the end of their page and labeled (they repeat body text)",
+    "reference list split one entry per line; spaces removed inside broken URLs",
+    "zero-width and thin-space characters removed",
+    "omitted: running headers/footers, the rotated image credit on page 1, and the decorative page-2 illustration (noted in the text)"
+  ],
+  "information_not_recovered": [
+    "Figure 2 per-point and hourly values (see T2); only approximate visual estimates are provided",
+    "Figure 1 company/model logos are named in the transcription but not reproduced",
+    "PDF page 2 is a decorative illustration with no content"
+  ],
+  "created_at_utc": "2026-10-13T08:05:05.499443+00:00"
+}
