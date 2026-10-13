@@ -114,3 +114,44 @@ def test_citation_without_reference_entry_only_checks_the_marker() -> None:
         citations=[Citation(citation_text="Smith, 2020")],
     )
     assert find_unverifiable_citations([_claim(evidence)], SOURCE_TEXT) == []
+
+
+def test_combined_non_adjacent_reference_entries_still_fail_with_actionable_guidance() -> None:
+    source = (
+        "Text <sup>23,32,33</sup>\n"
+        "23. Reig, P. Guidance. WRI (2020).\n24. Other, A. Filler. (2021).\n"
+        "32. EIA. Open Data.\n33. EPA. eGRID Data Explorer.\n"
+    )
+    combined = (
+        "23. Reig, P. Guidance. WRI (2020).\n32. EIA. Open Data.\n33. EPA. eGRID Data Explorer."
+    )
+    evidence = ExtractedEvidence(
+        text="Text",
+        evidence_form="verbatim",
+        relationship_to_claim="claim_grounding",
+        citations=[Citation(citation_text="23,32,33", reference_entry=combined)],
+    )
+    problems = find_unverifiable_citations([_claim(evidence)], source)
+    assert len(problems) == 1  # the grounding check itself is not weakened
+    assert "exactly one entry" in problems[0]
+    assert "one citation per work" in problems[0]
+
+
+def test_grouped_marker_split_into_one_citation_per_work_passes() -> None:
+    source = (
+        "Text <sup>23,32,33</sup>\n"
+        "23. Reig, P. Guidance. WRI (2020).\n24. Other, A. Filler. (2021).\n"
+        "32. EIA. Open Data.\n33. EPA. eGRID Data Explorer.\n"
+    )
+    entries = [
+        "23. Reig, P. Guidance. WRI (2020).",
+        "32. EIA. Open Data.",
+        "33. EPA. eGRID Data Explorer.",
+    ]
+    evidence = ExtractedEvidence(
+        text="Text",
+        evidence_form="verbatim",
+        relationship_to_claim="claim_grounding",
+        citations=[Citation(citation_text="23,32,33", reference_entry=e) for e in entries],
+    )
+    assert find_unverifiable_citations([_claim(evidence)], source) == []

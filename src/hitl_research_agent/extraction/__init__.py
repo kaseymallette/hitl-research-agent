@@ -1,3 +1,9 @@
+from .annotations import (
+    SENTINEL,
+    find_annotations,
+    grounding_view,
+)
+from .attempts import AttemptRecord, AttemptUsage
 from .errors import (
     SourceAnalysisError,
     SourceAnalysisExtractionError,
@@ -16,7 +22,10 @@ from .schemas import (
 )
 
 __all__ = [
+    "SENTINEL",
     "AnalysisResult",
+    "AttemptRecord",
+    "AttemptUsage",
     "ExtractedAnalysis",
     "ExtractedClaim",
     "ExtractedEvidence",
@@ -28,4 +37,6 @@ __all__ = [
     "SourceDocument",
     "SourceTooLargeError",
     "analyze_source",
+    "find_annotations",
+    "grounding_view",
 ]

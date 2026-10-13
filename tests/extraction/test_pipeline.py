@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import pytest
@@ -15,6 +15,7 @@ from hitl_research_agent.extraction.errors import (
 )
 from hitl_research_agent.extraction.pipeline import analyze_source
 from hitl_research_agent.extraction.schemas import (
+    AnalysisResult,
     ExtractedAnalysis,
     ExtractedClaim,
     ExtractedEvidence,
@@ -341,3 +342,345 @@ def test_support_assessment_defaults_to_none_when_not_provided() -> None:
     model = FakeStructuredModel([_response(parsed=_valid_extracted_analysis())])
     result = analyze_source(_source(), model=model, settings=_settings())
     assert result.analysis.central_claims[0].support_assessment is None
+
+
+# --- Change 1: annotation-aware grounding through the pipeline -----------------------------
+
+ANNOTATED_SOURCE = (
+    "Data centers used 1.7 billion gallons of water in 2023. "
+    "⟦PREP-ANNOTATION U1 kind=figure label=Figure 1 page=2 image=images/p2.png: "
+    "not source text; content not extracted⟧ Cooling relied on evaporative towers."
+)
+
+
+def _analysis_quoting(quote: str) -> ExtractedAnalysis:
+    return ExtractedAnalysis(
+        research_problem=ResearchProblem(text="Why?", statement_origin="author_stated"),
+        central_claims=[
+            ExtractedClaim(
+                text="A claim.",
+                statement_origin="author_stated",
+                evidence=[
+                    ExtractedEvidence(
+                        text=quote,
+                        evidence_form="verbatim",
+                        relationship_to_claim="claim_grounding",
+                    )
+                ],
+            )
+        ],
+    )
+
+
+def test_quoting_an_annotation_triggers_one_correction_then_terminal_failure() -> None:
+    quote = "not source text; content not extracted"
+    model = FakeStructuredModel(
+        [_response(parsed=_analysis_quoting(quote)), _response(parsed=_analysis_quoting(quote))]
+    )
+    with pytest.raises(SourceAnalysisValidationError) as exc_info:
+        analyze_source(_source(ANNOTATED_SOURCE), model=model, settings=_settings())
+    assert exc_info.value.attempt_count == 2
+    assert len(model.calls) == 2
+
+
+def test_quote_across_an_annotation_is_rejected_but_adjacent_real_text_is_accepted() -> None:
+    spanning = "in 2023. Cooling relied on evaporative towers"
+    model = FakeStructuredModel(
+        [
+            _response(parsed=_analysis_quoting(spanning)),
+            _response(parsed=_analysis_quoting("Cooling relied on evaporative towers")),
+        ]
+    )
+    result = analyze_source(_source(ANNOTATED_SOURCE), model=model, settings=_settings())
+    assert result.attempt_count == 2
+    assert [a.outcome for a in result.attempts] == ["invalid_analysis", "valid"]
+
+
+def test_source_without_annotations_behaves_as_before() -> None:
+    model = FakeStructuredModel([_response(parsed=_valid_extracted_analysis())])
+    assert analyze_source(_source(), model=model, settings=_settings()).attempt_count == 1
+
+
+# --- Change 2: citation formatting through the pipeline ------------------------------------
+
+GROUPED_SOURCE = (
+    "Data centers used 1.7 billion gallons of water in 2023.<sup>23,32,33</sup>\n"
+    "References\n"
+    "23. Reig, P. Guidance for water use. WRI (2020).\n"
+    "24. Other, A. Filler entry. (2021).\n"
+    "32. EIA. Open Data.\n"
+    "33. EPA. eGRID Data Explorer.\n"
+)
+_ENTRIES = [
+    "23. Reig, P. Guidance for water use. WRI (2020).",
+    "32. EIA. Open Data.",
+    "33. EPA. eGRID Data Explorer.",
+]
+
+
+def _analysis_with_citations(citations: list[Citation]) -> ExtractedAnalysis:
+    return ExtractedAnalysis(
+        research_problem=ResearchProblem(text="Why?", statement_origin="author_stated"),
+        central_claims=[
+            ExtractedClaim(
+                text="Data centers used 1.7 billion gallons of water in 2023.",
+                statement_origin="author_stated",
+                evidence=[
+                    ExtractedEvidence(
+                        text="1.7 billion gallons of water",
+                        evidence_form="verbatim",
+                        relationship_to_claim="claim_grounding",
+                        citations=citations,
+                    )
+                ],
+            )
+        ],
+    )
+
+
+def test_combined_reference_entry_gets_actionable_feedback_then_succeeds_when_split() -> None:
+    combined = _analysis_with_citations(
+        [Citation(citation_text="23,32,33", reference_entry="\n".join(_ENTRIES))]
+    )
+    split = _analysis_with_citations(
+        [Citation(citation_text="23,32,33", reference_entry=entry) for entry in _ENTRIES]
+    )
+    model = FakeStructuredModel([_response(parsed=combined), _response(parsed=split)])
+
+    result = analyze_source(_source(GROUPED_SOURCE), model=model, settings=_settings())
+
+    assert result.attempt_count == 2
+    feedback = model.calls[1][-1].content
+    assert "exactly one entry" in feedback
+    assert "one citation per work" in feedback
+    assert len(result.analysis.central_claims[0].evidence[0].citations) == 3
+
+
+def test_combined_reference_entry_twice_still_fails_after_exactly_one_correction() -> None:
+    combined = _analysis_with_citations(
+        [Citation(citation_text="23,32,33", reference_entry="\n".join(_ENTRIES))]
+    )
+    model = FakeStructuredModel([_response(parsed=combined), _response(parsed=combined)])
+    with pytest.raises(SourceAnalysisValidationError):
+        analyze_source(_source(GROUPED_SOURCE), model=model, settings=_settings())
+    assert len(model.calls) == 2
+
+
+# --- Change 3: attempt retention -----------------------------------------------------------
+
+
+class _Clock:
+    """Deterministic clock: each call advances 1 second."""
+
+    def __init__(self) -> None:
+        self._now = datetime(2026, 1, 1, tzinfo=UTC)
+
+    def __call__(self) -> datetime:
+        current = self._now
+        self._now = self._now + timedelta(seconds=1)
+        return current
+
+
+def _raw_with_detail(response_id: str, *, reasoning: int, cache_read: int = 0) -> AIMessage:
+    return AIMessage(
+        content="raw model text",
+        id=response_id,
+        usage_metadata={
+            "input_tokens": 100,
+            "output_tokens": 50,
+            "total_tokens": 150,
+            "input_token_details": {"cache_read": cache_read, "cache_creation": 7},
+            "output_token_details": {"reasoning": reasoning},
+        },
+        response_metadata={
+            "id": response_id,
+            "model_name": "gpt-6-astra",
+            "status": "completed",
+            "service_tier": "default",
+            "authorization": "Bearer sk-secret",
+            "headers": {"x-api-key": "sk-secret"},
+        },
+    )
+
+
+def test_first_attempt_success_records_one_attempt_with_usage_and_timing() -> None:
+    model = FakeStructuredModel(
+        [
+            _response(
+                parsed=_valid_extracted_analysis(), raw=_raw_with_detail("resp_1", reasoning=14)
+            )
+        ]
+    )
+    result = analyze_source(_source(), model=model, settings=_settings(), clock=_Clock())
+
+    assert len(result.attempts) == result.attempt_count == 1
+    record = result.attempts[0]
+    assert record.outcome == "valid"
+    assert record.request_id == "resp_1"
+    assert record.elapsed_seconds == 1.0
+    assert record.parsed_output is not None
+    assert record.raw_content == "raw model text"
+    assert record.usage is not None
+    assert (record.usage.input_tokens, record.usage.output_tokens) == (100, 50)
+    assert record.usage.reasoning_tokens == 14
+    assert record.usage.cache_creation_input_tokens == 7
+
+
+def test_correction_success_retains_the_failed_attempt_with_errors_and_parsed_output() -> None:
+    model = FakeStructuredModel(
+        [
+            _response(
+                parsed=_invalid_extracted_analysis(), raw=_raw_with_detail("resp_a", reasoning=3)
+            ),
+            _response(
+                parsed=_valid_extracted_analysis(),
+                raw=_raw_with_detail("resp_b", reasoning=5, cache_read=100),
+            ),
+        ]
+    )
+    result = analyze_source(_source(), model=model, settings=_settings(), clock=_Clock())
+
+    first, second = result.attempts
+    assert (first.outcome, second.outcome) == ("invalid_analysis", "valid")
+    assert "3 billion gallons" in first.problems[0]
+    assert first.parsed_output is not None
+    assert [first.request_id, second.request_id] == ["resp_a", "resp_b"]
+    assert second.usage is not None and second.usage.cached_input_tokens == 100
+    # totals are exactly the sum of reported usage; reasoning is not added again
+    assert result.output_tokens == 100
+    assert sum(a.usage.output_tokens for a in result.attempts if a.usage) == 100
+
+
+def test_terminal_validation_failure_exposes_every_attempt() -> None:
+    model = FakeStructuredModel(
+        [
+            _response(
+                parsed=_invalid_extracted_analysis(), raw=_raw_with_detail("r1", reasoning=1)
+            ),
+            _response(
+                parsed=_invalid_extracted_analysis(), raw=_raw_with_detail("r2", reasoning=2)
+            ),
+        ]
+    )
+    with pytest.raises(SourceAnalysisValidationError) as exc_info:
+        analyze_source(_source(), model=model, settings=_settings())
+    exc = exc_info.value
+    assert [a.request_id for a in exc.attempts] == ["r1", "r2"]
+    assert all(a.outcome == "invalid_analysis" and a.parsed_output for a in exc.attempts)
+    assert exc.output_tokens == 100 and exc.attempt_count == 2
+
+
+def test_parse_error_is_recorded_without_parsed_output() -> None:
+    model = FakeStructuredModel(
+        [
+            _response(
+                parsing_error=ValueError("bad json"), raw=_raw_with_detail("r1", reasoning=0)
+            ),
+            _response(parsed=_valid_extracted_analysis(), raw=_raw_with_detail("r2", reasoning=0)),
+        ]
+    )
+    result = analyze_source(_source(), model=model, settings=_settings())
+    assert [a.outcome for a in result.attempts] == ["parse_error", "valid"]
+    assert result.attempts[0].parsed_output is None
+    assert "bad json" in result.attempts[0].problems[0]
+
+
+def test_refusal_incomplete_and_technical_failures_keep_categories_and_carry_attempts() -> None:
+    refusal = AIMessage(
+        content="",
+        id="r_refused",
+        additional_kwargs={"refusal": "no"},
+        usage_metadata={"input_tokens": 1, "output_tokens": 1, "total_tokens": 2},
+    )
+    with pytest.raises(SourceAnalysisRefusedError) as refused:
+        analyze_source(
+            _source(), model=FakeStructuredModel([_response(raw=refusal)]), settings=_settings()
+        )
+    assert [a.outcome for a in refused.value.attempts] == ["refused"]
+    assert refused.value.attempts[0].request_id == "r_refused"
+
+    incomplete = _raw_message(
+        response_metadata={
+            "status": "incomplete",
+            "incomplete_details": {"reason": "max_output_tokens"},
+        }
+    )
+    with pytest.raises(SourceAnalysisIncompleteError) as stopped:
+        analyze_source(
+            _source(), model=FakeStructuredModel([_response(raw=incomplete)]), settings=_settings()
+        )
+    assert [a.outcome for a in stopped.value.attempts] == ["incomplete"]
+
+    with pytest.raises(SourceAnalysisExtractionError) as failed:
+        analyze_source(
+            _source(),
+            model=FakeStructuredModel([TimeoutError("timed out")]),
+            settings=_settings(),
+        )
+    record = failed.value.attempts[0]
+    assert record.outcome == "technical_failure" and record.usage is None
+    assert "timed out" in (record.error or "")
+
+
+def test_technical_failure_on_the_correction_call_keeps_the_first_attempt() -> None:
+    model = FakeStructuredModel(
+        [
+            _response(
+                parsed=_invalid_extracted_analysis(), raw=_raw_with_detail("r1", reasoning=1)
+            ),
+            TimeoutError("timed out"),
+        ]
+    )
+    with pytest.raises(SourceAnalysisExtractionError) as failed:
+        analyze_source(_source(), model=model, settings=_settings())
+    assert [a.outcome for a in failed.value.attempts] == ["invalid_analysis", "technical_failure"]
+
+
+def test_missing_usage_keeps_the_raw_response_as_a_technical_failure_record() -> None:
+    raw = _raw_message(usage_metadata=None, content="payload", id="r_nousage")
+    model = FakeStructuredModel([_response(parsed=_valid_extracted_analysis(), raw=raw)])
+    with pytest.raises(SourceAnalysisExtractionError) as failed:
+        analyze_source(_source(), model=model, settings=_settings())
+    record = failed.value.attempts[0]
+    assert record.raw_content == "payload" and record.usage is None
+
+
+def test_secrets_and_unlisted_metadata_are_not_stored() -> None:
+    model = FakeStructuredModel(
+        [_response(parsed=_valid_extracted_analysis(), raw=_raw_with_detail("resp_1", reasoning=0))]
+    )
+    result = analyze_source(_source(), model=model, settings=_settings(openai_api_key="sk-secret"))
+    dumped = result.model_dump_json()
+    assert "sk-secret" not in dumped
+    assert "authorization" not in dumped and "x-api-key" not in dumped
+    assert set(result.attempts[0].response_metadata) <= {
+        "id",
+        "model",
+        "model_name",
+        "object",
+        "status",
+        "service_tier",
+        "incomplete_details",
+    }
+
+
+def test_analysis_result_with_attempts_round_trips_and_old_json_still_loads() -> None:
+    model = FakeStructuredModel(
+        [_response(parsed=_valid_extracted_analysis(), raw=_raw_with_detail("resp_1", reasoning=2))]
+    )
+    result = analyze_source(_source(), model=model, settings=_settings())
+    assert AnalysisResult.model_validate_json(result.model_dump_json()) == result
+
+    legacy = result.model_dump(mode="json")
+    del legacy["attempts"]
+    loaded = AnalysisResult.model_validate(legacy)
+    assert loaded.attempts == [] and loaded.attempt_count == 1
+
+
+def test_attempts_must_match_attempt_count_when_present() -> None:
+    model = FakeStructuredModel([_response(parsed=_valid_extracted_analysis())])
+    result = analyze_source(_source(), model=model, settings=_settings())
+    broken = result.model_dump(mode="json")
+    broken["attempt_count"] = 2
+    with pytest.raises(ValueError):
+        AnalysisResult.model_validate(broken)

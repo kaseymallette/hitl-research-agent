@@ -1,5 +1,16 @@
+from .attempts import AttemptRecord
+
+
 class SourceAnalysisError(Exception):
-    """Base class for every Phase 2 single-source analysis failure."""
+    """Base class for every Phase 2 single-source analysis failure.
+
+    `attempts` holds a record of every model call that was made before the
+    failure (empty when the failure happened before any call).
+    """
+
+    def __init__(self, *args: object) -> None:
+        super().__init__(*args)
+        self.attempts: list[AttemptRecord] = []
 
 
 class SourceTooLargeError(SourceAnalysisError):

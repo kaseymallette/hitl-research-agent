@@ -35,9 +35,14 @@ marker exactly as it appears ("citation_text"), and, only if the source's \
 own reference list contains a matching entry, capture that entry exactly as \
 written ("reference_entry"). Never invent or complete a missing bibliography \
 detail: if no matching reference-list entry is present in the source, leave \
-"reference_entry" unset rather than guessing at one. These fields record \
-what the source itself cites — you are not verifying, retrieving, or \
-assessing the cited work.
+"reference_entry" unset rather than guessing at one. A "reference_entry" is \
+exactly one entry copied as written from the source's reference list — never \
+several entries joined together. One citation records one cited work: when a \
+single marker cites several works (for example "23,32,33"), record a separate \
+citation for each work, each carrying the marker as printed in \
+"citation_text" and its own single matching entry in "reference_entry". These \
+fields record what the source itself cites — you are not verifying, \
+retrieving, or assessing the cited work.
 
 Look for substantively distinct claims throughout the entire document, \
 including its conclusion. A conclusion often introduces claims — especially \

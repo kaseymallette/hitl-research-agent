@@ -121,3 +121,12 @@ def test_system_prompt_allows_insufficient_information_and_sound_arguments() -> 
     lowered = SYSTEM_PROMPT.lower()
     assert "if there is not enough in the source to decide, say so" in lowered
     assert "recognize a well-supported claim as such" in lowered
+
+
+def test_system_prompt_requires_one_cited_work_per_citation_and_single_reference_entries() -> None:
+    lowered = SYSTEM_PROMPT.lower()
+    assert "exactly one entry copied as written" in lowered
+    assert "never several entries joined together" in lowered
+    assert "one citation records one cited work" in lowered
+    assert "23,32,33" in SYSTEM_PROMPT
+    assert "a separate citation for each work" in lowered

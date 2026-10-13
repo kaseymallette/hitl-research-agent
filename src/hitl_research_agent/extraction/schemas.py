@@ -1,6 +1,6 @@
 from typing import Literal
 
-from pydantic import Field
+from pydantic import Field, model_validator
 
 from ..models._base import NonEmptyStr, ResearchBaseModel
 from ..models.analysis import SourceAnalysis
@@ -14,6 +14,8 @@ from ..models.interpreted import (
 )
 from ..models.methodology import Methodology
 from ..models.provenance import Provenance
+from .annotations import reserved_character_problems
+from .attempts import AttemptRecord
 
 
 class SourceDocument(ResearchBaseModel):
@@ -26,6 +28,13 @@ class SourceDocument(ResearchBaseModel):
 
     text: NonEmptyStr
     provenance: Provenance
+
+    @model_validator(mode="after")
+    def _reject_reserved_characters(self) -> "SourceDocument":
+        problems = reserved_character_problems(self.text)
+        if problems:
+            raise ValueError("; ".join(problems))
+        return self
 
 
 class ExtractedEvidence(ResearchBaseModel):
@@ -121,3 +130,16 @@ class AnalysisResult(ResearchBaseModel):
     input_tokens: int = Field(ge=0)
     output_tokens: int = Field(ge=0)
     attempt_count: int = Field(ge=1, le=2)
+    attempts: list[AttemptRecord] = Field(
+        default_factory=list,
+        description=(
+            "One record per model call, kept for audit. Empty only for results "
+            "saved before attempt retention existed."
+        ),
+    )
+
+    @model_validator(mode="after")
+    def _attempts_match_count(self) -> "AnalysisResult":
+        if self.attempts and len(self.attempts) != self.attempt_count:
+            raise ValueError("attempts must contain exactly attempt_count records when present")
+        return self
