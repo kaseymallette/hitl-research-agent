@@ -864,72 +864,163 @@ Add automated DeepEval evaluation of `SourceAnalysis` results: faithfulness to
 the source, citation evaluation, and custom research-specific metrics for the
 behaviors named in the README. Phase 3 also prepares and analyzes the 12
 preliminary freshwater sources in `data/phase_3/`, because evaluation needs
-real analyses of real sources to run on.
+real analyses of real sources to run on, and plans one bounded comparison of
+two analyzer configurations (see Analyzer Configuration Comparison).
 
 Phase 3 produces advisory scores, explanations, and per-item verdicts only.
 Phase 4 is where the researcher reviews analyses and evaluation results and
 decides whether they are good enough. Phase 3 adds no human labeling, no gold
-dataset, and no pass/fail, acceptance, or rejection gate. The 12 sources are
-research inputs selected by the project owner, not a labeled benchmark. Each
-analysis remains question-independent: neither the analysis nor any metric
-receives the research question.
+dataset, and no pass/fail, acceptance, or rejection gate on evaluation
+results. The 12 sources are research inputs selected by the project owner,
+not a labeled benchmark. Each analysis remains question-independent: neither
+the analysis nor any metric receives the research question.
+
+Agreeing to this plan authorizes no implementation, dependency installation,
+paid call, source rebuild, or analysis of any source. Each of those, and each
+source-specific approval below, is a separate decision by the project owner.
+
+### Current State (as of this plan revision)
+
+- One Phase 3 analysis was attempted on `li_et_al_2025_making_ai_less_thirsty`
+  with the unchanged defaults (`gpt-6-astra`, `low`). It ended in
+  `SourceAnalysisValidationError` after the one correction attempt. No
+  `AnalysisResult` exists, so it is **diagnostic history, not a baseline**.
+  Its files are preserved in `outputs/phase_3/li_et_al_2025_making_ai_less_thirsty/`
+  and are not moved or overwritten.
+- **Observed cause of the retained failure:** a single `reference_entry`
+  contained three non-adjacent reference-list entries (nos. 23, 32, 33),
+  which cannot match the source as one contiguous entry. The Li source
+  contains 14 grouped numeric markers (for example `23,32,33`). Which marker
+  produced the failure, attempt 1's failure reasons, and both attempts'
+  outputs were not retained and are unknown. This is a known failure risk for
+  numeric-citation sources, not a prediction that every run will fail.
+- **Reported usage:** attempt 1, 13,056 input / 6,200 output tokens; attempt 2,
+  18,260 input / 5,751 output tokens (totals 31,316 / 11,951); reasoning
+  tokens (14 and 46) are a subset of output and are not added again.
+- **Cost:** the project owner reports a $0.37 dashboard charge for the single
+  request with 18.26K input tokens (attempt 2). That figure is the confirmed
+  amount for that one request only. The calculated full-run estimate
+  ($0.84–$0.91 at listed rates, with and without cache pricing) is a
+  calculation, not billing, and the full-run billing reconciliation is
+  unresolved.
+- **The current prepared Li text requires revision before any reuse.** It was
+  built with page-by-page, source-specific reconstruction code and contains
+  hand-estimated chart values, interpreted diagram relationships, hand-typed
+  equations, and page markers inside sentences. The standard below replaces
+  that method. The old text is retained as history only.
 
 ### Architectural Decisions
 
-- **Source preparation is a script plus records, not a package.**
-  `scripts/prepare_phase_3_sources.py` reads a hand-confirmed manifest
-  (`data/phase_3/sources.yaml`: one `Provenance` entry per source) and writes,
-  per source, to `outputs/phase_3/prepared/<slug>/`: `source.md` (the text
-  passed to analysis and evaluation), `prep_record.json`, and any rendered
-  figure/table images. Phase 5 will replace this with real ingestion; nothing
-  here defines normalization for it. The manifest's provenance is checked by
-  the project owner before any analysis runs; `retrieved_at` is
-  application-supplied, never inferred by a model.
+#### Source preparation standard
 
-- **Text extraction: `pymupdf4llm`.** It emits Markdown in reading order,
-  handles multi-column layouts, and extracts tables as Markdown tables.
-  `pymupdf` is AGPL-licensed, acceptable for local research use but recorded
-  here. `docling` (heavier) is the fallback if tables extract badly.
+- **One shared, pinned, local extraction process.**
+  `scripts/prepare_phase_3_sources.py` is the single entry point for all 12
+  PDFs. It uses `pymupdf4llm` (version pinned) with fixed settings recorded in
+  every record. Proposed settings: layout mode pinned, `header=False` and
+  `footer=False`, page images written, OCR disabled. **These settings are
+  proposed and untested here**; each is verified against the installed
+  version (and a fixture PDF) before it is described as working or pinned.
+  The process does not introduce source-specific code and does not switch
+  tools. A PDF it handles poorly is reported as an exception, never silently
+  patched. `pymupdf` is AGPL-licensed, acceptable for local research use.
+- **OCR is initially off.** Scanned or unreadable pages are detected and
+  flagged as unresolved; nothing is OCR'd automatically.
+- **Manifest and provenance.** `data/phase_3/sources.yaml` holds one
+  `Provenance` entry per source, confirmed by the project owner. Unknown
+  fields stay unset. Where the PDF carries download metadata (browser
+  download timestamp, source URL), it may be used, with its basis recorded;
+  otherwise `retrieved_at`/`url` are not inferred. IEA is marked an excerpt in
+  the manifest and record, and "(excerpt)" is appended to its `source_title`
+  without changing `Provenance`.
+- **Conservative cleanup only.** Remove recurring headers and footers (the
+  removed lines are listed in the record). Repair line wrapping or
+  hyphenation only where the original text supports it: a split word is
+  joined if the joined form occurs unbroken elsewhere in the document, a
+  hyphen is kept if the hyphenated form occurs elsewhere, and a case with
+  neither is left as extracted and flagged. No paraphrasing, summarizing, or
+  reconstruction. Section headings, citations, footnotes, units, and table
+  headers are preserved as extracted.
+- **Page locators live in a separate mapping**, not in the text: per page, the
+  PDF page number, the printed page label where available, and character
+  offsets into the prepared text. Sentences that cross a page break are
+  joined; markers never interrupt a sentence or quotation.
+- **Visuals and equations are never estimated or interpreted.** Preserved:
+  captions, labels that were extracted reliably, and a retained page image
+  for every page that has a table, figure, diagram, or equation. Anything not
+  faithfully extractable (a figure's values, a diagram's relationships, an
+  equation, a table whose header or alignment is uncertain) is recorded as an
+  **unresolved item** with its page, image path, kind, and reason, and is
+  represented in the analyzer text by a **preparation annotation** (below).
+  Unordered label fragments from graphics are kept in the record, not in the
+  analyzer text, because their association to axes or series is not reliable.
+- **Later transcription is an item-specific decision**, made by the project
+  owner for a named item. It must be checked against the page image, be
+  distinguishable from directly extracted text, and an uncertain transcription
+  never enters the analyzer input as source fact. No routine paid vision step
+  exists, and no automatic fallback tool exists. Paid vision is never invoked
+  to work around a preparation problem without the owner's decision.
+- **Preparation annotations.** Each unresolved item appears in the analyzer
+  text as a labeled annotation, for example
+  `⟦PREP-ANNOTATION U3 equation page=6 image=…: not source text; content not extracted⟧`,
+  with a stable ID, kind, page, and a link to its image record. Annotations
+  contain no values and no interpretation. They are distinguishable from
+  source text throughout analysis and evaluation, and they can never qualify
+  as verbatim evidence (see Change 1).
+- **Verification is performed against the original PDF, reported, and stored
+  separately from hashes.** Automated checks: per-page word coverage between
+  the extraction and the PDF's own text layer (detects dropped text), text
+  continuity flags (a paragraph starting lowercase after a finished sentence,
+  or ending mid-sentence before a capitalized start), table row/column
+  consistency, and a list of every page containing images or graphics. These
+  checks **cannot** establish correct reading order or complete visual
+  coverage; automated detection of visuals is incomplete by nature. Flagged
+  reading-order problems, every extracted table, and every unresolved item are
+  spot-checked against the original page images; the result is reported with
+  uncertainty stated, and the project owner can override any finding.
+  Nothing is silently reconstructed to resolve a doubt.
+- **Three preparation statuses**, assigned per source and recorded:
+  `ready` (checks passed, nothing unresolved), `ready_with_unresolved`
+  (analysis possible with named gaps; the report says whether the gaps prevent
+  a faithful analysis), and `blocked` (coverage, order, size, or unreadable-
+  page failure; the source cannot proceed). A `ready_with_unresolved` source
+  needs the project owner's **explicit, source-specific approval**, recorded
+  with the source's identity and the unresolved items approved; it applies to
+  nothing else. Approving the standard accepts no particular gap. Figure-heavy
+  sources (IEA, Shehabi) may remain substantially unresolved.
+- **Records per source** (`outputs/phase_3/prepared/<slug>/`): prepared text,
+  provenance, page mapping, retained page images, a short preparation record
+  (parser name and version, settings, script hash, PDF sha256, prepared-text
+  sha256, measured start/end/elapsed time, and any usage; unmeasured values
+  are recorded as unmeasured, never guessed), a **verification record**
+  (findings, spot-check results, unresolved items), and, when granted, the
+  **approval record**. Hashes show an extraction is unchanged; they do not
+  show it was verified. Verified preparation is reused on later runs only if
+  the hashes match, and reuse carries forward the verification findings, the
+  unresolved items, and any applicable approval; a hash change resets
+  verification and approval.
+- **Size limit.** The final prepared text, annotations included, is checked
+  against `Settings.max_source_characters` (200,000) before any model call.
+  No truncation, chunking, or limit change is made, and none is chosen in
+  advance; an over-limit source is `blocked` until the owner decides. By raw
+  text-layer count, IEA (about 191k) and Shehabi (about 183k) are within a
+  few percent of the limit before Markdown formatting and annotations.
+- **Preserved artifacts.** Original PDFs and existing Li artifacts are never
+  modified. Revised Li text is written to the new location; the existing Li
+  directory stays as history.
+- **The analysis scripts enforce the gate.** `run_analyses.py` refuses a
+  source that is `blocked`, or `ready_with_unresolved` without a matching
+  approval record, or whose preparation hash no longer matches its
+  verification record.
 
-- **Tables and figures that carry evidence are preserved as text, not left
-  as captions.** Preparation is two-step:
-  1. *Free extraction* produces the text plus a candidate list of
-     evidence-bearing visuals: figures, and tables that did not extract
-     cleanly. Each candidate is recorded with page, caption, and a rendered
-     PNG. The project owner reviews this list and may drop decorative ones.
-  2. *Paid transcription* (a vision-capable model, run only after approval)
-     converts each approved visual into text — values, axes, units, series,
-     legend — inserted at its reading-order position inside a clearly
-     delimited block labeled as a pipeline transcription, not source text.
-     Each transcription is recorded in `prep_record.json` and its rendered
-     image is retained so the Phase 4 reviewer can compare the two.
+#### Analysis and evaluation
 
-  Consequence, stated plainly: faithfulness and citation metrics grade
-  against the *prepared* text, so a transcription error is invisible to the
-  judge. Items whose evidence falls inside a transcription block are marked
-  in the evaluation record, and the Phase 4 reviewer checks them against the
-  retained images. The transcription vision model is chosen with the judge
-  (see Judge Configuration).
-
-- **IEA is identified as an excerpt without changing `Provenance`.**
-  `is_excerpt` and an excerpt description live in `prep_record.json`, and
-  "(excerpt)" is appended to the manifest `source_title`, which the existing
-  analysis prompt already shows to the model.
-
-- **Size limit is checked on the final prepared text, including inserted
-  transcriptions, against `Settings.max_source_characters` (200,000), before
-  any model call.** No truncation or chunking is added. If a source fails,
-  the project owner chooses between supplying a trimmed excerpt (as with IEA)
-  and raising the setting for that run; nothing is decided in advance.
-  Candidates for failing are the longest reports (Shehabi/LBNL, Compass, CRS).
-
-- **Analyses use the existing pipeline unchanged.** `scripts/run_analyses.py`
-  calls `analyze_source()` per source, saves each `AnalysisResult` to
-  `outputs/phase_3/analyses/<slug>/analysis_result.json`, and runs one pilot
-  source before the rest. Phase 2 outputs stay in `outputs/phase_2/` and
-  `data/phase_2/`; Phase 3 reads and writes only `data/phase_3/` and
-  `outputs/phase_3/`.
-
+- **Analyses use the existing pipeline, with three bounded changes** specified
+  below (Changes 1–3), each a separate task with its own offline tests. They
+  extend Phase 2 code and its field descriptions and prompt text; they do not
+  redesign the analysis models, reopen the Phase 2 acceptance criteria, or
+  change the analyzer default (`gpt-6-astra`, `low`). Model and effort
+  overrides for a given run are recorded in that run's record; `Settings`
+  defaults are unchanged.
 - **Evaluation calls `metric.measure()` / `a_measure()` directly, not
   `evaluate()`; results are advisory.** Verified against DeepEval's
   documentation and source: `threshold` is `Optional[float]`;
@@ -949,11 +1040,9 @@ receives the research question.
     that `success` is `None` for every metric and never read;
   - the DeepEval version is pinned and recorded in each result, because this
     behavior is documented but version-dependent.
-
 - **Telemetry is disabled.** `DEEPEVAL_TELEMETRY_OPT_OUT=1` is set before
   `deepeval` is imported (per DeepEval's FAQ) and a test checks it. The
   local `.deepeval/` directory is git-ignored.
-
 - **Metric classification.** Built in: `FaithfulnessMetric`. Custom, built
   with DeepEval's extension points: `GEval` for the holistic research
   metrics; subclassed `BaseMetric` for citation and evidence-mapping, which
@@ -964,28 +1053,182 @@ receives the research question.
   reconstruction, assumption discipline, limitation discipline, inference
   control (including `support_assessment` quality), and research usefulness →
   one `GEval` each.
-
+- **Annotations in evaluation.** Judges receive the prepared text with
+  annotations visibly labeled as preparation annotations, not source text. That
+  is an instruction, not enforcement. The evaluation record flags every
+  analysis item that names an annotation ID or the unresolved item's label.
+  These flags cannot detect every paraphrased use of missing material and are
+  not complete enforcement; the limitation is recorded rather than hidden.
+  A judge reading the same prepared text cannot validate it against the
+  original page image; the Phase 4 reviewer uses the retained images.
 - **Judge model: `DeepEvalBaseLLM` wrapper over the existing `ChatOpenAI`
   setup.** DeepEval's built-in model names are unlikely to include
   `gpt-6-*`. The wrapper implements `generate`/`a_generate` and must return
   an instance of the supplied Pydantic `schema` when one is given (DeepEval
   documents that its structured metrics fail otherwise). The judge is
   recorded in every result and is separately configurable from the analysis
-  model.
-
-- **Judge configuration: PENDING the project owner's choice.** See Judge
-  Configuration below. No paid call is made until it is chosen.
-
+  model. A different judge model gives another perspective; it does not
+  guarantee freedom from self-grading bias.
+- **Judge configuration: PENDING the project owner's choice.** No evaluation
+  judge is chosen by this plan or by the analyzer comparison.
 - **Every metric returns a 0–1 score (or `None` when nothing was
   applicable), an explanation, and per-item verdicts where it judges items.**
   A score of `None` is distinct from 0; a judge or parsing error is recorded
   as an error, never as a score.
 
+### Bounded Changes to Phase 2 Code (required before implementation of runs)
+
+Three separate tasks. Each is independently testable offline, keeps the four
+existing failure categories and the one-correction policy, and weakens no
+existing grounding check.
+
+#### Change 1 — Annotation-aware grounding
+
+**Goal:** a preparation annotation can never be matched as verbatim source
+text, a citation marker, or a reference entry.
+
+- The analyzer sees the annotated text. Verbatim-evidence, citation-marker,
+  and reference-entry checks run against a separate **grounding view** in which
+  every annotation span (recognized by the reserved delimiters) is replaced by
+  a single **sentinel** character. Replacement, not deletion, prevents a quote
+  from matching across the gap.
+- The sentinel is a non-whitespace character unchanged by the existing
+  normalization (whitespace collapse, strip, `casefold`), so it survives into
+  the normalized comparison text and breaks adjacency between the text on
+  either side.
+- Preparation and `SourceDocument` validation reject any source text that
+  already contains the reserved delimiter characters or the sentinel. Any
+  evidence text, citation marker, or reference entry returned by the model
+  that contains the sentinel is treated as invalid analysis.
+- Annotation IDs, offsets, kinds, and page/image links are kept in the
+  preparation record for review; `AnalysisResult` is unchanged.
+- Sources without annotations behave exactly as before.
+
+**Offline tests:** the sentinel survives the existing normalization; a quote
+equal to annotation text fails grounding; a quote spanning an annotation (real
+text on both sides) fails, while the same quote with no annotation between
+passes; a citation marker equal to annotation text fails; a reference entry
+spanning an annotation fails; delimiter or sentinel characters in source text
+are rejected; a model quote containing the sentinel is rejected; a pipeline
+test with a fake model confirms a quote of annotation text triggers the one
+correction attempt and then terminal failure if repeated; existing
+grounding tests pass unchanged. **Recorded limitation:** paraphrased
+evidence and claims are not grounded text-matched by design, so grounding
+cannot detect a paraphrase of missing content; evaluation flags are partial
+mitigation only.
+
+#### Change 2 — Citation formatting
+
+**Goal:** one cited work per `Citation` object, with grouped markers mapping to
+separate reference entries.
+
+- Add one clarifying instruction to the analysis prompt and update the
+  `Citation`/`ExtractedEvidence` field descriptions: a `reference_entry` is
+  exactly one entry as written in the source's reference list, never several
+  joined; when a marker groups several works (for example `23,32,33`), record
+  one `Citation` per work, each carrying the marker as printed in
+  `citation_text` and one matching `reference_entry`; leave `reference_entry`
+  unset if no matching entry exists.
+- Make the correction feedback for a failed reference entry actionable: state
+  the rule (one contiguous entry as written; one citation per work) in
+  addition to the failure, instead of only "not found anywhere in the source
+  text," which is misleading when each piece is present.
+- Grounding checks are unchanged: a combined entry still fails. The
+  one-correction policy is unchanged. The `Citation` schema gains no field.
+  This addresses an observed risk and does not predict that every run fails
+  without it.
+
+**Offline tests:** prompt presence tests for the new instruction; the grounding
+function still reports a combined non-adjacent entry as ungrounded and now
+includes the rule in its message; a fake model that first returns a combined
+entry and then separate citations produces `attempt_count == 2` and the
+correction message contains the rule; a fake model returning the combined entry
+twice still raises `SourceAnalysisValidationError` after exactly one
+correction; a grouped-marker fixture assembles into one citation per work.
+
+#### Change 3 — Attempt retention
+
+**Goal:** every returned attempt is auditable on success and on terminal
+failure.
+
+- Introduce an `AttemptRecord` holding: attempt number; outcome category
+  (valid, invalid analysis, parse error, refused, incomplete, technical
+  failure); validation or parsing errors; raw model output (message content
+  and an allow-listed subset of response metadata); parsed output where
+  available; the response identifier and any other request identifier the
+  response exposes; measured start, end, and elapsed time; and reported usage
+  (input tokens, output tokens, reasoning tokens as a subset of output, cached
+  input detail). Usage is exactly what the response reported; nothing is
+  fabricated for an attempt that returned no response.
+- Records are attached to the returned `AnalysisResult` (an additive,
+  default-empty field, so existing saved JSON still loads) and to every
+  `SourceAnalysisError` raised after at least one attempt returned. Existing
+  exception types, categories, retry policy, and the meaning of `attempt_count`
+  and token totals are unchanged.
+- Secrets are not exposed: only allow-listed metadata is stored; API keys and
+  authorization headers are never read or recorded.
+- Invalid parsed outputs are retained for diagnosis and are marked invalid;
+  they never become an accepted analysis.
+- **Known limitation:** retries performed inside the API client are not
+  observable, so their request identifiers are not recorded.
+
+**Offline tests:** a first-attempt success records one attempt; a correction
+success records both attempts with the first attempt's errors and parsed
+output; a terminal validation failure exposes both attempts with usage summing
+to the existing totals and reasoning tokens not added again; refusal,
+incomplete, and technical failures keep their categories and carry the
+available attempts; timing fields come from an injected clock; a fake response
+containing authorization-like metadata is not stored; an `AnalysisResult` with
+attempts round-trips through JSON, and old JSON without attempts still loads.
+
+### Analyzer Configuration Comparison
+
+A practical comparison of two configurations for the project owner's review. It
+is not a benchmark and not an isolated model-effect experiment: model
+generation and reasoning effort differ together, and each configuration is run
+once.
+
+- **Runs:** one fresh run of `gpt-6-astra` at `low` and one fresh run of
+  `gpt-6.1-sol` at `medium`. No extra baseline repeat initially.
+- **Held constant:** the same verified prepared input (same hash, any
+  approval applying to that source), the same provenance, prompt, code
+  version (recorded), validation rules, and one-correction policy. Model and
+  reasoning effort are the intended differences, recorded per run.
+- **Prerequisites:** Changes 1–3 landed first (otherwise the comparison would
+  measure the observed grouped-marker failure and could not report
+  per-attempt usage); a verified, approved prepared source named by the
+  project owner; the owner's authorization for the paid runs. The failed Li
+  run and earlier GPT-6 Sol experiments are not baselines.
+- **Facts verified from OpenAI's official pages (read 2026-10-13):**
+  `gpt-6.1-sol` accepts text and image input, supports structured outputs and
+  the Responses API, supports reasoning effort `low` through `max` with
+  `medium` as default, and is listed at $2 input / $10 output per 1M tokens
+  ($0.10 cached input, $2.50 cache writes) for requests up to 272K input
+  tokens. `gpt-6-astra` is listed at $10 / $50 ($1 cached, $12.50 cache
+  writes). **Not verified:** that `gpt-6.1-sol` works with this pipeline's
+  strict-schema Responses API call; this is established only by a live call.
+- **Recorded per run:** per-attempt and total input/output tokens, reasoning
+  tokens as a subset of output (never added again), cached-input detail,
+  response identifiers, start/end/elapsed time. **Calculated cost** (usage ×
+  listed rates, with any unlisted rate left blank) is reported separately from
+  **confirmed billing**, which is only what the project owner reads from the
+  dashboard per request. No spending limit is approved; a projected-usage
+  figure from the prepared text is printed before each run.
+- **Quality review by the project owner**, side by side, optionally with model
+  labels hidden: source fidelity, argument coverage, evidence and citation
+  mapping, assumptions and limitations, and the usefulness and calibration of
+  support assessments. Counts (claims, evidence, citations, assessed claims,
+  assumptions, limitations) are descriptive. A successful validation is not a
+  quality score.
+- This comparison does not choose the evaluation judge, does not change the
+  analyzer default, and does not replace the DeepEval work. DeepEval scoring of
+  both outputs is optional once a judge is chosen.
+
 ### Metrics
 
 Every `LLMTestCase` uses a fixed, neutral `input` string. Source text is
 passed as ordered chunks (faithfulness) or full prepared text (holistic
-checks); the research question never appears.
+checks), with annotations labeled; the research question never appears.
 
 | Metric | Kind | Receives | Checks | Returns |
 |---|---|---|---|---|
@@ -1008,50 +1251,49 @@ not metrics.
 
 ### Judge Configuration (PENDING)
 
-Choice pending from the project owner. Options, as framed for that decision:
+Choice pending from the project owner; nothing in this plan selects it.
+Options as previously framed: A. `gpt-6-sol` at `medium` (a different model
+from the analyzer); B. `gpt-6-astra` at `low` (matches the analyzer, so
+self-grading bias is likely); C. a tiered configuration (a stronger judge for
+the five holistic metrics, a cheaper one for per-item verdicts; two judges to
+interpret). A different judge is another perspective, not a guarantee against
+bias.
 
-| Option | Tradeoff |
-|---|---|
-| A. `gpt-6-sol` at `medium` (recommended) | A different model from the analyzer (`gpt-6-astra`), avoiding self-grading. Cost depends on Sol's current rate, which is reported inconsistently. |
-| B. `gpt-6-astra` at `low` | Matches the analyzer; simplest, but a model grading its own output is biased toward agreeing with itself. |
-| C. Tiered | A stronger judge for the five holistic metrics and a cheaper one for per-item verdicts. Lower cost, more configuration and two judges to interpret. |
-
-Cost estimate (approximate; replaced by a character-count dry run before any
-paid call): per source of about 20k tokens, faithfulness reads the source for
-fact extraction and again for verdicts, the five holistic metrics each read
-source plus analysis, and per-item checks add windows around each citation and
-evidence item — roughly 0.5M input and 50k+ output tokens per source before
-hidden reasoning, so about 6M input and 0.6M+ output across 12 sources, and
-2–3× that for the longest reports. Published rates were not verifiable from
-OpenAI's own page when this was written (third-party sources list Astra at
-$10/$50 per million tokens and disagree on Sol), so a dollar figure is not
-stated here; it is filled in from the pricing page when the choice is made.
-Transcription adds a small number of vision calls per source.
+Cost basis: official listed rates (read 2026-10-13) are Astra $10 / $50,
+`gpt-6-sol` $2 / $10, `gpt-6.1-sol` $2 / $10 per 1M tokens. Judge cost depends
+on per-item call counts, which scale with each analysis's evidence and
+citation counts (about 9 DeepEval-driven calls plus one per citation and per
+evidence item in the current design), and on unmeasured output and reasoning
+tokens. A dry run from the prepared text prints projected calls and tokens
+before any paid call; no budget is approved.
 
 ### Technologies Introduced
 
 | Tool | Purpose |
 |---|---|
 | `deepeval` (pinned) | `FaithfulnessMetric`, `GEval`, `BaseMetric`, `DeepEvalBaseLLM` |
-| `pymupdf4llm` / `pymupdf` | PDF-to-Markdown extraction, table extraction, figure rendering |
+| `pymupdf4llm` / `pymupdf` (pinned) | PDF-to-Markdown extraction with tables, page images; OCR disabled |
 | `pyyaml` | Reading the source manifest (if not already present) |
 
-At install time: confirm `deepeval` resolves cleanly alongside the pinned
-`openai`/`langchain` packages, and add a mypy `ignore_missing_imports`
-override if it ships no types.
+At install time (separately authorized): confirm `deepeval` resolves cleanly
+alongside the pinned `openai`/`langchain` packages, verify the proposed
+`pymupdf4llm` settings, and add a mypy `ignore_missing_imports` override if a
+package ships no types.
 
 ### Module Layout
 
 ```
 scripts/
-  prepare_phase_3_sources.py   # extract text; --transcribe for approved visuals
-  run_analyses.py              # analyze_source() over prepared sources
+  prepare_phase_3_sources.py   # the single shared extraction/verification entry point
+  run_analyses.py              # analyze_source(), refuses un-gated sources
   run_evaluation.py            # evaluate_analysis() over saved analyses
 
+src/hitl_research_agent/extraction/   # Changes 1-3 touch grounding.py, prompts.py,
+                                       # schemas.py/pipeline.py/errors.py (attempt records)
 src/hitl_research_agent/evaluation/
   schemas.py          # MetricResult, ItemVerdict, EvaluationResult
   judge.py            # DeepEvalBaseLLM wrapper over ChatOpenAI
-  inputs.py           # analysis -> test-case inputs; ordered source chunking
+  inputs.py           # analysis -> test-case inputs; ordered source chunking; annotation labels/flags
   metrics/
     faithfulness.py
     citation.py
@@ -1060,77 +1302,119 @@ src/hitl_research_agent/evaluation/
   runner.py           # evaluate_analysis(); calls measure(), never evaluate()
   storage.py
 
-tests/evaluation/
+tests/extraction/ tests/evaluation/ tests/preparation/
 data/phase_3/sources.yaml
-outputs/phase_3/{prepared,analyses,evaluations}/<slug>/
+outputs/phase_3/prepared/<slug>/   # text, provenance, page map, images, prep/verification/approval records
+outputs/phase_3/analyses/<slug>/   # results, attempt records, run records
+outputs/phase_3/evaluations/<slug>/
 ```
 
-`Settings` gains `eval_judge_model`, `eval_judge_reasoning_effort`, and a
-vision-model setting for transcription, all unset until the judge is chosen.
+`Settings` gains `eval_judge_model` and `eval_judge_reasoning_effort`, unset
+until the judge is chosen. The analyzer defaults are unchanged and there is no
+vision-model setting.
 
 ### Retained Results
 
-`outputs/phase_3/evaluations/<slug>/evaluation_result.json` holds: analysis
-and source IDs; the sha256 of `source.md`; judge model and effort; DeepEval
-version; metric configurations; `evaluated_at`; one `MetricResult` per metric
-(score, reason, per-item verdicts referencing claim/evidence IDs); errors; and
-the transcription-block flags. It contains no pass/fail field. Phase 4 reads
-these files; non-passing item verdicts are visible as data, not as flags set
-by an automatic gate.
+`outputs/phase_3/evaluations/<slug>/evaluation_result.json` holds: analysis and
+source IDs; the sha256 of the prepared text and a reference to its
+verification and approval records; judge model and effort; DeepEval version;
+metric configurations; `evaluated_at`; one `MetricResult` per metric (score,
+reason, per-item verdicts referencing claim/evidence IDs); annotation-
+dependency flags with their stated limitation; and errors. It contains no
+pass/fail field. Phase 4 reads these files; non-passing item verdicts are
+visible as data, not as flags set by an automatic gate.
 
-### Implementation Tasks
+### Implementation Tasks (proposed order; each step needs its own authorization)
 
-1. Add dependencies and the unset `Settings` fields.
-2. Draft `sources.yaml` from each PDF's first page and metadata for the
-   project owner to confirm.
-3. Write the preparation script; run free extraction; review the prep report
-   (character counts, size-limit results, table/figure candidates, IEA excerpt
-   flag) with the project owner.
-4. After approval, run transcription for approved visuals; re-check sizes.
-5. Build `evaluation/` and its offline tests.
-6. Run the pilot source through analysis and evaluation; review before
-   proceeding.
-7. With approval, run the remaining 11 sources.
-8. Update this section's status and the README project status.
+1. Verify the proposed `pymupdf4llm` settings against a fixture PDF and the
+   existing Li PDF (free), then pin the dependency.
+2. Change 3 (attempt retention), then Change 2 (citation formatting), then
+   Change 1 (annotation-aware grounding), each with its offline tests.
+3. Build the shared preparation script with status, verification, and approval
+   records and its offline tests.
+4. Re-prepare Li under the standard (free); review the report and spot-checks
+   with the project owner; the owner decides its status and any approval.
+5. Prepare the remaining 11 sources (free); per-source reports; the owner
+   decides each status, approval, and any size-limit action.
+6. Run the analyzer comparison on the source the owner names (paid; separate
+   authorization; any spending ceiling set by the owner), then review.
+7. Build `evaluation/` and its offline tests (this can proceed in parallel
+   with steps 3–5).
+8. After the judge is chosen and approved, run evaluation (paid; separate
+   authorization), starting with one source.
+9. Update this section's status and the README project status.
+
+**Genuine blockers:** none to starting steps 1–3. Later decisions that only the
+project owner can make: the dependency installation, each source's status and
+approval, the comparison source and any spending ceiling, the judge choice,
+and every paid run.
 
 ### Tests
 
-All offline, using a fake `DeepEvalBaseLLM` that returns canned schema
-instances; no network or API call occurs in the default suite.
+All offline; no network or API call occurs in the default suite.
 
-- Manifest validation; rejection of an incomplete or timezone-naive entry.
-- Size-limit check on prepared text, including inserted transcription;
-  excerpt flag recorded for IEA.
-- Prepared-text structure on a generated fixture PDF: reading order and a
-  table preserved; transcription block delimited and recorded.
-- Test-case construction: `author_stated` vs `model_inferred` routing, item
+**Preparation (`tests/preparation/`)** on generated fixture PDFs:
+- shared process, no source-specific code path; pinned settings and version
+  recorded; OCR off, with a scanned/unreadable page flagged unresolved;
+- reading order on a two-column fixture; header/footer removal with the
+  removed lines recorded; hyphenation joined only when the original supports
+  it, otherwise flagged; page mapping offsets correct and no page markers in
+  the text, including across a page-spanning sentence;
+- a table keeps rows and columns; an uncertain table header is flagged;
+- a figure and an equation produce unresolved items with page and image and
+  annotations, with no values or interpretation;
+- annotation delimiters in source text rejected; unknown provenance fields
+  stay unset; IEA excerpt flag and title suffix;
+- size-limit check on the final text including annotations, no truncation, and
+  `blocked` status on failure;
+- status computation (`ready`, `ready_with_unresolved`, `blocked`); the
+  verification record is stored separately from hashes; reuse keeps findings,
+  unresolved items, and approval when hashes match and resets them when a hash
+  changes; `run_analyses.py` refuses `blocked` and unapproved
+  `ready_with_unresolved` sources.
+
+**Extraction:** the tests under Changes 1–3 above.
+
+**Evaluation (`tests/evaluation/`)**, using a fake `DeepEvalBaseLLM` that
+returns canned schema instances:
+- test-case construction: `author_stated` vs `model_inferred` routing, item
   IDs present, no research-question text, chunks ordered and covering the
-  whole source.
-- Citation and evidence-mapping scoring, including the `None` (no citations)
-  case, `unclear` handling, and per-item verdict plumbing.
-- Judge errors are recorded as errors, never as 0.
-- Advisory-only: every metric has `threshold is None`, `success is None`
+  whole prepared text, annotations labeled, annotation flags set for items
+  naming an annotation ID or label;
+- citation and evidence-mapping scoring, including the `None` (no citations)
+  case, `unclear` handling, and per-item verdict plumbing;
+- judge errors are recorded as errors, never as 0;
+- advisory-only: every metric has `threshold is None`, `success is None`
   after `measure()`, `strict_mode` is unused, `evaluate()` is not called, and
-  `EvaluationResult` has no pass/fail field.
-- `EvaluationResult` JSON round-trip; storage paths under `outputs/phase_3/`.
-- Telemetry opt-out is set before `deepeval` import.
-- One live judge smoke test marked `live`, skipped by default.
+  `EvaluationResult` has no pass/fail field;
+- `EvaluationResult` JSON round-trip; storage paths under `outputs/phase_3/`;
+  telemetry opt-out set before `deepeval` import; one live judge smoke test
+  marked `live`, skipped by default.
 
 ### Acceptance Criteria
 
-- [ ] Manifest confirmed by the project owner; 12 sources prepared from
-      `data/phase_3/` only; IEA marked as an excerpt in the record and title.
-- [ ] Reading order preserved; tables extracted; each approved
-      evidence-bearing visual transcribed, delimited, and retained with its
-      rendered image.
-- [ ] Every prepared source checked against the size limit before any model
-      call; any failure resolved by the project owner's decision.
-- [ ] 12 analyses produced by the existing pipeline without the research
-      question, saved under `outputs/phase_3/analyses/`.
+- [ ] Shared preparation process implemented with verified, pinned settings and
+      OCR off; all 12 sources prepared from `data/phase_3/` only, each with a
+      status, page mapping, retained page images, unresolved-item list, and
+      verification record kept separately from hashes.
+- [ ] Every `ready_with_unresolved` source analyzed only after the project
+      owner's explicit source-specific approval; `blocked` sources not analyzed.
+- [ ] No chart value, diagram relationship, or equation estimated or
+      interpreted into analyzer text; any later transcription is item-specific,
+      image-checked, and distinguishable.
+- [ ] IEA identified as an excerpt; unknown provenance fields left unset; every
+      prepared text checked against the size limit before any model call;
+      existing Li artifacts and the original PDFs preserved.
+- [ ] Changes 1–3 implemented as separate tasks with their offline tests, the
+      four failure categories, one-correction policy, and analyzer default
+      unchanged.
+- [ ] The analyzer comparison, if authorized, run once per configuration under
+      the stated controls, with per-attempt and total usage and timing, and
+      calculated cost kept separate from confirmed billing.
 - [ ] Faithfulness (built-in), citation, evidence-mapping, and five
       research-specific metrics run per analysis and saved with scores,
-      explanations, and per-item verdicts.
-- [ ] All metrics advisory: `threshold=None`, no pass/fail field, no gate.
+      explanations, and per-item verdicts; all advisory (`threshold=None`, no
+      pass/fail field).
 - [ ] Judge configuration chosen by the project owner and recorded in every
       result.
 - [ ] Full check suite passes: `pytest`, `ruff check`, `ruff format --check`,
@@ -1145,10 +1429,17 @@ instances; no network or API call occurs in the default suite.
   audited.
 - Faithfulness claims are extracted by DeepEval and cannot be mapped to item
   IDs except through the labels placed in the input text.
-- Evaluation measures the prepared text, not the PDF; figure transcriptions
-  are the least-checked part of that text.
-- The 200,000-character limit and the cost estimate are unvalidated until the
-  prep report and pilot run exist.
+- Continuity heuristics and text-layer coverage cannot establish correct
+  reading order or complete visual coverage; spot-checks sample, not prove.
+  Figure-heavy sources may remain substantially unresolved.
+- Annotation grounding stops verbatim matches of annotation text; it cannot
+  detect paraphrased use of missing material, and evaluation flags are partial.
+- Evaluation measures the prepared text, not the PDF. Client-internal retries
+  are not observable in attempt records.
+- The 200,000-character limit remains an unvalidated placeholder, and the
+  analyzer comparison is two single runs, not a benchmark.
+- The full billing for the failed Li run is unreconciled; calculated cost is
+  never presented as confirmed billing.
 
 ## Phase 4 — Human Review
 

@@ -89,4 +89,135 @@ Save the prepared source and the returned `AnalysisResult` under `outputs/phase_
 Do not run DeepEval, make paid transcription calls, analyze other sources, or automatically rerun the pilot after failure. Do not build the Phase 3 evaluation framework, expose the API key, commit, or push. If the run fails, save available diagnostics and explain the failure briefly.
 
 **Response:**
-Pending.
+Claude ran Li et al. through Astra low. Both responses parsed, but grounding validation failed after the one correction attempt; no completed `AnalysisResult` was saved. The final error involved three non-adjacent bibliography entries combined into one `reference_entry`, which could not match a continuous source passage. Neither response body nor the first attempt's error was retained, limiting diagnosis. Claude stopped without rerunning.
+
+The two calls took about four minutes and reported 31,316 input and 11,951 output tokens in total. The user observed roughly eight minutes of preparation and more than twelve minutes overall. Claude estimated $0.84–$0.91, but the user reported an actual charge of **$0.37 for one request with 18.26K input tokens**, matching the reported input count of the second attempt. This does not establish the total billed cost of both attempts; the pricing discrepancy remains unresolved.
+
+Preparation produced 40,454 characters and saved source text, images, provenance, prep scripts, and run metadata under `outputs/phase_3/li_et_al_2025_making_ai_less_thirsty/`. Claude manually checked 18 table rows, reconstructed headers, and transcribed two figures and four equations. Some plotted values were visual estimates, and page markers interrupted continuing sentences. It used file modification time as a proxy for retrieval time. No paid vision calls, DeepEval evaluation, or other-source analyses were run.
+
+### 6. Review the Failed Run and PDF Preparation
+
+**Prompt:** My dashboard shows an actual charge of $0.37 for one request with 18.26K input tokens, matching the reported input count of the second attempt. Record that as user-reported billing for that request, not the total for both attempts. Your $0.84–$0.91 estimate covered the full run, so do not compare these as equivalent totals; leave the full billing reconciliation unresolved unless you can establish it. Before any further run, explain these two issues using the saved files and current code:
+
+1. **Validation failure:** Show the exact retained error and explain why the combined reference entries failed. Inspect what the correction attempt was told and why the response bodies and first error were not saved. Distinguish what the records prove from what is unknown. Recommend the smallest fix and an offline test, including how to retain every attempt's output and errors without weakening grounding checks.
+2. **PDF preparation:** List the extraction tools and manual steps used, with recorded time or usage where available; do not invent missing measurements. Explain why preparation took roughly eight minutes, what required your model reasoning rather than local extraction, and what can be reused across the other 11 sources. Address table reconstruction, estimated chart values, equation transcription, page markers inside sentences, and the retrieval-date proxy. Recommend a repeatable preparation process that preserves source fidelity without manually rebuilding every PDF or silently dropping evidence.
+
+Keep the response focused: the cause or uncertainty, the proposed change, and any decision you need from me. Preserve the prepared Li files. This is a discussion and diagnosis only: do not edit files, install dependencies, make paid calls, rerun analysis, or start DeepEval yet.
+
+**Response:**
+Claude traced the retained failure to three non-adjacent reference entries combined into one field, which cannot pass the contiguous-text grounding check. A grouped citation marker may have prompted this, but the missing response bodies prevent confirmation. The first attempt's error is also unavailable: the pipeline retained only the final problems, and Claude's wrapper saved metadata rather than outputs. It proposed explicit one-citation-per-work instructions, actionable correction feedback, and per-attempt output/error retention with offline tests, without relaxing grounding.
+
+Claude reported that extraction itself took seconds. Roughly six minutes of file timestamps covered custom layout scripting, debugging, table-header reconstruction, and manual figure/equation transcription; earlier checks were not timed and its own preparation token usage was not recorded. It acknowledged that estimated chart values and possibly inaccurate equation transcriptions could be treated as verbatim source evidence, while page markers splitting words could break quotation matching. It proposed reusable extraction with paragraph merging, automatic tables, and visual dispositions that distinguish extracted content, caption/label placeholders, transcriptions, and omissions. Original images would remain available; inferred visual values would be optional and separate.
+
+Claude reported finding download metadata supporting Li's retrieval time and an ACM source URL previously left unset. It also calculated $0.366 for the second request using cache pricing, consistent with the user's $0.37 charge; the total billed cost of both requests remains unconfirmed. It reported no changes or paid calls in this diagnostic turn. Citation and diagnostic changes, removal of estimated chart values from the input, rebuilding Li's text, and the preparation approach for other sources remain proposals pending discussion.
+
+### 7. Establish a Standard PDF Preparation Process
+
+**Prompt:** Stop estimating chart values, guessing diagram relationships or equations, and inserting those interpretations into text the analyzer can treat as verbatim source evidence. Also stop writing custom page-by-page reconstruction code as the default preparation method. Preserve the original PDFs and existing Li artifacts, but treat the current prepared Li text as requiring revision before reuse.
+
+We need one repeatable parsing process for these sources. Use the following boundaries to propose that standard:
+
+- **Extraction:** Use one shared local extraction script with `pymupdf4llm` as the initial parser. Extract text in reading order and tables with their row and column relationships. Reuse the same process across PDFs; flag exceptions instead of silently introducing source-specific code or switching tools.
+- **Cleanup:** Remove recurring headers and footers and repair line wrapping or hyphenation only when the original text supports the change. Do not paraphrase, summarize, or reconstruct missing content. Preserve section headings, citations, footnotes, units, and table headers. Keep page locators in a separate mapping so they do not interrupt sentences or quotations.
+- **Visuals and equations:** Preserve captions, reliably extracted labels, and page images. Do not estimate unlabeled values. If a table, chart, diagram, or equation cannot be faithfully extracted, list it as unresolved with its page and image. Any later transcription must be checked against the image and distinguishable from directly extracted text; an uncertain transcription must not enter the analyzer input as source fact.
+- **Verification:** Check page coverage, reading order, table alignment, and text continuity using the original PDF. Automated detection alone cannot prove that every visual was found. Report unresolved material and whether it prevents a faithful analysis of the source. Do not silently omit it or present a partial extraction as complete.
+- **Records and reuse:** Save prepared text, provenance, page mapping, extraction tool/version, and a short preparation record. Record measured preparation time and available usage without guessing. Reuse verified preparation on later runs. Keep unknown provenance fields unset and identify the IEA source as an excerpt.
+- **Limits:** Check the final text against the existing source-size limit. Do not truncate, split, raise the limit, invoke paid vision, or send an analysis request to work around a preparation problem without my decision.
+
+Review these boundaries against the Li failure and tell me briefly whether the proposed parser can support them, what requires a fallback, and how exceptions will be surfaced without repeating eight minutes of bespoke preparation per paper. Do not claim that a parser guarantees perfect extraction. Keep citation-format fixes and failed-output retention separate from PDF preparation; those remain pending.
+
+This turn is to agree on the standard, not implement it. Do not edit files, install dependencies, rebuild sources, make paid calls, or run analysis or DeepEval. Reply with the proposed workflow and only the decisions needed to settle it, not another broad redesign.
+
+**Response:**
+Claude proposed a shared `pymupdf4llm` process with conservative cleanup, separate page mapping, retained images, and explicit unresolved material. Its earlier Li probe recovered Table 1's values but fragmented the header, misplaced a paragraph, and garbled chart labels and equations. Those problems would be flagged, not reconstructed; unreliable spans would stay in a sidecar rather than analyzer text. Proposed parser settings still need testing.
+
+The workflow would check coverage, continuity, and table alignment, record provenance/settings/hashes and measured time, and enforce the existing size limit. Automated checks cannot guarantee reading order or find every visual. Sources would be classified as `ready`, `ready_with_unresolved`, or `blocked`, with approval required for unresolved sources and fallback decisions left to the user.
+
+**Decisions requested:** annotation placeholders, the three-status gate, a pinned parser with OCR off, and image spot-checks. These were still pending at this turn. Citation formatting and failed-output retention remained separate work. No implementation or runs occurred.
+
+### 8. Confirm Preparation Decisions and Plan the GPT-6.1 Sol Comparison
+
+**Prompt:** I agree with the proposed PDF preparation standard, with these decisions:
+
+1. **Placeholders:** Use clearly labeled preparation annotations for unresolved content, linked to the corresponding page/image record. Keep them distinguishable from source text throughout analysis and evaluation. They must never qualify as verbatim evidence; a label alone is not sufficient if the grounding check can match an annotation as source text. Explain briefly how you would enforce this without weakening grounding checks.
+2. **Preparation gate:** Use `ready`, `ready_with_unresolved`, and `blocked`. Blocked sources cannot proceed. Sources marked `ready_with_unresolved` require my explicit, source-specific approval before analysis. Agreement on this standard does not approve analysis of any source or acceptance of any particular gap.
+3. **Parser and OCR:** Pin `pymupdf4llm` and its settings when implementation is authorized. Keep OCR disabled initially and flag scanned or unreadable pages. Proposed settings still need verification; do not describe untested settings as working. Use one shared extraction process, and surface exceptions rather than silently switching tools or introducing source-specific reconstruction code.
+4. **Spot-checks:** Review flagged reading-order problems and tables against the original page images. Report uncertainty rather than silently reconstructing content. Preserve captions, reliable labels, page images, and unresolved-item records. Do not estimate chart values or guess equations or diagram relationships.
+
+Retain verification status separately from PDF/script hashes and settings. Matching hashes show that an extraction is unchanged, not that it was verified. Reuse must preserve the verification findings, unresolved material, and any applicable source-specific approval. Preserve the limitations already identified: continuity heuristics and text-layer coverage cannot establish correct reading order or complete visual coverage, and figure-heavy sources may remain substantially unresolved. Keep conservative cleanup, separate page mapping, provenance with unknown fields unset, the IEA excerpt label, measured preparation time, and the existing size-limit boundaries. Preserve the original PDFs and existing Li artifacts; the current prepared Li text still requires revision before reuse.
+
+Separately, I want to compare `gpt-6.1-sol` at `medium` reasoning with the existing `gpt-6-astra` at `low` baseline for single-source analysis. My earlier experiments compared GPT-6 Sol, not GPT-6.1 Sol. Do not change the analyzer default or choose an evaluation judge. The future comparison must use the same verified source text and provenance, analysis prompt, validation rules, and correction policy, with model and reasoning effort as the intended differences. The failed Li run is diagnostic history, not a successful baseline analysis on verified input.
+
+Propose a concise comparison plan covering observed per-attempt and total token usage, available request identifiers, elapsed time, and analytical quality for my review: source fidelity, argument coverage, evidence/citation mapping, assumptions and limitations, and the usefulness and calibration of support assessments. Separate measured usage, calculated cost, and confirmed billing; do not double-count reasoning tokens or treat the reported $0.37 charge for one prior request as the full failed-run cost. Do not infer quality from validation success alone or invent a new budget. Identify prerequisites and genuine blockers without reopening the agreed evaluation framework or source selection.
+
+These are design decisions only. Respond briefly with how the decisions fit the preparation workflow and the proposed model comparison, including any conflict with the current build plan. Do not edit files, install dependencies, rebuild sources, make API calls, run analysis or DeepEval, commit, or push. Keep citation-format fixes and failed-output retention pending as separate work; identify their implications for the comparison without implementing them. No paid run or implementation is authorized by this prompt.
+
+**Response:**
+The user approved annotation placeholders that cannot qualify as verbatim evidence, the three-status gate, pinned parser/settings with OCR off, and image spot-checks. Verification must be recorded separately from hashes; unchanged files are not necessarily verified. Li requires re-preparation, with existing artifacts preserved.
+
+Claude proposed excluding annotations from grounding using a sentinel that preserves gaps, with offline tests for annotation and cross-gap quotations. Annotation IDs/offsets would support review, but flags cannot detect every paraphrased use of missing content. This became a third pending pipeline change alongside citation formatting and attempt retention.
+
+For the model comparison, Claude proposed identical verified input, prompt, validation, and correction policy, with per-attempt usage, timing, identifiers, and human quality review. The analyzer default stays Astra low; earlier GPT-6 Sol experiments and the failed Li run are not equivalent baselines. Calculated cost remains separate from billing, and the full failed-run charge is unresolved. Claude reported checking GPT-6.1 Sol capabilities/pricing, but exact pipeline compatibility remains untested.
+
+**Pending decisions:** whether to add a baseline repeat, the spending ceiling, and the evaluation judge. The build plan needed reconciliation with the new preparation standard and comparison. No edits, implementation, or paid calls occurred.
+
+### 9. Reconcile the Plan and Specify the Bounded Fixes
+
+**Prompt:** Thank you; this proposal gives us a workable preparation standard and comparison approach. Please reconcile the Phase 3 section of `docs/BUILD_PLAN.md` with the agreed decisions in entries 7–8 and specify the bounded changes needed before implementation. You may edit that plan section only in this turn. Preserve the completed phases and the agreed DeepEval scope; do not broaden the project or redesign the analysis models.
+
+Record the shared, pinned extraction process with OCR initially off, conservative cleanup, separate page mapping, retained page images, explicit unresolved material, image spot-checks, and the three preparation statuses. `blocked` sources cannot proceed, and `ready_with_unresolved` sources require my explicit source-specific approval. Record verification separately from hashes; reuse must carry verification findings, unresolved items, and applicable approval. Preserve the known extraction limitations and size-limit boundaries. Replace routine paid visual transcription and automatic fallback assumptions with item-specific decisions. Existing Li artifacts must be preserved, and the current prepared text requires revision before reuse.
+
+Specify these three changes as separate, bounded implementation tasks with meaningful offline tests, without implementing them yet:
+
+1. **Annotation-aware grounding:** preparation annotations must never qualify as verbatim evidence. Your separate grounding view with a sentinel replacing each annotation is a reasonable approach; ensure the sentinel survives normalization and prevents matches across a gap. Apply the same exclusion to citation markers and reference entries. Keep annotation IDs, offsets, and page/image links for review. Evaluation flags based on IDs or labels are useful but cannot detect every paraphrased use of missing material; record that limitation rather than treating the flags as complete enforcement.
+2. **Citation formatting:** clarify one cited work per citation object, including how grouped markers map to separate reference entries. Give actionable correction feedback for the observed combined-reference failure. Keep the existing grounding checks and one-correction policy intact. This addresses a known failure risk, not a prediction that every new run will fail without it.
+3. **Attempt retention:** retain every returned attempt's raw and parsed output where available, validation/parsing errors, available request identifiers, measured timing, and reported usage, on both success and terminal failure. Preserve the existing failure categories and retry policy; do not expose secrets. This is necessary to make the comparison auditable.
+
+For the future analysis comparison, plan one fresh run of `gpt-6-astra` at `low` and one of `gpt-6.1-sol` at `medium`, using the same verified prepared input, provenance, prompt, code version, validation rules, and correction policy. Do not add an extra baseline repeat initially. This is a practical comparison of two configurations, not a benchmark or an isolated model-effect experiment. Review fidelity, argument coverage, evidence/citation mapping, assumptions and limitations, and support-assessment usefulness and calibration. Counts remain descriptive; successful validation is not a quality score. Record per-attempt and total usage and timing, and distinguish calculated cost from confirmed billing without counting reasoning tokens twice. No spending limit is approved yet.
+
+Keep `gpt-6-astra` at `low` as the analyzer default. Do not choose an evaluation judge or treat earlier GPT-6 Sol experiments or the failed Li run as the GPT-6.1 Sol comparison baseline. The new comparison does not replace Phase 3's agreed evaluation work.
+
+After updating the Phase 3 plan, briefly report what changed and the proposed implementation order, identifying only genuine blockers. Do not implement code, install dependencies, rebuild sources, make API calls, run analysis or DeepEval, commit, or push. Implementation and paid runs remain separate authorization steps.
+
+**Response:**
+Claude reported updating only the Phase 3 build plan. It replaced routine paid transcription and automatic fallback assumptions with the agreed preparation standard, status gate, separate verification records, and item-specific transcription decisions. The failed Li run is diagnostic history; its text requires revision, and $0.37 remains the reported charge for one request rather than the full run.
+
+The plan now specifies three bounded fixes with offline tests: annotation-aware grounding, one cited work per citation object with actionable correction feedback, and per-attempt output/error/usage retention. Existing grounding and retry policies remain. Annotation flags cannot fully detect paraphrased use of missing material.
+
+**Decisions recorded:** one fresh Astra-low run and one GPT-6.1 Sol-medium run on identical verified input, no extra baseline repeat, and no analyzer-default change. Quality review is separate from validation and descriptive counts. DeepEval's advisory scope remains; the judge and spending ceiling are pending.
+
+Claude proposed parser verification, pipeline fixes, shared preparation, and Li review before later batch/comparison/evaluation work, with separate authorization for each step. No technical blocker was identified for the initial offline work. Only the plan was changed; implementation and paid runs remained unauthorized.
+
+### 10. Implement Offline Safeguards and Re-Prepare Li
+
+**Prompt:** Thank you for updating the plan. I authorize steps 1–4 of your proposed order as one offline task: verify and pin the parser/settings, implement attempt retention, citation formatting, and annotation-aware grounding, build the shared preparation script, and re-prepare Li under the agreed Phase 3 plan. Required local dependency installation is authorized; routine steps within this scope do not need separate confirmation.
+
+Preserve the original PDF and existing Li artifacts, and save the new preparation separately under `outputs/phase_3/`. Run the relevant offline tests and repository checks. Return a concise report with output paths, verification findings, unresolved items and page/image links, final text size, measured preparation time, and preparation status.
+
+Stop for my review before any analysis or paid call. The other 11 sources, model comparison, and evaluation implementation remain outside this task. Keep the analyzer default and build plan unchanged; do not commit or push.
+
+**Response:**
+Claude completed the offline implementation and re-preparation, but Li is **`blocked`**: image checks confirmed that page 4's paragraphs are out of order, despite their words being present. No analysis, DeepEval, or API calls occurred; the analyzer default and build plan were unchanged, and nothing was committed.
+
+Implemented: pinned `pymupdf4llm==1.28.2` in layout mode with headers/footers and OCR off; attempt records on results and exceptions; one-work-per-citation instructions and correction feedback; annotation-excluding grounding; and a shared preparation script with status/approval records, reuse, and invalidation. Dependencies/configuration and offline tests were added. Claude reported 169 passing tests and clean Ruff and mypy checks.
+
+New preparation is under `outputs/phase_3/prepared/li_et_al_2025_making_ai_less_thirsty/`, with text, provenance, page mapping, extraction/verification/review records, page images, visual crops, and superseded iterations. It contains 36,626 characters and seven annotations. Extraction took 11.17 seconds; reuse took 0.02 seconds. Implementation and review time were not measured. Reported text-layer coverage was at least 97% per page, which does not establish correct order or complete extraction.
+
+Claude reviewed 29 flags, clearing decorative visuals, several continuation warnings, and a false equation hit. Ten items remain unresolved: two figures, Table 1's header grouping (all 18 rows matched), four equation/notation items, parser-made hyphen joins, and two sentence interruptions. Page 8 and most of page 7 were checked against extracted text rather than images. Download metadata supplied retrieval time and URL; publication date remains unset. Claude reported restoring preserved scripts after a formatter briefly changed them.
+
+**Pending decision:** whether to try a generic geometry-based ordering correction in the shared script. Claude did not implement it. Li remains blocked pending a verified resolution; the comparison and paid runs remain unapproved. Parser heuristics still cannot guarantee reading order or visual completeness.
+
+### 11. Repair Li's Page 4 Order and Explain Commit Scope
+
+**Prompt:** Please try the proposed geometry-based reading-order fix for Li's page 4 in the shared preparation script. Keep the change narrowly scoped and opt-in; do not make it the default for other sources. Preserve existing artifacts and save the revised preparation separately.
+
+Compare the before/after paragraph order against the original page image, verify that no text was lost or duplicated, and run the relevant offline checks. Report whether the confirmed ordering failures are resolved, what remains unresolved, and the resulting preparation status. Stop before any analysis or paid calls.
+
+Also explain the current uncommitted files in plain language: which you recommend committing and why, and which should remain local. Distinguish code/tests/dependencies, documentation, old Li artifacts, revised preparation records, page images/crops, and superseded iterations. Suggest sensible commit groupings and short commit messages. Do not stage, commit, delete files, change the analyzer default, or edit the build plan.
+
+**Response:**
+Claude added an opt-in `--reorder-columns` fix and saved a separate preparation under `outputs/phase_3/prepared_reordered/li_et_al_2025_making_ai_less_thirsty/`. Image verification confirmed page 4's corrected paragraph order and restored sentence continuity. It reported identical before/after token content, no duplicate paragraphs, and six confirmed ordering problems resolved. The new text has 36,625 characters; extraction took 10.29 seconds.
+
+Li is now **`ready_with_unresolved`**, with ten unresolved visual, table-header, equation/notation, hyphenation, and sentence-interruption items. No approval record was created, so analysis remains gated. The reorder is off by default and has only been verified on Li page 4. Claude reported 175 passing tests and clean Ruff/mypy checks, with no analysis, paid calls, staging, commits, deletions, default change, or build-plan edit.
+
+For commits, Claude proposed separate documentation, extraction safeguards, preparation tooling/dependencies/tests, failed-run history, and revised-preparation groups. It recommended leaving images, extraction caches, unreordered preparation, and superseded iterations local. The old text contains rejected estimated values and must be identified as diagnostic history, not reusable source input. Commit selection remains the user's decision.
