@@ -335,3 +335,60 @@ Claude implemented `PreparationGap`, preparation-directory/gap fields on `Source
 Validation now requires text annotations and declared gaps to match in both directions, and gaps require a directory. Three existing tests were updated to supply this metadata; future callers using annotated text must do likewise. Tests also load Li's preparation record and check crop existence and relative-path resolution. Claude reported 78 source lines and 150 test lines added, 174 passing tests, and clean lint, formatting, and mypy checks. No analysis runs or paid calls occurred.
 
 Evaluation's own text-only scope remains deferred until evaluation code exists. Claude exported the analysis-scope constant but did not add an evaluation surface ahead of Phase 3 implementation.
+
+### 24. Identify the Next Phase 3 Steps
+
+**Prompt:** So now what?
+
+**Response:**
+Claude reported that the manifest contains only Li, leaving the other 11 PDFs without the provenance entries required by preparation. It offered to draft entries from embedded PDF metadata for owner review, without inventing missing fields. The preparation-gap changes remain uncommitted.
+
+It recommended committing those changes, then drafting the remaining manifest entries before paid analysis. Li's next run would exercise the citation fix and gap-metadata retention against a real source. The prior $0.37 was one failed-run request's observed charge, not an estimate or approved budget for the next run. Drafting provenance enables later preparation but does not itself test extraction on the remaining PDFs. No further work or paid run was reported as authorized.
+
+### 25. Identify Build-Plan Updates After Simplification
+
+**Prompt:** Before that, do you need to update the build plan?
+
+**Response:**
+Claude identified these references to removed machinery that should come out of the Phase 3 plan:
+
+- The three preparation statuses (`ready`, `ready_with_unresolved`, `blocked`) and source-specific approval records.
+- Separate verification records and the `review.json` spot-check/clearing workflow.
+- Hash-reset, cached reuse, and review/approval carry-forward semantics.
+- Automated word-coverage checks, continuity flags, and table-consistency checks.
+- A planned `run_analyses.py` gate rejecting blocked or unapproved preparations.
+- Describing over-limit sources as `blocked`; the source-size limit itself remains.
+- Directory listings, retained-result descriptions, implementation tasks, and tests for that removed machinery.
+
+Other descriptions need replacement rather than removal:
+
+- A stored full-page image for every page → necessary element crops, with the `page` command for on-demand full-page rendering.
+- Detected-then-cleared “unresolved items” → preparation gaps described by three fixed annotation wordings for figures, equations, and multi-level table headers.
+- Opt-in column reordering → default reordering, recorded in parser settings and the settings hash.
+
+The plan also needs to add `PreparationGap` metadata on `SourceDocument` and `AnalysisResult`, the analysis-scope statement, page-map coverage of every PDF page (including `mapped_text: false` pages), and the limitation that text-only evaluation does not assess original visual content. The 12-source target remains, but current progress must acknowledge that the manifest contains only Li.
+
+Claude offered to draft the revised Phase 3 section for review before applying it, because it records agreed decisions. **Pending decision:** authorize that draft; no plan rewrite was reported.
+
+### 26. Draft the Revised Phase 3 Plan
+
+**Prompt:** Yes, draft the revised phase 3 section
+
+**Response:**
+Claude prepared a scratchpad draft, leaving `BUILD_PLAN.md` untouched. It removes the deleted preparation gates, review/check machinery, and commands; updates crops/on-demand rendering, preparation-gap wording, default reordering, and changed result fields; and adds gap retention, complete page mapping, text-only evaluation limits, and the remaining manifest work. It records page 2's decorative illustration decision as settled. Metrics, judge configuration, and analyzer comparison are largely preserved.
+
+Two points were presented for review: whether to retain a short explanation that misleading annotations helped motivate the simplification, and how to replace the obsolete promise that original Li artifacts remain untouched in the working tree. The artifacts were deleted during authorized consolidation but remain recoverable from Git history. **Pending decision:** review and apply the draft; no build-plan edit was reported.
+
+### 27. Apply the Revised Phase 3 Plan
+
+**Prompt:** I’d keep both points, stated plainly:
+
+- The preparation was simplified because its checks added complexity and annotations misdescribed partially extracted content.
+- Original Li artifacts were removed during authorized consolidation and remain recoverable from Git history.
+
+Please update the build plan
+
+**Response:**
+Claude reported updating Phase 3 and retaining the bounded-change specifications/tests, analyzer comparison, metrics table, and judge configuration. It removed the obsolete source-approval clause and recorded the simplification rationale and historical-artifact consolidation. Nothing was committed; the prompt log was untouched by Claude.
+
+During editing, it reported accidentally inserting the draft preamble and dropping promised sections through a heading lookup that matched Phase 0. It said these errors were corrected and headings rechecked, and recommended reviewing the diff. The final prose nevertheless repeats “2 were real,” contradicting its earlier correction that table-header and equation defects were real too. Its historical commit references also need checking: `ce8b452` contains the original pilot, while the revised preparation was committed in `5419446`; `6e6f55a` contains preparation tooling. The reported splice repairs have not been independently verified in this entry.
