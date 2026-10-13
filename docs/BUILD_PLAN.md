@@ -858,7 +858,297 @@ Phase 3 — Evaluation is next.
 
 ## Phase 3 — Evaluation
 
-*To be planned.*
+### Goal
+
+Add automated DeepEval evaluation of `SourceAnalysis` results: faithfulness to
+the source, citation evaluation, and custom research-specific metrics for the
+behaviors named in the README. Phase 3 also prepares and analyzes the 12
+preliminary freshwater sources in `data/phase_3/`, because evaluation needs
+real analyses of real sources to run on.
+
+Phase 3 produces advisory scores, explanations, and per-item verdicts only.
+Phase 4 is where the researcher reviews analyses and evaluation results and
+decides whether they are good enough. Phase 3 adds no human labeling, no gold
+dataset, and no pass/fail, acceptance, or rejection gate. The 12 sources are
+research inputs selected by the project owner, not a labeled benchmark. Each
+analysis remains question-independent: neither the analysis nor any metric
+receives the research question.
+
+### Architectural Decisions
+
+- **Source preparation is a script plus records, not a package.**
+  `scripts/prepare_phase_3_sources.py` reads a hand-confirmed manifest
+  (`data/phase_3/sources.yaml`: one `Provenance` entry per source) and writes,
+  per source, to `outputs/phase_3/prepared/<slug>/`: `source.md` (the text
+  passed to analysis and evaluation), `prep_record.json`, and any rendered
+  figure/table images. Phase 5 will replace this with real ingestion; nothing
+  here defines normalization for it. The manifest's provenance is checked by
+  the project owner before any analysis runs; `retrieved_at` is
+  application-supplied, never inferred by a model.
+
+- **Text extraction: `pymupdf4llm`.** It emits Markdown in reading order,
+  handles multi-column layouts, and extracts tables as Markdown tables.
+  `pymupdf` is AGPL-licensed, acceptable for local research use but recorded
+  here. `docling` (heavier) is the fallback if tables extract badly.
+
+- **Tables and figures that carry evidence are preserved as text, not left
+  as captions.** Preparation is two-step:
+  1. *Free extraction* produces the text plus a candidate list of
+     evidence-bearing visuals: figures, and tables that did not extract
+     cleanly. Each candidate is recorded with page, caption, and a rendered
+     PNG. The project owner reviews this list and may drop decorative ones.
+  2. *Paid transcription* (a vision-capable model, run only after approval)
+     converts each approved visual into text — values, axes, units, series,
+     legend — inserted at its reading-order position inside a clearly
+     delimited block labeled as a pipeline transcription, not source text.
+     Each transcription is recorded in `prep_record.json` and its rendered
+     image is retained so the Phase 4 reviewer can compare the two.
+
+  Consequence, stated plainly: faithfulness and citation metrics grade
+  against the *prepared* text, so a transcription error is invisible to the
+  judge. Items whose evidence falls inside a transcription block are marked
+  in the evaluation record, and the Phase 4 reviewer checks them against the
+  retained images. The transcription vision model is chosen with the judge
+  (see Judge Configuration).
+
+- **IEA is identified as an excerpt without changing `Provenance`.**
+  `is_excerpt` and an excerpt description live in `prep_record.json`, and
+  "(excerpt)" is appended to the manifest `source_title`, which the existing
+  analysis prompt already shows to the model.
+
+- **Size limit is checked on the final prepared text, including inserted
+  transcriptions, against `Settings.max_source_characters` (200,000), before
+  any model call.** No truncation or chunking is added. If a source fails,
+  the project owner chooses between supplying a trimmed excerpt (as with IEA)
+  and raising the setting for that run; nothing is decided in advance.
+  Candidates for failing are the longest reports (Shehabi/LBNL, Compass, CRS).
+
+- **Analyses use the existing pipeline unchanged.** `scripts/run_analyses.py`
+  calls `analyze_source()` per source, saves each `AnalysisResult` to
+  `outputs/phase_3/analyses/<slug>/analysis_result.json`, and runs one pilot
+  source before the rest. Phase 2 outputs stay in `outputs/phase_2/` and
+  `data/phase_2/`; Phase 3 reads and writes only `data/phase_3/` and
+  `outputs/phase_3/`.
+
+- **Evaluation calls `metric.measure()` / `a_measure()` directly, not
+  `evaluate()`; results are advisory.** Verified against DeepEval's
+  documentation and source: `threshold` is `Optional[float]`;
+  `BaseMetric.is_successful()` sets `success = None` when `threshold is None`;
+  and the docs state that such metrics "still compute scores and reasons, but
+  have no pass/fail opinion." The same docs also state that each `evaluate()`
+  run requires at least one non-flaky metric with a threshold, so an
+  all-`None` batch is not a supported use of `evaluate()`. Calling `measure()`
+  avoids that requirement and keeps pass/fail out of the pipeline entirely.
+  Rules:
+  - every built-in and `GEval` metric is constructed with `threshold=None`;
+  - `strict_mode` is never used (it forces `threshold=1`) and `flaky` is not
+    used;
+  - custom `BaseMetric` subclasses set `threshold = None` and inherit the
+    same `is_successful()` behavior;
+  - our result schema has no `success`/`passed` field, and a test asserts
+    that `success` is `None` for every metric and never read;
+  - the DeepEval version is pinned and recorded in each result, because this
+    behavior is documented but version-dependent.
+
+- **Telemetry is disabled.** `DEEPEVAL_TELEMETRY_OPT_OUT=1` is set before
+  `deepeval` is imported (per DeepEval's FAQ) and a test checks it. The
+  local `.deepeval/` directory is git-ignored.
+
+- **Metric classification.** Built in: `FaithfulnessMetric`. Custom, built
+  with DeepEval's extension points: `GEval` for the holistic research
+  metrics; subclassed `BaseMetric` for citation and evidence-mapping, which
+  judge many individual items and need per-item verdicts. DeepEval has no
+  built-in citation or research-specific metric. The README's eight behaviors
+  map as: faithfulness → `faithfulness`; citation faithfulness →
+  `citation_faithfulness`; evidence mapping → `evidence_mapping`; argument
+  reconstruction, assumption discipline, limitation discipline, inference
+  control (including `support_assessment` quality), and research usefulness →
+  one `GEval` each.
+
+- **Judge model: `DeepEvalBaseLLM` wrapper over the existing `ChatOpenAI`
+  setup.** DeepEval's built-in model names are unlikely to include
+  `gpt-6-*`. The wrapper implements `generate`/`a_generate` and must return
+  an instance of the supplied Pydantic `schema` when one is given (DeepEval
+  documents that its structured metrics fail otherwise). The judge is
+  recorded in every result and is separately configurable from the analysis
+  model.
+
+- **Judge configuration: PENDING the project owner's choice.** See Judge
+  Configuration below. No paid call is made until it is chosen.
+
+- **Every metric returns a 0–1 score (or `None` when nothing was
+  applicable), an explanation, and per-item verdicts where it judges items.**
+  A score of `None` is distinct from 0; a judge or parsing error is recorded
+  as an error, never as a score.
+
+### Metrics
+
+Every `LLMTestCase` uses a fixed, neutral `input` string. Source text is
+passed as ordered chunks (faithfulness) or full prepared text (holistic
+checks); the research question never appears.
+
+| Metric | Kind | Receives | Checks | Returns |
+|---|---|---|---|---|
+| `faithfulness` | built-in `FaithfulnessMetric`, `penalize_ambiguous_claims=True` | `actual_output`: the `author_stated` problem, claims, assumptions, limitations, solutions, open questions, methodology, and paraphrased evidence, each labeled with its item ID. `retrieval_context`: source chunks in reading order. | Statements are consistent with, and not beyond, the source. `model_inferred` content and verbatim evidence are excluded (the latter is already mechanically grounded). | One score per source, a reason, and the claim-level verdicts from `metric.verdicts`. |
+| `citation_faithfulness` | custom `BaseMetric` | Each `Citation` with its evidence, claim, and source text around the marker. | Deterministic: marker and reference entry occur in the source. Judged: the marker attaches to this statement, and the reference entry matches the marker. Never checks the cited work itself. | Per-citation verdicts (`attributed` / `misattributed` / `unclear`); score = attributed ÷ judged; `unclear` counted separately; `None` with no citations. |
+| `evidence_mapping` | custom `BaseMetric` | Each evidence item with its claim, form, `relationship_to_claim`, locator, and nearby source passages. | The label is justified: `claim_grounding` means the source states the claim; `direct_support` is not an overstatement of `partial_support`. | Per-item verdicts (`correct` / `overstated` / `wrong` / `unclear`) and a score. |
+| `argument_reconstruction` | `GEval` | Analysis and full source. | Main argument covered and correctly structured; material omissions or distortions. | Score and a reason naming omissions. |
+| `assumption_discipline` | `GEval` | Assumptions, linked claims, source. | Author-stated assumptions are really stated; inferred ones are genuinely implicit, labeled correctly, and tied to a claim. | Score and reason. |
+| `limitation_discipline` | `GEval` | Limitations and source. | Acknowledged limitations captured; inferred ones specific rather than boilerplate; origin labels correct. | Score and reason. |
+| `inference_control` | `GEval` | All `statement_origin` labels; claims with `support_assessment`; source. | Interpretation is not presented as source content; assessments cite passages, say when material is insufficient, and recognize well-supported claims as readily as gaps. | Score and reason. |
+| `research_usefulness` | `GEval` | Analysis and source. | Specific, scoped, and reusable across questions: units, conditions, and quantities preserved. | Score and reason. |
+
+`GEval` metrics use fixed `evaluation_steps` (DeepEval documents `GEval` as
+non-deterministic and recommends explicit steps to reduce variance). The
+current docs name the parameter enum `SingleTurnParams`; the exact member for
+passing source text is confirmed against the installed version, with the
+fallback of placing the source in `input`. Descriptive statistics (claim
+count, assessed-claim count, token usage) are recorded per analysis but are
+not metrics.
+
+### Judge Configuration (PENDING)
+
+Choice pending from the project owner. Options, as framed for that decision:
+
+| Option | Tradeoff |
+|---|---|
+| A. `gpt-6-sol` at `medium` (recommended) | A different model from the analyzer (`gpt-6-astra`), avoiding self-grading. Cost depends on Sol's current rate, which is reported inconsistently. |
+| B. `gpt-6-astra` at `low` | Matches the analyzer; simplest, but a model grading its own output is biased toward agreeing with itself. |
+| C. Tiered | A stronger judge for the five holistic metrics and a cheaper one for per-item verdicts. Lower cost, more configuration and two judges to interpret. |
+
+Cost estimate (approximate; replaced by a character-count dry run before any
+paid call): per source of about 20k tokens, faithfulness reads the source for
+fact extraction and again for verdicts, the five holistic metrics each read
+source plus analysis, and per-item checks add windows around each citation and
+evidence item — roughly 0.5M input and 50k+ output tokens per source before
+hidden reasoning, so about 6M input and 0.6M+ output across 12 sources, and
+2–3× that for the longest reports. Published rates were not verifiable from
+OpenAI's own page when this was written (third-party sources list Astra at
+$10/$50 per million tokens and disagree on Sol), so a dollar figure is not
+stated here; it is filled in from the pricing page when the choice is made.
+Transcription adds a small number of vision calls per source.
+
+### Technologies Introduced
+
+| Tool | Purpose |
+|---|---|
+| `deepeval` (pinned) | `FaithfulnessMetric`, `GEval`, `BaseMetric`, `DeepEvalBaseLLM` |
+| `pymupdf4llm` / `pymupdf` | PDF-to-Markdown extraction, table extraction, figure rendering |
+| `pyyaml` | Reading the source manifest (if not already present) |
+
+At install time: confirm `deepeval` resolves cleanly alongside the pinned
+`openai`/`langchain` packages, and add a mypy `ignore_missing_imports`
+override if it ships no types.
+
+### Module Layout
+
+```
+scripts/
+  prepare_phase_3_sources.py   # extract text; --transcribe for approved visuals
+  run_analyses.py              # analyze_source() over prepared sources
+  run_evaluation.py            # evaluate_analysis() over saved analyses
+
+src/hitl_research_agent/evaluation/
+  schemas.py          # MetricResult, ItemVerdict, EvaluationResult
+  judge.py            # DeepEvalBaseLLM wrapper over ChatOpenAI
+  inputs.py           # analysis -> test-case inputs; ordered source chunking
+  metrics/
+    faithfulness.py
+    citation.py
+    evidence_mapping.py
+    research.py       # the five GEval metrics and their evaluation_steps
+  runner.py           # evaluate_analysis(); calls measure(), never evaluate()
+  storage.py
+
+tests/evaluation/
+data/phase_3/sources.yaml
+outputs/phase_3/{prepared,analyses,evaluations}/<slug>/
+```
+
+`Settings` gains `eval_judge_model`, `eval_judge_reasoning_effort`, and a
+vision-model setting for transcription, all unset until the judge is chosen.
+
+### Retained Results
+
+`outputs/phase_3/evaluations/<slug>/evaluation_result.json` holds: analysis
+and source IDs; the sha256 of `source.md`; judge model and effort; DeepEval
+version; metric configurations; `evaluated_at`; one `MetricResult` per metric
+(score, reason, per-item verdicts referencing claim/evidence IDs); errors; and
+the transcription-block flags. It contains no pass/fail field. Phase 4 reads
+these files; non-passing item verdicts are visible as data, not as flags set
+by an automatic gate.
+
+### Implementation Tasks
+
+1. Add dependencies and the unset `Settings` fields.
+2. Draft `sources.yaml` from each PDF's first page and metadata for the
+   project owner to confirm.
+3. Write the preparation script; run free extraction; review the prep report
+   (character counts, size-limit results, table/figure candidates, IEA excerpt
+   flag) with the project owner.
+4. After approval, run transcription for approved visuals; re-check sizes.
+5. Build `evaluation/` and its offline tests.
+6. Run the pilot source through analysis and evaluation; review before
+   proceeding.
+7. With approval, run the remaining 11 sources.
+8. Update this section's status and the README project status.
+
+### Tests
+
+All offline, using a fake `DeepEvalBaseLLM` that returns canned schema
+instances; no network or API call occurs in the default suite.
+
+- Manifest validation; rejection of an incomplete or timezone-naive entry.
+- Size-limit check on prepared text, including inserted transcription;
+  excerpt flag recorded for IEA.
+- Prepared-text structure on a generated fixture PDF: reading order and a
+  table preserved; transcription block delimited and recorded.
+- Test-case construction: `author_stated` vs `model_inferred` routing, item
+  IDs present, no research-question text, chunks ordered and covering the
+  whole source.
+- Citation and evidence-mapping scoring, including the `None` (no citations)
+  case, `unclear` handling, and per-item verdict plumbing.
+- Judge errors are recorded as errors, never as 0.
+- Advisory-only: every metric has `threshold is None`, `success is None`
+  after `measure()`, `strict_mode` is unused, `evaluate()` is not called, and
+  `EvaluationResult` has no pass/fail field.
+- `EvaluationResult` JSON round-trip; storage paths under `outputs/phase_3/`.
+- Telemetry opt-out is set before `deepeval` import.
+- One live judge smoke test marked `live`, skipped by default.
+
+### Acceptance Criteria
+
+- [ ] Manifest confirmed by the project owner; 12 sources prepared from
+      `data/phase_3/` only; IEA marked as an excerpt in the record and title.
+- [ ] Reading order preserved; tables extracted; each approved
+      evidence-bearing visual transcribed, delimited, and retained with its
+      rendered image.
+- [ ] Every prepared source checked against the size limit before any model
+      call; any failure resolved by the project owner's decision.
+- [ ] 12 analyses produced by the existing pipeline without the research
+      question, saved under `outputs/phase_3/analyses/`.
+- [ ] Faithfulness (built-in), citation, evidence-mapping, and five
+      research-specific metrics run per analysis and saved with scores,
+      explanations, and per-item verdicts.
+- [ ] All metrics advisory: `threshold=None`, no pass/fail field, no gate.
+- [ ] Judge configuration chosen by the project owner and recorded in every
+      result.
+- [ ] Full check suite passes: `pytest`, `ruff check`, `ruff format --check`,
+      `mypy src`.
+- [ ] No human labeling, gold dataset, review workflow, research-store
+      persistence, or ingestion package is implemented.
+
+### Known Limitations
+
+- Judge scores are not validated against human labels, by design; Phase 4
+  review is the check, and explanations and item verdicts exist so it can be
+  audited.
+- Faithfulness claims are extracted by DeepEval and cannot be mapped to item
+  IDs except through the labels placed in the input text.
+- Evaluation measures the prepared text, not the PDF; figure transcriptions
+  are the least-checked part of that text.
+- The 200,000-character limit and the cost estimate are unvalidated until the
+  prep report and pilot run exist.
 
 ## Phase 4 — Human Review
 
