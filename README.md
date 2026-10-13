@@ -121,7 +121,9 @@ Only accepted analyses become part of the research knowledge base.
 
 Development begins with one deliberately narrow question:
 
-> **Why do AI data centers use freshwater, and where is that water actually used?**
+> **Why does AI infrastructure use freshwater, and under what conditions could alternative cooling methods or water supplies—including desalination—reduce pressure on local freshwater resources?**
+
+The investigation will distinguish freshwater, drinking-quality water, and water suitable for a particular process, and examine desalination as a possible supply option without assuming it is the preferred solution.
 
 The small scope provides a real research problem while keeping the initial engineering work manageable.
 
