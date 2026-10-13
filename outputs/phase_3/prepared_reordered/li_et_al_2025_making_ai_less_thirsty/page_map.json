@@ -1,0 +1,44 @@
+[
+  {
+    "pdf_page": 1,
+    "printed_label": "54",
+    "start_offset": 0,
+    "end_offset": 2961
+  },
+  {
+    "pdf_page": 3,
+    "printed_label": "56",
+    "start_offset": 2961,
+    "end_offset": 7535
+  },
+  {
+    "pdf_page": 4,
+    "printed_label": "57",
+    "start_offset": 7535,
+    "end_offset": 12606
+  },
+  {
+    "pdf_page": 5,
+    "printed_label": "58",
+    "start_offset": 12606,
+    "end_offset": 17398
+  },
+  {
+    "pdf_page": 6,
+    "printed_label": "59",
+    "start_offset": 17398,
+    "end_offset": 23309
+  },
+  {
+    "pdf_page": 7,
+    "printed_label": "60",
+    "start_offset": 23309,
+    "end_offset": 28297
+  },
+  {
+    "pdf_page": 8,
+    "printed_label": "61",
+    "start_offset": 28297,
+    "end_offset": 36625
+  }
+]

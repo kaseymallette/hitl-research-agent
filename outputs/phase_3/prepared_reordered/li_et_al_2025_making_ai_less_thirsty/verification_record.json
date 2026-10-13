@@ -1,0 +1,916 @@
+{
+  "bound_to": {
+    "pdf_sha256": "f64c9d0d0fe96817411cbac0fbed1a9167437bbde9f808ff7107ef55ea8856ea",
+    "script_sha256": "715ab20813c2008d74a374998691e55b1b30304e01f4b086f35f3f15d17d6901",
+    "settings_sha256": "b48a727cf702e325fb6c776a50fe7eb12a688f94effe66daa4120c3bceb600c6"
+  },
+  "prepared_text_sha256": "490e79c20ab9650b42be30e5dca2337bb999fb595e6eee1d630ded2d1659060e",
+  "status": "ready_with_unresolved",
+  "status_reasons": [
+    "10 unresolved or unreviewed item(s)"
+  ],
+  "automated_checks": {
+    "page_word_coverage": [
+      {
+        "page": 1,
+        "pdf_words": 454,
+        "coverage_method": "character 5-gram overlap of PDF text layer vs extraction (tolerant of line-end hyphen joins and superscript spacing)",
+        "coverage": 0.9703,
+        "pdf_words_not_found_in_extraction_sample": [
+          "image",
+          "andrij",
+          "borys",
+          "associates",
+          "assistance",
+          "shutterstock"
+        ]
+      },
+      {
+        "page": 2,
+        "pdf_words": 0,
+        "coverage_method": "character 5-gram overlap of PDF text layer vs extraction (tolerant of line-end hyphen joins and superscript spacing)",
+        "coverage": 1.0,
+        "pdf_words_not_found_in_extraction_sample": []
+      },
+      {
+        "page": 3,
+        "pdf_words": 730,
+        "coverage_method": "character 5-gram overlap of PDF text layer vs extraction (tolerant of line-end hyphen joins and superscript spacing)",
+        "coverage": 0.9978,
+        "pdf_words_not_found_in_extraction_sample": []
+      },
+      {
+        "page": 4,
+        "pdf_words": 731,
+        "coverage_method": "character 5-gram overlap of PDF text layer vs extraction (tolerant of line-end hyphen joins and superscript spacing)",
+        "coverage": 0.9969,
+        "pdf_words_not_found_in_extraction_sample": []
+      },
+      {
+        "page": 5,
+        "pdf_words": 716,
+        "coverage_method": "character 5-gram overlap of PDF text layer vs extraction (tolerant of line-end hyphen joins and superscript spacing)",
+        "coverage": 0.9941,
+        "pdf_words_not_found_in_extraction_sample": []
+      },
+      {
+        "page": 6,
+        "pdf_words": 977,
+        "coverage_method": "character 5-gram overlap of PDF text layer vs extraction (tolerant of line-end hyphen joins and superscript spacing)",
+        "coverage": 0.9809,
+        "pdf_words_not_found_in_extraction_sample": []
+      },
+      {
+        "page": 7,
+        "pdf_words": 741,
+        "coverage_method": "character 5-gram overlap of PDF text layer vs extraction (tolerant of line-end hyphen joins and superscript spacing)",
+        "coverage": 0.9971,
+        "pdf_words_not_found_in_extraction_sample": []
+      },
+      {
+        "page": 8,
+        "pdf_words": 1259,
+        "coverage_method": "character 5-gram overlap of PDF text layer vs extraction (tolerant of line-end hyphen joins and superscript spacing)",
+        "coverage": 0.9981,
+        "pdf_words_not_found_in_extraction_sample": []
+      }
+    ],
+    "altered_or_joined_words_not_in_pdf_text_layer": [
+      {
+        "page": 1,
+        "word": "reaching",
+        "pdf_line_break": "reach- / ing",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 1,
+        "word": "warehousescale",
+        "pdf_line_break": "warehouse- / scale",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 3,
+        "word": "substitutable",
+        "pdf_line_break": "substitut- / able",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 3,
+        "word": "benefits",
+        "pdf_line_break": "ben- / efits",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 3,
+        "word": "commitment",
+        "pdf_line_break": "com- / mitment",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 3,
+        "word": "mediumlength",
+        "pdf_line_break": "medium- / length",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 3,
+        "word": "surfacewater",
+        "pdf_line_break": "surface- / water",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 4,
+        "word": "immediate",
+        "pdf_line_break": "im- / mediate",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 4,
+        "word": "liquidcooling",
+        "pdf_line_break": "liquid- / cooling",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 5,
+        "word": "remains",
+        "pdf_line_break": "re- / mains",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 6,
+        "word": "memoryintensive",
+        "pdf_line_break": "memory- / intensive",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 6,
+        "word": "Similar",
+        "pdf_line_break": "Simi- / lar",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 7,
+        "word": "climateconscious",
+        "pdf_line_break": "climate- / conscious",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 8,
+        "word": "corporate",
+        "pdf_line_break": "corpo- / rate",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 8,
+        "word": "spatialtemporal",
+        "pdf_line_break": "spatial- / temporal",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 8,
+        "word": "dynamically",
+        "pdf_line_break": "dy- / namically",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 8,
+        "word": "hightemperature",
+        "pdf_line_break": "high- / temperature",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      },
+      {
+        "page": 8,
+        "word": "watercarbon",
+        "pdf_line_break": "water- / carbon",
+        "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+      }
+    ],
+    "image_and_graphics_counts": [
+      {
+        "page": 1,
+        "embedded_images": 0,
+        "images_not_in_a_picture_box": 0,
+        "vector_drawings": 29
+      },
+      {
+        "page": 2,
+        "embedded_images": 1,
+        "images_not_in_a_picture_box": 1,
+        "vector_drawings": 23
+      },
+      {
+        "page": 3,
+        "embedded_images": 0,
+        "images_not_in_a_picture_box": 0,
+        "vector_drawings": 27
+      },
+      {
+        "page": 4,
+        "embedded_images": 19,
+        "images_not_in_a_picture_box": 0,
+        "vector_drawings": 135
+      },
+      {
+        "page": 5,
+        "embedded_images": 0,
+        "images_not_in_a_picture_box": 0,
+        "vector_drawings": 26
+      },
+      {
+        "page": 6,
+        "embedded_images": 0,
+        "images_not_in_a_picture_box": 0,
+        "vector_drawings": 241
+      },
+      {
+        "page": 7,
+        "embedded_images": 0,
+        "images_not_in_a_picture_box": 0,
+        "vector_drawings": 106
+      },
+      {
+        "page": 8,
+        "embedded_images": 0,
+        "images_not_in_a_picture_box": 0,
+        "vector_drawings": 43
+      }
+    ],
+    "unreadable_pages_ocr_off": [
+      2
+    ],
+    "size": {
+      "characters": 36625,
+      "limit": 200000
+    },
+    "limitations": [
+      "Word coverage compares the extraction with the PDF text layer; it detects dropped or altered words, not wrong ordering.",
+      "Continuity and column-geometry checks flag some reading-order problems; they cannot prove reading order is correct.",
+      "Visual detection uses parser page boxes and embedded-image bounding boxes; it cannot prove every figure, diagram, or equation was found."
+    ]
+  },
+  "items": [
+    {
+      "id": "U1",
+      "category": "visual",
+      "kind": "picture",
+      "page": 1,
+      "label": null,
+      "reason": "picture with no extractable text",
+      "bbox": [
+        300.0,
+        19.0,
+        339.0,
+        63.0
+      ],
+      "image": "images/U1_p01.png",
+      "page_image": "images/pdf_p01_page.png",
+      "detail": {},
+      "review": "decorative_no_content",
+      "review_note": "(carried over from the unreordered preparation, item U1; same page content and image) Leaf icon in the 'sustainability' masthead; no text or data."
+    },
+    {
+      "id": "U2",
+      "category": "image_only_page",
+      "kind": "image_only_page",
+      "page": 2,
+      "label": null,
+      "reason": "embedded image outside any detected picture box; its content is not extracted",
+      "bbox": null,
+      "image": "images/pdf_p02_page.png",
+      "page_image": "images/pdf_p02_page.png",
+      "detail": {},
+      "review": "decorative_no_content",
+      "review_note": "(carried over from the unreordered preparation, item U2; same page content and image) Full-page illustration (data center in front of waterfalls); no text or data. The image credit is printed rotated on page 1 and was not extracted (see notes)."
+    },
+    {
+      "id": "U3",
+      "category": "visual",
+      "kind": "picture",
+      "page": 3,
+      "label": null,
+      "reason": "picture with no extractable text",
+      "bbox": [
+        18.0,
+        114.0,
+        135.0,
+        151.0
+      ],
+      "image": "images/U3_p03.png",
+      "page_image": "images/pdf_p03_page.png",
+      "detail": {},
+      "review": "decorative_no_content",
+      "review_note": "(carried over from the unreordered preparation, item U4; same page content and image) Green decorative rectangles around a pull quote; no content. The pull quote repeats body text and is kept as extracted."
+    },
+    {
+      "id": "U4",
+      "category": "visual",
+      "kind": "picture",
+      "page": 3,
+      "label": null,
+      "reason": "picture with no extractable text",
+      "bbox": [
+        18.0,
+        384.0,
+        135.0,
+        421.0
+      ],
+      "image": "images/U4_p03.png",
+      "page_image": "images/pdf_p03_page.png",
+      "detail": {},
+      "review": "decorative_no_content",
+      "review_note": "(carried over from the unreordered preparation, item U4; same page content and image) Green decorative rectangles around a pull quote; no content. The pull quote repeats body text and is kept as extracted."
+    },
+    {
+      "id": "U5",
+      "category": "visual",
+      "kind": "figure",
+      "page": 4,
+      "label": "Figure 1",
+      "reason": "figure or picture; its content is not extracted",
+      "bbox": [
+        215.0,
+        84.0,
+        550.0,
+        307.0
+      ],
+      "image": "images/U5_p04.png",
+      "page_image": "images/pdf_p04_page.png",
+      "detail": {},
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item U5; same page content and image) Figure 1 is a qualitative water-flow diagram. Its caption was extracted; the diagram's elements and relationships were not, and are not interpreted here."
+    },
+    {
+      "id": "U6",
+      "category": "visual",
+      "kind": "picture",
+      "page": 5,
+      "label": null,
+      "reason": "picture with no extractable text",
+      "bbox": [
+        18.0,
+        114.0,
+        135.0,
+        151.0
+      ],
+      "image": "images/U6_p05.png",
+      "page_image": "images/pdf_p05_page.png",
+      "detail": {},
+      "review": "decorative_no_content",
+      "review_note": "(carried over from the unreordered preparation, item U7; same page content and image) Green decorative rectangles around a pull quote; no content. The pull quote repeats body text and is kept as extracted."
+    },
+    {
+      "id": "U7",
+      "category": "visual",
+      "kind": "picture",
+      "page": 5,
+      "label": null,
+      "reason": "picture with no extractable text",
+      "bbox": [
+        18.0,
+        366.0,
+        135.0,
+        403.0
+      ],
+      "image": "images/U7_p05.png",
+      "page_image": "images/pdf_p05_page.png",
+      "detail": {},
+      "review": "decorative_no_content",
+      "review_note": "(carried over from the unreordered preparation, item U7; same page content and image) Green decorative rectangles around a pull quote; no content. The pull quote repeats body text and is kept as extracted."
+    },
+    {
+      "id": "U8",
+      "category": "visual",
+      "kind": "figure",
+      "page": 7,
+      "label": "Figure 2",
+      "reason": "figure or picture; its content is not extracted",
+      "bbox": [
+        36.0,
+        112.0,
+        543.0,
+        284.0
+      ],
+      "image": "images/U8_p07.png",
+      "page_image": "images/pdf_p07_page.png",
+      "detail": {},
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item U8; same page content and image) Figure 2 holds three charts (a: scatter with six labeled points and a dashed line; b: hourly water and carbon lines for Virginia; c: hourly fuel mix). Only the caption was extracted; plotted values are not recovered or estimated."
+    },
+    {
+      "id": "E1",
+      "category": "equation",
+      "kind": "equation_like_text",
+      "page": 5,
+      "label": null,
+      "reason": "paragraph contains symbols or subscript/superscript runs typical of an equation whose text layer may not be faithful",
+      "bbox": null,
+      "image": "images/pdf_p05_page.png",
+      "page_image": "images/pdf_p05_page.png",
+      "detail": {
+        "paragraph_excerpt": "> **˲ Onsite WUE.** We denote the onsite scope-1 WUE at time _t_ by  ρ _s_ 1, _t_ , which is defined as the ratio of the onsite water consumption to server energy consumption and varies over time depending on the outside temperature (see Is"
+      },
+      "review": "limitation",
+      "review_note": "(carried over from the unreordered preparation, item E1; same page content and image) Inline symbols (rho with subscripts) are extracted with spacing and emphasis marks ('ρ _s_ 1, _t_'); the notation is recognizable but not faithful, and the surrounding prose is intact."
+    },
+    {
+      "id": "E2",
+      "category": "equation",
+      "kind": "equation_like_text",
+      "page": 5,
+      "label": null,
+      "reason": "paragraph contains symbols or subscript/superscript runs typical of an equation whose text layer may not be faithful",
+      "bbox": null,
+      "image": "images/pdf_p05_page.png",
+      "page_image": "images/pdf_p05_page.png",
+      "detail": {
+        "paragraph_excerpt": "> **˲ Offsite WUE.** We denote the off-site scope-2 WUE at time _t_ as ρ _s_ 2, _t_ , which is defined as the ratio of offsite water consumption for each kWh of electricity consumption and measures the electricity water intensity factor (EW"
+      },
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item E2; same page content and image) The weighted-average fraction rho_s2,t = (sum_k b_k,t x EWIF_k)/(sum_k b_k,t) is scrambled in the extracted text; the page image shows a clean fraction."
+    },
+    {
+      "id": "T1",
+      "category": "table",
+      "kind": "table_header_or_alignment",
+      "page": 6,
+      "label": "Table 1",
+      "reason": "header text contains fragments that are not words in the PDF text layer: equest, ning, trai",
+      "bbox": [
+        51.0,
+        90.0,
+        539.0,
+        372.0
+      ],
+      "image": "images/T1_p06.png",
+      "page_image": "images/pdf_p06_page.png",
+      "detail": {},
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item T1; same page content and image) All 18 data rows and 11 columns were read against the table image and match. The two-level header grouping ('Water for Training (million L)', 'Water for Each Request (mL)') is fragmented in the extraction, so which columns belong to which group is not recoverable from the extracted header."
+    },
+    {
+      "id": "E3",
+      "category": "equation",
+      "kind": "equation_like_text",
+      "page": 6,
+      "label": null,
+      "reason": "paragraph contains symbols or subscript/superscript runs typical of an equation whose text layer may not be faithful",
+      "bbox": null,
+      "image": "images/pdf_p06_page.png",
+      "page_image": "images/pdf_p06_page.png",
+      "detail": {
+        "paragraph_excerpt": "and the datacenter hosting the AI model has a power usage effectiveness (PUE) of  θ _t_ that accounts for the non-IT energy overhead. Then, the total operational water footprint of the AI model can be written as _WaterOperational_ =  ∑ _tT_"
+      },
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item E3; same page content and image) The Water-Operational equation is extracted with garbled summation limits and brackets; the page image shows a clean equation."
+    },
+    {
+      "id": "E4",
+      "category": "equation",
+      "kind": "equation_like_text",
+      "page": 6,
+      "label": null,
+      "reason": "paragraph contains symbols or subscript/superscript runs typical of an equation whose text layer may not be faithful",
+      "bbox": null,
+      "image": "images/pdf_p06_page.png",
+      "page_image": "images/pdf_p06_page.png",
+      "detail": {
+        "paragraph_excerpt": "By adding the operational and embodied water footprints, we obtain the total water footprint as _WaterTotal_ =  ∑ _tT_ =1 _et_ ·  [ρ _s_ 1, _t_ +  θ _t_ ·  ρ _s_ 2, _t_ ] +<sup>_T_</sup> _<sup>·</sup> _T_ 0<sup>_W_. In practice, to obtain a"
+      },
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item E4; same page content and image) The Water-Embodied fraction and the Water-Total equation are garbled in the extracted text (stray emphasis marks and displaced superscripts)."
+    },
+    {
+      "id": "E5",
+      "category": "equation",
+      "kind": "equation_like_text",
+      "page": 6,
+      "label": null,
+      "reason": "paragraph contains symbols or subscript/superscript runs typical of an equation whose text layer may not be faithful",
+      "bbox": null,
+      "image": "images/pdf_p06_page.png",
+      "page_image": "images/pdf_p06_page.png",
+      "detail": {
+        "paragraph_excerpt": "_Inference._ As a representative usage scenario for an LLM, we consider a conversation task, which typically includes a CPU-intensive prompt phase that processes user input (also known as prompt) and a memoryintensive token phase that produ"
+      },
+      "review": "confirmed_ok",
+      "review_note": "(carried over from the unreordered preparation, item E5; same page content and image) The symbol hit is a faithful 'less than or equal to 800 words'; the paragraph reads correctly against the image."
+    },
+    {
+      "id": "H1",
+      "category": "hyphenation",
+      "kind": "ambiguous_hyphen_joins",
+      "page": 1,
+      "label": null,
+      "reason": "18 word(s) were joined across an end-of-line hyphen with no corroboration in the PDF; kept as the parser produced them",
+      "bbox": null,
+      "image": "images/pdf_p01_page.png",
+      "page_image": "images/pdf_p01_page.png",
+      "detail": {
+        "words": [
+          {
+            "page": 1,
+            "word": "reaching",
+            "pdf_line_break": "reach- / ing",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 1,
+            "word": "warehousescale",
+            "pdf_line_break": "warehouse- / scale",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 3,
+            "word": "substitutable",
+            "pdf_line_break": "substitut- / able",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 3,
+            "word": "benefits",
+            "pdf_line_break": "ben- / efits",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 3,
+            "word": "commitment",
+            "pdf_line_break": "com- / mitment",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 3,
+            "word": "mediumlength",
+            "pdf_line_break": "medium- / length",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 3,
+            "word": "surfacewater",
+            "pdf_line_break": "surface- / water",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 4,
+            "word": "immediate",
+            "pdf_line_break": "im- / mediate",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 4,
+            "word": "liquidcooling",
+            "pdf_line_break": "liquid- / cooling",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 5,
+            "word": "remains",
+            "pdf_line_break": "re- / mains",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 6,
+            "word": "memoryintensive",
+            "pdf_line_break": "memory- / intensive",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 6,
+            "word": "Similar",
+            "pdf_line_break": "Simi- / lar",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 7,
+            "word": "climateconscious",
+            "pdf_line_break": "climate- / conscious",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 8,
+            "word": "corporate",
+            "pdf_line_break": "corpo- / rate",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 8,
+            "word": "spatialtemporal",
+            "pdf_line_break": "spatial- / temporal",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 8,
+            "word": "dynamically",
+            "pdf_line_break": "dy- / namically",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 8,
+            "word": "hightemperature",
+            "pdf_line_break": "high- / temperature",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          },
+          {
+            "page": 8,
+            "word": "watercarbon",
+            "pdf_line_break": "water- / carbon",
+            "resolution": "ambiguous: the PDF breaks the word at a hyphen and nothing in the document shows whether it is a line-break hyphen or part of a compound; kept as the parser produced it"
+          }
+        ]
+      },
+      "review": "limitation",
+      "review_note": "(carried over from the unreordered preparation, item H1; same page content and image) Words the PDF breaks at an end-of-line hyphen were joined by the parser; some are probably hyphenated compounds (for example warehousescale, mediumlength, surfacewater, liquidcooling, climateconscious, hightemperature, watercarbon, memoryintensive). Left as extracted and listed; not repaired because nothing in the document corroborates either form."
+    },
+    {
+      "id": "C1",
+      "category": "reading_order",
+      "kind": "interrupted_sentence",
+      "page": 1,
+      "label": null,
+      "reason": "text ends mid-sentence before a list",
+      "bbox": null,
+      "image": "images/pdf_p01_page.png",
+      "page_image": "images/pdf_p01_page.png",
+      "detail": {
+        "kind": "interrupted_sentence",
+        "page": 1,
+        "reason": "text ends mid-sentence before a list",
+        "excerpt": ".S. alone will surpass 150–300TWh in 2028.<sup>25</sup> Even"
+      },
+      "review": "confirmed_ok",
+      "review_note": "(carried over from the unreordered preparation, item C1; same page content and image) Page 1 ends 'Even' at the bottom of the right column; the sentence resumes at the top of page 3 after the page-2 illustration. Footnote (a) is printed below the text and appears after it."
+    },
+    {
+      "id": "C2",
+      "category": "reading_order",
+      "kind": "interrupted_sentence",
+      "page": 3,
+      "label": null,
+      "reason": "text ends mid-sentence before a list",
+      "bbox": null,
+      "image": "images/pdf_p03_page.png",
+      "page_image": "images/pdf_p03_page.png",
+      "detail": {
+        "kind": "interrupted_sentence",
+        "page": 3,
+        "reason": "text ends mid-sentence before a list",
+        "excerpt": "ned extended droughts, and quickly aging public water infra-"
+      },
+      "review": "limitation",
+      "review_note": "(carried over from the unreordered preparation, item C2; same page content and image) Footnote (b), printed at the bottom of the middle column, sits between 'infra-' and its continuation 'structure.' at the top of the right column, so the sentence is split by the footnote in extraction order. Text intact."
+    },
+    {
+      "id": "C3",
+      "category": "reading_order",
+      "kind": "interrupted_sentence",
+      "page": 4,
+      "label": null,
+      "reason": "text ends mid-sentence before a caption",
+      "bbox": null,
+      "image": "images/pdf_p04_page.png",
+      "page_image": "images/pdf_p04_page.png",
+      "detail": {
+        "kind": "interrupted_sentence",
+        "page": 4,
+        "reason": "text ends mid-sentence before a caption",
+        "excerpt": "nd water evaporation-assisted air cooling are two common ap-"
+      },
+      "review": "limitation",
+      "review_note": "(carried over from the unreordered preparation, item C3; same page content and image) The Figure 1 caption and annotation fall between 'ap-' and 'proaches' because the figure spans the page above the columns. Text intact; a quotation across that point would not match."
+    },
+    {
+      "id": "C4",
+      "category": "reading_order",
+      "kind": "interrupted_sentence",
+      "page": 4,
+      "label": null,
+      "reason": "text ends mid-sentence before a visual",
+      "bbox": null,
+      "image": "images/pdf_p04_page.png",
+      "page_image": "images/pdf_p04_page.png",
+      "detail": {
+        "kind": "interrupted_sentence",
+        "page": 4,
+        "reason": "text ends mid-sentence before a visual",
+        "excerpt": " consumption compared to water-based cooling methods, poten-"
+      },
+      "review": "confirmed_ok",
+      "review_note": "(carried over from the unreordered preparation, item C6; same page content and image) Sentence continues across a page break and resumes after the caption or decorative block at the top of the next page; text intact."
+    },
+    {
+      "id": "C5",
+      "category": "reading_order",
+      "kind": "interrupted_sentence",
+      "page": 5,
+      "label": null,
+      "reason": "text ends mid-sentence before a caption",
+      "bbox": null,
+      "image": "images/pdf_p05_page.png",
+      "page_image": "images/pdf_p05_page.png",
+      "detail": {
+        "kind": "interrupted_sentence",
+        "page": 5,
+        "reason": "text ends mid-sentence before a caption",
+        "excerpt": " measured using power meters and/or servers' built-in tools,"
+      },
+      "review": "confirmed_ok",
+      "review_note": "(carried over from the unreordered preparation, item C7; same page content and image) Sentence continues across a page break and resumes after the caption or decorative block at the top of the next page; text intact."
+    },
+    {
+      "id": "C6",
+      "category": "reading_order",
+      "kind": "mid_sentence_then_capital",
+      "page": 6,
+      "label": null,
+      "reason": "paragraph ends mid-sentence but the next starts with a capital",
+      "bbox": null,
+      "image": "images/pdf_p06_page.png",
+      "page_image": "images/pdf_p06_page.png",
+      "detail": {
+        "kind": "mid_sentence_then_capital",
+        "page": 6,
+        "reason": "paragraph ends mid-sentence but the next starts with a capital",
+        "excerpt": " =<sup>_T_</sup> _<sup>·</sup><sup>_W_</sup> _T_ 0 || By adding the operational and embodied water footp"
+      },
+      "review": "confirmed_ok",
+      "review_note": "(carried over from the unreordered preparation, item C8; same page content and image) The paragraph ends with an equation (no closing punctuation); order is correct. The equation itself is item E4."
+    },
+    {
+      "id": "C7",
+      "category": "reading_order",
+      "kind": "interrupted_sentence",
+      "page": 6,
+      "label": null,
+      "reason": "text ends mid-sentence before a caption",
+      "bbox": null,
+      "image": "images/pdf_p06_page.png",
+      "page_image": "images/pdf_p06_page.png",
+      "detail": {
+        "kind": "interrupted_sentence",
+        "page": 6,
+        "reason": "text ends mid-sentence before a caption",
+        "excerpt": " provided, the estimate likely considers only the GPU energy"
+      },
+      "review": "confirmed_ok",
+      "review_note": "(carried over from the unreordered preparation, item C9; same page content and image) Sentence continues across a page break and resumes after the caption or decorative block at the top of the next page; text intact."
+    },
+    {
+      "id": "C8",
+      "category": "reading_order",
+      "kind": "interrupted_sentence",
+      "page": 8,
+      "label": null,
+      "reason": "text ends mid-sentence before a list",
+      "bbox": null,
+      "image": "images/pdf_p08_page.png",
+      "page_image": "images/pdf_p08_page.png",
+      "detail": {
+        "kind": "interrupted_sentence",
+        "page": 8,
+        "reason": "text ends mid-sentence before a list",
+        "excerpt": "d Recycling 181_ (2022), 106194;https://tinyurl.com/289qqpu3"
+      },
+      "review": "confirmed_ok",
+      "review_note": "(carried over from the unreordered preparation, item C10; same page content and image) Reference entries end with URLs; the list is in sequential order 1-33."
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "U5",
+      "category": "visual",
+      "kind": "figure",
+      "page": 4,
+      "label": "Figure 1",
+      "reason": "figure or picture; its content is not extracted",
+      "image": "images/U5_p04.png",
+      "page_image": "images/pdf_p04_page.png",
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item U5; same page content and image) Figure 1 is a qualitative water-flow diagram. Its caption was extracted; the diagram's elements and relationships were not, and are not interpreted here."
+    },
+    {
+      "id": "U8",
+      "category": "visual",
+      "kind": "figure",
+      "page": 7,
+      "label": "Figure 2",
+      "reason": "figure or picture; its content is not extracted",
+      "image": "images/U8_p07.png",
+      "page_image": "images/pdf_p07_page.png",
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item U8; same page content and image) Figure 2 holds three charts (a: scatter with six labeled points and a dashed line; b: hourly water and carbon lines for Virginia; c: hourly fuel mix). Only the caption was extracted; plotted values are not recovered or estimated."
+    },
+    {
+      "id": "E1",
+      "category": "equation",
+      "kind": "equation_like_text",
+      "page": 5,
+      "label": null,
+      "reason": "paragraph contains symbols or subscript/superscript runs typical of an equation whose text layer may not be faithful",
+      "image": "images/pdf_p05_page.png",
+      "page_image": "images/pdf_p05_page.png",
+      "review": "limitation",
+      "review_note": "(carried over from the unreordered preparation, item E1; same page content and image) Inline symbols (rho with subscripts) are extracted with spacing and emphasis marks ('ρ _s_ 1, _t_'); the notation is recognizable but not faithful, and the surrounding prose is intact."
+    },
+    {
+      "id": "E2",
+      "category": "equation",
+      "kind": "equation_like_text",
+      "page": 5,
+      "label": null,
+      "reason": "paragraph contains symbols or subscript/superscript runs typical of an equation whose text layer may not be faithful",
+      "image": "images/pdf_p05_page.png",
+      "page_image": "images/pdf_p05_page.png",
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item E2; same page content and image) The weighted-average fraction rho_s2,t = (sum_k b_k,t x EWIF_k)/(sum_k b_k,t) is scrambled in the extracted text; the page image shows a clean fraction."
+    },
+    {
+      "id": "T1",
+      "category": "table",
+      "kind": "table_header_or_alignment",
+      "page": 6,
+      "label": "Table 1",
+      "reason": "header text contains fragments that are not words in the PDF text layer: equest, ning, trai",
+      "image": "images/T1_p06.png",
+      "page_image": "images/pdf_p06_page.png",
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item T1; same page content and image) All 18 data rows and 11 columns were read against the table image and match. The two-level header grouping ('Water for Training (million L)', 'Water for Each Request (mL)') is fragmented in the extraction, so which columns belong to which group is not recoverable from the extracted header."
+    },
+    {
+      "id": "E3",
+      "category": "equation",
+      "kind": "equation_like_text",
+      "page": 6,
+      "label": null,
+      "reason": "paragraph contains symbols or subscript/superscript runs typical of an equation whose text layer may not be faithful",
+      "image": "images/pdf_p06_page.png",
+      "page_image": "images/pdf_p06_page.png",
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item E3; same page content and image) The Water-Operational equation is extracted with garbled summation limits and brackets; the page image shows a clean equation."
+    },
+    {
+      "id": "E4",
+      "category": "equation",
+      "kind": "equation_like_text",
+      "page": 6,
+      "label": null,
+      "reason": "paragraph contains symbols or subscript/superscript runs typical of an equation whose text layer may not be faithful",
+      "image": "images/pdf_p06_page.png",
+      "page_image": "images/pdf_p06_page.png",
+      "review": "confirmed_problem",
+      "review_note": "(carried over from the unreordered preparation, item E4; same page content and image) The Water-Embodied fraction and the Water-Total equation are garbled in the extracted text (stray emphasis marks and displaced superscripts)."
+    },
+    {
+      "id": "H1",
+      "category": "hyphenation",
+      "kind": "ambiguous_hyphen_joins",
+      "page": 1,
+      "label": null,
+      "reason": "18 word(s) were joined across an end-of-line hyphen with no corroboration in the PDF; kept as the parser produced them",
+      "image": "images/pdf_p01_page.png",
+      "page_image": "images/pdf_p01_page.png",
+      "review": "limitation",
+      "review_note": "(carried over from the unreordered preparation, item H1; same page content and image) Words the PDF breaks at an end-of-line hyphen were joined by the parser; some are probably hyphenated compounds (for example warehousescale, mediumlength, surfacewater, liquidcooling, climateconscious, hightemperature, watercarbon, memoryintensive). Left as extracted and listed; not repaired because nothing in the document corroborates either form."
+    },
+    {
+      "id": "C2",
+      "category": "reading_order",
+      "kind": "interrupted_sentence",
+      "page": 3,
+      "label": null,
+      "reason": "text ends mid-sentence before a list",
+      "image": "images/pdf_p03_page.png",
+      "page_image": "images/pdf_p03_page.png",
+      "review": "limitation",
+      "review_note": "(carried over from the unreordered preparation, item C2; same page content and image) Footnote (b), printed at the bottom of the middle column, sits between 'infra-' and its continuation 'structure.' at the top of the right column, so the sentence is split by the footnote in extraction order. Text intact."
+    },
+    {
+      "id": "C3",
+      "category": "reading_order",
+      "kind": "interrupted_sentence",
+      "page": 4,
+      "label": null,
+      "reason": "text ends mid-sentence before a caption",
+      "image": "images/pdf_p04_page.png",
+      "page_image": "images/pdf_p04_page.png",
+      "review": "limitation",
+      "review_note": "(carried over from the unreordered preparation, item C3; same page content and image) The Figure 1 caption and annotation fall between 'ap-' and 'proaches' because the figure spans the page above the columns. Text intact; a quotation across that point would not match."
+    }
+  ],
+  "picture_label_fragments_not_in_analyzer_text": {
+    "U5": "Heat<br>Scope-1 Water Exchanger<br>Cooling<br>Tower<br>Warm<br>Scope-2 Water<br>Water<br>Cooling<br>Chilled<br>Tower<br>Water<br>Power<br>Plant<br>Water ChatGPT AlphaGO<br>Source<br>Data<br>Server Rack CRAH<br>Center<br>",
+    "U8": "3.0 0.40 Coal Oil Hydro<br>16<br>60 Natural Gas Wind Other<br>AKMS 2.7 Nuclear Solar<br>0.35<br>12<br>NWPP 2.4 40<br>8 NYUP 0.30<br>AZNM 2.1 20<br>4 0.25<br>MROE 1.8<br>HIOA 0<br>0 1.5 0.20<br>0.1 0.3 0.5 0.7 0.9 MON TUE WED THU FRI MON TUE WED THU FRI<br>Carbon (kg/kWh)<br>(a) Carbon/water efficiency (b) Hourly carbon/water efficiency (c) Hourly energy fuel mixes<br>Percentage<br>Water (L/kWh) Water (L/kWh)<br>Carbon (kg/kWh)<br>"
+  },
+  "spot_check_reviews_apply_to": "review.json (separate; bound to the same hashes)",
+  "review_metadata": {
+    "reviewed_by": "assistant image spot-check; the project owner may override any finding",
+    "reviewed_at": "2026-10-13T09:21:02.412874+00:00",
+    "notes": [
+      "The rotated image credit on page 1 ('IMAGE BY ANDRIJ BORYS ASSOCIATES WITH ASSISTANCE OF SHUTTERSTOCK.AI') was not extracted; it credits the page-2 illustration.",
+      "Pull quotes on pages 3 and 5 repeat body text and are kept as extracted.",
+      "Automated checks and this spot-check cannot prove complete reading order or visual coverage beyond what was inspected.",
+      "Opt-in geometry reordering (geometry_column_segments_v1) changed only page 4; the four earlier column_interleaving flags and the two mid-sentence/lowercase flags on page 4 no longer occur."
+    ],
+    "method": "Items unchanged by the reordering carry over the earlier image-based judgments (same pages and images). The reordered page 4 was compared with pdf_p04_page.png: middle column = 'proaches...', 'Cooling tower.', 'For cooling towers...'; right column = 'energy: 1L/kWh...', 'Air cooling...', 'Some datacenters...'. The extracted order after the fix matches that."
+  },
+  "approval_required": true,
+  "approval_present": false
+}

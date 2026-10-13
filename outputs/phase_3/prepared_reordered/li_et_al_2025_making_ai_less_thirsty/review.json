@@ -1,0 +1,133 @@
+{
+  "bound_to": {
+    "pdf_sha256": "f64c9d0d0fe96817411cbac0fbed1a9167437bbde9f808ff7107ef55ea8856ea",
+    "script_sha256": "715ab20813c2008d74a374998691e55b1b30304e01f4b086f35f3f15d17d6901",
+    "settings_sha256": "b48a727cf702e325fb6c776a50fe7eb12a688f94effe66daa4120c3bceb600c6"
+  },
+  "reviewed_by": "assistant image spot-check; the project owner may override any finding",
+  "reviewed_at": "2026-10-13T09:21:02.412874+00:00",
+  "method": "Items unchanged by the reordering carry over the earlier image-based judgments (same pages and images). The reordered page 4 was compared with pdf_p04_page.png: middle column = 'proaches...', 'Cooling tower.', 'For cooling towers...'; right column = 'energy: 1L/kWh...', 'Air cooling...', 'Some datacenters...'. The extracted order after the fix matches that.",
+  "notes": [
+    "The rotated image credit on page 1 ('IMAGE BY ANDRIJ BORYS ASSOCIATES WITH ASSISTANCE OF SHUTTERSTOCK.AI') was not extracted; it credits the page-2 illustration.",
+    "Pull quotes on pages 3 and 5 repeat body text and are kept as extracted.",
+    "Automated checks and this spot-check cannot prove complete reading order or visual coverage beyond what was inspected.",
+    "Opt-in geometry reordering (geometry_column_segments_v1) changed only page 4; the four earlier column_interleaving flags and the two mid-sentence/lowercase flags on page 4 no longer occur."
+  ],
+  "reviews": [
+    {
+      "item": "U1",
+      "result": "decorative_no_content",
+      "note": "(carried over from the unreordered preparation, item U1; same page content and image) Leaf icon in the 'sustainability' masthead; no text or data."
+    },
+    {
+      "item": "U2",
+      "result": "decorative_no_content",
+      "note": "(carried over from the unreordered preparation, item U2; same page content and image) Full-page illustration (data center in front of waterfalls); no text or data. The image credit is printed rotated on page 1 and was not extracted (see notes)."
+    },
+    {
+      "item": "U3",
+      "result": "decorative_no_content",
+      "note": "(carried over from the unreordered preparation, item U4; same page content and image) Green decorative rectangles around a pull quote; no content. The pull quote repeats body text and is kept as extracted."
+    },
+    {
+      "item": "U4",
+      "result": "decorative_no_content",
+      "note": "(carried over from the unreordered preparation, item U4; same page content and image) Green decorative rectangles around a pull quote; no content. The pull quote repeats body text and is kept as extracted."
+    },
+    {
+      "item": "U5",
+      "result": "confirmed_problem",
+      "note": "(carried over from the unreordered preparation, item U5; same page content and image) Figure 1 is a qualitative water-flow diagram. Its caption was extracted; the diagram's elements and relationships were not, and are not interpreted here."
+    },
+    {
+      "item": "U6",
+      "result": "decorative_no_content",
+      "note": "(carried over from the unreordered preparation, item U7; same page content and image) Green decorative rectangles around a pull quote; no content. The pull quote repeats body text and is kept as extracted."
+    },
+    {
+      "item": "U7",
+      "result": "decorative_no_content",
+      "note": "(carried over from the unreordered preparation, item U7; same page content and image) Green decorative rectangles around a pull quote; no content. The pull quote repeats body text and is kept as extracted."
+    },
+    {
+      "item": "U8",
+      "result": "confirmed_problem",
+      "note": "(carried over from the unreordered preparation, item U8; same page content and image) Figure 2 holds three charts (a: scatter with six labeled points and a dashed line; b: hourly water and carbon lines for Virginia; c: hourly fuel mix). Only the caption was extracted; plotted values are not recovered or estimated."
+    },
+    {
+      "item": "E1",
+      "result": "limitation",
+      "note": "(carried over from the unreordered preparation, item E1; same page content and image) Inline symbols (rho with subscripts) are extracted with spacing and emphasis marks ('ρ _s_ 1, _t_'); the notation is recognizable but not faithful, and the surrounding prose is intact."
+    },
+    {
+      "item": "E2",
+      "result": "confirmed_problem",
+      "note": "(carried over from the unreordered preparation, item E2; same page content and image) The weighted-average fraction rho_s2,t = (sum_k b_k,t x EWIF_k)/(sum_k b_k,t) is scrambled in the extracted text; the page image shows a clean fraction."
+    },
+    {
+      "item": "T1",
+      "result": "confirmed_problem",
+      "note": "(carried over from the unreordered preparation, item T1; same page content and image) All 18 data rows and 11 columns were read against the table image and match. The two-level header grouping ('Water for Training (million L)', 'Water for Each Request (mL)') is fragmented in the extraction, so which columns belong to which group is not recoverable from the extracted header."
+    },
+    {
+      "item": "E3",
+      "result": "confirmed_problem",
+      "note": "(carried over from the unreordered preparation, item E3; same page content and image) The Water-Operational equation is extracted with garbled summation limits and brackets; the page image shows a clean equation."
+    },
+    {
+      "item": "E4",
+      "result": "confirmed_problem",
+      "note": "(carried over from the unreordered preparation, item E4; same page content and image) The Water-Embodied fraction and the Water-Total equation are garbled in the extracted text (stray emphasis marks and displaced superscripts)."
+    },
+    {
+      "item": "E5",
+      "result": "confirmed_ok",
+      "note": "(carried over from the unreordered preparation, item E5; same page content and image) The symbol hit is a faithful 'less than or equal to 800 words'; the paragraph reads correctly against the image."
+    },
+    {
+      "item": "H1",
+      "result": "limitation",
+      "note": "(carried over from the unreordered preparation, item H1; same page content and image) Words the PDF breaks at an end-of-line hyphen were joined by the parser; some are probably hyphenated compounds (for example warehousescale, mediumlength, surfacewater, liquidcooling, climateconscious, hightemperature, watercarbon, memoryintensive). Left as extracted and listed; not repaired because nothing in the document corroborates either form."
+    },
+    {
+      "item": "C1",
+      "result": "confirmed_ok",
+      "note": "(carried over from the unreordered preparation, item C1; same page content and image) Page 1 ends 'Even' at the bottom of the right column; the sentence resumes at the top of page 3 after the page-2 illustration. Footnote (a) is printed below the text and appears after it."
+    },
+    {
+      "item": "C2",
+      "result": "limitation",
+      "note": "(carried over from the unreordered preparation, item C2; same page content and image) Footnote (b), printed at the bottom of the middle column, sits between 'infra-' and its continuation 'structure.' at the top of the right column, so the sentence is split by the footnote in extraction order. Text intact."
+    },
+    {
+      "item": "C3",
+      "result": "limitation",
+      "note": "(carried over from the unreordered preparation, item C3; same page content and image) The Figure 1 caption and annotation fall between 'ap-' and 'proaches' because the figure spans the page above the columns. Text intact; a quotation across that point would not match."
+    },
+    {
+      "item": "C4",
+      "result": "confirmed_ok",
+      "note": "(carried over from the unreordered preparation, item C6; same page content and image) Sentence continues across a page break and resumes after the caption or decorative block at the top of the next page; text intact."
+    },
+    {
+      "item": "C5",
+      "result": "confirmed_ok",
+      "note": "(carried over from the unreordered preparation, item C7; same page content and image) Sentence continues across a page break and resumes after the caption or decorative block at the top of the next page; text intact."
+    },
+    {
+      "item": "C6",
+      "result": "confirmed_ok",
+      "note": "(carried over from the unreordered preparation, item C8; same page content and image) The paragraph ends with an equation (no closing punctuation); order is correct. The equation itself is item E4."
+    },
+    {
+      "item": "C7",
+      "result": "confirmed_ok",
+      "note": "(carried over from the unreordered preparation, item C9; same page content and image) Sentence continues across a page break and resumes after the caption or decorative block at the top of the next page; text intact."
+    },
+    {
+      "item": "C8",
+      "result": "confirmed_ok",
+      "note": "(carried over from the unreordered preparation, item C10; same page content and image) Reference entries end with URLs; the list is in sequential order 1-33."
+    }
+  ]
+}
