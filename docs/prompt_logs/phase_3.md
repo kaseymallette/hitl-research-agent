@@ -221,3 +221,54 @@ Claude added an opt-in `--reorder-columns` fix and saved a separate preparation 
 Li is now **`ready_with_unresolved`**, with ten unresolved visual, table-header, equation/notation, hyphenation, and sentence-interruption items. No approval record was created, so analysis remains gated. The reorder is off by default and has only been verified on Li page 4. Claude reported 175 passing tests and clean Ruff/mypy checks, with no analysis, paid calls, staging, commits, deletions, default change, or build-plan edit.
 
 For commits, Claude proposed separate documentation, extraction safeguards, preparation tooling/dependencies/tests, failed-run history, and revised-preparation groups. It recommended leaving images, extraction caches, unreordered preparation, and superseded iterations local. The old text contains rejected estimated values and must be identified as diagnostic history, not reusable source input. Commit selection remains the user's decision.
+
+### 12. Question Preparation Complexity and Reassess Unresolved Items
+
+**Prompt:** I don't understand. Because you spent 20 minutes to do the step to write the preparation script. Because you were literally saying there's things that you can't verify and you're making up evidence and it took you eight minutes to read a PDF that then could take you 11 seconds. But then it took you 20 minutes to write code and run tests that I don't understand what it is you're doing.
+
+**Response:**
+Claude acknowledged that the preparation script used heuristics for checks it subsequently performed through image inspection. It reported rechecking Table 1 and argued that generic “content not extracted” annotations misdescribe partially extracted tables and equations. It reclassified the table and four equation flags as false alarms, leaving the two figures as genuine missing content, and described the text as approximately 98% clean.
+
+Claude proposed removing annotations for extracted material, retaining figure annotations, and dropping the blocking status, with no new code. It requested approval; no approval is recorded. Its revised assessment conflicts with the saved review, which explicitly identifies lost table-header grouping and scrambled equations. The new tally also omits the previously unresolved hyphenation and sentence interruptions; decorative visuals had already been cleared. Presence of extracted text and an overall coverage percentage do not establish faithful recovery of those items.
+
+### 13. Question the Size of the Preparation Implementation
+
+**Prompt:** I don't understand. Why are there 1,400 lines? Of, why is there so much code? Why are there so many tests? And then you're like, it's a small fix. What do you mean it's a small fix? You have over-engineered every single aspect of this project. Right? I feel like at some point I'm going to have to start over. Because you have ruined my project. What do you mean it's a small fix?
+
+**Response:**
+Claude acknowledged overbuilding the preparation checks. It reported writing and running a 44-line alternative in roughly 11 seconds: most text and table rows extracted, but page 4's columns still interleaved. It therefore proposed retaining extraction and the working column reorder while removing most audit machinery and leaving figure notes. No simplification approval was recorded.
+
+The repository confirms a 1,473-line preparation script and 600-line test file. Claude's approximate division into extraction, reorder, and unnecessary auditing is its assessment, not a verified accounting. Its claim that only two flags were real still conflicts with saved findings on table headers, equations, hyphenation, and sentence interruptions. The preparation commit contains seven files, including dependencies, fixtures, and provenance; earlier pipeline safeguards are separate changes. At this check, the tracked preparation code remained unchanged. The location and output of the reported small experiment were not established.
+
+### 14. Propose a Concrete Preparation Simplification
+
+**Prompt:** I agree the preparation script needs simplification. Please propose a concrete reduction before changing it: what you'll keep, remove, and why. Keep extraction, the verified column reorder, essential provenance/page records, and accurate notes about remaining gaps.
+
+Don't classify the table headers or equations as faithful merely because their text is present. Reconcile your new assessment with the saved image-review findings.
+
+Identify where the 44-line experiment and its output were saved. Don't implement further changes or make paid calls yet. Keep the response concise.
+
+**Response:**
+Claude corrected its earlier assessment: Table 1's rows are accurate but its header grouping is materially damaged, and E2–E4 are present but unfaithfully rendered. The saved image-review findings stand. The annotation bug is generic wording that treats missing and damaged content alike.
+
+It proposed reducing the preparation script from 1,473 to roughly 300 lines and tests from 600 to roughly 180. Extraction, column reordering, provenance/hashes, page mapping/images, and corrected annotations would remain. Coverage, continuity, geometry, hyphenation, and decorative-image heuristics would be removed, along with preparation statuses, approval gates, archives, and review-record handling. It also proposed making reordering the default and substituting fixed extraction-limit statements for detection.
+
+These are proposals, not approved changes. Removing preparation gates/review findings or making the Li-only verified reorder universal would change prior decisions; blanket limitation statements would not establish each item's extraction quality. Claude located the 44-line experiment and output in its temporary scratchpad outside the repository and reported no further changes or calls. Implementation remains pending.
+
+### 15. Authorize the Preparation Reduction
+
+**Prompt:** Go ahead with the reduction, including making reorder the default.
+
+**Response:**
+Claude reduced the preparation script from 1,473 to 757 lines and its test file from 600 to 382. Reordering is now the default. It removed heuristic coverage/continuity/geometry checks, decorative detection, preparation statuses and approval gates, review/archive handling, and extraction caching. Extraction, conservative cleanup, page mapping, provenance, hashes, and timing remain. Claude reported passing tests, Ruff, and mypy checks.
+
+The new Li preparation has eight annotations distinguishing unrecovered figure content, damaged table-header grouping, and potentially unfaithful equation symbols. Image checks confirmed page 4's order and all 18 table rows. Removing the clearing workflow reintroduced a warning for the previously verified `≤800 words` notation; Claude identified this as a tradeoff.
+
+The new output exists only in Claude's scratchpad. Existing repository preparation trees and historical review records were left untouched because consolidating them would require overwriting or deletion. **Pending decision:** where to save the reduced workflow's output and whether to consolidate old artifacts. No consolidation was performed.
+
+### 16. Explain the Missed Reduction Estimate
+
+**Prompt:** I thought you said 300 something lines. Why is it 700+ lines?
+
+**Response:**
+Claude acknowledged guessing the 300-line target without calculating it: its proposed removals totaled about 480 lines, which would have left 993, not 300. It ultimately removed 716 lines. It attributed the remaining code to extraction, assembly, output records, cleanup, configuration, and CLI handling.
