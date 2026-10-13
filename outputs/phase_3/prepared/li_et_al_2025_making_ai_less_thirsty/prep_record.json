@@ -3,8 +3,8 @@
   "source_pdf": "data/phase_3/li_et_al_2025_making_ai_less_thirsty.pdf",
   "pdf_sha256": "f64c9d0d0fe96817411cbac0fbed1a9167437bbde9f808ff7107ef55ea8856ea",
   "prepared_text": "prepared_text.md",
-  "prepared_text_sha256": "b12ab0301e07ebabcc6d44e4a1891cef4601c1bdb565e5ad72c996ecfdff6c7f",
-  "prepared_text_characters": 37041,
+  "prepared_text_sha256": "bd20ce8b4e562ac8ef23ef0845fd6055b12e0ef541a59ea289214e0d15fb6b8f",
+  "prepared_text_characters": 37068,
   "max_source_characters": 200000,
   "within_size_limit": true,
   "is_excerpt": false,
@@ -25,11 +25,11 @@
     "reorder_columns": "geometry_column_segments_v1"
   },
   "settings_sha256": "b48a727cf702e325fb6c776a50fe7eb12a688f94effe66daa4120c3bceb600c6",
-  "script_sha256": "76ece5fefa39bddb8ed875271224dd3930ef8e1d720b04483dc288c0a757e981",
+  "script_sha256": "d408595f2a47df15f83b75530fd1f2e9e2993e29578127c30787363a6930bd48",
   "pages": 8,
   "timing": {
-    "started_at_utc": "2026-10-13T10:10:59.664599+00:00",
-    "elapsed_seconds": 9.63,
+    "started_at_utc": "2026-10-13T10:21:43.684496+00:00",
+    "elapsed_seconds": 8.22,
     "measured": "wall clock of extraction, assembly and record writing",
     "model_calls": 0,
     "usage": "no model usage: local extraction only"
@@ -102,7 +102,7 @@
     {
       "id": "U1",
       "start_offset": 9863,
-      "end_offset": 9984,
+      "end_offset": 9988,
       "kind": "figure",
       "page": 4,
       "label": "Figure 1",
@@ -110,26 +110,26 @@
     },
     {
       "id": "E1",
-      "start_offset": 15978,
-      "end_offset": 16141,
+      "start_offset": 15982,
+      "end_offset": 16148,
       "kind": "equation",
       "page": 5,
       "label": null,
-      "image": "images/page_05.png"
+      "image": "images/E1_p05.png"
     },
     {
       "id": "E2",
-      "start_offset": 17320,
-      "end_offset": 17483,
+      "start_offset": 17327,
+      "end_offset": 17493,
       "kind": "equation",
       "page": 5,
       "label": null,
-      "image": "images/page_05.png"
+      "image": "images/E2_p05.png"
     },
     {
       "id": "T1",
-      "start_offset": 19605,
-      "end_offset": 19818,
+      "start_offset": 19615,
+      "end_offset": 19832,
       "kind": "table",
       "page": 6,
       "label": "Table 1",
@@ -137,35 +137,35 @@
     },
     {
       "id": "E3",
-      "start_offset": 20116,
-      "end_offset": 20279,
+      "start_offset": 20130,
+      "end_offset": 20296,
       "kind": "equation",
       "page": 6,
       "label": null,
-      "image": "images/page_06.png"
+      "image": "images/E3_p06.png"
     },
     {
       "id": "E4",
-      "start_offset": 21110,
-      "end_offset": 21273,
+      "start_offset": 21127,
+      "end_offset": 21293,
       "kind": "equation",
       "page": 6,
       "label": null,
-      "image": "images/page_06.png"
+      "image": "images/E4_p06.png"
     },
     {
       "id": "E5",
-      "start_offset": 23557,
-      "end_offset": 23720,
+      "start_offset": 23577,
+      "end_offset": 23743,
       "kind": "equation",
       "page": 6,
       "label": null,
-      "image": "images/page_06.png"
+      "image": "images/E5_p06.png"
     },
     {
       "id": "U2",
-      "start_offset": 24514,
-      "end_offset": 24635,
+      "start_offset": 24537,
+      "end_offset": 24662,
       "kind": "figure",
       "page": 7,
       "label": "Figure 2",
@@ -174,20 +174,20 @@
   ],
   "pages_without_text_layer_ocr_off": [],
   "preparation_limits": [
-    "Figures and diagrams are not transcribed or interpreted. A page image is retained for every page, so any figure can be checked by eye.",
+    "Figures and diagrams are not transcribed or interpreted. Each one is cropped and retained, and any whole page can be rendered from the PDF with the `page` command.",
     "Equations appear only as the PDF's raw text layer, which is frequently not faithful.",
     "Multi-level table headers lose their grouping; the data rows are extracted as-is.",
     "Reading order is corrected only where block geometry shows a column jump. It is not proven correct anywhere.",
-    "An uncaptioned figure produces no annotation; only the page image shows it."
+    "An uncaptioned figure produces no annotation and no crop; it is visible only by rendering its page."
   ],
-  "page_images": [
-    "page_01.png",
-    "page_02.png",
-    "page_03.png",
-    "page_04.png",
-    "page_05.png",
-    "page_06.png",
-    "page_07.png",
-    "page_08.png"
+  "retained_images": [
+    "E1_p05.png",
+    "E2_p05.png",
+    "E3_p06.png",
+    "E4_p06.png",
+    "E5_p06.png",
+    "T1_p06.png",
+    "U1_p04.png",
+    "U2_p07.png"
   ]
 }

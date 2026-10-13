@@ -272,3 +272,37 @@ The new output exists only in Claude's scratchpad. Existing repository preparati
 
 **Response:**
 Claude acknowledged guessing the 300-line target without calculating it: its proposed removals totaled about 480 lines, which would have left 993, not 300. It ultimately removed 716 lines. It attributed the remaining code to extraction, assembly, output records, cleanup, configuration, and CLI handling.
+
+### 17. Regenerate Li and Consolidate Outputs
+
+**Prompt:** I committed the code. I just want the regenerated Li in the outputs. I don't need the three folders, just the new one
+
+**Response:**
+Claude regenerated Li into one folder, `outputs/phase_3/prepared/li_et_al_2025_making_ai_less_thirsty/`, and removed the local Git exclusion that prevented tracking it. It contains prepared text (37,041 characters), an eight-page map with printed labels, provenance, a preparation record, eight page images, and three figure/table crops. Claude reported checking page 4's corrected order and all 18 Table 1 rows against images. Eight annotations remain: two figures, one multi-level table header, and five equation items.
+
+Previous output folders were deleted, with tracked versions recoverable from Git history. Claude left the new output and deletions uncommitted; the user subsequently reported committing them. This regenerated the source preparation; no new model analysis or paid call was reported.
+
+### 18. Explain Page 2's Missing Text Mapping
+
+**Prompt:** I committed that thanks. I did notice one concrete issue: page_map.json has entries for PDF pages 1 and 3 through 8, but no entry for page 2. The image for page 2 exists. That gap is worth distinguishing from a genuinely missing page, because I haven't established why it has no text mapping.
+
+**Response:**
+Claude traced the gap to page 2's full-page illustration: its only text was a recurring masthead and footer, both removed by cleanup. With no remaining text blocks, assembly omitted the page-map entry; the retained page image and printed label 55 corroborate that the page exists.
+
+It proposed mapping every PDF page, using null text offsets, `mapped_text: false`, and an explicit reason for pages with no prepared text. It separately noted that the captionless illustration receives no analyzer annotation under the reduced workflow. **Pending decision:** authorize the page-map fix; illustration handling remains a separate question. No fix was reported as implemented.
+
+### 19. Include No-Text Pages in the Page Map
+
+**Prompt:** Yes, please fix the page_map
+
+**Response:**
+Claude fixed the page map and regenerated Li. All eight PDF pages are now represented, with printed labels 54–61. Page 2 explicitly records no mapped text, null offsets, a cleanup/image-only explanation, and a retained image; text offsets remain contiguous between pages 1 and 3. It added an image-only-page regression test and reported 165 passing tests with clean lint, formatting, and mypy checks. Captionless illustrations still receive no analyzer annotation; that separate behavior was unchanged.
+
+### 20. Keep Element Crops and Render Full Pages on Demand
+
+**Prompt:** Keep only necessary crops: Preserve figures, tables, and other difficult-to-extract elements. Generate full-page images from the original PDF only when someone needs to inspect them.
+
+**Response:**
+Claude replaced stored full-page images with crops for two figures, Table 1, and five equation paragraphs, totaling about 888 KB. It added a `page` CLI command to render a requested PDF page on demand and updated page-map wording accordingly. The script now has 793 lines; Claude reported 166 passing tests and clean lint, formatting, and mypy checks.
+
+Page 2's captionless illustration has no stored crop or analyzer annotation, but remains accessible through the original PDF and on-demand rendering. Claude left automatic handling of large uncaptioned images unchanged, pending a separate decision. Earlier review identified this particular illustration as decorative.

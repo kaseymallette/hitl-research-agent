@@ -101,6 +101,7 @@ def test_page_locators_are_in_a_separate_mapping_not_the_text(
     page_map = json.loads((prepared_fixture["dir"] / "page_map.json").read_text())
     assert "[PDF page" not in text
     assert [p["pdf_page"] for p in page_map] == [1, 2]
+    assert all(p["mapped_text"] is True for p in page_map)
     assert page_map[0]["start_offset"] == 0
     assert page_map[0]["end_offset"] == page_map[1]["start_offset"] <= len(text)
     assert page_map[1]["end_offset"] == len(text)
@@ -130,11 +131,14 @@ def test_records_include_tool_version_hashes_and_measured_time(
     assert record["preparation_limits"]  # the gaps this method always leaves are stated
 
 
-def test_a_page_image_is_retained_for_every_page(prepared_fixture: dict[str, Any]) -> None:
+def test_only_hard_to_extract_elements_are_cropped_and_kept(
+    prepared_fixture: dict[str, Any],
+) -> None:
+    """Plain prose pages leave no images behind; whole pages are rendered on demand."""
     record = json.loads((prepared_fixture["dir"] / "prep_record.json").read_text())
-    assert record["page_images"] == ["page_01.png", "page_02.png"]
-    for name in record["page_images"]:
-        assert (prepared_fixture["dir"] / "images" / name).exists()
+    assert record["retained_images"] == []  # this fixture is prose only
+    assert record["annotations"] == []
+    assert list((prepared_fixture["dir"] / "images").glob("*.png")) == []
 
 
 def test_original_pdf_is_untouched(prepared_fixture: dict[str, Any], prep: ModuleType) -> None:
@@ -166,6 +170,23 @@ def test_page_without_a_text_layer_is_recorded_not_ocred(prep: ModuleType, tmp_p
     assert summary["pages_without_text_layer"] == [2]
     assert record["parser_settings"]["use_ocr"] is False
     assert "Scanned words" not in (tmp_path / "out" / "scan" / "prepared_text.md").read_text()
+
+
+def test_a_page_that_contributed_no_text_is_mapped_and_explained(
+    prep: ModuleType, tmp_path: Path
+) -> None:
+    """A quiet page must be distinguishable from a page that went missing."""
+    pdf = tmp_path / "scan.pdf"
+    make_image_only_pdf(pdf)
+    prep.prepare_source(entry(prep, pdf, slug="scan"), tmp_path / "out", max_characters=10**6)
+    page_map = json.loads((tmp_path / "out" / "scan" / "page_map.json").read_text())
+    assert [p["pdf_page"] for p in page_map] == [1, 2]  # every PDF page has an entry
+    quiet = page_map[1]
+    assert quiet["mapped_text"] is False
+    assert quiet["start_offset"] is None and quiet["end_offset"] is None
+    assert "contributed no text" in quiet["why"]
+    assert "`page` command" in quiet["why"]  # it says how to go and look
+    assert not (tmp_path / "out" / "scan" / "images" / "page_02.png").exists()
 
 
 # --- what this method cannot represent ----------------------------------------------------------
@@ -371,6 +392,18 @@ def test_real_manifest_loads_and_keeps_unknown_fields_unset(prep: ModuleType) ->
     assert li.retrieved_at.utcoffset() is not None
 
 
+def test_page_command_renders_one_page_on_demand(prep: ModuleType, tmp_path: Path) -> None:
+    pdf = tmp_path / "f.pdf"
+    make_text_pdf(pdf, PAGES)
+    e = entry(prep, pdf)
+    prep.prepare_source(e, tmp_path / "out", max_characters=10**6)
+    assert list((tmp_path / "out" / "fixture" / "images").glob("*.png")) == []
+    path = prep.render_page(e, tmp_path / "out", 2)
+    assert path.name == "page_02.png" and path.exists()
+    with pytest.raises(ValueError, match="outside"):
+        prep.render_page(e, tmp_path / "out", 99)
+
+
 def test_cli_prepares_one_slug(
     prep: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -380,3 +413,7 @@ def test_cli_prepares_one_slug(
     assert prep.main(["prepare", "--slug", "fixture", "--output-root", str(tmp_path)]) == 0
     assert (tmp_path / "fixture" / "prepared_text.md").exists()
     assert prep.main(["prepare", "--slug", "nope", "--output-root", str(tmp_path)]) == 2
+    assert (
+        prep.main(["page", "--slug", "fixture", "--output-root", str(tmp_path), "--page", "1"]) == 0
+    )
+    assert (tmp_path / "fixture" / "images" / "page_01.png").exists()

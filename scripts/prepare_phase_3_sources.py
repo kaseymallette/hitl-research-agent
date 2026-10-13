@@ -3,6 +3,7 @@
 One process for every PDF (no per-source code, no tool switching):
 
     python scripts/prepare_phase_3_sources.py prepare --slug SLUG
+    python scripts/prepare_phase_3_sources.py page    --slug SLUG --page N
 
 What it does:
 
@@ -76,27 +77,33 @@ MARGIN_BOTTOM_FRACTION = 0.95
 
 # The three things this extraction method cannot represent. Stated unconditionally, not
 # detected: no heuristic decides whether a given figure or equation "came out well."
-NOTE_FIGURE = "content not extracted; see the page image"
+NOTE_FIGURE = "content not extracted; see the retained image"
 NOTE_EQUATION = (
     "the symbols above are the raw text layer and may not be faithfully rendered; "
-    "see the page image"
+    "see the retained image"
 )
 NOTE_TABLE_MULTILEVEL = (
     "data rows extracted above; the grouping of the multi-level column header is not "
-    "recoverable from the extracted text; see the page image"
+    "recoverable from the extracted text; see the retained image"
 )
-NOTE_TABLE = "verify the column headers against the page image"
+NOTE_TABLE = "verify the column headers against the retained image"
+
+NO_MAPPED_TEXT = (
+    "this page contributed no text: it held only an image, a header or footer, or a "
+    "recurring margin line (see removed_lines). Render it with the `page` command to look."
+)
 
 _EQUATION_HINT = re.compile(r"[∑∫√∏⋯±≈≤≥∂Ͱ-Ͽ]|<sup>[A-Za-z][A-Za-z ]{3,}</sup>")
 
 PREPARATION_LIMITS = [
-    "Figures and diagrams are not transcribed or interpreted. A page image is retained "
-    "for every page, so any figure can be checked by eye.",
+    "Figures and diagrams are not transcribed or interpreted. Each one is cropped and "
+    "retained, and any whole page can be rendered from the PDF with the `page` command.",
     "Equations appear only as the PDF's raw text layer, which is frequently not faithful.",
     "Multi-level table headers lose their grouping; the data rows are extracted as-is.",
     "Reading order is corrected only where block geometry shows a column jump. It is not "
     "proven correct anywhere.",
-    "An uncaptioned figure produces no annotation; only the page image shows it.",
+    "An uncaptioned figure produces no annotation and no crop; it is visible only by "
+    "rendering its page.",
 ]
 
 
@@ -447,20 +454,20 @@ def extract_pdf(pdf: Path, image_dir: Path) -> Extraction:
             )
         elif block.kind in ("text", "list") and _EQUATION_HINT.search(block.text):
             block.item_id = new_id("E")
-            items.append(Item(block.item_id, "equation", block.page, NOTE_EQUATION))
+            items.append(
+                Item(block.item_id, "equation", block.page, NOTE_EQUATION, bbox=block.bbox)
+            )
 
-    for n in range(1, len(doc) + 1):
-        doc[n - 1].get_pixmap(dpi=PARSER_SETTINGS["page_image_dpi"]).save(
-            image_dir / f"page_{n:02d}.png"
-        )
+    # Only the elements this method cannot represent are cropped and kept. A whole page is
+    # rendered from the PDF on demand (the `page` command), never stored speculatively.
     for item in items:
-        item.image = f"images/page_{item.page:02d}.png"
-        if item.bbox:
-            path = image_dir / f"{item.item_id}_p{item.page:02d}.png"
-            doc[item.page - 1].get_pixmap(
-                dpi=PARSER_SETTINGS["crop_image_dpi"], clip=pymupdf.Rect(*item.bbox)
-            ).save(path)
-            item.image = f"images/{path.name}"
+        if not item.bbox:
+            continue
+        path = image_dir / f"{item.item_id}_p{item.page:02d}.png"
+        doc[item.page - 1].get_pixmap(
+            dpi=PARSER_SETTINGS["crop_image_dpi"], clip=pymupdf.Rect(*item.bbox)
+        ).save(path)
+        item.image = f"images/{path.name}"
 
     return Extraction(
         pages=len(doc),
@@ -597,16 +604,26 @@ def assemble(extraction: Extraction) -> Prepared:
         text += para["text"] + "\n\n"
     text = text.rstrip() + "\n"
 
+    # Every PDF page gets an entry. A page that contributed no text says so, so that a
+    # missing entry always means something went wrong rather than "this page was quiet".
     ordered = sorted(page_starts.items())
-    page_map = [
-        {
+    spans = {
+        page: (start, ordered[i + 1][1] if i + 1 < len(ordered) else len(text))
+        for i, (page, start) in enumerate(ordered)
+    }
+    page_map: list[dict[str, Any]] = []
+    for page in range(1, extraction.pages + 1):
+        span = spans.get(page)
+        entry: dict[str, Any] = {
             "pdf_page": page,
             "printed_label": extraction.printed_labels.get(page),
-            "start_offset": start,
-            "end_offset": ordered[i + 1][1] if i + 1 < len(ordered) else len(text),
+            "mapped_text": span is not None,
+            "start_offset": span[0] if span else None,
+            "end_offset": span[1] if span else None,
         }
-        for i, (page, start) in enumerate(ordered)
-    ]
+        if span is None:
+            entry["why"] = NO_MAPPED_TEXT
+        page_map.append(entry)
     annotations = [
         {
             "id": span.annotation_id,
@@ -705,7 +722,7 @@ def prepare_source(
         "annotations": prepared.annotations,
         "pages_without_text_layer_ocr_off": extraction.pages_without_text,
         "preparation_limits": PREPARATION_LIMITS,
-        "page_images": sorted(p.name for p in (out / "images").glob("page_*.png")),
+        "retained_images": sorted(p.name for p in (out / "images").glob("*.png")),
     }
     _write_json(out / "prep_record.json", record)
     return {
@@ -721,6 +738,19 @@ def prepare_source(
     }
 
 
+def render_page(entry: ManifestEntry, output_root: Path, page_no: int) -> Path:
+    """Render one whole page from the original PDF, for a human who needs to look."""
+    pdf = (REPO_ROOT / entry.pdf) if not Path(entry.pdf).is_absolute() else Path(entry.pdf)
+    doc = pymupdf.open(pdf)
+    if not 1 <= page_no <= len(doc):
+        raise ValueError(f"page {page_no} is outside this {len(doc)}-page PDF")
+    out = output_root / entry.slug / "images"
+    out.mkdir(parents=True, exist_ok=True)
+    path = out / f"page_{page_no:02d}.png"
+    doc[page_no - 1].get_pixmap(dpi=PARSER_SETTINGS["page_image_dpi"]).save(path)
+    return path
+
+
 # --------------------------------------------------------------------------- CLI
 
 
@@ -729,16 +759,22 @@ def main(argv: list[str] | None = None) -> int:
         description=__doc__, formatter_class=argparse.RawTextHelpFormatter
     )
     sub = parser.add_subparsers(dest="command", required=True)
-    p = sub.add_parser("prepare")
-    p.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
-    p.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
-    p.add_argument("--slug", required=True)
+    for name in ("prepare", "page"):
+        p = sub.add_parser(name)
+        p.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
+        p.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
+        p.add_argument("--slug", required=True)
+        if name == "page":
+            p.add_argument("--page", type=int, required=True, help="PDF page number to render")
     args = parser.parse_args(argv)
 
     entries = {e.slug: e for e in load_manifest(args.manifest)}
     if args.slug not in entries:
         print(f"unknown slug {args.slug!r}", file=sys.stderr)
         return 2
+    if args.command == "page":
+        print(render_page(entries[args.slug], args.output_root, args.page))
+        return 0
     summary = prepare_source(
         entries[args.slug], args.output_root, max_characters=Settings().max_source_characters
     )

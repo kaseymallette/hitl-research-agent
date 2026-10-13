@@ -2,43 +2,58 @@
   {
     "pdf_page": 1,
     "printed_label": "54",
+    "mapped_text": true,
     "start_offset": 0,
     "end_offset": 2961
   },
   {
+    "pdf_page": 2,
+    "printed_label": "55",
+    "mapped_text": false,
+    "start_offset": null,
+    "end_offset": null,
+    "why": "this page contributed no text: it held only an image, a header or footer, or a recurring margin line (see removed_lines). Render it with the `page` command to look."
+  },
+  {
     "pdf_page": 3,
     "printed_label": "56",
+    "mapped_text": true,
     "start_offset": 2961,
     "end_offset": 7535
   },
   {
     "pdf_page": 4,
     "printed_label": "57",
+    "mapped_text": true,
     "start_offset": 7535,
-    "end_offset": 12609
+    "end_offset": 12613
   },
   {
     "pdf_page": 5,
     "printed_label": "58",
-    "start_offset": 12609,
-    "end_offset": 17485
+    "mapped_text": true,
+    "start_offset": 12613,
+    "end_offset": 17495
   },
   {
     "pdf_page": 6,
     "printed_label": "59",
-    "start_offset": 17485,
-    "end_offset": 23722
+    "mapped_text": true,
+    "start_offset": 17495,
+    "end_offset": 23745
   },
   {
     "pdf_page": 7,
     "printed_label": "60",
-    "start_offset": 23722,
-    "end_offset": 28713
+    "mapped_text": true,
+    "start_offset": 23745,
+    "end_offset": 28740
   },
   {
     "pdf_page": 8,
     "printed_label": "61",
-    "start_offset": 28713,
-    "end_offset": 37041
+    "mapped_text": true,
+    "start_offset": 28740,
+    "end_offset": 37068
   }
 ]

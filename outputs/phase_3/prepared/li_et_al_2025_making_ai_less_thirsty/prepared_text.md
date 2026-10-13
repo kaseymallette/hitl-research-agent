@@ -54,7 +54,7 @@ In the facility-level cooling stage, heat is rejected from the datacenter facili
 
 **Figure 1. Example of a datacenter’s operational water usage: onsite scope-1 water usage for datacenter cooling (via cooling towers in the example), and offsite scope-2 water usage for electricity generation. The icons for AI models are only for illustration purposes.**
 
-⟦PREP-ANNOTATION U1 kind=figure page=4 label=Figure 1 image=images/U1_p04.png: content not extracted; see the page image⟧
+⟦PREP-ANNOTATION U1 kind=figure page=4 label=Figure 1 image=images/U1_p04.png: content not extracted; see the retained image⟧
 
 proaches used in many datacenters, including those operated by major technology companies.<sup>9,25</sup>
 
@@ -84,11 +84,11 @@ It is important to recognize that unlike agriculture, whose water footprint is m
 
 > **˲ Onsite WUE.** We denote the onsite scope-1 WUE at time _t_ by  ρ _s_ 1, _t_ , which is defined as the ratio of the onsite water consumption to server energy consumption and varies over time depending on the outside temperature (see Islam et al.<sup>10</sup> for an example of onsite WUE based on cooling towers). Concretely,  ρ _s_ 1, _t_ increases significantly for cooling towers when the outside wet bulb temperature increases, and increases for outside air cooling when the outside dry bulb temperature is too hot or the humidity is too low.
 
-⟦PREP-ANNOTATION E1 kind=equation page=5 image=images/page_05.png: the symbols above are the raw text layer and may not be faithfully rendered; see the page image⟧
+⟦PREP-ANNOTATION E1 kind=equation page=5 image=images/E1_p05.png: the symbols above are the raw text layer and may not be faithfully rendered; see the retained image⟧
 
 > **˲ Offsite WUE.** We denote the off-site scope-2 WUE at time _t_ as ρ _s_ 2, _t_ , which is defined as the ratio of offsite water consumption for each kWh of electricity consumption and measures the electricity water intensity factor (EWIF). While there are different methods to estimate  ρ _s_ 2, _t_ , a common one is weighted averaging: ρ _s_ 2, _t_ = ∑ k bk_ ∑, _t_ × _kbEWIk_ , _t Fk_<sup>where</sup><sup>_b_</sup> _k_ , _t_<sup>denotes the</sup> amount of electricity generated from fuel type _k_ at time _t_ for the grid serving the datacenter under consideration, and _EWI Fk_ is the EWIF for fuel type _k_ .<sup>1,8</sup> Thus, variations in energy fuel mixes of electricity generation result in temporal variations of the offsite WUE. Moreover, the offsite WUE also varies across regions due to different energy fuel mixes.<sup>23,25</sup> **˲ Operational water footprint.** Consider a time-slotted model _t_ = 1, 2, ⋯ , _T_ , where the length of each time slot depends on how frequently we want to assess the operational water footprint. At time _t_ , suppose an AI model uses energy _et_ which can be measured using power meters and/or servers' built-in tools,
 
-⟦PREP-ANNOTATION E2 kind=equation page=5 image=images/page_05.png: the symbols above are the raw text layer and may not be faithfully rendered; see the page image⟧
+⟦PREP-ANNOTATION E2 kind=equation page=5 image=images/E2_p05.png: the symbols above are the raw text layer and may not be faithfully rendered; see the retained image⟧
 
 **Table 1. Estimate of GPT-3’s operational water consumption footprint. “*” denotes datacenters under construction as of July 2023, whose PUE and WUE are projected by Microsoft.**
 
@@ -114,17 +114,17 @@ It is important to recognize that unlike agriculture, whose water footprint is m
 |Netherlands|1.140|0.060|3.445|0.077|5.054|**5.131**|0.240|15.708|**15.948**|**31.4**|
 |Sweden|1.160|0.090|6.019|0.116|8.986|**9.101**|0.360|27.927|**28.287**|**17.7**|
 
-⟦PREP-ANNOTATION T1 kind=table page=6 label=Table 1 image=images/T1_p06.png: data rows extracted above; the grouping of the multi-level column header is not recoverable from the extracted text; see the page image⟧
+⟦PREP-ANNOTATION T1 kind=table page=6 label=Table 1 image=images/T1_p06.png: data rows extracted above; the grouping of the multi-level column header is not recoverable from the extracted text; see the retained image⟧
 
 and the datacenter hosting the AI model has a power usage effectiveness (PUE) of  θ _t_ that accounts for the non-IT energy overhead. Then, the total operational water footprint of the AI model can be written as _WaterOperational_ =  ∑ _tT_ =1 _et_ ·  [ρ _s_ 1, _t_ +  θ _t_ ·  ρ _s_ 2, _t_ ] .
 
-⟦PREP-ANNOTATION E3 kind=equation page=6 image=images/page_06.png: the symbols above are the raw text layer and may not be faithfully rendered; see the page image⟧
+⟦PREP-ANNOTATION E3 kind=equation page=6 image=images/E3_p06.png: the symbols above are the raw text layer and may not be faithfully rendered; see the retained image⟧
 
 **Embodied water footprint.** Similar to accounting for the embodied carbon footprint,<sup>12</sup> the total scope-3 water footprint is amortized over the lifespan of a server. Specifically, if _W_ represents the total water used to manufacture the AI servers and the servers are expected to operate for a period of _T_ 0 , then the embodied water footprint over a period of _T_ is calculated as _WaterEmbodied_ =<sup>_T_</sup> _<sup>·</sup><sup>_W_</sup> _T_ 0
 
 By adding the operational and embodied water footprints, we obtain the total water footprint as _WaterTotal_ =  ∑ _tT_ =1 _et_ ·  [ρ _s_ 1, _t_ +  θ _t_ ·  ρ _s_ 2, _t_ ] +<sup>_T_</sup> _<sup>·</sup> _T_ 0<sup>_W_. In practice, to obtain a rough</sup> estimate, we can use the average values for the annualized WUE and the estimated AI server energy consumption.
 
-⟦PREP-ANNOTATION E4 kind=equation page=6 image=images/page_06.png: the symbols above are the raw text layer and may not be faithfully rendered; see the page image⟧
+⟦PREP-ANNOTATION E4 kind=equation page=6 image=images/E4_p06.png: the symbols above are the raw text layer and may not be faithfully rendered; see the retained image⟧
 
 **Case Study: Estimating GPT-3's operational water-consumption footprint.** The core of ChatGPT, a popular online service, is a large language model (LLM) based on subsequent versions of GPT-3. We present a case study to estimate the operational water consumption for the full GPT-3 model with 175 billion parameters.<sup>4</sup> We exclude embodied water footprint due to the lack of public data for scope-3 water usage. We choose GPT-3, as Microsoft publishes its location-wise WUE and PUE.<sup>16,17</sup> The results are summarized in Table 1.
 
@@ -132,11 +132,11 @@ _Training._ GPT-3 was trained and deployed by OpenAI in Microsoft's datacenters,
 
 _Inference._ As a representative usage scenario for an LLM, we consider a conversation task, which typically includes a CPU-intensive prompt phase that processes user input (also known as prompt) and a memoryintensive token phase that produces outputs.<sup>30</sup> More specifically, we consider a medium-sized request, each with approximately  ≤ 800 words of input and 150–300 words of output.<sup>30</sup> The official estimate indicates that GPT-3 consumes an order of 0.4kWh of electricity to generate 100 pages of content, equivalent to roughly 0.004kWh per page.<sup>4</sup> While no details are provided, the estimate likely considers only the GPU energy
 
-⟦PREP-ANNOTATION E5 kind=equation page=6 image=images/page_06.png: the symbols above are the raw text layer and may not be faithfully rendered; see the page image⟧
+⟦PREP-ANNOTATION E5 kind=equation page=6 image=images/E5_p06.png: the symbols above are the raw text layer and may not be faithfully rendered; see the retained image⟧
 
 **Figure 2. (a) The U.S. eGRID-level scope-2 water consumption intensity factor vs. carbon emission rate.**<sup>**23,33**</sup> **The dashed line represents a linear regression model, showing that the eGRID-level scope-2 carbon emission and water consumption efficiencies are not aligned. (b) A five-day snapshot of scope-2 carbon emission rate and water consumption intensity in Virginia, starting from Apr. 4, 2022. The values are calculated based on the fuel mixes, carbon emission rate and water consumption intensity for each fuel type.**<sup>**23,32,33**</sup> **The scope-2 carbon and water efficiencies only have a weak Pearson correlation coefficient of 0.06 in Virginia. (c) A five-day snapshot of energy fuel mixes serving Virginia, starting from Apr. 4, 2022.**<sup>**32**</sup>
 
-⟦PREP-ANNOTATION U2 kind=figure page=7 label=Figure 2 image=images/U2_p07.png: content not extracted; see the page image⟧
+⟦PREP-ANNOTATION U2 kind=figure page=7 label=Figure 2 image=images/U2_p07.png: content not extracted; see the retained image⟧
 
 used during token generation. To account for both the prompt phase and the non-GPU energy consumption of servers, we assume a per-request server energy consumption of 0.004kWh for our conversation task. The PUE, WUE, and EWIF are the same as those used for estimating the training water consumption.
 
