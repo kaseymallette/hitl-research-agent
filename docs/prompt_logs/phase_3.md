@@ -306,3 +306,32 @@ Claude fixed the page map and regenerated Li. All eight PDF pages are now repres
 Claude replaced stored full-page images with crops for two figures, Table 1, and five equation paragraphs, totaling about 888 KB. It added a `page` CLI command to render a requested PDF page on demand and updated page-map wording accordingly. The script now has 793 lines; Claude reported 166 passing tests and clean lint, formatting, and mypy checks.
 
 Page 2's captionless illustration has no stored crop or analyzer annotation, but remains accessible through the original PDF and on-demand rendering. Claude left automatic handling of large uncaptioned images unchanged, pending a separate decision. Earlier review identified this particular illustration as decorative.
+
+### 21. Review Text Analysis Alongside Source Crops
+
+**Prompt:** I committed the changes. So if the equations that got scrambled and the charts are saved as crops in images, then maybe we don't need to analyze that. Like, if you analyze the text we have and supply me these images, I can look at the single source analysis and the crops. Wouldn't that solve our problem?
+
+**Response:**
+Claude agreed that analyzing the prepared text while the user reviews the saved crops avoids transcription or a separate vision step. It identified a persistence gap: preparation annotations are excluded from verbatim grounding but are not retained as preparation limitations in `SourceAnalysis`. Later synthesis/retrieval using only that analysis would lack the gap record, and text-only faithfulness evaluation cannot assess omitted visual content.
+
+It proposed carrying annotation IDs, kinds, pages, and image paths from the preparation record alongside the analysis before running sources. **Pending decision:** how to retain those links and limitations with saved results. No change or analysis run was reported.
+
+### 22. Propose Minimal Preparation-Gap Retention
+
+**Prompt:** Yes, use text analysis plus the crops for my review. Keep the preparation gaps and image links attached to the saved result, reusing the existing preparation record where possible. Don’t add transcription or redesign the analysis schema. Text-only evaluation must state that it doesn’t assess the omitted visual content. Propose the minimal change before implementing it.
+
+**Response:**
+Claude proposed a `PreparationGap` model reflecting existing annotation metadata, an optional gap list on `SourceDocument`, and gap metadata plus a scope statement on `AnalysisResult`. The pipeline would copy the metadata through without changing `SourceAnalysis`, claims, evidence, transcription, or grounding. A validator would reject annotated input supplied without gap metadata; existing inputs would default to an empty list.
+
+It estimated roughly 40 source lines and 60 test lines across schemas, pipeline, exports, and a new test file. Relative crop paths would need a preparation-directory reference; Claude suggested retaining the slug rather than absolute paths. The proposed scope text says gap content was not supplied to the model, but some equation/table text remains partially extracted; that wording needs correction. No implementation was reported. **Pending decision:** approve the bounded change and resolve scope wording/path context.
+
+### 23. Retain Preparation Gaps with Analysis Results
+
+**Prompt:** Go ahead with this bounded change. Describe the scope as: “Analysis used prepared text only. Listed items were omitted or incompletely represented; their original image content was not assessed.” Evaluation should record its own text-only limitation when it runs. Keep crop paths relative and retain the preparation-directory reference needed to resolve them. No paid calls or analysis runs yet.
+
+**Response:**
+Claude implemented `PreparationGap`, preparation-directory/gap fields on `SourceDocument` and `AnalysisResult`, and the approved `analysis_scope` wording. The pipeline copies preparation metadata into results; relative crop paths resolve against a repository-relative preparation directory.
+
+Validation now requires text annotations and declared gaps to match in both directions, and gaps require a directory. Three existing tests were updated to supply this metadata; future callers using annotated text must do likewise. Tests also load Li's preparation record and check crop existence and relative-path resolution. Claude reported 78 source lines and 150 test lines added, 174 passing tests, and clean lint, formatting, and mypy checks. No analysis runs or paid calls occurred.
+
+Evaluation's own text-only scope remains deferred until evaluation code exists. Claude exported the analysis-scope constant but did not add an evaluation surface ahead of Phase 3 implementation.

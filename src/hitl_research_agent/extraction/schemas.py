@@ -14,8 +14,28 @@ from ..models.interpreted import (
 )
 from ..models.methodology import Methodology
 from ..models.provenance import Provenance
-from .annotations import reserved_character_problems
+from .annotations import find_annotations, reserved_character_problems
 from .attempts import AttemptRecord
+
+ANALYSIS_SCOPE = (
+    "Analysis used prepared text only. Listed items were omitted or incompletely "
+    "represented; their original image content was not assessed."
+)
+
+
+class PreparationGap(ResearchBaseModel):
+    """One thing the preparation step could not represent faithfully in text.
+
+    Mirrors an entry of ``prep_record.json["annotations"]``. ``image`` is relative
+    to ``preparation_directory`` on the document or result that carries this gap;
+    the two are kept together so a crop stays resolvable without absolute paths.
+    """
+
+    id: NonEmptyStr
+    kind: NonEmptyStr  # figure | equation | table
+    page: int = Field(ge=1)
+    label: str | None = None
+    image: str | None = None
 
 
 class SourceDocument(ResearchBaseModel):
@@ -28,12 +48,45 @@ class SourceDocument(ResearchBaseModel):
 
     text: NonEmptyStr
     provenance: Provenance
+    preparation_directory: str | None = Field(
+        default=None,
+        description=(
+            "Repo-relative preparation directory the text came from. Crop paths in "
+            "preparation_gaps resolve against it."
+        ),
+    )
+    preparation_gaps: list[PreparationGap] = Field(
+        default_factory=list,
+        description=(
+            "What preparation could not represent in this text, from the source's "
+            "preparation record. Empty means the text carries no annotations."
+        ),
+    )
 
     @model_validator(mode="after")
     def _reject_reserved_characters(self) -> "SourceDocument":
         problems = reserved_character_problems(self.text)
         if problems:
             raise ValueError("; ".join(problems))
+        return self
+
+    @model_validator(mode="after")
+    def _gaps_match_the_annotations_in_the_text(self) -> "SourceDocument":
+        """A result must never claim coverage the text does not have."""
+        in_text = {span.annotation_id for span in find_annotations(self.text)}
+        declared = {gap.id for gap in self.preparation_gaps}
+        if in_text - declared:
+            raise ValueError(
+                "the text contains preparation annotations with no matching entry in "
+                f"preparation_gaps: {sorted(in_text - declared)}"
+            )
+        if declared - in_text:
+            raise ValueError(
+                "preparation_gaps names items that do not appear in the text: "
+                f"{sorted(declared - in_text)}"
+            )
+        if self.preparation_gaps and not self.preparation_directory:
+            raise ValueError("preparation_gaps requires preparation_directory to resolve images")
         return self
 
 
@@ -126,6 +179,19 @@ class AnalysisResult(ResearchBaseModel):
     """
 
     analysis: SourceAnalysis
+    analysis_scope: NonEmptyStr = Field(
+        default=ANALYSIS_SCOPE,
+        description=(
+            "What this result does and does not cover. Carried on the saved result so "
+            "the text-only limit travels with it into synthesis and retrieval."
+        ),
+    )
+    preparation_directory: str | None = None
+    preparation_gaps: list[PreparationGap] = Field(
+        default_factory=list,
+        description="Copied from the analyzed SourceDocument; images are relative to "
+        "preparation_directory.",
+    )
     model: NonEmptyStr
     input_tokens: int = Field(ge=0)
     output_tokens: int = Field(ge=0)
@@ -142,4 +208,6 @@ class AnalysisResult(ResearchBaseModel):
     def _attempts_match_count(self) -> "AnalysisResult":
         if self.attempts and len(self.attempts) != self.attempt_count:
             raise ValueError("attempts must contain exactly attempt_count records when present")
+        if self.preparation_gaps and not self.preparation_directory:
+            raise ValueError("preparation_gaps requires preparation_directory to resolve images")
         return self

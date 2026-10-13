@@ -401,6 +401,8 @@ def _analyze(
     if first.analysis is not None:
         return AnalysisResult(
             analysis=first.analysis,
+            preparation_directory=source.preparation_directory,
+            preparation_gaps=list(source.preparation_gaps),
             model=settings.openai_model,
             input_tokens=first.input_tokens,
             output_tokens=first.output_tokens,
@@ -424,6 +426,8 @@ def _analyze(
     if second.analysis is not None:
         return AnalysisResult(
             analysis=second.analysis,
+            preparation_directory=source.preparation_directory,
+            preparation_gaps=list(source.preparation_gaps),
             model=settings.openai_model,
             input_tokens=total_input,
             output_tokens=total_output,

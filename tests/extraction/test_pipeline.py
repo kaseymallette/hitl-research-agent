@@ -19,6 +19,7 @@ from hitl_research_agent.extraction.schemas import (
     ExtractedAnalysis,
     ExtractedClaim,
     ExtractedEvidence,
+    PreparationGap,
     SourceDocument,
 )
 from hitl_research_agent.models.citation import Citation
@@ -53,9 +54,16 @@ def _settings(**overrides: Any) -> Settings:
     return Settings(**defaults)
 
 
+GAP_U1 = PreparationGap(id="U1", kind="figure", page=2, label="Figure 1", image="images/p2.png")
+
+
 def _source(text: str = SOURCE_TEXT) -> SourceDocument:
+    """Annotated text must declare its gaps, so the helper supplies them when present."""
+    annotated = "PREP-ANNOTATION U1" in text
     return SourceDocument(
         text=text,
+        preparation_directory="outputs/phase_3/prepared/fixture" if annotated else None,
+        preparation_gaps=[GAP_U1] if annotated else [],
         provenance=Provenance(
             source_title="Data Center Water Use",
             source_type="peer_reviewed_paper",

@@ -17,6 +17,7 @@ from hitl_research_agent.extraction.grounding import (
 from hitl_research_agent.extraction.schemas import (
     ExtractedClaim,
     ExtractedEvidence,
+    PreparationGap,
     SourceDocument,
 )
 from hitl_research_agent.models.citation import Citation
@@ -28,6 +29,7 @@ ANNOTATION = format_annotation(
     "not source text; content not extracted",
 )
 TEXT = f"Water use rose sharply in 2023. {ANNOTATION} Cooling relied on evaporative towers."
+GAP_U1 = PreparationGap(id="U1", kind="figure", page=2, label="Figure 1", image="images/p2.png")
 
 
 def _claim(evidence: ExtractedEvidence) -> ExtractedClaim:
@@ -143,7 +145,25 @@ def test_source_text_with_stray_reserved_characters_is_rejected() -> None:
         with pytest.raises(ValidationError):
             SourceDocument(text=bad, provenance=provenance)
     # a well-formed annotation is accepted
-    assert SourceDocument(text=TEXT, provenance=provenance).text == TEXT
+    document = SourceDocument(
+        text=TEXT,
+        provenance=provenance,
+        preparation_directory="outputs/phase_3/prepared/fixture",
+        preparation_gaps=[GAP_U1],
+    )
+    assert document.text == TEXT
+    # the declared gaps must match the annotations the text actually carries
+    with pytest.raises(ValidationError):
+        SourceDocument(text=TEXT, provenance=provenance)
+    with pytest.raises(ValidationError):
+        SourceDocument(
+            text=TEXT,
+            provenance=provenance,
+            preparation_directory="d",
+            preparation_gaps=[GAP_U1, GAP_U1.model_copy(update={"id": "U9"})],
+        )
+    with pytest.raises(ValidationError):
+        SourceDocument(text=TEXT, provenance=provenance, preparation_gaps=[GAP_U1])
 
 
 def test_annotation_fields_cannot_smuggle_delimiters() -> None:

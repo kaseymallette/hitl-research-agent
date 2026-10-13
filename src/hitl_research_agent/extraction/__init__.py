@@ -14,14 +14,17 @@ from .errors import (
 )
 from .pipeline import analyze_source
 from .schemas import (
+    ANALYSIS_SCOPE,
     AnalysisResult,
     ExtractedAnalysis,
     ExtractedClaim,
     ExtractedEvidence,
+    PreparationGap,
     SourceDocument,
 )
 
 __all__ = [
+    "ANALYSIS_SCOPE",
     "SENTINEL",
     "AnalysisResult",
     "AttemptRecord",
@@ -29,6 +32,7 @@ __all__ = [
     "ExtractedAnalysis",
     "ExtractedClaim",
     "ExtractedEvidence",
+    "PreparationGap",
     "SourceAnalysisError",
     "SourceAnalysisExtractionError",
     "SourceAnalysisIncompleteError",
