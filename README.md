@@ -2,7 +2,7 @@
 
 A human-in-the-loop multi-agent research framework for building and examining a collection of evidence across articles. Three AI agents handle these tasks: single source analysis, synthesis, and literature review, giving researchers a way to examine individual arguments and understand how they relate across a research collection.
 
-The analyses connect authors’ claims to their evidence, methods, assumptions, and limitations, while making the model’s own interpretations explicit. A separate evaluation step checks whether those analyses faithfully represent the sources. Researchers review the results before adding them to their collection and use that collection to investigate disagreements, gaps, and new questions.
+The analyses connect authors’ claims to their evidence, methods, assumptions, and limitations, while making the model’s own interpretations explicit. A separate evaluation step will check whether those analyses faithfully represent the sources and whether their assessments of the authors’ arguments are justified. Researchers will review the results before adding them to their collection and use that collection to investigate disagreements, gaps, and new questions.
 
 ## Purpose
 
@@ -62,18 +62,19 @@ literature review agent sees a question, and it only proposes articles.
 article + prompt → model → JSON → separate evaluation → accept · reject · revise · rerun
 ```
 
-What I receive is the structured analysis, the citations supporting it, the
-evaluation scores, and the evaluation’s explanation of those scores. Evaluation
-informs my review rather than replacing it, and it does not act as a gate. A
+The planned review workflow will present the structured analysis, the citations
+supporting it, the evaluation scores, and the evaluation’s explanation of those
+scores. Evaluation will inform my review rather than replacing it, and it will
+not act as a gate. A
 paraphrase, a missing evidence label, or a thin claim gets reported rather than
 withheld, because I want to see the analysis and judge it myself. Only a
 technical failure stops a run: an API error, an unreadable response, or output
 that will not parse.
 
 The decision stays with me. I accept, reject, revise, or rerun, and only
-accepted analyses enter the research collection. Interpretation, inference,
-deciding what matters, and choosing what to pursue next are mine. The system
-does not rank sources, resolve disagreements, or draw conclusions.
+accepted analyses enter the research collection. The agents interpret sources
+and assess arguments. I review those assessments, decide which conclusions
+are justified, and choose what to pursue next.
 
 ## What an analysis records, and what needs checking
 
@@ -125,15 +126,15 @@ than a quotation the model was unsure of.
 
 ### Evaluating the model and the authors’ arguments
 
-Evaluation checks two things. Does the model faithfully represent the
+Evaluation will check two things. Does the model faithfully represent the
 source, preserving what the authors actually claim and distinguishing it from
 the model’s own interpretation? And does the model make a defensible assessment
 of the argument, grounding its judgments in the source’s evidence and reasoning?
 Accurately reporting a claim does not establish that the claim is well supported,
 and identifying a supposed weakness does not establish that the model is right.
 
-The evaluation therefore examines both the accuracy of the model’s account and
-the reasoning behind its assessment. Human review checks those judgments,
+The evaluation will examine both the accuracy of the model’s account and
+the reasoning behind its assessment. Human review will check those judgments,
 including the judgments made by the evaluation model. The goal is to establish
 whether AI can help me evaluate arguments, and where its assessments need
 correction.
@@ -157,6 +158,7 @@ something concrete rather than a general impression of quality.
 | Mismatched evidence | evidence attached to a claim it does not support, or a wrong `relationship_to_claim` | evidence mapping |
 | Inaccurate citation extraction | a misquoted marker, an invented reference entry, a citation attached to the wrong passage | citation faithfulness |
 | Missing central argument | an argument the source’s case rests on, absent from the analysis | argument reconstruction |
+| Faulty argument assessment | the model accepts an unsupported conclusion or criticizes an argument without adequate justification | argument assessment |
 | Unusable output | faithful, complete, and still no help to me | research usefulness |
 
 The judge needs checking as well, since it is a model making claims about
@@ -209,29 +211,6 @@ about which approach works best across all research topics. The broader
 question remains whether the system improves my research enough to justify
 the time spent preparing, reviewing, and correcting its output.
 
-## Current status and roadmap
-
-| | |
-| --- | --- |
-| **Working now** | the analysis data model, single source analysis running end to end and returning JSON, and PDF preparation into cleaned text and crops |
-| **Designed, not yet built** | evaluation against the axes above, synthesis, literature review, and retrieval |
-| **Next** | the A/B experiment, which decides the configuration the collection is analyzed with |
-
-| Phase | What it does |
-| --- | --- |
-| 0 | **Review and redesign**: audit the earlier code and restructure the repository and documentation around these phases *(complete)* |
-| 1 | **A/B testing**: the 2 × 2 above, recording usage, cost, runtime, and preparation effort |
-| 2 | **DeepEval**: rubrics for the axes above, applied to the 16 analyses, with independent human scoring of a sample, and the choice of model and input method |
-| 3 | **Research collection**: analyze and evaluate all 16 articles with the chosen configuration, reusing suitable experiment outputs |
-| 4 | **Synthesis agent**: compare sources, with its own evaluation design |
-| 5 | **Literature review agent**: find relevant articles for explicit research questions |
-| 6 | **RAG**: retrieval across sources, analyses, evaluations, and syntheses |
-
-The [build plan](docs/BUILD_PLAN.md) has each phase in engineering detail,
-including Phase 1’s open items and what earlier code each phase reuses,
-simplifies, or removes. Experiment outputs from the previous design are kept
-for history in [`outputs/v1_archive/`](outputs/v1_archive).
-
 ## Development approach and lessons
 
 Two coding assistants helped me build this project.
@@ -254,6 +233,29 @@ What has been difficult about working this way:
   across many small changes that each looked reasonable at the time, and the
   direction was only visible in aggregate.
 - The coding assistants did not consistently follow my instructions. I had to repeat requirements, correct assumptions, and undo changes I had not asked for. That took time and money away from the research and made supervising the assistants a substantial part of the work.
+
+## Current status and roadmap
+
+| | |
+| --- | --- |
+| **Working now** | the analysis data model, single source analysis running end to end and returning JSON, and PDF preparation into cleaned text and crops |
+| **Designed, not yet built** | evaluation against the axes above, synthesis, literature review, and retrieval |
+| **Next** | the A/B experiment, which decides the configuration the collection is analyzed with |
+
+| Phase | What it does |
+| --- | --- |
+| 0 | **Review and redesign**: audit the earlier code and restructure the repository and documentation around these phases *(complete)* |
+| 1 | **A/B testing**: the 2 × 2 above, recording usage, cost, runtime, and preparation effort |
+| 2 | **DeepEval**: rubrics for the axes above, applied to the 16 analyses, with independent human scoring of a sample, and the choice of model and input method |
+| 3 | **Research collection**: analyze and evaluate all 16 articles with the chosen configuration, reusing suitable experiment outputs |
+| 4 | **Synthesis agent**: compare sources, with its own evaluation design |
+| 5 | **Literature review agent**: find relevant articles for explicit research questions |
+| 6 | **RAG**: retrieval across sources, analyses, evaluations, and syntheses |
+
+The [build plan](docs/BUILD_PLAN.md) has each phase in engineering detail,
+including Phase 1’s open items and what earlier code each phase reuses,
+simplifies, or removes. Experiment outputs from the previous design are kept
+for history in [`outputs/v1_archive/`](outputs/v1_archive).
 
 ## Stack, setup, and documentation
 
