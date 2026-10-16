@@ -7,10 +7,10 @@ filled in once the prior phase is accepted.
 
 This is the v2 plan. It replaces the nine-phase v1 plan. v1 built a working
 single-source analysis pipeline and then spent a long sequence of turns on
-grounding checks that were ultimately removed; what survives of that history in
-this branch is the audit in Phase 0 below. The v1 prompt logs and experiment
-outputs were removed with the redesign and stay at the `v1-final` tag;
-[`docs/prompt_log.md`](prompt_log.md) now indexes one log per v2 phase.
+grounding checks that were ultimately removed; what survives of that history
+here is the audit in Phase 0 below. The v1 prompt logs and experiment outputs
+were removed in the redesign and stay at the `v1-final` tag;
+[`docs/prompt_log.md`](prompt_log.md) now indexes one log per phase.
 
 ---
 
@@ -122,8 +122,8 @@ DeepEval was named in the v1 README but never added as a dependency. Phases 2,
 - `data/phase_3/*.pdf` (12 articles) → `data/research/`, and its `ab_testing/`
   four → `data/research/ab_testing/`, with `sources.yaml` and its `pdf:` paths
 - `data/phase_2/` (the v1 development source, not one of the 16) and the v1
-  experiment outputs under `outputs/` were removed from this branch. They stay
-  at the `v1-final` tag.
+  experiment outputs under `outputs/` were removed. They stay at the
+  `v1-final` tag.
 - `prepare_phase_3_sources.py` → `prepare_sources.py`. Its extraction behavior
   is unchanged — the only edits were the import path and writing its output as
   `prepared_text.txt` rather than `.md`, since the pipeline produces no Markdown.
