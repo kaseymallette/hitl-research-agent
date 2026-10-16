@@ -39,9 +39,8 @@ def test_methodology_may_be_absent() -> None:
     assert _minimal_source_analysis().methodology is None
 
 
-def test_source_analysis_requires_at_least_one_central_claim() -> None:
-    with pytest.raises(ValidationError):
-        _minimal_source_analysis(central_claims=[])
+def test_source_analysis_allows_no_central_claims() -> None:
+    assert _minimal_source_analysis(central_claims=[]).central_claims == []
 
 
 def test_analyzed_at_defaults_to_aware_datetime() -> None:

@@ -1,7 +1,7 @@
 from typing import Literal
 from uuid import UUID, uuid4
 
-from pydantic import Field, model_validator
+from pydantic import Field
 
 from ._base import NonEmptyStr, ResearchBaseModel
 from .citation import Citation
@@ -45,16 +45,10 @@ class Evidence(ResearchBaseModel):
         )
     )
 
-    @model_validator(mode="after")
-    def _claim_grounding_requires_verbatim(self) -> "Evidence":
-        if self.relationship_to_claim == "claim_grounding" and self.evidence_form != "verbatim":
-            raise ValueError("Evidence marked 'claim_grounding' must use evidence_form='verbatim'.")
-        return self
-
 
 class Claim(InterpretedStatement):
     id: UUID = Field(default_factory=uuid4)
-    evidence: list[Evidence] = Field(min_length=1)
+    evidence: list[Evidence] = Field(default_factory=list)
     support_assessment: NonEmptyStr | None = Field(
         default=None,
         description=(
@@ -69,15 +63,3 @@ class Claim(InterpretedStatement):
             "that the claim is well-supported or that no issue was found."
         ),
     )
-
-    @model_validator(mode="after")
-    def _validate_grounding_consistency(self) -> "Claim":
-        has_grounding = any(e.relationship_to_claim == "claim_grounding" for e in self.evidence)
-        if self.statement_origin == "author_stated" and not has_grounding:
-            raise ValueError(
-                "An author_stated claim must include at least one Evidence "
-                "item whose relationship_to_claim is 'claim_grounding'."
-            )
-        if self.statement_origin == "model_inferred" and has_grounding:
-            raise ValueError("A model_inferred claim must not contain 'claim_grounding' evidence.")
-        return self

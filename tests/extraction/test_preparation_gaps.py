@@ -21,9 +21,6 @@ from hitl_research_agent.models.interpreted import ResearchProblem
 from hitl_research_agent.models.provenance import Provenance
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-LI_PREPARED = (
-    REPO_ROOT / "outputs" / "phase_3" / "prepared" / "li_et_al_2025_making_ai_less_thirsty"
-)
 
 ANNOTATION = format_annotation(
     "U1",
@@ -32,7 +29,7 @@ ANNOTATION = format_annotation(
 )
 TEXT = f"Water use rose sharply. {ANNOTATION} Cooling relied on evaporative towers."
 GAP = PreparationGap(id="U1", kind="figure", page=4, label="Figure 1", image="images/U1_p04.png")
-PREP_DIR = "outputs/phase_3/prepared/li_et_al_2025_making_ai_less_thirsty"
+PREP_DIR = "outputs/preparation/li_et_al_2025_making_ai_less_thirsty"
 
 
 def _provenance() -> Provenance:
@@ -138,16 +135,40 @@ def test_plain_text_needs_no_gaps() -> None:
 # --- the shape matches the preparation record it is copied from -----------------------------------
 
 
-@pytest.mark.skipif(not LI_PREPARED.exists(), reason="Li preparation not present")
-def test_gaps_can_be_built_from_a_real_prep_record_without_new_vocabulary() -> None:
-    record = json.loads((LI_PREPARED / "prep_record.json").read_text())
+def test_gaps_can_be_built_from_a_prep_record_without_new_vocabulary(tmp_path: Path) -> None:
+    """A preparation record's annotations map straight onto PreparationGap, and
+    its relative image paths resolve under the preparation directory."""
+    (tmp_path / "images").mkdir()
+    (tmp_path / "images" / "U1_p04.png").write_bytes(b"png")
+    (tmp_path / "images" / "T1_p06.png").write_bytes(b"png")
+    record = {
+        "annotations": [
+            {
+                "id": "U1",
+                "kind": "figure",
+                "page": 4,
+                "label": "Figure 1",
+                "image": "images/U1_p04.png",
+            },
+            {
+                "id": "T1",
+                "kind": "table",
+                "page": 6,
+                "label": "Table 1",
+                "image": "images/T1_p06.png",
+            },
+        ]
+    }
+    (tmp_path / "prep_record.json").write_text(json.dumps(record))
+
+    loaded = json.loads((tmp_path / "prep_record.json").read_text())
     gaps = [
         PreparationGap(
             id=a["id"], kind=a["kind"], page=a["page"], label=a["label"], image=a["image"]
         )
-        for a in record["annotations"]
+        for a in loaded["annotations"]
     ]
     assert {g.kind for g in gaps} <= {"figure", "equation", "table"}
     for gap in gaps:
         assert gap.image is not None and not Path(gap.image).is_absolute()
-        assert (LI_PREPARED / gap.image).exists()  # the crop is really there
+        assert (tmp_path / gap.image).exists()

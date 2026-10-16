@@ -89,7 +89,7 @@ def test_extracted_claim_support_assessment_field_documents_null_as_not_assessed
     assert "no issue was found" in lowered
 
 
-def test_extracted_claim_has_no_id_field_and_requires_evidence() -> None:
+def test_extracted_claim_has_no_id_field_and_allows_no_evidence() -> None:
     claim = ExtractedClaim(
         text="claim",
         statement_origin="author_stated",
@@ -100,16 +100,16 @@ def test_extracted_claim_has_no_id_field_and_requires_evidence() -> None:
         ],
     )
     assert "id" not in claim.model_dump()
-    with pytest.raises(ValidationError):
-        ExtractedClaim(text="claim", statement_origin="author_stated", evidence=[])
+    # a claim with no evidence is no longer rejected; that judgment is evaluation's
+    assert ExtractedClaim(text="claim", statement_origin="author_stated").evidence == []
 
 
-def test_extracted_analysis_requires_at_least_one_claim() -> None:
-    with pytest.raises(ValidationError):
-        ExtractedAnalysis(
-            research_problem=ResearchProblem(text="p", statement_origin="author_stated"),
-            central_claims=[],
-        )
+def test_extracted_analysis_allows_no_claims() -> None:
+    analysis = ExtractedAnalysis(
+        research_problem=ResearchProblem(text="p", statement_origin="author_stated"),
+        central_claims=[],
+    )
+    assert analysis.central_claims == []
 
 
 def test_analysis_result_bounds_attempt_count_and_tokens() -> None:

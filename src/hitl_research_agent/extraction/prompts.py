@@ -1,5 +1,9 @@
+from collections.abc import Sequence
+from typing import Any
+
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
 
+from .attachments import InputMode, LoadedAttachment
 from .schemas import SourceDocument
 
 SYSTEM_PROMPT = """\
@@ -17,10 +21,9 @@ source does not explicitly state.
 
 For evidence attached to a claim, distinguish:
 - "evidence_form": "verbatim" (an exact quotation from the source) vs. \
-"paraphrased" (in your own words). Only mark evidence "verbatim" if you are \
-quoting the source's exact wording — this is checked mechanically, and a \
-quotation that does not exactly match the source text will cause your \
-analysis to be rejected.
+"paraphrased" (in your own words). Mark evidence "verbatim" only when you are \
+reproducing the source's exact wording, and "paraphrased" otherwise. A \
+paraphrase is never a lesser answer than a quotation you are unsure of.
 - "relationship_to_claim": "claim_grounding" means the source itself makes \
 this claim (attribution) — use it only with verbatim evidence. \
 "direct_support", "partial_support", and "contextual_support" describe how \
@@ -131,13 +134,78 @@ claim must include at least one piece of evidence.
 """
 
 
-def build_messages(source: SourceDocument) -> list[BaseMessage]:
-    framing = (
+# Input-format instructions. These say only how the supplied input is laid out
+# and how to record something read from an image; the analysis instructions in
+# SYSTEM_PROMPT are identical in every mode, so input format stays the only
+# intended difference between runs.
+
+PDF_INPUT_INSTRUCTIONS = """\
+The complete original PDF of this source is attached. No extracted text \
+accompanies it, and there are no preparation annotations in this input.
+
+Quote as "verbatim" only wording that literally appears in the document's own \
+text. Content you read from a figure, chart, diagram, or an equation rendered \
+as an image is not quotable text: record it as "paraphrased" evidence, and \
+begin that evidence's "locator" with the page it came from and the element it \
+came from, for example "page 7, Figure 2". Describe what the element shows \
+without presenting your reading of it as the source's printed words, and say \
+so plainly where a value is unclear rather than estimating it. Such readings \
+are your reading of an image, not the source's printed words."""
+
+CROPS_INPUT_INSTRUCTIONS = """\
+You are given this source's prepared text, followed by one retained image for \
+each item the preparation step could not represent faithfully in that text. \
+Each image is introduced by a line naming its preparation-gap identifier, its \
+label in the source, and its page. The prepared text marks the same items in \
+place with a labelled preparation annotation.
+
+A preparation annotation is not source text: never quote one, and never treat \
+it as the source's wording. Content you read from one of the attached images \
+is likewise not quotable text: record it as "paraphrased" evidence, and begin \
+that evidence's "locator" with the gap identifier and page you read it from, \
+for example "gap T1, page 6, Table 1". Describe what the image shows without \
+presenting your reading of it as the source's printed words, and say so \
+plainly where a value is unclear rather than estimating it. Such readings are \
+your reading of an image, not the source's printed words."""
+
+INPUT_MODE_INSTRUCTIONS: dict[InputMode, str | None] = {
+    "prepared_text": None,
+    "prepared_text_and_crops": CROPS_INPUT_INSTRUCTIONS,
+    "pdf": PDF_INPUT_INSTRUCTIONS,
+}
+
+
+def build_messages(
+    source: SourceDocument,
+    *,
+    input_mode: InputMode = "prepared_text",
+    attachments: Sequence[LoadedAttachment] = (),
+) -> list[BaseMessage]:
+    """The system prompt plus one human message carrying the supplied input.
+
+    In the default 'prepared_text' mode the human message is the same plain
+    string it has always been. The other modes add the input-format
+    instructions and the attachment blocks, and the 'pdf' mode sends the PDF
+    instead of the prepared text — the prepared text then serves only as the
+    grounding reference and is never shown to the model.
+    """
+    header = (
         f"Source title: {source.provenance.source_title}\n"
-        f"Source type: {source.provenance.source_type}\n\n"
-        f"{source.text}"
+        f"Source type: {source.provenance.source_type}"
     )
-    return [SystemMessage(SYSTEM_PROMPT), HumanMessage(framing)]
+    instructions = INPUT_MODE_INSTRUCTIONS[input_mode]
+    sections = [header]
+    if instructions is not None:
+        sections.append(instructions)
+    if input_mode != "pdf":
+        sections.append(source.text)
+    framing = "\n\n".join(sections)
+    if not attachments:
+        return [SystemMessage(SYSTEM_PROMPT), HumanMessage(framing)]
+    content: list[str | dict[Any, Any]] = [{"type": "text", "text": framing}]
+    for attachment in attachments:
+        content.extend(attachment.content_blocks())
+    return [SystemMessage(SYSTEM_PROMPT), HumanMessage(content=content)]
 
 
 def build_correction_messages(

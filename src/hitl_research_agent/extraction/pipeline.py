@@ -12,7 +12,7 @@ from ..config import Settings
 from ..models.analysis import SourceAnalysis
 from ..models.claim import Claim, Evidence
 from ..models.provenance import Provenance
-from .annotations import grounding_view
+from .attachments import Attachment, InputMode, LoadedAttachment, validate_attachments
 from .attempts import (
     ALLOWED_RESPONSE_METADATA,
     AttemptOutcome,
@@ -27,9 +27,13 @@ from .errors import (
     SourceAnalysisValidationError,
     SourceTooLargeError,
 )
-from .grounding import find_ungrounded_verbatim_evidence, find_unverifiable_citations
 from .prompts import build_correction_messages, build_messages
-from .schemas import AnalysisResult, ExtractedAnalysis, SourceDocument
+from .schemas import (
+    ANALYSIS_SCOPE_BY_INPUT_MODE,
+    AnalysisResult,
+    ExtractedAnalysis,
+    SourceDocument,
+)
 
 
 class StructuredOutputModel(Protocol):
@@ -44,8 +48,8 @@ class StructuredOutputModel(Protocol):
 
 
 class _InvalidAnalysis(Exception):
-    """Internal signal that an attempt's output failed grounding or
-    Phase 1 validation. Never escapes this module."""
+    """Internal signal that an attempt's output could not satisfy the schema.
+    Never escapes this module."""
 
     def __init__(self, problems: list[str]) -> None:
         super().__init__("; ".join(problems))
@@ -131,6 +135,10 @@ def _build_default_model(settings: Settings) -> StructuredOutputModel:
         model=settings.openai_model,
         reasoning_effort=settings.openai_reasoning_effort,
         use_responses_api=True,
+        # Sent as the Responses API's max_output_tokens; None leaves it unset.
+        max_completion_tokens=settings.max_output_tokens,
+        # None is passed through as "unset", leaving the client's default retries.
+        max_retries=settings.openai_max_retries,
         api_key=SecretStr(settings.openai_api_key) if settings.openai_api_key else None,
     )
     return chat.with_structured_output(
@@ -181,13 +189,12 @@ def _detect_incomplete(raw: AIMessage) -> str | None:
     return None
 
 
-def _assemble_analysis(
-    extracted: ExtractedAnalysis, provenance: Provenance, source_text: str
-) -> SourceAnalysis:
-    problems = find_ungrounded_verbatim_evidence(extracted.central_claims, source_text)
-    problems += find_unverifiable_citations(extracted.central_claims, source_text)
-    if problems:
-        raise _InvalidAnalysis(problems)
+def _assemble_analysis(extracted: ExtractedAnalysis, provenance: Provenance) -> SourceAnalysis:
+    """Build the analysis from what the model returned.
+
+    The content is not checked against the source here. Whether it is faithful
+    is an evaluation question, answered later by DeepEval and human review.
+    """
     try:
         claims = [
             Claim(
@@ -225,7 +232,6 @@ def _evaluate_attempt(
     model: StructuredOutputModel,
     messages: list[BaseMessage],
     provenance: Provenance,
-    grounding_text: str,
     model_name: str,
     *,
     attempts: list[AttemptRecord],
@@ -334,7 +340,7 @@ def _evaluate_attempt(
         return _AttemptOutcome(None, raw, input_tokens, output_tokens, [reason])
 
     try:
-        analysis = _assemble_analysis(parsed, provenance, grounding_text)
+        analysis = _assemble_analysis(parsed, provenance)
     except _InvalidAnalysis as exc:
         attempts.append(
             _record(
@@ -351,7 +357,12 @@ def _evaluate_attempt(
 
     attempts.append(
         _record(
-            number=number, outcome="valid", started=started, ended=ended, raw=raw, parsed=parsed
+            number=number,
+            outcome="valid",
+            started=started,
+            ended=ended,
+            raw=raw,
+            parsed=parsed,
         )
     )
     return _AttemptOutcome(analysis, raw, input_tokens, output_tokens, [])
@@ -363,14 +374,31 @@ def analyze_source(
     model: StructuredOutputModel | None = None,
     settings: Settings | None = None,
     clock: Callable[[], datetime] | None = None,
+    input_mode: InputMode = "prepared_text",
+    attachments: Sequence[LoadedAttachment] = (),
 ) -> AnalysisResult:
+    """Analyze one source, optionally supplying it in another input format.
+
+    `input_mode` chooses what the model receives; the analysis prompt, output
+    schema, and one-correction policy are the same in every mode. An analysis
+    is returned whenever the model's output can be read and fits the schema.
+    """
     settings = settings or Settings()
     clock = clock or _utc_now
+    validate_attachments(input_mode, attachments, [gap.id for gap in source.preparation_gaps])
     _check_size_limit(source.text, settings.max_source_characters)
 
     attempts: list[AttemptRecord] = []
     try:
-        return _analyze(source, model, settings, clock, attempts)
+        return _analyze(
+            source,
+            model,
+            settings,
+            clock,
+            attempts,
+            input_mode,
+            attachments,
+        )
     except SourceAnalysisError as exc:
         exc.attempts = list(attempts)
         raise
@@ -382,18 +410,17 @@ def _analyze(
     settings: Settings,
     clock: Callable[[], datetime],
     attempts: list[AttemptRecord],
+    input_mode: InputMode,
+    attachments: Sequence[LoadedAttachment],
 ) -> AnalysisResult:
     runnable = model or _build_default_model(settings)
-    messages = build_messages(source)
-    # Grounding checks run against the source with preparation annotations
-    # replaced by a sentinel, so an annotation can never match as source text.
-    grounding_text = grounding_view(source.text)
+    messages = build_messages(source, input_mode=input_mode, attachments=attachments)
+    model_inputs: list[Attachment] = [item.record for item in attachments]
 
     first = _evaluate_attempt(
         runnable,
         messages,
         source.provenance,
-        grounding_text,
         settings.openai_model,
         attempts=attempts,
         clock=clock,
@@ -401,8 +428,11 @@ def _analyze(
     if first.analysis is not None:
         return AnalysisResult(
             analysis=first.analysis,
+            analysis_scope=ANALYSIS_SCOPE_BY_INPUT_MODE[input_mode],
             preparation_directory=source.preparation_directory,
             preparation_gaps=list(source.preparation_gaps),
+            input_mode=input_mode,
+            model_inputs=model_inputs,
             model=settings.openai_model,
             input_tokens=first.input_tokens,
             output_tokens=first.output_tokens,
@@ -415,7 +445,6 @@ def _analyze(
         runnable,
         correction_messages,
         source.provenance,
-        grounding_text,
         settings.openai_model,
         attempts=attempts,
         clock=clock,
@@ -426,8 +455,11 @@ def _analyze(
     if second.analysis is not None:
         return AnalysisResult(
             analysis=second.analysis,
+            analysis_scope=ANALYSIS_SCOPE_BY_INPUT_MODE[input_mode],
             preparation_directory=source.preparation_directory,
             preparation_gaps=list(source.preparation_gaps),
+            input_mode=input_mode,
+            model_inputs=model_inputs,
             model=settings.openai_model,
             input_tokens=total_input,
             output_tokens=total_output,

@@ -61,38 +61,38 @@ def test_unexpected_field_rejected() -> None:
         )
 
 
-def test_claim_requires_at_least_one_evidence() -> None:
-    with pytest.raises(ValidationError):
-        Claim(text="X", statement_origin="author_stated", evidence=[])
+def test_claim_allows_no_evidence() -> None:
+    assert Claim(text="X", statement_origin="author_stated").evidence == []
 
 
-def test_author_stated_claim_requires_grounding_evidence() -> None:
-    with pytest.raises(ValidationError):
-        Claim(
-            text="X",
-            statement_origin="author_stated",
-            evidence=[
-                Evidence(
-                    text="detail",
-                    evidence_form="paraphrased",
-                    relationship_to_claim="direct_support",
-                )
-            ],
-        )
+def test_an_author_stated_claim_may_rest_on_paraphrased_evidence() -> None:
+    """Evidence labels are recorded, not enforced: a claim is no longer rejected
+    for paraphrasing or for lacking a claim_grounding item. Whether its support
+    is adequate is for evaluation and human review."""
+    claim = Claim(
+        text="X",
+        statement_origin="author_stated",
+        evidence=[
+            Evidence(
+                text="detail",
+                evidence_form="paraphrased",
+                relationship_to_claim="direct_support",
+            )
+        ],
+    )
+    assert claim.statement_origin == "author_stated"
+    assert claim.evidence[0].evidence_form == "paraphrased"
 
 
-def test_model_inferred_claim_rejects_grounding_evidence() -> None:
-    with pytest.raises(ValidationError):
-        Claim(text="X", statement_origin="model_inferred", evidence=[_grounding_evidence()])
-
-
-def test_claim_grounding_evidence_must_be_verbatim() -> None:
-    with pytest.raises(ValidationError):
-        Evidence(
-            text="paraphrased text",
-            evidence_form="paraphrased",
-            relationship_to_claim="claim_grounding",
-        )
+def test_evidence_labels_are_preserved_without_cross_field_enforcement() -> None:
+    claim = Claim(text="X", statement_origin="model_inferred", evidence=[_grounding_evidence()])
+    assert claim.evidence[0].relationship_to_claim == "claim_grounding"
+    paraphrased_grounding = Evidence(
+        text="paraphrased text",
+        evidence_form="paraphrased",
+        relationship_to_claim="claim_grounding",
+    )
+    assert paraphrased_grounding.evidence_form == "paraphrased"
 
 
 def test_author_stated_claim_with_grounding_evidence_is_valid() -> None:

@@ -3,6 +3,13 @@ from .annotations import (
     find_annotations,
     grounding_view,
 )
+from .attachments import (
+    Attachment,
+    InputMode,
+    LoadedAttachment,
+    load_attachment,
+    validate_attachments,
+)
 from .attempts import AttemptRecord, AttemptUsage
 from .errors import (
     SourceAnalysisError,
@@ -15,6 +22,9 @@ from .errors import (
 from .pipeline import analyze_source
 from .schemas import (
     ANALYSIS_SCOPE,
+    ANALYSIS_SCOPE_BY_INPUT_MODE,
+    ANALYSIS_SCOPE_PDF,
+    ANALYSIS_SCOPE_TEXT_AND_CROPS,
     AnalysisResult,
     ExtractedAnalysis,
     ExtractedClaim,
@@ -25,10 +35,16 @@ from .schemas import (
 
 __all__ = [
     "ANALYSIS_SCOPE",
+    "ANALYSIS_SCOPE_BY_INPUT_MODE",
+    "ANALYSIS_SCOPE_PDF",
+    "ANALYSIS_SCOPE_TEXT_AND_CROPS",
     "SENTINEL",
     "AnalysisResult",
+    "Attachment",
     "AttemptRecord",
     "AttemptUsage",
+    "InputMode",
+    "LoadedAttachment",
     "ExtractedAnalysis",
     "ExtractedClaim",
     "ExtractedEvidence",
@@ -43,4 +59,6 @@ __all__ = [
     "analyze_source",
     "find_annotations",
     "grounding_view",
+    "load_attachment",
+    "validate_attachments",
 ]

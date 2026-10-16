@@ -124,6 +124,12 @@ def _raw_message(**overrides: Any) -> AIMessage:
     return AIMessage(**defaults)
 
 
+def _unreadable_response(raw: AIMessage | None = None) -> dict[str, Any]:
+    """An attempt whose JSON could not be read -- the remaining reason for a
+    correction attempt now that quotation and label checks are advisory."""
+    return _response(parsing_error=ValueError("could not parse model output"), raw=raw)
+
+
 def _response(
     parsed: ExtractedAnalysis | None = None,
     parsing_error: Exception | None = None,
@@ -158,7 +164,7 @@ def test_valid_first_attempt_returns_result_with_attempt_count_one() -> None:
     assert len(model.calls) == 1
 
 
-def test_invalid_then_valid_sums_usage_and_reports_attempt_count_two() -> None:
+def test_unreadable_then_valid_sums_usage_and_reports_attempt_count_two() -> None:
     first_raw = _raw_message(
         usage_metadata={"input_tokens": 100, "output_tokens": 50, "total_tokens": 150}
     )
@@ -167,7 +173,7 @@ def test_invalid_then_valid_sums_usage_and_reports_attempt_count_two() -> None:
     )
     model = FakeStructuredModel(
         [
-            _response(parsed=_invalid_extracted_analysis(), raw=first_raw),
+            _unreadable_response(raw=first_raw),
             _response(parsed=_valid_extracted_analysis(), raw=second_raw),
         ]
     )
@@ -182,16 +188,11 @@ def test_invalid_then_valid_sums_usage_and_reports_attempt_count_two() -> None:
     # what was wrong with it.
     correction_call = model.calls[1]
     assert correction_call[-2] is first_raw
-    assert "3 billion gallons" in correction_call[-1].content
+    assert "could not parse model output" in correction_call[-1].content
 
 
-def test_invalid_on_both_attempts_raises_after_exactly_one_retry() -> None:
-    model = FakeStructuredModel(
-        [
-            _response(parsed=_invalid_extracted_analysis()),
-            _response(parsed=_invalid_extracted_analysis()),
-        ]
-    )
+def test_unreadable_on_both_attempts_raises_after_exactly_one_retry() -> None:
+    model = FakeStructuredModel([_unreadable_response(), _unreadable_response()])
 
     with pytest.raises(SourceAnalysisValidationError) as exc_info:
         analyze_source(_source(), model=model, settings=_settings())
@@ -279,24 +280,6 @@ def test_citations_survive_assembly_into_the_final_analysis() -> None:
     assert citations[0].reference_entry == "Lee, K. Cooling Systems Report. 2021."
 
 
-def test_unverifiable_citation_triggers_one_correction_attempt() -> None:
-    invalid = _extracted_analysis_with_citation(
-        reference_entry="Nguyen, T. An Invented Study. 1999."
-    )
-    model = FakeStructuredModel(
-        [
-            _response(parsed=invalid),
-            _response(parsed=_valid_extracted_analysis()),
-        ]
-    )
-
-    result = analyze_source(_source(), model=model, settings=_settings())
-
-    assert result.attempt_count == 2
-    correction_call = model.calls[1]
-    assert "Invented Study" in correction_call[-1].content
-
-
 def test_support_assessment_and_its_assumption_survive_assembly() -> None:
     """Plumbing only: proves a support_assessment and a connected assumption
     written by an (injected, fake) model reach the final SourceAnalysis
@@ -380,30 +363,6 @@ def _analysis_quoting(quote: str) -> ExtractedAnalysis:
     )
 
 
-def test_quoting_an_annotation_triggers_one_correction_then_terminal_failure() -> None:
-    quote = "not source text; content not extracted"
-    model = FakeStructuredModel(
-        [_response(parsed=_analysis_quoting(quote)), _response(parsed=_analysis_quoting(quote))]
-    )
-    with pytest.raises(SourceAnalysisValidationError) as exc_info:
-        analyze_source(_source(ANNOTATED_SOURCE), model=model, settings=_settings())
-    assert exc_info.value.attempt_count == 2
-    assert len(model.calls) == 2
-
-
-def test_quote_across_an_annotation_is_rejected_but_adjacent_real_text_is_accepted() -> None:
-    spanning = "in 2023. Cooling relied on evaporative towers"
-    model = FakeStructuredModel(
-        [
-            _response(parsed=_analysis_quoting(spanning)),
-            _response(parsed=_analysis_quoting("Cooling relied on evaporative towers")),
-        ]
-    )
-    result = analyze_source(_source(ANNOTATED_SOURCE), model=model, settings=_settings())
-    assert result.attempt_count == 2
-    assert [a.outcome for a in result.attempts] == ["invalid_analysis", "valid"]
-
-
 def test_source_without_annotations_behaves_as_before() -> None:
     model = FakeStructuredModel([_response(parsed=_valid_extracted_analysis())])
     assert analyze_source(_source(), model=model, settings=_settings()).attempt_count == 1
@@ -444,34 +403,6 @@ def _analysis_with_citations(citations: list[Citation]) -> ExtractedAnalysis:
             )
         ],
     )
-
-
-def test_combined_reference_entry_gets_actionable_feedback_then_succeeds_when_split() -> None:
-    combined = _analysis_with_citations(
-        [Citation(citation_text="23,32,33", reference_entry="\n".join(_ENTRIES))]
-    )
-    split = _analysis_with_citations(
-        [Citation(citation_text="23,32,33", reference_entry=entry) for entry in _ENTRIES]
-    )
-    model = FakeStructuredModel([_response(parsed=combined), _response(parsed=split)])
-
-    result = analyze_source(_source(GROUPED_SOURCE), model=model, settings=_settings())
-
-    assert result.attempt_count == 2
-    feedback = model.calls[1][-1].content
-    assert "exactly one entry" in feedback
-    assert "one citation per work" in feedback
-    assert len(result.analysis.central_claims[0].evidence[0].citations) == 3
-
-
-def test_combined_reference_entry_twice_still_fails_after_exactly_one_correction() -> None:
-    combined = _analysis_with_citations(
-        [Citation(citation_text="23,32,33", reference_entry="\n".join(_ENTRIES))]
-    )
-    model = FakeStructuredModel([_response(parsed=combined), _response(parsed=combined)])
-    with pytest.raises(SourceAnalysisValidationError):
-        analyze_source(_source(GROUPED_SOURCE), model=model, settings=_settings())
-    assert len(model.calls) == 2
 
 
 # --- Change 3: attempt retention -----------------------------------------------------------
@@ -538,7 +469,9 @@ def test_correction_success_retains_the_failed_attempt_with_errors_and_parsed_ou
     model = FakeStructuredModel(
         [
             _response(
-                parsed=_invalid_extracted_analysis(), raw=_raw_with_detail("resp_a", reasoning=3)
+                parsed=_invalid_extracted_analysis(),
+                parsing_error=ValueError("schema mismatch"),
+                raw=_raw_with_detail("resp_a", reasoning=3),
             ),
             _response(
                 parsed=_valid_extracted_analysis(),
@@ -549,8 +482,8 @@ def test_correction_success_retains_the_failed_attempt_with_errors_and_parsed_ou
     result = analyze_source(_source(), model=model, settings=_settings(), clock=_Clock())
 
     first, second = result.attempts
-    assert (first.outcome, second.outcome) == ("invalid_analysis", "valid")
-    assert "3 billion gallons" in first.problems[0]
+    assert (first.outcome, second.outcome) == ("parse_error", "valid")
+    assert "schema mismatch" in first.problems[0]
     assert first.parsed_output is not None
     assert [first.request_id, second.request_id] == ["resp_a", "resp_b"]
     assert second.usage is not None and second.usage.cached_input_tokens == 100
@@ -563,10 +496,14 @@ def test_terminal_validation_failure_exposes_every_attempt() -> None:
     model = FakeStructuredModel(
         [
             _response(
-                parsed=_invalid_extracted_analysis(), raw=_raw_with_detail("r1", reasoning=1)
+                parsed=_invalid_extracted_analysis(),
+                parsing_error=ValueError("schema mismatch"),
+                raw=_raw_with_detail("r1", reasoning=1),
             ),
             _response(
-                parsed=_invalid_extracted_analysis(), raw=_raw_with_detail("r2", reasoning=2)
+                parsed=_invalid_extracted_analysis(),
+                parsing_error=ValueError("schema mismatch"),
+                raw=_raw_with_detail("r2", reasoning=2),
             ),
         ]
     )
@@ -574,7 +511,7 @@ def test_terminal_validation_failure_exposes_every_attempt() -> None:
         analyze_source(_source(), model=model, settings=_settings())
     exc = exc_info.value
     assert [a.request_id for a in exc.attempts] == ["r1", "r2"]
-    assert all(a.outcome == "invalid_analysis" and a.parsed_output for a in exc.attempts)
+    assert all(a.outcome == "parse_error" and a.parsed_output for a in exc.attempts)
     assert exc.output_tokens == 100 and exc.attempt_count == 2
 
 
@@ -633,15 +570,13 @@ def test_refusal_incomplete_and_technical_failures_keep_categories_and_carry_att
 def test_technical_failure_on_the_correction_call_keeps_the_first_attempt() -> None:
     model = FakeStructuredModel(
         [
-            _response(
-                parsed=_invalid_extracted_analysis(), raw=_raw_with_detail("r1", reasoning=1)
-            ),
+            _unreadable_response(raw=_raw_with_detail("r1", reasoning=1)),
             TimeoutError("timed out"),
         ]
     )
     with pytest.raises(SourceAnalysisExtractionError) as failed:
         analyze_source(_source(), model=model, settings=_settings())
-    assert [a.outcome for a in failed.value.attempts] == ["invalid_analysis", "technical_failure"]
+    assert [a.outcome for a in failed.value.attempts] == ["parse_error", "technical_failure"]
 
 
 def test_missing_usage_keeps_the_raw_response_as_a_technical_failure_record() -> None:

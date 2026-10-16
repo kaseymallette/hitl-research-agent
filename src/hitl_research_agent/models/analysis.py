@@ -14,7 +14,7 @@ class SourceAnalysis(ResearchBaseModel):
     id: UUID = Field(default_factory=uuid4)
     provenance: Provenance
     research_problem: ResearchProblem
-    central_claims: list[Claim] = Field(min_length=1)
+    central_claims: list[Claim] = Field(default_factory=list)
     methodology: Methodology | None = None
     assumptions: list[Assumption] = Field(default_factory=list)
     limitations: list[Limitation] = Field(default_factory=list)

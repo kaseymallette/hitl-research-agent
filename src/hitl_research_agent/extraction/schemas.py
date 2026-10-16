@@ -15,12 +15,38 @@ from ..models.interpreted import (
 from ..models.methodology import Methodology
 from ..models.provenance import Provenance
 from .annotations import find_annotations, reserved_character_problems
+from .attachments import Attachment, InputMode
 from .attempts import AttemptRecord
 
 ANALYSIS_SCOPE = (
     "Analysis used prepared text only. Listed items were omitted or incompletely "
     "represented; their original image content was not assessed."
 )
+
+ANALYSIS_SCOPE_PDF = (
+    "Analysis received the original source PDF; the API supplied its text layer and its "
+    "page images. Any figure, table, or equation content reported by the model was read "
+    "from those page images, is recorded as paraphrased evidence with a page locator, and "
+    "is unverified until a human checks it against the original page. Verbatim grounding "
+    "was checked against the declared grounding reference, which is not the model's own "
+    "view of the document. Any items listed in preparation_gaps describe that grounding "
+    "reference, not this analysis's input: the model received the whole PDF, so nothing "
+    "listed there was withheld from it."
+)
+
+ANALYSIS_SCOPE_TEXT_AND_CROPS = (
+    "Analysis received the prepared text plus the retained crops for the listed items. "
+    "Any content reported from a crop was read from that image, is recorded as paraphrased "
+    "evidence with a crop and page locator, and is unverified until a human checks it "
+    "against the original image. Verbatim grounding was checked against the prepared text "
+    "only, so nothing read from a crop can qualify as a verbatim quotation."
+)
+
+ANALYSIS_SCOPE_BY_INPUT_MODE: dict[InputMode, str] = {
+    "prepared_text": ANALYSIS_SCOPE,
+    "prepared_text_and_crops": ANALYSIS_SCOPE_TEXT_AND_CROPS,
+    "pdf": ANALYSIS_SCOPE_PDF,
+}
 
 
 class PreparationGap(ResearchBaseModel):
@@ -136,7 +162,7 @@ class ExtractedClaim(ResearchBaseModel):
             "not explicitly stated in the source text (model_inferred)."
         )
     )
-    evidence: list[ExtractedEvidence] = Field(min_length=1)
+    evidence: list[ExtractedEvidence] = Field(default_factory=list)
     support_assessment: NonEmptyStr | None = Field(
         default=None,
         description=(
@@ -162,7 +188,7 @@ class ExtractedAnalysis(ResearchBaseModel):
     """
 
     research_problem: ResearchProblem
-    central_claims: list[ExtractedClaim] = Field(min_length=1)
+    central_claims: list[ExtractedClaim] = Field(default_factory=list)
     methodology: Methodology | None = None
     assumptions: list[Assumption] = Field(default_factory=list)
     limitations: list[Limitation] = Field(default_factory=list)
@@ -192,6 +218,17 @@ class AnalysisResult(ResearchBaseModel):
         description="Copied from the analyzed SourceDocument; images are relative to "
         "preparation_directory.",
     )
+    input_mode: InputMode = Field(
+        default="prepared_text",
+        description="What the model actually received for this analysis.",
+    )
+    model_inputs: list[Attachment] = Field(
+        default_factory=list,
+        description=(
+            "Attachments sent with the request, with the sha256 of the exact bytes. "
+            "Empty for a text-only analysis."
+        ),
+    )
     model: NonEmptyStr
     input_tokens: int = Field(ge=0)
     output_tokens: int = Field(ge=0)
@@ -210,4 +247,6 @@ class AnalysisResult(ResearchBaseModel):
             raise ValueError("attempts must contain exactly attempt_count records when present")
         if self.preparation_gaps and not self.preparation_directory:
             raise ValueError("preparation_gaps requires preparation_directory to resolve images")
+        if self.model_inputs and self.input_mode == "prepared_text":
+            raise ValueError("input_mode 'prepared_text' records no model_inputs")
         return self
