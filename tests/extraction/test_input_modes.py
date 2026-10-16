@@ -403,7 +403,7 @@ def test_pdf_result_records_its_input_and_scope(tmp_path: Path) -> None:
     )
     assert result.input_mode == "pdf"
     assert result.analysis_scope == ANALYSIS_SCOPE_PDF
-    assert "page images" in result.analysis_scope
+    assert "page image" in result.analysis_scope
     assert [item.path for item in result.model_inputs] == ["source.pdf"]
     assert result.model_inputs[0].sha256 == attachment.record.sha256
 

@@ -150,9 +150,8 @@ def main() -> int:
         print(f"analysis: {shown(analysis_path)}")
         print(
             f"  {len(result.analysis.central_claims)} claims, "
-            f"{len(result.grounding_notes)} advisory note(s), "
             f"{result.input_tokens} in / {result.output_tokens} out, "
-            f"attempt {result.attempt_count}"
+            f"{result.attempt_count} attempt(s)"
         )
     else:
         print(f"no analysis returned: {type(error).__name__}: {error}", file=sys.stderr)

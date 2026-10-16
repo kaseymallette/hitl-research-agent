@@ -116,15 +116,15 @@ them, and a 664-line one-source pilot script built around their failures.
 | `extraction/attachments.py` | PDF and image attachments with the sha256 of the exact bytes sent, and the documented 50 MB per-request limit. Both Phase 1 input methods are already supported. |
 | `extraction/attempts.py`, `extraction/errors.py` | Per-attempt usage (including reasoning and cached-input tokens), timing, request ids, and the error taxonomy. This is Phase 1's measurement instrument. |
 | `config.py` — `Settings` | `openai_model`, `openai_reasoning_effort`, `max_output_tokens`, `openai_max_retries`. The whole A/B matrix is a configuration change, not a code change. |
-| `scripts/prepare_phase_3_sources.py` | PDF → extracted text, crops, page images, and a preparation record of what text could not represent. The only producer of the text-plus-crops arm. Rename to `prepare_sources.py`. |
+| `scripts/prepare_sources.py` | PDF → extracted text, crops, page images, and a preparation record of what text could not represent. The only producer of the text-plus-crops arm. **Renamed** from `prepare_phase_3_sources.py`. |
 
 #### Simplify
 
 | Component | Change |
 | --- | --- |
-| `scripts/analyze_pdf.py` | Generalize into the single analysis runner: both input methods, the configuration in the output path, and usage, cost, and runtime in the run record. **It also has a live bug** — line 153 reads `result.grounding_notes`, a field removed from `AnalysisResult`, so a *successful* run raises `AttributeError` after writing `analysis.json` and before writing `run_record.json`. Phase 1 cannot measure anything until this is fixed. |
+| `scripts/analyze_pdf.py` | **Crash fixed.** It read `result.grounding_notes`, a field removed from `AnalysisResult`, so a *successful* run raised `AttributeError` after writing `analysis.json` and before writing `run_record.json` — measurement was impossible. It now reports claims, usage, and attempt count. Phase 1 grows it into the matrix runner: both input methods, the configuration in the output path, and cost in the run record. |
 | `scripts/run_li_input_pilot.py` (664 lines) | **Deleted.** Hard-coded to one article — Li, which is not in the A/B set — and built around pre-call token projection, an offline dry run, a payload inventory, and a cross-invocation spending guard. Three things from it are worth carrying into the Phase 1 matrix runner: the documented per-model rate table, cost calculated from *actual* reported usage, and the timing and usage records. The projection, the dry run, and the per-run approval gates are not. |
-| `extraction/schemas.py` — `ANALYSIS_SCOPE`, `ANALYSIS_SCOPE_PDF`, `ANALYSIS_SCOPE_TEXT_AND_CROPS` | Three paragraphs that still describe verbatim-grounding checks against a declared grounding reference. Those checks no longer exist, so the strings are now false on a saved result. Replace with one short, true sentence per input method, saying what the model received and that image readings are unverified. |
+| `extraction/schemas.py` — `ANALYSIS_SCOPE`, `ANALYSIS_SCOPE_PDF`, `ANALYSIS_SCOPE_TEXT_AND_CROPS` | **Rewritten.** Three paragraphs described verbatim-grounding checks against a declared grounding reference; those checks no longer exist, so the text was false on every saved result. Each is now two sentences: what the model received, and that anything it read from an image is unverified. The test that asserted one of them word for word now asserts the claim instead. |
 | `extraction/annotations.py` | **Done.** `grounding_view()`, `contains_reserved_character()`, and `SENTINEL` are gone, along with their exports and the tests covering them. `reserved_character_problems()` now checks the two annotation delimiters only, which is one character less than before and costs nothing, since nothing produces the sentinel any more. `find_annotations`, `format_annotation`, and `reserved_character_problems` stay: the preparation script and the `SourceDocument` validator that ties in-text annotations to declared gaps both still need them for the text-plus-crops arm. |
 
 #### Remove
@@ -151,6 +151,10 @@ code exists. Phases 2, 4, 5, and 6 start from nothing.
   (8 v1 analyses of it), and `outputs/phase_3/` (the Li input-format experiment:
   source PDF, extracted text, 8 crops, 3 analyses) were removed from this branch.
   They remain in git history at commit `0fd1ccf` and earlier.
+
+Code changed: `scripts/prepare_phase_3_sources.py` renamed to
+`prepare_sources.py`; the `analyze_pdf.py` crash fixed; the three
+`ANALYSIS_SCOPE` strings rewritten to describe what actually happens.
 
 Code removed: `scripts/run_li_input_pilot.py` and
 `tests/pilots/test_li_input_pilot_guard.py`, and the dead grounding helpers
@@ -179,12 +183,14 @@ this plan were rewritten. 169 tests pass, with Ruff, formatting, and mypy clean.
 ### Acceptance criteria
 
 - [x] Every v1 component has a reuse, simplify, or remove verdict with a reason.
-- [x] Data and output folders are named by role; no phase-numbered folders
-      remain; nothing was deleted.
-- [x] README is short and describes the three agents, the workflow, and the
-      seven phases.
-- [x] This plan specifies Phase 1 in full.
-- [x] Checks pass after the restructuring.
+- [x] Every verdict is **applied**: the removals are removed, the
+      simplifications simplified, and nothing is deferred to a later phase.
+- [x] Data folders are named by role, with no phase-numbered folders left.
+- [x] README introduces the project, the three research agents, and the phases.
+- [x] Every file in the repository is accounted for in
+      [`REPOSITORY.md`](REPOSITORY.md), with a reason for existing.
+- [x] This plan specifies Phase 1 in full, and Phase 1 contains no cleanup.
+- [x] Checks pass: 169 tests, Ruff, formatting, mypy.
 
 ---
 
@@ -278,19 +284,17 @@ result: record it and rerun that cell.
 
 ### Implementation tasks
 
-1. Fix the `analyze_pdf.py` `grounding_notes` crash.
-2. Add owner-confirmed provenance entries for the four A/B articles to
+Phase 0 left the code ready for these; nothing here is cleanup.
+
+1. Add owner-confirmed provenance entries for the four A/B articles to
    `data/research/sources.yaml`. **Blocked on the project owner.**
-3. Rename `prepare_phase_3_sources.py` → `prepare_sources.py`; update its
-   references.
-4. Prepare the four articles, timing each; record gaps and crops.
-5. Generalize the analysis runner into a matrix runner: takes an article and a
-   configuration slug, selects the input mode, loads the PDF or the prepared
-   text plus crops, writes `analysis.json` and `run_record.json` to the cell.
-   Carry over the rate table and cost-from-actual-usage from the pilot script.
-6. Simplify the three `ANALYSIS_SCOPE` strings so a saved result describes what
-   actually happened.
-7. Run the 16 cells. Write `summary.csv`.
+2. Prepare the four articles with `prepare_sources.py`, timing each; record
+   gaps and crops.
+3. Build the matrix runner: takes an article and a configuration slug, selects
+   the input mode, loads the PDF or the prepared text plus crops, and writes
+   `analysis.json` and `run_record.json` to the cell. It needs a per-model rate
+   table and cost calculated from actual reported usage.
+4. Run the 16 cells. Write `summary.csv`.
 
 Cost: on the one measured v1 data point, two Sol-medium analyses of a 36.6k-char
 article, each including a correction attempt, had a combined calculated cost of

@@ -281,5 +281,7 @@ uv run mypy src
 
 - [Build Plan](docs/BUILD_PLAN.md) — the phases in engineering detail, with
   rubrics and procedures
+- [Repository Inventory](docs/REPOSITORY.md) — every file, what it is for, and
+  where the code is heavier than it needs to be
 - [Prompt Log](docs/prompt_log.md) — one log per phase, recording the prompts
   given to Claude Code and Codex while building this and what came back

@@ -19,27 +19,20 @@ from .attachments import Attachment, InputMode
 from .attempts import AttemptRecord
 
 ANALYSIS_SCOPE = (
-    "Analysis used prepared text only. Listed items were omitted or incompletely "
-    "represented; their original image content was not assessed."
+    "The model received prepared text only. Items in preparation_gaps were omitted or "
+    "incompletely represented in that text, and their image content was not seen."
 )
 
 ANALYSIS_SCOPE_PDF = (
-    "Analysis received the original source PDF; the API supplied its text layer and its "
-    "page images. Any figure, table, or equation content reported by the model was read "
-    "from those page images, is recorded as paraphrased evidence with a page locator, and "
-    "is unverified until a human checks it against the original page. Verbatim grounding "
-    "was checked against the declared grounding reference, which is not the model's own "
-    "view of the document. Any items listed in preparation_gaps describe that grounding "
-    "reference, not this analysis's input: the model received the whole PDF, so nothing "
-    "listed there was withheld from it."
+    "The model received the original source PDF, so nothing was withheld from it. Content "
+    "it reports from a figure, table, or equation was read from a page image and is "
+    "unverified until a human checks it against that page."
 )
 
 ANALYSIS_SCOPE_TEXT_AND_CROPS = (
-    "Analysis received the prepared text plus the retained crops for the listed items. "
-    "Any content reported from a crop was read from that image, is recorded as paraphrased "
-    "evidence with a crop and page locator, and is unverified until a human checks it "
-    "against the original image. Verbatim grounding was checked against the prepared text "
-    "only, so nothing read from a crop can qualify as a verbatim quotation."
+    "The model received the prepared text plus one retained crop for each item in "
+    "preparation_gaps. Content it reports from a crop was read from that image and is "
+    "unverified until a human checks it against the original."
 )
 
 ANALYSIS_SCOPE_BY_INPUT_MODE: dict[InputMode, str] = {

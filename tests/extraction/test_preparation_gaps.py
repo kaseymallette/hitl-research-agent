@@ -76,10 +76,8 @@ def _result(**overrides: Any) -> AnalysisResult:
 
 
 def test_scope_states_the_text_only_limit_and_is_on_every_result() -> None:
-    assert ANALYSIS_SCOPE == (
-        "Analysis used prepared text only. Listed items were omitted or incompletely "
-        "represented; their original image content was not assessed."
-    )
+    assert "prepared text only" in ANALYSIS_SCOPE
+    assert "preparation_gaps" in ANALYSIS_SCOPE
     assert _result().analysis_scope == ANALYSIS_SCOPE  # default, not opt-in
 
 

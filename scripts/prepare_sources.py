@@ -2,8 +2,8 @@
 
 One process for every PDF (no per-source code, no tool switching):
 
-    python scripts/prepare_phase_3_sources.py prepare --slug SLUG
-    python scripts/prepare_phase_3_sources.py page    --slug SLUG --page N
+    python scripts/prepare_sources.py prepare --slug SLUG
+    python scripts/prepare_sources.py page    --slug SLUG --page N
 
 What it does:
 
