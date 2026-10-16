@@ -6,13 +6,17 @@ The analyses connect authors’ claims to their evidence, methods, assumptions, 
 
 ## Purpose
 
-I’m building this framework to become a better researcher: to work through more literature, make connections across sources, and pursue questions I might otherwise miss. When using AI to summarize and analyze articles, I’ve noticed models misattribute claims, leave out important qualifications, or attach evidence that does not support their interpretations. These errors make it difficult to rely on an analysis when comparing sources or deciding which evidence supports an argument.
+I’m building this framework to become a better researcher: to work through more literature, make connections across sources, and pursue questions I might otherwise miss. I want AI to help me evaluate the authors’ arguments: whether their evidence supports their claims, whether their methods justify their conclusions, and what assumptions or limitations affect those conclusions.
 
-Which brings me to the core question:
+But before I can rely on AI to judge an argument, I need to judge AI. When using models to summarize and analyze articles, I’ve noticed that they can misattribute claims, leave out important qualifications, or attach evidence that does not support their interpretations. This project therefore evaluates both how faithfully the model represents a source and how well it reasons about the authors’ claims. I need to know whether its assessment helps me understand the argument or gives me errors to correct.
 
-> Why use AI to help with research when I can read the articles myself?
+### AI as a research assistant?
 
-That is why I want to ensure that AI adds something worthwhile, whether that is helping me compare explanations, noticing conflicting evidence, or identifying an assumption worth investigating. *Does this system help me conduct better research that justifies the time and money spent to use it?*
+The justification to use AI to support research still needs to be made, and that is what this system is for.
+
+> Why use AI when I can read the articles and evaluate the authors' arguments myself?
+
+The AI agents need to add something worthwhile, whether that is helping me compare explanations, noticing conflicting evidence, or identifying an assumption worth investigating. *Does this system help me conduct better research that justifies the time and money spent to build and implement it?* *Will I use it to support my research consistently?*
 
 
 ## Research
@@ -36,12 +40,7 @@ The source collection is 16 articles in [`data/research/`](data/research), four
 of which are the experiment set in
 [`data/research/ab_testing/`](data/research/ab_testing).
 
-I chose this question because it is narrow, contested, and evidence-heavy
-enough to develop the framework against, with real disagreement in the
-literature to work through. It shapes which sources I collect and what I ask
-the literature review agent. It does not reach single source analysis or
-synthesis, both of which stay question-independent so that the analyses and
-comparisons I produce now remain useful when I move on to a different question.
+I collected the 16 articles for this pilot study myself, using the research question to identify relevant sources. The planned literature review agent will assist with that work by finding candidate articles and explaining their relevance for me to review. Single source analysis and synthesis remain question-independent so their outputs can support other research questions as the collection grows.
 
 
 ## How the system supports the researcher
@@ -124,32 +123,25 @@ are reachable only through evaluation and my own review, which is why
 is committed to its content, and a faithful paraphrase is not a lesser answer
 than a quotation the model was unsure of.
 
-### Faithfulness, support, and what is out of scope
+### Evaluating the model and the authors’ arguments
 
-A faithful analysis can accurately reproduce a weak argument, a poorly
-evidenced one, or a wrong one. If I treated faithfulness as though it also
-established soundness, the framework would pass bad sources through
-unexamined, so I keep three questions separate and avoid using "validity" as a
-single term for all of them.
+Evaluation checks two things. Does the model faithfully represent the
+source, preserving what the authors actually claim and distinguishing it from
+the model’s own interpretation? And does the model make a defensible assessment
+of the argument, grounding its judgments in the source’s evidence and reasoning?
+Accurately reporting a claim does not establish that the claim is well supported,
+and identifying a supposed weakness does not establish that the model is right.
 
-| Question | What it is about |
-| --- | --- |
-| Does the analysis represent the source? | the analysis, and the first thing evaluation has to establish |
-| Do the source’s reasons meet its claim? | the source’s argument, which can be weak even when the analysis of it is perfect |
-| Is the source’s method sound? | the source’s reasoning. Judging this is held back until the first two are reliable |
+The evaluation therefore examines both the accuracy of the model’s account and
+the reasoning behind its assessment. Human review checks those judgments,
+including the judgments made by the evaluation model. The goal is to establish
+whether AI can help me evaluate arguments, and where its assessments need
+correction.
 
-The second question is the one that takes judgment rather than reading. An
-analysis can record a claim and its evidence accurately and still leave open
-whether that evidence carries the claim, and the schema keeps room for that
-judgment: how a piece of evidence relates to its claim, and whether a claim’s
-reasons meet the strength it was stated with. How far the system should go in
-making those judgments, rather than representing the argument and leaving them
-to me, is something I will decide later.
-
-External factual verification is out of scope. Citations record what the source
-itself cites, extracted from the document. No cited work is retrieved, and no
-claim is checked against the world. An analysis can be faithful to a source
-that is factually wrong, and nothing here will notice.
+The current analysis step works from the supplied article. It records the
+article’s citations but does not retrieve the cited studies or independently
+verify their findings. Its assessment of an argument is based on what the
+article provides.
 
 
 ## Evaluation design
@@ -180,47 +172,42 @@ Rubrics, scales, and the evaluation procedure are in the
 
 ### The A/B experiment
 
-Before analyzing the collection, I am running one 2 × 2 comparison across four
-articles, producing 16 analyses.
+The coding assistants suggested extracting text from the PDFs and preparing
+image crops for content such as figures and tables. After that approach was
+underway, I asked: **Why not just send the PDF?** We had built a preparation
+pipeline without first testing whether it improved the analysis. This
+experiment compares the two approaches to find out whether that extra work
+is worthwhile.
+
+I’m also testing GPT-6.1 Sol at medium reasoning effort against GPT-6 Astra at
+low reasoning effort. Sol could lower the cost of analyzing the collection,
+but I want to see whether it represents and assesses the authors’ arguments
+as well as Astra, and whether any improvement from Astra justifies its
+additional cost.
+
+Each model will analyze the same four articles using both input methods,
+producing **16 analyses**:
 
 | | GPT-6.1 Sol, medium effort | GPT-6 Astra, low effort |
 | --- | --- | --- |
 | **Full PDF** | 4 analyses | 4 analyses |
 | **Extracted text + crops** | 4 analyses | 4 analyses |
 
-Held fixed: the analysis prompt, the output schema, the one-correction policy,
-and the question-independence of the task. The only intended differences are
-the input format and the model configuration.
+The analysis prompt, output schema, one-correction policy, and
+question-independence of the task stay fixed. The intended differences are
+the input method and model configuration.
 
-The input-method axis is there because it is a real engineering question worth
-measuring rather than assuming. The extraction pipeline came first, turning a
-PDF into cleaned text with crops retained for the figures, equations, and
-tables that text cannot represent, and that pipeline works. What it has not had
-is a controlled comparison against the simpler alternative of sending the PDF
-straight to the model. Preparation may turn out to be the most expensive part
-of the workflow, and if the two methods produce comparable analyses it is worth
-knowing that before committing the whole collection to the longer route.
+I will compare the analyses for faithful representation of the sources and
+the quality of their assessments of the authors’ arguments. Alongside those
+results, I will record token usage, calculated cost, runtime, and the time
+and manual work needed to prepare the text and crops. That will let me weigh
+any improvement in analysis against what it costs to produce.
 
-The model axis asks a cost question. Sol could lower the cost of analyzing the
-collection. I want to test whether Astra produces better analyses and whether
-that improvement justifies its additional cost.
-
-Quality alone will not decide this, which is why I record four things for every
-analysis: quality, token usage and calculated cost, runtime, and preparation
-effort. Whether those four point to the same configuration is one of the things
-the experiment is meant to find out. The documented rate for Astra is five
-times Sol’s, and the full-PDF arm sends every page as an image, so cost there
-should scale with page count in a way the extracted-text arm does not. If an
-approach analyzes only slightly better for several times the cost and a
-preparation step for every article, it may not be worth it to me.
-
-The result informs one decision: which configuration analyzes the full
-16-article collection. Four articles give me an initial comparison rather than
-proof that one configuration is better in general, since they are four articles
-on one topic and a configuration that does well here may not do well on a
-different kind of source.
-
-This experiment will help me choose a configuration; the broader question is whether using it improves my research enough to justify the time spent preparing, reviewing, and correcting its output.
+The results will help me choose a configuration for the full 16-article
+collection. Four articles provide an initial comparison, not a conclusion
+about which approach works best across all research topics. The broader
+question remains whether the system improves my research enough to justify
+the time spent preparing, reviewing, and correcting its output.
 
 ## Current status and roadmap
 
@@ -244,6 +231,29 @@ The [build plan](docs/BUILD_PLAN.md) has each phase in engineering detail,
 including Phase 1’s open items and what earlier code each phase reuses,
 simplifies, or removes. Experiment outputs from the previous design are kept
 for history in [`outputs/v1_archive/`](outputs/v1_archive).
+
+## Development approach and lessons
+
+Two coding assistants helped me build this project.
+
+- **Claude Code** is responsible for all of the code.
+- **Codex** helps with design and prompt writing, and maintains the
+  [prompt log](docs/prompt_log.md).
+
+Neither decides what I research or what the evidence means.
+
+What has been difficult about working this way:
+
+- Each implementation step produced the next step’s problem, and the design
+  grew to absorb every one. A safeguard added for one failure became the thing
+  the next step had to work around. The accumulated machinery eventually cost
+  more than the failures it caught, and removing it took longer than building
+  it had.
+- The architecture drifted without my deciding it should. No single step chose
+  to turn quotation matching into a hard acceptance gate, but it arrived there
+  across many small changes that each looked reasonable at the time, and the
+  direction was only visible in aggregate.
+- The coding assistants did not consistently follow my instructions. I had to repeat requirements, correct assumptions, and undo changes I had not asked for. That took time and money away from the research and made supervising the assistants a substantial part of the work.
 
 ## Stack, setup, and documentation
 
