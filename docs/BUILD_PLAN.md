@@ -1,1525 +1,437 @@
 # Build Plan
 
-This document turns the roadmap in [README.md](../README.md) into an engineering
-implementation plan. It is developed collaboratively, one phase at a time.
+This document turns the phases in [README.md](../README.md) into an engineering
+plan. It is developed one phase at a time: the current phase is specified in
+full, later phases state their goal and the decisions they must make, and are
+filled in once the prior phase is accepted.
 
-Each phase is specified with:
-
-- **Goal** — what this phase achieves and why it matters to the overall system
-- **Architectural Decisions** — choices made for this phase, with rationale
-- **Technologies** — libraries/tools introduced or used in this phase
-- **Implementation Tasks** — concrete units of work
-- **Tests** — what must be verified, and how
-- **Acceptance Criteria** — the observable conditions that mark the phase done
-
-Only the current phase is filled in. Later phases are listed as placeholders
-from the README roadmap and will be fleshed out in order, in discussion with
-the project owner, once the prior phase is accepted.
+This is the v2 plan. It replaces the nine-phase v1 plan. v1 built a working
+single-source analysis pipeline and then spent a long sequence of turns on
+grounding checks that were ultimately removed; that history lives in
+[`docs/prompt_logs/`](prompt_logs) (which uses v1 phase numbering — a v2 log
+should start a new series) and in the archived outputs under
+[`outputs/v1_archive/`](../outputs/v1_archive).
 
 ---
 
-## Phase 0 — Getting Started
+## System Architecture
 
-### Goal
+### The three agents
 
-Stand up a working Python project skeleton and toolchain so that every later
-phase starts from a known-good foundation: dependency management, package
-layout, config/secrets handling, linting, type-checking, testing, and CI all
-function end-to-end before any research logic is written.
+| Agent | Input | Output | Question-aware? |
+| --- | --- | --- | --- |
+| **Single-source analysis** | one article | one structured JSON analysis | No — never receives a research question |
+| **Synthesis** | several accepted analyses | a cross-source comparison | No |
+| **Research** | an explicit research question | candidate articles with stated relevance | Yes — this is the only question-aware agent |
 
-### Architectural Decisions
+Single-source analysis stays question-independent so that an analysis produced
+today remains usable for a question asked later, and so that no analysis is
+shaped toward a conclusion the researcher is looking for. Synthesis compares
+what the sources say to each other, not to a question. Only the research agent
+reads the research question, and it only proposes; the researcher selects.
 
-- **Dependency & environment management: [uv](https://docs.astral.sh/uv/)**
-  One tool handles the virtual environment, dependency resolution, and the
-  lockfile (`uv.lock`), replacing the pip + venv + requirements.txt
-  combination. Fast, single binary, minimal ceremony.
+### Workflow contract
 
-- **Python version: 3.12**
-  Development is standardized on Python 3.12 using a `.python-version` file,
-  while `pyproject.toml` declares `requires-python = ">=3.12,<3.13"`.
-  CI also runs against Python 3.12 so local development and automated checks
-  use the same interpreter version.
+```
+article + prompt → model → JSON → separate evaluation
+```
 
-- **Package layout: `src/` layout + Hatchling**
-  Application code lives at `src/hitl_research_agent/`, not at the repo root.
-  This forces the package to be installed (via `uv`) rather than imported
-  by accident from the working directory. Hatchling is used as the build
-  backend for the installable `src/` package.
+Three rules hold across every phase:
 
-- **Configuration & secrets: `pydantic-settings` + `.env`**
-  A single typed `Settings` object (subclassing `BaseSettings`) will be the
-  one place that reads environment variables / `.env`. This provides typed,
-  centralized configuration and fits the project's existing Pydantic-first
-  design direction (structured research schemas in later phases). `.env` is
-  git-ignored; `.env.example` documents expected variables without values.
-  No real secret is required in Phase 0 because no LLM calls occur until
-  Phase 2. `OPENAI_API_KEY` is therefore optional in the Phase 0 settings
-  scaffold and becomes required only when a component actually needs OpenAI.
+1. **Evaluation is separate from production.** Quality assessment never runs
+   inside the analysis call and never decides whether the JSON is returned.
+2. **No hard quality gates.** Only a technical failure — an API error, an
+   unreadable response, output that cannot be parsed into the schema — stops a
+   run. A paraphrase instead of a quotation, a claim with no evidence item, a
+   thin analysis: these are reported by evaluation and human review, never
+   grounds for withholding the result. v1 accumulated such gates and they were
+   removed deliberately; they are not to be restored.
+3. **Model interpretation stays labelled.** `author_stated` vs.
+   `model_inferred` is carried on every claim, assumption, limitation, proposed
+   solution, open question, and methodology record.
 
-- **Linting / formatting / type-checking: Ruff + mypy**
-  Ruff replaces flake8/isort/black (lint + format in one fast tool). mypy adds
-  static type checking, which matters early because the project's core data
-  model (Phase 1) will be Pydantic-heavy and benefits from catching schema
-  mistakes at type-check time rather than at runtime.
+### Repository layout
 
-- **Git hooks: pre-commit**
-  Ruff and mypy run automatically on commit via `pre-commit`, so style/type
-  issues are caught locally before they reach CI.
+```
+data/research/                      16 source PDFs
+  ab_testing/                       the 4 A/B experiment articles
+  sources.yaml                      provenance manifest, owner-confirmed
+outputs/
+  preparation/<slug>/               extracted text, crops, preparation record
+  ab_testing/<slug>/<config>/       Phase 1: analysis.json + run_record.json
+  analyses/<slug>/                  Phase 3: analysis in the chosen configuration
+  evaluations/<slug>/               Phase 3: evaluation, stored apart from the analysis
+  synthesis/                        Phase 4
+  v1_archive/                       v1 experiment history; not a Phase 1 result
+src/hitl_research_agent/
+  models/                           the analysis data model
+  extraction/                       the single-source analysis agent
+scripts/                            runnable entry points
+```
 
-- **CI: GitHub Actions**
-  A minimal workflow runs `ruff check`, `ruff format --check`, `mypy`, and
-  `pytest` on every push/PR from Phase 0 onward, so the toolchain is enforced
-  from the very first commit rather than retrofitted later.
-
-- **Test framework: pytest**
-  Standard choice for the ecosystem; works naturally with the `src/` layout.
-
-- **Deferred dependencies: LangChain, DeepEval, OpenAI SDK**
-  None of these are installed in Phase 0. There is no LLM or evaluation logic
-  yet, so pulling them in now would add dependency weight with nothing to
-  exercise it. They are introduced starting in Phase 2 (LangChain, OpenAI) and
-  Phase 3 (DeepEval), when there is real behavior for them to support.
-
-- **Phase 0 code scope: scaffolding + one smoke test**
-  Phase 0 does not implement any research logic. It proves the full chain —
-  `uv run pytest` executes, discovers the package, and passes — works before
-  Phase 1 introduces real schemas.
-
-### Technologies Introduced
-
-| Tool | Purpose |
-|---|---|
-| `uv` | Virtual environment, dependency resolution, lockfile |
-| `pydantic` / `pydantic-settings` | Data validation; typed settings from env/`.env` |
-| `ruff` | Linting + formatting |
-| `mypy` | Static type checking |
-| `pre-commit` | Git hook runner for ruff + mypy |
-| `pytest` | Test runner |
-| GitHub Actions | CI |
-
-### Implementation Tasks
-
-1. Create `pyproject.toml`:
-   - project metadata: `name = "hitl-research-agent"` (matches repo/README),
-     importable module `hitl_research_agent`; `requires-python = ">=3.12,<3.13"`
-   - `src/` layout build config using Hatchling as the build backend
-     (`[build-system]` with `hatchling.build`)
-   - dependency groups: runtime (`pydantic`, `pydantic-settings`) and dev
-     (`pytest`, `ruff`, `mypy`, `pre-commit`)
-   - `[tool.ruff]` and `[tool.mypy]` configuration
-2. Create a `.python-version` file pinned to `3.12` so local interpreter
-   selection matches `requires-python` in `pyproject.toml` and the CI version.
-3. Run `uv sync` / `uv lock` to generate `uv.lock` and the local `.venv`.
-4. Create package skeleton:
-   - `src/hitl_research_agent/__init__.py`
-   - `src/hitl_research_agent/config.py` — `Settings(BaseSettings)` class,
-     with `OPENAI_API_KEY` as an optional field
-5. Create `.env.example` documenting expected environment variables
-   (starting with a placeholder for the future, optional `OPENAI_API_KEY`).
-6. Confirm `.gitignore` covers `.venv/`, `.env`, `__pycache__/`, `.mypy_cache/`,
-   `.ruff_cache/`, `.pytest_cache/` (extend existing `.gitignore` as needed).
-7. Create `tests/` directory with smoke tests that:
-   - import the package without error
-   - construct `Settings` successfully with no `OPENAI_API_KEY` set
-   - construct `Settings` with a test `OPENAI_API_KEY` and confirm it loads
-8. Add `.pre-commit-config.yaml` wiring ruff (lint + format) and mypy as hooks;
-   document `pre-commit install` in the README dev setup section.
-9. Add `.github/workflows/ci.yml` running, on push and PR (pinned to
-   Python 3.12): `uv sync`, `ruff check`, `ruff format --check`, `mypy src`,
-   `pytest`.
-10. Add a "Development Setup" section to `README.md` covering: installing
-    `uv`, `uv sync`, `pre-commit install`, and how to run tests/lint locally.
-
-### Tests
-
-- Smoke test: package imports without error.
-- Smoke test: `Settings` constructs successfully without `OPENAI_API_KEY`
-  because no Phase 0 component requires it.
-- Smoke test: `Settings` loads `OPENAI_API_KEY` correctly when a test value is
-  supplied, proving `pydantic-settings` environment loading is wired up.
-
-### Acceptance Criteria
-
-- [x] `.python-version` and `pyproject.toml` agree on Python 3.12.
-- [x] `uv sync` installs a working environment from a clean clone.
-- [x] `uv run pytest` passes locally.
-- [x] `uv run ruff check .` and `uv run ruff format --check .` pass.
-- [x] `uv run mypy src` passes.
-- [x] `pre-commit run --all-files` passes.
-- [x] Pushing a commit/PR triggers GitHub Actions CI and it passes.
-- [x] README documents how a new contributor sets up the dev environment.
-- [x] No research/domain logic exists yet beyond the settings scaffold —
-      Phase 0 stays scoped to toolchain and structure.
+Data folders are named by role, not by phase number, so that a phase
+renumbering never moves source material again.
 
 ---
 
-## Phase 1 — Research Data Model
+## Phase 0 — Review and Redesign
 
 ### Goal
 
-Define and validate the Pydantic schemas representing a single source's
-structured research analysis — the shared vocabulary every later phase
-(extraction, evaluation, review, synthesis, storage) builds on. Phase 1 is
-schema definition and validation only: no LLM calls, no persistence, no I/O.
+Decide what of v1 carries into v2 before any v2 code is written, and restructure
+the repository and documentation around the v2 phases.
 
-### Architectural Decisions
+### What the v1 audit found
 
-- **Composed sub-models, not one flat model**
-  `SourceAnalysis` composes focused sub-models (`Provenance`, `Methodology`,
-  `Claim`, `Evidence`, and the `InterpretedStatement` subclasses) rather than
-  being one model with primitive-typed fields. This makes each piece
-  independently testable and reusable — later phases (e.g. Phase 6
-  cross-source synthesis) will want to compare `Claim`/`Evidence` instances
-  across sources without depending on a single monolithic shape.
+v1 is about 1,350 lines of application code and 2,200 lines of tests, with 181
+passing tests and clean Ruff/mypy. The single-source analysis pipeline works:
+it sends an article to the model with the analysis prompt, accepts one
+correction attempt if the output does not fit the schema, records per-attempt
+usage and timing, and returns the JSON without judging its quality. That is
+already the v2 contract, and it already supports both Phase 1 input methods and
+any model/effort pair through configuration.
 
-- **`statement_origin` discriminator applied to every interpretive field**
-  The project's core principle — "model interpretation is kept separate from
-  claims made directly by the source" — is enforced structurally, not just by
-  convention. `research_problem`, `central_claims`, `assumptions`,
-  `limitations`, `proposed_solutions`, and `open_questions` are all built on
-  `InterpretedStatement`, which carries a `statement_origin: Literal
-  ["author_stated", "model_inferred"]` field. `Methodology` carries the same
-  field independently, since a source's methodology description is itself
-  either reported by the source or reconstructed by the model.
+The dead weight is all downstream of the grounding checks that were removed late
+in v1: the helpers that supported them, the scope strings that still describe
+them, and a 664-line one-source pilot script built around their failures.
 
-- **Stable identifiers, generated now, random rather than content-addressed**
-  `Provenance.source_id`, `Claim.id`, `Evidence.id`, and `SourceAnalysis.id`
-  are all `UUID` fields with `Field(default_factory=uuid4)` — auto-generated,
-  never caller-required. `source_id` is documented as reusable across
-  re-analysis of the same source (distinguishing the source's identity from
-  any one analysis of it), while `SourceAnalysis.id` and `analyzed_at` are
-  fresh every time. IDs are random (UUID4), not content-addressed; a stable,
-  content-based identity for recognizing "this is a revision of that claim"
-  is deferred to Phase 4's revise/rerun design, not solved here.
+#### Reuse unchanged
 
-- **Reusable `NonEmptyStr` type and `extra="forbid"` for strict validation**
-  A shared `NonEmptyStr` (`Annotated[str, StringConstraints(strip_whitespace=
-  True, min_length=1)]`) is applied to every required text field and to every
-  optional text field whenever a value is provided, rejecting empty and
-  whitespace-only input. A shared `ResearchBaseModel` base sets
-  `model_config = ConfigDict(extra="forbid")` so every model rejects
-  unrecognized fields. This matches the project's faithfulness/grounding
-  principle: the schema itself refuses degenerate or malformed input rather
-  than silently accepting it.
+| Component | Why it carries over |
+| --- | --- |
+| `models/` — `SourceAnalysis`, `Claim`/`Evidence`, `Citation`, `Provenance`, `Methodology`, interpreted statements | This is the output structure Phase 1 must hold constant. The `author_stated`/`model_inferred` and `verbatim`/`paraphrased` distinctions are exactly what Phase 2 evaluates. |
+| `extraction/pipeline.py` — `analyze_source()` | One call plus one schema correction, attempt records, usage, refusal and incomplete-response detection, no quality gates. The v2 workflow contract, already implemented. |
+| `extraction/prompts.py` — `SYSTEM_PROMPT` and the per-input-mode instructions | The core analysis prompt. Phase 1 holds it constant; the input-mode instructions describe layout only, so input format stays the only intended difference between arms. |
+| `extraction/attachments.py` | PDF and image attachments with the sha256 of the exact bytes sent, and the documented 50 MB per-request limit. Both Phase 1 input methods are already supported. |
+| `extraction/attempts.py`, `extraction/errors.py` | Per-attempt usage (including reasoning and cached-input tokens), timing, request ids, and the error taxonomy. This is Phase 1's measurement instrument. |
+| `config.py` — `Settings` | `openai_model`, `openai_reasoning_effort`, `max_output_tokens`, `openai_max_retries`. The whole A/B matrix is a configuration change, not a code change. |
+| `scripts/prepare_phase_3_sources.py` | PDF → extracted text, crops, page images, and a preparation record of what text could not represent. The only producer of the text-plus-crops arm. Rename to `prepare_sources.py`. |
 
-- **Two-axis evidence relationship: `evidence_form` and `relationship_to_claim`**
-  `Evidence.evidence_form` (`"verbatim"` / `"paraphrased"`) captures how the
-  evidence text was captured from the source. `Evidence.relationship_to_claim`
-  (`"claim_grounding"` / `"direct_support"` / `"partial_support"` /
-  `"contextual_support"`) captures how the evidence relates to its claim.
-  `"claim_grounding"` is categorically distinct from the other three values —
-  it means the source itself states or makes the claim (attribution) — and is
-  not part of an ordered support-strength scale with them. Cross-field
-  validators enforce the relationships between these fields and `Claim
-  .statement_origin` (see Validation Rules below).
+#### Simplify
 
-- **`Methodology` is structured but optional, with no closed type enum**
-  `Methodology` has explicit fields (`summary`, `study_design`,
-  `data_sources`, `sample_or_scope`, `analysis_methods`, `statement_origin`)
-  rather than a single free-text blob, but `SourceAnalysis.methodology` is
-  `Methodology | None`. Not every legitimate source (e.g. a news article or
-  blog post) documents a methodology, and forcing a non-empty summary in
-  those cases would mean inventing content that isn't there — a direct
-  violation of the strict-validation principle above. No enum constrains
-  `study_design`/`analysis_methods` in Phase 1; that's deferred until real
-  extraction output shows what categories are worth closing.
+| Component | Change |
+| --- | --- |
+| `scripts/analyze_pdf.py` | Generalize into the single analysis runner: both input methods, the configuration in the output path, and usage, cost, and runtime in the run record. **It also has a live bug** — line 153 reads `result.grounding_notes`, a field removed from `AnalysisResult`, so a *successful* run raises `AttributeError` after writing `analysis.json` and before writing `run_record.json`. Phase 1 cannot measure anything until this is fixed. |
+| `scripts/run_li_input_pilot.py` (664 lines) | Hard-coded to one article, built around pre-call token projection, an offline dry run, a payload inventory, and a cross-invocation spending guard. Keep the documented per-model rate table, the cost calculation from *actual* reported usage, and the timing and usage records. Drop the projection, the dry run, and the per-run approval gates. Fold what remains into the Phase 1 matrix runner; delete the script. |
+| `extraction/schemas.py` — `ANALYSIS_SCOPE`, `ANALYSIS_SCOPE_PDF`, `ANALYSIS_SCOPE_TEXT_AND_CROPS` | Three paragraphs that still describe verbatim-grounding checks against a declared grounding reference. Those checks no longer exist, so the strings are now false on a saved result. Replace with one short, true sentence per input method, saying what the model received and that image readings are unverified. |
+| `extraction/annotations.py` | `grounding_view()` is used only by the pilot script and its tests; `contains_reserved_character()` is used nowhere. Both go. `SENTINEL` then survives only inside `_RESERVED`, so removing it relaxes `reserved_character_problems()` by one character — acceptable, since nothing produces that character any more. Keep `find_annotations`, `format_annotation`, and `reserved_character_problems`: the preparation script and the `SourceDocument` validator that ties in-text annotations to declared gaps both still need them for the text-plus-crops arm. |
+| Tests for removed behavior | The `grounding_view` tests in `tests/extraction/test_annotations.py` and the two assertions at `tests/preparation/test_prepare.py:257-258` go with the helper. |
 
-- **`Provenance.source_type` covers ten categories**
-  `"peer_reviewed_paper"`, `"preprint"`, `"government_report"`,
-  `"government_policy"`, `"research_institute_report"`,
-  `"technical_document"`, `"industry_report"`, `"news_article"`,
-  `"blog_post"`, `"other"` — matching the project's planned source pool,
-  including a distinct category for official policy/standards/guidance
-  documents that aren't accurately classified as reports.
+#### Remove
 
-- **Timezone-aware timestamps via Pydantic's `AwareDatetime`**
-  `Provenance.retrieved_at` (when the source was retrieved) and
-  `SourceAnalysis.analyzed_at` (when this analysis result was created) are
-  both `AwareDatetime`, rejecting naive datetimes. They are documented as
-  recording distinct events — retrieval of the source vs. creation of a
-  particular analysis of it — and both are application-supplied /
-  application-generated, never model-produced.
+| Component | Why |
+| --- | --- |
+| `tests/pilots/test_li_input_pilot_guard.py` (193 lines) | Tests the pilot's spending guard and approval gates; goes with the script. |
+| The v1 nine-phase roadmap in `README.md`, and Phases 4–9 of the v1 build plan | Replaced by the v2 phases. |
+| Phase-numbered data and output folders | Done in this phase (below). |
 
-- **Out of scope for Phase 1**
-  No revision links, review status, evaluation results, or schema-version
-  fields. These belong to later phases (Phase 4 human review, Phase 3
-  evaluation) and are deliberately not guessed at here.
+#### Build new
 
-### Technologies
+Nothing in v1 covers evaluation, synthesis, research, or retrieval. DeepEval is
+named in the v1 README but was never added as a dependency and no evaluation
+code exists. Phases 2, 4, 5, and 6 start from nothing.
 
-No new dependencies. Phase 1 uses only `pydantic`, already introduced in
-Phase 0.
+### Restructuring performed
 
-### Module Layout
+- `data/phase_3/*.pdf` (12 articles) → `data/research/`
+- `data/phase_3/ab_testing/*.pdf` (4 articles) → `data/research/ab_testing/`
+- `data/phase_3/sources.yaml` → `data/research/sources.yaml`, with its `pdf:`
+  path updated
+- `data/phase_2/masri_snoswell_towards_attuned_ai.pdf` (the v1 development
+  source, not one of the 16) → `outputs/v1_archive/`
+- `outputs/phase_2/` (8 v1 analyses of that source) →
+  `outputs/v1_archive/phase_2_analyses/`
+- `outputs/phase_3/` (the Li input-format experiment: source PDF, extracted
+  text, 8 crops, 3 analyses) → `outputs/v1_archive/li_input_experiment/`
 
-```
-src/hitl_research_agent/models/
-  __init__.py       # re-exports the public models
-  _base.py          # NonEmptyStr, ResearchBaseModel, STATEMENT_ORIGIN_DESCRIPTION
-  provenance.py     # Provenance
-  methodology.py    # Methodology
-  interpreted.py    # InterpretedStatement + ResearchProblem/Assumption/
-                     # Limitation/ProposedSolution/OpenQuestion
-  claim.py          # Evidence, Claim
-  analysis.py       # SourceAnalysis
+Nothing was deleted. Path references updated: the manifest's own `pdf:` entry,
+`DEFAULT_MANIFEST` in the preparation script, the `analyze_pdf.py` usage
+example, and the two moved paths in the pilot script. `README.md` and this plan
+were rewritten. All 181 tests still pass.
 
-tests/models/
-  test_provenance.py
-  test_methodology.py
-  test_interpreted.py
-  test_claim.py
-  test_analysis.py
-```
+### Open items carried into Phase 1
 
-Import direction is a strict DAG: `_base` is a leaf; `provenance`,
-`methodology`, and `interpreted` import only from `_base`; `claim` imports
-`_base` and `interpreted`; `analysis` imports `_base`, `provenance`,
-`methodology`, `interpreted`, and `claim`. `_base.py` is not re-exported from
-`__init__.py` — its leading underscore marks it internal.
+1. **The manifest covers one article.** `data/research/sources.yaml` has an
+   entry for Li only. All four A/B articles need owner-confirmed provenance
+   entries before preparation can run, since the preparation script reads the
+   manifest and the manifest comment records that these are confirmed by the
+   project owner, not inferred. **This needs the project owner.**
+2. **The `analyze_pdf.py` crash** above blocks measurement.
+3. **Li's preparation artifacts are gone.** `outputs/preparation/` does not
+   exist on disk; the Li extracted text and crops survive only as archived
+   copies. Nothing is lost for Phase 1, which prepares the four A/B articles
+   fresh, but the pilot script's `PREPARATION_DIR` no longer resolves.
 
-### Implementation Tasks
+### Acceptance criteria
 
-1. `models/_base.py` — `NonEmptyStr`, `ResearchBaseModel`,
-   `STATEMENT_ORIGIN_DESCRIPTION`.
-2. `models/provenance.py` — `Provenance`.
-3. `models/methodology.py` — `Methodology`.
-4. `models/interpreted.py` — `InterpretedStatement` and its five subclasses
-   (`ResearchProblem`, `Assumption`, `Limitation`, `ProposedSolution`,
-   `OpenQuestion`).
-5. `models/claim.py` — `Evidence` and `Claim`, including their cross-field
-   validators.
-6. `models/analysis.py` — `SourceAnalysis`, composing the above.
-7. `models/__init__.py` — re-export all public models.
-8. `tests/models/` — one test file per model module (see Tests below).
-9. Confirm `ruff check`, `ruff format --check`, `mypy src`, and `pytest` all
-   pass against the new package.
+- [x] Every v1 component has a reuse, simplify, or remove verdict with a reason.
+- [x] Data and output folders are named by role; no phase-numbered folders
+      remain; nothing was deleted.
+- [x] README is short and describes the three agents, the workflow, and the
+      seven phases.
+- [x] This plan specifies Phase 1 in full.
+- [x] Checks pass after the restructuring.
 
-### Validation Rules
+---
 
-- Every required text field, and every optional text field whenever a value
-  is provided, uses `NonEmptyStr`: surrounding whitespace is stripped, and
-  empty or whitespace-only values are rejected.
-- Every model rejects unrecognized fields (`extra="forbid"`, inherited via
-  `ResearchBaseModel`).
-- List fields with defaults use `Field(default_factory=list)`; no field uses
-  a bare mutable literal default.
-- `SourceAnalysis.central_claims` and `Claim.evidence` are required fields
-  (no default) with `min_length=1` — at least one item each.
-- `Provenance.retrieved_at` and `SourceAnalysis.analyzed_at` are
-  `AwareDatetime` — timezone-naive values are rejected.
-- Cross-field validation on `Evidence`: `relationship_to_claim ==
-  "claim_grounding"` is only valid when `evidence_form == "verbatim"`.
-- Cross-field validation on `Claim`: an `author_stated` claim must include at
-  least one `Evidence` item whose `relationship_to_claim` is
-  `"claim_grounding"`; a `model_inferred` claim must not contain any
-  `"claim_grounding"` evidence.
-- Field documentation for `statement_origin`, `evidence_form`, and
-  `relationship_to_claim` is encoded via `Field(description=...)` so it
-  appears in Pydantic's generated JSON Schema, not as standalone string
-  literals.
-
-### Tests
-
-**`tests/models/test_provenance.py`**
-- `source_id` defaults to a unique UUID per instance.
-- `source_id` can be explicitly reused across separately constructed
-  `Provenance` instances (modeling re-analysis of the same source).
-- New `source_type` values (`research_institute_report`,
-  `technical_document`, `government_policy`) are accepted.
-- `doi` and `publisher` are optional, and reject whitespace-only values when
-  provided.
-- `retrieved_at` rejects a timezone-naive datetime.
-- `retrieved_at` is timezone-aware on a valid value (`utcoffset() is not
-  None`).
-- `source_authors` list defaults are independent across instances.
-
-**`tests/models/test_methodology.py`**
-- Empty/whitespace-only `summary` is rejected.
-- Invalid `statement_origin` values are rejected.
-- `data_sources`/`analysis_methods` list defaults are independent across
-  instances.
-- A fully populated `Methodology` constructs successfully.
-
-**`tests/models/test_interpreted.py`**
-- Parametrized across `ResearchProblem`, `Assumption`, `Limitation`,
-  `ProposedSolution`, `OpenQuestion`:
-  - empty/whitespace-only `text` is rejected;
-  - an invalid `statement_origin` value is rejected;
-  - valid construction succeeds.
-
-**`tests/models/test_claim.py`**
-- Whitespace-only `Evidence.text` is rejected; valid text is stripped.
-- An unrecognized field on `Evidence` is rejected.
-- `Claim.evidence=[]` raises a `ValidationError`.
-- An `author_stated` claim without `claim_grounding` evidence is rejected.
-- A `model_inferred` claim containing `claim_grounding` evidence is rejected.
-- `Evidence` marked `claim_grounding` with `evidence_form="paraphrased"` is
-  rejected.
-- An `author_stated` claim with valid `claim_grounding` evidence constructs
-  successfully.
-
-**`tests/models/test_analysis.py`**
-- `SourceAnalysis.methodology` is `None` when not provided.
-- `SourceAnalysis.central_claims=[]` raises a `ValidationError`.
-- `analyzed_at` defaults to a timezone-aware value (`utcoffset() is not
-  None`).
-- `analyzed_at` rejects a timezone-naive datetime.
-- Separately constructed `SourceAnalysis` objects receive different
-  automatically generated `id` values.
-- A complete `SourceAnalysis` (with `ResearchProblem`) round-trips through
-  `model_dump_json` / `model_validate_json` without data loss, preserving
-  subclass identity.
-
-### Acceptance Criteria
-
-- [x] All models (`Provenance`, `Methodology`, `InterpretedStatement` and its
-      five subclasses, `Evidence`, `Claim`, `SourceAnalysis`) are importable
-      from `hitl_research_agent.models`.
-- [x] `SourceAnalysis` composes `Provenance`, an optional `Methodology`, a
-      `ResearchProblem`, one or more `Claim`s (each with ≥1 `Evidence`), and
-      the four interpretive-statement lists.
-- [x] Every interpretive field carries `statement_origin`; `Methodology`
-      carries it independently.
-- [x] All models reject unrecognized fields.
-- [x] Required and provided-optional text fields reject empty/whitespace-only
-      values and store the stripped value.
-- [x] List fields use independent per-instance defaults — no shared mutable
-      defaults.
-- [x] `central_claims` and `Claim.evidence` each require at least one item.
-- [x] `retrieved_at` and `analyzed_at` both reject timezone-naive datetimes
-      and are documented as distinct events.
-- [x] `Evidence.relationship_to_claim == "claim_grounding"` is only valid
-      when `evidence_form == "verbatim"`.
-- [x] An `author_stated` `Claim` requires ≥1 `claim_grounding` evidence item;
-      a `model_inferred` `Claim` must not contain any.
-- [x] `source_id` is documented as stable/reusable across re-analysis;
-      `SourceAnalysis.id` and `analyzed_at` are fresh per analysis result and
-      unique across instances.
-- [x] `source_type` includes all ten finalized categories.
-- [x] A complete `SourceAnalysis` round-trips through JSON without data loss,
-      preserving subclass identity.
-- [x] Full check suite passes: `pytest`, `ruff check`, `ruff format --check`,
-      `mypy src`.
-- [x] No extraction, evaluation, or storage logic exists yet — Phase 1 stays
-      scoped to schema definition and validation.
-- [x] No revision-link, review-status, evaluation-result, or schema-version
-      fields exist yet.
-
-## Phase 2 — Single-Source Analysis
+## Phase 1 — A/B Testing
 
 ### Goal
 
-Use an LLM to convert one manually supplied source into a validated
-`SourceAnalysis`, without receiving the human's research question and without
-a `project_tag`. Manually supplied sources remain an implementation-stage
-bridge until Phase 5 adds real discovery and ingestion. Phase 2 includes
-argument reconstruction, evidence and citation extraction, assumptions,
-limitations, and provisional assessments of whether the paper's reasons
-support its conclusions, returned as JSON — presenting that analysis to a
-reader is not part of Phase 2. Phase 3 evaluates the quality of our
-analysis; Phase 4 implements the accept/reject/revise workflow. Those
-automated evaluation and review workflows, research-store persistence,
-source discovery, cross-source synthesis, RAG, and orchestration remain
-later work. Saving development outputs and manually reviewing them are part
-of Phase 2 validation, not the later research-store workflow.
+Establish, by measurement rather than assumption, whether preparing a PDF into
+extracted text plus crops buys anything over sending the PDF itself, and
+whether the expensive model buys anything over the cheap one. v1 never compared
+these: it assumed extracted text because its first implementation needed a
+local text reference, and the one paired comparison it ran was judged by
+grounding checks that favored the arm receiving the prepared text, so it settled
+nothing.
 
-### Architectural Decisions
+Phase 1 produces the evidence. It does not choose — Phase 2 chooses, on quality
+and cost together.
 
-- **Input: `SourceDocument`**
-  `SourceDocument` holds `text` and a `Provenance`. It deliberately does not
-  define or claim anything about the normalization process Phase 5 will
-  eventually perform — it only states Phase 2's own input contract, which
-  Phase 5 can satisfy however it ends up working.
+### The matrix
 
-- **Field ownership stays split between the model and the application**
-  The model generates research content only: `research_problem`,
-  `central_claims` (with their evidence), `methodology`, `assumptions`,
-  `limitations`, `proposed_solutions`, and `open_questions`. The application
-  supplies everything else: all of `Provenance`, `SourceAnalysis.id`,
-  `SourceAnalysis.analyzed_at`, and every `Claim.id`/`Evidence.id`. The
-  finalized Phase 1 models are not refactored to fit the LLM output format.
+4 articles × 2 input methods × 2 model configurations = **16 analyses**.
 
-- **Three new extraction schemas, not a parallel model hierarchy**
-  `Evidence` and `Claim` each carry one application-owned `id: UUID` field
-  that has no legitimate value for the model to produce — that is the *only*
-  reason either needs a twin. `ExtractedEvidence` and `ExtractedClaim`
-  reproduce their fields minus `id`; `ExtractedAnalysis` is the container
-  extraction schema, differing from `SourceAnalysis` only in using
-  `list[ExtractedClaim]` and omitting `id`/`provenance`/`analyzed_at`. Every
-  other Phase 1 content model — `Methodology` and the five
-  `InterpretedStatement` subclasses (`ResearchProblem`, `Assumption`,
-  `Limitation`, `ProposedSolution`, `OpenQuestion`) — is reused unchanged:
-  none of them carry an application-owned field, and their optional
-  (`X | None = None`) and defaulted (`Field(default_factory=list)`) fields
-  both convert cleanly to OpenAI's strict-schema pattern (every property
-  required; optionality expressed as nullability, not omission). `Provenance`
-  is not part of the extraction schema at all — it is pure input.
-  `ExtractedEvidence`/`ExtractedClaim` carry no cross-field validators of
-  their own; Pydantic's `model_validator`s cannot be expressed in JSON Schema
-  regardless of which model carries them, so validation happens once, in one
-  place, when real `Claim`/`Evidence`/`SourceAnalysis` objects are assembled
-  from the extracted data after the model call returns.
+| Articles | `data/research/ab_testing/` | pages | chars |
+| --- | --- | --- | --- |
+| | `barnett_itzhaki_2026_water_footprint_artificial_intelligence` | 7 | 51k |
+| | `kanbur_et_al_2020_desalination_integrated_data_center_cooling` | 18 | 82k |
+| | `katakam_et_al_2027_desalination_systems_data_center_water_needs` | 20 | 107k |
+| | `lei_et_al_2025_water_use_data_center_workloads` | 60 | 97k |
 
-- **Return type: `AnalysisResult`**
-  `analyze_source()` returns `AnalysisResult` — the completed `SourceAnalysis`
-  plus `model`, `input_tokens`, `output_tokens`, and `attempt_count` — rather
-  than a bare `SourceAnalysis`, so call-level facts have somewhere to live
-  without adding schema-version or call-provenance fields to Phase 1. Token
-  totals are summed across both calls whenever the one correction attempt
-  fires. No further metadata is added without explaining why it's needed
-  first.
+| Input method | `input_mode` | What the model receives |
+| --- | --- | --- |
+| Full PDF | `pdf` | the original PDF; the API supplies its text layer and page images |
+| Extracted text + crops | `prepared_text_and_crops` | the prepared text, plus one retained crop per item preparation could not represent |
 
-- **Model and call configuration**
-  Default model `gpt-6-astra` at `low` reasoning effort (both configurable
-  via `Settings`), the OpenAI Responses API selected explicitly
-  (`use_responses_api=True`) rather than relied on implicitly, and native
-  structured output via `with_structured_output(ExtractedAnalysis,
-  method="json_schema", strict=True, include_raw=True)`. `temperature`,
-  `top_p`, and `top_logprobs` are omitted entirely rather than defaulted,
-  since they are documented as incompatible with reasoning enabled — not
-  merely unnecessary. `include_raw=True` is required, not optional: it is
-  how token usage and refusal/incomplete status are recovered regardless of
-  whether the model's output parses or validates successfully.
+| Model configuration | Model | Reasoning effort |
+| --- | --- | --- |
+| Sol medium | `gpt-6.1-sol` | `medium` |
+| Astra low | `gpt-6-astra` | `low` |
 
-  This default was chosen after running the same paper, prompt, and schema
-  through `gpt-6-sol` at `medium` and `high` reasoning and `gpt-6-astra` at
-  `low` and `medium`, all without a correction attempt or failure. Astra at
-  medium produced useful analysis too, but Astra at low expressed its
-  `support_assessment` reasoning in language the project owner found easier
-  to understand and act on. Since this is a human-in-the-loop tool, that
-  usability difference — not measured accuracy, which none of these runs
-  established — decided the default. The model and reasoning effort remain
-  fully configurable via `Settings`; no automatic model routing is planned
-  for Phase 2.
+Configuration slug, used in output paths: `{pdf,text_crops}__{sol-medium,astra-low}`.
 
-- **Source-size limit: 200,000 characters, checked before any model call**
-  `SourceDocument.text` longer than 200,000 characters is rejected
-  immediately with a clear error — no truncation, no chunking. The limit is
-  sized to comfortably cover a single long-form report, which is what the
-  MVP source types (papers, government/industry reports, articles) are
-  expected to look like, not to sit just under any pricing or context-window
-  boundary. It remains an unvalidated placeholder. The supplied paper is well below
-  the limit; its successful runs do not validate the limit for large or
-  representative MVP sources.
-  A plain character count is used rather than an exact token count; adding a
-  tokenizer dependency for more precision is deferred until real sources show
-  the character estimate is actually too loose.
+The page spread is deliberate. The PDF arm's input cost scales with page count,
+so `lei` at 60 pages is the stress case for that arm, and `barnett` at 7 pages
+the cheap case. If the two arms differ in cost, they will differ most there.
 
-- **Deterministic verbatim-grounding check**
-  Any `Evidence`/`ExtractedEvidence` with `evidence_form="verbatim"` must
-  literally appear in the source text (case/whitespace-normalized substring
-  match). This is a mechanical check, not a faithfulness *evaluation* — it
-  belongs to producing a valid analysis, not to the broader evaluation work
-  planned for Phase 3. `Evidence.locator` remains free-text, since manually
-  supplied plain-text sources have no reliable pagination to point to more
-  precisely.
+### Held constant
 
-- **Failure handling distinguishes four outcomes, not two**
-  *Invalid analysis* — parses, but fails the verbatim-grounding check or
-  Phase 1's own cross-field validation when real `Claim`/`Evidence`/
-  `SourceAnalysis` objects are assembled — is the only outcome eligible for
-  the one correction attempt: the specific failure is fed back to the model
-  once, and if it still fails, `SourceAnalysisValidationError` is raised with
-  both attempts' usage accumulated. *Refusal* (the response's `refusal`
-  field is set) and *incomplete output* (`status="incomplete"`, e.g. the
-  reasoning-plus-output budget was exhausted) each raise their own error
-  immediately without consuming the correction attempt — neither leaves
-  anything a retry could meaningfully correct. *Technical failure* (network
-  error, timeout, rate limit, server error) never returns a response at all,
-  so it carries no usage to record; it is handled by the API client's own
-  transport-level retry, a separate and independently bounded budget from
-  the one semantic correction attempt, and never produces an `AnalysisResult`.
-  `AnalysisResult.input_tokens`/`output_tokens` are the exact sum of
-  `usage_metadata` from every call that returned a response and was
-  evaluated (never a fabricated value standing in for an unknown one), and
-  `attempt_count` counts only those calls — both fields describe exactly
-  what was observed, not a guarantee of what OpenAI billed if a response
-  was generated but never received.
+The analysis prompt (`SYSTEM_PROMPT`), the output schema (`ExtractedAnalysis`
+and the `models/` structure), the one-correction policy, and the
+question-independence of the task. The only intended differences are the input
+format, its format-specific layout instructions, and the model configuration.
 
-- **Output: JSON only**
-  `analyze_source()` returns `AnalysisResult`; nothing renders it. A Markdown
-  renderer (`extraction/report.py`) was built, used to review several
-  development runs, and removed after the project owner rejected its
-  quote-hiding behavior and asked that analytical quality be addressed before
-  any presentation layer. No renderer replaces it; a presentation can be
-  designed later if one is needed. Every saved `AnalysisResult` JSON from
-  development runs is preserved for direct comparison.
+### What is measured
 
-- **Dependencies: `langchain-core` and `langchain-openai` only**
-  Not the full `langchain` meta-package — Phase 2 needs `ChatOpenAI` and
-  structured-output binding, nothing from chains/agents/retrievers. No direct
-  tokenizer dependency or tokenizer-based size guard is added. `tiktoken`
-  is present transitively in the lockfile; the guard uses character count.
+Per analysis, in `run_record.json`:
 
-- **Citations: a `Citation` model attached to `Evidence`**
-  `Evidence.citations: list[Citation]` records what the source itself cites
-  in connection with that evidence (`citation_text`, and `reference_entry`
-  only when a matching entry exists in the source's own reference list —
-  never invented). `Citation` carries no application-owned field, so the
-  extraction-time `ExtractedEvidence` reuses it directly rather than needing
-  a twin. This is a deliberate extension of a finalized Phase 1 file
-  (`models/claim.py`), made because citation tracking is genuine research
-  content Phase 1 was missing, not a Phase 2 convenience. A citation only
-  means the source cites that work — Phase 2 performs no retrieval or
-  verification of it.
+- **Usage** — input, output, reasoning, and cached-input tokens, per attempt and
+  in total, taken from what the API reported. Never a value standing in for an
+  unknown one.
+- **Cost** — calculated from the documented per-model rates and the actual
+  usage, recorded separately from any confirmed billing. The rates recorded in
+  v1 (read from OpenAI's model pages on 2026-10-15) are $2.00/$10.00 per MTok
+  input/output for `gpt-6.1-sol` and $10.00/$50.00 for `gpt-6-astra` — Astra is
+  five times the rate, which Phase 2's choice has to weigh against whatever
+  quality difference it finds.
+- **Runtime** — wall clock per attempt and per analysis.
+- **Attempts** — outcome, request id, and problems for each, including a first
+  attempt that failed the schema.
 
-- **`Claim.support_assessment`: a provisional, model-authored judgment of
-  argument sufficiency**
-  For a claim important to the argument, whose own wording makes a strong or
-  consequential commitment (necessity, causal, generalizing, predictive, or
-  prescriptive language), the model may add `support_assessment`: a
-  passage-referenced judgment of whether the reasons offered across
-  the source actually meet that claim's stated strength and scope. Most
-  claims will not have one — selection is by importance and by what the
-  claim's wording commits to, not by matching a keyword. The assessment must
-  do real work, not return a bare label: state what the claim commits to,
-  cite the specific supporting passages and locations, distinguish an
-  announced aim from a developed argument, name any bridging assumption it
-  identifies (added to `assumptions` as `model_inferred`, connected
-  explicitly to the claim that needs it), and say plainly when the material
-  is insufficient to decide rather than forcing a verdict. It must recognize
-  well-supported claims as readily as gaps — the goal is calibrated
-  judgment, not routine criticism. This is always the model's own analysis,
-  never something the source states, and never a claim that a cited work has
-  been verified; it is not mechanically checked the way grounding and
-  citations are, so its presence in a result is not evidence of its quality.
-  **`support_assessment: null` means the claim was not assessed — nothing
-  more.** It is never a judgment that the claim is well-supported and never
-  a claim that no issue exists; the schema, the prompt, and this document
-  all define it the same way, so its absence on most claims is not
-  interpretable as a clean bill of health for them.
-  A second content extension of the Phase 1 models, for the same reason as
-  citations: this is genuine analytical content the project's stated purpose
-  (helping a human read critically) requires, not a Phase 2-only workaround.
-  Passing the offline plumbing tests here is not evidence that a live model
-  produces good assessments — that is unevaluated, and is Phase 3's job, not
-  a Phase 2 acceptance requirement.
+Per article, once, in a preparation record shared by both `text_crops` cells:
 
-### Technologies Introduced
+- **Preparation effort** — wall-clock preparation time, number and kind of
+  preparation gaps (figures, equations, multi-level table headers), number of
+  crops retained, and any manual intervention needed. The `pdf` arm's
+  preparation effort is zero; owner-confirmed provenance is needed by both arms
+  and is not attributed to either.
 
-| Tool | Purpose |
-|---|---|
-| `langchain-core` | `Runnable`/chat-model abstractions the pipeline is written against |
-| `langchain-openai` | `ChatOpenAI`, Responses API selection, native structured output |
-
-### Module Layout
+### Output layout
 
 ```
-src/hitl_research_agent/extraction/
-  __init__.py     # re-exports analyze_source, schemas, errors
-  schemas.py       # SourceDocument, ExtractedEvidence, ExtractedClaim, ExtractedAnalysis
-  prompts.py        # system prompt + human-message construction
-  grounding.py        # evidence, citation-marker, and reference-entry checks
-  pipeline.py           # analyze_source(): size guard, model call, retry, assembly
-  errors.py              # SourceAnalysisError hierarchy
-
-tests/extraction/
-  test_schemas.py
-  test_grounding.py
-  test_pipeline.py
-  test_prompts.py
+outputs/ab_testing/<slug>/<config>/analysis.json      the analysis, indented, unchanged
+outputs/ab_testing/<slug>/<config>/run_record.json    usage, cost, runtime, attempts
+outputs/ab_testing/summary.csv                        one row per cell, for Phase 2
+outputs/preparation/<slug>/                           extracted text, crops, preparation record
 ```
 
-`extraction` is named to avoid colliding with the existing
-`models/analysis.py` module. It depends on `models` (reusing `Provenance`,
-`Methodology`, the `InterpretedStatement` subclasses, `Claim`, `Evidence`,
-`SourceAnalysis`) and on `config.Settings`; nothing in `models/` depends on
-`extraction`.
+A cell holds the analysis the model returned. A thin or heavily paraphrased
+analysis is a result, recorded as-is for Phase 2 to assess. A *technical*
+failure — API error, unreadable response, output that will not parse — is not a
+result: record it and rerun that cell.
 
-### Implementation Tasks
+### Implementation tasks
 
-1. `extraction/schemas.py` — `SourceDocument`, `ExtractedEvidence`,
-   `ExtractedClaim`, `ExtractedAnalysis`.
-2. `extraction/errors.py` — `SourceAnalysisError` base, plus
-   `SourceAnalysisValidationError`, `SourceAnalysisRefusedError`,
-   `SourceAnalysisIncompleteError`, `SourceAnalysisExtractionError`.
-3. `extraction/grounding.py` — normalized substring checks for verbatim
-   evidence, citation markers, and supplied reference entries.
-4. `extraction/prompts.py` — the system prompt (question-independent
-   reconstruction; `statement_origin`/`evidence_form`/`relationship_to_claim`
-   semantics; citation capture; the `support_assessment` reading method) and
-   a human-message builder (source text plus `source_title`/`source_type`
-   framing from `Provenance`).
-5. `extraction/pipeline.py` — `analyze_source(source: SourceDocument, *,
-   model: Runnable | None = None) -> AnalysisResult`: enforces the
-   200,000-character limit before any model call; constructs a default
-   `ChatOpenAI` from `Settings` when `model` is not supplied; invokes with
-   `include_raw=True`; classifies the outcome (invalid analysis / refusal /
-   incomplete / technical failure); performs the one correction attempt for
-   invalid analysis; assembles real `Claim`/`Evidence`/`SourceAnalysis`
-   objects from the extracted data so Phase 1 validation runs; accumulates
-   token usage into `AnalysisResult`.
-6. Extend `config.Settings` with `openai_model: str = "gpt-6-astra"`,
-   `openai_reasoning_effort: str = "low"`, and
-   `max_source_characters: int = 200_000`, all overridable via environment.
-7. `extraction/__init__.py` — re-export the analysis entry point, schemas,
-   and error types.
-8. `tests/extraction/` — one test file per concern (see Tests below), all
-   exercised through an injected fake model.
-9. Add `langchain-core` and `langchain-openai` to `pyproject.toml`.
-10. Confirm `ruff check`, `ruff format --check`, `mypy src`, and `pytest` all
-    pass against the new package.
+1. Fix the `analyze_pdf.py` `grounding_notes` crash.
+2. Add owner-confirmed provenance entries for the four A/B articles to
+   `data/research/sources.yaml`. **Blocked on the project owner.**
+3. Rename `prepare_phase_3_sources.py` → `prepare_sources.py`; update its
+   references.
+4. Prepare the four articles, timing each; record gaps and crops.
+5. Generalize the analysis runner into a matrix runner: takes an article and a
+   configuration slug, selects the input mode, loads the PDF or the prepared
+   text plus crops, writes `analysis.json` and `run_record.json` to the cell.
+   Carry over the rate table and cost-from-actual-usage from the pilot script.
+6. Simplify the three `ANALYSIS_SCOPE` strings so a saved result describes what
+   actually happened.
+7. Delete the pilot script, its guard test, `grounding_view`,
+   `contains_reserved_character`, `SENTINEL`, and the tests covering them.
+8. Run the 16 cells. Write `summary.csv`.
 
-### Validation and Failure-Handling Rules
-
-- `SourceDocument.text` longer than `Settings.max_source_characters` raises
-  before any model call; Phase 2 never truncates or chunks a source.
-- The model call uses `method="json_schema"`, `strict=True`, and
-  `include_raw=True`; `temperature`, `top_p`, and `top_logprobs` are never
-  passed alongside `reasoning_effort`.
-- Every `verbatim` evidence item is checked against the source text
-  (case/whitespace-normalized substring match); a failed match is invalid
-  analysis, not a separate failure category.
-- Citation markers and nonempty reference entries must occur somewhere in
-  the source after normalization. Failed matches enter the same one-correction
-  path as failed quotations. These checks establish textual occurrence, not
-  correct citation-to-claim attribution, argumentative support, or the truth
-  of a cited work. Assessment prose and its passage references are not
-  mechanically validated by these checks.
-- Real `Claim`/`Evidence`/`SourceAnalysis` objects are constructed from the
-  extracted data after every successful model call, so Phase 1's existing
-  cross-field validators (`claim_grounding` ⇄ `verbatim`, `author_stated` ⇄
-  grounding evidence, non-empty required lists) run unchanged; a
-  `ValidationError` here is also invalid analysis.
-- Invalid analysis gets exactly one correction attempt, with the specific
-  validation or grounding failure fed back to the model. Refusal, incomplete
-  output, and technical failure are each terminal on the first occurrence —
-  none of them consume or extend the one correction attempt.
-- Technical (transport-level) retries belong to the API client, are bounded
-  independently of the one correction attempt, and never appear in
-  `AnalysisResult` — a technical failure raises before any result is built.
-- `AnalysisResult.input_tokens`/`output_tokens` sum `usage_metadata` from
-  exactly the calls counted in `attempt_count`; no other value is added or
-  assumed.
+Cost: on the one measured v1 data point, two Sol-medium analyses of a 36.6k-char
+article, each including a correction attempt, had a combined calculated cost of
+$0.5173 — about $0.26 per analysis. These articles are 1.4–2.9× that length, the
+removal of the quality gates should make most runs single-attempt, and Astra's
+rates are 5× Sol's. The order of magnitude for all 16 is therefore roughly
+$10–15, dominated by the eight Astra cells. That is a projection from one
+article, not a cap; the runner should take an explicit per-run confirmation and
+report actual cost as it goes.
 
 ### Tests
 
-**`tests/extraction/test_schemas.py`**
-- `SourceDocument` rejects empty/whitespace-only `text`.
-- `ExtractedEvidence`/`ExtractedClaim`/`ExtractedAnalysis` construct
-  successfully from valid data and carry no `id` field.
+Offline, with no API calls: configuration slug → input mode and settings;
+attachment assembly for both arms; the run record capturing usage, cost, and
+runtime from a faked response; a cell with a first-attempt schema failure
+recording both attempts; cost calculation against known rates and usage; and
+that a technical failure writes a run record rather than a half-written cell.
 
-**`tests/extraction/test_grounding.py`**
-- Verbatim evidence text present in the source (after normalization) passes.
-- Verbatim evidence text absent from the source fails.
-- Paraphrased evidence is not checked against the source text.
-- Matching is case- and whitespace-insensitive.
-- Citation markers and provided reference entries must occur in the source;
-  a marker may occur outside the attached evidence text.
+### Acceptance criteria
 
-**`tests/extraction/test_pipeline.py`**
-- `Claim.support_assessment` and any assumption it names survive assembly
-  into the final `SourceAnalysis` unchanged, and default to unset/empty when
-  not provided. Plumbing only — proves the data flows through, says nothing
-  about whether a live model can produce a sound assessment.
-- Source text over `max_source_characters` raises before the injected model
-  is ever invoked.
-- A fake model returning valid extracted content on the first call produces
-  an `AnalysisResult` with `attempt_count == 1` and correctly summed usage.
-- A fake model returning invalid analysis (grounding or Phase 1 validation
-  failure) on the first call and valid content on the second produces
-  `attempt_count == 2` with usage summed across both calls.
-- A fake model returning invalid analysis on both calls raises
-  `SourceAnalysisValidationError` after exactly one retry — never more.
-- A fake model returning a refusal raises `SourceAnalysisRefusedError`
-  immediately, with no correction attempt.
-- A fake model returning `status="incomplete"` raises
-  `SourceAnalysisIncompleteError` immediately, with no correction attempt.
-- A fake model raising a transport-level exception raises
-  `SourceAnalysisExtractionError`, and no `AnalysisResult` is produced.
-- `Settings.openai_model`, `openai_reasoning_effort`, and
-  `max_source_characters` default to `"gpt-6-astra"`, `"low"`, and `200_000`
-  respectively, and are overridable.
+- [ ] 16 `analysis.json` files exist, one per cell, indented and readable, each
+      the analysis the model returned, unmodified.
+- [ ] Each cell has a `run_record.json` with usage, calculated cost, runtime,
+      and per-attempt records; no fabricated values.
+- [ ] Preparation effort recorded for all four articles.
+- [ ] The prompt, schema, and correction policy are identical across all 16
+      cells, and that is demonstrable from the records.
+- [ ] `summary.csv` lets Phase 2 pick up the comparison without rereading 16
+      run records.
+- [ ] No quality check anywhere can prevent an analysis from being written.
 
-**Prompt tests**
-- `test_prompts.py` checks the presence of extraction and assessment
-  instructions; these tests do not measure live reasoning quality.
-- Strict-schema and offline model-construction tests exercise compatibility
-  without contacting the API. Model tests cover citations and assessments.
+### What Phase 1 does not decide
 
-### Verification Status
+Which configuration wins. Counts of claims, evidence items, or citations do not
+establish fidelity, and neither does a run completing. Readings of figures,
+tables, and equations from either arm are unverified until a human checks them
+against the original images. Phase 1 hands Phase 2 artifacts and measurements.
 
-Nine live calls exist on the Masri–Snoswell paper: development iterations
-v1–v4 (predating `support_assessment`; v4 adds citation capture and is the
-only one of the nine that used the one correction attempt), and four
-model/reasoning comparison runs — `gpt-6-sol` at `medium` and `high`,
-`gpt-6-astra` at `low` and `medium` — each including `support_assessment`
-and each succeeding without a correction attempt. All nine established that
-the pipeline runs end to end on this source; none produced a refusal or an
-incomplete-output response, so that handling remains unverified against a
-real captured response, and the 200,000-character cap remains an unvalidated
-placeholder — this source used about 14% of it.
+---
 
-Whether `support_assessment` produces good analytical judgment — recognizing
-a well-supported conclusion as readily as a real gap, on sources this project
-hasn't seen — has not been rigorously evaluated. That evaluation was never
-agreed as a Phase 2 requirement and is not treated as one here; it belongs
-with Phase 3's evaluation work.
-
-### Known Limitations and Later Evaluation Targets
-
-Documented gaps to evaluate later, not omissions to fix inside Phase 2:
-
-- **Analytical quality is not established.** Whether `support_assessment`
-  reliably distinguishes well-supported claims from genuine gaps is
-  unevaluated on any source. This is Phase 3's work, not an unmet Phase 2
-  requirement.
-- **Assessment selection is not shown to be consistent.** How many claims
-  received a `support_assessment`, and which ones, varied across the six
-  live runs that include this field, without a controlled comparison of why;
-  nothing confirms this converges on the same claims for the same source
-  across models, reasoning levels, or repeated runs.
-- **Claim granularity varies substantially by model and reasoning effort** on
-  the identical source and prompt — recorded runs produced between 18 and 30
-  central claims. Whether that reflects genuine differences in what each
-  configuration finds worth extracting, or unprincipled variation, is
-  unresolved.
-- **Only one source has been analyzed.** Every finding above comes from one
-  ~28,000-character philosophy/AI-ethics preprint. Behavior on harder,
-  longer, more technical, or differently structured papers is untested.
-- **A future presentation must distinguish paraphrased evidence from direct
-  quotations clearly.** `Evidence.evidence_form` already records this, but
-  nothing renders it now that the report renderer has been removed. This is
-  a requirement for whenever a presentation layer is designed, not a reason
-  to build one now.
-
-These belong to Phase 3's evaluation work and to a future presentation
-design, not to additional Phase 2 features.
-
-### Acceptance Criteria
-
-- [x] `analyze_source(source: SourceDocument, ...) -> AnalysisResult` is
-      implemented and importable from `hitl_research_agent.extraction`.
-- [x] The application — never the model — supplies `Provenance`, every `id`
-      field, and `SourceAnalysis.analyzed_at`/`id`.
-- [x] Three extraction-only content schemas exist (`ExtractedEvidence`,
-      `ExtractedClaim`, `ExtractedAnalysis`). `Citation` is a shared content
-      model reused directly, not a fourth extraction-only schema.
-      `SourceDocument` and `AnalysisResult` are input/output wrappers.
-      Every other Phase 1 content model is reused
-      unchanged. `Claim`/`Evidence` (Phase 1) have since been deliberately
-      extended twice — `Evidence.citations` and `Claim.support_assessment` —
-      each because it is genuine research content the schema was missing,
-      documented as its own decision above rather than left unstated.
-- [x] `SourceDocument.text` over `max_source_characters` (200,000 by default)
-      raises before any model call; no truncation or chunking exists
-      anywhere in Phase 2.
-- [x] The extraction call is configured for the Responses API, `gpt-6-astra`
-      (default, configurable), `low` reasoning (default, configurable),
-      native structured output (`method="json_schema"`, `strict=True`), and
-      omits `temperature`/`top_p`/`top_logprobs`. Verified by constructing
-      the real `ChatOpenAI` + `with_structured_output` pipeline offline and
-      inspecting the strict schema it generates (see Tests). Recorded live
-      runs on the supplied paper exercised successful output, including a
-      correction attempt in the v4 citations run; the four model/reasoning
-      comparison runs (`gpt-6-sol` at `medium` and `high`, `gpt-6-astra` at
-      `low` and `medium`) each succeeded without one. The default was chosen
-      from that comparison for the usability of Astra-low's assessment
-      language, not from a quality comparison. Live refusal/incomplete
-      handling remains unverified.
-- [x] Every `verbatim` evidence item is checked against the source text; a
-      failed match is treated as invalid analysis.
-- [x] Invalid analysis receives exactly one correction attempt with the
-      specific failure fed back to the model; refusal, incomplete output,
-      and technical failure each raise their own distinct exception without
-      consuming that attempt.
-- [x] Technical retries are handled separately from the one correction
-      attempt and never contribute a fabricated token count.
-- [x] `AnalysisResult` reports `model`, `input_tokens`, `output_tokens`, and
-      `attempt_count` accurately, summed only across calls that returned a
-      response.
-- [x] All tests run against an injected fake model — no real network or API
-      calls occur in the default test suite.
-- [x] Full check suite passes: `pytest`, `ruff check`, `ruff format --check`,
-      `mypy src`.
-- [x] No automated analysis-quality evaluation, accept/reject review
-      workflow, research-store persistence, source discovery, cross-source
-      synthesis, chunking, or orchestration is implemented in Phase 2.
-      Single-source analytical assessments are in scope; presenting them to
-      a reader is not — Phase 2 returns JSON only.
-- [x] `Claim.support_assessment` and any assumption it names survive
-      extraction, assembly, and the saved analysis unchanged. The prompt
-      instructs selection by importance and wording, not keyword matching.
-      Data flow is verified offline; selection quality is not established
-      by fixture tests. Whether the assessments themselves are analytically
-      sound is unevaluated (see Known Limitations) — that evaluation is
-      Phase 3's work, not a Phase 2 acceptance requirement.
-
-### Phase 2 Status: Complete, With Documented Limitations
-
-Phase 2 is complete: `analyze_source()` runs end to end against a real
-source with the current default (`gpt-6-astra`, `low` reasoning), producing
-a validated `SourceAnalysis` with claims, evidence, citations, and
-provisional support assessments, entirely as JSON. All acceptance criteria
-above are met. The items under Known Limitations and Later Evaluation
-Targets are real, data-grounded observations from the recorded runs, carried
-forward as Phase 3 evaluation work — they are not unmet Phase 2 requirements.
-Phase 3 — Evaluation is next.
-
-## Phase 3 — Evaluation
+## Phase 2 — DeepEval
 
 ### Goal
 
-Add automated DeepEval evaluation of `SourceAnalysis` results: faithfulness to
-the source, citation evaluation, and custom research-specific metrics for the
-behaviors named in the README. Phase 3 also prepares and analyzes the 12
-preliminary freshwater sources in `data/phase_3/`, because evaluation needs
-real analyses of real sources to run on, and plans one bounded comparison of
-two analyzer configurations (see Analyzer Configuration Comparison).
+Design metrics and rubrics, evaluate the 16 analyses, and choose the model and
+input method on quality and cost together.
+
+### The four questions to measure
 
-Phase 3 produces advisory scores, explanations, and per-item verdicts only.
-Phase 4 is where the researcher reviews analyses and evaluation results and
-decides whether they are good enough. Phase 3 adds no human labeling, no gold
-dataset, and no pass/fail, acceptance, or rejection gate on evaluation
-results. The 12 sources are research inputs selected by the project owner,
-not a labeled benchmark. Each analysis remains question-independent: neither
-the analysis nor any metric receives the research question.
-
-Agreeing to this plan authorizes no implementation, dependency installation,
-paid call, source rebuild, or analysis of any source. Each of those is a
-separate decision by the project owner.
-
-### Current State (as of this plan revision)
-
-**Landed:**
-
-- Changes 1–3 (annotation-aware grounding, citation formatting, attempt
-  retention) are implemented with their offline tests.
-- The shared preparation script is implemented and **has since been reduced
-  from 1,473 to 793 lines**. Geometry-based column reordering is now the
-  **default**, not opt-in, and is part of the recorded settings hash.
-- Preparation gaps and the analysis scope statement are carried on the saved
-  result (see *Preparation gaps on the saved result*).
-- `li_et_al_2025_making_ai_less_thirsty` is prepared under the current
-  standard: 37,068 characters, 8 pages, 8 annotations, 1 reading-order
-  correction, within the size limit.
-- `deepeval` is **not** installed; no evaluation code exists.
-
-**Why the preparation script was reduced.** The first version wrapped the
-extraction in checks intended to prove it trustworthy: per-page word coverage,
-continuity flags, column-geometry flags, document-wide hyphen corroboration,
-decorative-image detection, three statuses, an approval gate, and a
-`review.json` round-trip. Those checks added complexity without a matching
-gain — on the Li source they produced 23 items, of which 10 were unresolved and
-2 were real — and the annotations misdescribed partially extracted content:
-Table 1's 18 data rows were extracted correctly and then annotated `not source
-text; content not extracted`. Detection-then-clearing was replaced by the
-unconditional statements below, and the checks that could not be replaced that
-way were removed.
-
-**Not yet done:**
-
-- `data/phase_3/sources.yaml` contains **1 of 12** entries. The remaining 11
-  PDFs cannot be prepared until their provenance is confirmed by the project
-  owner. Provenance is owner-confirmed by design and is not inferred.
-- No analysis run has produced an `AnalysisResult`. The original Li artifacts
-  were removed during authorized consolidation of the preparation trees and
-  remain recoverable from Git history (commits `ce8b452` and `6e6f55a`). The
-  earlier failed run is diagnostic history only, never a baseline.
-- **Reported usage for the failed run:** attempt 1, 13,056 input / 6,200
-  output tokens; attempt 2, 18,260 input / 5,751 output (totals 31,316 /
-  11,951); reasoning tokens (14 and 46) are a subset of output and are not
-  added again. The project owner reports a $0.37 dashboard charge for the
-  single request with 18.26K input tokens (attempt 2) — that figure is
-  confirmed for that one request only. The full-run billing reconciliation
-  remains unresolved.
-
-### Architectural Decisions
-
-#### Source preparation standard
-
-- **One shared, pinned, local extraction process.**
-  `scripts/prepare_phase_3_sources.py` is the single entry point for all 12
-  PDFs. It uses `pymupdf4llm==1.28.2` with fixed settings recorded in every
-  record: layout mode on, `header=False`, `footer=False`, OCR off,
-  `page_chunks=True`, and geometry-based column reordering. The settings are
-  verified against the installed version in `tests/preparation/`. The process
-  introduces no source-specific code and does not switch tools. A PDF it
-  handles poorly is reported as an exception, never silently patched.
-  `pymupdf` is AGPL-licensed, acceptable for local research use.
-- **OCR is off.** A page with no text layer is recorded in
-  `pages_without_text_layer_ocr_off`; nothing is OCR'd automatically.
-- **Manifest and provenance.** `data/phase_3/sources.yaml` holds one
-  `Provenance` entry per source, confirmed by the project owner. Unknown
-  fields stay unset and are never inferred. IEA is marked an excerpt in the
-  manifest and record, with `(excerpt)` appended to its `source_title` without
-  changing `Provenance`.
-- **Reading order is corrected by geometry, by default.** A maximal run of
-  consecutive text/list blocks whose order jumps from one column to another and
-  back is re-sorted by column, then top to bottom. Captions, tables, and
-  visuals end a segment and keep their place. No text is edited, merged, or
-  dropped; only whole blocks move. Every change is recorded in
-  `reading_order_changes` with the before and after order. This corrects Li's
-  page 4; it does not prove reading order correct anywhere.
-- **Conservative cleanup only.** Recurring headers and footers are removed and
-  the removed lines listed. A line-break hyphen is joined only where the
-  document's own text supports it: the joined form occurring unbroken
-  elsewhere, or the hyphenated form occurring elsewhere inside a line. A case
-  with neither is left as extracted and listed in `hyphenation_notes`. No
-  paraphrasing, summarizing, or reconstruction. Headings, citations,
-  footnotes, units, and table headers are preserved as extracted.
-- **Page locators live in a separate mapping**, not in the text. `page_map.json`
-  carries **every** PDF page: its number, printed label where detected,
-  character offsets, and `mapped_text`. A page that contributed no text — one
-  holding only an image, a header or footer, or a recurring margin line — has
-  `mapped_text: false`, null offsets, and a `why` naming the cause. A missing
-  entry therefore always means something went wrong, never that a page was
-  quiet. Sentences crossing a page break are joined; markers never interrupt a
-  sentence or quotation.
-- **Visuals and equations are never estimated or interpreted.** The method
-  states, unconditionally, the three things it cannot represent, rather than
-  running heuristics that find candidates a human then clears:
-  - a captioned, numbered figure → *content not extracted; see the retained image*
-  - an equation-like paragraph → *the symbols above are the raw text layer and
-    may not be faithfully rendered; see the retained image*
-  - a table → *verify the column headers against the retained image*, or, when
-    the header spans two rows, *data rows extracted above; the grouping of the
-    multi-level column header is not recoverable from the extracted text*
-  Each appears in the analyzer text as a labeled **preparation annotation**
-  with a stable ID, kind, page, label, and image path. Annotations contain no
-  values and no interpretation, are distinguishable from source text
-  throughout analysis and evaluation, and can never qualify as verbatim
-  evidence (Change 1).
-- **Images: crops, not pages.** Each annotated element is cropped at 200 DPI
-  and retained. Whole pages are **not** stored; any page is rendered from the
-  PDF on demand with `prepare_phase_3_sources.py page --slug SLUG --page N`.
-  For Li this is 8 crops totalling 888K, against 8 full-page renders before.
-- **Known consequence:** an uncaptioned figure produces no annotation and no
-  crop, and is visible only by rendering its page. Li's page 2 is the one
-  instance: a full-page illustration, reviewed against its image and recorded
-  as decorative. It is left with its `page_map` entry and on-demand rendering
-  only; no crop and no analyzer annotation were added. Expanding uncaptioned-
-  image handling is explicitly out of scope.
-- **No transcription, no vision fallback.** Nothing is transcribed from an
-  image into the analyzer text. No routine paid vision step exists and no
-  automatic fallback tool exists. Paid vision is never invoked to work around a
-  preparation problem.
-- **No preparation status and no approval gate.** Preparation does not judge
-  whether a source is good enough to analyze; it states what it could and could
-  not represent and stops. Deciding whether the gaps matter is the
-  researcher's call, at review. The `status` and `approve` commands, the three
-  statuses, the verification record, and the `review.json` round-trip are
-  **removed**. `run_analyses.py` gates nothing.
-- **Size limit.** The final prepared text, annotations included, is checked
-  against `Settings.max_source_characters` (200,000) and recorded as
-  `within_size_limit`. Nothing is truncated or chunked and the limit is not
-  changed; an over-limit source exits non-zero and is the owner's decision. By
-  raw text-layer count, IEA (about 191k) and Shehabi (about 183k) are within a
-  few percent of the limit before formatting and annotations.
-- **Records per source** (`outputs/phase_3/prepared/<slug>/`): `prepared_text.md`,
-  `provenance.json`, `page_map.json`, `images/` (crops), and `prep_record.json`
-  — parser name and version, settings, settings/script/PDF/text sha256s,
-  measured start and elapsed time, removed lines, hyphenation notes,
-  reading-order changes, annotations, pages without a text layer, retained
-  images, and `preparation_limits`, a fixed statement of what this method
-  always leaves out. Unmeasured values are recorded as unmeasured, never
-  guessed.
-- **Original PDFs are never modified.**
-
-#### Preparation gaps on the saved result
-
-A follow-on to Change 1, so the text-only limit travels with the artifact
-instead of living only in the reviewer's head.
-
-- `PreparationGap` (`extraction/schemas.py`) carries `id`, `kind`, `page`,
-  `label`, `image` — the shape already present in
-  `prep_record.json["annotations"]`, so no new vocabulary is introduced.
-- `SourceDocument` gains `preparation_directory` and `preparation_gaps`, both
-  optional. A validator cross-checks the declared gaps against
-  `find_annotations(text)` in both directions and rejects a mismatch, so a
-  result can never claim coverage its text does not have. Gaps without a
-  directory are rejected.
-- `AnalysisResult` gains the same two fields plus `analysis_scope`, defaulting
-  to: *"Analysis used prepared text only. Listed items were omitted or
-  incompletely represented; their original image content was not assessed."*
-  `analyze_source()` copies both through on each return path.
-- **Crop paths stay relative** (`images/U1_p04.png`) and resolve against
-  `preparation_directory`, which is repo-relative. Nothing stores an absolute
-  path.
-- `SourceAnalysis`, `Claim`, and `Evidence` are unchanged. This is additive and
-  default-empty, so existing saved JSON still loads.
-
-#### Analysis and evaluation
-
-- **Analyses use the existing pipeline, with three bounded changes** specified
-  below (Changes 1–3), each a separate task with its own offline tests. They
-  extend Phase 2 code and its field descriptions and prompt text; they do not
-  redesign the analysis models, reopen the Phase 2 acceptance criteria, or
-  change the analyzer default (`gpt-6-astra`, `low`). Model and effort
-  overrides for a given run are recorded in that run's record; `Settings`
-  defaults are unchanged.
-- **Evaluation calls `metric.measure()` / `a_measure()` directly, not
-  `evaluate()`; results are advisory.** Verified against DeepEval's
-  documentation and source: `threshold` is `Optional[float]`;
-  `BaseMetric.is_successful()` sets `success = None` when `threshold is None`;
-  and the docs state that such metrics "still compute scores and reasons, but
-  have no pass/fail opinion." The same docs also state that each `evaluate()`
-  run requires at least one non-flaky metric with a threshold, so an
-  all-`None` batch is not a supported use of `evaluate()`. Calling `measure()`
-  avoids that requirement and keeps pass/fail out of the pipeline entirely.
-  Rules:
-  - every built-in and `GEval` metric is constructed with `threshold=None`;
-  - `strict_mode` is never used (it forces `threshold=1`) and `flaky` is not
-    used;
-  - custom `BaseMetric` subclasses set `threshold = None` and inherit the
-    same `is_successful()` behavior;
-  - our result schema has no `success`/`passed` field, and a test asserts
-    that `success` is `None` for every metric and never read;
-  - the DeepEval version is pinned and recorded in each result, because this
-    behavior is documented but version-dependent.
-- **Telemetry is disabled.** `DEEPEVAL_TELEMETRY_OPT_OUT=1` is set before
-  `deepeval` is imported (per DeepEval's FAQ) and a test checks it. The
-  local `.deepeval/` directory is git-ignored.
-- **Metric classification.** Built in: `FaithfulnessMetric`. Custom, built
-  with DeepEval's extension points: `GEval` for the holistic research
-  metrics; subclassed `BaseMetric` for citation and evidence-mapping, which
-  judge many individual items and need per-item verdicts. DeepEval has no
-  built-in citation or research-specific metric. The README's eight behaviors
-  map as: faithfulness → `faithfulness`; citation faithfulness →
-  `citation_faithfulness`; evidence mapping → `evidence_mapping`; argument
-  reconstruction, assumption discipline, limitation discipline, inference
-  control (including `support_assessment` quality), and research usefulness →
-  one `GEval` each.
-- **Annotations in evaluation.** Judges receive the prepared text with
-  annotations visibly labeled as preparation annotations, not source text. That
-  is an instruction, not enforcement. The evaluation record flags every
-  analysis item that names a preparation gap's ID or label. These flags cannot
-  detect every paraphrased use of missing material and are not complete
-  enforcement; the limitation is recorded rather than hidden. A judge reading
-  the same prepared text cannot validate it against the original image; the
-  Phase 4 reviewer uses the retained crops.
-- **Evaluation records its own text-only limitation.** Every
-  `EvaluationResult` carries the `analysis_scope` of the result it evaluated
-  and its own equivalent statement: the metrics scored the prepared text, so
-  content listed in `preparation_gaps` was not supplied to any judge and is not
-  assessed by any score in the record. Because the omitted content is absent
-  from the text as well as from the analysis, no metric can penalize its
-  omission -- this is stated in the record, not left for the reader to infer.
-- **Judge model: `DeepEvalBaseLLM` wrapper over the existing `ChatOpenAI`
-  setup.** DeepEval's built-in model names are unlikely to include
-  `gpt-6-*`. The wrapper implements `generate`/`a_generate` and must return
-  an instance of the supplied Pydantic `schema` when one is given (DeepEval
-  documents that its structured metrics fail otherwise). The judge is
-  recorded in every result and is separately configurable from the analysis
-  model. A different judge model gives another perspective; it does not
-  guarantee freedom from self-grading bias.
-- **Judge configuration: PENDING the project owner's choice.** No evaluation
-  judge is chosen by this plan or by the analyzer comparison.
-- **Every metric returns a 0–1 score (or `None` when nothing was
-  applicable), an explanation, and per-item verdicts where it judges items.**
-  A score of `None` is distinct from 0; a judge or parsing error is recorded
-  as an error, never as a score.
-
-### Bounded Changes to Phase 2 Code
-
-Changes 1-3 are **implemented** (commit `a46320f` and earlier). Their
-specifications and offline tests are retained below as the record of what was
-built. Each was independently testable offline, kept the four existing failure
-categories and the one-correction policy, and weakened no existing grounding
-check.
-
-One correction: Change 1 stated "`AnalysisResult` is unchanged." That is
-superseded by *Preparation gaps on the saved result* above, which adds three
-default-empty fields to it. Grounding behavior itself is unchanged.
-
-#### Change 1 — Annotation-aware grounding
-
-**Goal:** a preparation annotation can never be matched as verbatim source
-text, a citation marker, or a reference entry.
-
-- The analyzer sees the annotated text. Verbatim-evidence, citation-marker,
-  and reference-entry checks run against a separate **grounding view** in which
-  every annotation span (recognized by the reserved delimiters) is replaced by
-  a single **sentinel** character. Replacement, not deletion, prevents a quote
-  from matching across the gap.
-- The sentinel is a non-whitespace character unchanged by the existing
-  normalization (whitespace collapse, strip, `casefold`), so it survives into
-  the normalized comparison text and breaks adjacency between the text on
-  either side.
-- Preparation and `SourceDocument` validation reject any source text that
-  already contains the reserved delimiter characters or the sentinel. Any
-  evidence text, citation marker, or reference entry returned by the model
-  that contains the sentinel is treated as invalid analysis.
-- Annotation IDs, offsets, kinds, and page/image links are kept in the
-  preparation record for review; `AnalysisResult` is unchanged.
-- Sources without annotations behave exactly as before.
-
-**Offline tests:** the sentinel survives the existing normalization; a quote
-equal to annotation text fails grounding; a quote spanning an annotation (real
-text on both sides) fails, while the same quote with no annotation between
-passes; a citation marker equal to annotation text fails; a reference entry
-spanning an annotation fails; delimiter or sentinel characters in source text
-are rejected; a model quote containing the sentinel is rejected; a pipeline
-test with a fake model confirms a quote of annotation text triggers the one
-correction attempt and then terminal failure if repeated; existing
-grounding tests pass unchanged. **Recorded limitation:** paraphrased
-evidence and claims are not grounded text-matched by design, so grounding
-cannot detect a paraphrase of missing content; evaluation flags are partial
-mitigation only.
-
-#### Change 2 — Citation formatting
-
-**Goal:** one cited work per `Citation` object, with grouped markers mapping to
-separate reference entries.
-
-- Add one clarifying instruction to the analysis prompt and update the
-  `Citation`/`ExtractedEvidence` field descriptions: a `reference_entry` is
-  exactly one entry as written in the source's reference list, never several
-  joined; when a marker groups several works (for example `23,32,33`), record
-  one `Citation` per work, each carrying the marker as printed in
-  `citation_text` and one matching `reference_entry`; leave `reference_entry`
-  unset if no matching entry exists.
-- Make the correction feedback for a failed reference entry actionable: state
-  the rule (one contiguous entry as written; one citation per work) in
-  addition to the failure, instead of only "not found anywhere in the source
-  text," which is misleading when each piece is present.
-- Grounding checks are unchanged: a combined entry still fails. The
-  one-correction policy is unchanged. The `Citation` schema gains no field.
-  This addresses an observed risk and does not predict that every run fails
-  without it.
-
-**Offline tests:** prompt presence tests for the new instruction; the grounding
-function still reports a combined non-adjacent entry as ungrounded and now
-includes the rule in its message; a fake model that first returns a combined
-entry and then separate citations produces `attempt_count == 2` and the
-correction message contains the rule; a fake model returning the combined entry
-twice still raises `SourceAnalysisValidationError` after exactly one
-correction; a grouped-marker fixture assembles into one citation per work.
-
-#### Change 3 — Attempt retention
-
-**Goal:** every returned attempt is auditable on success and on terminal
-failure.
-
-- Introduce an `AttemptRecord` holding: attempt number; outcome category
-  (valid, invalid analysis, parse error, refused, incomplete, technical
-  failure); validation or parsing errors; raw model output (message content
-  and an allow-listed subset of response metadata); parsed output where
-  available; the response identifier and any other request identifier the
-  response exposes; measured start, end, and elapsed time; and reported usage
-  (input tokens, output tokens, reasoning tokens as a subset of output, cached
-  input detail). Usage is exactly what the response reported; nothing is
-  fabricated for an attempt that returned no response.
-- Records are attached to the returned `AnalysisResult` (an additive,
-  default-empty field, so existing saved JSON still loads) and to every
-  `SourceAnalysisError` raised after at least one attempt returned. Existing
-  exception types, categories, retry policy, and the meaning of `attempt_count`
-  and token totals are unchanged.
-- Secrets are not exposed: only allow-listed metadata is stored; API keys and
-  authorization headers are never read or recorded.
-- Invalid parsed outputs are retained for diagnosis and are marked invalid;
-  they never become an accepted analysis.
-- **Known limitation:** retries performed inside the API client are not
-  observable, so their request identifiers are not recorded.
-
-**Offline tests:** a first-attempt success records one attempt; a correction
-success records both attempts with the first attempt's errors and parsed
-output; a terminal validation failure exposes both attempts with usage summing
-to the existing totals and reasoning tokens not added again; refusal,
-incomplete, and technical failures keep their categories and carry the
-available attempts; timing fields come from an injected clock; a fake response
-containing authorization-like metadata is not stored; an `AnalysisResult` with
-attempts round-trips through JSON, and old JSON without attempts still loads.
-
-### Analyzer Configuration Comparison
-
-A practical comparison of two configurations for the project owner's review. It
-is not a benchmark and not an isolated model-effect experiment: model
-generation and reasoning effort differ together, and each configuration is run
-once.
-
-- **Runs:** one fresh run of `gpt-6-astra` at `low` and one fresh run of
-  `gpt-6.1-sol` at `medium`. No extra baseline repeat initially.
-- **Held constant:** the same prepared input (same prepared-text sha256), the
-  same provenance, prompt, code version (recorded), validation rules, and
-  one-correction policy. Model and
-  reasoning effort are the intended differences, recorded per run.
-- **Prerequisites:** Changes 1–3 landed first (otherwise the comparison would
-  measure the observed grouped-marker failure and could not report
-  per-attempt usage); a prepared source named by the project owner; the owner's authorization for the paid runs. The failed Li
-  run and earlier GPT-6 Sol experiments are not baselines.
-- **Facts verified from OpenAI's official pages (read 2026-10-13):**
-  `gpt-6.1-sol` accepts text and image input, supports structured outputs and
-  the Responses API, supports reasoning effort `low` through `max` with
-  `medium` as default, and is listed at $2 input / $10 output per 1M tokens
-  ($0.10 cached input, $2.50 cache writes) for requests up to 272K input
-  tokens. `gpt-6-astra` is listed at $10 / $50 ($1 cached, $12.50 cache
-  writes). **Not verified:** that `gpt-6.1-sol` works with this pipeline's
-  strict-schema Responses API call; this is established only by a live call.
-- **Recorded per run:** per-attempt and total input/output tokens, reasoning
-  tokens as a subset of output (never added again), cached-input detail,
-  response identifiers, start/end/elapsed time. **Calculated cost** (usage ×
-  listed rates, with any unlisted rate left blank) is reported separately from
-  **confirmed billing**, which is only what the project owner reads from the
-  dashboard per request. No spending limit is approved; a projected-usage
-  figure from the prepared text is printed before each run.
-- **Quality review by the project owner**, side by side, optionally with model
-  labels hidden: source fidelity, argument coverage, evidence and citation
-  mapping, assumptions and limitations, and the usefulness and calibration of
-  support assessments. Counts (claims, evidence, citations, assessed claims,
-  assumptions, limitations) are descriptive. A successful validation is not a
-  quality score.
-- This comparison does not choose the evaluation judge, does not change the
-  analyzer default, and does not replace the DeepEval work. DeepEval scoring of
-  both outputs is optional once a judge is chosen.
-
-### Metrics
-
-Every `LLMTestCase` uses a fixed, neutral `input` string. Source text is
-passed as ordered chunks (faithfulness) or full prepared text (holistic
-checks), with annotations labeled; the research question never appears.
-
-| Metric | Kind | Receives | Checks | Returns |
-|---|---|---|---|---|
-| `faithfulness` | built-in `FaithfulnessMetric`, `penalize_ambiguous_claims=True` | `actual_output`: the `author_stated` problem, claims, assumptions, limitations, solutions, open questions, methodology, and paraphrased evidence, each labeled with its item ID. `retrieval_context`: source chunks in reading order. | Statements are consistent with, and not beyond, the source. `model_inferred` content and verbatim evidence are excluded (the latter is already mechanically grounded). | One score per source, a reason, and the claim-level verdicts from `metric.verdicts`. |
-| `citation_faithfulness` | custom `BaseMetric` | Each `Citation` with its evidence, claim, and source text around the marker. | Deterministic: marker and reference entry occur in the source. Judged: the marker attaches to this statement, and the reference entry matches the marker. Never checks the cited work itself. | Per-citation verdicts (`attributed` / `misattributed` / `unclear`); score = attributed ÷ judged; `unclear` counted separately; `None` with no citations. |
-| `evidence_mapping` | custom `BaseMetric` | Each evidence item with its claim, form, `relationship_to_claim`, locator, and nearby source passages. | The label is justified: `claim_grounding` means the source states the claim; `direct_support` is not an overstatement of `partial_support`. | Per-item verdicts (`correct` / `overstated` / `wrong` / `unclear`) and a score. |
-| `argument_reconstruction` | `GEval` | Analysis and full source. | Main argument covered and correctly structured; material omissions or distortions. | Score and a reason naming omissions. |
-| `assumption_discipline` | `GEval` | Assumptions, linked claims, source. | Author-stated assumptions are really stated; inferred ones are genuinely implicit, labeled correctly, and tied to a claim. | Score and reason. |
-| `limitation_discipline` | `GEval` | Limitations and source. | Acknowledged limitations captured; inferred ones specific rather than boilerplate; origin labels correct. | Score and reason. |
-| `inference_control` | `GEval` | All `statement_origin` labels; claims with `support_assessment`; source. | Interpretation is not presented as source content; assessments cite passages, say when material is insufficient, and recognize well-supported claims as readily as gaps. | Score and reason. |
-| `research_usefulness` | `GEval` | Analysis and source. | Specific, scoped, and reusable across questions: units, conditions, and quantities preserved. | Score and reason. |
-
-`GEval` metrics use fixed `evaluation_steps` (DeepEval documents `GEval` as
-non-deterministic and recommends explicit steps to reduce variance). The
-current docs name the parameter enum `SingleTurnParams`; the exact member for
-passing source text is confirmed against the installed version, with the
-fallback of placing the source in `input`. Descriptive statistics (claim
-count, assessed-claim count, token usage) are recorded per analysis but are
-not metrics.
-
-### Judge Configuration (PENDING)
-
-Choice pending from the project owner; nothing in this plan selects it.
-Options as previously framed: A. `gpt-6-sol` at `medium` (a different model
-from the analyzer); B. `gpt-6-astra` at `low` (matches the analyzer, so
-self-grading bias is likely); C. a tiered configuration (a stronger judge for
-the five holistic metrics, a cheaper one for per-item verdicts; two judges to
-interpret). A different judge is another perspective, not a guarantee against
-bias.
-
-Cost basis: official listed rates (read 2026-10-13) are Astra $10 / $50,
-`gpt-6-sol` $2 / $10, `gpt-6.1-sol` $2 / $10 per 1M tokens. Judge cost depends
-on per-item call counts, which scale with each analysis's evidence and
-citation counts (about 9 DeepEval-driven calls plus one per citation and per
-evidence item in the current design), and on unmeasured output and reasoning
-tokens. A dry run from the prepared text prints projected calls and tokens
-before any paid call; no budget is approved.
-
-### Technologies Introduced
-
-| Tool | Purpose |
-|---|---|
-| `deepeval` (pinned) | `FaithfulnessMetric`, `GEval`, `BaseMetric`, `DeepEvalBaseLLM` |
-| `pymupdf4llm==1.28.2` / `pymupdf` | PDF-to-Markdown extraction with tables and element crops; OCR disabled |
-| `pyyaml` | Reading the source manifest |
-
-`pymupdf4llm` and `pyyaml` are installed and pinned. At `deepeval` install time
-(separately authorized): confirm it resolves cleanly alongside the pinned
-`openai`/`langchain` packages and add a mypy `ignore_missing_imports` override
-if it ships no types.
-
-### Module Layout
-
-```
-scripts/
-  prepare_phase_3_sources.py   # prepare | page -- the single shared entry point
-  run_analyses.py              # analyze_source() over prepared sources
-  run_evaluation.py            # evaluate_analysis() over saved analyses
-
-src/hitl_research_agent/extraction/   # Changes 1-3 and PreparationGap/ANALYSIS_SCOPE
-src/hitl_research_agent/evaluation/
-  schemas.py          # MetricResult, ItemVerdict, EvaluationResult
-  judge.py            # DeepEvalBaseLLM wrapper over ChatOpenAI
-  inputs.py           # analysis -> test-case inputs; ordered source chunking; annotation labels/flags
-  metrics/
-    faithfulness.py
-    citation.py
-    evidence_mapping.py
-    research.py       # the five GEval metrics and their evaluation_steps
-  runner.py           # evaluate_analysis(); calls measure(), never evaluate()
-  storage.py
-
-tests/extraction/ tests/evaluation/ tests/preparation/
-data/phase_3/sources.yaml
-outputs/phase_3/prepared/<slug>/   # prepared_text.md, provenance, page_map, images/, prep_record
-outputs/phase_3/analyses/<slug>/   # results, attempt records, run records
-outputs/phase_3/evaluations/<slug>/
-```
-
-`Settings` gains `eval_judge_model` and `eval_judge_reasoning_effort`, unset
-until the judge is chosen. The analyzer defaults are unchanged and there is no
-vision-model setting.
-
-### Retained Results
-
-`outputs/phase_3/evaluations/<slug>/evaluation_result.json` holds: analysis and
-source IDs; the sha256 of the prepared text and a reference to its
-`prep_record.json`; the evaluated result's `analysis_scope` and
-`preparation_gaps`; this record's own text-only limitation statement; judge
-model and effort; DeepEval version; metric configurations; `evaluated_at`; one
-`MetricResult` per metric (score, reason, per-item verdicts referencing
-claim/evidence IDs); gap-dependency flags with their stated limitation; and
-errors. It contains no pass/fail field. Phase 4 reads these files; non-passing
-item verdicts are visible as data, not as flags set by an automatic gate.
-
-### Implementation Tasks (each step needs its own authorization)
-
-1. ~~Verify and pin the `pymupdf4llm` settings.~~ **Done.**
-2. ~~Changes 3, 2, 1 with their offline tests.~~ **Done.**
-3. ~~Build the shared preparation script.~~ **Done**, and since reduced; column
-   reordering made default; status/verification/approval machinery removed.
-4. ~~Prepare Li under the standard.~~ **Done.**
-5. ~~Carry preparation gaps and the analysis scope onto the saved result.~~
-   **Done.**
-6. **Draft the remaining 11 manifest entries** from each PDF's embedded
-   metadata for the project owner to correct and confirm (free, offline). No
-   provenance field is inferred into the manifest without that confirmation.
-7. Prepare the remaining 11 sources (free); report each one's annotations,
-   reading-order changes, size, and any page without a text layer.
-8. Run the analyzer comparison on the source the owner names (paid; separate
-   authorization; any spending ceiling set by the owner), then review.
-9. Install `deepeval` (separately authorized), build `evaluation/` and its
-   offline tests. Can proceed in parallel with 6–7.
-10. After the judge is chosen and approved, run evaluation (paid; separate
-    authorization), starting with one source.
-11. Update this section's status and the README project status.
-
-**Genuine blockers:** step 7 is blocked on step 6, which is blocked on the
-project owner confirming provenance for 11 sources. Later decisions that only
-the owner can make: the `deepeval` installation, the comparison source and any
-spending ceiling, the judge choice, and every paid run.
-
-### Tests
-
-All offline; no network or API call occurs in the default suite.
-
-**Preparation (`tests/preparation/`)**, on generated fixture PDFs:
-- pinned settings and version verified against the installed parser; layout
-  mode exposes page boxes; header/footer/OCR arguments honored;
-- header/footer removal with the removed lines recorded; a line-break hyphen
-  joined only when the document supports it, otherwise kept and listed;
-  a sentence crossing a page break joined;
-- `page_map` holds every PDF page with no locators in the text; a page that
-  contributed no text is present with `mapped_text: false` and an explanation;
-- a ruled table keeps its rows and columns and is annotated; a spanning header
-  is detected and says the grouping is unrecoverable; a captioned figure is
-  annotated and decorative art is not; an equation paragraph is annotated as
-  possibly unfaithful while its raw text is kept;
-- annotations never match as verbatim source text through `grounding_view`,
-  and no quote matches across an annotation gap;
-- only hard-to-extract elements are cropped; a prose-only source leaves no
-  images; the `page` command renders one page on demand and rejects a page
-  outside the PDF;
-- reading-order correction fixes an interleaved segment, leaves a correct page
-  untouched, never moves captions/tables/visuals across segments, does not
-  cross pages, and is on by default and recorded;
-- annotation delimiters in source text rejected; unknown provenance fields stay
-  unset; naive `retrieved_at` and an unlabeled excerpt rejected; the real
-  manifest loads; the oversized case is recorded without truncation;
-- the original PDF is untouched.
-
-**Extraction:** the tests under Changes 1–3, plus `test_preparation_gaps.py`:
-the scope statement is the default on every result and survives a JSON round
-trip; crop paths stay relative and resolve against `preparation_directory`;
-gaps without a directory are rejected; a document must declare every annotation
-its text carries and cannot claim one it does not; plain text needs no gaps;
-gaps build from a real `prep_record.json` without new vocabulary and every crop
-named exists.
-
-**Evaluation (`tests/evaluation/`)** — unchanged from the current plan, plus:
-`EvaluationResult` carries the evaluated result's `analysis_scope` and
-`preparation_gaps` and its own text-only limitation statement.
-
-### Acceptance Criteria
-
-- [ ] Shared preparation process implemented with verified, pinned settings,
-      OCR off, and column reordering on by default; all 12 sources prepared
-      from `data/phase_3/` only, each with a prepared text, full page mapping,
-      element crops, annotations, and a preparation record.
-- [ ] Provenance for all 12 sources confirmed by the project owner before
-      preparation; no provenance field inferred into the manifest.
-- [ ] No chart value, diagram relationship, or equation transcribed or
-      interpreted into analyzer text, and no vision call made to work around a
-      preparation problem.
-- [ ] IEA identified as an excerpt; unknown provenance fields left unset; every
-      prepared text checked against the size limit before any model call;
-      original PDFs preserved.
-- [ ] Every saved `AnalysisResult` carries its `preparation_gaps`,
-      `preparation_directory`, and `analysis_scope`; a document whose declared
-      gaps disagree with its text is rejected.
-- [ ] Changes 1–3 implemented as separate tasks with their offline tests, the
-      four failure categories, one-correction policy, and analyzer default
-      unchanged.
-- [ ] The analyzer comparison, if authorized, run once per configuration under
-      the stated controls, with per-attempt and total usage and timing, and
-      calculated cost kept separate from confirmed billing.
-- [ ] Faithfulness (built-in), citation, evidence-mapping, and five
-      research-specific metrics run per analysis and saved with scores,
-      explanations, and per-item verdicts; all advisory (`threshold=None`, no
-      pass/fail field).
-- [ ] Every `EvaluationResult` states that it assessed prepared text only and
-      did not assess the listed omitted visual content.
-- [ ] Judge configuration chosen by the project owner and recorded in every
-      result.
-- [ ] Full check suite passes: `pytest`, `ruff check`, `ruff format --check`,
-      `mypy src`.
-- [ ] No human labeling, gold dataset, review workflow, research-store
-      persistence, or ingestion package is implemented.
-
-### Known Limitations
-
-- Judge scores are not validated against human labels, by design; Phase 4
-  review is the check, and explanations and item verdicts exist so it can be
-  audited.
-- Faithfulness claims are extracted by DeepEval and cannot be mapped to item
-  IDs except through the labels placed in the input text.
-- **Preparation makes no claim that reading order is correct or that every
-  visual was found.** Column reordering corrects a specific, detectable fault;
-  it proves nothing about the rest. An uncaptioned figure is not annotated at
-  all. The automated checks that previously claimed more than this — word
-  coverage, continuity flags, column-geometry flags — were removed because
-  they produced mostly false positives and could not establish what they
-  appeared to.
-- Equations are retained only as the PDF's raw text layer, which is frequently
-  not faithful; multi-level table headers lose their grouping. Both are stated
-  in the text and cropped, not repaired.
-- Annotation grounding stops verbatim matches of annotation text; it cannot
-  detect paraphrased use of missing material, and evaluation flags are partial.
-- **Analysis and evaluation see prepared text only.** No score penalizes the
-  omission of figure or equation content, because that content is absent from
-  the source text the metrics read as well as from the analysis. The crops and
-  the scope statement exist so the Phase 4 reviewer supplies that judgment.
-  This gap does not reach Phase 6 synthesis or Phase 7 retrieval as text; it
-  reaches them only as the `preparation_gaps` list on each result.
-- Client-internal retries are not observable in attempt records.
-- The 200,000-character limit remains an unvalidated placeholder, and the
-  analyzer comparison is two single runs, not a benchmark.
-- The full billing for the failed Li run is unreconciled; calculated cost is
-  never presented as confirmed billing.
-- Only one source has been prepared under the current standard, so the
-  thresholds and rules above are tuned on a sample of one.
-
-## Phase 4 — Human Review
-
-*To be planned.*
-
-## Phase 5 — Source Discovery and Ingestion
-
-*To be planned.*
-
-## Phase 6 — Cross-Source Synthesis
-
-*To be planned.*
-
-## Phase 7 — Research Knowledge Base and RAG
-
-*To be planned.*
-
-## Phase 8 — Retrieval Evaluation
-
-*To be planned.*
-
-## Phase 9 — LangGraph Orchestration
-
-*To be planned.*
+1. **Claim attribution** — do claims marked `author_stated` actually reflect
+   what the source says? Faithful paraphrases are acceptable: a paraphrase that
+   preserves the authors' meaning is a correct answer, not a defect. v1's
+   requirement of a verbatim quotation per author-stated claim was removed for
+   this reason and is not to return as a metric.
+2. **Qualification and citation fidelity** — are hedges, conditions, scope
+   limits, and strength of language preserved rather than softened or
+   hardened? Are in-text citation markers and reference entries recorded as the
+   source prints them, without invented bibliography detail?
+3. **Interpretation discipline** — is `model_inferred` content actually absent
+   from the source, and is `author_stated` content actually in it? Both
+   directions are errors: an interpretation presented as the authors' claim, and
+   an authors' claim demoted to interpretation.
+4. **Argument coverage** — are the arguments that matter to the source present?
+   Coverage is about what was missed, not about volume; a longer analysis is not
+   a better one.
+
+### Decisions this phase must make
+
+- Rubrics specific enough that two runs of the judge on the same analysis agree,
+  and the scale each metric reports on.
+- The judge model and configuration, and its cost — the judge is itself a paid
+  model call across 16 analyses and several metrics.
+- How the judge gets the source: it faces the same input-method question the
+  analyses do, and a judge that only reads extracted text cannot assess a
+  reading of a figure.
+- **Human spot checks of the judge**, designed in: a sample the researcher
+  scores independently, compared against the judge's scores, so the judge's own
+  reliability is evidence rather than assumption. A judge that disagrees with
+  the researcher is a finding about the judge.
+- Where evaluations are stored, separately from the analyses they assess.
+
+The output is a recommended configuration with the measured quality and cost
+behind it, including the cases where the two point in different directions.
+
+---
+
+## Phase 3 — Research Collection
+
+### Goal
+
+Analyze and evaluate all 16 articles in `data/research/` using the Phase 2
+configuration, reusing the Phase 1 outputs that already used it.
+
+Four of the 16 are the A/B articles, and four of their 16 cells already hold an
+analysis in the chosen configuration — those are reused rather than rerun, if
+their records show the same prompt, schema, and settings. Analyses go to
+`outputs/analyses/<slug>/` and evaluations to `outputs/evaluations/<slug>/`, so
+an analysis is never conflated with the judgment of it, and either can be
+regenerated without the other.
+
+This phase also establishes what a *collection* needs that a single analysis
+does not: provenance for all 16 articles, a record of which configuration
+produced each analysis, and enough consistency for Phase 4 to compare them.
+
+---
+
+## Phase 4 — Synthesis Agent
+
+### Goal
+
+Compare accepted analyses for agreements, disagreements, methodological
+differences, limitations, and open questions, preserving which source said
+what, and evaluate the result.
+
+Synthesis receives no research question. Source attribution is the hard
+requirement: a synthesis that blends two sources into one unattributed claim has
+destroyed the thing it was built to preserve, and a disagreement must name both
+sides. The evaluation has to be designed for synthesis rather than borrowed from
+Phase 2 — faithfulness here means faithfulness to the analyses and the
+attribution, which is a different question from faithfulness to one source, and
+the new failure mode is a manufactured agreement or disagreement between sources
+that do not actually address the same point.
+
+---
+
+## Phase 5 — Research Agent
+
+### Goal
+
+Given an explicit research question, find candidate articles, explain why each
+is relevant, and let the researcher select which to add to the collection.
+
+This is the only question-aware agent. It proposes and explains; it does not
+add. A selected article enters the Phase 3 path — provenance, analysis,
+evaluation — and the explanation of relevance is recorded with it, since it is
+the agent's reasoning about a question and not a property of the source.
+
+---
+
+## Phase 6 — RAG
+
+### Goal
+
+Connect retrieval to all three agents so the researcher can navigate source
+material, analyses, evaluations, and syntheses using explicit questions,
+including literature-review questions.
+
+Four kinds of thing are retrievable and they are not interchangeable: a passage
+from a source, a claim from an analysis, a judgment from an evaluation, and a
+comparison from a synthesis. Retrieval has to preserve which kind it returned
+and which source it came from, and it must not let an analysis's
+`model_inferred` content come back as something a source said. Retrieval quality
+is evaluated separately from the quality of what the model generates from what
+it retrieved. Single-source analysis stays question-independent: retrieval
+serves the researcher and the question-aware agents, and never feeds the
+research question back into the analysis step.

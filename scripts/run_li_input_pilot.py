@@ -53,8 +53,8 @@ from hitl_research_agent.models.provenance import Provenance  # noqa: E402
 
 SLUG = "li_et_al_2025_making_ai_less_thirsty"
 PREPARATION_DIR = f"outputs/preparation/{SLUG}"
-SOURCE_PDF = f"data/phase_3/{SLUG}.pdf"
-PILOT_ROOT = REPO_ROOT / "outputs/phase_3/pilots/li_input_format"
+SOURCE_PDF = f"data/research/{SLUG}.pdf"
+PILOT_ROOT = REPO_ROOT / "outputs/v1_archive/li_input_format_pilot"
 
 PILOT_MODEL = "gpt-6.1-sol"
 PILOT_REASONING_EFFORT = "medium"

@@ -77,7 +77,7 @@ def _source(text: str = PLAIN_TEXT, *, annotated: bool = False) -> SourceDocumen
     return SourceDocument(
         text=text,
         provenance=_provenance(),
-        preparation_directory="outputs/phase_3/prepared/fixture" if annotated else None,
+        preparation_directory="outputs/preparation/fixture" if annotated else None,
         preparation_gaps=[GAP] if annotated else [],
     )
 
@@ -364,7 +364,7 @@ def test_attachments_over_the_documented_request_limit_are_rejected(tmp_path: Pa
     oversized = LoadedAttachment(
         record=Attachment(
             kind="pdf",
-            path="data/phase_3/huge.pdf",
+            path="data/research/huge.pdf",
             mime_type="application/pdf",
             sha256="0" * 64,
             byte_size=MAX_REQUEST_FILE_BYTES + 1,

@@ -62,7 +62,7 @@ def _source(text: str = SOURCE_TEXT) -> SourceDocument:
     annotated = "PREP-ANNOTATION U1" in text
     return SourceDocument(
         text=text,
-        preparation_directory="outputs/phase_3/prepared/fixture" if annotated else None,
+        preparation_directory="outputs/preparation/fixture" if annotated else None,
         preparation_gaps=[GAP_U1] if annotated else [],
         provenance=Provenance(
             source_title="Data Center Water Use",

@@ -1,8 +1,8 @@
-# Provenance manifest for the Phase 3 sources, confirmed by the project owner.
+# Provenance manifest for the research sources, confirmed by the project owner.
 # Unknown fields stay unset. Only sources prepared so far are listed here.
 sources:
   - slug: li_et_al_2025_making_ai_less_thirsty
-    pdf: data/phase_3/li_et_al_2025_making_ai_less_thirsty.pdf
+    pdf: data/research/li_et_al_2025_making_ai_less_thirsty.pdf
     source_title: "Making AI Less 'Thirsty': Uncovering and addressing the secret water footprint of AI models"
     source_authors: [Pengfei Li, Jianyi Yang, Mohammad A. Islam, Shaolei Ren]
     publication_date: null

@@ -6,7 +6,7 @@ extracted for the model to read, and the returned analysis is not checked
 against the source -- that is an evaluation question for DeepEval and human
 review, not a condition of writing the file.
 
-    uv run python scripts/analyze_pdf.py --pdf data/phase_3/<name>.pdf \
+    uv run python scripts/analyze_pdf.py --pdf data/research/<name>.pdf \
         --title "Paper title" --confirm-paid
 
 Writes <out>/<slug>/analysis.json (the analysis) and run_record.json (model,

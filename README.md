@@ -1,271 +1,117 @@
 # hitl-research-agent
-A human-in-the-loop agentic AI research system built with Claude Code, LangChain, and DeepEval for grounded source analysis, evaluation, evidence synthesis, and researcher-directed inquiry.
 
-> A research system designed to increase the amount and quality of evidence a human researcher can reason over without replacing human judgment.
+A human-in-the-loop research system: three agents that prepare evidence for a
+human researcher, and a separate evaluation step that says how much to trust
+what they produced.
 
-## Overview
+> Increase the amount and quality of evidence a researcher can reason over,
+> without replacing human judgment.
 
- The Human-in-the-Loop Research Agent is a reusable AI research system for conducting structured technical research.
+## The three agents
 
-The system is designed to handle the expensive preparatory work:
+**Single-source analysis** turns one article into a structured JSON analysis —
+research problem, central claims, evidence, citations, methodology,
+assumptions, limitations, proposed solutions, open questions. It is
+*question-independent*: it never receives a research question, so the analysis
+stays reusable for questions no one has asked yet.
 
-**retrieve → analyze → evaluate → store → synthesize**
+**Synthesis** compares analyses across sources for agreements, disagreements,
+methodological differences, limitations, and open questions, preserving which
+source said what.
 
-The human remains responsible for:
+**Research** finds articles relevant to an explicit research question, explains
+why each is relevant, and leaves the decision to add any of them to the
+researcher.
 
-**interpretation → inference → deciding what matters → choosing the next research direction**
+## Workflow
 
-Rather than building a fully autonomous research agent, this project treats human oversight as part of the architecture. Every research run is explicitly initiated by a human, operates within defined limits, and returns control at meaningful decision points.
+```
+article + prompt → model → JSON → separate evaluation → human review
+```
 
-## Project Documentation
+Evaluation is a separate step, not a gate. No quality check blocks the JSON
+from being returned: a paraphrase, a missing evidence label, or a thin claim is
+something for evaluation and human review to report, not a reason to withhold
+the analysis. The researcher keeps interpretation, inference, deciding what
+matters, and choosing the next direction.
+
+Model interpretation is recorded separately from what the source states
+(`author_stated` vs. `model_inferred`), at every level of the analysis.
+
+## Research question
+
+> Why does AI infrastructure use freshwater, and under what conditions could
+> alternative cooling methods or water supplies — including desalination —
+> reduce pressure on local freshwater resources?
+
+The source collection is 16 articles in [`data/research/`](data/research), four
+of which are the A/B experiment set in
+[`data/research/ab_testing/`](data/research/ab_testing).
+
+## Phases
+
+| Phase | What it does |
+| --- | --- |
+| 0 | **Review and redesign** — audit the v1 code, restructure the repository and documentation around these phases |
+| 1 | **A/B testing** — 4 articles × {full PDF, extracted text + crops} × {GPT-6.1 Sol medium, GPT-6 Astra low} = 16 analyses, with usage, cost, runtime, and preparation effort recorded |
+| 2 | **DeepEval** — metrics and rubrics, applied to the 16 analyses, with human spot checks of the judge; choose the model and input method |
+| 3 | **Research collection** — analyze and evaluate all 16 articles with the chosen configuration, reusing suitable experiment outputs |
+| 4 | **Synthesis agent** — compare sources, with its own evaluation design |
+| 5 | **Research agent** — find relevant articles for explicit research questions |
+| 6 | **RAG** — retrieval across sources, analyses, evaluations, and syntheses |
+
+Phase 1 holds the analysis prompt and output structure constant so that input
+method and model are the only things that vary.
+
+See the [build plan](docs/BUILD_PLAN.md) for the detail, including what v1 code
+each phase reuses, simplifies, or removes.
+
+## Status
+
+**Phase 0 — in progress.** The v1 single-source analysis pipeline works end to
+end and returns JSON without quality gates; it is the starting point for Phase
+1. Evaluation, synthesis, research, and retrieval are not built.
+
+v1 experiment outputs are kept for history in
+[`outputs/v1_archive/`](outputs/v1_archive) and are not part of the Phase 1
+results.
+
+## Stack
+
+Python 3.12 · LangChain + OpenAI Responses API · Pydantic · PyMuPDF ·
+DeepEval *(Phase 2)* · embeddings and retrieval *(Phase 6)* · uv · Ruff · mypy ·
+pre-commit · GitHub Actions · Claude Code
+
+## Documentation
 
 - [Build Plan](docs/BUILD_PLAN.md)
-- [Claude Code Prompt Log](docs/claude_code_prompt_log.md)
+- [Prompt Log](docs/claude_code_prompt_log.md) — phases 0–3 there use v1
+  numbering, which does not match the phases above
 
-## Core Principle
+## Setup
 
-The system follows a simple design philosophy:
-
-> **Human-directed, agent-executed research.**
-
-The agent can search, process sources, reconstruct arguments, map evidence, evaluate its own outputs, and organize findings across sources.
-
-It does not decide what should be researched next or what the evidence ultimately means.
-
-Those decisions remain with the researcher.
-
-## Research Workflow
-
-The runtime architecture is:
-
-```mermaid
-flowchart TD
-    RQ["Human-defined research question"] --> SD["Question-aware external source discovery"]
-    SD --> IN["Source ingestion and provenance"]
-    IN --> SA["Question-independent single-source analysis"]
-    SA --> EV["Evaluation"]
-    EV --> HR["Human review"]
-    HR --> RS["Accepted research store"]
-    PA["Human-selected project tag"] --> SY["Question-independent cross-source synthesis"]
-    RS --> SY
-    SY --> HI["Human interpretation"]
-```
-
-- **External source discovery** uses the human's research question to find potentially relevant sources.
-- **Source ingestion** retrieves or loads the selected source, normalizes its content, and records provenance.
-- **Single-source analysis** does not receive the research question. It reconstructs the source on its own terms so the resulting `SourceAnalysis` remains reusable across future inquiries and across projects.
-- **Cross-source synthesis** does not receive the research question either. It operates on the accepted analyses sharing a human-selected project tag — comparing them to identify agreements, disagreements, methodological differences, proposed solutions, limitations, and unresolved questions — without being directed toward a desired conclusion.
-
-The human then interprets this question-independent synthesis, decides what matters, draws broader inferences, and chooses the next research direction.
-
-The finished agent will perform source discovery and ingestion within human-defined boundaries. Manually supplied sources are only an implementation-stage bridge while those capabilities are developed.
-
-Human checkpoints are intentional parts of the system rather than emergency overrides.
-
-## Structured Source Analysis
-
-The system does more than summarize documents.
-
-Each source is converted into a structured research representation containing information such as:
-
-- research problem
-- central claims
-- supporting evidence
-- methodology
-- author-stated assumptions
-- model-inferred assumptions
-- acknowledged limitations
-- model-inferred limitations
-- proposed solutions
-- open questions
-- source-level provenance
-
-Model interpretation is kept separate from claims made directly by the source.
-
-The goal is **argument reconstruction and evidence extraction**, not generic summarization.
-
-## Evaluation
-
-AI-generated research analysis is evaluated before it is accepted into the research knowledge base.
-
-The project uses **DeepEval** to evaluate behaviors including:
-
-- faithfulness to source material
-- citation faithfulness
-- argument reconstruction
-- evidence mapping
-- assumption discipline
-- limitation discipline
-- inference control
-- research usefulness
-
-The first version uses automated evaluation together with human spot checks rather than requiring a manually annotated gold dataset.
-
-## Human Review
-
-After analysis and evaluation, the researcher reviews:
-
-- structured source analysis
-- supporting citations
-- evaluation scores
-- evaluation explanations
-- flagged problems
-
-The researcher can then:
-
-**accept → reject → revise → rerun**
-
-Only accepted analyses become part of the research knowledge base.
-
-## MVP Research Question
-
-Development begins with one deliberately narrow question:
-
-> **Why does AI infrastructure use freshwater, and under what conditions could alternative cooling methods or water supplies—including desalination—reduce pressure on local freshwater resources?**
-
-The investigation will distinguish freshwater, drinking-quality water, and water suitable for a particular process, and examine desalination as a possible supply option without assuming it is the preferred solution.
-
-The small scope provides a real research problem while keeping the initial engineering work manageable.
-
-Once the research system is working, the broader investigation can expand toward:
-
-> **How could we build AI better?**
-
-Future research may branch into cooling systems, water consumption, compute architecture, energy, materials, infrastructure, regulation, and other questions identified through the evidence.
-
-## Planned Technical Stack
-
-The initial implementation will use:
-
-- **Python** — core application language
-- **LangChain** — model integration and structured AI operations
-- **OpenAI API** — initial model provider; GPT-6 Astra (`gpt-6-astra`) at
-  `low` reasoning effort is the Phase 2 default, configurable through
-  `Settings`
-- **Pydantic** — structured research schemas and validation
-- **DeepEval** — evaluation framework
-- **Git + GitHub** — version control and project history
-- **Claude Code** — AI-assisted development
-- **uv** — dependency management and virtual environments
-- **Ruff** — linting and formatting
-- **mypy** — static type checking
-- **pre-commit** — git hooks enforcing lint/type checks before commit
-- **GitHub Actions** — continuous integration
-
-Later phases will introduce:
-
-- **RAG and embeddings** for retrieving accepted prior research
-- **retrieval evaluation** for measuring RAG quality
-- **LangGraph** for stateful orchestration, bounded execution, and human approval checkpoints
-
-The project intentionally adds these capabilities incrementally rather than beginning with a fully agentic architecture.
-
-## Development Roadmap
-
-These phases reflect implementation order, not runtime order. The analysis, evaluation, and review components are built first using manually supplied, controlled sources; automated source discovery and ingestion (Phase 5) are connected to that already-validated downstream pipeline afterward.
-
-### Phase 0 — Getting Started
-
-Set up the repository, development environment, Claude Code workflow, project documentation, and implementation plan.
-
-### Phase 1 — Research Data Model
-
-Define and validate the structured representations used for sources, claims, evidence, assumptions, limitations, methodology, provenance, and analysis results.
-
-### Phase 2 — Single-Source Analysis
-
-Use an LLM to convert individual research sources into validated structured research representations.
-
-### Phase 3 — Evaluation
-
-Add DeepEval faithfulness, citation evaluation, and custom research-specific evaluation metrics.
-
-### Phase 4 — Human Review
-
-Build the accept, reject, revise, and rerun checkpoint that determines which analyses enter the research store.
-
-### Phase 5 — Source Discovery and Ingestion
-
-Find external sources relevant to a human-defined research question, retrieve or load their content, normalize it for analysis, tag it with the relevant project, and construct verified provenance records.
-
-### Phase 6 — Cross-Source Synthesis
-
-Compare accepted source analyses sharing a project tag — independent of any specific research question — to identify agreements, disagreements, methodological differences, proposed solutions, limitations, and unresolved questions.
-
-### Phase 7 — Research Knowledge Base and RAG
-
-Store accepted research, add embeddings, and retrieve relevant prior evidence for new research questions.
-
-### Phase 8 — Retrieval Evaluation
-
-Evaluate whether the RAG system retrieves the correct evidence separately from whether the model generates a faithful synthesis.
-
-### Phase 9 — LangGraph Orchestration
-
-Convert the working pipeline into a stateful human-in-the-loop research agent with approval checkpoints, retries, persistence, and explicit resource limits.
-
-## Project Status
-
-**Current stage: Phase 2 — Single-Source Analysis is complete, with documented limitations. Phase 3 — Evaluation is next.**
-
-Phase 0 (project scaffolding and toolchain) and Phase 1 (the research data model) are complete. Implementation is proceeding incrementally so that each component can be tested before additional agentic behavior is introduced.
-
-Phase 2's LLM integration is implemented and runs end to end against a real
-source, using GPT-6 Astra at `low` reasoning effort by default — chosen,
-after comparing it against GPT-6 Sol and GPT-6 Astra at other reasoning
-levels on the same paper, for how readable its analytical assessments are to
-the researcher reviewing them, not from a measured quality difference. Both
-the model and reasoning effort remain configurable. Phase 2 returns a
-structured JSON analysis only; a Markdown renderer was built for development
-review and removed, and no replacement was added — presenting an analysis to
-a reader is left to a later design.
-
-Whether the analytical assessments are consistently sound has not been
-rigorously evaluated, claim granularity and which claims get an assessment
-both vary across model/reasoning configurations, and only one source has
-been tested. These are recorded as Phase 3 evaluation targets, not unmet
-Phase 2 requirements. See the
-[Phase 2 build plan](docs/BUILD_PLAN.md#phase-2--single-source-analysis) for
-the full record.
-
-## Development Setup
-
-**Prerequisites:** [uv](https://docs.astral.sh/uv/) (manages the Python 3.12 interpreter automatically — no separate Python install needed) and git 2.31 or later (required for `pre-commit` compatibility).
-
-1. Install `uv`:
-   ```bash
-   brew install uv
-   ```
-   (See the [uv installation guide](https://docs.astral.sh/uv/getting-started/installation/) for non-Homebrew options.)
-
-2. Install dependencies and create the virtual environment:
-   ```bash
-   uv sync
-   ```
-
-3. Install git hooks (runs ruff and mypy automatically on commit):
-   ```bash
-   uv run pre-commit install
-   ```
-
-### Running checks locally
+**Prerequisites:** [uv](https://docs.astral.sh/uv/) (manages Python 3.12
+itself) and git 2.31+.
 
 ```bash
-uv run pytest                       # run tests
-uv run ruff check .                 # lint
-uv run ruff format --check .        # check formatting
-uv run mypy src                     # type-check
-uv run pre-commit run --all-files   # run all hooks against the whole repo
+brew install uv
+uv sync
+uv run pre-commit install
 ```
 
-## Why This Project
+Set `OPENAI_API_KEY` in `.env` (see [`.env.example`](.env.example)).
 
-Most descriptions of AI research assistants focus on how much autonomy can be given to the model.
+### Checks
 
-This project asks a different question:
+```bash
+uv run pytest
+uv run ruff check . && uv run ruff format --check .
+uv run mypy src
+```
 
-**How much useful research work can AI perform while preserving human control over interpretation, inference, and intellectual direction?**
+## Why this project
 
-The goal is not to replace the researcher.
-
-The goal is to build a better research instrument.
+Most descriptions of AI research assistants ask how much autonomy a model can
+be given. This one asks how much useful research work AI can do while the
+researcher keeps interpretation, inference, and intellectual direction — not to
+replace the researcher, but to build a better research instrument.

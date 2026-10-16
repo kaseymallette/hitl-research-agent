@@ -52,7 +52,7 @@ def test_source_text_with_stray_reserved_characters_is_rejected() -> None:
     document = SourceDocument(
         text=TEXT,
         provenance=provenance,
-        preparation_directory="outputs/phase_3/prepared/fixture",
+        preparation_directory="outputs/preparation/fixture",
         preparation_gaps=[GAP_U1],
     )
     assert document.text == TEXT

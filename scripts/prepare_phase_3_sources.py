@@ -1,4 +1,4 @@
-"""Shared Phase 3 source preparation: PDF -> prepared text plus provenance records.
+"""Shared source preparation: PDF -> prepared text plus provenance records.
 
 One process for every PDF (no per-source code, no tool switching):
 
@@ -51,7 +51,7 @@ from hitl_research_agent.extraction.annotations import (
 from hitl_research_agent.models.provenance import SourceType
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_MANIFEST = REPO_ROOT / "data" / "phase_3" / "sources.yaml"
+DEFAULT_MANIFEST = REPO_ROOT / "data" / "research" / "sources.yaml"
 DEFAULT_OUTPUT_ROOT = REPO_ROOT / "outputs" / "preparation"
 
 PARSER_NAME = "pymupdf4llm"
