@@ -7,10 +7,11 @@ filled in once the prior phase is accepted.
 
 This is the v2 plan. It replaces the nine-phase v1 plan. v1 built a working
 single-source analysis pipeline and then spent a long sequence of turns on
-grounding checks that were ultimately removed; that history lives in
-[`docs/prompt_logs/`](prompt_logs) (which uses v1 phase numbering — a v2 log
-should start a new series) and in the archived outputs under
-[`outputs/v1_archive/`](../outputs/v1_archive).
+grounding checks that were ultimately removed; what survives of that history is
+the archived outputs under [`outputs/v1_archive/`](../outputs/v1_archive) and
+the audit in Phase 0 below. The v1 prompt logs were removed with the redesign
+and remain in git history; [`docs/prompt_log.md`](prompt_log.md) now indexes one
+log per v2 phase.
 
 ---
 
@@ -33,10 +34,10 @@ reads the research question, and it only proposes; the researcher selects.
 ### Workflow contract
 
 ```
-article + prompt → model → JSON → separate evaluation
+article + prompt → model → JSON → separate evaluation → accept · reject · revise · rerun
 ```
 
-Three rules hold across every phase:
+Four rules hold across every phase:
 
 1. **Evaluation is separate from production.** Quality assessment never runs
    inside the analysis call and never decides whether the JSON is returned.
@@ -48,7 +49,19 @@ Three rules hold across every phase:
    removed deliberately; they are not to be restored.
 3. **Model interpretation stays labelled.** `author_stated` vs.
    `model_inferred` is carried on every claim, assumption, limitation, proposed
-   solution, open question, and methodology record.
+   solution, open question, and methodology record — so assumptions the authors
+   state stay separable from assumptions the model found the argument needs, and
+   limitations the authors acknowledge from limitations the model identified.
+   Evidence carries a second, independent split: `verbatim` vs. `paraphrased`.
+4. **The human operates a gate, not a reading chair.** Analysis and evaluation
+   end at a four-state decision — **accept, reject, revise, rerun** — and only
+   accepted analyses enter the research store. This is a runtime boundary
+   rather than a phase: Phase 2 exercises it on the judge's own output, Phase 3
+   on what enters the collection, Phase 4 on syntheses. What the researcher
+   needs in front of them to make that decision — the analysis, its citations,
+   the evaluation scores, and the evaluation's explanations — is therefore a
+   requirement on how analyses and evaluations are stored, not a later
+   presentation concern.
 
 ### Repository layout
 
@@ -326,6 +339,25 @@ against the original images. Phase 1 hands Phase 2 artifacts and measurements.
 Design metrics and rubrics, evaluate the 16 analyses, and choose the model and
 input method on quality and cost together.
 
+### The behavioral axes
+
+The four questions below are what the researcher wants answered. Each is
+measured through named behaviors, so a rubric targets a specific failure rather
+than a general impression of quality:
+
+| Question | Axes |
+| --- | --- |
+| Claim attribution | source faithfulness, argument reconstruction |
+| Qualification and citation fidelity | citation faithfulness, evidence mapping |
+| Interpretation discipline | assumption discipline, limitation discipline, inference control |
+| Argument coverage | argument reconstruction, research usefulness |
+
+`research usefulness` is the one axis that is not a faithfulness measure: it
+asks whether the analysis is actually usable as research input, which is the
+question Phase 1's counts cannot answer and the one most likely to separate the
+two models. It is also the axis most at risk of collapsing into the judge's
+taste, so it needs the tightest rubric and the closest human spot-checking.
+
 ### The four questions to measure
 
 1. **Claim attribution** — do claims marked `author_stated` actually reflect
@@ -432,6 +464,13 @@ comparison from a synthesis. Retrieval has to preserve which kind it returned
 and which source it came from, and it must not let an analysis's
 `model_inferred` content come back as something a source said. Retrieval quality
 is evaluated separately from the quality of what the model generates from what
-it retrieved. Single-source analysis stays question-independent: retrieval
+it retrieved.
+
+Relevance judgments here depend on the distinctions the research question draws
+— freshwater, drinking-quality water, and water suitable for a particular
+process are not interchangeable, and desalination is a supply candidate under
+investigation rather than the answer. A retrieval step that treats those as
+synonyms will return confidently wrong material, so they belong in the
+retrieval evaluation as explicit cases rather than being left to the embedding. Single-source analysis stays question-independent: retrieval
 serves the researcher and the question-aware agents, and never feeds the
 research question back into the analysis step.
