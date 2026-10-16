@@ -1,12 +1,10 @@
-"""Model-input attachments: the original PDF, or the retained element crops.
+"""What the model receives: the three input modes, their attachments, and the
+syntax marking material that preparation could not extract.
 
-An attachment is content the *model* receives in addition to, or instead of,
-the prepared source text. It is never part of the grounding reference: the
-verbatim-evidence, citation-marker, and reference-entry checks continue to
-match only against the declared source text, so nothing the model reads from
-a PDF page or from a crop can pass as a verbatim quotation. Anything the model
-reports from an image is paraphrased evidence with a page/crop locator, and is
-unverified until a human checks it against the original image.
+An attachment is content the model gets in addition to, or instead of, the
+prepared text. Anything the model reports from a PDF page or a crop is its
+reading of an image, recorded as paraphrased evidence with a locator, and
+unverified until a human checks it against the original.
 
 Blocks are emitted in LangChain's standard multimodal shape, which
 `langchain-core` translates to the Responses API's `input_file` / `input_image`.
@@ -14,14 +12,11 @@ Blocks are emitted in LangChain's standard multimodal shape, which
 
 import base64
 import hashlib
+import re
 from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal
-
-from pydantic import Field
-
-from ..models._base import NonEmptyStr, ResearchBaseModel
 
 InputMode = Literal["prepared_text", "prepared_text_and_crops", "pdf"]
 
@@ -32,24 +27,93 @@ PDF_MIME_TYPE = "application/pdf"
 IMAGE_MIME_TYPES = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg"}
 
 
-class Attachment(ResearchBaseModel):
+# --------------------------------------------------------------------------- annotations
+
+ANNOTATION_OPEN = "⟦"
+ANNOTATION_CLOSE = "⟧"
+ANNOTATION_PREFIX = "PREP-ANNOTATION"
+
+_ANNOTATION_RE = re.compile(
+    re.escape(ANNOTATION_OPEN)
+    + re.escape(ANNOTATION_PREFIX)
+    + r" (?P<id>[A-Za-z0-9_\-]+)[^"
+    + re.escape(ANNOTATION_OPEN + ANNOTATION_CLOSE)
+    + r"]*"
+    + re.escape(ANNOTATION_CLOSE)
+)
+_RESERVED = (ANNOTATION_OPEN, ANNOTATION_CLOSE)
+
+
+@dataclass(frozen=True)
+class AnnotationSpan:
+    annotation_id: str
+    start: int
+    end: int
+
+
+def find_annotations(text: str) -> list[AnnotationSpan]:
+    """Every well-formed annotation in `text`, with its character offsets."""
+    return [
+        AnnotationSpan(match.group("id"), match.start(), match.end())
+        for match in _ANNOTATION_RE.finditer(text)
+    ]
+
+
+def reserved_character_problems(text: str) -> list[str]:
+    """Problems that make `text` unsafe as source text: annotation delimiters
+    appearing outside a well-formed annotation."""
+    remainder = _ANNOTATION_RE.sub("", text)
+    return [
+        f"source text contains the reserved character {char!r} outside a well-formed "
+        "preparation annotation"
+        for char in _RESERVED
+        if char in remainder
+    ]
+
+
+def format_annotation(annotation_id: str, fields: dict[str, str], note: str) -> str:
+    """Build one well-formed annotation. The note carries no values and no
+    interpretation of the missing content; callers pass a fixed phrase."""
+    parts = [annotation_id] + [f"{key}={value}" for key, value in fields.items()]
+    body = " ".join(parts) + ": " + note
+    annotation = f"{ANNOTATION_OPEN}{ANNOTATION_PREFIX} {body}{ANNOTATION_CLOSE}"
+    if reserved_character_problems(annotation) or not _ANNOTATION_RE.fullmatch(annotation):
+        raise ValueError(f"Annotation fields contain reserved characters: {annotation!r}")
+    return annotation
+
+
+# --------------------------------------------------------------------------- attachments
+
+
+@dataclass(frozen=True)
+class Attachment:
     """What was sent with a request, recorded for audit.
 
-    The bytes themselves are not stored here — only the path they were read
-    from and their sha256, so a saved result names its exact inputs without
-    embedding them.
+    The bytes are not stored — only the path they came from and their sha256,
+    so a saved result names its exact inputs without embedding them.
     """
 
     kind: Literal["pdf", "image"]
-    path: NonEmptyStr  # repository-relative
-    mime_type: NonEmptyStr
-    sha256: NonEmptyStr
-    byte_size: int = Field(ge=1)
-    page: int | None = Field(default=None, ge=1)
-    gap_id: str | None = Field(
-        default=None, description="The preparation gap this crop was retained for."
-    )
+    path: str  # repository-relative
+    mime_type: str
+    sha256: str
+    byte_size: int
+    page: int | None = None
+    gap_id: str | None = None
     label: str | None = None
+
+    def as_record(self) -> dict[str, Any]:
+        """The audit form saved in a run record."""
+        return {
+            "kind": self.kind,
+            "path": self.path,
+            "mime_type": self.mime_type,
+            "sha256": self.sha256,
+            "byte_size": self.byte_size,
+            "page": self.page,
+            "gap_id": self.gap_id,
+            "label": self.label,
+        }
 
 
 @dataclass(frozen=True)
@@ -63,8 +127,7 @@ class LoadedAttachment:
         """The identifying text block and the data block, in that order.
 
         The text block tells the model what it is looking at and how to locate
-        it again. It is not source text and is not in the grounding reference,
-        so quoting it verbatim fails grounding like any other non-source text.
+        it again. It is not source text.
         """
         record = self.record
         if record.kind == "pdf":
@@ -140,8 +203,8 @@ def validate_attachments(
 ) -> None:
     """Reject an input that does not match the declared input mode.
 
-    These are programming errors in a caller, not model failures, so they raise
-    ValueError rather than entering the analysis failure categories.
+    These are caller mistakes, not model failures, so they raise ValueError
+    rather than entering the analysis failure categories.
     """
     kinds = [item.record.kind for item in attachments]
     if input_mode == "prepared_text":

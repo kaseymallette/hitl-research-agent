@@ -3,8 +3,8 @@ from typing import Any
 
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
 
-from .attachments import InputMode, LoadedAttachment
-from .schemas import SourceDocument
+from .inputs import InputMode, LoadedAttachment
+from .models import SourceDocument
 
 SYSTEM_PROMPT = """\
 You are a research analyst reconstructing the argument made by a single \

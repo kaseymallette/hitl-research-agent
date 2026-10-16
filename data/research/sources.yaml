@@ -21,3 +21,88 @@ sources:
       source_type: "'other': a magazine-style feature in Communications of the ACM; the PDF does not state whether it was peer reviewed"
       url: "macOS download metadata (kMDItemWhereFroms, first entry) recorded on the PDF file"
       retrieved_at: "macOS/Chrome download timestamp (com.apple.quarantine) of the PDF file, 2026-10-13 06:19:34 UTC; matches the file creation time"
+
+  - slug: barnett_itzhaki_2026_water_footprint_artificial_intelligence
+    pdf: data/research/ab_testing/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf
+    source_title: "The water footprint of artificial intelligence: Emerging solutions and governance imperatives"
+    source_authors: [Zohar Barnett-Itzhaki]
+    publication_date: "2026-04-02"
+    source_type: other
+    doi: 10.1016/j.watres.2026.125866
+    publisher: Elsevier
+    url: "https://doi.org/10.1016/j.watres.2026.125866"
+    retrieved_at: "2026-10-16T00:19:44+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: "first page and PDF metadata; confirmed against the Crossref record for the DOI"
+      source_authors: "first-page byline (single author, two Ruppin Academic Center affiliations); Crossref lists one author"
+      publication_date: "'Available online 2 April 2026' on the first page. The issue is Water Research 299 (2026), which Crossref dates only to 2026-07"
+      source_type: "'other': a 'Making Waves' article, which Water Research's guide for authors defines as an opinion and perspective format of about 3000 words, not a research paper. The first page prints 'Received 30 December 2025; Received in revised form 20 March 2026', so it went through revision, but neither the PDF nor the guide states that this type is peer reviewed"
+      doi: "printed on the first page and in PDF metadata; resolves in Crossref"
+      publisher: "Elsevier BV per Crossref; Water Research 299 (2026) 125866"
+      url: "publication URL via DOI. The file arrived as a Gmail attachment, so its download origin is an email attachment URL and is not recorded here"
+      retrieved_at: "macOS quarantine timestamp on the PDF file"
+
+  - slug: kanbur_et_al_2020_desalination_integrated_data_center_cooling
+    pdf: data/research/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
+    source_title: "Multi-criteria thermoeconomic and thermodynamic assessments of the desalination-integrated two-phase liquid-immersion data center cooling system"
+    source_authors: [Baris Burak Kanbur, Chenlong Wu, Fei Duan]
+    publication_date: "2020-07-23"
+    source_type: peer_reviewed_paper
+    doi: 10.1002/er.5677
+    publisher: Wiley
+    url: "https://doi.org/10.1002/er.5677"
+    retrieved_at: "2026-10-16T00:17:37+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: "first page and PDF metadata; confirmed against Crossref"
+      source_authors: "first-page byline, Nanyang Technological University; Crossref lists the same three"
+      publication_date: "Crossref published-online 2020-07-23; the print issue followed on 2020-10-25"
+      source_type: "'peer_reviewed_paper': the first page is headed 'RESEARCH ARTICLE' and prints 'Received: 18 April 2020, Revised: 23 May 2020, Accepted: 28 May 2020'"
+      doi: "'DOI: 10.1002/er.5677' on the first page; resolves in Crossref"
+      publisher: "Wiley per Crossref; International Journal of Energy Research 44, 10453-10470"
+      url: "publication URL via DOI. The file arrived as a Gmail attachment; that origin is not recorded here"
+      retrieved_at: "macOS quarantine timestamp on the PDF file"
+
+  - slug: katakam_et_al_2027_desalination_systems_data_center_water_needs
+    pdf: data/research/ab_testing/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf
+    source_title: "System-scale design and analysis of desalination systems for meeting water needs of data centers"
+    source_authors: [Vishnu Sree Shanthanu Katakam, Mariam Arzumanyan, Ning Lin, Vaibhav Bahadur]
+    publication_date: "2026-08-17"
+    source_type: peer_reviewed_paper
+    doi: 10.1016/j.watres.2026.126748
+    publisher: Elsevier
+    url: "https://doi.org/10.1016/j.watres.2026.126748"
+    retrieved_at: "2026-10-16T00:19:47+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: "first page and PDF metadata; confirmed against Crossref"
+      source_authors: "first-page byline, UT Austin (Walker Department of Mechanical Engineering and Bureau of Economic Geology); Crossref lists the same four"
+      publication_date: "'Available online 17 August 2026' on the first page. The issue is Water Research 308 (2027), which Crossref dates to 2027-01, so the 2027 in the slug is the issue year and not the publication year"
+      source_type: "'peer_reviewed_paper': a Water Research research article printing 'Received 5 June 2026; Received in revised form 29 July 2026' and an acceptance date. Published online in 2026 ahead of a 2027 issue, which is ordinary Elsevier practice and not preprint status"
+      doi: "printed on the first page and in PDF metadata; resolves in Crossref"
+      publisher: "Elsevier BV per Crossref; Water Research 308 (2027) 126748"
+      url: "publication URL via DOI. The file arrived as a Gmail attachment; that origin is not recorded here"
+      retrieved_at: "macOS quarantine timestamp on the PDF file"
+
+  - slug: lei_et_al_2025_water_use_data_center_workloads
+    pdf: data/research/ab_testing/lei_et_al_2025_water_use_data_center_workloads.pdf
+    source_title: "The water use of data center workloads: A review and assessment of key determinants"
+    source_authors: [Nuoa Lei, Jun Lu, Arman Shehabi, Eric Masanet]
+    publication_date: "2025-06-01"
+    source_type: peer_reviewed_paper
+    doi: 10.1016/j.resconrec.2025.108310
+    publisher: Elsevier
+    url: "https://escholarship.org/uc/item/1vx545q7"
+    retrieved_at: "2026-10-16T00:17:41+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: "eScholarship cover sheet and the manuscript's own title page; confirmed against Crossref"
+      source_authors: "manuscript title page lists all four (the cover sheet abbreviates to 'et al.'); Crossref lists the same four"
+      publication_date: "'Publication Date 2025-06-01' on the eScholarship cover sheet; Crossref dates the issue to 2025-06"
+      source_type: "'peer_reviewed_paper': the eScholarship cover sheet states 'Peer reviewed', and Crossref records it as a journal article in Resources, Conservation and Recycling"
+      doi: "'DOI 10.1016/j.resconrec.2025.108310' on the cover sheet; resolves in Crossref"
+      publisher: "Elsevier BV per Crossref; Resources, Conservation and Recycling 219 (2025) 108310, ISSN 0921-3449"
+      url: "the eScholarship permalink printed on the cover sheet, which is where this copy comes from. The publication of record is https://doi.org/10.1016/j.resconrec.2025.108310, recorded in doi above. The file arrived as a Gmail attachment; that origin is not recorded here"
+      retrieved_at: "macOS quarantine timestamp on the PDF file"
+      version: "the University of California repository copy under CC BY 4.0: a cover sheet followed by the complete line-numbered manuscript, not the typeset publisher version. It is the whole article, so is_excerpt is false"

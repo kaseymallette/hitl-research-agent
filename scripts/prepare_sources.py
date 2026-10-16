@@ -19,7 +19,7 @@ What it does:
 What it does **not** do: it makes no judgement about whether a source is good enough to
 analyze. It states, unconditionally, the three things this extraction method cannot
 represent faithfully — figures, equations, and multi-level table headers — as labeled
-preparation annotations (see ``hitl_research_agent.extraction.annotations``). Every page
+preparation annotations (see ``hitl_research_agent.inputs``). Every page
 image is retained so any of them can be checked by eye. Deciding whether the gaps matter
 is the researcher's call, in review, not this script's.
 """
@@ -43,12 +43,12 @@ import yaml
 from pydantic import AwareDatetime, BaseModel, ConfigDict, HttpUrl, ValidationError, model_validator
 
 from hitl_research_agent.config import Settings
-from hitl_research_agent.extraction.annotations import (
+from hitl_research_agent.inputs import (
     find_annotations,
     format_annotation,
     reserved_character_problems,
 )
-from hitl_research_agent.models.provenance import SourceType
+from hitl_research_agent.models import SourceType
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = REPO_ROOT / "data" / "research" / "sources.yaml"
@@ -682,14 +682,14 @@ def prepare_source(
         raise ValueError("; ".join(problems))
     elapsed = time.monotonic() - started
 
-    (out / "prepared_text.md").write_text(prepared.text, encoding="utf-8")
+    (out / "prepared_text.txt").write_text(prepared.text, encoding="utf-8")
     _write_json(out / "page_map.json", prepared.page_map)
     _write_json(out / "provenance.json", _provenance_json(entry))
     record = {
         "slug": entry.slug,
         "source_pdf": entry.pdf,
         "pdf_sha256": sha256_file(pdf),
-        "prepared_text": "prepared_text.md",
+        "prepared_text": "prepared_text.txt",
         "prepared_text_sha256": sha256_bytes(prepared.text.encode("utf-8")),
         "prepared_text_characters": len(prepared.text),
         "max_source_characters": max_characters,

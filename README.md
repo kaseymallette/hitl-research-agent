@@ -256,6 +256,59 @@ The [build plan](docs/BUILD_PLAN.md) has each phase in engineering detail,
 including Phase 1’s open items and what earlier code each phase reuses,
 simplifies, or removes.
 
+## Repository structure
+
+```
+.
+├── data/research/                    the 16 source articles
+│   ├── <12 collection PDFs>
+│   ├── ab_testing/                   the 4 A/B experiment articles
+│   └── sources.yaml                  provenance manifest, owner-confirmed
+├── src/hitl_research_agent/
+│   ├── models.py                     every research type, and the model-content split
+│   ├── analysis.py                   analyze_source(): the call path, attempts, errors
+│   ├── prompts.py                    SYSTEM_PROMPT and the per-input-mode instructions
+│   ├── inputs.py                     attachment loading and validation; annotations
+│   ├── cost.py                       per-model rates; cost from reported usage
+│   └── config.py                     Settings: key, model, effort, limits
+├── scripts/
+│   ├── run_analysis.py               one A/B cell -> analysis.json + run_record.json
+│   └── prepare_sources.py            PDF -> text + crops (the experimental arm)
+├── tests/
+│   ├── test_analysis.py              the call path, failures, usage arithmetic
+│   ├── test_inputs.py                per-mode validation, identical prompt
+│   ├── test_models.py                schema rules, attribution labels, round trip
+│   ├── test_cost.py                  rates, cached input, unknown model
+│   └── preparation/                  PDF extraction behavior, with fixtures
+├── docs/
+│   ├── BUILD_PLAN.md                 the phases in engineering detail
+│   ├── REPOSITORY.md                 every file, and why it exists
+│   ├── phases/phase_1-6.md           one prompt log per phase
+│   └── prompt_log.md                 index of those logs, and the conventions
+├── pyproject.toml                    dependencies, Ruff, mypy, the src/ package
+├── uv.lock                           resolved dependency set
+├── .python-version                   3.12, matching requires-python and CI
+├── .pre-commit-config.yaml           Ruff, formatting, mypy on commit
+├── .github/workflows/ci.yml          the same checks plus pytest
+└── .env.example                      OPENAI_API_KEY (.env is gitignored)
+```
+
+### Output layout
+```
+outputs/                              created by the pipeline, not in git
+├── preparation/<slug>/               prepared text, crops, prep_record.json
+├── ab_testing/<slug>/<config>/       Phase 1: analysis.json + run_record.json
+├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
+├── evaluations/<slug>/               Phase 3: evaluation, stored apart from it
+└── synthesis/                        Phase 4
+```
+
+Analyses and evaluations are stored separately so neither is confused with the
+other and either can be regenerated alone. Data folders are named by role
+rather than by phase number, so renumbering a phase never moves source
+material. The only files the pipeline writes are JSON, plus the `.txt` and
+`.png` that preparation produces.
+
 ## Stack, setup, and documentation
 
 Python 3.12 · LangChain + OpenAI Responses API · Pydantic · PyMuPDF ·

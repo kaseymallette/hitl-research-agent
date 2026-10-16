@@ -84,7 +84,7 @@ def test_installed_parser_version_matches_the_pin(prep: ModuleType) -> None:
 
 
 def test_header_footer_removed_and_recorded(prepared_fixture: dict[str, Any]) -> None:
-    text = (prepared_fixture["dir"] / "prepared_text.md").read_text()
+    text = (prepared_fixture["dir"] / "prepared_text.txt").read_text()
     assert "Journal of Fixtures" not in text
     assert "Page 1" not in text and "Page 2" not in text
     record = json.loads((prepared_fixture["dir"] / "prep_record.json").read_text())
@@ -95,7 +95,7 @@ def test_header_footer_removed_and_recorded(prepared_fixture: dict[str, Any]) ->
 def test_page_locators_are_in_a_separate_mapping_not_the_text(
     prepared_fixture: dict[str, Any],
 ) -> None:
-    text = (prepared_fixture["dir"] / "prepared_text.md").read_text()
+    text = (prepared_fixture["dir"] / "prepared_text.txt").read_text()
     page_map = json.loads((prepared_fixture["dir"] / "page_map.json").read_text())
     assert "[PDF page" not in text
     assert [p["pdf_page"] for p in page_map] == [1, 2]
@@ -109,7 +109,7 @@ def test_page_locators_are_in_a_separate_mapping_not_the_text(
 def test_sentence_crossing_a_page_break_is_joined_and_the_hyphen_repaired(
     prepared_fixture: dict[str, Any],
 ) -> None:
-    flat = " ".join((prepared_fixture["dir"] / "prepared_text.md").read_text().split())
+    flat = " ".join((prepared_fixture["dir"] / "prepared_text.txt").read_text().split())
     assert "consumption of freshwater" in flat or "con-sumption" in flat or "con- sumption" in flat
     assert "that the trend continues on the next page" in flat
 
@@ -150,7 +150,7 @@ def test_oversized_text_is_recorded_not_truncated(prep: ModuleType, tmp_path: Pa
     pdf = tmp_path / "f.pdf"
     make_text_pdf(pdf, PAGES)
     summary = prep.prepare_source(entry(prep, pdf), tmp_path / "out", max_characters=10)
-    text = (tmp_path / "out" / "fixture" / "prepared_text.md").read_text()
+    text = (tmp_path / "out" / "fixture" / "prepared_text.txt").read_text()
     assert summary["within_size_limit"] is False
     assert len(text) == summary["characters"] > 10  # nothing was cut to fit
 
@@ -167,7 +167,7 @@ def test_page_without_a_text_layer_is_recorded_not_ocred(prep: ModuleType, tmp_p
     record = json.loads((tmp_path / "out" / "scan" / "prep_record.json").read_text())
     assert summary["pages_without_text_layer"] == [2]
     assert record["parser_settings"]["use_ocr"] is False
-    assert "Scanned words" not in (tmp_path / "out" / "scan" / "prepared_text.md").read_text()
+    assert "Scanned words" not in (tmp_path / "out" / "scan" / "prepared_text.txt").read_text()
 
 
 def test_a_page_that_contributed_no_text_is_mapped_and_explained(
@@ -272,7 +272,7 @@ def test_real_ruled_table_is_extracted_with_rows_and_columns(
     pdf = tmp_path / "t.pdf"
     make_table_pdf(pdf)
     prep.prepare_source(entry(prep, pdf, slug="t"), tmp_path / "out", max_characters=10**6)
-    text = (tmp_path / "out" / "t" / "prepared_text.md").read_text()
+    text = (tmp_path / "out" / "t" / "prepared_text.txt").read_text()
     table_lines = [line for line in text.splitlines() if line.startswith("|")]
     assert len(table_lines) >= 5  # header, separator, three data rows
     assert len({line.count("|") for line in table_lines}) == 1  # aligned columns
@@ -408,7 +408,7 @@ def test_cli_prepares_one_slug(
     make_text_pdf(pdf, PAGES)
     monkeypatch.setattr(prep, "load_manifest", lambda _path: [entry(prep, pdf)])
     assert prep.main(["prepare", "--slug", "fixture", "--output-root", str(tmp_path)]) == 0
-    assert (tmp_path / "fixture" / "prepared_text.md").exists()
+    assert (tmp_path / "fixture" / "prepared_text.txt").exists()
     assert prep.main(["prepare", "--slug", "nope", "--output-root", str(tmp_path)]) == 2
     assert (
         prep.main(["page", "--slug", "fixture", "--output-root", str(tmp_path), "--page", "1"]) == 0

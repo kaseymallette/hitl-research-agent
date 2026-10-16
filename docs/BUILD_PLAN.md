@@ -9,7 +9,7 @@ This is the v2 plan. It replaces the nine-phase v1 plan. v1 built a working
 single-source analysis pipeline and then spent a long sequence of turns on
 grounding checks that were ultimately removed; what survives of that history in
 this branch is the audit in Phase 0 below. The v1 prompt logs and experiment
-outputs were removed with the redesign and remain in git history;
+outputs were removed with the redesign and stay at the `v1-final` tag;
 [`docs/prompt_log.md`](prompt_log.md) now indexes one log per v2 phase.
 
 ---
@@ -22,13 +22,14 @@ outputs were removed with the redesign and remain in git history;
 | --- | --- | --- | --- |
 | **Single-source analysis** | one article | one structured JSON analysis | No — never receives a research question |
 | **Synthesis** | several accepted analyses | a cross-source comparison | No |
-| **Research** | an explicit research question | candidate articles with stated relevance | Yes — this is the only question-aware agent |
+| **Literature review** | an explicit research question | candidate articles with stated relevance | Yes — this is the only question-aware agent |
 
 Single-source analysis stays question-independent so that an analysis produced
 today remains usable for a question asked later, and so that no analysis is
 shaped toward a conclusion the researcher is looking for. Synthesis compares
-what the sources say to each other, not to a question. Only the research agent
-reads the research question, and it only proposes; the researcher selects.
+what the sources say to each other, not to a question. Only the literature
+review agent reads the research question, and it only proposes; the researcher
+selects.
 
 ### Workflow contract
 
@@ -64,24 +65,12 @@ Four rules hold across every phase:
 
 ### Repository layout
 
-```
-data/research/                      16 source PDFs
-  ab_testing/                       the 4 A/B experiment articles
-  sources.yaml                      provenance manifest, owner-confirmed
-outputs/
-  preparation/<slug>/               extracted text, crops, preparation record
-  ab_testing/<slug>/<config>/       Phase 1: analysis.json + run_record.json
-  analyses/<slug>/                  Phase 3: analysis in the chosen configuration
-  evaluations/<slug>/               Phase 3: evaluation, stored apart from the analysis
-  synthesis/                        Phase 4
-src/hitl_research_agent/
-  models/                           the analysis data model
-  extraction/                       the single-source analysis agent
-scripts/                            runnable entry points
-```
-
-Data folders are named by role, not by phase number, so that a phase
-renumbering never moves source material again.
+The annotated tree is in [README.md](../README.md#repository-structure), kept in
+one place so it cannot drift. Two conventions matter to this plan: data folders
+are named by role rather than by phase number, so renumbering a phase never
+moves source material; and analyses and evaluations are stored separately, so an
+analysis is never conflated with the judgment of it and either can be
+regenerated without the other.
 
 ---
 
@@ -92,93 +81,59 @@ renumbering never moves source material again.
 Decide what of v1 carries into v2 before any v2 code is written, and restructure
 the repository and documentation around the v2 phases.
 
-### What the v1 audit found
+### What the audit found
 
-v1 is about 1,350 lines of application code and 2,200 lines of tests, with 181
-passing tests and clean Ruff/mypy. The single-source analysis pipeline works:
-it sends an article to the model with the analysis prompt, accepts one
-correction attempt if the output does not fit the schema, records per-attempt
-usage and timing, and returns the JSON without judging its quality. That is
-already the v2 contract, and it already supports both Phase 1 input methods and
-any model/effort pair through configuration.
+v1 was 1,675 lines of application code across 17 files, with 181 tests. The
+single-source analysis pipeline worked: it sent an article to the model with the
+analysis prompt, accepted one correction attempt if the output did not fit the
+schema, recorded per-attempt usage and timing, and returned the JSON without
+judging its quality. That was already the v2 contract, and it already supported
+both Phase 1 input methods and any model/effort pair through configuration.
 
-The dead weight is all downstream of the grounding checks that were removed late
-in v1: the helpers that supported them, the scope strings that still describe
-them, and a 664-line one-source pilot script built around their failures.
+What it also carried was structure built for a system that does not exist yet,
+and dead weight left behind when v1's grounding checks were removed: the helpers
+that supported them, scope strings that still described them, and a 664-line
+one-source pilot script built around their failures. The codebase was then
+consolidated to what the experiment needs.
 
-#### Reuse unchanged
+**Net: 17 source files to 6, 1,675 lines to 1,289** (220 of them prompt text),
+**and 181 tests to 69** — twelve of those went with the dead grounding helpers,
+the rest with the consolidation below.
+[`REPOSITORY.md`](REPOSITORY.md) records every file that remains and what was
+deleted. Kept here is only the part it does not cover: why seventeen files
+became six.
 
-| Component | Why it carries over |
-| --- | --- |
-| `models/` — `SourceAnalysis`, `Claim`/`Evidence`, `Citation`, `Provenance`, `Methodology`, interpreted statements | This is the output structure Phase 1 must hold constant. The `author_stated`/`model_inferred` and `verbatim`/`paraphrased` distinctions are exactly what Phase 2 evaluates. |
-| `extraction/pipeline.py` — `analyze_source()` | One call plus one schema correction, attempt records, usage, refusal and incomplete-response detection, no quality gates. The v2 workflow contract, already implemented. |
-| `extraction/prompts.py` — `SYSTEM_PROMPT` and the per-input-mode instructions | The core analysis prompt. Phase 1 holds it constant; the input-mode instructions describe layout only, so input format stays the only intended difference between arms. |
-| `extraction/attachments.py` | PDF and image attachments with the sha256 of the exact bytes sent, and the documented 50 MB per-request limit. Both Phase 1 input methods are already supported. |
-| `extraction/attempts.py`, `extraction/errors.py` | Per-attempt usage (including reasoning and cached-input tokens), timing, request ids, and the error taxonomy. This is Phase 1's measurement instrument. |
-| `config.py` — `Settings` | `openai_model`, `openai_reasoning_effort`, `max_output_tokens`, `openai_max_retries`. The whole A/B matrix is a configuration change, not a code change. |
-| `scripts/prepare_sources.py` | PDF → extracted text, crops, page images, and a preparation record of what text could not represent. The only producer of the text-plus-crops arm. **Renamed** from `prepare_phase_3_sources.py`. |
+| Was | Became | What changed |
+| --- | --- | --- |
+| `models/` (8 files, 267) | `models.py` (302) | Six classes with identical fields — `InterpretedStatement` and five subclasses — became one `Statement`. |
+| `ExtractedClaim`, `ExtractedEvidence`, `_assemble_analysis()` | nothing | They existed only to strip UUIDs the model must not supply. Nothing read those UUIDs, so both duplicates and the 40-line copy function went. `SourceAnalysis` still wraps model content with `id`, `provenance`, and `analyzed_at`. |
+| `pipeline.py` (476), `attempts.py` (61), `errors.py` (94) | `analysis.py` (448) | Six exception classes became one `AnalysisError` with a `kind`; nothing caught the subclasses. The response-metadata allowlist recorded fields nobody read. |
+| `attachments.py` (175), `annotations.py` (62) | `inputs.py` (238) | Both describe what reaches the model. `grounding_view()`, `contains_reserved_character()`, and `SENTINEL` were dead. |
+| `schemas.py`'s three `ANALYSIS_SCOPE` strings | `models.py` | They described grounding checks that no longer exist, so each was false on every saved result. |
+| the pilot script's rate table | `cost.py` (64) | Cost from reported usage, cached input at the cached rate. The projection, dry run, and spending guard did not come with it. |
+| `scripts/analyze_pdf.py` (165) | `scripts/run_analysis.py` (273) | Now takes any input method and records cost. The old one handled only the PDF arm and **crashed on success**, reading `result.grounding_notes` after a field of that name had been removed. |
 
-#### Simplify
+Nothing in v1 covered evaluation, synthesis, literature review, or retrieval.
+DeepEval was named in the v1 README but never added as a dependency. Phases 2,
+4, 5, and 6 start from nothing.
 
-| Component | Change |
-| --- | --- |
-| `scripts/analyze_pdf.py` | **Crash fixed.** It read `result.grounding_notes`, a field removed from `AnalysisResult`, so a *successful* run raised `AttributeError` after writing `analysis.json` and before writing `run_record.json` — measurement was impossible. It now reports claims, usage, and attempt count. Phase 1 grows it into the matrix runner: both input methods, the configuration in the output path, and cost in the run record. |
-| `scripts/run_li_input_pilot.py` (664 lines) | **Deleted.** Hard-coded to one article — Li, which is not in the A/B set — and built around pre-call token projection, an offline dry run, a payload inventory, and a cross-invocation spending guard. Three things from it are worth carrying into the Phase 1 matrix runner: the documented per-model rate table, cost calculated from *actual* reported usage, and the timing and usage records. The projection, the dry run, and the per-run approval gates are not. |
-| `extraction/schemas.py` — `ANALYSIS_SCOPE`, `ANALYSIS_SCOPE_PDF`, `ANALYSIS_SCOPE_TEXT_AND_CROPS` | **Rewritten.** Three paragraphs described verbatim-grounding checks against a declared grounding reference; those checks no longer exist, so the text was false on every saved result. Each is now two sentences: what the model received, and that anything it read from an image is unverified. The test that asserted one of them word for word now asserts the claim instead. |
-| `extraction/annotations.py` | **Done.** `grounding_view()`, `contains_reserved_character()`, and `SENTINEL` are gone, along with their exports and the tests covering them. `reserved_character_problems()` now checks the two annotation delimiters only, which is one character less than before and costs nothing, since nothing produces the sentinel any more. `find_annotations`, `format_annotation`, and `reserved_character_problems` stay: the preparation script and the `SourceDocument` validator that ties in-text annotations to declared gaps both still need them for the text-plus-crops arm. |
+### What moved
 
-#### Remove
+- `data/phase_3/*.pdf` (12 articles) → `data/research/`, and its `ab_testing/`
+  four → `data/research/ab_testing/`, with `sources.yaml` and its `pdf:` paths
+- `data/phase_2/` (the v1 development source, not one of the 16) and the v1
+  experiment outputs under `outputs/` were removed from this branch. They stay
+  at the `v1-final` tag.
+- `prepare_phase_3_sources.py` → `prepare_sources.py`. Its extraction behavior
+  is unchanged — the only edits were the import path and writing its output as
+  `prepared_text.txt` rather than `.md`, since the pipeline produces no Markdown.
+- `data/research/sources.yaml` gained owner-confirmed entries for the four A/B
+  articles. Title, authors, publication date, type, DOI, publisher, and
+  publication URL were verified against each PDF and its Crossref record, with
+  `provenance_basis` naming the source of every field and keeping each file's
+  email download origin out of `url`.
 
-| Component | Why |
-| --- | --- |
-| `tests/pilots/test_li_input_pilot_guard.py` (193 lines) | **Deleted** with the pilot script it tested; it covered that script's spending guard and approval gates. |
-| The v1 nine-phase roadmap in `README.md`, and Phases 4–9 of the v1 build plan | Replaced by the v2 phases. |
-| Phase-numbered data and output folders | Done in this phase (below). |
-
-#### Build new
-
-Nothing in v1 covers evaluation, synthesis, research, or retrieval. DeepEval is
-named in the v1 README but was never added as a dependency and no evaluation
-code exists. Phases 2, 4, 5, and 6 start from nothing.
-
-### Restructuring performed
-
-- `data/phase_3/*.pdf` (12 articles) → `data/research/`
-- `data/phase_3/ab_testing/*.pdf` (4 articles) → `data/research/ab_testing/`
-- `data/phase_3/sources.yaml` → `data/research/sources.yaml`, with its `pdf:`
-  path updated
-- `data/phase_2/` (the v1 development source, not one of the 16), `outputs/phase_2/`
-  (8 v1 analyses of it), and `outputs/phase_3/` (the Li input-format experiment:
-  source PDF, extracted text, 8 crops, 3 analyses) were removed from this branch.
-  They remain in git history at commit `0fd1ccf` and earlier.
-
-Code changed: `scripts/prepare_phase_3_sources.py` renamed to
-`prepare_sources.py`; the `analyze_pdf.py` crash fixed; the three
-`ANALYSIS_SCOPE` strings rewritten to describe what actually happens.
-
-Code removed: `scripts/run_li_input_pilot.py` and
-`tests/pilots/test_li_input_pilot_guard.py`, and the dead grounding helpers
-(`grounding_view`, `contains_reserved_character`, `SENTINEL`) with their exports
-and tests.
-
-Path references updated: the manifest's own `pdf:` entry, `DEFAULT_MANIFEST` in
-the preparation script, and the `analyze_pdf.py` usage example. `README.md` and
-this plan were rewritten. 169 tests pass, with Ruff, formatting, and mypy clean.
-
-### Open items carried into Phase 1
-
-1. **The manifest covers none of the A/B articles.** `data/research/sources.yaml`
-   holds a single entry, for `li_et_al_2025_making_ai_less_thirsty`, which is a
-   collection article and not one of the four. All four A/B articles need
-   owner-confirmed provenance entries before preparation can run, since the
-   preparation script reads the manifest and the manifest records these as
-   confirmed by the project owner rather than inferred. **This needs the project
-   owner.**
-2. **The `analyze_pdf.py` crash** above blocks measurement.
-3. **No preparation artifacts exist.** `outputs/` was removed with the v1
-   material, so Phase 1 prepares all four A/B articles from their PDFs and times
-   that work as it goes, which is what the preparation-effort measurement needs
-   anyway.
+69 tests pass, with Ruff, formatting, and mypy clean.
 
 ### Acceptance criteria
 
@@ -186,11 +141,15 @@ this plan were rewritten. 169 tests pass, with Ruff, formatting, and mypy clean.
 - [x] Every verdict is **applied**: the removals are removed, the
       simplifications simplified, and nothing is deferred to a later phase.
 - [x] Data folders are named by role, with no phase-numbered folders left.
-- [x] README introduces the project, the three research agents, and the phases.
+- [x] README introduces the project, its three agents, and the phases.
 - [x] Every file in the repository is accounted for in
       [`REPOSITORY.md`](REPOSITORY.md), with a reason for existing.
 - [x] This plan specifies Phase 1 in full, and Phase 1 contains no cleanup.
-- [x] Checks pass: 169 tests, Ruff, formatting, mypy.
+- [x] The code is reduced to what the experiment needs: 6 source files,
+      1,289 lines, 73 tests, with Ruff, formatting, and mypy clean.
+- [x] Nothing is left open: every source in the experiment has confirmed
+      provenance, and Phase 1 starts by preparing articles, not by finishing
+      Phase 0.
 
 ---
 
@@ -224,13 +183,16 @@ and cost together.
 | --- | --- | --- |
 | Full PDF | `pdf` | the original PDF; the API supplies its text layer and page images |
 | Extracted text + crops | `prepared_text_and_crops` | the prepared text, plus one retained crop per item preparation could not represent |
+| (the same arm, when an article has no crops) | `prepared_text` | the prepared text alone |
 
 | Model configuration | Model | Reasoning effort |
 | --- | --- | --- |
 | Sol medium | `gpt-6.1-sol` | `medium` |
 | Astra low | `gpt-6-astra` | `low` |
 
-Configuration slug, used in output paths: `{pdf,text_crops}__{sol-medium,astra-low}`.
+Configuration slug, used in output paths: `<input>__<model>-<effort>`, so
+`pdf__gpt-6.1-sol-medium`, `pdf__gpt-6-astra-low`,
+`text_crops__gpt-6.1-sol-medium`, and `text_crops__gpt-6-astra-low`.
 
 The page spread is deliberate. The PDF arm's input cost scales with page count,
 so `lei` at 60 pages is the stress case for that arm, and `barnett` at 7 pages
@@ -239,7 +201,7 @@ the cheap case. If the two arms differ in cost, they will differ most there.
 ### Held constant
 
 The analysis prompt (`SYSTEM_PROMPT`), the output schema (`ExtractedAnalysis`
-and the `models/` structure), the one-correction policy, and the
+in `models.py`), the one-correction policy, and the
 question-independence of the task. The only intended differences are the input
 format, its format-specific layout instructions, and the model configuration.
 
@@ -282,19 +244,26 @@ analysis is a result, recorded as-is for Phase 2 to assess. A *technical*
 failure — API error, unreadable response, output that will not parse — is not a
 result: record it and rerun that cell.
 
+An article with no figures, equations, or multi-level table headers produces no
+crops, and its two `text_crops` cells send prepared text alone. They still run
+and still count: the arm being compared is the **input workflow** — prepare the
+PDF locally, or hand the PDF to the API — and a crop count of zero is a property
+of that article, not a defect in the cell. The run record carries `input_mode`
+and `crops_sent` so the count is available to Phase 2. The experiment does not
+claim to measure the independent effect of crops, and nothing here is set up to:
+crops vary with the article, not with a condition anyone assigned.
+
 ### Implementation tasks
 
-Phase 0 left the code ready for these; nothing here is cleanup.
+Phase 0 left the code and the provenance ready for these; nothing here is
+cleanup, and nothing is blocked.
 
-1. Add owner-confirmed provenance entries for the four A/B articles to
-   `data/research/sources.yaml`. **Blocked on the project owner.**
-2. Prepare the four articles with `prepare_sources.py`, timing each; record
+1. Prepare the four articles with `prepare_sources.py`, timing each; record
    gaps and crops.
-3. Build the matrix runner: takes an article and a configuration slug, selects
-   the input mode, loads the PDF or the prepared text plus crops, and writes
-   `analysis.json` and `run_record.json` to the cell. It needs a per-model rate
-   table and cost calculated from actual reported usage.
-4. Run the 16 cells. Write `summary.csv`.
+2. Run the 16 cells with `run_analysis.py`: it takes an article, an input
+   method, and a model, and writes `analysis.json` and `run_record.json` with
+   usage, calculated cost, and runtime.
+3. Write `summary.csv` — one row per cell, the only new code this phase needs.
 
 Cost: on the one measured v1 data point, two Sol-medium analyses of a 36.6k-char
 article, each including a correction attempt, had a combined calculated cost of
@@ -307,11 +276,11 @@ report actual cost as it goes.
 
 ### Tests
 
-Offline, with no API calls: configuration slug → input mode and settings;
-attachment assembly for both arms; the run record capturing usage, cost, and
-runtime from a faked response; a cell with a first-attempt schema failure
-recording both attempts; cost calculation against known rates and usage; and
-that a technical failure writes a run record rather than a half-written cell.
+Phase 0 left 69 tests covering the call path, the input modes, the schema rules,
+cost, and PDF preparation. Phase 1 adds only what the matrix runner itself needs,
+offline and with no API calls: that a configuration slug maps to the right input
+mode and settings, that a failed cell still writes a run record rather than a
+half-written directory, and that `summary.csv` reports what the run records hold.
 
 ### Acceptance criteria
 
@@ -439,7 +408,7 @@ that do not actually address the same point.
 
 ---
 
-## Phase 5 — Research Agent
+## Phase 5 — Literature Review Agent
 
 ### Goal
 

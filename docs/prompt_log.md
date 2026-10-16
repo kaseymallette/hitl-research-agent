@@ -29,12 +29,14 @@ Each entry carries:
 
 ## Phases
 
-- [Phase 1 — A/B Testing](prompt_logs/phase_1.md)
-- [Phase 2 — DeepEval](prompt_logs/phase_2.md)
-- [Phase 3 — Research Collection](prompt_logs/phase_3.md)
-- [Phase 4 — Synthesis Agent](prompt_logs/phase_4.md)
-- [Phase 5 — Research Agent](prompt_logs/phase_5.md)
-- [Phase 6 — RAG](prompt_logs/phase_6.md)
+- [Phase 1 — A/B Testing](phases/phase_1.md)
+- [Phase 2 — DeepEval](phases/phase_2.md)
+- [Phase 3 — Research Collection](phases/phase_3.md)
+- [Phase 4 — Synthesis Agent](phases/phase_4.md)
+- [Phase 5 — Literature Review Agent](phases/phase_5.md)
+- [Phase 6 — RAG](phases/phase_6.md)
 
-The v1 logs for the old nine-phase plan were removed when the project was
-redesigned; they remain in git history (`git show main:docs/prompt_logs/`).
+The logs for the old nine-phase plan are not here: they live on the `v1` branch
+and at the `v1-final` tag, along with that version's experiment outputs — for
+example `git show v1-final:docs/prompt_logs/phase_3.md`. The tag cannot move;
+the branch can.

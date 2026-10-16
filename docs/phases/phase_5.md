@@ -1,9 +1,9 @@
-# Phase 5 — Research Agent
+# Phase 5 — Literature Review Agent
 
 Finding articles relevant to an explicit research question and explaining
 their relevance, leaving the selection to the researcher.
 
-See [Phase 5 in the build plan](../BUILD_PLAN.md#phase-5--research-agent) for
+See [Phase 5 in the build plan](../BUILD_PLAN.md#phase-5--literature-review-agent) for
 what this phase builds and what marks it done. Conventions for these entries
 are in the [prompt log index](../prompt_log.md).
 
