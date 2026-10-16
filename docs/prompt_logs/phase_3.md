@@ -392,3 +392,194 @@ Please update the build plan
 Claude reported updating Phase 3 and retaining the bounded-change specifications/tests, analyzer comparison, metrics table, and judge configuration. It removed the obsolete source-approval clause and recorded the simplification rationale and historical-artifact consolidation. Nothing was committed; the prompt log was untouched by Claude.
 
 During editing, it reported accidentally inserting the draft preamble and dropping promised sections through a heading lookup that matched Phase 0. It said these errors were corrected and headings rechecked, and recommended reviewing the diff. The final prose nevertheless repeats “2 were real,” contradicting its earlier correction that table-header and equation defects were real too. Its historical commit references also need checking: `ce8b452` contains the original pilot, while the revised preparation was committed in `5419446`; `6e6f55a` contains preparation tooling. The reported splice repairs have not been independently verified in this entry.
+
+### 28. Plan a Full-PDF vs. Text-and-Crops Comparison
+
+**Prompt:** I want to compare two ways of supplying the same source for single-source analysis:
+
+1. Send the original full PDF directly to the LLM.
+2. Send the existing extracted text together with the retained figure, table, and equation crops to the LLM.
+
+This revises the text-only decision: in the second path, the model should receive and interpret the crops, not merely attach them for my review. We do not need a separate transcription stage. Visual summaries and interpretations remain unverified until I check them against the original images in Phase 4 human review. Keep them distinguishable from extracted-text evidence and linked to their source pages/crops; do not treat generated descriptions as verbatim source text. Text-only evaluation cannot verify visual fidelity.
+
+Propose a minimal paired pilot using Li and its existing preparation. Hold the model, reasoning effort, question-independent analysis instructions, output schema, and correction policy constant where possible, so we compare input formats. Keep the earlier Astra-low vs. GPT-6.1 Sol-medium comparison separate; do not multiply this into a four-run experiment or change defaults.
+
+Check the current pipeline and official API documentation for PDF/image support. Explain the smallest changes needed for each path, including how grounding validation would handle PDF and visual evidence without silently weakening existing text checks. Identify necessary differences in input instructions, validation, and scope metadata; the current “prepared text only” statement would no longer describe these runs.
+
+Compare source fidelity, argument coverage, visual/table/equation handling, evidence and citation mapping, assumptions, limitations, and support assessments. Retain both outputs and per-attempt errors, measured preparation/request time, usage, and available request identifiers. Separate calculated cost from confirmed billing. Validation success alone is not a quality judgment, and neither output is ground truth.
+
+Keep the proposal concise and reuse existing artifacts and safeguards. Preserve the agreed advisory DeepEval scope, with visual verification deferred to Phase 4. This turn is planning only: no file edits, implementation, installations, paid calls, analysis runs, commits, or pushes. Give me the minimal implementation plan and any genuine blockers; do not invent a budget or rebuild preparation tooling.
+
+**Response:**
+Claude proposed reusing the existing pipeline with optional multimodal messages and a separate grounding reference. It recommended adding `visual_description` evidence with page/crop locators, input inventories, and revised scope statements. The text-and-crops path would use Li's eight retained crops; the PDF path would send the original file. Visual interpretations would remain unverified for Phase 4. No implementation or paid calls occurred.
+
+For PDF grounding, Claude proposed matching against either raw PDF text or prepared text; this widens the reference and remains unapproved, as does the schema addition. It reported stack support but left live PDF/structured-output compatibility untested. Its assertion that a model page listing only text/image modalities implies uncertain PDF support needs checking against the file-input guide. Its claim that crop-derived values can never pass text grounding is too strong: matching text establishes occurrence, not which modality supplied the value. Estimated paired Astra costs were $1–$2.40, based on assumed output/retries and image-token estimates, not confirmed billing. Claude proposed an offline payload dry run before paid work.
+
+### 29. Explain Why Extract Instead of Sending the PDF, and Compare Both
+
+**Prompt:** Switch the proposed Li pilot to `gpt-6.1-sol` at `medium` reasoning for both input formats. Keep the separate model comparison out of this experiment.
+
+First answer the question we have not resolved: **Why wouldn't I just send the original PDF to the API and ask for the single-source analysis? What benefit does our extraction-and-crops workflow provide that justifies its complexity, preparation time, and potential information loss?** I need a plain-language explanation I can use when describing this project, not another implementation proposal that assumes extraction is necessary.
+
+Use the project history to explain why we chose extraction originally. Distinguish documented reasons from assumptions and benefits we have not demonstrated. If we never established that extraction was preferable to direct PDF input, say so plainly. Prior investment in extraction is not a reason to keep it.
+
+Explain separately what the API supports, what our application currently supports, and what our quotation-validation code requires. A limitation of our existing text-based validator does not establish that the API cannot read PDFs. Check official documentation for this exact model; distinguish documented capabilities from untested integration behavior. Do not infer lack of PDF support merely because a model page lists text/image modalities.
+
+Then propose the smallest practical comparison: the same Li PDF, model, reasoning setting, and single-source analysis task, once with the original PDF and once with the existing extracted text plus crops. Use it to determine whether extraction provides a worthwhile advantage in analysis quality, evidence traceability, cost, or time. Include preparation effort and extraction losses, not just API token costs. Keep validation differences explicit so they do not masquerade as differences in analysis quality. Do not assume either approach will win; direct PDF input should remain an option if extraction adds no meaningful benefit.
+
+Update the estimated cost for GPT-6.1 Sol medium using its documented rates and image handling, with assumptions about reasoning and correction attempts stated briefly. Actual usage and billing remain to be measured. Visual interpretations from either path remain unverified until Phase 4 human review.
+
+Reply concisely: why extraction was chosen, what benefits are established versus hypothetical, and the minimum next step to test direct PDF against text plus crops. Avoid another broad redesign or a long list of decisions. The schema and grounding changes you proposed are not approved merely by selecting the model.
+
+This selects the pilot model and clarifies the experiment; it does not authorize implementation or paid runs yet. No file edits, installations, paid calls, commits, or pushes. Leave the prompt log to Codex.
+
+**Response:**
+Claude acknowledged that extraction was never compared with direct PDF input: the application assumed text, and preparation grew around that contract and its quotation validator. It cited an earlier user-issued extraction prompt, but approval of an agent-recommended workflow does not establish that the user independently selected the architecture or was presented with the direct-PDF alternative. The user clarified that design was delegated to Claude and Codex; responsibility for explaining and testing that alternative belongs to the agents.
+
+Claude selected GPT-6.1 Sol medium for the proposed paired pilot; no code setting was changed. It proposed the same grounding reference for both arms and existing paraphrased-evidence fields with visual locators, avoiding the previously proposed schema extension for now. It distinguished API PDF support from the application's missing attachment handling. Quality benefits of extraction remain untested; local text supports mechanical quotation checks, but that does not require sending extracted text as the analyzer input.
+
+Claude estimated $0.12–$0.21 per attempt and under $1 for the pair, using unverified image-token assumptions and assumed reasoning/output usage; these are not measured costs or an approved cap. Its repeated “2 were real” preparation tally contradicts earlier corrected findings. Its proposal to remove crops, annotations, page maps, and gap metadata if PDF input wins is unapproved and goes beyond choosing an input format; Phase 4 review and traceability needs still require consideration. No files, installations, or paid calls were reported.
+
+### 30. Implement the Minimal Input-Format Pilot
+
+**Prompt:** Go ahead with the bounded implementation and offline checks for the Li comparison. We need evidence to answer whether extracting text and crops provides enough benefit to justify its complexity compared with sending the PDF directly. Do not return another planning-only proposal.
+
+Prepare two runnable paths using `gpt-6.1-sol` at `medium` reasoning: (A) the original Li PDF and (B) its existing prepared text plus eight retained crops. Hold the single-source analysis instructions, output schema, and one-correction policy constant, apart from necessary input-format instructions. Keep the analysis question-independent. Use the same declared grounding reference for both paths, excluding preparation annotations as before; record its basis and keep grounding failures separate from analytical quality. The PDF path must receive the original PDF, not locally rendered pages or prepared text as a substitute.
+
+Reuse the existing pipeline, attempt retention, and preparation artifacts. Make only the changes needed to supply attachments and save accurate input-mode/scope records alongside the results. Use the existing paraphrased-evidence fields with explicit page/crop locators for visual interpretations; keep these marked as unverified for Phase 4 review. No analysis-schema redesign, new preparation framework, other-source work, model-comparison runs, or DeepEval implementation.
+
+Preserve all existing artifacts and ordinary text-only behavior. Run focused offline tests and applicable repository checks, including payload construction, attachment retention on correction, and unchanged grounding safeguards. An offline dry run must make no API requests and must not be presented as proof of live compatibility.
+
+Prepare to save both analyses and all attempts, errors, request identifiers, input records, measured timing, and actual token usage in separate pilot output locations. Keep calculated costs separate from confirmed billing. Our later comparison must include analysis quality, visual handling, traceability, and preparation effort/losses—not just token cost or validation success. Do not delete crops, page maps, or gap metadata based on a pilot outcome.
+
+Finish with a concise report of what changed, checks performed, the commands for the two runs, and a proposed combined spending cap covering each run's possible correction. Explain how the cap will be enforced and any uncertainty; do not promise a hard cap based only on estimated usage. Stop there for my approval before any paid call. Do not commit, push, or edit the prompt log; Codex maintains it.
+
+**Response:**
+Claude reported implementing PDF and text-plus-crops inputs with GPT-6.1 Sol medium, identical core analysis instructions, existing paraphrased evidence/visual locators, and the same annotation-excluding prepared-text grounding reference. It added attachment handling, result input/scope metadata, an optional output-token limit, a 507-line pilot script, and 512 lines of tests. It reported 199 passing tests, clean Ruff/mypy checks, and two offline dry runs. Existing artifacts were preserved; no paid calls, commits, or pushes occurred. These implementation and test claims have not been independently reviewed here.
+
+The pilot saves results, per-attempt records, and run metadata under `outputs/phase_3/pilots/li_input_format/{pdf,crops}/`. Claude proposed a $2 combined budget, with projected costs of $1.23 for both runs including corrections, a 24,000-output-token limit per call, and a preflight check against recorded costs. This is an estimate-based guard, not a hard spending cap: PDF image-token usage remains assumed, and SDK retries were not accounted for. Its “at most two calls” claim therefore describes analysis attempts, not necessarily network requests. Live attachment/structured-output compatibility remains untested.
+
+**Pending decision:** authorize paid runs and their budget after clarifying SDK retry behavior and whether failed or partial runs count toward the combined spending guard. Claude offered an extra one-page calibration call; it is optional, unapproved, and would not establish token usage for every page. The build plan has not yet been updated for this pilot.
+
+### 31. Verify Retry and Budget Accounting Before Paid Runs
+
+**Prompt:** Before I approve the two paid runs, resolve the remaining retry and spending-accounting issue. Inspect the actual pilot/client configuration: your report says at most two calls per run but also mentions unaccounted-for SDK retries. Disable automatic client retries for this pilot so the existing one-correction policy is the only additional analysis attempt; preserve ordinary pipeline defaults elsewhere.
+
+Verify that failed and partial runs with reported usage count toward the combined spending guard, including when a later invocation follows a failure. Preserve their records rather than overwriting them. If a request may have incurred charges but usage is unavailable, record that uncertainty and stop before further paid requests rather than counting it as zero. Make only the minimal fixes needed and run focused offline checks.
+
+Report briefly what you verified or changed, whether the $2 combined proposal still stands, and what remains estimated. Do not describe the guard as a guaranteed billing cap. No calibration call, other experiments, redesign, or build-plan expansion. No paid calls, commits, or pushes yet; stop for my paid-run approval.
+
+**Response:**
+Claude confirmed that SDK defaults allowed two automatic retries per analysis attempt. It added a retry setting, disabled SDK retries for the pilot, and retained ordinary client defaults. It also fixed overwritten run records and incomplete directory scanning: each invocation now has a unique timestamped directory under `<path>/runs/`, and the spending guard totals recorded invocations across both paths, including failures. Missing usage or cost records block subsequent paid runs pending reconciliation rather than counting as zero.
+
+Claude reported 209 passing tests and clean Ruff/mypy checks, including exercised approval, budget, and unknown-usage gates. These changes and checks have not been independently reviewed here. Preparation artifacts were untouched; no paid calls, commits, or pushes occurred.
+
+The proposed combined budget remains $2, with $1.23 projected for both runs including corrections. This is not a guaranteed cap: PDF image-token usage remains estimated, the guard depends on retained local records, and calculated cost is distinct from billing. Automatic retry removal bounds configured analysis requests but does not establish that every HTTP request incurs a charge; a rejected request is not necessarily billable. Live PDF/structured-output compatibility remains untested. **Pending decision:** approve the paired paid pilot and its estimate-based $2 spending guard.
+
+### 32. Run the Paired Li Pilot
+
+**Prompt:** I approve the two paid Li pilot runs using `gpt-6.1-sol` at `medium`, including the existing one-correction attempt per path, with the proposed $2 combined estimate-based spending guard. I understand this is not a guaranteed billing ceiling because input usage remains estimated.
+
+Run the PDF path first, then the text-plus-crops path if the spending and usage-accounting guards permit it:
+
+```bash
+uv run python scripts/run_li_input_pilot.py run --path pdf --confirm-paid --cap-usd 2.00
+uv run python scripts/run_li_input_pilot.py run --path crops --confirm-paid --cap-usd 2.00
+```
+
+Keep SDK retries disabled. Stop if a guard blocks, usage is unknown, or live API compatibility fails; report the issue without substituting inputs/models or making extra diagnostic calls. An ordinary terminal grounding failure should be retained for comparison and need not prevent the other path if usage is known and the guards permit it. No reruns beyond the authorized correction policy.
+
+Preserve every run and attempt record. Report each path's validation outcome, attempt count, measured time, actual input/output usage, calculated cost, and output locations. Keep confirmed billing separate. Give a brief preliminary comparison of coverage, evidence/citation mapping, and visual handling, clearly distinguishing observations from unverified interpretations; Phase 4 human review still verifies visual fidelity. Do not equate validation success with analysis quality.
+
+Do not expand the experiment, run DeepEval, change preparation, delete artifacts, commit, or push. 
+
+**Response:**
+Both paths failed terminal validation after their authorized correction attempts; neither produced `analysis_result.json`. Claude reported four HTTP requests total, with raw and parsed outputs and errors retained under `outputs/phase_3/pilots/li_input_format/pdf/runs/20261015T224330Z/` and `outputs/phase_3/pilots/li_input_format/crops/runs/20261015T224920Z/`. PDF: 306.2 seconds, 59,164 input and 19,113 output tokens. Crops: 310.2 seconds, 43,163 input and 20,628 output tokens. Reasoning is included in output totals. Live PDF input with strict structured output worked; neither input format was rejected by the API.
+
+Claude reported 26 then 22 reference-entry grounding failures for PDF, attributing them to markdown formatting and broken URLs in the prepared-text reference; no body quotation failed. Crops had one failure per attempt: first, a quotation reconstructed across an extraction-induced page/callout interruption failed contiguous matching; then the correction changed its evidence role while leaving an author-stated claim without required grounding. These diagnoses are Claude's reports, not independently verified here. The shared reference favored the path receiving prepared text, so validation outcomes do not fairly establish input-format quality.
+
+The retained second attempts contained 21 versus 22 claims; PDF had 2 verbatim/27 paraphrased evidence items, while crops had 32/16. Claude reported broader equation coverage with crops. Counts, coverage assessments, and agreement on table values do not establish fidelity; visual readings remain unverified. The intended comparison yielded outputs for inspection but no validated analysis. Claude called the failures “more informative than a success”; that characterization does not change the failed outcome or the user's time spent.
+
+Recorded combined calculated cost was $0.5173. Claude separately claimed a cache-creation pricing correction would raise it to approximately $0.546; that adjustment and its billing basis remain unverified. No confirmed billing was supplied. No extra calls, DeepEval, commits, pushes, preparation changes, or deletions were reported. No follow-up implementation or rerun is authorized by this entry.
+
+### 33. Ask Whether PDF Analysis Can Be Checked Against the PDF
+
+**Prompt:** So we can't check the analysis from sending the full pdf against the pdf without extracting text?
+
+**Response:**
+Claude said the current substring-based quotation check needs an application-side text reference, but proposed using a raw PDF text dump instead of the prepared analyzer input. It reported an offline experiment on 27 rejected quotations: with the existing comparison, prepared text matched 0/27 and raw text matched 21/27; adding Unicode/markdown/hyphen normalization yielded 9/27 and 21/27 respectively; adding a separate “layout-independent” comparison yielded 26/27 for both. These measurements and the unspecified layout-independent method have not been independently verified here.
+
+Its prose contradicts that table by attributing 26/27 matches to normalization alone. Claude attributed mismatches to extraction/formatting artifacts and identified the remaining item as a sentence interrupted by a pull-quote. A layout interruption does not itself establish that the model invented the sentence. Its broader claims that checking needs no reading order or cleanup, that quotation verification always requires extracted text, and that all preparation metadata can be dropped are too strong: they describe a proposed matching approach, not established requirements for all verification or review. Text matching establishes textual occurrence, not the faithfulness of the full analysis or visual interpretation.
+
+Claude proposed replacing the grounding reference with raw text, adding normalization, and rerunning both paths for an estimated $0.50. No implementation or paid rerun was authorized. Existing saved outputs can be rechecked offline before considering additional paid runs. The experiment covers one source and selected rejected quotations; higher match rates alone do not establish that a more tolerant checker avoids false acceptance. Visual fidelity remains unverified pending review of the original images.
+
+### 34. Recheck Saved Outputs and Show Both Analyses
+
+**Prompt:** Use the raw PDF text as the grounding reference and test the proposed normalization against the saved outputs from both paths. Explain which changes require the separate “layout-independent” matching from your table; don’t silently include it. Preserve the originals. Show me both analyses in readable form, with remaining validation issues noted rather than hiding the results. No paid reruns yet.
+
+**Response:**
+Claude rechecked all four saved outputs offline. It reported that checking quotations against either raw PDF text or prepared text, using existing normalization, clears quotation-matching failures in both final attempts. Raw text alone helps the PDF output but creates mismatches for text-plus-crops. Its additional layout-independent matching only helps the first PDF attempt; it is unnecessary for either final attempt.
+
+Both final outputs still fail our rule requiring a verbatim quotation labeled as grounding evidence for every author-stated claim: 19 of 21 PDF claims and 1 of 22 crops claims violate it. The PDF output mostly paraphrases. These rule violations do not establish that the attributed claims are false. Claude also found that first-error reporting hid additional violations and that corrections sometimes changed evidence labels without satisfying the rule. These findings have not been independently verified here.
+
+Claude rendered all four analyses under `outputs/phase_3/pilots/li_input_format/review/`, including `pdf_attempt_2.md` and `crops_attempt_2.md`, with remaining issues marked and no content filtered out. It reported more direct quotations and equation coverage in the crops analysis; visual accuracy remains unverified. No pipeline changes, paid calls, or reruns occurred; original artifacts were preserved. Proposed changes to the reference, error reporting, and quotation requirement remain unapproved. PDF input already works; the quotation requirement determines acceptance by our application, not whether PDF-first analysis is possible.
+
+### 35. Send One Full PDF to Astra
+
+**Prompt:** Send the full Li PDF to `gpt-6-astra` at `low` reasoning. Use the simplest possible check against the PDF's raw extracted text. Do the minimum work necessary and show me the analysis even if the check flags something. I approve $2 for this run. No text-plus-crops comparison, no redesign, and no more approval rounds.
+
+### 36. Remove Markdown Reports and Expose Readable JSON
+
+**Prompt:** Remove the generated Markdown analysis reports from the Phase 3 pilot review folders. Keep project documentation and prompt logs. We only want JSON analysis outputs.
+Export each saved attempt’s `parsed_output` into a clearly named, indented JSON file. Preserve the analysis unchanged and keep original diagnostic records separately. Show me the latest Astra analysis JSON. No new model calls, Markdown reports, or redesign.
+
+**Response:**
+Claude reported removing only the six generated Markdown pilot reports and exporting all six saved `parsed_output` objects as clearly named, indented JSON files in the two pilot review directories. Original diagnostic records and other project files were preserved. It reported verifying that the exported analysis content was unchanged and passed `ExtractedAnalysis` parsing; this does not mean it passed the later quotation and claim-grounding checks.
+
+The latest Astra output is `outputs/phase_3/pilots/li_pdf_astra_raw/review/li_analysis_pdf_gpt-6-astra-low_attempt_2.json`: 16 claims, 22 evidence items, and 19 citations. Its existing issues remain unchanged: one reference-entry character mismatch and 13 claims lacking the required claim-grounding evidence. No model calls or code changes occurred.
+
+### 37. Check the Existing JSON Against the Source Text
+
+**Prompt:** Check the existing Astra analysis JSON against the Li PDF's text. Do this offline using the saved files. Do not rerun the analysis or make any model calls. Preserve the JSON unchanged and report briefly what matches and what does not. No Markdown reports or redesign.
+
+**Response:**
+Claude checked the saved Astra JSON offline without changing it or making model calls. It reported that all 3 exact quotations and all 19 citation markers match the paper; 18 of 19 reference entries match, with the remaining entry differing by a line-break/hyphen character. It also reported checking the cited Table 1 values against the extracted rows and finding them correct.
+
+The JSON contains citations and supporting material. The application's separate rule rejected it because many author-attributed claims have paraphrases and citations instead of an exact quotation labeled `claim_grounding`. That rejection is not a finding that the whole analysis is wrong. This offline check does not establish that every paraphrase accurately represents the authors; the figure interpretation and equation descriptions also remain unverified. These are Claude's reported findings, not an independent review by Codex.
+
+### 38. Return the Single-Source Analysis JSON Without Hard Quality Gates
+
+**Prompt:** Simplify the workflow: I send a full PDF, the existing single-source analysis code sends it with our prompt to the model, and I get a readable, indented JSON analysis file.
+
+Remove the hard quotation, reference-matching, and claim-grounding requirements that reject an otherwise returned analysis. Do not label the whole analysis failed because it paraphrases or lacks a required evidence label. Keep our analysis content and author-versus-model distinctions. Quality assessment belongs in DeepEval and human review, not hard acceptance gates before I can receive the JSON.
+
+Keep only the basic handling needed for API errors and unreadable JSON. Export the analysis itself, with diagnostic records separate. No Markdown reports, new framework, or large test suite. Make the minimum changes and briefly tell me what changed. No paid calls, commits, or pushes. 
+
+**Response:**
+Claude reported removing the claim/evidence label-consistency gates but keeping quotation and reference checks as advisory `grounding_notes`. It changed the prompt from rejection language to flagging for review. It added `scripts/analyze_pdf.py` to export indented analysis JSON with separate run records. Requirements for at least one claim per analysis and one evidence item per claim remained; Claude asked whether to remove them too.
+
+Claude reported updating 19 existing tests, 209 passing tests, and clean lint/format/mypy checks. No model calls, commits, or pushes occurred. The user rejected retaining checks as advisory flags and requested their removal.
+
+### 39. Stop Flagging and Make Phase 3 Show Only Six Things
+
+**Prompt:** Stop flagging things. I asked you to remove the checks, not turn them into advisory notes. Remove the quotation/reference checks, `grounding_notes`, and prompt language about flagging things for review. Do not reject an analysis because a claim has no evidence item or because it contains no claims. Keep basic API-error and JSON-parsing handling. The workflow is: send the PDF, run our analysis prompt, and export readable JSON. Quality evaluation comes later with DeepEval.
+
+Organize the Phase 3 folder so I can open it and see only these six things:
+
+1. The original Li PDF.
+2. The extracted text.
+3. One folder containing the crops.
+4. The GPT-6.1 Sol medium JSON analysis of the full PDF.
+5. The GPT-6.1 Sol medium JSON analysis of the extracted text plus crops.
+6. The GPT-6 Astra low JSON analysis of the full PDF.
+
+Use the existing final-attempt analyses. Give these six items clear, simple names. I do not want Markdown reports, duplicate attempts, or diagnostic files mixed in with them. If anything else needs to exist, explain what it is and why. Do not delete existing records; move anything retained for history outside this folder. No new model calls. Show me where to open the folder when done.
+
+No new features, paid calls, or further approval questions about these checks.
+
+**Response:**
+Claude reported removing quotation/reference matching, advisory grounding notes, and minimum claim/evidence counts. It removed prompt language about rejection and review flags. API errors, incomplete responses, unreadable JSON, and schema-format errors still stop a run; quality checks no longer do. It reported 181 passing tests and clean Ruff/mypy checks, with two accidentally removed test helpers restored. No model calls, commits, or pushes occurred.
+
+`outputs/phase_3/` now contains exactly six items: `source.pdf`, `extracted_text.md`, `crops/`, `analysis_full_pdf_gpt-6.1-sol-medium.json`, `analysis_text_and_crops_gpt-6.1-sol-medium.json`, and `analysis_full_pdf_gpt-6-astra-low.json`. The three JSON files contain the existing final-attempt analyses, unchanged. The PDF is a copy; its original remains in `data/phase_3/` for existing manifest/preparation references.
+
+Other records were moved to `outputs/history/phase_3/`, with nothing deleted from that history. Claude redirected future preparation, pilot, and analysis outputs to `outputs/preparation/`, `outputs/pilots/`, and `outputs/analyses/` respectively so they do not refill the six-item folder. These are Claude's reported changes; no independent code review was performed for this log entry.
