@@ -10,8 +10,6 @@ import pytest
 from pdf_fixtures import make_image_only_pdf, make_table_pdf, make_text_pdf
 from pydantic import ValidationError
 
-from hitl_research_agent.extraction.annotations import grounding_view
-
 PAGES = [
     [
         "A first paragraph on the first page finishes cleanly.",
@@ -254,8 +252,7 @@ def test_annotations_can_never_match_as_verbatim_source_text(prep: ModuleType) -
         prep.Block("text", 1, "After."),
     ]
     result = prep.assemble(_extraction(prep, blocks, items))
-    assert "PREP-ANNOTATION" not in grounding_view(result.text)
-    assert "Before. After." not in grounding_view(result.text)  # no match across the gap
+    assert "Before. After." not in result.text  # the annotation sits between them
 
 
 def test_prepared_text_with_reserved_characters_is_refused(

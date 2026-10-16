@@ -254,8 +254,7 @@ What has been difficult about working this way:
 
 The [build plan](docs/BUILD_PLAN.md) has each phase in engineering detail,
 including Phase 1’s open items and what earlier code each phase reuses,
-simplifies, or removes. Experiment outputs from the previous design are kept
-for history in [`outputs/v1_archive/`](outputs/v1_archive).
+simplifies, or removes.
 
 ## Stack, setup, and documentation
 

@@ -2,10 +2,8 @@ import pytest
 from pydantic import ValidationError
 
 from hitl_research_agent.extraction.annotations import (
-    SENTINEL,
     find_annotations,
     format_annotation,
-    grounding_view,
     reserved_character_problems,
 )
 from hitl_research_agent.extraction.schemas import PreparationGap, SourceDocument
@@ -26,25 +24,13 @@ def test_annotation_is_well_formed_and_located() -> None:
     assert TEXT[spans[0].start : spans[0].end] == ANNOTATION
 
 
-def test_grounding_view_replaces_each_annotation_with_one_sentinel() -> None:
-    view = grounding_view(TEXT)
-    assert view.count(SENTINEL) == 1
-    assert "PREP-ANNOTATION" not in view
-    assert "Water use rose sharply in 2023." in view
-
-
-def test_text_without_annotations_is_unchanged_by_the_grounding_view() -> None:
-    plain = "No annotations here."
-    assert grounding_view(plain) == plain
-
-
 def test_source_text_with_stray_reserved_characters_is_rejected() -> None:
     provenance = Provenance(
         source_title="T",
         source_type="other",
         retrieved_at="2026-01-01T00:00:00+00:00",  # type: ignore[arg-type]
     )
-    for bad in ("stray ⟦ opener", "stray ⟧ closer", f"has {SENTINEL} sentinel"):
+    for bad in ("stray ⟦ opener", "stray ⟧ closer"):
         assert reserved_character_problems(bad)
         with pytest.raises(ValidationError):
             SourceDocument(text=bad, provenance=provenance)

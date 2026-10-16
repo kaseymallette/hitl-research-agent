@@ -1,8 +1,4 @@
-from .annotations import (
-    SENTINEL,
-    find_annotations,
-    grounding_view,
-)
+from .annotations import find_annotations
 from .attachments import (
     Attachment,
     InputMode,
@@ -38,7 +34,6 @@ __all__ = [
     "ANALYSIS_SCOPE_BY_INPUT_MODE",
     "ANALYSIS_SCOPE_PDF",
     "ANALYSIS_SCOPE_TEXT_AND_CROPS",
-    "SENTINEL",
     "AnalysisResult",
     "Attachment",
     "AttemptRecord",
@@ -58,7 +53,6 @@ __all__ = [
     "SourceTooLargeError",
     "analyze_source",
     "find_annotations",
-    "grounding_view",
     "load_attachment",
     "validate_attachments",
 ]

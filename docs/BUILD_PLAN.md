@@ -7,11 +7,10 @@ filled in once the prior phase is accepted.
 
 This is the v2 plan. It replaces the nine-phase v1 plan. v1 built a working
 single-source analysis pipeline and then spent a long sequence of turns on
-grounding checks that were ultimately removed; what survives of that history is
-the archived outputs under [`outputs/v1_archive/`](../outputs/v1_archive) and
-the audit in Phase 0 below. The v1 prompt logs were removed with the redesign
-and remain in git history; [`docs/prompt_log.md`](prompt_log.md) now indexes one
-log per v2 phase.
+grounding checks that were ultimately removed; what survives of that history in
+this branch is the audit in Phase 0 below. The v1 prompt logs and experiment
+outputs were removed with the redesign and remain in git history;
+[`docs/prompt_log.md`](prompt_log.md) now indexes one log per v2 phase.
 
 ---
 
@@ -55,7 +54,7 @@ Four rules hold across every phase:
    Evidence carries a second, independent split: `verbatim` vs. `paraphrased`.
 4. **The human operates a gate, not a reading chair.** Analysis and evaluation
    end at a four-state decision — **accept, reject, revise, rerun** — and only
-   accepted analyses enter the research store. This is a runtime boundary
+   accepted analyses enter the research collection. This is a runtime boundary
    rather than a phase: Phase 2 exercises it on the judge's own output, Phase 3
    on what enters the collection, Phase 4 on syntheses. What the researcher
    needs in front of them to make that decision — the analysis, its citations,
@@ -75,7 +74,6 @@ outputs/
   analyses/<slug>/                  Phase 3: analysis in the chosen configuration
   evaluations/<slug>/               Phase 3: evaluation, stored apart from the analysis
   synthesis/                        Phase 4
-  v1_archive/                       v1 experiment history; not a Phase 1 result
 src/hitl_research_agent/
   models/                           the analysis data model
   extraction/                       the single-source analysis agent
@@ -125,16 +123,15 @@ them, and a 664-line one-source pilot script built around their failures.
 | Component | Change |
 | --- | --- |
 | `scripts/analyze_pdf.py` | Generalize into the single analysis runner: both input methods, the configuration in the output path, and usage, cost, and runtime in the run record. **It also has a live bug** — line 153 reads `result.grounding_notes`, a field removed from `AnalysisResult`, so a *successful* run raises `AttributeError` after writing `analysis.json` and before writing `run_record.json`. Phase 1 cannot measure anything until this is fixed. |
-| `scripts/run_li_input_pilot.py` (664 lines) | Hard-coded to one article, built around pre-call token projection, an offline dry run, a payload inventory, and a cross-invocation spending guard. Keep the documented per-model rate table, the cost calculation from *actual* reported usage, and the timing and usage records. Drop the projection, the dry run, and the per-run approval gates. Fold what remains into the Phase 1 matrix runner; delete the script. |
+| `scripts/run_li_input_pilot.py` (664 lines) | **Deleted.** Hard-coded to one article — Li, which is not in the A/B set — and built around pre-call token projection, an offline dry run, a payload inventory, and a cross-invocation spending guard. Three things from it are worth carrying into the Phase 1 matrix runner: the documented per-model rate table, cost calculated from *actual* reported usage, and the timing and usage records. The projection, the dry run, and the per-run approval gates are not. |
 | `extraction/schemas.py` — `ANALYSIS_SCOPE`, `ANALYSIS_SCOPE_PDF`, `ANALYSIS_SCOPE_TEXT_AND_CROPS` | Three paragraphs that still describe verbatim-grounding checks against a declared grounding reference. Those checks no longer exist, so the strings are now false on a saved result. Replace with one short, true sentence per input method, saying what the model received and that image readings are unverified. |
-| `extraction/annotations.py` | `grounding_view()` is used only by the pilot script and its tests; `contains_reserved_character()` is used nowhere. Both go. `SENTINEL` then survives only inside `_RESERVED`, so removing it relaxes `reserved_character_problems()` by one character — acceptable, since nothing produces that character any more. Keep `find_annotations`, `format_annotation`, and `reserved_character_problems`: the preparation script and the `SourceDocument` validator that ties in-text annotations to declared gaps both still need them for the text-plus-crops arm. |
-| Tests for removed behavior | The `grounding_view` tests in `tests/extraction/test_annotations.py` and the two assertions at `tests/preparation/test_prepare.py:257-258` go with the helper. |
+| `extraction/annotations.py` | **Done.** `grounding_view()`, `contains_reserved_character()`, and `SENTINEL` are gone, along with their exports and the tests covering them. `reserved_character_problems()` now checks the two annotation delimiters only, which is one character less than before and costs nothing, since nothing produces the sentinel any more. `find_annotations`, `format_annotation`, and `reserved_character_problems` stay: the preparation script and the `SourceDocument` validator that ties in-text annotations to declared gaps both still need them for the text-plus-crops arm. |
 
 #### Remove
 
 | Component | Why |
 | --- | --- |
-| `tests/pilots/test_li_input_pilot_guard.py` (193 lines) | Tests the pilot's spending guard and approval gates; goes with the script. |
+| `tests/pilots/test_li_input_pilot_guard.py` (193 lines) | **Deleted** with the pilot script it tested; it covered that script's spending guard and approval gates. |
 | The v1 nine-phase roadmap in `README.md`, and Phases 4–9 of the v1 build plan | Replaced by the v2 phases. |
 | Phase-numbered data and output folders | Done in this phase (below). |
 
@@ -150,30 +147,34 @@ code exists. Phases 2, 4, 5, and 6 start from nothing.
 - `data/phase_3/ab_testing/*.pdf` (4 articles) → `data/research/ab_testing/`
 - `data/phase_3/sources.yaml` → `data/research/sources.yaml`, with its `pdf:`
   path updated
-- `data/phase_2/masri_snoswell_towards_attuned_ai.pdf` (the v1 development
-  source, not one of the 16) → `outputs/v1_archive/`
-- `outputs/phase_2/` (8 v1 analyses of that source) →
-  `outputs/v1_archive/phase_2_analyses/`
-- `outputs/phase_3/` (the Li input-format experiment: source PDF, extracted
-  text, 8 crops, 3 analyses) → `outputs/v1_archive/li_input_experiment/`
+- `data/phase_2/` (the v1 development source, not one of the 16), `outputs/phase_2/`
+  (8 v1 analyses of it), and `outputs/phase_3/` (the Li input-format experiment:
+  source PDF, extracted text, 8 crops, 3 analyses) were removed from this branch.
+  They remain in git history at commit `0fd1ccf` and earlier.
 
-Nothing was deleted. Path references updated: the manifest's own `pdf:` entry,
-`DEFAULT_MANIFEST` in the preparation script, the `analyze_pdf.py` usage
-example, and the two moved paths in the pilot script. `README.md` and this plan
-were rewritten. All 181 tests still pass.
+Code removed: `scripts/run_li_input_pilot.py` and
+`tests/pilots/test_li_input_pilot_guard.py`, and the dead grounding helpers
+(`grounding_view`, `contains_reserved_character`, `SENTINEL`) with their exports
+and tests.
+
+Path references updated: the manifest's own `pdf:` entry, `DEFAULT_MANIFEST` in
+the preparation script, and the `analyze_pdf.py` usage example. `README.md` and
+this plan were rewritten. 169 tests pass, with Ruff, formatting, and mypy clean.
 
 ### Open items carried into Phase 1
 
-1. **The manifest covers one article.** `data/research/sources.yaml` has an
-   entry for Li only. All four A/B articles need owner-confirmed provenance
-   entries before preparation can run, since the preparation script reads the
-   manifest and the manifest comment records that these are confirmed by the
-   project owner, not inferred. **This needs the project owner.**
+1. **The manifest covers none of the A/B articles.** `data/research/sources.yaml`
+   holds a single entry, for `li_et_al_2025_making_ai_less_thirsty`, which is a
+   collection article and not one of the four. All four A/B articles need
+   owner-confirmed provenance entries before preparation can run, since the
+   preparation script reads the manifest and the manifest records these as
+   confirmed by the project owner rather than inferred. **This needs the project
+   owner.**
 2. **The `analyze_pdf.py` crash** above blocks measurement.
-3. **Li's preparation artifacts are gone.** `outputs/preparation/` does not
-   exist on disk; the Li extracted text and crops survive only as archived
-   copies. Nothing is lost for Phase 1, which prepares the four A/B articles
-   fresh, but the pilot script's `PREPARATION_DIR` no longer resolves.
+3. **No preparation artifacts exist.** `outputs/` was removed with the v1
+   material, so Phase 1 prepares all four A/B articles from their PDFs and times
+   that work as it goes, which is what the preparation-effort measurement needs
+   anyway.
 
 ### Acceptance criteria
 
@@ -289,9 +290,7 @@ result: record it and rerun that cell.
    Carry over the rate table and cost-from-actual-usage from the pilot script.
 6. Simplify the three `ANALYSIS_SCOPE` strings so a saved result describes what
    actually happened.
-7. Delete the pilot script, its guard test, `grounding_view`,
-   `contains_reserved_character`, `SENTINEL`, and the tests covering them.
-8. Run the 16 cells. Write `summary.csv`.
+7. Run the 16 cells. Write `summary.csv`.
 
 Cost: on the one measured v1 data point, two Sol-medium analyses of a 36.6k-char
 article, each including a correction attempt, had a combined calculated cost of
