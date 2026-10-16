@@ -97,8 +97,8 @@ one-source pilot script built around their failures. The codebase was then
 consolidated to what the experiment needs.
 
 **Net: 17 source files to 6, 1,675 lines to 1,289** (220 of them prompt text),
-**and 181 tests to 69** — twelve of those went with the dead grounding helpers,
-the rest with the consolidation below.
+**and 181 tests to 73** — twelve went with the dead grounding helpers, the rest
+with the consolidation below.
 [`REPOSITORY.md`](REPOSITORY.md) records every file that remains and what was
 deleted. Kept here is only the part it does not cover: why seventeen files
 became six.
@@ -133,7 +133,7 @@ DeepEval was named in the v1 README but never added as a dependency. Phases 2,
   `provenance_basis` naming the source of every field and keeping each file's
   email download origin out of `url`.
 
-69 tests pass, with Ruff, formatting, and mypy clean.
+73 tests pass, with Ruff, formatting, and mypy clean.
 
 ### Acceptance criteria
 
@@ -276,8 +276,8 @@ report actual cost as it goes.
 
 ### Tests
 
-Phase 0 left 69 tests covering the call path, the input modes, the schema rules,
-cost, and PDF preparation. Phase 1 adds only what the matrix runner itself needs,
+Phase 0 left 73 tests covering the call path, the input modes, the schema rules,
+cost, the runner's input handling, and PDF preparation. Phase 1 adds only what the matrix runner itself needs,
 offline and with no API calls: that a configuration slug maps to the right input
 mode and settings, that a failed cell still writes a run record rather than a
 half-written directory, and that `summary.csv` reports what the run records hold.

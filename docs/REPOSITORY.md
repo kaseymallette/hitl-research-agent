@@ -2,8 +2,8 @@
 
 Why each file exists, and what was removed to get here. The repository was
 consolidated at the end of Phase 0 down to what the A/B experiment actually
-needs: from 1,675 lines across 17 source files and 169 tests, to 1,289 lines
-across 6 and 69 tests.
+needs: from 1,675 lines across 17 source files and 181 tests, to 1,289 lines
+across 6 and 73 tests.
 
 The structure itself — the annotated tree, with line counts — is in
 [README.md](../README.md#repository-structure), kept in one place. This document
@@ -167,7 +167,7 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 69 tests
+## `tests/` — 73 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
@@ -176,6 +176,7 @@ keeping. If it loses, most of these 793 lines go.
 | `test_inputs.py` | 11 | Per-mode attachment validation, that every mode sends the same analysis prompt, byte-exact hashing |
 | `test_models.py` | 10 | Application-owned fields rejected from model content, attribution labels required, gap/annotation consistency, JSON round trip |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
+| `test_run_analysis.py` | 4 | The runner's input handling against real preparation output: confirmed provenance, a crop per gap, and an article with no crops |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file
 path, since `scripts/` is not importable, and `preparation/pdf_fixtures.py`
