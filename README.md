@@ -282,10 +282,12 @@ simplifies, or removes.
 │   └── preparation/                  PDF extraction behavior, with fixtures
 ├── docs/
 │   ├── BUILD_PLAN.md                 the phases in engineering detail
+│   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
 │   ├── adr/0001-0008.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
+├── CLAUDE.md                         what Claude Code loads in every session
 ├── pyproject.toml                    dependencies, Ruff, mypy, the src/ package
 ├── uv.lock                           resolved dependency set
 ├── .python-version                   3.12, matching requires-python and CI

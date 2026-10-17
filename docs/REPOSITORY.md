@@ -248,6 +248,31 @@ thing that happened here: quotation matching became an acceptance gate across
 many small changes, none of which chose it. A numbered record gives the next
 such change something it has to contradict in writing.
 
+### `ENGINEERING_DIRECTIVES.md`, with `CLAUDE.md` at the repository root
+
+A pair, and only useful together. `ENGINEERING_DIRECTIVES.md` is ten general
+directives for writing Python — contracts, data representation before control
+flow, no speculative abstraction, complexity and allocation, explicit
+invariants, traversal, contained state, policy apart from mechanism, tests of
+behavior rather than trivia, and deliberate failure handling. Nothing in it is
+specific to this project, by design: it is a baseline that would apply to any
+Python repository.
+
+`CLAUDE.md` is what Claude Code loads at the start of every session. It
+imports the directives, states how to work here, and then points at the
+documentation that does hold this project's specifics — the decision records,
+this file, and the build plan.
+
+**Why the pointer section is not redundant.** A general directive and a
+project decision can disagree. Directive 10 says to distinguish invalid
+external data from transient failure and handle expected failure explicitly;
+applied to this codebase, a claim with no evidence item or a `verbatim`
+quotation absent from the text reads as invalid data, and the reasonable move
+is to raise. That is exactly the acceptance gate
+[ADR-0005](adr/0005-no-hard-quality-gates.md) forbids, reached by following a
+sound general principle — which is how v1 arrived there. `CLAUDE.md` names the
+prohibition so the baseline cannot lead back into it.
+
 ---
 
 ## Dependencies and configuration
