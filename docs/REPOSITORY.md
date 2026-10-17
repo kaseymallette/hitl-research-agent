@@ -212,6 +212,44 @@ thing blocking it.
 
 ---
 
+## `docs/`
+
+`BUILD_PLAN.md` (the phases in engineering detail), this file, `prompt_log.md`
+and its per-phase logs in `phases/`, and:
+
+### `adr/` — 10 files
+
+One architectural decision per record: `0001`–`0008`, plus `template.md` for
+new ones and `README.md`, which indexes them and states the conventions.
+
+All eight were back-filled on 2026-10-17 from decisions already made — the
+`src/` layout, `statement_origin` as attribution rather than verification, the
+model-content split, the exact `pymupdf4llm` pin, the removal of hard quality
+gates, question-independence for analysis and synthesis, one `AnalysisError`
+with a `kind`, and the decision to settle the input format by experiment.
+Each carries the date the decision was made and the commit where it landed.
+
+`0008` is the only one that is not `Accepted`. It is `Provisional`: it records
+that the choice between a full PDF and prepared text plus crops is deferred to
+the Phase 1 experiment, and states in advance what evidence settles it. When
+Phase 1 reports, a new record states the outcome and supersedes it. It is also
+why `prepare_sources.py` is frozen — changing it would change what one arm of
+the experiment produces.
+
+**Why, given that this file already explains most of them.** The two documents
+answer different questions and are kept apart on purpose. This file describes
+the repository as it stands and is rewritten whenever the repository changes;
+a record describes one choice at one moment, with the alternatives that lost
+and what the choice cost, and is never rewritten. When a decision is reversed,
+a new record supersedes the old one and the old one stays readable.
+
+That immutability is the point. The README names architectural drift as a
+thing that happened here: quotation matching became an acceptance gate across
+many small changes, none of which chose it. A numbered record gives the next
+such change something it has to contradict in writing.
+
+---
+
 ## Dependencies and configuration
 
 Three choices in `pyproject.toml` are worth knowing. `pymupdf4llm` is pinned to

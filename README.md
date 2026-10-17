@@ -283,6 +283,7 @@ simplifies, or removes.
 ├── docs/
 │   ├── BUILD_PLAN.md                 the phases in engineering detail
 │   ├── REPOSITORY.md                 every file, and why it exists
+│   ├── adr/0001-0008.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── pyproject.toml                    dependencies, Ruff, mypy, the src/ package
@@ -336,5 +337,7 @@ uv run mypy src
   rubrics and procedures
 - [Repository Inventory](docs/REPOSITORY.md) — every file, what it is for, and
   where the code is heavier than it needs to be
+- [Decision Records](docs/adr/) — one dated record per architectural decision,
+  with the alternatives and what each one cost
 - [Prompt Log](docs/prompt_log.md) — one log per phase, recording the prompts
   given to Claude Code and Codex while building this and what came back
