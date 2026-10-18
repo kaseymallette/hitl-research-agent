@@ -188,5 +188,15 @@ The fix is to give each article a fixed source_id that every run reuses. The sim
 
 **Prompt:** Keep failed runs
 
-**Response:** I committed the fix as 3b1b586 on main. The pre-commit checks passed (Ruff, formatting, mypy), and nothing is pushed. A rerun after a failure now keeps the failed run's record as failed_run_<n>.json, since its tokens were billed.
+**Response:** Committed as c96d57e on main with your phase_1.md log. A rerun now keeps the failed run's record as failed_run_<n>.json. All 83 tests pass, Ruff and mypy are clean, the tree is clean and nothing is pushed.
+
+## 12. Start with Barnett 
+
+**Prompt:** I am working on the Barnett article right now. I am writing my notes on a whiteboard and then Chat is transcribing them. I was thinking we could start with that article and compare my notes?
+
+**Response:** Yes, starting with Barnett is a good idea, for two reasons.
+
+- It's a cheap test run. Barnett is the shortest article at 7 pages, so its 6 runs are the cheapest in the experiment. They also exercise the runner and records end to end before you spend money on lei.
+- Your notes give the comparison a reference point. Phase 2 needs your own reading of each article to check the judge against. Notes you wrote before seeing any model output are exactly that.
+
 
