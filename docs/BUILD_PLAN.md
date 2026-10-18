@@ -103,7 +103,8 @@ DeepEval was named in the v1 README but never added as a dependency. Phases 2,
 
 Establish, by measurement rather than assumption, whether preparing a PDF into
 extracted text plus crops buys anything over sending the PDF itself, and
-whether the expensive model buys anything over the cheap one. v1 never compared
+whether the expensive model buys anything over the cheap one, including the
+cheap one given more reasoning effort. v1 never compared
 these: it assumed extracted text because its first implementation needed a
 local text reference, and the one paired comparison it ran was judged by
 grounding checks that favored the arm receiving the prepared text, so it settled
@@ -114,12 +115,14 @@ and cost together.
 
 ### The matrix
 
-4 articles × 2 input methods × 2 model configurations = **16 analyses**.
+3 articles × 2 input methods × 3 model configurations = **18 analyses**
+([ADR-0009](adr/0009-phase-1-matrix-three-configurations-three-articles.md)
+revised [ADR-0008](adr/0008-compare-pdf-against-prepared-text.md)'s 2 × 2 over
+four articles).
 
 | Articles | `data/research/ab_testing/` | pages | chars |
 | --- | --- | --- | --- |
 | | `barnett_itzhaki_2026_water_footprint_artificial_intelligence` | 7 | 51k |
-| | `kanbur_et_al_2020_desalination_integrated_data_center_cooling` | 18 | 82k |
 | | `katakam_et_al_2027_desalination_systems_data_center_water_needs` | 20 | 107k |
 | | `lei_et_al_2025_water_use_data_center_workloads` | 60 | 97k |
 
@@ -132,15 +135,26 @@ and cost together.
 | Model configuration | Model | Reasoning effort |
 | --- | --- | --- |
 | Sol medium | `gpt-6.1-sol` | `medium` |
+| Sol high | `gpt-6.1-sol` | `high` |
 | Astra low | `gpt-6-astra` | `low` |
 
 Configuration slug, used in output paths: `<input>__<model>-<effort>`, so
-`pdf__gpt-6.1-sol-medium`, `pdf__gpt-6-astra-low`,
-`text_crops__gpt-6.1-sol-medium`, and `text_crops__gpt-6-astra-low`.
+`pdf__gpt-6.1-sol-medium`, `pdf__gpt-6.1-sol-high`, `pdf__gpt-6-astra-low`,
+`text_crops__gpt-6.1-sol-medium`, `text_crops__gpt-6.1-sol-high`, and
+`text_crops__gpt-6-astra-low`.
+
+Sol high is there so model and effort are not confounded: Sol medium against
+Sol high isolates effort, and Sol high against Astra low compares the models
+with Sol given more reasoning. Astra runs at one setting, so its model and
+effort still cannot be separated.
 
 The page spread is deliberate. The PDF arm's input cost scales with page count,
 so `lei` at 60 pages is the stress case for that arm, and `barnett` at 7 pages
 the cheap case. If the two arms differ in cost, they will differ most there.
+`kanbur_et_al_2020_desalination_integrated_data_center_cooling` was the fourth
+article; it covered the same topic as `katakam`, the more recent of the two,
+and left the experiment to pay for the third configuration. It is in
+`data/research/` with the rest of the collection.
 
 ### Held constant
 
@@ -161,12 +175,13 @@ Per analysis, in `run_record.json`:
   v1 (read from OpenAI's model pages on 2026-10-15) are $2.00/$10.00 per MTok
   input/output for `gpt-6.1-sol` and $10.00/$50.00 for `gpt-6-astra` — Astra is
   five times the rate, which Phase 2's choice has to weigh against whatever
-  quality difference it finds.
+  quality difference it finds. Reasoning tokens are billed at the output rate,
+  so Sol high costs more than Sol medium by however many more it uses.
 - **Runtime** — wall clock per attempt and per analysis.
 - **Attempts** — outcome, request id, and problems for each, including a first
   attempt that failed the schema.
 
-Per article, once, in a preparation record shared by both `text_crops` cells:
+Per article, once, in a preparation record shared by its three `text_crops` cells:
 
 - **Preparation effort** — wall-clock preparation time, number and kind of
   preparation gaps (figures, equations, multi-level table headers), number of
@@ -189,7 +204,7 @@ failure — API error, unreadable response, output that will not parse — is no
 result: record it and rerun that cell.
 
 An article with no figures, equations, or multi-level table headers produces no
-crops, and its two `text_crops` cells send prepared text alone. They still run
+crops, and its three `text_crops` cells send prepared text alone. They still run
 and still count: the arm being compared is the **input workflow** — prepare the
 PDF locally, or hand the PDF to the API — and a crop count of zero is a property
 of that article, not a defect in the cell. The run record carries `input_mode`
@@ -202,9 +217,9 @@ crops vary with the article, not with a condition anyone assigned.
 Phase 0 left the code and the provenance ready for these; nothing here is
 cleanup, and nothing is blocked.
 
-1. Prepare the four articles with `prepare_sources.py`, timing each; record
+1. Prepare the three articles with `prepare_sources.py`, timing each; record
    gaps and crops.
-2. Run the 16 cells with `run_analysis.py`: it takes an article, an input
+2. Run the 18 cells with `run_analysis.py`: it takes an article, an input
    method, and a model, and writes `analysis.json` and `run_record.json` with
    usage, calculated cost, and runtime.
 3. Write `summary.csv` — one row per cell, the only new code this phase needs.
@@ -213,9 +228,11 @@ Cost: on the one measured v1 data point, two Sol-medium analyses of a 36.6k-char
 article, each including a correction attempt, had a combined calculated cost of
 $0.5173 — about $0.26 per analysis. These articles are 1.4–2.9× that length, the
 removal of the quality gates should make most runs single-attempt, and Astra's
-rates are 5× Sol's. The order of magnitude for all 16 is therefore roughly
-$10–15, dominated by the eight Astra cells. That is a projection from one
-article, not a cap; the runner should take an explicit per-run confirmation and
+rates are 5× Sol's. For the original 16-cell design that put the order of
+magnitude at roughly $10–15, dominated by the eight Astra cells. The 18-cell
+design has six Astra cells rather than eight, and six Sol-high cells whose
+reasoning usage has not been measured, so no revised figure is given here.
+That is a projection from one article at one effort level, not a cap; the runner should take an explicit per-run confirmation and
 report actual cost as it goes.
 
 ### Tests
@@ -228,14 +245,14 @@ half-written directory, and that `summary.csv` reports what the run records hold
 
 ### Acceptance criteria
 
-- [ ] 16 `analysis.json` files exist, one per cell, indented and readable, each
+- [ ] 18 `analysis.json` files exist, one per cell, indented and readable, each
       the analysis the model returned, unmodified.
 - [ ] Each cell has a `run_record.json` with usage, calculated cost, runtime,
       and per-attempt records; no fabricated values.
-- [ ] Preparation effort recorded for all four articles.
-- [ ] The prompt, schema, and correction policy are identical across all 16
+- [ ] Preparation effort recorded for all three articles.
+- [ ] The prompt, schema, and correction policy are identical across all 18
       cells, and that is demonstrable from the records.
-- [ ] `summary.csv` lets Phase 2 pick up the comparison without rereading 16
+- [ ] `summary.csv` lets Phase 2 pick up the comparison without rereading 18
       run records.
 - [ ] No quality check anywhere can prevent an analysis from being written.
 
@@ -252,7 +269,7 @@ against the original images. Phase 1 hands Phase 2 artifacts and measurements.
 
 ### Goal
 
-Design metrics and rubrics, evaluate the 16 analyses, and choose the model and
+Design metrics and rubrics, evaluate the 18 analyses, and choose the model and
 input method on quality and cost together.
 
 ### The behavioral axes
@@ -298,7 +315,7 @@ taste, so it needs the tightest rubric and the closest human spot-checking.
 - Rubrics specific enough that two runs of the judge on the same analysis agree,
   and the scale each metric reports on.
 - The judge model and configuration, and its cost — the judge is itself a paid
-  model call across 16 analyses and several metrics.
+  model call across 18 analyses and several metrics.
 - How the judge gets the source: it faces the same input-method question the
   analyses do, and a judge that only reads extracted text cannot assess a
   reading of a figure.
@@ -320,8 +337,8 @@ behind it, including the cases where the two point in different directions.
 Analyze and evaluate all 16 articles in `data/research/` using the Phase 2
 configuration, reusing the Phase 1 outputs that already used it.
 
-Four of the 16 are the A/B articles, and four of their 16 cells already hold an
-analysis in the chosen configuration — those are reused rather than rerun, if
+Three of the 16 are the A/B articles, and three of their 18 cells already hold
+an analysis in the chosen configuration — those are reused rather than rerun, if
 their records show the same prompt, schema, and settings. Analyses go to
 `outputs/analyses/<slug>/` and evaluations to `outputs/evaluations/<slug>/`, so
 an analysis is never conflated with the judgment of it, and either can be

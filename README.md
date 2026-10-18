@@ -36,7 +36,7 @@ matter for relevance: a source about process-grade cooling water is not
 evidence about drinking water, and treating them as the same thing is the first
 way a judgment about relevance goes wrong.
 
-The source collection is 16 articles in [`data/research/`](data/research), four
+The source collection is 16 articles in [`data/research/`](data/research), three
 of which are the experiment set in
 [`data/research/ab_testing/`](data/research/ab_testing).
 
@@ -181,19 +181,26 @@ pipeline without first testing whether it improved the analysis. This
 experiment compares the two approaches to find out whether that extra work
 is worthwhile.
 
-I’m also testing GPT-6.1 Sol at medium reasoning effort against GPT-6 Astra at
-low reasoning effort. Sol could lower the cost of analyzing the collection,
-but I want to see whether it represents and assesses the authors’ arguments
-as well as Astra, and whether any improvement from Astra justifies its
-additional cost.
+I’m also testing GPT-6.1 Sol at medium and high reasoning effort against
+GPT-6 Astra at low reasoning effort. Sol could lower the cost of analyzing the
+collection, but I want to see whether it represents and assesses the authors’
+arguments as well as Astra, and whether any improvement from Astra justifies
+its additional cost. Running Sol at two effort levels keeps the model and the
+effort from being confounded: if Astra comes out ahead of Sol medium, Sol high
+shows whether Sol only needed more reasoning.
 
-Each model will analyze the same four articles using both input methods,
-producing **16 analyses**:
+Each configuration will analyze the same three articles using both input
+methods, producing **18 analyses**:
 
-| | GPT-6.1 Sol, medium effort | GPT-6 Astra, low effort |
-| --- | --- | --- |
-| **Full PDF** | 4 analyses | 4 analyses |
-| **Extracted text + crops** | 4 analyses | 4 analyses |
+| | GPT-6.1 Sol, medium effort | GPT-6.1 Sol, high effort | GPT-6 Astra, low effort |
+| --- | --- | --- | --- |
+| **Full PDF** | 3 analyses | 3 analyses | 3 analyses |
+| **Extracted text + crops** | 3 analyses | 3 analyses | 3 analyses |
+
+The experiment began as a 2 × 2 over four articles. Adding Sol high and
+dropping one of the two desalination articles kept the number of analyses
+close to the original; the reasons are in
+[ADR-0009](docs/adr/0009-phase-1-matrix-three-configurations-three-articles.md).
 
 The analysis prompt, output schema, one-correction policy, and
 question-independence of the task stay fixed. The intended differences are
@@ -206,7 +213,7 @@ and manual work needed to prepare the text and crops. That will let me weigh
 any improvement in analysis against what it costs to produce.
 
 The results will help me choose a configuration for the full 16-article
-collection. Four articles provide an initial comparison, not a conclusion
+collection. Three articles provide an initial comparison, not a conclusion
 about which approach works best across all research topics. The broader
 question remains whether the system improves my research enough to justify
 the time spent preparing, reviewing, and correcting its output.
@@ -245,8 +252,8 @@ What has been difficult about working this way:
 | Phase | What it does |
 | --- | --- |
 | 0 | **Review and redesign**: audit the earlier code and restructure the repository and documentation around these phases *(complete)* |
-| 1 | **A/B testing**: the 2 × 2 above, recording usage, cost, runtime, and preparation effort |
-| 2 | **DeepEval**: rubrics for the axes above, applied to the 16 analyses, with independent human scoring of a sample, and the choice of model and input method |
+| 1 | **A/B testing**: the 2 × 3 above, recording usage, cost, runtime, and preparation effort |
+| 2 | **DeepEval**: rubrics for the axes above, applied to the 18 analyses, with independent human scoring of a sample, and the choice of model and input method |
 | 3 | **Research collection**: analyze and evaluate all 16 articles with the chosen configuration, reusing suitable experiment outputs |
 | 4 | **Synthesis agent**: compare sources, with its own evaluation design |
 | 5 | **Literature review agent**: find relevant articles for explicit research questions |
@@ -261,8 +268,8 @@ simplifies, or removes.
 ```
 .
 ├── data/research/                    the 16 source articles
-│   ├── <12 collection PDFs>
-│   ├── ab_testing/                   the 4 A/B experiment articles
+│   ├── <13 collection PDFs>
+│   ├── ab_testing/                   the 3 A/B experiment articles
 │   └── sources.yaml                  provenance manifest, owner-confirmed
 ├── src/hitl_research_agent/
 │   ├── models.py                     every research type, and the model-content split
@@ -285,7 +292,7 @@ simplifies, or removes.
 │   ├── DESIGN.md                     the system, and the rules it holds to
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── adr/0001-0008.md              one record per architectural decision
+│   ├── adr/0001-0009.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── CLAUDE.md                         what Claude Code loads in every session

@@ -44,7 +44,7 @@ sources:
       retrieved_at: "macOS quarantine timestamp on the PDF file"
 
   - slug: kanbur_et_al_2020_desalination_integrated_data_center_cooling
-    pdf: data/research/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
+    pdf: data/research/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
     source_title: "Multi-criteria thermoeconomic and thermodynamic assessments of the desalination-integrated two-phase liquid-immersion data center cooling system"
     source_authors: [Baris Burak Kanbur, Chenlong Wu, Fei Duan]
     publication_date: "2020-07-23"

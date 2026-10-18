@@ -201,7 +201,7 @@ The rest went with the code they covered.
 
 ## `data/research/`
 
-16 source PDFs, four of them in `ab_testing/` as the experiment set, plus
+16 source PDFs, three of them in `ab_testing/` as the experiment set, plus
 `sources.yaml`.
 
 `sources.yaml` currently holds **one** entry, for
@@ -231,9 +231,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 10 files
+### `adr/` — 11 files
 
-One architectural decision per record: `0001`–`0008`, plus `template.md` for
+One architectural decision per record: `0001`–`0009`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -249,6 +249,11 @@ the Phase 1 experiment, and states in advance what evidence settles it. When
 Phase 1 reports, a new record states the outcome and supersedes it. It is also
 why `prepare_sources.py` is frozen — changing it would change what one arm of
 the experiment produces.
+
+`0009`, the first record written when its decision was made rather than
+back-filled, amends `0008`'s matrix: Sol at high effort is added so that model
+and effort are not confounded, and `kanbur` leaves the experiment to keep the
+run count near the original, for 18 analyses over three articles.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes
