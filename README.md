@@ -270,6 +270,7 @@ simplifies, or removes.
 ├── data/research/                    the 16 source articles
 │   ├── <13 collection PDFs>
 │   ├── ab_testing/                   the 3 A/B experiment articles
+│   ├── notes/                        my own reading of each article, by slug
 │   └── sources.yaml                  provenance manifest, owner-confirmed
 ├── src/hitl_research_agent/
 │   ├── models.py                     every research type, and the model-content split
