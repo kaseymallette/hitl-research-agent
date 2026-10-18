@@ -194,6 +194,7 @@ Per article, once, in a preparation record shared by its three `text_crops` cell
 ```
 outputs/ab_testing/<slug>/<config>/analysis.json      the analysis, indented, unchanged
 outputs/ab_testing/<slug>/<config>/run_record.json    usage, cost, runtime, attempts
+outputs/ab_testing/<slug>/<config>/failed_run_<n>.json  an earlier failed run of the cell, kept for its cost
 outputs/ab_testing/summary.csv                        one row per cell, for Phase 2
 outputs/preparation/<slug>/                           extracted text, crops, preparation record
 ```

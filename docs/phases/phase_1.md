@@ -95,8 +95,98 @@ README.md: update the A/B section and its table, the GPT-6.1 Sol vs. GPT-6 Astra
 
 **Prompt:** Let's create ADR-0009 to record the revised matrix and why we made the changes. I moved kanbur's PDF to data/research/ so the folder matches the experiment.
 
-**Response:** 
+**Response:** Created ADR-0009 documenting the 2 × 3 matrix with Sol high effort added and kanbur dropped, keeping the run count at 18 rather than 24. The ADR explains the rationale and amends ADR-0008's matrix while preserving its other decisions.
+
+**Pending decision:** Check prepare_sources.py and run_analysis.py against Phase 1 next?
+
+## 6. Check prepare_sources.py and run_analysis.py against Phase 1
+
+**Prompt:** Yes, check prepare_sources.py and run_analysis.py against the Phase 1 requirements before we prepare the three articles.
+
+**Response:** Short version: prepare_sources.py is fine to run on the three articles now. run_analysis.py has two problems that would break the experiment's "prompt held constant" requirement, plus a few record-keeping gaps. All of them should be fixed before the first paid run.
+
+prepare_sources.py: ready to run
+
+It writes prep_record.json with everything the build plan asks for, except one item:
+
+Timing: recorded as wall-clock seconds for extraction and writing.
+Gaps: each annotation carries its kind (figure, table, equation) and page. Multi-level table headers are marked separately from plain tables.
+Crops kept: listed under retained_images.
+Manual intervention: not recorded. The script has no field for it, and since the script is frozen (ADR-0008), it can't gain one. Your own time (reading the prepared text, rendering pages to check a figure) has to go somewhere else, such as a short preparation note per article.
+
+One known limit, already documented in the script: a figure with no caption gets no annotation and no crop. That makes the crop count a lower bound on what preparation actually missed.
+
+run_analysis.py: what to fix before running
+
+These two make the prompt differ between the arms. The prompt sends the model Source title: and Source type: lines (prompts.py:193). The text arm takes both from sources.yaml. The PDF arm takes the title from the PDF's own metadata and the type from --source-type, which defaults to peer_reviewed_paper (run_analysis.py:66-82).
+
+barnett is source_type: other in sources.yaml, so its PDF cells would see a different type than its text cells.
+lei has no title in its PDF metadata, so the PDF arm refuses to run unless you type the title by hand. A typed title must match sources.yaml exactly, or that cell's prompt differs too.
+
+**Pending decision:** The fix is for the PDF arm to read title, type and the rest of the provenance from sources.yaml, the same way the text arm reads its provenance.json. That also gives the PDF arm's analysis.json complete provenance (authors, DOI). Phase 3 needs that to reuse those analyses.
+
+## 7. Fix run_analysis.py
+
+**Prompt:** Let's fix run_analysis.py to read title, type and the rest of the provenance from sources.yaml, the same way the text arm reads its provenance.json. That also gives the PDF arm's analysis.json complete provenance (authors, DOI). Phase 3 needs that to reuse those analyses.
+
+**Response:** I've made both arms of run_analysis.py take their provenance from sources.yaml. A barnett PDF cell and its text cell now send the same Source title: and Source type: lines in the prompt, and lei no longer needs a hand-typed title. All 76 tests pass, including 3 new ones, and Ruff, formatting and mypy are clean. Nothing is committed.
+
+What changed in run_analysis.py
+
+One function builds provenance for both arms. The PDF arm passes it the manifest entry for its slug. The text arm passes it the provenance.json that preparation copied from that same entry. Because both go through the same code, one arm can't quietly diverge from the other.
+
+The PDF arm stops if its slug isn't in the manifest. It no longer falls back to the PDF's embedded metadata or to the current time for retrieved_at. I loaded the real entries for barnett, katakam and lei through it, and each comes back with its title, authors, type and DOI.
+
+A new --manifest flag, defaulting to data/research/sources.yaml.
+
+One interface change to flag: I removed --title and --source-type. They were the way the two arms could end up with different prompts. --source-type would also have done nothing now, because every manifest entry has to have a type. If you'd rather keep --title as a deliberate override, it's easy to put back.
+
+Tests (test_run_analysis.py):
+
+the PDF arm gets the manifest's title, authors, type, DOI, date and retrieved_at
+both arms produce identical provenance for the same article
+a slug with no manifest entry is refused
+
+I also updated the runner's entry in REPOSITORY.md. I didn't touch your phase_1.md edits.
+
+**Pending decision:** Still open: each run generates a new random source_id, so the 6 cells for one article each get a different id. The model's own docs ask for the id to be reused whenever a source is reanalyzed. Nothing reads it in Phase 1, but Phase 3's reuse of these analyses will need a fixed id per source. Items 3–6 from the review (cost of failed cells, prompt and schema fingerprints, a reasoning-token total, half-written directories) aren't done yet.
 
 
+## 8. Two separate IDs
 
+**Prompt:** But isn't it like two separate id's? One for each run and one for each article? No?
+
+**Response:** Yes, that's the design, and it's the right one. There are two ids:
+
+id, one per analysis. Each run gets its own, which is correct, because each run is a separate analysis.
+source_id, one per article. It should be the same every time that article is analyzed.
+
+The problem is that the second id doesn't behave as intended. Nothing ever sets it, so each run makes up a new random value, just as it does for id. barnett's 6 runs end up with 6 different source_ids when they should all share one.
+
+The fix is to give each article a fixed source_id that every run reuses. The simplest way is to compute it from the article's slug, so barnett always gets the same id without anything new being stored.
+
+## 9. Fix source_id
+
+**Prompt:** Let's fix it now. Give each article a fixed source_id that every run reuses. The simplest way is to compute it from the article's slug, so barnett always gets the same id without anything new being stored.
+
+**Response:** I committed the provenance and source_id changes as a6308ab on main. The pre-commit checks passed (Ruff, formatting, mypy), and nothing is pushed.
+
+**Pending decision:** Four gaps from the review are still open in run_analysis.py:
+
+- a failed cell records less cost than was actually spent;
+- the run records don't prove the prompt and schema were the same in every cell;
+- there's no reasoning-token total per cell;
+- a crash can leave a half-written directory.
+
+## 10. Address remaining gaps
+
+**Prompt:** Fix them, retries off
+
+**Response:** The four record gaps are fixed and client retries are off. All 82 tests pass (5 new) and Ruff and mypy are clean. Nothing is committed yet. One gap remains: a rerun after a failure overwrites the failed run's record, so the cost of that failed run is lost.
+
+## 11. Keep failed runs
+
+**Prompt:** Keep failed runs
+
+**Response:** I committed the fix as 3b1b586 on main. The pre-commit checks passed (Ruff, formatting, mypy), and nothing is pushed. A rerun after a failure now keeps the failed run's record as failed_run_<n>.json, since its tokens were billed.
 

@@ -19,13 +19,18 @@ across arms.
 
 Writes <out>/<slug>/<config>/analysis.json (the analysis as the model returned
 it) and run_record.json (configuration, usage, calculated cost, runtime,
-request ids, and every attempt).
+request ids, every attempt, and fingerprints of the prompt, schema, and code).
+A cell that already holds an analysis is not rerun; delete its directory first.
+Rerunning a failed cell keeps the failed run's record as failed_run_<n>.json,
+since its tokens were billed.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import subprocess
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -37,16 +42,18 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 import pymupdf  # noqa: E402
 import yaml  # noqa: E402
 
-from hitl_research_agent.analysis import AnalysisError, analyze_source  # noqa: E402
+from hitl_research_agent.analysis import AnalysisError, AttemptRecord, analyze_source  # noqa: E402
 from hitl_research_agent.config import Settings  # noqa: E402
 from hitl_research_agent.cost import calculated_cost  # noqa: E402
 from hitl_research_agent.inputs import LoadedAttachment, load_attachment  # noqa: E402
 from hitl_research_agent.models import (  # noqa: E402
+    ExtractedAnalysis,
     PreparationGap,
     Provenance,
     SourceDocument,
     source_id_for,
 )
+from hitl_research_agent.prompts import INPUT_MODE_INSTRUCTIONS, SYSTEM_PROMPT  # noqa: E402
 
 INPUT_MODES = {"pdf": "pdf", "text_crops": "prepared_text_and_crops", "text": "prepared_text"}
 
@@ -148,7 +155,55 @@ def load_prepared_source(prep_dir: Path) -> tuple[SourceDocument, list[LoadedAtt
     return source, crops
 
 
-def main() -> int:
+def sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def fingerprints(input_mode: str) -> dict[str, Any]:
+    """What makes the prompt, schema, and correction policy demonstrably the
+    same across cells. Computed before the paid call, so a failure here costs
+    nothing."""
+
+    def git(*args: str) -> str:
+        return subprocess.run(
+            ["git", *args], cwd=REPO_ROOT, capture_output=True, text=True, check=True
+        ).stdout.strip()
+
+    instructions = INPUT_MODE_INSTRUCTIONS[input_mode]  # type: ignore[index]
+    return {
+        "system_prompt_sha256": sha256_text(SYSTEM_PROMPT),
+        "input_mode_instructions_sha256": sha256_text(instructions) if instructions else None,
+        "output_schema_sha256": sha256_text(
+            json.dumps(ExtractedAnalysis.model_json_schema(), sort_keys=True)
+        ),
+        "git_commit": git("rev-parse", "HEAD"),
+        # The correction policy is code; uncommitted changes to it would make
+        # git_commit an incomplete description of what ran.
+        "code_uncommitted_changes": bool(git("status", "--porcelain", "--", "src", "scripts")),
+    }
+
+
+def usage_totals(attempts: list[AttemptRecord]) -> dict[str, int | None]:
+    """Totals over every attempt that reported usage, including attempts in a
+    run that then failed, since those tokens were still spent.
+
+    The reasoning total is None when any reporting attempt left it unreported.
+    An unreported cached count is taken as zero, which prices those tokens at
+    the full input rate rather than understating the cost.
+    """
+    usages = [a.usage for a in attempts if a.usage]
+    reasoning = [u.reasoning_tokens for u in usages]
+    return {
+        "input_tokens": sum(u.input_tokens for u in usages),
+        "output_tokens": sum(u.output_tokens for u in usages),
+        "reasoning_tokens": sum(r or 0 for r in reasoning)
+        if usages and None not in reasoning
+        else None,
+        "cached_input_tokens": sum(u.cached_input_tokens or 0 for u in usages),
+    }
+
+
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pdf", help="path to the PDF, relative to the repo")
     parser.add_argument("--slug", help="preparation slug, for --input text_crops")
@@ -160,13 +215,16 @@ def main() -> int:
     parser.add_argument("--prepared", default="outputs/preparation")
     parser.add_argument("--out", default="outputs/ab_testing")
     parser.add_argument("--confirm-paid", action="store_true", help="required: this calls the API")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     if not args.confirm_paid:
         print("Refusing to run: a paid call needs --confirm-paid.", file=sys.stderr)
         return 2
 
-    overrides: dict[str, Any] = {}
+    # No hidden client retries: every request is an attempt the record can see,
+    # and runtime is not inflated by retries nobody recorded. A transient
+    # failure fails the cell, which is then rerun.
+    overrides: dict[str, Any] = {"openai_max_retries": 0}
     if args.model:
         overrides["openai_model"] = args.model
     if args.effort:
@@ -209,7 +267,13 @@ def main() -> int:
 
     config = config_slug(args.input, settings.openai_model, settings.openai_reasoning_effort)
     destination = REPO_ROOT / args.out / slug / config
-    destination.mkdir(parents=True, exist_ok=True)
+    if (destination / "analysis.json").exists():
+        print(
+            f"{shown(destination)} already holds an analysis; delete the directory to rerun it.",
+            file=sys.stderr,
+        )
+        return 2
+    fingerprint = fingerprints(input_mode)
 
     started = datetime.now(UTC)
     result = None
@@ -224,6 +288,9 @@ def main() -> int:
     except AnalysisError as exc:
         error = exc
     ended = datetime.now(UTC)
+    # Created only once there is a record to write, so a crash before the call
+    # leaves no empty cell behind.
+    destination.mkdir(parents=True, exist_ok=True)
 
     attempts = list(result.attempts) if result else list(error.attempts if error else [])
     record: dict[str, Any] = {
@@ -237,6 +304,8 @@ def main() -> int:
         "model": settings.openai_model,
         "reasoning_effort": settings.openai_reasoning_effort,
         "max_output_tokens": settings.max_output_tokens,
+        "openai_max_retries": settings.openai_max_retries,
+        **fingerprint,
         "model_inputs": [item.record.as_record() for item in attachments],
         "started_at": started.isoformat(),
         "elapsed_seconds": round((ended - started).total_seconds(), 3),
@@ -255,20 +324,15 @@ def main() -> int:
         ],
     }
 
-    cached = sum(a.usage.cached_input_tokens or 0 for a in attempts if a.usage)
-    tokens_in = result.input_tokens if result else (error.input_tokens if error else 0)
-    tokens_out = result.output_tokens if result else (error.output_tokens if error else 0)
-    record["usage"] = {
-        "input_tokens": tokens_in,
-        "output_tokens": tokens_out,
-        "cached_input_tokens": cached,
-    }
+    totals = usage_totals(attempts)
+    record["usage"] = totals
+    tokens_in, tokens_out = totals["input_tokens"] or 0, totals["output_tokens"] or 0
     try:
         record["calculated_cost"] = calculated_cost(
             settings.openai_model,
             input_tokens=tokens_in,
             output_tokens=tokens_out,
-            cached_input_tokens=cached,
+            cached_input_tokens=totals["cached_input_tokens"] or 0,
         )
     except ValueError as exc:
         record["calculated_cost"] = {"error": str(exc)}
@@ -292,7 +356,15 @@ def main() -> int:
     else:
         print(f"no analysis returned: {error.kind if error else '?'}: {error}", file=sys.stderr)
 
-    (destination / "run_record.json").write_text(json.dumps(record, indent=2) + "\n")
+    record_path = destination / "run_record.json"
+    if record_path.exists():
+        # Only a failed run leaves a record without an analysis (an analysis
+        # refuses the rerun above). Its tokens were billed, so it is kept.
+        number = len(list(destination.glob("failed_run_*.json"))) + 1
+        kept = destination / f"failed_run_{number}.json"
+        record_path.rename(kept)
+        print(f"previous failed run kept: {shown(kept)}")
+    record_path.write_text(json.dumps(record, indent=2) + "\n")
     print(f"run record: {shown(destination / 'run_record.json')}")
     return 0 if result else 1
 

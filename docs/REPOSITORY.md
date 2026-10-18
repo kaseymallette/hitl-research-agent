@@ -124,12 +124,24 @@ a change to two of these fields, which is why they are configuration.
 
 Not installed, not shipped, not type-checked (`mypy src` covers `src/` only).
 
-### `run_analysis.py` (301 lines)
+### `run_analysis.py` (373 lines)
 
 One cell of the matrix: one article, one input method, one model. Writes
 `analysis.json` (the analysis as the model returned it) and `run_record.json`
 (configuration, usage, calculated cost, runtime, request ids, every attempt) to
 `outputs/ab_testing/<slug>/<config>/`.
+
+The record is built to be complete rather than convenient. Usage totals,
+reasoning tokens included, are summed from every attempt that reported usage,
+so a cell that failed after a billed first attempt still records what it cost.
+It carries sha256 fingerprints of the system prompt, the format-specific
+instructions, and the output schema, plus the git commit and whether `src/` or
+`scripts/` had uncommitted changes, which is what makes "the prompt, schema, and
+correction policy were identical" checkable from the records. Client retries are
+off, so every request is an attempt the record shows. The cell directory is
+created only once there is a record to write, and a cell that already holds an
+analysis is refused rather than overwritten. Rerunning a failed cell keeps the
+failed run's record as `failed_run_<n>.json`, since its tokens were billed.
 
 An article with no figures, equations, or multi-level table headers produces no
 crops. The runner sends prepared text alone, records `input_mode` and
@@ -177,16 +189,16 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 73 tests
+## `tests/` — 83 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
 | `preparation/test_prepare.py` | 27 | PDF extraction: reading order, hyphen joining, header removal, annotation placement, crop retention |
 | `test_analysis.py` | 16 | The call path: the correction attempt, each run-stopping failure, attempt records, usage arithmetic, attachments resent on correction |
 | `test_inputs.py` | 11 | Per-mode attachment validation, that every mode sends the same analysis prompt, byte-exact hashing |
-| `test_models.py` | 10 | Application-owned fields rejected from model content, attribution labels required, gap/annotation consistency, JSON round trip |
+| `test_models.py` | 11 | Application-owned fields rejected from model content, attribution labels required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
-| `test_run_analysis.py` | 4 | The runner's input handling against real preparation output: confirmed provenance, a crop per gap, and an article with no crops |
+| `test_run_analysis.py` | 13 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file
 path, since `scripts/` is not importable, and `preparation/pdf_fixtures.py`
