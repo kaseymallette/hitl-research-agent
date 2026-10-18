@@ -282,6 +282,7 @@ simplifies, or removes.
 │   └── preparation/                  PDF extraction behavior, with fixtures
 ├── docs/
 │   ├── BUILD_PLAN.md                 the phases in engineering detail
+│   ├── DESIGN.md                     the system, and the rules it holds to
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
 │   ├── adr/0001-0008.md              one record per architectural decision
@@ -335,6 +336,8 @@ uv run ruff check . && uv run ruff format --check .
 uv run mypy src
 ```
 
+- [Design](docs/DESIGN.md) — the three agents, the workflow contract, the data
+  model, and the rules that hold across every phase
 - [Build Plan](docs/BUILD_PLAN.md) — the phases in engineering detail, with
   rubrics and procedures
 - [Repository Inventory](docs/REPOSITORY.md) — every file, what it is for, and

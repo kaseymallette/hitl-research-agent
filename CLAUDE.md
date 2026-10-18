@@ -23,6 +23,6 @@ Project-specific commands, constraints, and architectural decisions belong in th
 
 Checks: `uv run pytest` · `uv run ruff check . && uv run ruff format --check .` · `uv run mypy src`
 
-Architectural decisions are recorded in [docs/adr/](docs/adr/) and are binding. Read the relevant ones before changing the analysis path, the output schema, or input handling. [docs/REPOSITORY.md](docs/REPOSITORY.md) says why each file exists; [docs/BUILD_PLAN.md](docs/BUILD_PLAN.md) has the phases.
+Architectural decisions are recorded in [docs/adr/](docs/adr/) and are binding. Read the relevant ones before changing the analysis path, the output schema, or input handling. [docs/DESIGN.md](docs/DESIGN.md) is the architecture and the rules that hold across every phase; [docs/REPOSITORY.md](docs/REPOSITORY.md) says why each file exists; [docs/BUILD_PLAN.md](docs/BUILD_PLAN.md) has the phases.
 
 **The one hard prohibition** ([ADR-0005](docs/adr/0005-no-hard-quality-gates.md)): only a technical failure may stop a run. A thin analysis, a claim with no evidence item, a `verbatim` quotation that does not match the source text — these are reported to the researcher, never withheld. Do not add validation that blocks a result on analysis quality, however reasonable it looks. Directive 10 above treats invalid external data as a thing to handle explicitly; model output that is poor is not invalid data, and this is the boundary where that distinction matters.

@@ -32,6 +32,9 @@ stays readable, for the same reason nothing is rewritten in the
 [prompt log](../prompt_log.md): the record of how the thinking moved is the
 point.
 
+Repairing a link whose target moved is not an edit to the record. The
+reasoning is what must not change.
+
 **One decision per record.** If two things were decided together and either
 could be reversed without the other, they are two records.
 
@@ -56,6 +59,7 @@ still a decision, and writing it down is what stops it drifting closed.
 | Document | Holds | Tense |
 | --- | --- | --- |
 | **ADRs** (here) | one decision each, with its alternatives and costs | past: what was decided, when |
+| [DESIGN.md](../DESIGN.md) | what the system is and the rules it holds to | present: the stable contract |
 | [REPOSITORY.md](../REPOSITORY.md) | what every file currently is and why it exists | present: current state |
 | [BUILD_PLAN.md](../BUILD_PLAN.md) | the phases, in engineering detail | future: what is planned |
 | [prompt_log.md](../prompt_log.md) | the prompts given to the assistants, and what came back | past: how the work went |

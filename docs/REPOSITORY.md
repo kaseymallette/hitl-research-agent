@@ -214,8 +214,22 @@ thing blocking it.
 
 ## `docs/`
 
-`BUILD_PLAN.md` (the phases in engineering detail), this file, `prompt_log.md`
-and its per-phase logs in `phases/`, and:
+`DESIGN.md` and `BUILD_PLAN.md` (below), this file, `prompt_log.md` and its
+per-phase logs in `phases/`, and:
+
+### `DESIGN.md` and `BUILD_PLAN.md`
+
+One document split in two. `DESIGN.md` is what the system is — the three
+agents and which of them sees a research question, the workflow contract and
+the four rules that hold across every phase, the two-layer data model, and
+what the system deliberately does not do. `BUILD_PLAN.md` is the order it
+gets built in: six phases, their acceptance criteria, rubrics, and open
+items.
+
+They were one file until the architecture section had to be read past to
+reach the current phase, and until it became unclear which document a change
+to a rule belonged in. The split answers that: a rule that holds whatever
+phase you are in is design, and anything with a phase number is the plan.
 
 ### `adr/` — 10 files
 

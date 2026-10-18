@@ -72,6 +72,6 @@ fix.
 ## Notes
 
 Back-filled 2026-10-17. Stated as rule 2 of the workflow contract in
-[BUILD_PLAN.md](../BUILD_PLAN.md). Related:
+[DESIGN.md](../DESIGN.md). Related:
 [ADR-0002](0002-statement-origin-is-an-attribution.md), which rejects the same
 text-matching reasoning at the schema level.

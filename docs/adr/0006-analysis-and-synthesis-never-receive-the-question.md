@@ -62,5 +62,4 @@ the related invariant that the analysis prompt does not vary by input mode.
 ## Notes
 
 Back-filled 2026-10-17. Stated in the agent table in
-[README.md](../../README.md) and in the System Architecture section of
-[BUILD_PLAN.md](../BUILD_PLAN.md).
+[README.md](../../README.md) and in [DESIGN.md](../DESIGN.md).
