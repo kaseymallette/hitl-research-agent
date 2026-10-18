@@ -21,6 +21,7 @@ from hitl_research_agent.models import (
     SourceAnalysis,
     SourceDocument,
     Statement,
+    source_id_for,
 )
 
 PROVENANCE = Provenance(
@@ -160,3 +161,12 @@ def test_source_text_with_a_stray_reserved_character_is_refused() -> None:
     for bad in ("stray ⟦ opener", "stray ⟧ closer"):
         with pytest.raises(ValidationError, match="reserved character"):
             SourceDocument(text=bad, provenance=PROVENANCE)
+
+
+def test_a_source_id_is_the_same_for_every_analysis_of_one_slug() -> None:
+    """Analyses of one source are recognized as such by a shared source_id,
+    and the id is a stored identity, so the derivation must never drift."""
+    slug = "barnett_itzhaki_2026_water_footprint_artificial_intelligence"
+    assert source_id_for(slug) == source_id_for(slug)
+    assert str(source_id_for(slug)) == "53ded687-3b31-5225-9dd6-52a9a05922cf"
+    assert source_id_for(slug) != source_id_for("lei_et_al_2025_water_use_data_center_workloads")

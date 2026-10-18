@@ -2,7 +2,7 @@
 """Run one cell of the A/B matrix: one article, one input method, one model.
 
     uv run python scripts/run_analysis.py --pdf data/research/ab_testing/<name>.pdf \
-        --title "Paper title" --input pdf --model gpt-6.1-sol --effort medium --confirm-paid
+        --input pdf --model gpt-6.1-sol --effort medium --confirm-paid
 
     uv run python scripts/run_analysis.py --slug <slug> --input text_crops \
         --model gpt-6-astra --effort low --confirm-paid
@@ -10,6 +10,12 @@
 `--input pdf` sends the original PDF. `--input text_crops` sends the prepared
 text plus its retained crops, read from the preparation directory that
 `prepare_sources.py` wrote.
+
+Both arms take the source's provenance from the owner-confirmed manifest,
+`data/research/sources.yaml`: the PDF arm directly, the text arm through the
+`provenance.json` preparation copied from it. The title and source type are
+part of the prompt, so reading them from one place keeps the prompt identical
+across arms.
 
 Writes <out>/<slug>/<config>/analysis.json (the analysis as the model returned
 it) and run_record.json (configuration, usage, calculated cost, runtime,
@@ -29,25 +35,19 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
 import pymupdf  # noqa: E402
+import yaml  # noqa: E402
 
 from hitl_research_agent.analysis import AnalysisError, analyze_source  # noqa: E402
 from hitl_research_agent.config import Settings  # noqa: E402
 from hitl_research_agent.cost import calculated_cost  # noqa: E402
 from hitl_research_agent.inputs import LoadedAttachment, load_attachment  # noqa: E402
-from hitl_research_agent.models import PreparationGap, Provenance, SourceDocument  # noqa: E402
-
-SOURCE_TYPES = (
-    "peer_reviewed_paper",
-    "preprint",
-    "government_report",
-    "government_policy",
-    "research_institute_report",
-    "technical_document",
-    "industry_report",
-    "news_article",
-    "blog_post",
-    "other",
+from hitl_research_agent.models import (  # noqa: E402
+    PreparationGap,
+    Provenance,
+    SourceDocument,
+    source_id_for,
 )
+
 INPUT_MODES = {"pdf": "pdf", "text_crops": "prepared_text_and_crops", "text": "prepared_text"}
 
 
@@ -63,28 +63,45 @@ def config_slug(input_choice: str, model: str, effort: str) -> str:
     return f"{input_choice}__{model}-{effort}"
 
 
-def load_pdf_source(pdf: Path, relative: str, title: str, source_type: str) -> SourceDocument:
+PROVENANCE_FIELDS = (
+    "source_title",
+    "source_authors",
+    "publication_date",
+    "source_type",
+    "doi",
+    "publisher",
+    "url",
+    "retrieved_at",
+)
+
+
+def confirmed_provenance(data: dict[str, Any], slug: str) -> Provenance:
+    """Provenance from a manifest entry or the provenance.json copied from one,
+    with the source_id every analysis of this slug shares."""
+    fields = {key: data[key] for key in PROVENANCE_FIELDS if data.get(key) not in (None, [])}
+    return Provenance.model_validate({**fields, "source_id": source_id_for(slug)})
+
+
+def manifest_provenance(manifest: Path, slug: str) -> Provenance:
+    entries = yaml.safe_load(manifest.read_text(encoding="utf-8"))["sources"]
+    for entry in entries:
+        if entry["slug"] == slug:
+            return confirmed_provenance(entry, slug)
+    raise SystemExit(f"No entry for {slug} in {shown(manifest)}; its provenance must be confirmed.")
+
+
+def load_pdf_source(pdf: Path, relative: str, provenance: Provenance) -> SourceDocument:
     with pymupdf.open(pdf) as document:
         pages = document.page_count
-        embedded = (document.metadata or {}).get("title") or ""
-    resolved = title or embedded.strip()
-    if not resolved:
-        raise SystemExit("No title given and none embedded in the PDF; pass --title.")
     return SourceDocument(
         # The model reads the attached PDF; this text is the placeholder the
         # input contract requires and is never sent.
         text=f"(the source is supplied as the attached PDF: {relative}, {pages} pages)",
-        provenance=Provenance(
-            source_title=resolved,
-            source_type=source_type,  # type: ignore[arg-type]
-            retrieved_at=datetime.now(UTC),
-        ),
+        provenance=provenance,
     )
 
 
-def load_prepared_source(
-    prep_dir: Path, title: str, source_type: str
-) -> tuple[SourceDocument, list[LoadedAttachment]]:
+def load_prepared_source(prep_dir: Path) -> tuple[SourceDocument, list[LoadedAttachment]]:
     """The prepared text plus one crop per declared preparation gap."""
     record_path = prep_dir / "prep_record.json"
     if not record_path.is_file():
@@ -108,16 +125,7 @@ def load_prepared_source(
     ]
     source = SourceDocument(
         text=text,
-        provenance=Provenance(
-            source_title=title or confirmed["source_title"],
-            source_authors=confirmed.get("source_authors", []),
-            publication_date=confirmed.get("publication_date"),
-            source_type=confirmed.get("source_type", source_type),
-            doi=confirmed.get("doi"),
-            publisher=confirmed.get("publisher"),
-            url=confirmed.get("url"),
-            retrieved_at=confirmed["retrieved_at"],
-        ),
+        provenance=confirmed_provenance(confirmed, record["slug"]),
         preparation_directory=shown(prep_dir),
         preparation_gaps=gaps,
     )
@@ -144,12 +152,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pdf", help="path to the PDF, relative to the repo")
     parser.add_argument("--slug", help="preparation slug, for --input text_crops")
-    parser.add_argument("--title", default="", help="source title; defaults to the PDF's own")
-    parser.add_argument("--source-type", default="peer_reviewed_paper", choices=SOURCE_TYPES)
     parser.add_argument("--input", default="pdf", choices=sorted(INPUT_MODES))
     parser.add_argument("--model", default=None, help="defaults to the configured model")
     parser.add_argument("--effort", default=None, help="reasoning effort")
     parser.add_argument("--max-output-tokens", type=int, default=None)
+    parser.add_argument("--manifest", default="data/research/sources.yaml")
     parser.add_argument("--prepared", default="outputs/preparation")
     parser.add_argument("--out", default="outputs/ab_testing")
     parser.add_argument("--confirm-paid", action="store_true", help="required: this calls the API")
@@ -182,7 +189,8 @@ def main() -> int:
             print(f"No such PDF: {args.pdf}", file=sys.stderr)
             return 2
         slug = pdf.stem
-        source = load_pdf_source(pdf, args.pdf, args.title, args.source_type)
+        provenance = manifest_provenance(REPO_ROOT / args.manifest, slug)
+        source = load_pdf_source(pdf, args.pdf, provenance)
         attachments = [load_attachment(REPO_ROOT, args.pdf, kind="pdf")]
     else:
         if not args.slug:
@@ -190,7 +198,7 @@ def main() -> int:
             return 2
         slug = args.slug
         prep_dir = REPO_ROOT / args.prepared / slug
-        source, crops = load_prepared_source(prep_dir, args.title, args.source_type)
+        source, crops = load_prepared_source(prep_dir)
         attachments = crops if args.input == "text_crops" else []
         if args.input == "text_crops" and not crops:
             # Preparation found nothing text could not carry, so this cell is

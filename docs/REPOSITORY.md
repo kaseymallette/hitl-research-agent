@@ -30,7 +30,7 @@ The importable package. The directory name is the import name; the `src/`
 wrapper means the package can only be imported through the editable install,
 not from the working directory, so tests exercise what would ship.
 
-### `models.py` (302 lines)
+### `models.py` (312 lines)
 
 Every research type, in one module, in two layers:
 
@@ -46,7 +46,10 @@ optional `support_assessment`), `Evidence` (text, locator, citations,
 single `Statement` type used for the research problem, assumptions, limitations,
 proposed solutions, and open questions.
 
-Also here: `Provenance`; `SourceDocument`, the analysis input contract, carrying
+Also here: `Provenance`, whose `source_id` names the source rather than any one
+analysis of it — `source_id_for()` derives it from the slug, so every analysis of
+one article shares it without anything being stored, and changing
+`SOURCE_ID_NAMESPACE` would change every source's id; `SourceDocument`, the analysis input contract, carrying
 the validator that ties in-text preparation annotations to declared gaps so a
 result cannot claim coverage its text lacks; `PreparationGap`; and the three
 `ANALYSIS_SCOPE` strings that travel on a saved result to say what the model saw.
@@ -121,7 +124,7 @@ a change to two of these fields, which is why they are configuration.
 
 Not installed, not shipped, not type-checked (`mypy src` covers `src/` only).
 
-### `run_analysis.py` (273 lines)
+### `run_analysis.py` (301 lines)
 
 One cell of the matrix: one article, one input method, one model. Writes
 `analysis.json` (the analysis as the model returned it) and `run_record.json`
@@ -133,9 +136,16 @@ crops. The runner sends prepared text alone, records `input_mode` and
 `crops_sent`, and keeps the article in the experiment: the arm is the input
 workflow, and the crop count is a property of the article.
 
+Both arms take provenance from `data/research/sources.yaml`: the PDF arm reads
+the manifest entry for its slug and refuses to run without one, and the text arm
+reads the `provenance.json` preparation copied from it. The title and source
+type go into the prompt, so a single source for them keeps the prompt identical
+across arms, and the PDF arm's `analysis.json` carries the same full provenance
+as the text arm's, including the `source_id` derived from the slug.
+
 ```bash
 uv run python scripts/run_analysis.py --pdf data/research/ab_testing/<name>.pdf \
-    --title "..." --input pdf --model gpt-6.1-sol --effort medium --confirm-paid
+    --input pdf --model gpt-6.1-sol --effort medium --confirm-paid
 ```
 
 ```bash

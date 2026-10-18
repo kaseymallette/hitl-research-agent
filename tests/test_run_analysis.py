@@ -56,7 +56,9 @@ def _prepare(tmp_path: Path, slug: str, make_pdf: object) -> Path:
     pdf: {pdf}
     source_title: "A Fixture Paper"
     source_authors: [Someone]
+    publication_date: "2026-01-02"
     source_type: other
+    doi: 10.1000/fixture
     retrieved_at: "2026-10-15T00:00:00+00:00"
 """
     )
@@ -86,7 +88,7 @@ def test_a_prepared_source_loads_with_its_confirmed_provenance_and_crops(
     """The run record's provenance has to be the owner-confirmed manifest data,
     not values invented at runtime."""
     prep_dir = _prepare(tmp_path, "withtable", make_table_pdf)
-    source, crops = runner.load_prepared_source(prep_dir, "", "other")
+    source, crops = runner.load_prepared_source(prep_dir)
 
     assert source.provenance.source_title == "A Fixture Paper"
     assert source.provenance.source_authors == ["Someone"]
@@ -105,7 +107,7 @@ def test_an_article_with_no_crops_still_loads(runner: ModuleType, tmp_path: Path
     record = json.loads((prep_dir / "prep_record.json").read_text())
     assert record["annotations"] == [], "the text fixture should declare no gaps"
 
-    source, crops = runner.load_prepared_source(prep_dir, "", "other")
+    source, crops = runner.load_prepared_source(prep_dir)
     assert crops == []
     assert source.preparation_gaps == []
     assert source.text  # the prepared text is still there to analyze
@@ -124,4 +126,38 @@ def test_a_missing_preparation_directory_says_what_to_run(
     runner: ModuleType, tmp_path: Path
 ) -> None:
     with pytest.raises(SystemExit, match="prepare_sources.py"):
-        runner.load_prepared_source(tmp_path / "nothing", "", "other")
+        runner.load_prepared_source(tmp_path / "nothing")
+
+
+def test_a_pdf_source_takes_its_provenance_from_the_manifest(
+    runner: ModuleType, tmp_path: Path
+) -> None:
+    """The PDF arm reads the owner-confirmed manifest, not the PDF's own
+    metadata or a value typed at the command line."""
+    _prepare(tmp_path, "plain", make_text_pdf)
+    provenance = runner.manifest_provenance(tmp_path / "sources.yaml", "plain")
+    source = runner.load_pdf_source(tmp_path / "plain.pdf", "plain.pdf", provenance)
+
+    assert source.provenance.source_title == "A Fixture Paper"
+    assert source.provenance.source_authors == ["Someone"]
+    assert source.provenance.source_type == "other"
+    assert source.provenance.doi == "10.1000/fixture"
+    assert source.provenance.publication_date.isoformat() == "2026-01-02"
+    assert source.provenance.retrieved_at.isoformat() == "2026-10-15T00:00:00+00:00"
+
+
+def test_both_arms_give_the_model_the_same_provenance(runner: ModuleType, tmp_path: Path) -> None:
+    """The title and source type are in the prompt, so the two arms of one
+    article must carry the same provenance for the prompt to be held constant,
+    and the same source_id so their analyses are recognized as one source's."""
+    prep_dir = _prepare(tmp_path, "plain", make_text_pdf)
+    prepared, _ = runner.load_prepared_source(prep_dir)
+    from_manifest = runner.manifest_provenance(tmp_path / "sources.yaml", "plain")
+
+    assert prepared.provenance == from_manifest
+
+
+def test_a_pdf_with_no_manifest_entry_is_refused(runner: ModuleType, tmp_path: Path) -> None:
+    _prepare(tmp_path, "plain", make_text_pdf)
+    with pytest.raises(SystemExit, match="No entry for unlisted"):
+        runner.manifest_provenance(tmp_path / "sources.yaml", "unlisted")

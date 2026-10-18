@@ -16,7 +16,7 @@ really in the source is an evaluation question, answered outside this module.
 
 from datetime import UTC, date, datetime
 from typing import Annotated, Literal
-from uuid import UUID, uuid4
+from uuid import UUID, uuid4, uuid5
 
 from pydantic import (
     AwareDatetime,
@@ -59,6 +59,16 @@ SourceType = Literal[
     "blog_post",
     "other",
 ]
+
+
+# Fixed for the life of the project: changing it changes every source's id.
+SOURCE_ID_NAMESPACE = UUID("900c49b2-1de2-43bd-9483-a29096029beb")
+
+
+def source_id_for(slug: str) -> UUID:
+    """The source's stable identifier, derived from its slug, so every analysis
+    of one source carries the same `source_id` without the id being stored."""
+    return uuid5(SOURCE_ID_NAMESPACE, slug)
 
 
 class Provenance(ResearchBaseModel):
