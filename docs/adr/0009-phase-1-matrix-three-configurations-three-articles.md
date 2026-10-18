@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-10-17
-- **Landed in:** not yet committed
+- **Landed in:** `eaa3114`
 
 ## Context
 
