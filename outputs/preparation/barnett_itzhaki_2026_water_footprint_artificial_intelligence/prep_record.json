@@ -1,0 +1,122 @@
+{
+  "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+  "source_pdf": "data/research/ab_testing/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf",
+  "pdf_sha256": "7008272c90efb85dba72b5ee3f316140b313c096f6d6ea5f1016369db158dc0a",
+  "prepared_text": "prepared_text.txt",
+  "prepared_text_sha256": "622321b8ce8d04568d29691ee888565ef0a51c628263cf63ac23cfb70a0dafdb",
+  "prepared_text_characters": 49800,
+  "max_source_characters": 200000,
+  "within_size_limit": true,
+  "is_excerpt": false,
+  "excerpt_description": null,
+  "parser": {
+    "name": "pymupdf4llm",
+    "version": "1.28.2",
+    "pymupdf": "1.28.2"
+  },
+  "parser_settings": {
+    "layout_mode": true,
+    "header": false,
+    "footer": false,
+    "use_ocr": false,
+    "page_chunks": true,
+    "page_image_dpi": 130,
+    "crop_image_dpi": 200,
+    "reorder_columns": "geometry_column_segments_v1"
+  },
+  "settings_sha256": "b48a727cf702e325fb6c776a50fe7eb12a688f94effe66daa4120c3bceb600c6",
+  "script_sha256": "86c57b6040701183cca4a0b98f9f2c221962302a4cb1ebcfb9c56829700b7085",
+  "pages": 7,
+  "timing": {
+    "started_at_utc": "2026-10-18T23:07:03.894012+00:00",
+    "elapsed_seconds": 5.23,
+    "measured": "wall clock of extraction, assembly and record writing",
+    "model_calls": 0,
+    "usage": "no model usage: local extraction only"
+  },
+  "provenance_basis": {
+    "source_title": "first page and PDF metadata; confirmed against the Crossref record for the DOI",
+    "source_authors": "first-page byline (single author, two Ruppin Academic Center affiliations); Crossref lists one author",
+    "publication_date": "'Available online 2 April 2026' on the first page. The issue is Water Research 299 (2026), which Crossref dates only to 2026-07",
+    "source_type": "'other': a 'Making Waves' article, which Water Research's guide for authors defines as an opinion and perspective format of about 3000 words, not a research paper. The first page prints 'Received 30 December 2025; Received in revised form 20 March 2026', so it went through revision, but neither the PDF nor the guide states that this type is peer reviewed",
+    "doi": "printed on the first page and in PDF metadata; resolves in Crossref",
+    "publisher": "Elsevier BV per Crossref; Water Research 299 (2026) 125866",
+    "url": "publication URL via DOI. The file arrived as a Gmail attachment, so its download origin is an email attachment URL and is not recorded here",
+    "retrieved_at": "macOS quarantine timestamp on the PDF file"
+  },
+  "cleanup_applied": [
+    "parser header/footer removal; recurring margin lines removed (listed below)",
+    "continuation paragraphs joined only when the previous ends mid-sentence and the next starts lowercase; end-of-line hyphens joined or kept only where the document's own text supports it, otherwise kept as extracted and listed",
+    "no paraphrasing, summarizing, or reconstruction"
+  ],
+  "reading_order_changes": [
+    {
+      "page": 1,
+      "method": "geometry_column_segments_v1",
+      "columns_detected": 2,
+      "before": [
+        "When users interact with artificial intelligence (",
+        "intangible and effectively costless. Unlike visibl",
+        "- Corresponding author at: Ruppin Research Group i",
+        "https://doi.org/10.1016/j.watres.2026.125866",
+        "Received 30 December 2025; Received in revised for",
+        "Available online 2 April 2026",
+        "0043-1354/© 2026 Elsevier Ltd. All rights are rese"
+      ],
+      "after": [
+        "When users interact with artificial intelligence (",
+        "- Corresponding author at: Ruppin Research Group i",
+        "https://doi.org/10.1016/j.watres.2026.125866",
+        "Received 30 December 2025; Received in revised for",
+        "Available online 2 April 2026",
+        "0043-1354/© 2026 Elsevier Ltd. All rights are rese",
+        "intangible and effectively costless. Unlike visibl"
+      ]
+    }
+  ],
+  "removed_lines": [
+    {
+      "page": 3,
+      "text": "_Z. Barnett-Itzhaki_",
+      "why": "recurring margin line (>=2 pages)"
+    },
+    {
+      "page": 5,
+      "text": "_Z. Barnett-Itzhaki_",
+      "why": "recurring margin line (>=2 pages)"
+    },
+    {
+      "page": 6,
+      "text": "_Z. Barnett-Itzhaki_",
+      "why": "recurring margin line (>=2 pages)"
+    },
+    {
+      "page": 7,
+      "text": "_Z. Barnett-Itzhaki_",
+      "why": "recurring margin line (>=2 pages)"
+    }
+  ],
+  "hyphenation_notes": [],
+  "annotations": [
+    {
+      "id": "T1",
+      "start_offset": 10538,
+      "end_offset": 10755,
+      "kind": "table",
+      "page": 2,
+      "label": "Table 1",
+      "image": "images/T1_p02.png"
+    }
+  ],
+  "pages_without_text_layer_ocr_off": [],
+  "preparation_limits": [
+    "Figures and diagrams are not transcribed or interpreted. Each one is cropped and retained, and any whole page can be rendered from the PDF with the `page` command.",
+    "Equations appear only as the PDF's raw text layer, which is frequently not faithful.",
+    "Multi-level table headers lose their grouping; the data rows are extracted as-is.",
+    "Reading order is corrected only where block geometry shows a column jump. It is not proven correct anywhere.",
+    "An uncaptioned figure produces no annotation and no crop; it is visible only by rendering its page."
+  ],
+  "retained_images": [
+    "T1_p02.png"
+  ]
+}

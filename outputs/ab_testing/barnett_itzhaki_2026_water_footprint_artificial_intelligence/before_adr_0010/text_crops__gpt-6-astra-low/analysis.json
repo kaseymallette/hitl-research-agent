@@ -1,0 +1,697 @@
+{
+  "id": "5cd779cb-6d09-423a-9263-e3a767802da4",
+  "provenance": {
+    "source_id": "53ded687-3b31-5225-9dd6-52a9a05922cf",
+    "source_title": "The water footprint of artificial intelligence: Emerging solutions and governance imperatives",
+    "source_authors": [
+      "Zohar Barnett-Itzhaki"
+    ],
+    "publication_date": "2026-04-02",
+    "source_type": "other",
+    "doi": "10.1016/j.watres.2026.125866",
+    "publisher": "Elsevier",
+    "url": "https://doi.org/10.1016/j.watres.2026.125866",
+    "retrieved_at": "2026-10-16T00:19:44Z"
+  },
+  "analyzed_at": "2026-10-19T00:07:04.189186Z",
+  "content": {
+    "research_problem": {
+      "text": "AI infrastructure's environmental assessment emphasizes electricity and greenhouse-gas emissions while neglecting freshwater demand. The source examines operational cooling water use, locally concentrated water stress, the capabilities and constraints of technical alternatives, and the governance changes needed for water-sustainable AI.",
+      "statement_origin": "author_stated"
+    },
+    "central_claims": [
+      {
+        "text": "If AI use continues increasing, AI's global water footprint could reach 4.2–6.6 billion cubic meters annually by 2027.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "If this increase in AI use continues, AI's global water footprint could reach between 4.2 and 6.6 billion cubic meters annually by 2027, with U.S. data centers alone projected to consume up to 280 billion liters per year by 2028",
+            "locator": "Section 1",
+            "citations": [
+              {
+                "citation_text": "(Li et al., 2024; Shehabi et al., 2024)",
+                "reference_entry": "Li, X., Ren, S., Arlington, U., 2024. Addressing the water footprint of artificial intelligence: a path towards sustainability. arXiv preprint arXiv: 2304.03271v5.."
+              },
+              {
+                "citation_text": "(Li et al., 2024; Shehabi et al., 2024)",
+                "reference_entry": "Shehabi, A., Smith, S.J., Hubbard, A., Newkirk, A., Lei, N., Siddik, M.A.B., Holecek, B., Koomey, J., Masanet, E., Sartor, D., 2024. 2024 United States Data Center Energy\n\nUsage Report. Lawrence Berkeley National Laboratory, Berkeley, California. LBNL2001637. https://escholarship.org/uc/item/32d6m0d1. accessed 06.12.25."
+              }
+            ],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "This is a conditional projection, not a certain outcome. Section 1 supplies citations but no projection model or assumptions beyond continued growth. Section 2 further warns that most figures reported in the review represent withdrawals rather than consumption. The document therefore does not permit independent assessment of the projected range or a precise consumptive interpretation of it."
+      },
+      {
+        "text": "AI infrastructure presents a qualitatively different water challenge from general-purpose cloud computing and warrants dedicated assessment and mitigation.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "These distinctions establish that AI infrastructure presents a qualitatively different water challenge from general-purpose cloud computing, warranting dedicated assessment and mitigation strategies.",
+            "locator": "Section 1, final paragraph",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "The source identifies greater computational heat, near-continuous GPU utilization during training, and concentrated hyperscale demand; it contrasts AI rack densities of 50–100+ kW with conventional enterprise densities of 5–10 kW.",
+            "locator": "Section 1, AI workload characteristics",
+            "citations": [
+              {
+                "citation_text": "(Shehabi et al., 2024)",
+                "reference_entry": "Shehabi, A., Smith, S.J., Hubbard, A., Newkirk, A., Lei, N., Siddik, M.A.B., Holecek, B., Koomey, J., Masanet, E., Sartor, D., 2024. 2024 United States Data Center Energy\n\nUsage Report. Lawrence Berkeley National Laboratory, Berkeley, California. LBNL2001637. https://escholarship.org/uc/item/32d6m0d1. accessed 06.12.25."
+              }
+            ],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          }
+        ],
+        "support_assessment": "Section 1 gives concrete mechanisms for greater and more concentrated cooling demand, supporting dedicated attention. It does not compare water outcomes across matched AI and non-AI facilities, and Section 3.1 says cooling architecture and climate strongly determine burdens. The evidence supports heightened risks for the described training facilities more directly than a categorical distinction covering all AI infrastructure."
+      },
+      {
+        "text": "Global aggregate comparisons understate data centers' water significance because demand is concentrated in particular watersheds, often under water stress; local scarcity is essential to evaluating impact.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "However, aggregate comparisons understate the problem. Data center water demand is geographically concentrated in specific watersheds, often in water-stressed regions, and is growing rapidly. When measured against local water budgets rather than global totals, the impact can be significant",
+            "locator": "Section 3, global-water comparison",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "A Bloomberg analysis is reported as finding that about two-thirds of data centers built or planned since 2022 are in water-stressed regions.",
+            "locator": "Section 3.2, opening paragraph",
+            "citations": [
+              {
+                "citation_text": "(Nicoletti et al., 2025)",
+                "reference_entry": "Nicoletti, L., Ma, M., Bass, D., 2025. AI is Draining Water from Areas That Need It Most. Bloomberg. Available at: https://www.bloomberg.com/graphics/2025-ai-impactsdata-centers-water-data/. Accessed 28.11.25."
+              }
+            ],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          }
+        ],
+        "support_assessment": "The distinction between global totals and localized exposure is supported by the reported siting concentration in Section 3.2 and the Colón example. The source does not quantify watershed-specific incremental depletion, so it supports the need for local assessment more strongly than any particular estimate of local impact."
+      },
+      {
+        "text": "The spatial distribution of AI infrastructure reveals systematic disregard for water availability constraints.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Beyond aggregate consumption metrics, the spatial distribution of AI infrastructure reveals systematic disregard for water availability constraints.",
+            "locator": "Section 3.2, opening sentence",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "The source reports that approximately 42% of Microsoft's water consumption occurs in water-stress regions and 15% of Google's water use occurs in high water-scarcity areas.",
+            "locator": "Section 3.2, corporate reporting paragraph",
+            "citations": [
+              {
+                "citation_text": "(Barratt et al., 2025)",
+                "reference_entry": "Barratt, L., Gambarini, C., Uteuova, A., 2025. Revealed: big tech’s new datacentres will take water from the world’s driest areas. https://www.theguardian.com/environme nt/2025/apr/09/big-tech-datacentres-water (accessed 15.11.25)."
+              }
+            ],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          }
+        ],
+        "support_assessment": "Sections 3.2 and 5.1 document reported exposure to water stress and offer an economic explanation. Exposure alone does not establish that siting decisions systematically disregarded water constraints: the source supplies neither facility decision records nor comparisons of available sites. The inference requires treating concentration in stressed areas as evidence that water constraints were inadequately incorporated."
+      },
+      {
+        "text": "Rigid water-allocation institutions can preserve industrial cooling allocations during drought while communities face water restrictions, making AI's water footprint an environmental-justice and governance issue.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Once granted, industrial allocations carry legal standing regardless of evolving scarcity and are rarely subject to reallocation during drought.",
+            "locator": "Section 3.2, Colón discussion",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "The Colón case describes a municipality of 67,000 residents where a Microsoft hyperscale campus operates amid severe drought, nearly depleted reservoirs, and agricultural communities dependent on trucked and bottled water while industrial allocations continue serving cooling.",
+            "locator": "Section 3.2, Colón example",
+            "citations": [
+              {
+                "citation_text": "(Alvarez, 2024)",
+                "reference_entry": "Alvarez M., 2024. A Microsoft AI data center saps water from a small mexican town. htt ps://inthesetimes.com/article/microsoft-ai-data-center-water-climate (accessed 15.11.25)."
+              }
+            ],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          },
+          {
+            "text": "Computational infrastructure consuming public water during drought while agricultural communities face restrictions represents governance failure, not technical constraint.",
+            "locator": "Section 6.3",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "The Colón narrative provides a concrete distributional conflict and the source explains a plausible allocation mechanism. Its wider claim that many jurisdictions share such rigidity is not backed by a comparative analysis here. The judgment of governance failure also rests on a normative priority for essential community and agricultural needs over competing digital uses."
+      },
+      {
+        "text": "Cooling architecture and local climate primarily determine operational water burdens; liquid or immersion cooling is not intrinsically water-saving because its effect depends on the final heat-rejection pathway.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Advanced liquid and immersion cooling technologies enable efficient heat removal at higher temperatures, but their water impact depends critically on heat rejection pathways: dry coolers achieve very low on-site WUE, while evaporative rejection maintains high water consumption.",
+            "locator": "Section 3.1",
+            "citations": [
+              {
+                "citation_text": "(Vertiv, 2025a, 2025b; ASHRAE, n.d.)",
+                "reference_entry": "Vertiv, 2025a. Optimizing Water Usage Effectiveness For Data Centers. https://www.ve rtiv.com/en-asia/about/news-and-insights/articles/educational-articles/optimizi ng-water-usage-effectiveness-for-data-centers/(accessed 06.12.25)."
+              },
+              {
+                "citation_text": "(Vertiv, 2025a, 2025b; ASHRAE, n.d.)",
+                "reference_entry": "Vertiv, 2025b Freecooling, evaporative and adiabatic cooling technologies in data center applications. https://www.vertiv.com/en-us/about/news-and-insights/articles/bl og-posts/cooling-technologies-data-center-applications/(accessed 06.12.25)."
+              },
+              {
+                "citation_text": "(Vertiv, 2025a, 2025b; ASHRAE, n.d.)",
+                "reference_entry": "ASHRAE, n.d. Liquid cooling in data centers. https://www.ashrae.org/news/ashraejour nal/ashrae-journal-podcast-episode-44 (accessed 15.11.25)."
+              }
+            ],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": null
+      },
+      {
+        "text": "Cold-climate siting can greatly reduce on-site cooling water demand, but geographic limits, seasonal backup needs, competing infrastructure demand, and hydropower's indirect water losses constrain its sustainability and scalability.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Meta's Luleå facility is reported to withdraw 25.4 million liters annually using predominantly air cooling; the source also cautions that its hydropower supply can entail reservoir evaporation.",
+            "locator": "Section 4.1",
+            "citations": [
+              {
+                "citation_text": "(Zhang, 2024)",
+                "reference_entry": "Zhang M., 2024. Meta’s data center locations for Facebook and Instagram. https://d gtlinfra.com/meta-data-center-locations-facebook/(accessed 21.11.25)."
+              },
+              {
+                "citation_text": "(Scherer and Pfister, 2016)",
+                "reference_entry": "Scherer, L., Pfister, S., 2016. Global water footprint assessment of hydropower. Renew. Energy. 99, 711–720."
+              }
+            ],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          },
+          {
+            "text": "Nordic regions suitable for year-round free-air cooling are geographically limited and face competing demands for renewable energy and infrastructure capacity.",
+            "locator": "Section 4.1, Scalability",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": null
+      },
+      {
+        "text": "Natural-water-body cooling can minimize consumptive use but creates ecological and regulatory risks, including possible forced curtailment during extreme heat when cooling demand peaks.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "These systems may have low consumptive water use and favourable WUE, but they raise ecological questions about local warming plumes, effects on stratification, and cumulative impacts if widely scaled.",
+            "locator": "Section 4.2",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "The source describes discharge warming of 5–8°C and analogizes data-center curtailment risk to thermal power plants affected by discharge-temperature regulations; the cited power-sector projection is a 6–19% European capacity reduction by mid-century.",
+            "locator": "Section 4.2, Trade-offs and uncertainties",
+            "citations": [
+              {
+                "citation_text": "(van Vliet et al., 2012)",
+                "reference_entry": "Van Vliet, M.T., Yearsley, J.R., Ludwig, F., Vogele, S., Lettenmaier, D.P., Kabat, P., 2012. ¨ Vulnerability of US and European electricity supply to climate change. Nat. Clim. Change. 2 (9), 676–681."
+              }
+            ],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          }
+        ],
+        "support_assessment": "The stated risk is conditional on once-through or open-loop cooling and applicable discharge limits. Section 4.2 supplies a physical mechanism and a power-sector analogy, which support the possibility of curtailment, not its frequency or magnitude for data centers. The source explicitly lacks independent long-term ecological monitoring for its two examples."
+      },
+      {
+        "text": "Subsea facilities can eliminate on-site freshwater consumption, but capital cost, maintenance complexity, limited sites, underdeveloped regulation, and unresolved ecological impacts constrain wider deployment.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "High capital costs, complex maintenance requirements, and limited suitable sites constrain widespread deployment. Regulatory frameworks for subsea industrial installations are underdeveloped.",
+            "locator": "Section 4.3, Scalability",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "The Hainan installation is reported to accommodate 400–800 AI servers with WUE zero.",
+            "locator": "Section 4.3, opening paragraph",
+            "citations": [
+              {
+                "citation_text": "(CGTN, 2025; Xiaoying, 2025)",
+                "reference_entry": "CGTN, 2025. China's First Underwater Intelligent Computing Center in Hainan boosts AI Development. https://news.cgtn.com/news/2025-03-26/China-s-first-underwate r-computing-center-boosts-AI-development-1C3kRAHnmSs/p.html #:~: text=China's%20first%20underwater%20intelligent%20computing%20center% 20in%20Hainan%20boosts%20AI%20development&text=A%20cutting%2D (accessed 16.11.25)."
+              },
+              {
+                "citation_text": "(CGTN, 2025; Xiaoying, 2025)",
+                "reference_entry": "Xiaoying, Y., 2025. China is putting data centers in the ocean to keep them cool. htt\n\nps://www.scientificamerican.com/article/china-powers-ai-boom-with-undersea\n\n- -data-centers/(accessed 26.11.25)."
+              }
+            ],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          }
+        ],
+        "support_assessment": null
+      },
+      {
+        "text": "Waterless dry cooling trades near-zero on-site consumption for higher electricity demand and potentially displaced water use at power plants; reclaimed water reduces potable-water pressure rather than necessarily reducing total consumption.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Waterless cooling typically increases electricity consumption for dry heat rejection by approximately 10–25% compared to evaporative alternatives, particularly in hot climates, and can shift a portion of cooling-related water use from the data center to watercooled power plants, depending on the local grid mix.",
+            "locator": "Section 4.4, Trade-offs",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "Non-potable water use reduces potable water pressure but requires dual infrastructure systems and treatment facilities, increasing costs.",
+            "locator": "Section 4.4, Trade-offs",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": null
+      },
+      {
+        "text": "Low water prices and dominant electricity costs create strong financial incentives to choose water-intensive evaporative cooling over dry alternatives.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Since electricity constitutes the dominant operational cost for data centers (typically 40–60% of total operating expenses), while water is priced far below its scarcity value in most jurisdictions, operators face strong economic incentives to favour evaporative cooling over dry alternatives.",
+            "locator": "Section 4.4, Trade-offs",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "Section 4.4 develops a coherent cost mechanism by pairing a stated 10–25% dry-cooling energy penalty with electricity's operating-cost share. It supplies no jurisdictional price survey or operator investment comparisons, so the mechanism is better developed than the generalization about most jurisdictions or the empirical strength of operators' responses."
+      },
+      {
+        "text": "Waste-heat recovery can improve system-level energy efficiency and potentially save water by displacing separate fossil-fuel heating, but it may not reduce on-site water use and requires lifecycle evaluation.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "It may not reduce on-site water consumption, instead, it can shift water demand within the energy system so lifecycle analysis is needed to quantify net benefits.",
+            "locator": "Section 4.5, Trade-offs and Constraints",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "Deep Green's UK swimming-pool installations reportedly offset 62% of conventional natural-gas heating requirements.",
+            "locator": "Section 4.5, examples",
+            "citations": [
+              {
+                "citation_text": "(Judge, 2023)",
+                "reference_entry": "Judge, P., 2023. UK data center startup offers to heat Britain's swimming pools with waste heat. https://www.datacenterdynamics.com/en/news/uk-data-center-start up-offers-to-heat-britains-swimming-pools-with-waste-heat/(accessed 02.12.25)."
+              }
+            ],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          }
+        ],
+        "support_assessment": null
+      },
+      {
+        "text": "No single siting or technology choice resolves financial–environmental, energy–water, and regional trade-offs simultaneously, requiring integrated water, energy, and carbon assessment.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "No single siting or technology choice resolves all three tensions simultaneously, underscoring the need for integrated assessment across water, energy, and carbon dimensions.",
+            "locator": "Section 4.5, synthesis following scalability discussion",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "The synthesis contrasts inexpensive evaporative cooling with costlier dry cooling, water savings with electricity and carbon penalties, and sunny arid locations with northern free-air-cooling locations partly reliant on hydropower.",
+            "locator": "Section 4.5, synthesis",
+            "citations": [
+              {
+                "citation_text": "(Scherer and Pfister, 2016)",
+                "reference_entry": "Scherer, L., Pfister, S., 2016. Global water footprint assessment of hydropower. Renew. Energy. 99, 711–720."
+              }
+            ],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          }
+        ],
+        "support_assessment": "Sections 4.1–4.5 substantiate multiple trade-offs for each reviewed option, making integrated assessment well motivated. They do not exhaust all possible combinations of siting, cooling, electricity supply, and prices, so the absolute 'no single' formulation exceeds what this illustrative review establishes."
+      },
+      {
+        "text": "Dedicated nuclear power, including SMRs, may shift rather than eliminate data-center water demand; net effects depend on reactor design and siting.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "While dedicated nuclear supply could reduce indirect water associated with fossil-fuelled grid electricity, SMRs with conventional cooling systems would themselves require cooling water, potentially shifting rather than eliminating water demand.",
+            "locator": "Section 4.5, final paragraph",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": null
+      },
+      {
+        "text": "Technology alone is insufficient for water-sustainable AI; robust governance, accountability, standardized disclosure, and reframed expectations about digital resource consumption are required.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "However, their limited deployment and scalability show that technology alone is insufficient. Achieving water sustainable AI requires robust governance frameworks that establish accountability, standardize disclosure, and fundamentally reframe societal expectations regarding digital resource consumption.",
+            "locator": "Section 5, opening paragraph",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "Section 4 describes physical and financial adoption barriers; Sections 3.2 and 5.2 describe allocation rigidity and disclosure gaps. These are concrete reasons that technical efficiency alone does not address the source's broader equity and accountability goals. The document does not establish that every proposed governance component is necessary, or test whether the package would be sufficient."
+      },
+      {
+        "text": "Digital water sobriety should link AI's freshwater costs to demonstrated societal benefit and local availability through graduated governance, not binary bans on applications.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Digital water sobriety does not propose binary approval or prohibition of specific applications; rather, it advocates a graduated governance approach linking resource costs to demonstrated societal benefit.",
+            "locator": "Section 5.1, application-spectrum paragraph",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "Medical diagnostics, climate modelling, and pharmaceutical discovery may justify substantial water expenditure even in constrained regions, whereas recreational image generation, automated marketing, and low-stakes conversation are difficult to justify when competing with domestic or agricultural needs in stressed watersheds.",
+            "locator": "Section 5.1, concrete application comparison",
+            "citations": [],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          }
+        ],
+        "support_assessment": "The example makes the intended trade-off explicit and links the prescription to essential needs and equitable allocation. It does not provide procedures for measuring societal benefit, resolving contested valuations, or allocating costs among mixed-use facilities. The proposal is a normative framework rather than an evaluated decision rule."
+      },
+      {
+        "text": "Water-insensitive siting is a market failure that externalizes costs onto communities and ecosystems, and this pattern will persist without regulatory correction.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "As a result, companies externalize the true cost of water consumption onto local communities and ecosystems, a pattern that will persist absent regulatory correction.",
+            "locator": "Section 5.1, second dimension",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "The source argues that electricity prices, latency, tax incentives, and land availability drive siting, whereas bulk-commodity water prices omit local scarcity and environmental opportunity costs.",
+            "locator": "Section 5.1, second dimension",
+            "citations": [],
+            "evidence_form": "paraphrased",
+            "relationship_to_claim": "partial_support"
+          }
+        ],
+        "support_assessment": "The pricing mechanism in Sections 4.4 and 5.1 and the Colón conflict support a risk of externalization. The prediction of persistence without regulation is stronger: the source does not evaluate whether changing technology costs or voluntary practices could alter the pattern. It requires an unstated premise that those nonregulatory changes will not sufficiently correct incentives."
+      },
+      {
+        "text": "Awareness alone is insufficient; effective digital water sobriety requires structural policy, education, sustained political will, and enforceable mechanisms rather than merely voluntary commitments.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Studies show weak correlations between digital pollution knowledge and willingness to adopt sustainable practices",
+            "locator": "Section 5.1, final paragraph",
+            "citations": [
+              {
+                "citation_text": "(Barnett-Itzhaki and Tsoury, 2025)",
+                "reference_entry": "Barnett-Itzhaki, Z., Tsoury, A., 2025. From awareness to action: a UK-based study on public perceptions of digital pollution. Sustainability 17 (17), 7839."
+              }
+            ],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "partial_support"
+          },
+          {
+            "text": "effective digital water sobriety will require sustained political will and enforceable regulatory mechanisms, not merely voluntary corporate commitments.",
+            "locator": "Section 5.1, implementation discussion",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "The reported weak knowledge–willingness association supports caution about awareness-only approaches, but does not test education or regulation causally. The discussion of free riders, fragmented jurisdictions, industry resistance, and inadequate pledges provides reasons for enforceability; the necessity and effectiveness of the full intervention package remain untested."
+      },
+      {
+        "text": "Corporate water-positive commitments remain inadequate because replenishment credits fail to resolve temporal and spatial mismatches with continuous localized consumption, while aggregate voluntary WUE reporting obscures site impacts.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "However, these voluntary pledges rely on water replenishment credits, watershed restoration or infrastructure investments, that fail to address the temporal and spatial mismatch between continuous, localized consumption and seasonal, distributed replenishment.",
+            "locator": "Section 5.2",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "Moreover, WUE reporting remains voluntary and unstandardized, with companies typically disclosing aggregate corporate-level data that obscures facility-specific impacts and prevents meaningful site comparisons.",
+            "locator": "Section 5.2",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "The temporal–spatial mismatch is a relevant criterion for local water sustainability, and aggregation logically limits site comparisons. Section 5.2 does not examine individual replenishment projects' locations, timing, or effectiveness, so its categorical claim that the pledges fail is asserted more broadly than demonstrated."
+      },
+      {
+        "text": "Mandatory standardized facility-level disclosure, including consumption, electricity-related water, and temporal variation, is foundational to watershed assessment and evidence-based governance.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Extending WUE reporting requirements to include on-site consumption, embedded water in electricity supply, and temporal variation would enable watershed-level assessment.",
+            "locator": "Section 6.2, Mandatory facility-level transparency",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "Inconsistent voluntary reporting prevents meaningful facility comparison and evidence-based policymaking.",
+            "locator": "Section 6.1, Standardized disclosure protocols",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "Sections 2, 3, and 5.2 identify specific measurement problems: withdrawal–consumption conflation, undisclosed consumptive fractions, and corporate aggregation. These directly motivate standardized granular disclosure. Disclosure would supply necessary inputs, not by itself complete watershed assessment, which also needs the local hydrological information the source calls for."
+      },
+      {
+        "text": "New construction should be restricted in severely stressed watersheds and cumulative impacts incorporated into concessions and permitting to avoid externalizing costs onto vulnerable communities.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Restrict new construction in severely-stressed watersheds and require cumulative impact assessment as part of water concession and permitting processes, to avoid externalizing costs onto vulnerable communities.",
+            "locator": "Section 6.2, Water-conscious siting regulations",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "The reported concentration in stressed areas and the Colón allocation conflict in Section 3.2 support precautionary siting and cumulative review. The source does not specify stress thresholds or how restrictions would handle near-zero-consumption designs, so the proposed rule's scope and implementation remain unresolved."
+      },
+      {
+        "text": "Heat-recovery incentives would accelerate deployment and deliver energy, climate, and water co-benefits by displacing fossil thermal generation.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Policy frameworks incentivizing district heating integration over simpler direct cooling approaches would accelerate deployment of system-level solutions that displace fossil thermal generation and associated water use, delivering cobenefits across energy, climate, and water domains.",
+            "locator": "Section 6.2, Heat recovery integration incentives",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "Section 4.5 offers operating examples and a displacement mechanism, but no evaluation of incentive effects. Its warnings about proximity, seasonal demand, temperature compatibility, and uncertain net water savings qualify the conclusion's stronger prediction. Co-benefits depend on suitable demand and actual displacement of more resource-intensive heating."
+      },
+      {
+        "text": "Water-sustainable AI is achievable, and water outcomes reflect policy, siting, and design choices rather than technological necessity.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "Technical pathways exist: Meta's Luleå facility demonstrates 25 million liters annually suffices for hyperscale operations, while China's subsea installations achieve zero freshwater consumption, suggesting outcomes reflect policy and siting choices, not technological necessity.",
+            "locator": "Section 6.3",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "Sections 4.1 and 4.3 show reported examples of low on-site freshwater demand, supporting technical feasibility under particular conditions. They do not establish lifecycle water sustainability at expansion scale. Table 1 notes that Luleå's IT capacity is undisclosed, while Section 4 discusses indirect water use, ecological unknowns, and limited scalability. The broad conclusion needs the additional premise that these constraints can be managed across deployment."
+      },
+      {
+        "text": "Deployment, cooling, and allocation choices will determine whether AI worsens vulnerable populations' water insecurity or stimulates integrated water–energy–heat innovation; political action must arrive before expansion irreversibly deepens stress.",
+        "statement_origin": "author_stated",
+        "evidence": [
+          {
+            "text": "The choices made regarding where AI is deployed, how it is cooled, and whose water it consumes will determine whether this technology exacerbates water insecurity for vulnerable populations or catalyzes innovation in integrated water-energy-heat systems.",
+            "locator": "Section 6.3, final paragraph",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          },
+          {
+            "text": "Water-sustainable AI is achievable, the question is whether the society possesses the political will to implement it before computational expansion irreversibly deepens water stress in already vulnerable regions.",
+            "locator": "Section 6.3, final sentence",
+            "citations": [],
+            "evidence_form": "verbatim",
+            "relationship_to_claim": "claim_grounding"
+          }
+        ],
+        "support_assessment": "The review supplies mechanisms connecting siting, cooling, and allocation to local burdens and examples of heat-system innovation. It supplies no analysis of irreversible hydrological thresholds, timing, or attributable long-term depletion. The urgency is consistent with the reported conflicts, but irreversibility and the decisive strength of the predicted governance role are not established."
+      }
+    ],
+    "methodology": {
+      "summary": "A targeted review synthesizes published quantitative estimates, corporate disclosures, and accounts of siting and policy conflicts; it does not calculate an independent water footprint.",
+      "study_design": "Targeted literature and documentary review.",
+      "data_sources": [
+        "Peer-reviewed studies located through Web of Science and Google Scholar, 2015–2025, prioritizing quantitative assessments and lifecycle analyses.",
+        "Corporate sustainability reports and technical documentation from Google, Microsoft, and AWS.",
+        "Investigative journalism and policy analyses concerning siting conflicts, regulation, and community impacts."
+      ],
+      "sample_or_scope": "Primarily operational on-site blue-water consumption for cooling, represented through WUE; peer-reviewed sources were prioritized. No number of screened or included documents is reported.",
+      "analysis_methods": [
+        "Synthesis of quantitative figures as reported by reviewed sources.",
+        "Comparison of cooling options, trade-offs, scalability, and unresolved ecological effects.",
+        "Distinction between withdrawals and consumptive use, with acknowledgment that reported figures often conflate them.",
+        "Development of a digital water sobriety governance framework."
+      ],
+      "statement_origin": "author_stated"
+    },
+    "assumptions": [
+      {
+        "text": "Freshwater is a finite common resource whose allocation should be equitable.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Concentration of data centers in stressed regions indicates that siting decisions inadequately account for hydrological constraints; this inference underlies the claim of systematic disregard.",
+        "statement_origin": "model_inferred"
+      },
+      {
+        "text": "Essential domestic and agricultural water needs should carry greater weight than low-social-benefit digital uses under scarcity.",
+        "statement_origin": "model_inferred"
+      },
+      {
+        "text": "Nonregulatory technological, pricing, and voluntary changes will not sufficiently correct externalized water costs; this is needed for the prediction that the pattern persists absent regulation.",
+        "statement_origin": "model_inferred"
+      },
+      {
+        "text": "Demonstrated societal benefit can be assessed well enough to guide differentiated water pricing, budgets, impact assessments, and permitting.",
+        "statement_origin": "model_inferred"
+      },
+      {
+        "text": "Technical alternatives and policy interventions can collectively overcome site-specific, lifecycle, ecological, and scaling constraints; this is needed to extend examples of low on-site use to broadly achievable water-sustainable AI.",
+        "statement_origin": "model_inferred"
+      }
+    ],
+    "limitations": [
+      {
+        "text": "The review performs no independent water-footprint calculation and reproduces figures from literature and corporate disclosures.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Although focused on consumptive blue-water use, most cited figures reflect withdrawals unless specified otherwise; reporting often conflates the two.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Comprehensive green- and grey-water accounting, scarcity-weighted impact assessment, and indirect electricity and semiconductor water use are beyond scope.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Facility-level transparency is inadequate, and aggregate reporting prevents site-specific comparison and accountability.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Independent long-term ecological monitoring is unavailable for the discussed lake/seawater facilities, and comprehensive subsea ecological monitoring remains unpublished.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Luleå's facility-specific IT capacity is not publicly disclosed, so Table 1's per-MW estimates are approximate.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "The targeted review reports no reproducible search strings, screening counts, or formal quality-appraisal procedure.",
+        "statement_origin": "model_inferred"
+      },
+      {
+        "text": "Many figures and examples concern data centers generally rather than separately measured AI workloads, limiting attribution specifically to AI.",
+        "statement_origin": "model_inferred"
+      }
+    ],
+    "proposed_solutions": [
+      {
+        "text": "Adopt context-sensitive combinations of cold-climate siting, free-air cooling, natural-water thermal sinks, subsea designs, dry-rejection liquid or immersion cooling, reclaimed water, and heat recovery, assessing their lifecycle trade-offs.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Implement digital water sobriety through scarcity-adjusted water pricing, water-impact assessments for training above defined computational thresholds, facility water budgets linked to real-time watershed conditions, and preferential permitting for efficient cooling.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Require standardized facility-level reporting with explicit measurement methods, temporal resolution, geographic granularity, on-site consumption, and embedded electricity-related water.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Restrict new facilities in severely stressed watersheds and require cumulative-impact assessment in water concessions and permitting.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Coordinate urban infrastructure planning and provide incentives and investment for district-heating integration.",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Combine education with structural policy, enforceable regulation, and coordinated regulatory, industrial, and educational action.",
+        "statement_origin": "author_stated"
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "How can water costs be attributed to individual models, training runs, and architectural choices across cooling configurations?",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "What are AI's integrated lifecycle water impacts when electricity, chip manufacturing, regional scarcity, and temporal generation changes are included?",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "What are the long-term and cumulative ecological effects of lakeside and subsea cooling?",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Under which city, network, temperature, and seasonal conditions is data-center heat recovery economically viable and net water-saving?",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "How should standardized disclosure specify measurement boundaries, temporal resolution, and geographic granularity?",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "What net water effects will dedicated nuclear power and different SMR cooling designs have?",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Can political will, accountability, and public awareness develop fast enough to redirect AI expansion before it worsens vulnerable regions' water stress?",
+        "statement_origin": "author_stated"
+      },
+      {
+        "text": "Who should determine societal benefit, by which criteria, and how should contested or mixed-benefit AI applications be treated within tiered governance?",
+        "statement_origin": "model_inferred"
+      }
+    ]
+  }
+}

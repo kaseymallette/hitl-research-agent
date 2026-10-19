@@ -1,0 +1,72 @@
+{
+  "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+  "config": "pdf__gpt-6.1-sol-medium",
+  "input_method": "pdf",
+  "input_mode": "pdf",
+  "crops_sent": null,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "max_output_tokens": null,
+  "openai_max_retries": 0,
+  "system_prompt_sha256": "fb2b3b93529636bc0c9156a9f07272cbe00b0f1c1d367570c523210b336de621",
+  "input_mode_instructions_sha256": "8f6655e684ab3a244d1c359ca525d1a5c22b3408380f27880e6a84120fb3d756",
+  "output_schema_sha256": "7fc82a119d333e64eaccba39bc1309c12fbc97833922d3fdb867f36ea3e868e9",
+  "git_commit": "f0e46b18c747a89a37c39b2aa43da94ff669773c",
+  "code_uncommitted_changes": false,
+  "model_inputs": [
+    {
+      "kind": "pdf",
+      "path": "data/research/ab_testing/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf",
+      "mime_type": "application/pdf",
+      "sha256": "7008272c90efb85dba72b5ee3f316140b313c096f6d6ea5f1016369db158dc0a",
+      "byte_size": 1003897,
+      "page": null,
+      "gap_id": null,
+      "label": null
+    }
+  ],
+  "started_at": "2026-10-18T23:43:31.456764+00:00",
+  "elapsed_seconds": 234.458,
+  "outcome": "analysis returned",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_02c7dd04d8e18294006ad559a5591487d080bd8975429ba9ab",
+      "elapsed_seconds": 234.313273,
+      "usage": {
+        "input_tokens": 19487,
+        "output_tokens": 12383,
+        "reasoning_tokens": 796,
+        "cached_input_tokens": 0,
+        "cache_creation_input_tokens": 19484
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 19487,
+    "output_tokens": 12383,
+    "reasoning_tokens": 796,
+    "cached_input_tokens": 0
+  },
+  "calculated_cost": {
+    "model": "gpt-6.1-sol",
+    "input_tokens": 19487,
+    "cached_input_tokens": 0,
+    "output_tokens": 12383,
+    "input_usd": 0.038974,
+    "cached_input_usd": 0.0,
+    "output_usd": 0.12383,
+    "total_usd": 0.162804,
+    "rates_usd_per_mtok": {
+      "input": 2.0,
+      "output": 10.0,
+      "cached_input": 0.1
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  },
+  "analysis_scope": "The model received the original source PDF, so nothing was withheld from it. Content it reports from a figure, table, or equation was read from a page image and is unverified until a human checks it against that page."
+}

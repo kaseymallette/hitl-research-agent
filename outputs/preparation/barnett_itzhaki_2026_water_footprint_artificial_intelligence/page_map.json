@@ -1,0 +1,51 @@
+[
+  {
+    "pdf_page": 1,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 0,
+    "end_offset": 3154
+  },
+  {
+    "pdf_page": 2,
+    "printed_label": "2",
+    "mapped_text": true,
+    "start_offset": 3154,
+    "end_offset": 11223
+  },
+  {
+    "pdf_page": 3,
+    "printed_label": "3",
+    "mapped_text": true,
+    "start_offset": 11223,
+    "end_offset": 19189
+  },
+  {
+    "pdf_page": 4,
+    "printed_label": "4",
+    "mapped_text": true,
+    "start_offset": 19189,
+    "end_offset": 27534
+  },
+  {
+    "pdf_page": 5,
+    "printed_label": "5",
+    "mapped_text": true,
+    "start_offset": 27534,
+    "end_offset": 35463
+  },
+  {
+    "pdf_page": 6,
+    "printed_label": "6",
+    "mapped_text": true,
+    "start_offset": 35463,
+    "end_offset": 43913
+  },
+  {
+    "pdf_page": 7,
+    "printed_label": "7",
+    "mapped_text": true,
+    "start_offset": 43913,
+    "end_offset": 49800
+  }
+]

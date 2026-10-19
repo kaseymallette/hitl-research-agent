@@ -1,0 +1,65 @@
+{
+  "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+  "config": "text_crops__gpt-6-astra-low",
+  "input_method": "text_crops",
+  "input_mode": "prepared_text_and_crops",
+  "crops_sent": 1,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "low",
+  "max_output_tokens": null,
+  "openai_max_retries": 0,
+  "system_prompt_sha256": "fb2b3b93529636bc0c9156a9f07272cbe00b0f1c1d367570c523210b336de621",
+  "input_mode_instructions_sha256": "a7d4097af9311b6b5fbfe250dcf45aa0f7b860281afc31236ed7a821b6c70e06",
+  "output_schema_sha256": "7fc82a119d333e64eaccba39bc1309c12fbc97833922d3fdb867f36ea3e868e9",
+  "git_commit": "f0e46b18c747a89a37c39b2aa43da94ff669773c",
+  "code_uncommitted_changes": false,
+  "model_inputs": [
+    {
+      "kind": "image",
+      "path": "outputs/preparation/barnett_itzhaki_2026_water_footprint_artificial_intelligence/images/T1_p02.png",
+      "mime_type": "image/png",
+      "sha256": "67de532530c9ddc4acd5b98927fb1bc6ec7909f87264c774672576ed01728772",
+      "byte_size": 106619,
+      "page": 2,
+      "gap_id": "T1",
+      "label": "Table 1"
+    }
+  ],
+  "started_at": "2026-10-19T00:04:29.441334+00:00",
+  "elapsed_seconds": 0.386,
+  "outcome": "failed: transport",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "technical_failure",
+      "request_id": null,
+      "elapsed_seconds": 0.308269,
+      "usage": null,
+      "problems": [],
+      "error": "Model call failed: Connection error."
+    }
+  ],
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "reasoning_tokens": null,
+    "cached_input_tokens": 0
+  },
+  "calculated_cost": {
+    "model": "gpt-6-astra",
+    "input_tokens": 0,
+    "cached_input_tokens": 0,
+    "output_tokens": 0,
+    "input_usd": 0.0,
+    "cached_input_usd": 0.0,
+    "output_usd": 0.0,
+    "total_usd": 0.0,
+    "rates_usd_per_mtok": {
+      "input": 10.0,
+      "output": 50.0,
+      "cached_input": 1.0
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  }
+}
