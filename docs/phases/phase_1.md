@@ -496,6 +496,234 @@ One way to avoid choosing blind: try one call first, since it's only a prompt ed
 
 **Response:** ADR-0011 is written as Proposed. It contains the draft two-task prompt wording, the $0.70 test on two Barnett runs, what counts as the claims coming back, and two turns as the fallback. It's listed in the ADR index, REPOSITORY.md and the README tree. The prompt is unchanged and nothing is committed.
 
+**Pending decisions:** Approve the draft prompt wording so I can run the test?
 
+## 26. Run the test on two taks
 
+**Prompt:** The ADR-0011 wording is approved. Apply it, commit, and run the two test runs.
 
+**Response:** The claims came back, and then went past where they started.
+
+Run	Before ADR-0010	After ADR-0010	After ADR-0011	Cost now
+Text + crops, Sol high	33	25	55	$0.27 (was $0.20)
+PDF, Astra low	21	16	30	$0.80 (was $0.64)
+
+Against the ADR-0011 criteria:
+
+Cooling approaches as separate claims: ✓ in both runs, each with its own tradeoff.
+Low-water-price incentive as its own claim: ✓ in Sol high (claim 31). In Astra it's folded into the market-failure claim (claim 21).
+Whole-document assessment still there: ✓ in both. It covers organization, where the conclusions are announced, and whether the body delivers what the abstract promises (649 and 421 words).
+Claim count near the before level: ✗. It overshot, by a lot.
+
+What the extra claims are: mostly background facts from the introduction that were never claims before. Examples: GPT-3's training used about 700,000 liters; 10–50 responses use one 500 ml bottle; rack densities of 50–100+ kW; 73% of UK respondents were unfamiliar with "digital pollution." I checked: all of them are in the article, so nothing was invented. But they're closer to a summary than to the argument, and the prompt still says to capture "the claims that matter to the argument, not every sentence." The likely cause is the phrase "extract claims as completely as you would if there were no Task 2," which the model read as "be exhaustive."
+
+Why this might actually suit you: a 55-claim analysis contains most of what's in your notes, including the numbers. That's much easier to check against your notes than 25 merged claims. The cost is longer analyses, about 25–35% more per run, and Phase 2's "coverage, not volume" principle would count the padding against them.
+
+Your options:
+
+Accept this level. It's more complete and easier to compare with your notes, and it costs more.
+Soften the wording and test again, for about $1. For example, change "as completely as you would if there were no Task 2" to "the claims that matter to the argument, as you would if there were no Task 2." That should land between 25 and 55, though it's another nudge with no guarantee.
+Build two turns, ADR-0011's fallback. Turn 1 uses the exact instructions from before ADR-0010, so the claims land at the original level, but it's the most work.
+
+Which one is up to you. ADR-0011 stays Proposed until you decide, and the two test runs aren't committed yet.
+
+## 27. Understanding bias in argument evaluation 
+
+**Prompt:** Okay, well, there's something else I want to try. So I've been working through this a lot, and I really want to explore the for the second task for the model to understand reasoning, to use, like how we're talking about the Socratic method, to use deduction, to reason from the evidence to state like whether the conclusion is necessary. So I worked with ChatGPT to formulate something. So I'm going to send you what we have, and we can add it into the second task. But I want to build on the second task because I'm also asking the model to understand bias and reasoning. And I think we should have two calls for this so we don't confuse the model on two different epistemic tasks of close reading vs. argument evaluation.
+
+**Independent Argument Interpretation and Evaluation:**
+
+Independently reason through the evidence presented in the paper rather than assuming the author's conclusions follow from it.
+
+Examine how the author moves from evidence to conclusions and recommendations. Does each conclusion logically follow from what has been established, or does the author introduce assumptions, value judgments, or proposed solutions without adequately defending them?
+
+Apply the same critical scrutiny to the author's preferred solutions as to the alternatives they criticize. Consider whether the proposed solutions are supported by evidence, whether their effectiveness and feasibility have been examined, and whether different conclusions could reasonably follow from the same evidence.
+
+Distinguish a persuasive narrative from a well-supported argument. **Do not treat the author's intended conclusion as the correct destination of the reasoning.**
+
+If you conclude that the author's conclusion follows from the argument, examine what assumptions or biases shaped your own reasoning in reaching that judgment.
+
+If you conclude that it does not follow, examine what assumptions or biases shaped your interpretation, what different assumptions the author may have made, and how those differences could explain why you reached different conclusions.
+
+**Response:** I've read it. It does what you described: it gives the model room to reason on its own, and it builds in bias reflection. What stands out to me:
+
+**What it does well:**
+- The same scrutiny for the author's own solutions. On Barnett, the models were tough on the alternatives the author criticized and easy on the author's own policy package. This paragraph goes straight at that imbalance.
+- "A persuasive narrative versus a well-supported argument." That names the thing you were reacting to in Barnett, the sense that the paper walks you to its conclusion.
+- The bias reflection runs both ways. Whether the model agrees or disagrees with the author, it has to examine its own assumptions. That keeps "don't treat the author's conclusion as the destination" from turning into automatic disagreement. Either verdict gets questioned.
+- "Whether different conclusions could reasonably follow from the same evidence." That's the Socratic move: the conclusion is tested against alternatives, not just checked for consistency.
+
+**Things to consider adding. These are questions, not objections:**
+- Necessity. You said you want the model to judge whether a conclusion is necessary. The text asks whether conclusions "logically follow," which is related but weaker. A conclusion can follow without being the only one that could. If necessity matters to you, a line could ask whether the evidence requires the conclusion or only permits it.
+- The author's bias. You mentioned evaluating the author's bias as well as the model's. The text covers the model's biases and "different assumptions the author may have made," but it doesn't ask directly about the author's framing, selective use of evidence, or stake in the outcome.
+- Structure. You said "a little bit about how it's structured." The ADR-0010 paragraph on organization (where conclusions are announced, developed, restated, and how much space each takes) isn't in this text. Do you want it carried into Task 2, or dropped?
+- Pointing to passages. Should the model cite where in the article its reasoning comes from? That would give it less free rein, but you could check each step against the article yourself.
+
+## 28. Teaching a model to reason
+
+**Prompt:** I still want the second call to incorporate our earlier discussion of argument structure. The “Independent Argument Interpretation and Evaluation” section describes **how the model should reason**; it does not replace the broader task of examining the paper’s argument as a whole.
+
+That examination should consider how the premises, evidence, assumptions, biases, and conclusions work together. It should look at how the argument develops, how much attention different premises receive, and whether that development supports the conclusions and recommendations. The model should draw on specific passages and examples to explain its judgments, weaving those references naturally into its analysis.
+
+I also want it to consider the paper’s publication context: what journal it appears in, its likely audience, and its overall purpose. These can help the model interpret what the paper is trying to accomplish and read between the lines, while distinguishing what is explicit from what it infers.
+
+The model should reason independently rather than assume the author’s intended conclusion is correct. It should examine the author’s assumptions and biases, as well as its own assumptions and biases in reaching an assessment—whether it agrees or disagrees with the author.
+
+At the same time, I don’t want the second call overloaded with disconnected tasks. We separated the calls because reconstructing individual claims and evaluating the whole argument are different kinds of work. Within the second call, the instructions should form one coherent process of inquiry.
+
+Please help me bring these elements together into a prompt that flows naturally. I want it to guide and encourage reasoning rather than read like an exhaustive checklist of requirements and prohibitions. Give the model room to develop its interpretation, express its judgment, and explain what in the paper led it there. *We want to hear its reasoned assessment, not merely a summary or a demonstration that it followed instructions.*
+
+**Response:** Got it. Below is a draft that folds everything into one flow. Its spine is "examine the whole argument," and the reasoning, structure, context and bias each come in as a part of that, not as a separate task. I wrote it as an invitation rather than a checklist: no "you must," no lists, and citing passages is encouraged rather than required.
+
+> You've been given a research article, along with a close reading of it: a careful record of what the author states, prepared separately. Your work now is different. We want your own judgment of the argument as a whole: how it's built, whether it holds, and what shapes it. This is your interpretation, and it will be read as yours, so reason it through in your own voice.
+>
+> Start by reading the article in its setting. Where was it published, and for whom? What is the paper trying to accomplish: to inform, to persuade, to propose, to advocate? Reading between the lines is part of the work. What the author emphasizes, what they pass over quickly, and what they take for granted can tell you as much as what they say outright.
+>
+> Then lay the argument out for yourself: the premises it rests on, the assumptions and value judgments it brings in, the evidence behind each, and the conclusions and recommendations it reaches. Notice how the paper spends its attention. Which premises are developed at length and which are asserted briefly? Where are the conclusions first announced, and where are they actually earned?
+>
+> Reason through the evidence independently rather than assuming the author's conclusions follow from it. Ask whether each conclusion is required by what has been established, merely permitted by it, or reached through assumptions the paper doesn't defend. Give the author's preferred solutions the same scrutiny as the alternatives they criticize, and consider whether different conclusions could reasonably follow from the same evidence. A persuasive narrative and a well-supported argument are not the same thing, and the author's intended conclusion is not the destination your reasoning has to reach.
+>
+> Consider bias on both sides. What might shape the author's framing: their field, their audience, their stake in the outcome? And what is shaping yours? If you find the conclusion follows, ask what led you there. If you find it doesn't, ask what you assumed that the author may not have, and how that difference could explain why you see it differently.
+>
+> Be willing to make a judgment. Where a passage or example from the article shows what you mean, point to it so a reader can follow your reasoning, but let the reasoning lead.
+
+**How it fits what you asked for:**
+- Necessity: "required by what has been established, merely permitted by it, or reached through assumptions."
+- The author's bias: field, audience, stake in the outcome.
+- Structure: "how the paper spends its attention" and "where conclusions are announced versus earned." This keeps what we had in ADR-0010, phrased as part of reading the argument.
+- Citing: encouraged, not required.
+- Journal and audience: the model will see the journal on the article's first page. We can also put the manifest details (title, publisher, DOI, source type) at the top of the call, the way the current prompt already includes the title and type.
+- No restraint rules. The close-reading rules ("on its own terms," "don't invent an objection") stay in call 1 only, so they can't hold this call back.
+
+Change anything you like. Once the text reads right to you, the next step is building the second call around it, with its own ADR.
+
+## 29. Implement ADR 0012
+
+**Prompt:** That's absolutely beautiful! Add that, exactly! Create an ADR-0012 to establish two calls and write that for the system prompt for call 2. Just add the changes, don't rerun the analysis yet. But I love it, thanks!
+
+**Response:** Glad it works for you. Before building, here's how I'll put it together, and I'll keep it as simple as I can:
+- Call 1, the close reading: the prompt and schema as they were before ADR-0010. argument_assessment comes out of the close reading.
+- Call 2, the argument evaluation: your approved text, word for word, as its own system prompt. It gets the article (in the same input mode as call 1), the source details (title, type, publisher, DOI) and the close reading. It returns prose, saved as its own document, argument_evaluation.json, beside analysis.json.
+- If call 2 fails, the close reading is still saved (ADR-0005), and the run record says the evaluation failed.
+
+## 30. Revisit prompt for call 1
+
+**Prompt:** I’d like to revisit the first call’s close-reading instructions, especially the requirement to extract only “central” claims. That may filter out useful claims and quantitative details before the second call can examine them.
+
+Since the second call receives both the paper and the close reading, perhaps the first call should capture substantive claims more broadly and leave judgments about their importance and role in the overall argument to the second call. I don’t want to reintroduce complicated centrality labels or filtering rules. The question is whether deciding what is central belongs in the first call at all.
+
+**Response:** That makes sense, and it follows from the two-call design. If call 2 gets the whole close reading and judges the argument, call 1 doesn't need to decide what's central. Its job is to record faithfully what the author claims. The 55-claim run you saw is close to what you're describing: everything the author claims, including the figures you were writing down, with the judgment about what matters left to the evaluation.
+
+Today, the close-reading prompt applies a centrality filter in two places:
+
+The last paragraph: "Extraction should stay selective and structured: capture the claims that matter to the argument, not every sentence in the source."
+The strength-of-language paragraph: "if a claim matters to the authors' argument, capture it."
+
+My proposed replacement for the last paragraph:
+
+> Your task is a close reading: record what the source claims, with its evidence, as faithfully as you can. Include the claims the author makes throughout the document, such as findings, figures they report, examples, predictions, and recommendations, without judging which are central to the argument; that judgment is made separately. Keep each claim distinct and grounded in the source. A sentence that makes no claim, such as a transition, signpost, or restatement, is not a claim. Every claim must include at least one piece of evidence.
+
+And in the second spot, "if a claim matters to the authors' argument, capture it" would become "capture every claim the source makes."
+
+The "not a claim" line keeps it from turning into a sentence-by-sentence copy of the paper, without asking for any judgment about importance.
+
+Two related things for you to decide:
+- support_assessment. Call 1 still asks the model to judge whether the reasons offered for important claims meet the claim's wording. That's evaluation too. Should it stay in the close reading, or should that judgment move entirely to call 2?
+- The field is named central_claims. The name itself says "central." Renaming it to claims would match the new intent, but it changes the saved format. The earlier Barnett runs would use the old name and the new ones the new name.
+
+The tradeoff is longer close readings, roughly 25–35% more output based on the 55-claim run. Since none of ADR-0012 is committed yet, this can go straight into it.
+
+## 31. Revise prompt for call 1
+
+**Prompt:** I’d like to rename central_claims to claims. We’re preserving the old runs as historical records, so their field names don’t need to constrain the revised design.
+
+Now that judgment happens in a separate call, I’m also considering removing support_assessment from the first call. The output is already long, and finding those assessments requires skimming through the extraction. I want the first call to focus on close reading and the second to provide the evaluation.
+
+The close reading should resemble how I worked through my original notes, apart from the key takeaways: following the paper’s progression, identifying what the author claims, and explaining what each concept, definition, or example contributes. When the paper introduces WUE, for instance, the reading should explain what it means and how it relates to what has come before.
+
+I want to explore a more sequential, deductive style of reading: What have we established? What is being introduced now? What does it mean, and how does it connect? The aim is to trace the developing understanding of the paper, leaving judgment of the overall argument to the second call.
+
+**Response:** I understand. The close reading should work the way you read: going through the paper in order, keeping track of where you are, what's being said and what each part is doing, without judging whether the argument holds. Judging is call 2's job.
+
+What I'd change in call 1
+
+central_claims becomes claims, with the leniency we discussed: everything the author claims, including the figures, and no centrality filter.
+support_assessment comes out, along with the long block of instructions that drives it. The judgment you want to read lives in call 2 now, and the close reading gets shorter and easier to scan.
+A new part, the reading path. This is the "where are we, where have we been, what does this mean" layer, and it mirrors the walk-through part of your notes. Each step records:
+where: the section or page
+what it says: the author's content there
+what it's doing: defining a term, reporting a figure, giving an example, comparing options, introducing a proposal, drawing a conclusion
+how it connects to what came before
+
+When something new appears, like WUE, the step says what it is and what it lets the author do next. The reading path sits before the claims, so the model reads through first, the way you do.
+
+Draft wording for the reading path:
+
+> Read the document the way a careful reader works through it for the first time, section by section, keeping track of where you are. In "reading_path", record each step of that reading in order: where you are in the document, what the author says there, what that part is doing in the paper (defining a term, reporting a figure, giving an example, comparing options, introducing a proposal, drawing a conclusion), and how it connects to what came before. When the author introduces something new, such as a concept or a measure, say what it is and what it lets the author do next. This is a record of the author's path through the material, not a judgment of whether the argument holds; that judgment is made separately.
+
+The author_stated / model_inferred labels stay on the claims, exactly as they are now. The reading path is the model's account of the paper's progression, so it's described that way in the schema.
+
+Call 2 then gets the reading path as part of the close reading. That gives it a map of the paper's structure to work from when it asks how the paper spends its attention.
+
+If this matches what you want, I'll fold it into ADR-0012 and the code: the rename, removing support_assessment, the reading path, and the claims paragraph from my last message. Then I'll run the checks. Still no reruns.
+
+## 32. Structure the first call as a reading path with claims
+
+**Prompt:** I like the idea of a reading path, but I don’t want it separated from the claims. The entire close reading should be the reading path, with claims, definitions, evidence, and examples introduced as we encounter them in the paper.
+
+The reader should be able to follow the paper’s progression: Where are we? What is being stated or defined? What does it mean? How does it connect to what we’ve already learned? For example, when the paper introduces WUE, explain its definition, why it appears at that point, and how it builds on the preceding material before moving forward.
+
+That is what my notes were doing: condensing the paper into a sequential account of my understanding. I want the model to produce that kind of integrated close reading, rather than a separate reading-path summary alongside a list of claims. We can reconsider whether “claims” is the right organizing unit; the priority is helping the reader follow what the paper says and how it develops.
+
+**Response:** Got it. The whole close reading is the reading path, and the claims happen along the way, the way your notes did it. Here's that shape:
+
+The close reading is one ordered path through the paper. Each step has:
+- Where we are: page and paragraph, or section.
+- What's happening: a new definition, a figure being reported, an example, options compared, a proposal, a conclusion.
+- What's stated: the claims made right here, each with author_stated or model_inferred, its evidence, and its citations, exactly as claims work now.
+- What it means: why this is here, and how it connects to what came before.
+
+So on Barnett, one step would read: page 2, Section 2. A new measure is introduced. Stated: WUE is annual site water for cooling and humidification divided by annual IT energy (author_stated, with the quote). What it means: this gives the author a way to compare cooling approaches, which is what Section 4 does next.
+
+What goes away: the separate lists (research problem, methodology, assumptions, limitations, proposed solutions, open questions) and support_assessment. Everything they held now shows up as steps where it occurs in the paper. The methods paragraph becomes a step, a limitation the author states becomes a step, and so on. Judgment and takeaways belong to call 2.
+
+What stays: the attribution labels, verbatim and paraphrased evidence, citations recorded as printed, and keeping the author's strength of language.
+
+Draft framing for the prompt:
+
+> Read the document the way a careful reader works through it for the first time, from beginning to end, keeping track of where you are. Record that reading in "reading_path" as a sequence of steps, in the order the document presents them. At each step, say where you are, what is happening there (a term being defined, a figure reported, an example given, options compared, a proposal made, a conclusion drawn), what is stated there as claims with their evidence, and what it means: why this part is here and how it connects to what came before. When something new appears, such as a concept or a measure, say what it is and what it lets the author do next. Record every claim the author makes as you meet it, including the figures they report, without deciding which ones are central; that judgment is made separately.
+
+## 33. Improve reasoning terminology and instructions for close reading 
+
+**Prompt:** The close reading should follow the paper sequentially, using only what has been introduced up to the current passage. It should not predict where the author is going or explain a passage in terms of conclusions that appear later. Phrases such as “what this lets the author do next” could encourage that kind of anticipation.
+
+I also want more precise terminology for describing the reasoning. Beyond identifying definitions and examples, the model should recognize premises, assumptions, biases, evidence, deductions, qualifications, evaluations, and conclusions. These should help it explain what the author is doing at each step, rather than become a rigid checklist.
+
+At each point, the model can examine how the current passage connects to what came before: Does it follow from earlier premises? Introduce supporting evidence or an additional assumption? Qualify a claim? Draw a conclusion? Shift to a new topic or line of argument?
+
+The goal is to follow the reasoning as it develops: what we have encountered so far, what is being introduced now, and how the two connect—without anticipating what comes next. Invite the model to go on a reasoning journey. 
+
+**Response:** Here it is, written as an invitation:
+
+> We'd like you to take a close reading journey through this document with us. Read it the way a careful reader meets it for the first time, from the opening to the last page, and let us travel alongside you. At each point on the way, you know where you've been and where you are now. Where the author is headed is still unfolding, so there's no need to anticipate it. Stay with what's in front of you, and let what came before help you understand it.
+> 
+> This is a close reading, not a verdict. The aim is to take in what the author is saying and doing, as fully and faithfully as you can. Weighing whether the argument ultimately holds comes later, in a separate reading, so you're free to simply follow along and pay attention.
+> 
+> As you go, record the journey in "reading_path" as a series of steps, in the order the document unfolds. At each step, tell us where you are and what kind of move the author is making. Using the language of argument helps here. Is the author stating a premise, or introducing evidence for a claim? Defining a term, giving an example, reporting a figure? Drawing an inference, or deducing something from what came earlier? Is an assumption at work, stated or left unspoken, or a value judgment? Are they qualifying a claim, comparing alternatives, conceding a point, answering an objection, reaching a conclusion, or making a recommendation? Restating something, or turning to a new line of discussion? If the framing reveals a perspective or a bias, notice it. A single step can hold more than one move.
+> 
+> Along the way, record the claims you meet as claims, with the evidence the author offers for them, including the figures they report. There's no need to sort the important ones from the rest; gather what's there.
+> 
+> Then reflect on where this step leaves us, given the road so far. Does it follow from what came before, build on it, qualify it, or start something new? Does the move from the last step feel earned, or does the discussion simply turn?
+
+What's different
+- It opens by explaining what we're doing and inviting the model along, with no list of rules.
+- "Don't anticipate" became "where the author is headed is still unfolding, so there's no need to anticipate it."
+- "Without deciding which are central" became "there's no need to sort the important ones from the rest; gather what's there."
+- It tells the model why there's no verdict: that comes later, in a separate reading.
+- The technical vocabulary is all still there, phrased as questions the reader asks rather than categories to apply.
+
+## 34. Add prompt 1 to ADR 0012
+
+**Prompt:** Yes, I love it, thanks! Can you add it to ADR 0012, like can it be part of the same ADR? Cause you have the whole system prompt for call 2 so I think adding the full system prompt for call 1 would be good. That way, if we need a new ADR after, it would mean the calls have changed.
+
+**Response:**
