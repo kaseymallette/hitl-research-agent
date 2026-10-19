@@ -1,6 +1,6 @@
 # ADR-0002 — `statement_origin` records an attribution, not a verification
 
-- **Status:** Accepted
+- **Status:** Superseded by [ADR-0013](0013-lean-close-reading.md)
 - **Date:** 2026-09-12
 - **Landed in:** `a056be4`
 
@@ -65,3 +65,8 @@ Back-filled 2026-10-17. The module docstring in
 `src/hitl_research_agent/models.py` states the same rule at the code. Related:
 [ADR-0003](0003-application-owned-fields-stay-out-of-the-model-schema.md),
 [ADR-0005](0005-no-hard-quality-gates.md).
+
+Superseded by ADR-0013, which removes `statement_origin` from the output: in
+the reading path, claims are the author's and the model's reading has its own
+fields. The rule here — a label records an assertion, not a check — carries over
+to `verbatim`.

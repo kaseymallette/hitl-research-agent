@@ -42,12 +42,13 @@ Four rules hold across every phase:
    thin analysis: these are reported by evaluation and human review, never
    grounds for withholding the result. v1 accumulated such gates and they were
    removed deliberately; they are not to be restored.
-3. **Model interpretation stays labelled.** `author_stated` vs.
-   `model_inferred` is carried on every claim in the close reading — so what the
-   authors state stays separable from what the model reads into them. Evidence
-   carries a second, independent split: `verbatim` vs. `paraphrased`. The
-   argument evaluation is the model's interpretation throughout and is stored
-   as its own document, so it needs no label to be read as one.
+3. **Model interpretation stays separable.** What the author states and what
+   the model reads into it are kept apart by where they sit
+   ([ADR-0013](adr/0013-lean-close-reading.md)): in the close reading, claims
+   and their support are the author's, each marked `verbatim` or
+   `paraphrased`, and each step's moves and meaning are the model's reading;
+   the argument evaluation is the model's judgment, stored as its own
+   document.
 4. **The human operates a gate, not a reading chair.** Analysis and evaluation
    end at a four-state decision — **accept, reject, revise, rerun** — and only
    accepted analyses enter the research collection. This is a runtime boundary

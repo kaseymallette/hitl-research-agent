@@ -30,12 +30,13 @@ The importable package. The directory name is the import name; the `src/`
 wrapper means the package can only be imported through the editable install,
 not from the working directory, so tests exercise what would ship.
 
-### `models.py` (312 lines)
+### `models.py` (304 lines)
 
 Every research type, in one module, in two layers:
 
 - **`ExtractedAnalysis`** is the schema sent to the API: the close reading, a
-  `reading_path` of steps in the order the document unfolds. Every field is
+  `reading_plan` recording the model's first look at the document and the pace
+  it chose, then a `reading_path` of steps in the order the document unfolds. Every field is
   content the model may supply.
 - **`SourceAnalysis`** wraps that content with the three things the application
   owns and a model has no legitimate value for: `id`, `provenance`, `analyzed_at`.
@@ -46,8 +47,10 @@ Every research type, in one module, in two layers:
 
 Inside the model's content: `ReadingStep` (location, the author's moves in the
 terms of argument, the claims stated there, and what the step means given what
-came before), `Claim` (text, `statement_origin`, evidence), `Evidence` (text,
-locator, citations, `evidence_form`, `relationship_to_claim`), and `Citation`.
+came before), `Claim` (text, `form` — verbatim or paraphrased — and support),
+`Support` (what the author offers for a claim: text, `form`, citations), and
+`Citation`. Claims and support are the author's; moves and meaning are the
+model's reading ([ADR-0013](adr/0013-lean-close-reading.md)).
 
 Also here: `Provenance`, whose `source_id` names the source rather than any one
 analysis of it — `source_id_for()` derives it from the slug, so every analysis of
@@ -93,7 +96,7 @@ Six exception classes became one with a `kind` field — nothing ever caught the
 subclasses individually. The response-metadata allowlist and its JSON-safety
 helpers went: they recorded fields nobody read.
 
-### `prompts.py` (283 lines)
+### `prompts.py` (267 lines)
 
 `SYSTEM_PROMPT` — the close-reading instructions, written as an invitation to
 read the document step by step as a first-time reader — plus the per-input-mode
@@ -206,14 +209,14 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 89 tests
+## `tests/` — 90 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
 | `preparation/test_prepare.py` | 27 | PDF extraction: reading order, hyphen joining, header removal, annotation placement, crop retention |
 | `test_analysis.py` | 18 | The call path: the correction attempt, each run-stopping failure, attempt records, usage arithmetic, attachments resent on correction, and the evaluation call's own prompt and inputs |
 | `test_inputs.py` | 11 | Per-mode attachment validation, that every mode sends the same analysis prompt, byte-exact hashing |
-| `test_models.py` | 13 | Application-owned fields rejected from model content, attribution labels required, the evaluation schema holding only the model's judgment, a reading step with no claim, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
+| `test_models.py` | 14 | Application-owned fields rejected from model content, a required verbatim/paraphrased form, an asserted claim standing without support, no attribution labels on the close reading, the evaluation schema holding only the model's judgment, a reading step with no claim, the reading plan first and required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
 | `test_run_analysis.py` | 15 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun, both documents written, a failed evaluation keeping the close reading |
 
@@ -278,9 +281,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 14 files
+### `adr/` — 15 files
 
-One architectural decision per record: `0001`–`0012`, plus `template.md` for
+One architectural decision per record: `0001`–`0013`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -313,6 +316,11 @@ overshot.
 `0012` supersedes both: the close reading and the argument evaluation are two
 calls with two prompts and two documents, because the two tasks ask for
 opposite stances and pulled on each other in one prompt.
+
+`0013` supersedes `0012` and `0002`: the close reading records the author's
+words once, marked verbatim or paraphrased, with support only where the author
+offers it, and no attribution labels — the structure says whose words they are.
+It carries both calls' prompts in full, so a change to either is a new record.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

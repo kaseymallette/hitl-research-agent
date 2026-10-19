@@ -1,8 +1,8 @@
 # ADR-0012 — The close reading and the argument evaluation are two calls
 
-- **Status:** Accepted
+- **Status:** Superseded by [ADR-0013](0013-lean-close-reading.md)
 - **Date:** 2026-10-19
-- **Landed in:** not yet committed
+- **Landed in:** `c799106`
 
 ## Context
 
@@ -279,3 +279,6 @@ research usefulness, where reading it as the model's judgment matters most.
 Supersedes ADR-0010 and ADR-0011. The evaluation prompt was written with Chat
 and me, in the voice I wanted the model to reason in: an invitation to judge,
 not a checklist.
+
+Superseded by ADR-0013, which trims the close-reading schema and rewrites its
+practices; the two-call design and the evaluation prompt carry over unchanged.

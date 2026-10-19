@@ -14,7 +14,6 @@ from hitl_research_agent.inputs import format_annotation
 from hitl_research_agent.models import (
     ArgumentEvaluation,
     Claim,
-    Evidence,
     ExtractedAnalysis,
     PreparationGap,
     Provenance,
@@ -22,6 +21,7 @@ from hitl_research_agent.models import (
     ResearchBaseModel,
     SourceAnalysis,
     SourceDocument,
+    Support,
     source_id_for,
 )
 
@@ -38,6 +38,7 @@ GAP = PreparationGap(id="U1", kind="figure", page=2, label="Figure 1", image="im
 
 def _content(**overrides: object) -> ExtractedAnalysis:
     defaults: dict[str, object] = {
+        "reading_plan": "A short journal review, moderately dense; steps of about a paragraph.",
         "reading_path": [
             ReadingStep(
                 location="page 1, Introduction",
@@ -45,12 +46,11 @@ def _content(**overrides: object) -> ExtractedAnalysis:
                 claims=[
                     Claim(
                         text="Cooling drives most on-site water use.",
-                        statement_origin="author_stated",
-                        evidence=[
-                            Evidence(
+                        form="paraphrased",
+                        support=[
+                            Support(
                                 text="Cooling accounted for the majority of withdrawal.",
-                                evidence_form="paraphrased",
-                                relationship_to_claim="direct_support",
+                                form="paraphrased",
                             )
                         ],
                     )
@@ -67,7 +67,7 @@ def test_unknown_fields_are_rejected_so_an_invented_field_fails_loudly() -> None
     with pytest.raises(ValidationError):
         ResearchBaseModel.model_validate({"unexpected": 1})
     with pytest.raises(ValidationError):
-        Claim.model_validate({"text": "x", "statement_origin": "author_stated", "confidence": 0.9})
+        Claim.model_validate({"text": "x", "form": "verbatim", "confidence": 0.9})
 
 
 def test_the_model_cannot_supply_application_owned_fields() -> None:
@@ -80,36 +80,34 @@ def test_the_model_cannot_supply_application_owned_fields() -> None:
             )
 
 
-def test_statement_origin_is_required_on_every_interpreted_statement() -> None:
+def test_every_claim_says_whether_it_is_the_author_s_exact_words() -> None:
+    """Verbatim is what a text search can check against the source, so the
+    form is required rather than defaulted."""
     with pytest.raises(ValidationError):
-        Claim.model_validate({"text": "unlabelled", "evidence": []})
+        Claim.model_validate({"text": "unlabelled"})
+    with pytest.raises(ValidationError):
+        Claim.model_validate({"text": "x", "form": "quoted"})
 
 
-def test_an_author_stated_claim_may_rest_on_a_paraphrase() -> None:
-    """A faithful paraphrase is a correct answer. Nothing requires a quotation,
-    and the labels are recorded as given rather than cross-enforced."""
-    claim = Claim(
-        text="Cooling drives most on-site water use.",
-        statement_origin="author_stated",
-        evidence=[
-            Evidence(
-                text="in our own words",
-                evidence_form="paraphrased",
-                relationship_to_claim="partial_support",
-            )
-        ],
-    )
-    assert claim.evidence[0].evidence_form == "paraphrased"
+def test_a_claim_the_author_simply_asserts_stands_without_support() -> None:
+    """Support is only what the author offers. An asserted claim has none, and
+    that is a finding for the evaluation, not a reason to reject the JSON."""
+    claim = Claim(text="Cooling drives most on-site water use.", form="verbatim")
+    assert claim.support == []
 
 
-def test_a_claim_with_no_evidence_is_accepted() -> None:
-    """Thin output is an evaluation finding, not a reason to reject the JSON."""
-    assert Claim(text="bare", statement_origin="model_inferred").evidence == []
+def test_the_close_reading_carries_no_attribution_labels() -> None:
+    """Claims are the author's and moves and meaning are the model's, by where
+    they sit; no label repeats what the structure already says (ADR-0013)."""
+    claim_fields = set(Claim.model_json_schema()["properties"])
+    support_fields = set(Support.model_json_schema()["properties"])
+    assert claim_fields == {"text", "form", "support"}
+    assert support_fields == {"text", "form", "citations"}
 
 
 def test_analysis_wraps_model_content_with_provenance_and_timestamp() -> None:
     analysis = SourceAnalysis(provenance=PROVENANCE, content=_content())
-    assert analysis.content.reading_path[0].claims[0].statement_origin == "author_stated"
+    assert analysis.content.reading_path[0].claims[0].form == "paraphrased"
     assert analysis.provenance.source_title == "Making AI Less Thirsty"
     assert analysis.analyzed_at.tzinfo is not None
     assert analysis.id != SourceAnalysis(provenance=PROVENANCE, content=_content()).id
@@ -191,3 +189,11 @@ def test_a_reading_step_may_make_no_claim() -> None:
         meaning="Leaves the local conflicts behind for technical alternatives.",
     )
     assert step.claims == []
+
+
+def test_the_reading_plan_comes_first_and_is_required() -> None:
+    """The model sets its pace before it starts the path, so the plan is the
+    first field it writes, and a close reading without one does not fit."""
+    schema = ExtractedAnalysis.model_json_schema()
+    assert next(iter(schema["properties"])) == "reading_plan"
+    assert "reading_plan" in schema["required"]

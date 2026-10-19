@@ -9,10 +9,11 @@ Two layers, kept apart on purpose:
   owns and a model has no legitimate value for: an identifier, the source's
   provenance, and when the analysis was made.
 
-Within the model's own content, `statement_origin` records whether the model is
-reporting what the source says or offering its own interpretation. That label is
-an attribution, not a verification of one: whether an `author_stated` claim is
-really in the source is an evaluation question, answered outside this module.
+Within the close reading, what the author says and what the model reads into it
+are kept apart by where they sit: claims and their support are the author's,
+recorded as verbatim or paraphrased; a step's moves and meaning are the model's
+reading. A claim marked verbatim is the model's assertion that the source says
+this, not a verification of it.
 """
 
 from datetime import UTC, date, datetime
@@ -32,12 +33,6 @@ from pydantic import (
 from .inputs import InputMode, find_annotations, reserved_character_problems
 
 NonEmptyStr = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
-
-STATEMENT_ORIGIN_DESCRIPTION = (
-    "Whether this statement is explicitly made by the source (author_stated) "
-    "or synthesized by the model as an interpretation not explicitly stated "
-    "in the source text (model_inferred)."
-)
 
 
 class ResearchBaseModel(BaseModel):
@@ -123,48 +118,38 @@ class Citation(ResearchBaseModel):
     )
 
 
-class Evidence(ResearchBaseModel):
-    """Source material offered in support of a claim."""
+Form = Literal["verbatim", "paraphrased"]
+FORM_DESCRIPTION = (
+    "Whether this text reproduces the source's exact wording (verbatim) or puts "
+    "source content in other words (paraphrased)."
+)
+
+
+class Support(ResearchBaseModel):
+    """Something the author offers in support of a claim: a figure, a study, an
+    example. Only what the author offers, never the claim restated."""
 
     text: NonEmptyStr
-    locator: NonEmptyStr | None = None
+    form: Form = Field(description=FORM_DESCRIPTION)
     citations: list[Citation] = Field(
         default_factory=list,
         description=(
-            "Works the source cites in connection with this evidence. A marker may "
-            "sit next to the passage rather than inside it, so this is not required "
-            "to be a substring of `text`."
+            "Works the source cites for this support. A marker may sit next to the "
+            "passage rather than inside it, so this is not required to be a "
+            "substring of `text`."
         ),
-    )
-    evidence_form: Literal["verbatim", "paraphrased"] = Field(
-        description=(
-            "Whether this text is an exact quotation from the source (verbatim) or "
-            "a paraphrase of source content (paraphrased)."
-        )
-    )
-    relationship_to_claim: Literal[
-        "claim_grounding", "direct_support", "partial_support", "contextual_support"
-    ] = Field(
-        description=(
-            "How this evidence relates to its claim. 'claim_grounding' is "
-            "categorically different from the other three: it means the source "
-            "itself states the claim (attribution), not that source material "
-            "evidentially supports it. The other three are not an ordered strength "
-            "scale: 'direct_support' supports the claim in full, 'partial_support' "
-            "supports part of it, and 'contextual_support' gives relevant context "
-            "without directly supporting it."
-        )
     )
 
 
 class Claim(ResearchBaseModel):
-    """A claim met along the reading path, with the evidence offered for it."""
+    """A claim the author makes, met along the reading path."""
 
     text: NonEmptyStr
-    statement_origin: Literal["author_stated", "model_inferred"] = Field(
-        description=STATEMENT_ORIGIN_DESCRIPTION
+    form: Form = Field(description=FORM_DESCRIPTION)
+    support: list[Support] = Field(
+        default_factory=list,
+        description="What the author offers in support. Empty when the claim is asserted.",
     )
-    evidence: list[Evidence] = Field(default_factory=list)
 
 
 class ReadingStep(ResearchBaseModel):
@@ -201,6 +186,13 @@ class ExtractedAnalysis(ResearchBaseModel):
     invent a value for.
     """
 
+    # First, so the model sets its pace before it starts the path.
+    reading_plan: NonEmptyStr = Field(
+        description=(
+            "The first look: what kind of document this is, how densely it reads, "
+            "and the pace chosen for the steps."
+        )
+    )
     reading_path: list[ReadingStep] = Field(default_factory=list)
 
 

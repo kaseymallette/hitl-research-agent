@@ -76,7 +76,7 @@ without a record.
 | # | Decision | Date | Status |
 | --- | --- | --- | --- |
 | [0001](0001-src-layout-for-the-package.md) | The package lives under `src/`, so tests exercise the installed build | 2026-08-26 | Accepted |
-| [0002](0002-statement-origin-is-an-attribution.md) | `statement_origin` records an attribution, not a verification | 2026-09-12 | Accepted |
+| [0002](0002-statement-origin-is-an-attribution.md) | `statement_origin` records an attribution, not a verification | 2026-09-12 | Superseded by 0013 |
 | [0003](0003-application-owned-fields-stay-out-of-the-model-schema.md) | Identifier, provenance, and timestamp stay out of the schema sent to the model | 2026-09-25 | Accepted |
 | [0004](0004-pin-pymupdf4llm-exactly.md) | `pymupdf4llm` is pinned to an exact version | 2026-10-13 | Accepted |
 | [0005](0005-no-hard-quality-gates.md) | Only a technical failure stops a run; analysis quality never does | 2026-10-15 | Accepted |
@@ -86,6 +86,7 @@ without a record.
 | [0009](0009-phase-1-matrix-three-configurations-three-articles.md) | Phase 1 runs three model configurations over three articles | 2026-10-17 | Accepted |
 | [0010](0010-whole-document-argument-assessment.md) | Every analysis carries a whole-document argument assessment | 2026-10-18 | Superseded by 0012 |
 | [0011](0011-claims-first-then-whole-document.md) | Claims first, then the whole document: test one call before two turns | 2026-10-18 | Superseded by 0012 |
-| [0012](0012-close-reading-and-argument-evaluation-are-two-calls.md) | The close reading and the argument evaluation are two calls | 2026-10-19 | Accepted |
+| [0012](0012-close-reading-and-argument-evaluation-are-two-calls.md) | The close reading and the argument evaluation are two calls | 2026-10-19 | Superseded by 0013 |
+| [0013](0013-lean-close-reading.md) | A lean close reading: the author's words once, no labels | 2026-10-19 | Accepted |
 
 New records start from [template.md](template.md).

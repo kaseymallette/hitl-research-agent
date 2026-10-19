@@ -3,8 +3,8 @@ syntax marking material that preparation could not extract.
 
 An attachment is content the model gets in addition to, or instead of, the
 prepared text. Anything the model reports from a PDF page or a crop is its
-reading of an image, recorded as paraphrased evidence with a locator, and
-unverified until a human checks it against the original.
+reading of an image, recorded as paraphrased and naming the figure or table it
+came from, and unverified until a human checks it against the original.
 
 Blocks are emitted in LangChain's standard multimodal shape, which
 `langchain-core` translates to the Responses API's `input_file` / `input_image`.

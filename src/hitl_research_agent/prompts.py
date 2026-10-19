@@ -37,6 +37,22 @@ conclusion, or making a recommendation? Restating something, or turning to a \
 new line of discussion? If the framing reveals a perspective or a bias, \
 notice it. A single step can hold more than one move.
 
+Before you set out, take a first look through the whole document to get a \
+feel for its texture: what kind of writing it is (a journal article, a \
+report, an essay, a blog post) and how densely it's written. This first look \
+is about the writing, not about where the argument goes, so the journey \
+itself still unfolds as you read.
+
+Let that texture set your pace. A step can take in roughly 200 to 500 words \
+of the document: a medium paragraph at the small end, about a full \
+single-spaced page at the large end. Where the writing is dense or technical, \
+with a lot happening in a short space, stay toward the smaller end. Where it \
+moves more easily, a longer stretch can be a single step. These are a sense \
+of scale, not counts. Follow the natural breaks in the writing, and let a \
+step run a little shorter or longer when that's where the thought ends. \
+Record your first look briefly in "reading_plan": what kind of document this \
+is, how densely it reads, and the pace you'll take.
+
 Along the way, record the claims you meet as claims, with the evidence the \
 author offers for them, including the figures they report. There's no need to \
 sort the important ones from the rest; gather what's there.
@@ -48,63 +64,30 @@ simply turn?
 
 A few practices keep the record of the claims faithful.
 
-Distinguish precisely between what the source itself states and what you \
-are inferring as an interpretation:
-- "author_stated" means the source explicitly says this.
-- "model_inferred" means you are synthesizing or interpreting something the \
-source does not explicitly state.
+Record each claim in the author's own words where you can, and mark it \
+"verbatim" only when it reproduces their exact wording; otherwise mark it \
+"paraphrased". A faithful paraphrase is never a lesser answer than a \
+quotation you are unsure of.
 
-For evidence attached to a claim, distinguish:
-- "evidence_form": "verbatim" (an exact quotation from the source) vs. \
-"paraphrased" (in your own words). Mark evidence "verbatim" only when you are \
-reproducing the source's exact wording, and "paraphrased" otherwise. A \
-paraphrase is never a lesser answer than a quotation you are unsure of.
-- "relationship_to_claim": "claim_grounding" means the source itself makes \
-this claim (attribution) — use it only with verbatim evidence. \
-"direct_support", "partial_support", and "contextual_support" describe how \
-source material evidentially supports the claim; they are not an ordered \
-strength scale.
+When the author offers something in support of a claim (a figure, a study, an \
+example), record it as that claim's support. A claim the author simply \
+asserts needs no support listed; record it as it stands.
 
-When a piece of evidence cites another work — an in-text marker such as an \
-author-year or bracketed reference — record it in that evidence's \
-"citations". The marker may sit next to the quoted or paraphrased passage \
-rather than inside it; record it either way. For each citation, capture the \
-marker exactly as it appears ("citation_text"), and, only if the source's \
-own reference list contains a matching entry, capture that entry exactly as \
-written ("reference_entry"). Never invent or complete a missing bibliography \
-detail: if no matching reference-list entry is present in the source, leave \
-"reference_entry" unset rather than guessing at one. A "reference_entry" is \
-exactly one entry copied as written from the source's reference list — never \
-several entries joined together. One citation records one cited work: when a \
-single marker cites several works (for example "23,32,33"), record a separate \
-citation for each work, each carrying the marker as printed in \
-"citation_text" and its own single matching entry in "reference_entry". These \
-fields record what the source itself cites — you are not verifying, \
-retrieving, or assessing the cited work.
+When support cites another work, record the citation marker exactly as \
+printed, and, only if the source's own reference list has a matching entry, \
+that entry exactly as written, one entry per cited work. Never invent or \
+complete a reference; you are recording what the source cites, not checking \
+it.
 
-Preserve the authors' own strength of language. If the source states a claim \
-as necessary, inadequate, or certain to cause some outcome, capture it that \
-way — do not soften it into a more moderate, hedged, or easily defensible \
-version. Do not omit, soften, or normalize a claim merely because it is \
-speculative, controversial, weakly supported, or difficult to defend: \
-capture each claim the author makes as an author_stated or model_inferred \
-claim regardless of how well-supported it is, and represent any weakness in \
-its support separately, through evidence_form or relationship_to_claim — \
-never by weakening or dropping the claim itself. Normative, causal, \
-predictive, and prescriptive claims deserve the same completeness as \
-descriptive or empirical ones. When the source works through a concrete \
-example to illustrate its argument, preserve the decisive detail of that \
-example — including any tradeoff it makes explicit — rather than \
-generalizing it away; that detail is often what explains the argument, not \
-incidental color.
+Preserve the author's strength of language. A claim stated as necessary, \
+certain, or inadequate is recorded that way, not softened. Speculative, \
+controversial, or weakly supported claims are recorded as fully as any other. \
+When the author works through an example, keep its decisive detail, \
+including any tradeoff it makes explicit.
 
-Keep sentences as separate claims when they assert distinct things — a \
-different subject, a different predicate, or a different kind of claim — \
-even when they support one overall argument. Only merge sentences that \
-restate the same claim in different words. When the source restates \
-something it said earlier, note the restatement as a move at that step, and \
-record it as a new claim only if it adds a distinct point, qualification, or \
-piece of evidence. Every claim must include at least one piece of evidence.
+Keep distinct claims separate, and merge only sentences that say the same \
+thing. When the author restates something from earlier, note the \
+restatement as a move at that step rather than recording it again.
 """
 
 
@@ -117,11 +100,11 @@ PDF_INPUT_INSTRUCTIONS = """\
 The complete original PDF of this source is attached. No extracted text \
 accompanies it, and there are no preparation annotations in this input.
 
-Quote as "verbatim" only wording that literally appears in the document's own \
+Mark as "verbatim" only wording that literally appears in the document's own \
 text. Content you read from a figure, chart, diagram, or an equation rendered \
-as an image is not quotable text: record it as "paraphrased" evidence, and \
-begin that evidence's "locator" with the page it came from and the element it \
-came from, for example "page 7, Figure 2". Describe what the element shows \
+as an image is not quotable text: record it as "paraphrased", and name the \
+element it came from in the text itself, for example "Figure 2 shows…" or \
+"Table 1 lists…". Describe what the element shows \
 without presenting your reading of it as the source's printed words, and say \
 so plainly where a value is unclear rather than estimating it. Such readings \
 are your reading of an image, not the source's printed words."""
@@ -135,9 +118,9 @@ place with a labelled preparation annotation.
 
 A preparation annotation is not source text: never quote one, and never treat \
 it as the source's wording. Content you read from one of the attached images \
-is likewise not quotable text: record it as "paraphrased" evidence, and begin \
-that evidence's "locator" with the gap identifier and page you read it from, \
-for example "gap T1, page 6, Table 1". Describe what the image shows without \
+is likewise not quotable text: record it as "paraphrased", and name the \
+element it came from in the text itself, for example "Table 1 (gap T1) \
+lists…". Describe what the image shows without \
 presenting your reading of it as the source's printed words, and say so \
 plainly where a value is unclear rather than estimating it. Such readings are \
 your reading of an image, not the source's printed words."""
@@ -224,7 +207,8 @@ difference could explain why you see it differently.
 
 Be willing to make a judgment. Where a passage or example from the article \
 shows what you mean, point to it so a reader can follow your reasoning, but \
-let the reasoning lead."""
+let the reasoning lead. Keep the whole piece to about 1,000 words, giving the \
+reasoning that matters most the room it needs."""
 
 # How the article reaches the second call. Only the layout: the close-reading
 # instructions about quotation and locators do not apply to an evaluation.

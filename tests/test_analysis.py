@@ -22,12 +22,12 @@ from hitl_research_agent.models import (
     ANALYSIS_SCOPE_TEXT_AND_CROPS,
     ArgumentEvaluation,
     Claim,
-    Evidence,
     ExtractedAnalysis,
     PreparationGap,
     Provenance,
     ReadingStep,
     SourceDocument,
+    Support,
 )
 from hitl_research_agent.prompts import EVALUATION_PROMPT, SYSTEM_PROMPT
 
@@ -58,6 +58,7 @@ def _source(*, annotated: bool = False, text: str | None = None) -> SourceDocume
 
 def _content(claim_text: str = "Cooling drives water use.") -> ExtractedAnalysis:
     return ExtractedAnalysis(
+        reading_plan="A short review; steps of about a paragraph.",
         reading_path=[
             ReadingStep(
                 location="page 1",
@@ -65,12 +66,10 @@ def _content(claim_text: str = "Cooling drives water use.") -> ExtractedAnalysis
                 claims=[
                     Claim(
                         text=claim_text,
-                        statement_origin="author_stated",
-                        evidence=[
-                            Evidence(
-                                text="Cooling accounted for most withdrawal.",
-                                evidence_form="paraphrased",
-                                relationship_to_claim="direct_support",
+                        form="paraphrased",
+                        support=[
+                            Support(
+                                text="Cooling accounted for most withdrawal.", form="paraphrased"
                             )
                         ],
                     )

@@ -25,10 +25,10 @@ from hitl_research_agent.analysis import (
 from hitl_research_agent.models import (
     ArgumentEvaluation,
     Claim,
-    Evidence,
     ExtractedAnalysis,
     ReadingStep,
     SourceAnalysis,
+    Support,
 )
 
 sys.path.insert(0, str(Path(__file__).parent / "preparation"))
@@ -349,6 +349,7 @@ def test_rerunning_a_failed_cell_keeps_the_failed_run_s_record(
 
 def _analysis_result(source: object) -> AnalysisResult:
     content = ExtractedAnalysis(
+        reading_plan="A short review; steps of about a paragraph.",
         reading_path=[
             ReadingStep(
                 location="page 1",
@@ -356,14 +357,8 @@ def _analysis_result(source: object) -> AnalysisResult:
                 claims=[
                     Claim(
                         text="Cooling drives water use.",
-                        statement_origin="author_stated",
-                        evidence=[
-                            Evidence(
-                                text="Cooling dominates.",
-                                evidence_form="paraphrased",
-                                relationship_to_claim="direct_support",
-                            )
-                        ],
+                        form="paraphrased",
+                        support=[Support(text="Cooling dominates.", form="paraphrased")],
                     )
                 ],
                 meaning="The opening premise.",
