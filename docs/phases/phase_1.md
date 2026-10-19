@@ -1014,3 +1014,56 @@ Text, Astra low	20	84	1,387 words	$1.17
 † The evaluation call failed on a connection error and was rerun on the saved close reading. Its rerun record is argument_evaluation_rerun_record.json.
 
 Every run kept to the 200–500-word pace, with 20–26 steps each. Astra costs about four times as much as Sol per run, and its close readings record fewer claims (84–93 against Sol's 109–135).
+
+## 47. Swap next article to increase journal diversity 
+
+**Prompt:** Can I change out one of the other two articles? Cause Katakam is from the same water journal as Barnett where Banbur is on the same subject, different journal.
+
+**Response:** You're right. Katakam and Barnett are both in Water Research (Elsevier, 10.1016/j.watres…). Kanbur covers the same subject, desalination for data-center cooling, but appears in a different journal: Wiley's International Journal of Energy Research (10.1002/er.5677). With katakam, two of the three experiment articles come from the same journal. Kanbur makes the set more varied.
+
+The swap also keeps what ADR-0009 cared about:
+
+The page spread holds. Kanbur is 18 pages, against katakam's 20, so Barnett (7) and lei (60) still cover the ends.
+The topic stays covered, since kanbur is the other desalination article.
+It adds a different kind of paper. Kanbur is a 2020 thermoeconomic modeling study, while Barnett is a review and policy piece. The analyses would face a paper that builds its argument from its own calculations.
+Kanbur already has an owner-confirmed sources.yaml entry, so nothing new is needed there.
+
+What I'd do:
+
+ADR-0014: kanbur replaces katakam. The reason: Barnett and katakam share a journal, and kanbur covers the same subject from another one. It reverses ADR-0009's choice of katakam and supersedes that part only. The 2 × 3 matrix stays.
+Move the PDFs: katakam to data/research/ and kanbur into ab_testing/, with both pdf: paths updated in sources.yaml.
+Update the article table and figures in BUILD_PLAN Phase 1, and the README lines that name the experiment articles.
+
+Nothing has run on katakam yet, so no outputs are affected. Should I go ahead?
+
+## 48. Swap articles in A/B test
+
+**Prompt:** Yes, go ahead and implement those changes.
+
+**Response:** Kanbur has replaced katakam as the third experiment article: the PDFs are swapped, sources.yaml points to the new locations, ADR-0014 records why, and ADR-0009 and the docs are updated. Kanbur loads from the manifest. Nothing is committed.
+
+## 49. Prepare Kanbur and split for notes
+
+**Prompt:** Well here's what I'm thinking: You prepare Kanbur and then, when you have the extracted text + crops, we could break it up for me based on our decision tree, and then when I'm reading, I can jot down some notes for each move so I don't have to spend as much time trying to decide how to organize my notes
+
+**Response:** That's a good use of the preparation. It gives you a ready-made structure, so your reading time goes into the content.
+
+One thing to keep it independent: I'll split the text mechanically, at section headings and paragraph breaks, sized to the 200–500-word range. I won't name the moves, summarize anything or say what a step means. That's the part you'll write. That way the split shapes your notes' layout but not your reading.
+
+Kanbur is prepared: 18 pages, 33 crops (23 equations and 10 tables), in 10 seconds. Next I'm checking the text for reading-order breaks like the one we fixed in Barnett.
+
+I found kanbur's prepared text has worse reading-order issues than Barnett's: 10 figure captions plus one footnote interrupt sentences mid-stream, and no figure crops were kept (only equations/tables), so the model never sees the result plots—just text about them. I'll fix the captions for the workbook now, then ask whether to also correct the prepared text as was done for Barnett.
+
+**Pending decision:** Kanbur is prepared, and your notes workbook is ready: 21 steps of the article's text, split mechanically, each with blank Moves, Claims and Meaning fields. Preparation kept no crops of kanbur's figures, so the text arm won't see its result plots. Nothing is committed.
+
+Fix the caption breaks in the model's prepared text too?
+
+## 50. Fix caption breaks in Kanbur's prepared text
+
+**Prompt:** Yes, fix them
+
+**Response:** Kanbur's prepared text is fixed, the same way as Barnett's, with one prepared text and no log. Nine sentences that a figure caption or the author footnote had split are whole again, and the captions and footnote now sit after the sentence. I checked that only the order changed, not the words, and the text still loads for the text runs with all 33 crops.
+
+Your workbook got the same fix, including one break that crossed a step boundary (around Figures 6 and 8).
+
+The workbook is at data/research/ab_testing/notes/kanbur_et_al_2020_desalination_integrated_data_center_cooling.md. Kanbur's preparation output and the workbook aren't committed yet.
