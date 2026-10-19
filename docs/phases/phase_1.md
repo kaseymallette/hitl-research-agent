@@ -199,4 +199,232 @@ The fix is to give each article a fixed source_id that every run reuses. The sim
 - It's a cheap test run. Barnett is the shortest article at 7 pages, so its 6 runs are the cheapest in the experiment. They also exercise the runner and records end to end before you spend money on lei.
 - Your notes give the comparison a reference point. Phase 2 needs your own reading of each article to check the judge against. Notes you wrote before seeing any model output are exactly that.
 
+## 13. Prepare Barnett for analysis 
+
+**Prompt:** Prepare Barnett for analysis 
+
+**Response:** Barnett is prepared in outputs/preparation/ in 5.2 seconds, with 1 gap (Table 1) and 1 crop. The text has a reading-order break on page 1: front matter lands mid-sentence. Nothing was edited by hand, and nothing is paid or committed.
+
+**Pending decision:** Leave the page 1 break as extracted, or fix it by hand?
+
+## 14. Fix page 1 break
+
+**Prompt:** Fix page 1 break
+
+**Response:** The opening sentence of Barnett's prepared text is whole again, with the front matter moved above the Introduction heading. Barnett's text arm is ready to run whenever you want to start its 6 runs.
+
+## 15. Run Barnett 
+
+**Prompt:** Run Barnett 
+
+**Response:** All six Barnett runs returned an analysis, each in one attempt, for $1.97 total. The Astra text + crops run failed once on a connection error that cost nothing, and the rerun worked. Every run used the same prompt and schema, and no code had uncommitted changes.
+
+## 16. Compare Barnett runs
+
+**Prompt:** Compare the six Barnett analyses against my notes.
+
+**Response:** All six analyses get the article's basics right, and none of them makes your main critique. That critique stays your own contribution. Below is how they compare with your notes, checked against the article where it mattered.
+
+Where they match your notes
+Methods: all six match the methods passage you quoted: a targeted review across three source types, peer-reviewed sources first, no original data. One small slip: Astra on the PDF adds "and other technology providers" to Google, Microsoft and AWS. That isn't in the methods text.
+Thesis: all six put the governance argument in the research problem, and roughly half of each one's central claims are about policy. None of them reads the paper as a purely technical survey.
+Numbers: I found no number in any analysis that's missing from the article. That's a loose check on digits only. Where I checked context, the numbers were attached to the right things.
+Attribution: every central claim in all six is labeled as the author's statement. I spot-checked 7 of the most distinctive ones ("qualitatively different," "market failure," "governance failure," the nuclear and SMR point, curtailment, "irreversibly"), and all 7 are in the article.
+Your takeaways
+Your takeaway	What the analyses do
+1. Moral turn	All six call the benefit-based framework a "normative trade-off" and fault it for having no criteria for judging benefit. None asks why a sustainability question becomes a justification question.
+2. Semiconductors	You're right. The article mentions semiconductors four times: the abstract, one definition, a scope exclusion and a research priority. All six record "out of scope," but only as the author's own disclaimer. None notices that the abstract lists it as one of three pathways.
+3 & 5. Buried thesis	None of them sees it. They report the policy argument as central, but nothing about proportion: that the thesis arrives at the end, after a long technical setup.
+4. The examples show it works	Most of the analyses lean the other way (5 of 6). They say the "choices, not necessity" conclusion assumes the successful examples would work elsewhere, and that the paper never shows this. This is a real disagreement between you and the analyses, and it's worth your judgment.
+What they found that your notes don't have
+Unreproducible review methods (all six): no search strings, no screening procedure, no count of included sources.
+Figures that aren't AI-specific (3 of 6): many of the numbers are about data centers in general, not AI workloads.
+A mismatched citation (Sol high on the PDF only): the article cites Jain (2025) for a claim about water transparency. I checked the reference list, and that source is about AI in chip verification. That's a genuine catch.
+Your open questions, answered from the article
+The consumption table is U.S. data centers. The 2028 figure of 60–124 billion liters covers hyperscale facilities alone, which is what your asterisk was marking. Only Sol high on the PDF kept that qualifier.
+Google's 20 billion liters is "annually in recent years." The 2024 in your notes is the year of the report, not of the data.
+Hainan (China) and Project Natick (Microsoft) are separate subsea projects, and Microsoft's is the one that was discontinued.
+AWS reclaimed water is its own row in Table 1. It isn't part of waterless systems.
+By configuration
+
+This is one article and my reading. It's evidence for Phase 2, not a verdict.
+
+Configuration	Cost	Time	What stood out
+PDF, Sol medium	$0.16	234 s	Solid, middle of the pack
+PDF, Sol high	$0.24	356 s	Most thorough: most evidence, most model-inferred assumptions, the only one that kept the 2028 qualifier, the only Jain catch
+PDF, Astra low	$0.64	133 s	Leanest; the one embellishment in its methodology
+Text, Sol medium	$0.14	195 s	Similar to PDF Sol medium
+Text, Sol high	$0.20	319 s	Rated how well the evidence supports only 9 of its 33 claims; the PDF version rated 27 of 29
+Text, Astra low	$0.59	140 s	Plus one free failed attempt
+
+On Barnett, Astra costs 2.5 to 4 times as much as Sol and shows no visible quality advantage. Sol high on the PDF did the most critical reading.
+
+## 17. Modify prompt to examine gaps
+
+**Prompt:** So why didn't the system examine the gap I identified, and do you think the prompt needs to change?
+
+**Response:** They didn't miss it by accident. The prompt never asks for it.
+
+Why the analyses didn't examine your gap
+
+Your critique is about the whole document: where the thesis appears, what most of the length is spent on, and whether the abstract's promises are delivered. The prompt only asks for assessment one claim at a time.
+
+The only assessment the prompt asks for is per claim. support_assessment asks whether the reasons offered for a single claim meet that claim's own wording (prompts.py:85-128). Nothing asks how the paper is built, how much space each part gets, or whether the body delivers what the abstract announces.
+The schema has nowhere to put a whole-paper judgment. The analysis has a research problem, claims, methodology, assumptions, limitations, proposed solutions and open questions. Every one of those is a list of separate items. A model could have squeezed a structural critique into limitations, but that field reads as "limitations of the study."
+The prompt pushes toward a charitable reading. It says "reconstruct the source's own argument on its own terms" (line 13). It also says not to "invent an objection the passages you found do not themselves raise" (line 120). A critique about proportion isn't tied to any single passage, so a careful model following those lines would hold it back.
+
+So the models did what they were told, and did it well: claim by claim. Your takeaways work at a level the system doesn't have.
+
+Should the prompt change?
+
+I think yes, but with care.
+
+Why yes: the gap goes to what you said you need from this system: a map of the paper before you read it. "The real thesis is the policy argument at the end, and the technical sections mostly serve as setup" is exactly the map that would have saved you hours on Barnett. An analysis that can't say that is missing the level most useful to you.
+
+Why with care:
+
+One article is thin evidence. Your README describes exactly how v1 went wrong: every problem got absorbed into the design. Any change should ask a general question (how is the argument built, does the conclusion follow from the body, does the abstract match what's delivered), not "find buried theses."
+It probably needs a schema field, not just prompt text. One whole-document assessment field would keep this critique out of limitations. That changes the output schema, which is held constant in the experiment, so it would need its own ADR.
+Timing: only Barnett has run so far. Changing now costs one rerun of its 6 cells, about $2, and the experiment stays consistent: the same prompt and schema across all 18 runs. Changing after katakam and lei means rerunning 18 cells, or splitting the experiment across two prompts.
+
+My recommendation: decide before running katakam and lei. If you agree that a whole-document assessment is something the system must do, make the change now (one schema field plus a short prompt paragraph, recorded in an ADR), then rerun Barnett. If you're unsure, the alternative is to keep the prompt as it is, finish Phase 1, and record this as a Phase 2 finding. That keeps the experiment clean, but it puts the fix off until after the collection's configuration is chosen.
+
+## 18. Add whole-document assessment field
+
+**Prompt:** I want to add a whole-document assessment. Chat suggested this. What do you think?
+
+Assess the reasoning connecting the source’s central findings to its main conclusions and recommendations, even when those connections span multiple claims or sections. Identify the premises needed for those conclusions to follow, including any value judgments. Explain which premises the source supports, which it states without support, and which remain implicit. Distinguish whether a recommendation is justified from whether its implementation is adequately specified. Always assess this central reasoning; keep assessments of secondary claims selective.
+
+**Response:** Chat's text is good on the reasoning chain, but it doesn't reach the gap you identified.
+
+What it covers well
+
+"Including any value judgments" goes straight at your Takeaway 1. It would push a model to say that the benefit-tiering framework rests on an unargued premise about whose needs count more. One analysis came close on its own: Astra on the text arm listed "essential domestic and agricultural water needs should carry greater weight" as an assumption. This makes that the norm.
+"Supported, stated without support, or implicit" fits the bridge from "it works" to "we need policy." It would make the model show whether the water-pricing argument actually carries the conclusion.
+Separating "justified" from "adequately specified" is a real improvement. All six analyses blurred the two: "the framework lacks criteria" is an implementation complaint, and it says nothing about whether the recommendation is justified.
+
+What it misses: your Takeaways 2, 3 and 5 are about how the document is built, not about logic: where the thesis appears, how much of the length serves it, and whether the body delivers what the abstract promises. Chat's text only asks whether the conclusions follow. A model could answer it perfectly and still never say "the thesis arrives at the end, after a long technical setup," or "the abstract names semiconductors as one of three pathways and the body doesn't analyze them."
+
+I'd add one sentence:
+
+Describe how the document is organized relative to that reasoning: where its main conclusions are actually established, how much of the document develops them, and whether the scope the abstract and introduction promise is what the body delivers.
+
+It's worded to describe rather than criticize, so it shouldn't invite routine fault-finding. The prompt's existing "calibrated judgment, not routine criticism" line still applies.
+
+It also needs somewhere to go. Without a field of its own, a model would scatter this across support_assessment, assumptions and limitations, which is roughly what happens now. I'd add a single required text field to the analysis, something like argument_assessment, holding the whole-document assessment as prose. That changes the output schema, so it needs an ADR.
+
+One overlap to watch: the prompt already says "Most claims will not need this field" about support_assessment. Chat's last sentence, "keep assessments of secondary claims selective," agrees with that, so the two don't conflict. Just place the new paragraph so it's clearly about the new field.
+
+**Pending decision:** If you're happy with Chat's text plus that sentence, the change is:
+
+1. One new field in models.py.
+2. A short paragraph in SYSTEM_PROMPT.
+3. ADR-0010.
+4. Updating the tests that build analyses.
+5. Rerunning Barnett's 6 runs, about $2.
+
+Do you want me to go ahead?
+
+## 19. Modify prompt instructions
+
+**Prompt:** Chat proposed this:
+
+Examine how the document’s organization supports its reasoning. Distinguish where its main conclusions are announced, where the supporting arguments are developed, and where the conclusions are restated. Assess whether that development adequately supports the conclusions and whether the body delivers the scope promised by the abstract and introduction. Identify substantive gaps with specific passages; do not treat section placement or length alone as evidence of weakness.
+
+**Response:** This version is better than my sentence in two ways, and it loses one thing you care about.
+
+Better than mine:
+
+"Announced, developed, restated" is sharper than my "where they're established." It matches a distinction the prompt already makes ("a stated intention to argue something later" versus "the argument actually developed," lines 113–115), now applied to the whole document.
+"Identify substantive gaps with specific passages" keeps the assessment grounded, so the model can't just give an impression.
+
+The problem is the last clause. "Do not treat section placement or length alone as evidence of weakness" is a fair rule: a thesis that comes at the end isn't a flaw in itself. But Chat also dropped "how much of the document develops them." Together, a model will most likely say nothing about proportion. Proportion is half of your Barnett critique: most of the paper is technical setup, and the policy thesis gets little development. Part of that survives in "whether that development adequately supports the conclusions," but only as a judgment of adequacy, never as a description of the layout.
+
+Fix: have the model describe proportion as a fact, and keep the guard against judging on it alone:
+
+Examine how the document's organization supports its reasoning. Distinguish where its main conclusions are announced, where the supporting arguments are developed, and where the conclusions are restated, and describe how much of the document each part occupies. Assess whether that development adequately supports the conclusions and whether the body delivers the scope promised by the abstract and introduction. Identify substantive gaps with specific passages; do not treat section placement or length alone as evidence of weakness.
+
+The description gives you the map you wanted ("the thesis is developed in the last two sections; the first two-thirds is technical background"). The guard still stops the model from calling that a flaw unless it can point to passages where the development falls short.
+
+This paragraph would follow Chat's first paragraph, with both going into the one new whole-document field. Do you want me to make the change (field, prompt, ADR, tests), then rerun Barnett?
+
+## 20. Implement Changes, Create ADR-0010
+
+**Prompt:** Yes, implement the changes (field, prompt, ADR, tests). Do not rerun Barnett yet.
+
+**Response:** The argument_assessment field, the two prompt paragraphs, ADR-0010, the tests and the docs are in place, and all 84 tests, Ruff and mypy pass. Barnett hasn't been rerun and nothing is committed. Note that outputs/ isn't in .gitignore, even though the README says it stays out of git.
+
+## 21. Rerun Sol 6.1 High PDF with new system prompt
+
+**Prompt:** Rerun Sol 6.1 High PDF to see if it changes with the new system prompt.
+
+**Response:** The change works. The rerun's `argument_assessment` is a 603-word assessment of the whole document, the level the old analyses never reached. On your main critique, though, it engages your point and comes to the opposite conclusion.
+
+**How it lines up with your takeaways**
+
+| Your takeaway | New assessment |
+| --- | --- |
+| **1. Unexplained moral turn** | It names the value premises (water is a finite common resource, allocation should be equitable, uses differ in necessity), but it calls that bridge "explicit rather than hidden." It finds the implicit premise elsewhere: that institutions can legitimately compare benefits at all. It **partly disagrees** with you. |
+| **2. Abstract promises more than the body delivers** | **It catches this in general form:** "the broad title and opening discussion of a global water footprint exceed the operational-blue-water evidence actually synthesized." It doesn't name semiconductors specifically. |
+| **3 & 5. Buried thesis; most of the paper is setup** | **It describes the proportions:** technical material on pages 2 to 5, governance on 5 and 6. Then it judges the reverse of you: the technical sections give the governance argument "a substantive technical foundation rather than merely restating the abstract." It also points out that the abstract announces the policy thesis on page 1. **It disagrees with you.** |
+| **4. The examples show it works** | The same as before: the examples support only the narrow point that some facilities avoid high water use. Going further needs an "untested portfolio-feasibility premise." |
+
+It also adds something close to your overall impression: the conclusion "is more decisive about political choice and irreversible consequences than the review's own… uncertainties warrant."
+
+**What this means:** the original problem was that the system couldn't see your critique at all. Now it sees the same structure and argues the other side. That's a genuine disagreement about the paper, not a blind spot, and it's exactly what your human-scored sample in Phase 2 is for. Either reading is defensible. Yours says the technical sections are mostly a setup. The model's says they supply real premises: the electricity penalties and scaling limits are why technology alone isn't enough. Deciding which one is right is your call, not mine or the model's.
+
+**Cost:** about the same as before, $0.23 against $0.24. The longer prompt added about 260 input tokens, and output came out slightly shorter.
+
+**Before keeping this run as part of the experiment:** its record shows `code_uncommitted_changes: true` and the old commit, because I ran it before committing. If the prompt change stays, commit first, then rerun all six Barnett cells, so every record carries the same, committed fingerprint.
+
+## 22. Rerun the other 5 Barnett runs with the new system prompt
+
+**Prompt:** Let's rerun the other 5
+
+**Response:** The 5 runs are going in the background, one after another, under the new prompt. That should take about 20 minutes. When they finish, I'll move them into `after_adr_0010/` and compare the six new whole-document assessments.
+
+These runs will also show the prompt change as uncommitted in their records, like the Sol high rerun, because nothing has been committed yet.
+
+All five reruns returned an analysis on the first attempt. All six new runs are now in `after_adr_0010/`, next to the originals in `before_adr_0010/`.
+
+## What the six new assessments say
+
+**All six describe the paper's structure now.** Each says where the thesis is announced (the abstract), how much space the technical sections take (most of pages 2–5), and where governance is developed (pages 5–6). Before the change, none of them did this.
+
+**On your main critique, all six disagree with you.** They say the technical sections give real reasons for the governance argument rather than just setting it up: electricity penalties, low water prices that favor evaporative cooling, allocation rules that hold during drought. Astra on the PDF puts it most directly: the structure makes the bridge "explicit rather than leaving governance as an unrelated conclusion."
+
+**All six agree with you that the conclusion goes further than the body supports.** Each says the closing claims (outcomes are "choices, not necessity," political will is what's missing, water stress is "irreversible") are stronger than the evidence. They also note that Section 4 itself documents real technical and scaling limits.
+
+**On your other takeaways:**
+- **Moral turn (1):** all six say the value premise is stated openly, not hidden, and that no method for ranking benefits is given. Sol medium on the text comes closest to your reading: digital water sobriety "adds a normative premise rather than simply following from" the water figures.
+- **Abstract versus body (2):** the four Sol runs say the abstract's broad footprint language goes beyond what the body delivers. The two Astra runs say the body "broadly delivers." None names semiconductors.
+
+**New catches:**
+- **Meta's Luleå data center.** Both Sol runs on the text arm used Table 1's footnote: the annual withdrawal figure can't show how efficient a hyperscale site is, because the facility's IT capacity isn't disclosed. That bears directly on your Takeaway 4, which uses Meta Sweden as a success. The footnote only shows up in the prepared text, which may be why the text arm caught it.
+- **Heat recovery.** Four of the six say the conclusion promises firmer water benefits than Section 4.5 supports.
+
+## Why all six might agree
+
+When all six land on the same verdict against you, it could mean the paper reads that way. It could also be the prompt. "Reconstruct the argument on its own terms" and "do not treat section placement or length alone as evidence of weakness" both push the models toward the charitable reading. The guard against judging on length was meant to stop routine fault-finding. It may also be stopping a critique like yours. One article can't tell these two apart. Katakam and lei, with your notes on them, will show more.
+
+## Cost and size
+
+| Configuration | Before | After | Assessment |
+| --- | --- | --- | --- |
+| PDF, Sol medium | $0.16 | $0.17 | 601 words |
+| PDF, Sol high | $0.24 | $0.23 | 603 words |
+| PDF, Astra low | $0.64 | $0.55 | 360 words |
+| Text, Sol medium | $0.14 | $0.14 | 572 words |
+| Text, Sol high | $0.20 | $0.19 | 488 words |
+| Text, Astra low | $0.59 | $0.50 | 357 words |
+| **Total** | **$1.97** | **$1.77** | |
+
+The new runs cost less overall but produced fewer claims. Astra went from 21 to 16 claims on the PDF and from 24 to 17 on the text, and Sol high on the text from 33 to 25. The new field may be taking space from the claim list. It's worth checking whether any claims you care about went missing.
+
+One more thing: all six new records show `code_uncommitted_changes: true` and the old commit, because the prompt change still isn't committed.
+
+
+
+
+
 
