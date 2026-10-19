@@ -1,0 +1,72 @@
+{
+  "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+  "config": "text_crops__gpt-6.1-sol-high",
+  "input_method": "text_crops",
+  "input_mode": "prepared_text_and_crops",
+  "crops_sent": 1,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "max_output_tokens": null,
+  "openai_max_retries": 0,
+  "system_prompt_sha256": "ba71b2fdcdca5f223c12bf3fbc3353e6897c91b712ffbbfbb4e88afb5420b009",
+  "input_mode_instructions_sha256": "a7d4097af9311b6b5fbfe250dcf45aa0f7b860281afc31236ed7a821b6c70e06",
+  "output_schema_sha256": "a88e5d036f5b5657dc8155ba0628411cdb99f5c0c3a5d950592f6b1c695d138f",
+  "git_commit": "dc41c332082061f75eeaea5bda26a3fb2395a5c8",
+  "code_uncommitted_changes": false,
+  "model_inputs": [
+    {
+      "kind": "image",
+      "path": "outputs/preparation/barnett_itzhaki_2026_water_footprint_artificial_intelligence/images/T1_p02.png",
+      "mime_type": "image/png",
+      "sha256": "67de532530c9ddc4acd5b98927fb1bc6ec7909f87264c774672576ed01728772",
+      "byte_size": 106619,
+      "page": 2,
+      "gap_id": "T1",
+      "label": "Table 1"
+    }
+  ],
+  "started_at": "2026-10-19T02:30:54.193499+00:00",
+  "elapsed_seconds": 510.737,
+  "outcome": "analysis returned",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_0a5472619e7ad886006ad580df790487d09ac503868756d764",
+      "elapsed_seconds": 510.577509,
+      "usage": {
+        "input_tokens": 14393,
+        "output_tokens": 24553,
+        "reasoning_tokens": 3537,
+        "cached_input_tokens": 0,
+        "cache_creation_input_tokens": 14390
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 14393,
+    "output_tokens": 24553,
+    "reasoning_tokens": 3537,
+    "cached_input_tokens": 0
+  },
+  "calculated_cost": {
+    "model": "gpt-6.1-sol",
+    "input_tokens": 14393,
+    "cached_input_tokens": 0,
+    "output_tokens": 24553,
+    "input_usd": 0.028786,
+    "cached_input_usd": 0.0,
+    "output_usd": 0.24553,
+    "total_usd": 0.274316,
+    "rates_usd_per_mtok": {
+      "input": 2.0,
+      "output": 10.0,
+      "cached_input": 0.1
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  },
+  "analysis_scope": "The model received the prepared text plus one retained crop for each item in preparation_gaps. Content it reports from a crop was read from that image and is unverified until a human checks it against the original."
+}
