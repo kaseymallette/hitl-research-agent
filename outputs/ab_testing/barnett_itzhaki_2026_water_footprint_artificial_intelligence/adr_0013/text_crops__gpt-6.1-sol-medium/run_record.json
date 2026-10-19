@@ -1,0 +1,120 @@
+{
+  "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+  "config": "text_crops__gpt-6.1-sol-medium",
+  "input_method": "text_crops",
+  "input_mode": "prepared_text_and_crops",
+  "crops_sent": 1,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "max_output_tokens": null,
+  "openai_max_retries": 0,
+  "system_prompt_sha256": "0e3b6c9966a84912b47150ddd281b956662360e03ebcf5f7037745ea799e4ad9",
+  "input_mode_instructions_sha256": "019c11514d733dc6d62fc35389b65c63aa8a1b0d5b45595868af4ea1c4b3f27a",
+  "output_schema_sha256": "562a68a7827aa045698585636d5b042edf5d354f8b5038738a2bf5eab5cc4046",
+  "evaluation_prompt_sha256": "e662aa71e4ee3dd82d96e936e9804c5370977c6f1db50ca225c379b520409f83",
+  "evaluation_schema_sha256": "3260d2771db638022efbf52f89e360cc41bc1930a6de948285d2f388e624cc00",
+  "git_commit": "a4c11beeaaa62b00d25a769ebc21b7defacbfbd0",
+  "code_uncommitted_changes": false,
+  "model_inputs": [
+    {
+      "kind": "image",
+      "path": "outputs/preparation/barnett_itzhaki_2026_water_footprint_artificial_intelligence/images/T1_p02.png",
+      "mime_type": "image/png",
+      "sha256": "67de532530c9ddc4acd5b98927fb1bc6ec7909f87264c774672576ed01728772",
+      "byte_size": 106619,
+      "page": 2,
+      "gap_id": "T1",
+      "label": "Table 1"
+    }
+  ],
+  "started_at": "2026-10-19T10:09:13.958298+00:00",
+  "elapsed_seconds": 275.843,
+  "outcome": "analysis returned",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_045890ce70fa855b006ad5ec4aa71087d0ba93d87e819f87ec",
+      "elapsed_seconds": 275.72061,
+      "usage": {
+        "input_tokens": 12992,
+        "output_tokens": 17985,
+        "reasoning_tokens": 516,
+        "cached_input_tokens": 0,
+        "cache_creation_input_tokens": 12989
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 12992,
+    "output_tokens": 17985,
+    "reasoning_tokens": 516,
+    "cached_input_tokens": 0
+  },
+  "calculated_cost": {
+    "model": "gpt-6.1-sol",
+    "input_tokens": 12992,
+    "cached_input_tokens": 0,
+    "output_tokens": 17985,
+    "input_usd": 0.025984,
+    "cached_input_usd": 0.0,
+    "output_usd": 0.17985,
+    "total_usd": 0.205834,
+    "rates_usd_per_mtok": {
+      "input": 2.0,
+      "output": 10.0,
+      "cached_input": 0.1
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  },
+  "analysis_scope": "The model received the prepared text plus one retained crop for each item in preparation_gaps. Content it reports from a crop was read from that image and is unverified until a human checks it against the original.",
+  "argument_evaluation": {
+    "outcome": "evaluation returned",
+    "started_at": "2026-10-19T10:13:49.811319+00:00",
+    "elapsed_seconds": 48.313,
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "outcome": "valid",
+        "request_id": "resp_0841f68485cf06f8006ad5ed5df93887d080eb69e21dcae350",
+        "elapsed_seconds": 48.280505,
+        "usage": {
+          "input_tokens": 29042,
+          "output_tokens": 1850,
+          "reasoning_tokens": 79,
+          "cached_input_tokens": 0,
+          "cache_creation_input_tokens": 29039
+        },
+        "problems": [],
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 29042,
+      "output_tokens": 1850,
+      "reasoning_tokens": 79,
+      "cached_input_tokens": 0
+    },
+    "calculated_cost": {
+      "model": "gpt-6.1-sol",
+      "input_tokens": 29042,
+      "cached_input_tokens": 0,
+      "output_tokens": 1850,
+      "input_usd": 0.058084,
+      "cached_input_usd": 0.0,
+      "output_usd": 0.0185,
+      "total_usd": 0.076584,
+      "rates_usd_per_mtok": {
+        "input": 2.0,
+        "output": 10.0,
+        "cached_input": 0.1
+      },
+      "rate_source": "OpenAI model pages, read 2026-10-15",
+      "note": "calculated from reported usage; not confirmed billing"
+    }
+  },
+  "total_calculated_cost_usd": 0.282418
+}

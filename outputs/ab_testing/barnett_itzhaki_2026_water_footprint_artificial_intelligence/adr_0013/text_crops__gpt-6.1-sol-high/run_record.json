@@ -1,0 +1,120 @@
+{
+  "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+  "config": "text_crops__gpt-6.1-sol-high",
+  "input_method": "text_crops",
+  "input_mode": "prepared_text_and_crops",
+  "crops_sent": 1,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "max_output_tokens": null,
+  "openai_max_retries": 0,
+  "system_prompt_sha256": "0e3b6c9966a84912b47150ddd281b956662360e03ebcf5f7037745ea799e4ad9",
+  "input_mode_instructions_sha256": "019c11514d733dc6d62fc35389b65c63aa8a1b0d5b45595868af4ea1c4b3f27a",
+  "output_schema_sha256": "562a68a7827aa045698585636d5b042edf5d354f8b5038738a2bf5eab5cc4046",
+  "evaluation_prompt_sha256": "e662aa71e4ee3dd82d96e936e9804c5370977c6f1db50ca225c379b520409f83",
+  "evaluation_schema_sha256": "3260d2771db638022efbf52f89e360cc41bc1930a6de948285d2f388e624cc00",
+  "git_commit": "a4c11beeaaa62b00d25a769ebc21b7defacbfbd0",
+  "code_uncommitted_changes": false,
+  "model_inputs": [
+    {
+      "kind": "image",
+      "path": "outputs/preparation/barnett_itzhaki_2026_water_footprint_artificial_intelligence/images/T1_p02.png",
+      "mime_type": "image/png",
+      "sha256": "67de532530c9ddc4acd5b98927fb1bc6ec7909f87264c774672576ed01728772",
+      "byte_size": 106619,
+      "page": 2,
+      "gap_id": "T1",
+      "label": "Table 1"
+    }
+  ],
+  "started_at": "2026-10-19T10:14:41.086979+00:00",
+  "elapsed_seconds": 322.651,
+  "outcome": "analysis returned",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_076bc838c1423a49006ad5ed91c2a087d0b0d5572e0bbc03d3",
+      "elapsed_seconds": 322.537086,
+      "usage": {
+        "input_tokens": 12992,
+        "output_tokens": 21659,
+        "reasoning_tokens": 2031,
+        "cached_input_tokens": 1829,
+        "cache_creation_input_tokens": 11160
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 12992,
+    "output_tokens": 21659,
+    "reasoning_tokens": 2031,
+    "cached_input_tokens": 1829
+  },
+  "calculated_cost": {
+    "model": "gpt-6.1-sol",
+    "input_tokens": 12992,
+    "cached_input_tokens": 1829,
+    "output_tokens": 21659,
+    "input_usd": 0.022326,
+    "cached_input_usd": 0.000183,
+    "output_usd": 0.21659,
+    "total_usd": 0.239099,
+    "rates_usd_per_mtok": {
+      "input": 2.0,
+      "output": 10.0,
+      "cached_input": 0.1
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  },
+  "analysis_scope": "The model received the prepared text plus one retained crop for each item in preparation_gaps. Content it reports from a crop was read from that image and is unverified until a human checks it against the original.",
+  "argument_evaluation": {
+    "outcome": "evaluation returned",
+    "started_at": "2026-10-19T10:20:03.748313+00:00",
+    "elapsed_seconds": 71.628,
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "outcome": "valid",
+        "request_id": "resp_07186887531752e3006ad5eed4007887d0acdfed2fd3255bdd",
+        "elapsed_seconds": 71.595032,
+        "usage": {
+          "input_tokens": 31201,
+          "output_tokens": 2832,
+          "reasoning_tokens": 1034,
+          "cached_input_tokens": 0,
+          "cache_creation_input_tokens": 31198
+        },
+        "problems": [],
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 31201,
+      "output_tokens": 2832,
+      "reasoning_tokens": 1034,
+      "cached_input_tokens": 0
+    },
+    "calculated_cost": {
+      "model": "gpt-6.1-sol",
+      "input_tokens": 31201,
+      "cached_input_tokens": 0,
+      "output_tokens": 2832,
+      "input_usd": 0.062402,
+      "cached_input_usd": 0.0,
+      "output_usd": 0.02832,
+      "total_usd": 0.090722,
+      "rates_usd_per_mtok": {
+        "input": 2.0,
+        "output": 10.0,
+        "cached_input": 0.1
+      },
+      "rate_source": "OpenAI model pages, read 2026-10-15",
+      "note": "calculated from reported usage; not confirmed billing"
+    }
+  },
+  "total_calculated_cost_usd": 0.329821
+}

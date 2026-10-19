@@ -1,0 +1,120 @@
+{
+  "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+  "config": "pdf__gpt-6-astra-low",
+  "input_method": "pdf",
+  "input_mode": "pdf",
+  "crops_sent": null,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "low",
+  "max_output_tokens": null,
+  "openai_max_retries": 0,
+  "system_prompt_sha256": "0e3b6c9966a84912b47150ddd281b956662360e03ebcf5f7037745ea799e4ad9",
+  "input_mode_instructions_sha256": "db1e74480a2f36e3b91dc2f075038705c7739f15a0d2b67243f642b04d374692",
+  "output_schema_sha256": "562a68a7827aa045698585636d5b042edf5d354f8b5038738a2bf5eab5cc4046",
+  "evaluation_prompt_sha256": "e662aa71e4ee3dd82d96e936e9804c5370977c6f1db50ca225c379b520409f83",
+  "evaluation_schema_sha256": "3260d2771db638022efbf52f89e360cc41bc1930a6de948285d2f388e624cc00",
+  "git_commit": "a4c11beeaaa62b00d25a769ebc21b7defacbfbd0",
+  "code_uncommitted_changes": false,
+  "model_inputs": [
+    {
+      "kind": "pdf",
+      "path": "data/research/ab_testing/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf",
+      "mime_type": "application/pdf",
+      "sha256": "7008272c90efb85dba72b5ee3f316140b313c096f6d6ea5f1016369db158dc0a",
+      "byte_size": 1003897,
+      "page": null,
+      "gap_id": null,
+      "label": null
+    }
+  ],
+  "started_at": "2026-10-19T10:05:03.942177+00:00",
+  "elapsed_seconds": 209.924,
+  "outcome": "analysis returned",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_070f7118e03e9c43006ad5eb50c06887d0b571af292c5cf6f8",
+      "elapsed_seconds": 209.808356,
+      "usage": {
+        "input_tokens": 18479,
+        "output_tokens": 14145,
+        "reasoning_tokens": 41,
+        "cached_input_tokens": 0,
+        "cache_creation_input_tokens": 18476
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 18479,
+    "output_tokens": 14145,
+    "reasoning_tokens": 41,
+    "cached_input_tokens": 0
+  },
+  "calculated_cost": {
+    "model": "gpt-6-astra",
+    "input_tokens": 18479,
+    "cached_input_tokens": 0,
+    "output_tokens": 14145,
+    "input_usd": 0.18479,
+    "cached_input_usd": 0.0,
+    "output_usd": 0.70725,
+    "total_usd": 0.89204,
+    "rates_usd_per_mtok": {
+      "input": 10.0,
+      "output": 50.0,
+      "cached_input": 1.0
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  },
+  "analysis_scope": "The model received the original source PDF, so nothing was withheld from it. Content it reports from a figure, table, or equation was read from a page image and is unverified until a human checks it against that page.",
+  "argument_evaluation": {
+    "outcome": "evaluation returned",
+    "started_at": "2026-10-19T10:08:33.874692+00:00",
+    "elapsed_seconds": 37.631,
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "outcome": "valid",
+        "request_id": "resp_02c53006c4677961006ad5ec2249d887d0881d406f1fbc45f8",
+        "elapsed_seconds": 37.603256,
+        "usage": {
+          "input_tokens": 31163,
+          "output_tokens": 1794,
+          "reasoning_tokens": 17,
+          "cached_input_tokens": 0,
+          "cache_creation_input_tokens": 31160
+        },
+        "problems": [],
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 31163,
+      "output_tokens": 1794,
+      "reasoning_tokens": 17,
+      "cached_input_tokens": 0
+    },
+    "calculated_cost": {
+      "model": "gpt-6-astra",
+      "input_tokens": 31163,
+      "cached_input_tokens": 0,
+      "output_tokens": 1794,
+      "input_usd": 0.31163,
+      "cached_input_usd": 0.0,
+      "output_usd": 0.0897,
+      "total_usd": 0.40133,
+      "rates_usd_per_mtok": {
+        "input": 10.0,
+        "output": 50.0,
+        "cached_input": 1.0
+      },
+      "rate_source": "OpenAI model pages, read 2026-10-15",
+      "note": "calculated from reported usage; not confirmed billing"
+    }
+  },
+  "total_calculated_cost_usd": 1.29337
+}

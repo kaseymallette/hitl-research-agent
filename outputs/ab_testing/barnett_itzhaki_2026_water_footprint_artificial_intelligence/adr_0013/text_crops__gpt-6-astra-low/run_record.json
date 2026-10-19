@@ -1,0 +1,120 @@
+{
+  "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+  "config": "text_crops__gpt-6-astra-low",
+  "input_method": "text_crops",
+  "input_mode": "prepared_text_and_crops",
+  "crops_sent": 1,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "low",
+  "max_output_tokens": null,
+  "openai_max_retries": 0,
+  "system_prompt_sha256": "0e3b6c9966a84912b47150ddd281b956662360e03ebcf5f7037745ea799e4ad9",
+  "input_mode_instructions_sha256": "019c11514d733dc6d62fc35389b65c63aa8a1b0d5b45595868af4ea1c4b3f27a",
+  "output_schema_sha256": "562a68a7827aa045698585636d5b042edf5d354f8b5038738a2bf5eab5cc4046",
+  "evaluation_prompt_sha256": "e662aa71e4ee3dd82d96e936e9804c5370977c6f1db50ca225c379b520409f83",
+  "evaluation_schema_sha256": "3260d2771db638022efbf52f89e360cc41bc1930a6de948285d2f388e624cc00",
+  "git_commit": "a4c11beeaaa62b00d25a769ebc21b7defacbfbd0",
+  "code_uncommitted_changes": false,
+  "model_inputs": [
+    {
+      "kind": "image",
+      "path": "outputs/preparation/barnett_itzhaki_2026_water_footprint_artificial_intelligence/images/T1_p02.png",
+      "mime_type": "image/png",
+      "sha256": "67de532530c9ddc4acd5b98927fb1bc6ec7909f87264c774672576ed01728772",
+      "byte_size": 106619,
+      "page": 2,
+      "gap_id": "T1",
+      "label": "Table 1"
+    }
+  ],
+  "started_at": "2026-10-19T10:21:18.358363+00:00",
+  "elapsed_seconds": 208.174,
+  "outcome": "analysis returned",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_0ea68702dc5b636a006ad5ef1ef37087d090cfc32dc38d63d9",
+      "elapsed_seconds": 208.066159,
+      "usage": {
+        "input_tokens": 12992,
+        "output_tokens": 14199,
+        "reasoning_tokens": 92,
+        "cached_input_tokens": 1829,
+        "cache_creation_input_tokens": 11160
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 12992,
+    "output_tokens": 14199,
+    "reasoning_tokens": 92,
+    "cached_input_tokens": 1829
+  },
+  "calculated_cost": {
+    "model": "gpt-6-astra",
+    "input_tokens": 12992,
+    "cached_input_tokens": 1829,
+    "output_tokens": 14199,
+    "input_usd": 0.11163,
+    "cached_input_usd": 0.001829,
+    "output_usd": 0.70995,
+    "total_usd": 0.823409,
+    "rates_usd_per_mtok": {
+      "input": 10.0,
+      "output": 50.0,
+      "cached_input": 1.0
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  },
+  "analysis_scope": "The model received the prepared text plus one retained crop for each item in preparation_gaps. Content it reports from a crop was read from that image and is unverified until a human checks it against the original.",
+  "argument_evaluation": {
+    "outcome": "evaluation returned",
+    "started_at": "2026-10-19T10:24:46.540085+00:00",
+    "elapsed_seconds": 54.97,
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "outcome": "valid",
+        "request_id": "resp_075717f3bebb7cea006ad5efeead3c87d0bf452f579c792a29",
+        "elapsed_seconds": 54.959116,
+        "usage": {
+          "input_tokens": 25680,
+          "output_tokens": 1826,
+          "reasoning_tokens": 45,
+          "cached_input_tokens": 0,
+          "cache_creation_input_tokens": 25677
+        },
+        "problems": [],
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 25680,
+      "output_tokens": 1826,
+      "reasoning_tokens": 45,
+      "cached_input_tokens": 0
+    },
+    "calculated_cost": {
+      "model": "gpt-6-astra",
+      "input_tokens": 25680,
+      "cached_input_tokens": 0,
+      "output_tokens": 1826,
+      "input_usd": 0.2568,
+      "cached_input_usd": 0.0,
+      "output_usd": 0.0913,
+      "total_usd": 0.3481,
+      "rates_usd_per_mtok": {
+        "input": 10.0,
+        "output": 50.0,
+        "cached_input": 1.0
+      },
+      "rate_source": "OpenAI model pages, read 2026-10-15",
+      "note": "calculated from reported usage; not confirmed billing"
+    }
+  },
+  "total_calculated_cost_usd": 1.171509
+}

@@ -1,0 +1,51 @@
+{
+  "purpose": "evaluation-only rerun on the saved close reading, after the first evaluation call failed on a connection error",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "evaluation_prompt_sha256": "e662aa71e4ee3dd82d96e936e9804c5370977c6f1db50ca225c379b520409f83",
+  "evaluation_schema_sha256": "3260d2771db638022efbf52f89e360cc41bc1930a6de948285d2f388e624cc00",
+  "git_commit": "a4c11beeaaa62b00d25a769ebc21b7defacbfbd0",
+  "code_uncommitted_changes": false,
+  "started_at": "2026-10-19T10:26:02.810399+00:00",
+  "elapsed_seconds": 75.863,
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_0f482da7b1c540cd006ad5f03b8b0887d0bba6e8ae6888adc5",
+      "elapsed_seconds": 75.769712,
+      "usage": {
+        "input_tokens": 36665,
+        "output_tokens": 2892,
+        "reasoning_tokens": 1034,
+        "cached_input_tokens": 0,
+        "cache_creation_input_tokens": 36662
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 36665,
+    "output_tokens": 2892,
+    "reasoning_tokens": 1034,
+    "cached_input_tokens": 0
+  },
+  "calculated_cost": {
+    "model": "gpt-6.1-sol",
+    "input_tokens": 36665,
+    "cached_input_tokens": 0,
+    "output_tokens": 2892,
+    "input_usd": 0.07333,
+    "cached_input_usd": 0.0,
+    "output_usd": 0.02892,
+    "total_usd": 0.10225,
+    "rates_usd_per_mtok": {
+      "input": 2.0,
+      "output": 10.0,
+      "cached_input": 0.1
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  }
+}
