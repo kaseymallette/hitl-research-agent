@@ -988,3 +988,29 @@ the critique of the water-replenishment pledges
 the review's unreported selection method
 
 It's still shorter than the 1,809-word ADR-0012 version. And it now makes your structural point in its own words: "These premises receive unequal attention… the technically detailed middle lends authority to policy conclusions that are not all earned by the same evidence."
+
+Barnett's other five runs under ADR-0013 haven't run yet. They're ready whenever you want them.
+
+## 46. Run ADR-0013 on the other five runs 
+
+**Prompt:** Yes, run it for the other five
+
+**Response:** All six Barnett runs under ADR-0013 are in adr_0013, each with a close reading and an evaluation. PDF · Sol high's evaluation failed on a connection error and was rerun on its saved close reading. Nothing is committed. 
+
+**Committ them**
+
+I committed the other five ADR-0013 runs as 75291e9, so all six Barnett runs under ADR-0013 are now in git. Nothing is pushed, and your phase_1.md edits are still uncommitted.
+
+Run	Steps	Claims	Evaluation	Cost, both calls
+PDF, Sol medium	25	117	1,435 words*	$0.30 + $0.09 rerun
+PDF, Sol high	25	135	1,458 words†	$0.25 + $0.10 rerun
+PDF, Astra low	21	93	1,373 words	$1.29
+Text, Sol medium	26	109	1,373 words	$0.28
+Text, Sol high	23	133	1,409 words	$0.33
+Text, Astra low	20	84	1,387 words	$1.17
+
+* The first evaluation in this run used the earlier 1,000-word prompt. The one under the final prompt is the rerun, argument_evaluation_2.json.
+
+† The evaluation call failed on a connection error and was rerun on the saved close reading. Its rerun record is argument_evaluation_rerun_record.json.
+
+Every run kept to the 200–500-word pace, with 20–26 steps each. Astra costs about four times as much as Sol per run, and its close readings record fewer claims (84–93 against Sol's 109–135).
