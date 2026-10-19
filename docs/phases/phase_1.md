@@ -918,4 +918,21 @@ With a range of 200–500, a dense paper stays near 200 and a light one moves to
 
 **Prompt:** Commit the ADR-0013 changes, then run PDF Sol medium on Barnett into adr_0013 and compare its length against the adr_0012 run.
 
-**Response:**
+**Response:** he ADR-0013 test run on Barnett (PDF, Sol medium) is in adr_0013. It's about a third shorter and cheaper than the ADR-0012 run, with no repeated claims, and the evaluation landed at 1,017 words. It isn't committed, and the other five runs haven't run.
+
+Here's the comparison from the test run:
+
+	ADR-0012 run	ADR-0013 run
+Steps	41	25
+Claims	134	117
+Support / evidence items	139	55
+Words in claims / support / meaning	2,829 / 3,056 / 1,268	2,477 / 844 / 976
+Support that repeats its claim	67	0
+Evaluation	1,809 words	1,017 words
+Cost (both calls)	$0.45	$0.30
+
+The model's first look (reading_plan) called Barnett "a short, two-column Water Research 'Making Waves' article… fairly dense," and chose steps of a few paragraphs, with shorter ones for the table, definitions and technology sections. That's how it landed at 25 steps.
+
+One thing to look at when you read it: most support entries now name the source behind a claim, for example "the 2024 United States Data Center Energy Usage Report." They no longer repeat the claim.
+
+The run is in adr_0013/pdf__gpt-6.1-sol-medium/ and isn't committed.
