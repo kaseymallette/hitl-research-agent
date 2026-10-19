@@ -936,3 +936,55 @@ The model's first look (reading_plan) called Barnett "a short, two-column Water 
 One thing to look at when you read it: most support entries now name the source behind a claim, for example "the 2024 United States Data Center Energy Usage Report." They no longer repeat the claim.
 
 The run is in adr_0013/pdf__gpt-6.1-sol-medium/ and isn't committed.
+
+## 44. Evaluation performed worse with hard word count
+
+**Prompt:** I committed the changes, and the analysis is much better—I love it. My concern is the evaluation: it feels dense and less developed than the earlier version, possibly because the word limit is spread across too many sections and tasks.
+
+Please compare the evaluations from ADR-0012 and ADR-0013 and assess whether the newer structure and word limit are weakening the evaluation, and what might need adjusting.
+
+**Response:** You're reading it correctly. Both evaluations are good, but the ADR-0013 one covers nearly the same ground as the ADR-0012 one in about half the words. Each point gets less room, and some of the strongest reasoning was squeezed out.
+
+### What the 1,000-word version lost
+
+ADR-0012's evaluation had several moves that ADR-0013's dropped or compressed to a line:
+- **The chain of separate propositions.** "Showing that water use matters does not establish why operators choose particular sites. Showing that alternatives exist does not establish that regulation can deploy them…" This was the clearest piece of reasoning in either evaluation.
+- **How the paper spends its attention.** "The technical alternatives receive sustained treatment… the diagnosis of 'systematic disregard'… and the proposed hierarchy of application benefits receive much less investigation." That's close to your own critique, and in ADR-0013 it's reduced to one sentence.
+- **Meta's Luleå data center.** A full paragraph on why an undisclosed IT capacity means it can't serve as a hyperscale benchmark. It's gone from ADR-0013.
+- **The mismatched Jain citation, the critique of water-replenishment pledges, and the point about the review's selection method.** All three are gone.
+- **A clear closing verdict:** "the paper establishes that water outcomes are substantially shaped by choices, not that they are free of technological necessity."
+
+### What ADR-0013's version did well
+
+- It caught that the highlights drop the body's "built or planned" qualifier.
+- It challenged the "qualitatively different" claim.
+- It noted that scarcity pricing could do the job without ranking applications.
+
+So the model's thinking wasn't worse. It was spread thinner.
+
+### Why
+
+The prompt asks it to consider a lot: setting and audience, premises, attention, necessity, the author's solutions, alternatives, and bias on both sides. A 1,000-word cap then forces it to touch everything briefly instead of developing what matters. Part of the difference may also come from the two different close readings it was given. But the pattern you noticed, breadth over depth, matches the length cap.
+
+### Options for the evaluation prompt
+
+1. **Invite selectivity instead of setting a length.** Replace the word-count sentence with something like: "You don't need to touch everything. Choose the few judgments that matter most about this argument and develop them fully." This targets "it's trying to do too many things" directly.
+2. **Raise the length** to about 1,500 words. The model has more room, but it may still spread across everything.
+3. **Both:** selectivity plus a softer range, such as "usually 1,000 to 1,500 words is enough."
+
+I'd go with option 3: the selectivity is what fixes the thinness, and the range keeps it from going back to 1,800. It's your call, though. Whatever you choose stays in ADR-0013, and testing it costs only about $0.08, by rerunning just the evaluation on the existing close reading.
+
+## 45. Add selectivity and word count range
+
+**Prompt:** Option 3 sounds great. Add selectivity and flexible word count. Update ADR-0013 and rerun the evaluation for Sol 6.1 Medium and add to ADR-0013 folder.
+
+**Response:** The evaluation prompt now invites selectivity in 1,000–1,500 words, and ADR-0013 is updated to match. The rerun on the saved close reading came back at 1,435 words for $0.09, saved as argument_evaluation_2.json beside the earlier one in adr_0013. Nothing is committed. 
+
+I think the rerun evaluation is the best of the three. At 1,435 words, it brings back what the 1,000-word version lost:
+
+the Luleå benchmark problem
+the Jain citation that doesn't fit the claim it supports
+the critique of the water-replenishment pledges
+the review's unreported selection method
+
+It's still shorter than the 1,809-word ADR-0012 version. And it now makes your structural point in its own words: "These premises receive unequal attention… the technically detailed middle lends authority to policy conclusions that are not all earned by the same evidence."
