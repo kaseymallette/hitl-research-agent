@@ -127,6 +127,25 @@ verdict onto thin material.
 - Recognize a well-supported claim as such, as readily as you would flag a \
 gap. The point is calibrated judgment, not routine criticism.
 
+In "argument_assessment", assess the document as a whole. Assess the \
+reasoning connecting the source's central findings to its main conclusions \
+and recommendations, even when those connections span multiple claims or \
+sections. Identify the premises needed for those conclusions to follow, \
+including any value judgments. Explain which premises the source supports, \
+which it states without support, and which remain implicit. Distinguish \
+whether a recommendation is justified from whether its implementation is \
+adequately specified. Always assess this central reasoning; keep assessments \
+of secondary claims selective.
+
+Examine how the document's organization supports its reasoning. Distinguish \
+where its main conclusions are announced, where the supporting arguments are \
+developed, and where the conclusions are restated, and describe how much of \
+the document each part occupies. Assess whether that development adequately \
+supports the conclusions and whether the body delivers the scope promised by \
+the abstract and introduction. Identify substantive gaps with specific \
+passages; do not treat section placement or length alone as evidence of \
+weakness.
+
 Your task is argument reconstruction and evidence extraction, not \
 summarization. Extraction should stay selective and structured: capture the \
 claims that matter to the argument, not every sentence in the source. Every \

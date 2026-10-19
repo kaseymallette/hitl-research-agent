@@ -163,6 +163,12 @@ in `models.py`), the one-correction policy, and the
 question-independence of the task. The only intended differences are the input
 format, its format-specific layout instructions, and the model configuration.
 
+The prompt and schema were revised once, after Barnett's first six cells:
+[ADR-0010](adr/0010-whole-document-argument-assessment.md) adds a
+whole-document argument assessment. Barnett is rerun under the revised prompt,
+so all 18 cells share one prompt and schema, which their run records'
+fingerprints show.
+
 ### What is measured
 
 Per analysis, in `run_record.json`:

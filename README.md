@@ -49,7 +49,7 @@ Three agents do the preparatory work.
 
 | Agent | Given | Produces |
 | --- | --- | --- |
-| **Single source analysis** | one article | a structured JSON analysis of it: claims, evidence, citations, methodology, assumptions, limitations, proposed solutions, open questions, provenance |
+| **Single source analysis** | one article | a structured JSON analysis of it: claims, evidence, citations, methodology, assumptions, limitations, proposed solutions, open questions, provenance, and an assessment of the argument as a whole |
 | **Synthesis** | several accepted analyses | a cross-source comparison of agreements, disagreements, methodological differences, limitations, and open questions, with each position still attributed to its source |
 | **Literature review** | an explicit research question | candidate articles with an explanation of why each one is relevant |
 
@@ -293,7 +293,7 @@ simplifies, or removes.
 │   ├── DESIGN.md                     the system, and the rules it holds to
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── adr/0001-0009.md              one record per architectural decision
+│   ├── adr/0001-0010.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── CLAUDE.md                         what Claude Code loads in every session

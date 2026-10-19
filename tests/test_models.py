@@ -53,6 +53,7 @@ def _content(**overrides: object) -> ExtractedAnalysis:
                 ],
             )
         ],
+        "argument_assessment": "The conclusion follows only if measurement is feasible.",
     }
     return ExtractedAnalysis(**{**defaults, **overrides})  # type: ignore[arg-type]
 
@@ -170,3 +171,12 @@ def test_a_source_id_is_the_same_for_every_analysis_of_one_slug() -> None:
     assert source_id_for(slug) == source_id_for(slug)
     assert str(source_id_for(slug)) == "53ded687-3b31-5225-9dd6-52a9a05922cf"
     assert source_id_for(slug) != source_id_for("lei_et_al_2025_water_use_data_center_workloads")
+
+
+def test_every_analysis_must_carry_a_whole_document_assessment() -> None:
+    """Claim-level assessment cannot see reasoning or organization that spans
+    the document, so the schema sent to the API requires the field."""
+    assert "argument_assessment" in ExtractedAnalysis.model_json_schema()["required"]
+    without = {k: v for k, v in _content().model_dump().items() if k != "argument_assessment"}
+    with pytest.raises(ValidationError):
+        ExtractedAnalysis.model_validate(without)

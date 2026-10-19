@@ -84,5 +84,6 @@ without a record.
 | [0006](0006-analysis-and-synthesis-never-receive-the-question.md) | Single-source analysis and synthesis never receive the research question | 2026-10-15 | Accepted |
 | [0007](0007-one-analysis-error-with-a-kind.md) | One `AnalysisError` carrying a `kind`, not an exception hierarchy | 2026-10-15 | Accepted |
 | [0009](0009-phase-1-matrix-three-configurations-three-articles.md) | Phase 1 runs three model configurations over three articles | 2026-10-17 | Accepted |
+| [0010](0010-whole-document-argument-assessment.md) | Every analysis carries a whole-document argument assessment | 2026-10-18 | Accepted |
 
 New records start from [template.md](template.md).

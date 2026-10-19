@@ -72,6 +72,7 @@ def _content(claim_text: str = "Cooling drives water use.") -> ExtractedAnalysis
                 ],
             )
         ],
+        argument_assessment="The conclusion follows only if measurement is feasible.",
     )
 
 

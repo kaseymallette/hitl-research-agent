@@ -30,13 +30,16 @@ The importable package. The directory name is the import name; the `src/`
 wrapper means the package can only be imported through the editable install,
 not from the working directory, so tests exercise what would ship.
 
-### `models.py` (312 lines)
+### `models.py` (322 lines)
 
 Every research type, in one module, in two layers:
 
 - **`ExtractedAnalysis`** is the schema sent to the API — research problem,
   claims, methodology, assumptions, limitations, proposed solutions, open
-  questions. Every field is content the model may supply.
+  questions, and `argument_assessment`, a whole-document assessment of how the
+  conclusions follow and how the document develops them
+  ([ADR-0010](adr/0010-whole-document-argument-assessment.md)). Every field is
+  content the model may supply.
 - **`SourceAnalysis`** wraps that content with the three things the application
   owns and a model has no legitimate value for: `id`, `provenance`, `analyzed_at`.
 
@@ -86,12 +89,14 @@ Six exception classes became one with a `kind` field — nothing ever caught the
 subclasses individually. The response-metadata allowlist and its JSON-safety
 helpers went: they recorded fields nobody read.
 
-### `prompts.py` (220 lines)
+### `prompts.py` (239 lines)
 
 `SYSTEM_PROMPT` — the analysis instructions — plus the per-input-mode layout
 instructions and the correction message. Almost entirely prompt text rather than
 code, and **unchanged by the consolidation**: Phase 1 holds it fixed so input
-format and model stay the only variables.
+format and model stay the only variables. Its one Phase 1 revision, the
+whole-document assessment of ADR-0010, was made before any cell but Barnett's
+had run, and Barnett is rerun under it.
 
 ### `inputs.py` (238 lines)
 
@@ -189,14 +194,14 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 83 tests
+## `tests/` — 84 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
 | `preparation/test_prepare.py` | 27 | PDF extraction: reading order, hyphen joining, header removal, annotation placement, crop retention |
 | `test_analysis.py` | 16 | The call path: the correction attempt, each run-stopping failure, attempt records, usage arithmetic, attachments resent on correction |
 | `test_inputs.py` | 11 | Per-mode attachment validation, that every mode sends the same analysis prompt, byte-exact hashing |
-| `test_models.py` | 11 | Application-owned fields rejected from model content, attribution labels required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
+| `test_models.py` | 12 | Application-owned fields rejected from model content, attribution labels required, a whole-document assessment required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
 | `test_run_analysis.py` | 13 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun |
 
@@ -261,9 +266,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 11 files
+### `adr/` — 12 files
 
-One architectural decision per record: `0001`–`0009`, plus `template.md` for
+One architectural decision per record: `0001`–`0010`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -284,6 +289,10 @@ the experiment produces.
 back-filled, amends `0008`'s matrix: Sol at high effort is added so that model
 and effort are not confounded, and `kanbur` leaves the experiment to keep the
 run count near the original, for 18 analyses over three articles.
+
+`0010` adds `argument_assessment` to the analysis schema and prompt: an
+assessment of the document as a whole, because claim-by-claim assessment could
+not see a conclusion that is announced early and developed only at the end.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

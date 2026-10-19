@@ -219,6 +219,16 @@ class ExtractedAnalysis(ResearchBaseModel):
     limitations: list[Statement] = Field(default_factory=list)
     proposed_solutions: list[Statement] = Field(default_factory=list)
     open_questions: list[Statement] = Field(default_factory=list)
+    # Last, so the model writes it after reconstructing the claims it assesses.
+    argument_assessment: NonEmptyStr = Field(
+        description=(
+            "A passage-grounded assessment of the document as a whole: the reasoning "
+            "that connects its central findings to its main conclusions and "
+            "recommendations, the premises those require, and how the document's "
+            "organization develops them. Always the model's own assessment, never "
+            "something the source states."
+        )
+    )
 
 
 class SourceAnalysis(ResearchBaseModel):
