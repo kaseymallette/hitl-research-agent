@@ -1,0 +1,120 @@
+{
+  "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+  "config": "pdf__gpt-6.1-sol-medium",
+  "input_method": "pdf",
+  "input_mode": "pdf",
+  "crops_sent": null,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "max_output_tokens": null,
+  "openai_max_retries": 0,
+  "system_prompt_sha256": "27f4efe2e36e6401268149dee8412780a621da06b07cb9bff90075ad24e58af9",
+  "input_mode_instructions_sha256": "8f6655e684ab3a244d1c359ca525d1a5c22b3408380f27880e6a84120fb3d756",
+  "output_schema_sha256": "a795aa5d1bb146ecfe3e9a882d511edfcbb13074abd8b1fb39e00c2d8d41893c",
+  "evaluation_prompt_sha256": "05bd59363b8a3228449ac91c5c2ab95d6674a46ed17b59073c45bdf6c734f873",
+  "evaluation_schema_sha256": "3260d2771db638022efbf52f89e360cc41bc1930a6de948285d2f388e624cc00",
+  "git_commit": "1bf320622aaea5a473bb47506c355e745e253b14",
+  "code_uncommitted_changes": false,
+  "model_inputs": [
+    {
+      "kind": "pdf",
+      "path": "data/research/ab_testing/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf",
+      "mime_type": "application/pdf",
+      "sha256": "7008272c90efb85dba72b5ee3f316140b313c096f6d6ea5f1016369db158dc0a",
+      "byte_size": 1003897,
+      "page": null,
+      "gap_id": null,
+      "label": null
+    }
+  ],
+  "started_at": "2026-10-19T07:56:26.758525+00:00",
+  "elapsed_seconds": 514.213,
+  "outcome": "analysis returned",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_00aaf3f5451fd9ed006ad5cd2b92cc87d0bc692abe7b305705",
+      "elapsed_seconds": 514.106182,
+      "usage": {
+        "input_tokens": 18816,
+        "output_tokens": 29888,
+        "reasoning_tokens": 311,
+        "cached_input_tokens": 0,
+        "cache_creation_input_tokens": 18813
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 18816,
+    "output_tokens": 29888,
+    "reasoning_tokens": 311,
+    "cached_input_tokens": 0
+  },
+  "calculated_cost": {
+    "model": "gpt-6.1-sol",
+    "input_tokens": 18816,
+    "cached_input_tokens": 0,
+    "output_tokens": 29888,
+    "input_usd": 0.037632,
+    "cached_input_usd": 0.0,
+    "output_usd": 0.29888,
+    "total_usd": 0.336512,
+    "rates_usd_per_mtok": {
+      "input": 2.0,
+      "output": 10.0,
+      "cached_input": 0.1
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  },
+  "analysis_scope": "The model received the original source PDF, so nothing was withheld from it. Content it reports from a figure, table, or equation was read from a page image and is unverified until a human checks it against that page.",
+  "argument_evaluation": {
+    "outcome": "evaluation returned",
+    "started_at": "2026-10-19T08:05:00.984614+00:00",
+    "elapsed_seconds": 74.654,
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "outcome": "valid",
+        "request_id": "resp_00d65e8079075c35006ad5cf2d997887d08ba07089793a2ac6",
+        "elapsed_seconds": 74.639855,
+        "usage": {
+          "input_tokens": 46600,
+          "output_tokens": 2389,
+          "reasoning_tokens": 102,
+          "cached_input_tokens": 0,
+          "cache_creation_input_tokens": 46597
+        },
+        "problems": [],
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 46600,
+      "output_tokens": 2389,
+      "reasoning_tokens": 102,
+      "cached_input_tokens": 0
+    },
+    "calculated_cost": {
+      "model": "gpt-6.1-sol",
+      "input_tokens": 46600,
+      "cached_input_tokens": 0,
+      "output_tokens": 2389,
+      "input_usd": 0.0932,
+      "cached_input_usd": 0.0,
+      "output_usd": 0.02389,
+      "total_usd": 0.11709,
+      "rates_usd_per_mtok": {
+        "input": 2.0,
+        "output": 10.0,
+        "cached_input": 0.1
+      },
+      "rate_source": "OpenAI model pages, read 2026-10-15",
+      "note": "calculated from reported usage; not confirmed billing"
+    }
+  },
+  "total_calculated_cost_usd": 0.453602
+}

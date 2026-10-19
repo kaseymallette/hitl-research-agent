@@ -732,4 +732,83 @@ What's different
 
 **Prompt:** Run Barnett's 6 runs under ADR-0012
 
-**Response:**
+**Interruption:** Wait, I feel like the results came in for the first one and it's repeating the text in the close read. can you look at it, cause maybe we need to fix it before we run the others
+
+**Response:** The first run's close reading does repeat itself. Before explaining, I'll stop the remaining runs so we don't pay for five more in this shape. 
+
+You were right, and I've stopped the run. Run 1 (PDF, Sol medium) finished and is saved. Run 2 (PDF, Sol high) was cut off mid-call, so it left no files, but OpenAI may still bill that partial request, probably about $0.25. Runs 3–6 never started.
+
+What's repeating
+
+In run 1's close reading, 67 of the 134 claims appear twice: once as the claim, then again word for word as its evidence. For example:
+
+CLAIM: AI's global water footprint could reach 4.2–6.6 billion cubic meters by 2027.
+EVIDENCE (verbatim): AI's global water footprint could reach 4.2–6.6 billion cubic meters by 2027.
+
+The cause is in the call-1 prompt, not in the model. Two rules carried over from the old prompt combine to produce it:
+
+"Every claim must include at least one piece of evidence."
+When the author states a claim directly, the evidence is the author's exact words, labeled claim_grounding.
+
+So for every claim the author states outright, the model writes the claim, then quotes the same sentence as proof that the author said it. The old analyses did this too, but with 25–33 claims it was less noticeable. Now that the close reading gathers every claim, half of it is duplicates.
+
+A fix, for you to decide
+
+Let the claim be the author's words when the author states it, and keep "evidence" for what the author offers in support of a claim: data, a citation, an example.
+
+Each claim gets a form: verbatim (the author's exact words) or paraphrased. A verbatim claim needs no separate quote, because it is the quote. You could also still search the article for it to confirm it's real.
+Evidence lists only real support, like "Li et al. (2024) estimated GPT-3 training required 700,000 liters."
+claim_grounding and the "every claim needs evidence" rule go away. A claim the author simply asserts can stand with no evidence. That's information about the claim, and call 2 can notice it.
+
+Each claim becomes one line, and the evidence under it is only actual support. This changes call 1's schema and prompt. ADR-0012 is committed and pushed, so by your rule this would be ADR-0013.
+
+One more number for context: run 1's close reading was 41 steps and cost $0.34, plus $0.12 for the evaluation, about $0.45 a run. Removing the duplicates should bring that down somewhat.
+
+Should I draft ADR-0013 with this fix? Run 1 is still saved at Barnett's top level, where you can compare against it.
+
+## 36. Reduce repetition in output for call 1
+
+**Prompt:** Yes, in a second. We can update the README and design documentation once the new approach is finalized. The distinction between author-stated content and model inference is already accounted for in the design; it does not necessarily need an explicit JSON field.
+
+I also want to remove redundant location information. Each reading step’s location and argumentative move provide enough context without repeating precise locators for every claim and evidence item.
+
+More broadly, let’s simplify the output. Where the recorded source statement already serves as evidence, we don’t need to repeat it in a separate evidence field. The goal is fewer tokens and better readability while preserving the substance of the close reading.
+
+**Response:** Agreed. Here's the trimmed close reading. Location is said once per step, the author's words appear once, and the labels are gone.
+
+**Each step**
+- `location`: about where we are, like "page 2, Section 2."
+- `moves`
+- `claims`
+- `meaning`
+
+**Each claim**
+- `text`: what the author claims.
+- `form`: `verbatim` (their exact words) or `paraphrased`.
+- `support`: only when the author offers backing for it, like a figure, a study or an example. Often empty.
+
+**Each piece of support**
+- `text`
+- `form`: verbatim or paraphrased
+- `citations`: as printed, for when the author cites a study
+
+**Removed:** `statement_origin`, `relationship_to_claim`, the per-evidence `locator`, the repeated-claim quote, and "every claim needs evidence."
+
+**Prompt changes to match.** The opening invitation stays exactly as you approved it. The practices section after it gets shorter:
+
+> A few practices keep the record of the claims faithful.
+>
+> Record each claim in the author's own words where you can, and mark it "verbatim" only when it reproduces their exact wording; otherwise mark it "paraphrased". A faithful paraphrase is never a lesser answer than a quotation you are unsure of.
+>
+> When the author offers something in support of a claim (a figure, a study, an example), record it as that claim's support. A claim the author simply asserts needs no support listed; record it as it stands.
+>
+> When support cites another work, record the citation marker exactly as printed, and, only if the source's own reference list has a matching entry, that entry exactly as written, one entry per cited work. Never invent or complete a reference; you are recording what the source cites, not checking it.
+>
+> Preserve the author's strength of language. A claim stated as necessary, certain, or inadequate is recorded that way, not softened. Speculative, controversial, or weakly supported claims are recorded as fully as any other. When the author works through an example, keep its decisive detail, including any tradeoff it makes explicit.
+>
+> Keep distinct claims separate, and merge only sentences that say the same thing. When the author restates something from earlier, note the restatement as a move at that step rather than recording it again.
+
+**One more place this touches:** the PDF and crops input instructions currently say to start the evidence's locator with the page and figure when reading from an image. Without a locator, they'd say instead to name the figure or table in the support text itself, e.g. "Table 1 lists…".
+
+If this reads right, I'll write ADR-0013 with both full prompts and build it. Then we can rerun one run first to check the length and readability before doing all six.
+
