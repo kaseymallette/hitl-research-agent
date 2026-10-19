@@ -812,3 +812,110 @@ More broadly, let’s simplify the output. Where the recorded source statement a
 
 If this reads right, I'll write ADR-0013 with both full prompts and build it. Then we can rerun one run first to check the length and readability before doing all six.
 
+## 37. ADR-0013
+
+**Prompt:** Looks great! Write ADR-0013. 
+
+**Response:** ADR-0013 is written, with both full prompts and the input instructions, and the lean close reading is built. Claims are text, verbatim or paraphrased, and support only where the author offers it; the labels, relationship strength and per-evidence locator are gone. ADR-0012 and ADR-0002 are marked superseded. All 89 tests, Ruff and mypy pass. Nothing is committed or rerun. You already committed the adr_0012 run.
+
+## 38. Shorten outputs
+
+**Prompt:** Before finalizing and rerunning, let’s revisit ADR-0013 rather than create a new ADR. Both outputs are still very long—the close reading produced around 134 claims from a seven-page PDF. I like the evaluation, but I’d like to explore how to make both outputs more succinct without losing important substance. We’re still discussing how to shorten them, not ready to run again.
+
+**Response:** Yes, and it can stay in ADR-0013, since none of it is committed yet.
+
+**What the first run looked like on a 7-page paper:**
+- **Close reading:** 41 steps and 134 claims, about 7,600 words. Most steps covered a single paragraph or less.
+- **Evaluation:** 1,809 words.
+
+The model was doing what the prompts invite: a step for every turn, a claim for every sentence, and plenty of room to reason. The fix is to give it a sense of scale, worded in the same inviting voice, without cutting what it collects.
+
+**For the close reading,** add this after "A single step can hold more than one move.":
+
+> Let each step cover a stretch of the document that does one thing, usually a section or subsection rather than a single paragraph, so the path follows the argument's main turns. Keep each part light: a phrase or two for the moves, a sentence for each claim, and a sentence or two for what the step means. When the author reports several related figures together, they can travel as one claim.
+
+The model still gathers every claim and every figure. They're just grouped into bigger steps, and figures reported together share one line. I'd expect something like 10–15 steps instead of 41, with noticeably fewer claim lines.
+
+**For the evaluation,** add one closing sentence:
+
+> Aim for a focused piece of around 600 to 900 words: give the reasoning that matters most the room it needs, and let the rest go.
+
+A word range works better than a hard token limit. A hard limit cuts the model off mid-sentence, which our system counts as a failed run.
+
+**I wouldn't touch:**
+- the invitation's opening
+- the bias reflection
+- the "gather what's there" spirit; grouping does the shortening instead
+
+Once these read right to you, I'll add them to the prompts and to ADR-0013. Then we test on the one run, PDF with Sol medium, and compare its length against the 41-step, 1,809-word run before doing all six.
+
+## 39. Add word count and paragraphs/sections
+
+**Prompt:** I’d like the close reading to move through meaningful units—paragraphs, groups of short paragraphs, or sections/subsections—rather than organize every step around an individual claim. Let the document’s structure guide the level of detail, explaining what is happening in each part without rigid rules such as one sentence per step. For the separate evaluation, I’d set a 1,000-word limit.
+
+**Response:** Call 1 now reads a paragraph or a section at a time, with no limits on how a claim is written. Call 2 is asked to keep to about 1,000 words. Both are in the prompts and in ADR-0013. All 89 tests, Ruff and mypy pass, and nothing is committed or rerun.
+Commit ADR-0013 and test PDF · Sol medium on Barnett?
+
+## 40. Add decision tree to scale between 200-500 words per move
+
+**Prompt:** I’m considering a decision-tree approach to choosing the size of each close-reading step, since the system needs to work across dense academic papers and less technical writing, such as blogs or Substack articles.
+
+An initial pass could assess the document’s density and structure, then use smaller passages where the reasoning is complex and larger passages where the material can be grouped without losing detail. Word ranges could provide rough guidance across formats, without requiring exact counting or rigid paragraph boundaries.
+
+I initially considered roughly 100–500 words of source text per step, but 100 words may produce too many steps and an unnecessarily granular reading. Perhaps 200–500 words is a better starting point, with flexibility for shorter or slightly longer passages. I generally don’t want to group much more than 500 words because important details could disappear.
+
+The goal is to balance coverage with a manageable reading. I’m still unsure whether the current article needs this much detail or whether we’re reading it too closely, and I’d like your assessment before settling on the approach.
+
+**Response:** I think 200 is the right floor. Here are the numbers.
+
+Barnett's body is about 5,200 words (6,200 with the references). The first run made 41 steps, so each covered about 125 words, roughly two or three sentences. That's why it felt like too much: each step was smaller than a paragraph.
+
+At 200 words per step, Barnett would come out to about 26 steps (5,200 ÷ 200).
+
+That's roughly a step per paragraph. In Barnett, 200 words is a medium paragraph, about a third of a page.
+
+Words per step	Steps for Barnett	About
+125 (first run)	41	2–3 sentences
+200	~26	a medium paragraph
+250	~20	a solid paragraph
+350	~15	half a page
+500	~10	a page
+
+With a range of 200–500, a dense paper stays near 200 and a light one moves toward 500, so Barnett would likely land somewhere around 15–25 steps.
+
+## 41. Draft changes for ADR-0013
+
+**Prompt:** I agree with the 200-500 range. Can you write out the revised ADR-0013?
+
+**Response:** Here's what I'd do in ADR-0013:
+
+**1. Replace the "paragraph or section" paragraph in the close-reading prompt with these two:**
+
+> Before you set out, take a first look through the whole document to get a feel for its texture: what kind of writing it is (a journal article, a report, an essay, a blog post) and how densely it's written. This first look is about the writing, not about where the argument goes, so the journey itself still unfolds as you read.
+>
+> Let that texture set your pace. A step can take in roughly 200 to 500 words of the document: a medium paragraph at the small end, about a full single-spaced page at the large end. Where the writing is dense or technical, with a lot happening in a short space, stay toward the smaller end. Where it moves more easily, a longer stretch can be a single step. These are a sense of scale, not counts. Follow the natural breaks in the writing, and let a step run a little shorter or longer when that's where the thought ends.
+
+"About a full single-spaced page" gives the model a size to picture, and it doesn't depend on the document actually having pages.
+
+**2. Add `reading_plan` as the first field of the close reading:** one or two sentences recording the first look (what kind of document, how dense, the pace chosen). One added sentence in the prompt asks for it. It shows you why a reading came out at 15 steps or 30. If you'd rather not have it, I'll leave it out.
+
+**3. Keep the 1,000-word guide on the evaluation** that's already in place.
+
+**4. Update ADR-0013:**
+- the decision bullets (the first look, the 200–500 scale, `reading_plan`)
+- the full close-reading prompt as quoted in the ADR
+- one line in Context noting the first run averaged about 125 words per step
+
+**5. Update the tests and docs for `reading_plan`, then run the checks.** Nothing gets committed or run.
+
+## 42. Revise ADR-0013
+
+**Prompt:** Please revise ADR-0013 with the changes we discussed.
+
+**Response:** The close reading now starts with a first look that sets a 200–500 word pace for each step and records it in a new reading_plan field. ADR-0013 holds the full updated prompts. All 90 tests, Ruff and mypy pass. Nothing is committed or rerun.
+
+## 43. Run ADR-0013 on Sol 6.1 Medium PDF
+
+**Prompt:** Commit the ADR-0013 changes, then run PDF Sol medium on Barnett into adr_0013 and compare its length against the adr_0012 run.
+
+**Response:**
