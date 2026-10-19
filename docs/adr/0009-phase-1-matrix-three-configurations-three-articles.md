@@ -1,6 +1,6 @@
 # ADR-0009 — Phase 1 runs three model configurations over three articles
 
-- **Status:** Accepted
+- **Status:** Accepted; its choice of katakam over kanbur is superseded by [ADR-0014](0014-kanbur-replaces-katakam.md)
 - **Date:** 2026-10-17
 - **Landed in:** `eaa3114`
 
@@ -114,3 +114,7 @@ for the third configuration.
 This record amends ADR-0008's matrix and does not supersede it. ADR-0008 holds
 the input-format question open, and the record that states Phase 1's outcome
 supersedes both.
+
+ADR-0014 reverses the choice between katakam and kanbur: katakam shares
+Barnett's journal, so kanbur replaces it. The matrix and configurations here
+stand.

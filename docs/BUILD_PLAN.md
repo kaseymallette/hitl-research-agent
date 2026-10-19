@@ -118,12 +118,13 @@ and cost together.
 3 articles × 2 input methods × 3 model configurations = **18 analyses**
 ([ADR-0009](adr/0009-phase-1-matrix-three-configurations-three-articles.md)
 revised [ADR-0008](adr/0008-compare-pdf-against-prepared-text.md)'s 2 × 2 over
-four articles).
+four articles; [ADR-0014](adr/0014-kanbur-replaces-katakam.md) set the third
+article).
 
 | Articles | `data/research/ab_testing/` | pages | chars |
 | --- | --- | --- | --- |
 | | `barnett_itzhaki_2026_water_footprint_artificial_intelligence` | 7 | 51k |
-| | `katakam_et_al_2027_desalination_systems_data_center_water_needs` | 20 | 107k |
+| | `kanbur_et_al_2020_desalination_integrated_data_center_cooling` | 18 | 82k |
 | | `lei_et_al_2025_water_use_data_center_workloads` | 60 | 97k |
 
 | Input method | `input_mode` | What the model receives |
@@ -151,10 +152,12 @@ effort still cannot be separated.
 The page spread is deliberate. The PDF arm's input cost scales with page count,
 so `lei` at 60 pages is the stress case for that arm, and `barnett` at 7 pages
 the cheap case. If the two arms differ in cost, they will differ most there.
-`kanbur_et_al_2020_desalination_integrated_data_center_cooling` was the fourth
-article; it covered the same topic as `katakam`, the more recent of the two,
-and left the experiment to pay for the third configuration. It is in
-`data/research/` with the rest of the collection.
+The articles also come from three journals. Of the original four, kanbur and
+`katakam_et_al_2027_desalination_systems_data_center_water_needs` cover the same
+subject; one left the experiment to pay for the third configuration. Katakam
+was kept at first, then replaced by kanbur because it shares Barnett's journal,
+*Water Research*. Katakam is in `data/research/` with the rest of the
+collection.
 
 ### Held constant
 

@@ -44,7 +44,7 @@ sources:
       retrieved_at: "macOS quarantine timestamp on the PDF file"
 
   - slug: kanbur_et_al_2020_desalination_integrated_data_center_cooling
-    pdf: data/research/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
+    pdf: data/research/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
     source_title: "Multi-criteria thermoeconomic and thermodynamic assessments of the desalination-integrated two-phase liquid-immersion data center cooling system"
     source_authors: [Baris Burak Kanbur, Chenlong Wu, Fei Duan]
     publication_date: "2020-07-23"
@@ -65,7 +65,7 @@ sources:
       retrieved_at: "macOS quarantine timestamp on the PDF file"
 
   - slug: katakam_et_al_2027_desalination_systems_data_center_water_needs
-    pdf: data/research/ab_testing/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf
+    pdf: data/research/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf
     source_title: "System-scale design and analysis of desalination systems for meeting water needs of data centers"
     source_authors: [Vishnu Sree Shanthanu Katakam, Mariam Arzumanyan, Ning Lin, Vaibhav Bahadur]
     publication_date: "2026-08-17"

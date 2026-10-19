@@ -281,9 +281,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 15 files
+### `adr/` — 16 files
 
-One architectural decision per record: `0001`–`0013`, plus `template.md` for
+One architectural decision per record: `0001`–`0014`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -321,6 +321,9 @@ opposite stances and pulled on each other in one prompt.
 words once, marked verbatim or paraphrased, with support only where the author
 offers it, and no attribution labels — the structure says whose words they are.
 It carries both calls' prompts in full, so a change to either is a new record.
+
+`0014` replaces katakam with kanbur as the third experiment article, since
+katakam shares Barnett's journal; ADR-0009's matrix is unchanged.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes
