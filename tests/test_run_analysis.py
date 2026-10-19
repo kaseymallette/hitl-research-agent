@@ -15,7 +15,21 @@ from types import ModuleType
 
 import pytest
 
-from hitl_research_agent.analysis import AnalysisError, AttemptRecord, AttemptUsage
+from hitl_research_agent.analysis import (
+    AnalysisError,
+    AnalysisResult,
+    ArgumentEvaluationResult,
+    AttemptRecord,
+    AttemptUsage,
+)
+from hitl_research_agent.models import (
+    ArgumentEvaluation,
+    Claim,
+    Evidence,
+    ExtractedAnalysis,
+    ReadingStep,
+    SourceAnalysis,
+)
 
 sys.path.insert(0, str(Path(__file__).parent / "preparation"))
 from pdf_fixtures import make_table_pdf, make_text_pdf  # noqa: E402
@@ -183,11 +197,14 @@ def _run_pdf_cell(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
     analyze: object,
+    evaluate: object = None,
 ) -> tuple[int, Path]:
-    """Run main() on a fixture PDF cell with the model call replaced."""
+    """Run main() on a fixture PDF cell with the model calls replaced."""
     _prepare(tmp_path, "plain", make_text_pdf)
     monkeypatch.setenv("OPENAI_API_KEY", "test-key-not-used")
     monkeypatch.setattr(runner, "analyze_source", analyze)
+    if evaluate is not None:
+        monkeypatch.setattr(runner, "evaluate_argument", evaluate)
     out = tmp_path / "out"
     code = runner.main(
         [
@@ -328,3 +345,107 @@ def test_rerunning_a_failed_cell_keeps_the_failed_run_s_record(
     latest = json.loads((cell / "run_record.json").read_text())
     assert kept["usage"]["input_tokens"] == 100
     assert latest["usage"]["input_tokens"] == 200
+
+
+def _analysis_result(source: object) -> AnalysisResult:
+    content = ExtractedAnalysis(
+        reading_path=[
+            ReadingStep(
+                location="page 1",
+                moves="a premise, with evidence",
+                claims=[
+                    Claim(
+                        text="Cooling drives water use.",
+                        statement_origin="author_stated",
+                        evidence=[
+                            Evidence(
+                                text="Cooling dominates.",
+                                evidence_form="paraphrased",
+                                relationship_to_claim="direct_support",
+                            )
+                        ],
+                    )
+                ],
+                meaning="The opening premise.",
+            )
+        ],
+    )
+    attempt = _attempt(1, "valid", {"input_tokens": 1_000, "output_tokens": 400})
+    return AnalysisResult(
+        analysis=SourceAnalysis(provenance=source.provenance, content=content),  # type: ignore[attr-defined]
+        input_mode="pdf",
+        model="gpt-6.1-sol",
+        input_tokens=1_000,
+        output_tokens=400,
+        attempt_count=1,
+        attempts=[attempt],
+    )
+
+
+def test_both_documents_are_written_and_both_calls_are_costed(
+    runner: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The close reading and the model's evaluation are separate documents,
+    and the evaluation is tied to the close reading it was given."""
+    seen: dict[str, object] = {}
+
+    def analyze(source: object, **kwargs: object) -> AnalysisResult:
+        return _analysis_result(source)
+
+    def evaluate(
+        source: object, close_reading: object, **kwargs: object
+    ) -> ArgumentEvaluationResult:
+        seen["close_reading"] = close_reading
+        attempt = _attempt(1, "valid", {"input_tokens": 1_500, "output_tokens": 600})
+        return ArgumentEvaluationResult(
+            evaluation=ArgumentEvaluation(evaluation="The conclusion is permitted, not required."),
+            model="gpt-6.1-sol",
+            input_tokens=1_500,
+            output_tokens=600,
+            attempt_count=1,
+            attempts=[attempt],
+        )
+
+    code, cell = _run_pdf_cell(runner, tmp_path, monkeypatch, analyze, evaluate)
+
+    assert code == 0
+    analysis = json.loads((cell / "analysis.json").read_text())
+    evaluation = json.loads((cell / "argument_evaluation.json").read_text())
+    assert evaluation["analysis_id"] == analysis["id"]
+    assert evaluation["content"] == {"evaluation": "The conclusion is permitted, not required."}
+    assert seen["close_reading"] == ExtractedAnalysis.model_validate(analysis["content"])
+    record = json.loads((cell / "run_record.json").read_text())
+    assert record["usage"]["input_tokens"] == 1_000
+    assert record["argument_evaluation"]["outcome"] == "evaluation returned"
+    assert record["argument_evaluation"]["usage"]["input_tokens"] == 1_500
+    assert record["total_calculated_cost_usd"] == round(
+        record["calculated_cost"]["total_usd"]
+        + record["argument_evaluation"]["calculated_cost"]["total_usd"],
+        6,
+    )
+    assert record["evaluation_prompt_sha256"]
+
+
+def test_a_failed_evaluation_keeps_the_close_reading(
+    runner: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Only a technical failure stops a call, and it stops that call alone:
+    the close reading already returned is still written (ADR-0005)."""
+
+    def analyze(source: object, **kwargs: object) -> AnalysisResult:
+        return _analysis_result(source)
+
+    def evaluate(*args: object, **kwargs: object) -> None:
+        error = AnalysisError("refused", kind="refused")
+        error.attempts = [_attempt(1, "refused", {"input_tokens": 1_500, "output_tokens": 5})]
+        raise error
+
+    code, cell = _run_pdf_cell(runner, tmp_path, monkeypatch, analyze, evaluate)
+
+    assert code == 1
+    assert (cell / "analysis.json").exists()
+    assert not (cell / "argument_evaluation.json").exists()
+    record = json.loads((cell / "run_record.json").read_text())
+    assert record["outcome"] == "analysis returned"
+    assert record["argument_evaluation"]["outcome"] == "failed: refused"
+    assert record["argument_evaluation"]["usage"]["input_tokens"] == 1_500

@@ -1,8 +1,8 @@
 # ADR-0010 — Every analysis carries a whole-document argument assessment
 
-- **Status:** Accepted
+- **Status:** Superseded by [ADR-0012](0012-close-reading-and-argument-evaluation-are-two-calls.md)
 - **Date:** 2026-10-18
-- **Landed in:** not yet committed
+- **Landed in:** `1e0f20d`
 
 ## Context
 
@@ -116,3 +116,6 @@ Recorded on the day the decision was made, after Barnett's first six cells and
 before any other Phase 1 cell ran. Both paragraphs of the prompt text were
 drafted with Chat; the second was revised to describe proportion as well as
 judge development.
+
+Superseded by ADR-0012, which moves the whole-document assessment out of the
+close reading into a separate call.

@@ -1,8 +1,8 @@
 # ADR-0011 — Claims first, then the whole document: test one call before two turns
 
-- **Status:** Proposed — the test below decides between one call and two turns
+- **Status:** Superseded by [ADR-0012](0012-close-reading-and-argument-evaluation-are-two-calls.md)
 - **Date:** 2026-10-18
-- **Landed in:** not yet committed
+- **Landed in:** `dc41c33`
 
 ## Context
 
@@ -75,7 +75,7 @@ and both of its paragraphs otherwise unchanged.
 
 **The test.** Rerun the two Barnett cells that lost the most claims, Sol high
 on the text and Astra low on the PDF, about $0.70 together. Outputs go in a new
-`after_adr_0011/` folder beside `before_adr_0010/` and `after_adr_0010/`.
+`adr_0011/` folder beside `adr_0009/` and `adr_0010/`.
 
 **What counts as the claims coming back:**
 
@@ -121,3 +121,7 @@ word, and this one supersedes the one sentence it replaces.
 
 The two-task framing was suggested by Chat. Proposed the day the claim loss was
 found, after Barnett's six cells under ADR-0010 and before any other cell ran.
+
+The test ran on the two cells: the claims came back and overshot, to 55 and 30.
+Superseded by ADR-0012, which separates the close reading and the argument
+evaluation into two calls rather than choosing between this and two turns.

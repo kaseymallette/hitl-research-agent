@@ -163,11 +163,11 @@ in `models.py`), the one-correction policy, and the
 question-independence of the task. The only intended differences are the input
 format, its format-specific layout instructions, and the model configuration.
 
-The prompt and schema were revised once, after Barnett's first six cells:
-[ADR-0010](adr/0010-whole-document-argument-assessment.md) adds a
-whole-document argument assessment. Barnett is rerun under the revised prompt,
-so all 18 cells share one prompt and schema, which their run records'
-fingerprints show.
+Each cell makes two calls: the close reading, under that prompt and schema, and
+the model's own evaluation of the argument, under `EVALUATION_PROMPT`
+([ADR-0012](adr/0012-close-reading-and-argument-evaluation-are-two-calls.md)). That design was settled after Barnett's first
+runs; Barnett is rerun under it, so all 18 cells share the same two prompts and
+schemas, which their run records' fingerprints show.
 
 ### What is measured
 
@@ -199,6 +199,7 @@ Per article, once, in a preparation record shared by its three `text_crops` cell
 
 ```
 outputs/ab_testing/<slug>/<config>/analysis.json      the analysis, indented, unchanged
+outputs/ab_testing/<slug>/<config>/argument_evaluation.json  the model's evaluation of the argument
 outputs/ab_testing/<slug>/<config>/run_record.json    usage, cost, runtime, attempts
 outputs/ab_testing/<slug>/<config>/failed_run_<n>.json  an earlier failed run of the cell, kept for its cost
 outputs/ab_testing/summary.csv                        one row per cell, for Phase 2
@@ -254,8 +255,10 @@ half-written directory, and that `summary.csv` reports what the run records hold
 
 - [ ] 18 `analysis.json` files exist, one per cell, indented and readable, each
       the analysis the model returned, unmodified.
+- [ ] 18 `argument_evaluation.json` files, one per cell, or a run record saying
+      why that cell's evaluation failed.
 - [ ] Each cell has a `run_record.json` with usage, calculated cost, runtime,
-      and per-attempt records; no fabricated values.
+      and per-attempt records for both calls; no fabricated values.
 - [ ] Preparation effort recorded for all three articles.
 - [ ] The prompt, schema, and correction policy are identical across all 18
       cells, and that is demonstrable from the records.

@@ -15,7 +15,7 @@ A change to this document contradicts a decision record or needs a new one.
 
 | Agent | Input | Output | Question-aware? |
 | --- | --- | --- | --- |
-| **Single-source analysis** | one article | one structured JSON analysis | No — never receives a research question |
+| **Single-source analysis** | one article | a close reading as structured JSON, and the model's own evaluation of the argument | No — never receives a research question |
 | **Synthesis** | several accepted analyses | a cross-source comparison | No |
 | **Literature review** | an explicit research question | candidate articles with stated relevance | Yes — this is the only question-aware agent |
 
@@ -43,11 +43,11 @@ Four rules hold across every phase:
    grounds for withholding the result. v1 accumulated such gates and they were
    removed deliberately; they are not to be restored.
 3. **Model interpretation stays labelled.** `author_stated` vs.
-   `model_inferred` is carried on every claim, assumption, limitation, proposed
-   solution, open question, and methodology record — so assumptions the authors
-   state stay separable from assumptions the model found the argument needs, and
-   limitations the authors acknowledge from limitations the model identified.
-   Evidence carries a second, independent split: `verbatim` vs. `paraphrased`.
+   `model_inferred` is carried on every claim in the close reading — so what the
+   authors state stays separable from what the model reads into them. Evidence
+   carries a second, independent split: `verbatim` vs. `paraphrased`. The
+   argument evaluation is the model's interpretation throughout and is stored
+   as its own document, so it needs no label to be read as one.
 4. **The human operates a gate, not a reading chair.** Analysis and evaluation
    end at a four-state decision — **accept, reject, revise, rerun** — and only
    accepted analyses enter the research collection. This is a runtime boundary
@@ -85,6 +85,15 @@ asserts about where a statement came from — not that anything has been checked
 who is committed to its content. A faithful paraphrase is `author_stated` and
 `paraphrased` at once, and is not a weaker answer than a quotation the model
 was unsure of.
+
+Single-source analysis is two calls
+([ADR-0012](adr/0012-close-reading-and-argument-evaluation-are-two-calls.md)). The first is the
+close reading above. The second gives the model the article and that close
+reading and asks for its own judgment of the argument: whether the conclusions
+follow, what they rest on, and what bias shapes the author's framing and the
+model's reading. It is stored as its own document, `ArgumentEvaluation`, tied to
+the close reading by its id. It carries no `statement_origin`, because all of it
+is the model's interpretation and is read as such.
 
 The types are in `src/hitl_research_agent/models.py`.
 [README.md](../README.md#what-an-analysis-records-and-what-needs-checking)

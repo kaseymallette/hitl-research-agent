@@ -2,8 +2,9 @@
 
 Two layers, kept apart on purpose:
 
-* `ExtractedAnalysis` is what the model produces. Every field in it is content
-  the model is allowed to supply.
+* `ExtractedAnalysis` is what the model produces: a close reading, recorded as
+  a reading path through the document. Every field in it is content the model
+  is allowed to supply.
 * `SourceAnalysis` wraps that content with the three things the application
   owns and a model has no legitimate value for: an identifier, the source's
   provenance, and when the analysis was made.
@@ -97,20 +98,6 @@ class Provenance(ResearchBaseModel):
 # --------------------------------------------------------------------------- model content
 
 
-class Statement(ResearchBaseModel):
-    """One statement with its attribution.
-
-    Used for the research problem, assumptions, limitations, proposed
-    solutions, and open questions. These were five identical types; the field
-    that distinguishes them is the list a statement appears in.
-    """
-
-    text: NonEmptyStr
-    statement_origin: Literal["author_stated", "model_inferred"] = Field(
-        description=STATEMENT_ORIGIN_DESCRIPTION
-    )
-
-
 class Citation(ResearchBaseModel):
     """A work the analyzed source cites, as the source prints it.
 
@@ -171,64 +158,50 @@ class Evidence(ResearchBaseModel):
 
 
 class Claim(ResearchBaseModel):
-    """A claim that matters to the source's argument, with its evidence."""
+    """A claim met along the reading path, with the evidence offered for it."""
 
     text: NonEmptyStr
     statement_origin: Literal["author_stated", "model_inferred"] = Field(
         description=STATEMENT_ORIGIN_DESCRIPTION
     )
     evidence: list[Evidence] = Field(default_factory=list)
-    support_assessment: NonEmptyStr | None = Field(
-        default=None,
-        description=(
-            "A provisional, passage-grounded judgment of whether the reasons offered "
-            "meet this claim's own stated strength and scope. Always the model's own "
-            "assessment, never something the source states, and never a claim that a "
-            "cited work has been verified. Reserved for claims whose importance and "
-            "wording call for it; most claims will not have one. Unset means the claim "
-            "was not assessed — never that it is well-supported or that no issue exists."
-        ),
+
+
+class ReadingStep(ResearchBaseModel):
+    """One step of the close reading, in the order the document unfolds."""
+
+    location: NonEmptyStr = Field(
+        description="Where in the document this step is: page, section, or paragraph."
     )
-
-
-class Methodology(ResearchBaseModel):
-    """How the source says it did its work. Recording it is not assessing it."""
-
-    summary: NonEmptyStr
-    study_design: NonEmptyStr | None = None
-    data_sources: list[NonEmptyStr] = Field(default_factory=list)
-    sample_or_scope: NonEmptyStr | None = None
-    analysis_methods: list[NonEmptyStr] = Field(default_factory=list)
-    statement_origin: Literal["author_stated", "model_inferred"] = Field(
-        description=STATEMENT_ORIGIN_DESCRIPTION
+    moves: NonEmptyStr = Field(
+        description=(
+            "The move or moves the author is making here, in the terms of argument: "
+            "a premise, evidence, a definition, an inference, an assumption, a "
+            "qualification, a conclusion, and so on."
+        )
+    )
+    claims: list[Claim] = Field(
+        default_factory=list,
+        description="The claims stated at this step. A step can make none.",
+    )
+    meaning: NonEmptyStr = Field(
+        description=(
+            "What this step means in light of what came before: whether it follows "
+            "from, builds on, qualifies, or departs from the earlier steps. The "
+            "model's reading of the path, never something the source states."
+        )
     )
 
 
 class ExtractedAnalysis(ResearchBaseModel):
-    """Exactly what the model is asked to return.
+    """Exactly what the model is asked to return: the close reading.
 
     This is the schema sent to the API. It holds no identifier, no provenance,
     and no timestamp, so there is nothing application-owned for the model to
     invent a value for.
     """
 
-    research_problem: Statement
-    central_claims: list[Claim] = Field(default_factory=list)
-    methodology: Methodology | None = None
-    assumptions: list[Statement] = Field(default_factory=list)
-    limitations: list[Statement] = Field(default_factory=list)
-    proposed_solutions: list[Statement] = Field(default_factory=list)
-    open_questions: list[Statement] = Field(default_factory=list)
-    # Last, so the model writes it after reconstructing the claims it assesses.
-    argument_assessment: NonEmptyStr = Field(
-        description=(
-            "A passage-grounded assessment of the document as a whole: the reasoning "
-            "that connects its central findings to its main conclusions and "
-            "recommendations, the premises those require, and how the document's "
-            "organization develops them. Always the model's own assessment, never "
-            "something the source states."
-        )
-    )
+    reading_path: list[ReadingStep] = Field(default_factory=list)
 
 
 class SourceAnalysis(ResearchBaseModel):
@@ -244,6 +217,23 @@ class SourceAnalysis(ResearchBaseModel):
         ),
     )
     content: ExtractedAnalysis
+
+
+class ArgumentEvaluation(ResearchBaseModel):
+    """What the model returns from the second call: its own judgment of the
+    argument, read as its interpretation, never as what the source states."""
+
+    evaluation: NonEmptyStr
+
+
+class SourceArgumentEvaluation(ResearchBaseModel):
+    """One argument evaluation, tied to the close reading it was given."""
+
+    id: UUID = Field(default_factory=uuid4)
+    analysis_id: UUID = Field(description="The SourceAnalysis this evaluation was given.")
+    provenance: Provenance
+    evaluated_at: AwareDatetime = Field(default_factory=lambda: datetime.now(UTC))
+    content: ArgumentEvaluation
 
 
 # --------------------------------------------------------------------------- analysis input

@@ -4,25 +4,49 @@ from typing import Any
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
 
 from .inputs import InputMode, LoadedAttachment
-from .models import SourceDocument
+from .models import ExtractedAnalysis, SourceDocument
 
 SYSTEM_PROMPT = """\
-You are a research analyst reconstructing the argument made by a single \
-source document. You are not told what research question this source will \
-be used to answer, and you must not guess at or orient your analysis toward \
-any particular question — reconstruct the source's own argument on its own \
-terms, so the result stays useful for questions no one has asked yet.
+You are reading a single source document. You aren't told what research \
+question it will be used to answer, and there's no need to guess at one: read \
+the source on its own terms, without orienting your reading toward any \
+particular question, so the reading stays useful for questions no one has \
+asked yet.
 
-Your work has two tasks, done in order. Task 1: analyze the individual \
-claims — capture the distinct substantive claims, their evidence, important \
-qualifications, and, where a claim's importance and wording call for it, an \
-assessment of its support. Task 2: in "argument_assessment", assess the whole \
-document, using your Task 1 reconstruction to examine how its conclusions \
-follow, how its argument is organized, and whether the body delivers the \
-scope it promises. Task 2 supplements Task 1. It must not replace distinct \
-claims, or their assessments, with broad discussion in \
-"argument_assessment": extract claims as completely as you would if there \
-were no Task 2.
+We'd like you to take a close reading journey through this document with us. \
+Read it the way a careful reader meets it for the first time, from the opening \
+to the last page, and let us travel alongside you. At each point on the way, \
+you know where you've been and where you are now. Where the author is headed \
+is still unfolding, so there's no need to anticipate it. Stay with what's in \
+front of you, and let what came before help you understand it.
+
+This is a close reading, not a verdict. The aim is to take in what the author \
+is saying and doing, as fully and faithfully as you can. Weighing whether the \
+argument ultimately holds comes later, in a separate reading, so you're free \
+to simply follow along and pay attention.
+
+As you go, record the journey in "reading_path" as a series of steps, in the \
+order the document unfolds. At each step, tell us where you are and what kind \
+of move the author is making. Using the language of argument helps here. Is \
+the author stating a premise, or introducing evidence for a claim? Defining a \
+term, giving an example, reporting a figure? Drawing an inference, or \
+deducing something from what came earlier? Is an assumption at work, stated \
+or left unspoken, or a value judgment? Are they qualifying a claim, comparing \
+alternatives, conceding a point, answering an objection, reaching a \
+conclusion, or making a recommendation? Restating something, or turning to a \
+new line of discussion? If the framing reveals a perspective or a bias, \
+notice it. A single step can hold more than one move.
+
+Along the way, record the claims you meet as claims, with the evidence the \
+author offers for them, including the figures they report. There's no need to \
+sort the important ones from the rest; gather what's there.
+
+Then reflect on where this step leaves us, given the road so far. Does it \
+follow from what came before, build on it, qualify it, or start something \
+new? Does the move from the last step feel earned, or does the discussion \
+simply turn?
+
+A few practices keep the record of the claims faithful.
 
 Distinguish precisely between what the source itself states and what you \
 are inferring as an interpretation:
@@ -58,108 +82,29 @@ citation for each work, each carrying the marker as printed in \
 fields record what the source itself cites — you are not verifying, \
 retrieving, or assessing the cited work.
 
-Look for substantively distinct claims throughout the entire document, \
-including its conclusion. A conclusion often introduces claims — especially \
-about predicted outcomes or the significance of the work — that were not \
-stated earlier, and it deserves the same scrutiny as the rest of the source, \
-not a lighter pass as if it were only a summary. The authors' own \
-substantive claims can also appear inside a paragraph that mostly discusses \
-prior literature, cites other researchers, or gives background — do not \
-treat such a paragraph as citation only and stop looking before reaching the \
-authors' own claim within or after it.
-
 Preserve the authors' own strength of language. If the source states a claim \
 as necessary, inadequate, or certain to cause some outcome, capture it that \
 way — do not soften it into a more moderate, hedged, or easily defensible \
 version. Do not omit, soften, or normalize a claim merely because it is \
-speculative, controversial, weakly supported, or difficult to defend: if a \
-claim matters to the authors' argument, capture it as an author_stated or \
-model_inferred claim regardless of how well-supported it is, and represent \
-any weakness in its support separately, through evidence_form, \
-relationship_to_claim, or a corresponding limitation — never by weakening or \
-dropping the claim itself. Normative, causal, predictive, and prescriptive \
-claims deserve the same completeness as descriptive or empirical ones. When \
-the source works through a concrete example to illustrate its argument, \
-preserve the decisive detail of that example — including any tradeoff it \
-makes explicit — rather than generalizing it away; that detail is often what \
-explains the argument, not incidental color.
+speculative, controversial, weakly supported, or difficult to defend: \
+capture each claim the author makes as an author_stated or model_inferred \
+claim regardless of how well-supported it is, and represent any weakness in \
+its support separately, through evidence_form or relationship_to_claim — \
+never by weakening or dropping the claim itself. Normative, causal, \
+predictive, and prescriptive claims deserve the same completeness as \
+descriptive or empirical ones. When the source works through a concrete \
+example to illustrate its argument, preserve the decisive detail of that \
+example — including any tradeoff it makes explicit — rather than \
+generalizing it away; that detail is often what explains the argument, not \
+incidental color.
 
 Keep sentences as separate claims when they assert distinct things — a \
 different subject, a different predicate, or a different kind of claim — \
 even when they support one overall argument. Only merge sentences that \
-restate the same claim in different words. Likewise, when the source states \
-the same thesis more than once in different words, capture it once — add a \
-separate claim for a repeated statement only if it contributes a distinct \
-point, qualification, or piece of evidence beyond what the first statement \
-already captured.
-
-For a claim that is important to the argument, and whose own wording makes a \
-strong or consequential commitment — necessity, a causal claim, a \
-generalization, a prediction, or a "must"/"should" prescription — assess in \
-"support_assessment" whether the reasons offered actually meet that \
-commitment. Select claims for this by their importance and their wording, \
-never by matching a keyword: the same word can carry different weight in \
-different contexts, and a claim can be consequential without using any of \
-these words. Most claims will not need this field; leave it unset for them. \
-Leaving it unset means the claim was not assessed at all — it is not a \
-judgment that the claim is well-supported, and not a claim that no issue \
-exists.
-
-Where you do write one, do this work, not a label:
-- State what the claim's own wording commits the authors to — its goal, \
-scope, and conditions, at the strength they actually used. "Necessary" \
-invites the questions: necessary for what, under which conditions, and what \
-would rule out achieving that goal another way? Criticizing several \
-alternatives does not by itself establish necessity — elimination only \
-establishes it if the alternatives considered are exhaustive and each is \
-properly ruled out. This is one illustration of the method, not a rule to \
-apply mechanically or a predetermined verdict: give causal claims, \
-generalizations, predictions, and other consequential wording the same \
-attention, in their own terms, and interpret each claim's strength in its \
-actual context rather than imposing absolute certainty on a practical or \
-conditional use.
-- Find the reasons actually offered for that claim anywhere in the document, \
-not only in the sentence next to it, and cite the specific passages and \
-locations you are relying on.
-- Distinguish a stated intention to argue something later from the argument \
-actually developed for it. A quotation of the authors announcing what they \
-will show is not itself a reason for the conclusion.
-- Explain, with reference to those specific passages, why the reasons found \
-do or do not meet the claim's own strength and scope. If they connect to the \
-conclusion only by way of an unstated premise, add that premise to \
-"assumptions" as model_inferred, and say in the assessment which claim it is \
-needed for — do not state it as if the authors said it, and do not invent an \
-objection the passages you found do not themselves raise.
-- If the source offers only an assertion, or only a citation to another \
-work, say exactly that — a citation is never itself verification that the \
-cited work supports the claim.
-- If there is not enough in the source to decide, say so; do not force a \
-verdict onto thin material.
-- Recognize a well-supported claim as such, as readily as you would flag a \
-gap. The point is calibrated judgment, not routine criticism.
-
-In "argument_assessment", assess the document as a whole. Assess the \
-reasoning connecting the source's central findings to its main conclusions \
-and recommendations, even when those connections span multiple claims or \
-sections. Identify the premises needed for those conclusions to follow, \
-including any value judgments. Explain which premises the source supports, \
-which it states without support, and which remain implicit. Distinguish \
-whether a recommendation is justified from whether its implementation is \
-adequately specified. Always assess this central reasoning.
-
-Examine how the document's organization supports its reasoning. Distinguish \
-where its main conclusions are announced, where the supporting arguments are \
-developed, and where the conclusions are restated, and describe how much of \
-the document each part occupies. Assess whether that development adequately \
-supports the conclusions and whether the body delivers the scope promised by \
-the abstract and introduction. Identify substantive gaps with specific \
-passages; do not treat section placement or length alone as evidence of \
-weakness.
-
-Your task is argument reconstruction and evidence extraction, not \
-summarization. Extraction should stay selective and structured: capture the \
-claims that matter to the argument, not every sentence in the source. Every \
-claim must include at least one piece of evidence.
+restate the same claim in different words. When the source restates \
+something it said earlier, note the restatement as a move at that step, and \
+record it as a new claim only if it adds a distinct point, qualification, or \
+piece of evidence. Every claim must include at least one piece of evidence.
 """
 
 
@@ -235,6 +180,95 @@ def build_messages(
     for attachment in attachments:
         content.extend(attachment.content_blocks())
     return [SystemMessage(SYSTEM_PROMPT), HumanMessage(content=content)]
+
+
+# The second call: the model's own evaluation of the argument, given the article
+# and the close reading from the first call. Kept apart from SYSTEM_PROMPT so the
+# close reading's restraint does not hold the evaluation back (ADR-0012).
+
+EVALUATION_PROMPT = """\
+You've been given a research article, along with a close reading of it: a \
+careful record of what the author states, prepared separately. Your work now \
+is different. We want your own judgment of the argument as a whole: how it's \
+built, whether it holds, and what shapes it. This is your interpretation, and \
+it will be read as yours, so reason it through in your own voice.
+
+Start by reading the article in its setting. Where was it published, and for \
+whom? What is the paper trying to accomplish: to inform, to persuade, to \
+propose, to advocate? Reading between the lines is part of the work. What the \
+author emphasizes, what they pass over quickly, and what they take for granted \
+can tell you as much as what they say outright.
+
+Then lay the argument out for yourself: the premises it rests on, the \
+assumptions and value judgments it brings in, the evidence behind each, and \
+the conclusions and recommendations it reaches. Notice how the paper spends \
+its attention. Which premises are developed at length and which are asserted \
+briefly? Where are the conclusions first announced, and where are they \
+actually earned?
+
+Reason through the evidence independently rather than assuming the author's \
+conclusions follow from it. Ask whether each conclusion is required by what \
+has been established, merely permitted by it, or reached through assumptions \
+the paper doesn't defend. Give the author's preferred solutions the same \
+scrutiny as the alternatives they criticize, and consider whether different \
+conclusions could reasonably follow from the same evidence. A persuasive \
+narrative and a well-supported argument are not the same thing, and the \
+author's intended conclusion is not the destination your reasoning has to \
+reach.
+
+Consider bias on both sides. What might shape the author's framing: their \
+field, their audience, their stake in the outcome? And what is shaping yours? \
+If you find the conclusion follows, ask what led you there. If you find it \
+doesn't, ask what you assumed that the author may not have, and how that \
+difference could explain why you see it differently.
+
+Be willing to make a judgment. Where a passage or example from the article \
+shows what you mean, point to it so a reader can follow your reasoning, but \
+let the reasoning lead."""
+
+# How the article reaches the second call. Only the layout: the close-reading
+# instructions about quotation and locators do not apply to an evaluation.
+EVALUATION_INPUT_NOTES: dict[InputMode, str] = {
+    "pdf": "The article is attached as its original PDF.",
+    "prepared_text_and_crops": (
+        "The article is given as prepared text, followed by one retained image for "
+        "each item the preparation step could not represent in that text. Bracketed "
+        "preparation annotations in the text mark those items; they are not the "
+        "author's words."
+    ),
+    "prepared_text": "The article is given as prepared text.",
+}
+
+
+def build_evaluation_messages(
+    source: SourceDocument,
+    close_reading: ExtractedAnalysis,
+    *,
+    input_mode: InputMode,
+    attachments: Sequence[LoadedAttachment] = (),
+) -> list[BaseMessage]:
+    """The evaluation prompt plus one human message carrying the article, in
+    the same input mode as the close reading, and the close reading itself."""
+    provenance = source.provenance
+    header = [
+        f"Source title: {provenance.source_title}",
+        f"Source type: {provenance.source_type}",
+    ]
+    if provenance.publisher:
+        header.append(f"Publisher: {provenance.publisher}")
+    if provenance.doi:
+        header.append(f"DOI: {provenance.doi}")
+    sections = ["\n".join(header), EVALUATION_INPUT_NOTES[input_mode]]
+    if input_mode != "pdf":
+        sections.append(source.text)
+    sections.append("Close reading of this article:\n" + close_reading.model_dump_json(indent=2))
+    framing = "\n\n".join(sections)
+    if not attachments:
+        return [SystemMessage(EVALUATION_PROMPT), HumanMessage(framing)]
+    content: list[str | dict[Any, Any]] = [{"type": "text", "text": framing}]
+    for attachment in attachments:
+        content.extend(attachment.content_blocks())
+    return [SystemMessage(EVALUATION_PROMPT), HumanMessage(content=content)]
 
 
 def build_correction_messages(

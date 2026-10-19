@@ -30,24 +30,24 @@ The importable package. The directory name is the import name; the `src/`
 wrapper means the package can only be imported through the editable install,
 not from the working directory, so tests exercise what would ship.
 
-### `models.py` (322 lines)
+### `models.py` (312 lines)
 
 Every research type, in one module, in two layers:
 
-- **`ExtractedAnalysis`** is the schema sent to the API — research problem,
-  claims, methodology, assumptions, limitations, proposed solutions, open
-  questions, and `argument_assessment`, a whole-document assessment of how the
-  conclusions follow and how the document develops them
-  ([ADR-0010](adr/0010-whole-document-argument-assessment.md)). Every field is
+- **`ExtractedAnalysis`** is the schema sent to the API: the close reading, a
+  `reading_path` of steps in the order the document unfolds. Every field is
   content the model may supply.
 - **`SourceAnalysis`** wraps that content with the three things the application
   owns and a model has no legitimate value for: `id`, `provenance`, `analyzed_at`.
+- **`ArgumentEvaluation`** is the schema for the second call: one prose field,
+  the model's own judgment of the argument. **`SourceArgumentEvaluation`** wraps
+  it with its own `id`, the `analysis_id` of the close reading it was given,
+  `provenance`, and `evaluated_at` ([ADR-0012](adr/0012-close-reading-and-argument-evaluation-are-two-calls.md)).
 
-Inside the model's content: `Claim` (text, `statement_origin`, evidence,
-optional `support_assessment`), `Evidence` (text, locator, citations,
-`evidence_form`, `relationship_to_claim`), `Citation`, `Methodology`, and a
-single `Statement` type used for the research problem, assumptions, limitations,
-proposed solutions, and open questions.
+Inside the model's content: `ReadingStep` (location, the author's moves in the
+terms of argument, the claims stated there, and what the step means given what
+came before), `Claim` (text, `statement_origin`, evidence), `Evidence` (text,
+locator, citations, `evidence_form`, `relationship_to_claim`), and `Citation`.
 
 Also here: `Provenance`, whose `source_id` names the source rather than any one
 analysis of it — `source_id_for()` derives it from the slug, so every analysis of
@@ -66,10 +66,14 @@ to strip UUIDs the model must not supply; those UUIDs were never read anywhere,
 so dropping them removed both duplicate classes and the 40-line function that
 copied between them.
 
-### `analysis.py` (448 lines)
+### `analysis.py` (522 lines)
 
 `analyze_source()`: build the messages, call the model, accept one correction
 attempt if the output does not fit the schema, return an `AnalysisResult`.
+`evaluate_argument()` is the second call: it sends the evaluation prompt, the
+article in the same input mode, and the close reading, with the same
+one-correction policy, and returns an `ArgumentEvaluationResult`
+([ADR-0012](adr/0012-close-reading-and-argument-evaluation-are-two-calls.md)).
 
 Also `AttemptRecord` and `AttemptUsage` — one per call, kept on success and on
 failure, holding outcome, request id, timing, and the token usage the response
@@ -89,15 +93,19 @@ Six exception classes became one with a `kind` field — nothing ever caught the
 subclasses individually. The response-metadata allowlist and its JSON-safety
 helpers went: they recorded fields nobody read.
 
-### `prompts.py` (249 lines)
+### `prompts.py` (283 lines)
 
-`SYSTEM_PROMPT` — the analysis instructions — plus the per-input-mode layout
-instructions and the correction message. Almost entirely prompt text rather than
+`SYSTEM_PROMPT` — the close-reading instructions, written as an invitation to
+read the document step by step as a first-time reader — plus the per-input-mode
+layout instructions and the correction message. `EVALUATION_PROMPT` and
+`build_evaluation_messages()` are the second call: the model's own evaluation of
+the argument, kept in a prompt of its own so the close reading's restraint does
+not apply to it. Almost entirely prompt text rather than
 code, and **unchanged by the consolidation**: Phase 1 holds it fixed so input
-format and model stay the only variables. Its Phase 1 revisions — the
-whole-document assessment of ADR-0010 and the two-task framing of ADR-0011 —
-were made before any cell but Barnett's had run, and Barnett is rerun under
-them.
+format and model stay the only variables. ADR-0010 and ADR-0011 revised it
+during Phase 1 and were superseded by ADR-0012, which moves the
+argument evaluation to its own call and turns the close reading into a reading
+path; only Barnett had run, and it is rerun under both calls.
 
 ### `inputs.py` (238 lines)
 
@@ -130,12 +138,15 @@ a change to two of these fields, which is why they are configuration.
 
 Not installed, not shipped, not type-checked (`mypy src` covers `src/` only).
 
-### `run_analysis.py` (373 lines)
+### `run_analysis.py` (470 lines)
 
 One cell of the matrix: one article, one input method, one model. Writes
-`analysis.json` (the analysis as the model returned it) and `run_record.json`
-(configuration, usage, calculated cost, runtime, request ids, every attempt) to
-`outputs/ab_testing/<slug>/<config>/`.
+`analysis.json` (the close reading as the model returned it),
+`argument_evaluation.json` (the model's own evaluation of the argument, from the
+second call), and `run_record.json` (configuration, usage, calculated cost,
+runtime, request ids, every attempt, for each call and in total) to
+`outputs/ab_testing/<slug>/<config>/`. If the evaluation fails, the close
+reading is still written and the record says so.
 
 The record is built to be complete rather than convenient. Usage totals,
 reasoning tokens included, are summed from every attempt that reported usage,
@@ -195,16 +206,16 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 84 tests
+## `tests/` — 89 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
 | `preparation/test_prepare.py` | 27 | PDF extraction: reading order, hyphen joining, header removal, annotation placement, crop retention |
-| `test_analysis.py` | 16 | The call path: the correction attempt, each run-stopping failure, attempt records, usage arithmetic, attachments resent on correction |
+| `test_analysis.py` | 18 | The call path: the correction attempt, each run-stopping failure, attempt records, usage arithmetic, attachments resent on correction, and the evaluation call's own prompt and inputs |
 | `test_inputs.py` | 11 | Per-mode attachment validation, that every mode sends the same analysis prompt, byte-exact hashing |
-| `test_models.py` | 12 | Application-owned fields rejected from model content, attribution labels required, a whole-document assessment required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
+| `test_models.py` | 13 | Application-owned fields rejected from model content, attribution labels required, the evaluation schema holding only the model's judgment, a reading step with no claim, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
-| `test_run_analysis.py` | 13 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun |
+| `test_run_analysis.py` | 15 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun, both documents written, a failed evaluation keeping the close reading |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file
 path, since `scripts/` is not importable, and `preparation/pdf_fixtures.py`
@@ -267,9 +278,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 13 files
+### `adr/` — 14 files
 
-One architectural decision per record: `0001`–`0011`, plus `template.md` for
+One architectural decision per record: `0001`–`0012`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -295,11 +306,13 @@ run count near the original, for 18 analyses over three articles.
 assessment of the document as a whole, because claim-by-claim assessment could
 not see a conclusion that is announced early and developed only at the end.
 
-`0011` is `Proposed`. The ADR-0010 runs folded separate claims into fewer,
-broader ones, and it proposes restoring them with a prompt that gives the model
-two ordered tasks — claims, then the whole document — tested on two Barnett
-cells before anything else is rerun, with a two-turn conversation as the
-fallback if that is not enough.
+`0011` proposed restoring the claims ADR-0010's runs folded together by giving
+the model two ordered tasks in one call; tested on two cells, the claims
+overshot.
+
+`0012` supersedes both: the close reading and the argument evaluation are two
+calls with two prompts and two documents, because the two tasks ask for
+opposite stances and pulled on each other in one prompt.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

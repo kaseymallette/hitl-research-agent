@@ -1,11 +1,14 @@
 """The single-source analysis call path: article plus prompt, to model, to JSON.
 
-One call, and one correction attempt if the model's output does not fit the
-schema. An analysis is returned whenever the output can be read, however thin
-or heavily paraphrased it is. Only a technical failure stops a run: a transport
-error, a refusal, a generation that stopped early, or output that still will not
-parse after the correction. Whether a returned analysis is any good is an
-evaluation question, answered elsewhere.
+Two calls, each with one correction attempt if the model's output does not fit
+its schema: `analyze_source()` makes the close reading, and
+`evaluate_argument()` gives the model the article and that close reading and
+asks for its own judgment of the argument (ADR-0012). An analysis is returned
+whenever the output can be read, however thin or heavily paraphrased it is.
+Only a technical failure stops a run: a transport error, a refusal, a
+generation that stopped early, or output that still will not parse after the
+correction. Whether a returned analysis is any good is an evaluation question,
+answered elsewhere.
 """
 
 import json
@@ -23,6 +26,7 @@ from .inputs import Attachment, InputMode, LoadedAttachment, validate_attachment
 from .models import (
     ANALYSIS_SCOPE,
     ANALYSIS_SCOPE_BY_INPUT_MODE,
+    ArgumentEvaluation,
     ExtractedAnalysis,
     NonEmptyStr,
     PreparationGap,
@@ -30,7 +34,7 @@ from .models import (
     SourceAnalysis,
     SourceDocument,
 )
-from .prompts import build_correction_messages, build_messages
+from .prompts import build_correction_messages, build_evaluation_messages, build_messages
 
 AttemptOutcome = Literal[
     "valid",
@@ -127,6 +131,18 @@ class AnalysisResult(ResearchBaseModel):
     attempts: list[AttemptRecord] = Field(default_factory=list)
 
 
+class ArgumentEvaluationResult(ResearchBaseModel):
+    """What `evaluate_argument()` returns: the evaluation plus the facts of the
+    call, with the same accounting as `AnalysisResult`."""
+
+    evaluation: ArgumentEvaluation
+    model: NonEmptyStr
+    input_tokens: int = Field(ge=0)
+    output_tokens: int = Field(ge=0)
+    attempt_count: int = Field(ge=1, le=2)
+    attempts: list[AttemptRecord] = Field(default_factory=list)
+
+
 class StructuredOutputModel(Protocol):
     """The minimal interface this module depends on.
 
@@ -139,10 +155,10 @@ class StructuredOutputModel(Protocol):
 
 
 @dataclass
-class _Attempt:
+class _Attempt[Content: ResearchBaseModel]:
     """One evaluated call: the content if it was usable, and what it cost."""
 
-    content: ExtractedAnalysis | None
+    content: Content | None
     raw: AIMessage
     input_tokens: int
     output_tokens: int
@@ -180,7 +196,7 @@ def _record(
     parsed: object = None,
 ) -> AttemptRecord:
     parsed_output = None
-    if isinstance(parsed, ExtractedAnalysis):
+    if isinstance(parsed, ResearchBaseModel):
         parsed_output = json.loads(parsed.model_dump_json())
     request_id = None
     if raw is not None:
@@ -199,7 +215,9 @@ def _record(
     )
 
 
-def _build_default_model(settings: Settings) -> StructuredOutputModel:
+def _build_default_model(
+    settings: Settings, schema: type[ResearchBaseModel] = ExtractedAnalysis
+) -> StructuredOutputModel:
     chat = ChatOpenAI(
         model=settings.openai_model,
         reasoning_effort=settings.openai_reasoning_effort,
@@ -208,9 +226,7 @@ def _build_default_model(settings: Settings) -> StructuredOutputModel:
         max_retries=settings.openai_max_retries,
         api_key=SecretStr(settings.openai_api_key) if settings.openai_api_key else None,
     )
-    return chat.with_structured_output(
-        ExtractedAnalysis, method="json_schema", strict=True, include_raw=True
-    )
+    return chat.with_structured_output(schema, method="json_schema", strict=True, include_raw=True)
 
 
 def _detect_refusal(raw: AIMessage) -> str | None:
@@ -239,14 +255,15 @@ def _detect_incomplete(raw: AIMessage) -> str | None:
     return None
 
 
-def _evaluate(
+def _evaluate[Content: ResearchBaseModel](
     model: StructuredOutputModel,
     messages: list[BaseMessage],
     model_name: str,
+    schema: type[Content],
     *,
     attempts: list[AttemptRecord],
     clock: Callable[[], datetime],
-) -> _Attempt:
+) -> _Attempt[Content]:
     """Run one call, append its record to `attempts` before raising anything,
     and classify what came back."""
     number = len(attempts) + 1
@@ -338,7 +355,7 @@ def _evaluate(
         return _Attempt(None, raw, input_tokens, output_tokens, [reason])
 
     try:
-        content = ExtractedAnalysis.model_validate(parsed.model_dump())
+        content = schema.model_validate(parsed.model_dump())
     except ValidationError as exc:
         attempts.append(
             _record(
@@ -427,22 +444,79 @@ def _run(
             attempts=list(attempts),
         )
 
-    first = _evaluate(runnable, messages, settings.openai_model, attempts=attempts, clock=clock)
+    content, input_tokens, output_tokens = _call_with_correction(
+        runnable, messages, settings.openai_model, ExtractedAnalysis, attempts, clock
+    )
+    return result(content, input_tokens, output_tokens)
+
+
+def _call_with_correction[Content: ResearchBaseModel](
+    runnable: StructuredOutputModel,
+    messages: list[BaseMessage],
+    model_name: str,
+    schema: type[Content],
+    attempts: list[AttemptRecord],
+    clock: Callable[[], datetime],
+) -> tuple[Content, int, int]:
+    """One call, and one correction attempt if its output does not fit the
+    schema. Returns the content and the tokens of every call counted."""
+    first = _evaluate(runnable, messages, model_name, schema, attempts=attempts, clock=clock)
     if first.content is not None:
-        return result(first.content, first.input_tokens, first.output_tokens)
+        return first.content, first.input_tokens, first.output_tokens
 
     corrected = build_correction_messages(messages, first.raw, first.problems)
-    second = _evaluate(runnable, corrected, settings.openai_model, attempts=attempts, clock=clock)
+    second = _evaluate(runnable, corrected, model_name, schema, attempts=attempts, clock=clock)
     total_in = first.input_tokens + second.input_tokens
     total_out = first.output_tokens + second.output_tokens
     if second.content is not None:
-        return result(second.content, total_in, total_out)
+        return second.content, total_in, total_out
 
     raise AnalysisError(
-        f"Analysis remained invalid after 2 attempts: {'; '.join(second.problems)}",
+        f"Output remained invalid after 2 attempts: {'; '.join(second.problems)}",
         kind="invalid_after_correction",
-        model=settings.openai_model,
+        model=model_name,
         input_tokens=total_in,
         output_tokens=total_out,
         problems=second.problems,
+    )
+
+
+def evaluate_argument(
+    source: SourceDocument,
+    close_reading: ExtractedAnalysis,
+    *,
+    model: StructuredOutputModel | None = None,
+    settings: Settings | None = None,
+    clock: Callable[[], datetime] | None = None,
+    input_mode: InputMode = "prepared_text",
+    attachments: Sequence[LoadedAttachment] = (),
+) -> ArgumentEvaluationResult:
+    """The second call: the model's own evaluation of the argument, given the
+    article in the same input mode as the close reading, and the close reading.
+
+    A failure raises AnalysisError like the first call; the caller keeps the
+    close reading either way.
+    """
+    settings = settings or Settings()
+    clock = clock or _utc_now
+    validate_attachments(input_mode, attachments, [gap.id for gap in source.preparation_gaps])
+    attempts: list[AttemptRecord] = []
+    try:
+        runnable = model or _build_default_model(settings, ArgumentEvaluation)
+        messages = build_evaluation_messages(
+            source, close_reading, input_mode=input_mode, attachments=attachments
+        )
+        content, input_tokens, output_tokens = _call_with_correction(
+            runnable, messages, settings.openai_model, ArgumentEvaluation, attempts, clock
+        )
+    except AnalysisError as exc:
+        exc.attempts = list(attempts)
+        raise
+    return ArgumentEvaluationResult(
+        evaluation=content,
+        model=settings.openai_model,
+        input_tokens=input_tokens,
+        output_tokens=output_tokens,
+        attempt_count=len(attempts),
+        attempts=list(attempts),
     )

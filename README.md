@@ -49,7 +49,7 @@ Three agents do the preparatory work.
 
 | Agent | Given | Produces |
 | --- | --- | --- |
-| **Single source analysis** | one article | a structured JSON analysis of it: claims, evidence, citations, methodology, assumptions, limitations, proposed solutions, open questions, provenance, and an assessment of the argument as a whole |
+| **Single source analysis** | one article | two documents: a close reading as structured JSON, a step-by-step reading path through the paper with the claims, evidence, and citations met along the way, and, from a second call, the model's own evaluation of the argument |
 | **Synthesis** | several accepted analyses | a cross-source comparison of agreements, disagreements, methodological differences, limitations, and open questions, with each position still attributed to its source |
 | **Literature review** | an explicit research question | candidate articles with an explanation of why each one is relevant |
 
@@ -88,8 +88,7 @@ own statements. That is the part most easily misread.
 
 ### `statement_origin` records an attribution, not a verification
 
-Each claim, assumption, limitation, proposed solution, open question, and the
-methodology record carries `statement_origin`:
+Each claim in the close reading carries `statement_origin`:
 
 | Value | What it means | What it does not mean |
 | --- | --- | --- |
@@ -280,7 +279,7 @@ simplifies, or removes.
 │   ├── cost.py                       per-model rates; cost from reported usage
 │   └── config.py                     Settings: key, model, effort, limits
 ├── scripts/
-│   ├── run_analysis.py               one A/B cell -> analysis.json + run_record.json
+│   ├── run_analysis.py               one A/B cell -> analysis, argument evaluation, run record
 │   └── prepare_sources.py            PDF -> text + crops (the experimental arm)
 ├── tests/
 │   ├── test_analysis.py              the call path, failures, usage arithmetic
@@ -293,7 +292,7 @@ simplifies, or removes.
 │   ├── DESIGN.md                     the system, and the rules it holds to
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── adr/0001-0011.md              one record per architectural decision
+│   ├── adr/0001-0012.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── CLAUDE.md                         what Claude Code loads in every session
@@ -309,7 +308,7 @@ simplifies, or removes.
 ```
 outputs/                              created by the pipeline, not in git
 ├── preparation/<slug>/               prepared text, crops, prep_record.json
-├── ab_testing/<slug>/<config>/       Phase 1: analysis.json + run_record.json
+├── ab_testing/<slug>/<config>/       Phase 1: analysis, argument evaluation, run record
 ├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
 ├── evaluations/<slug>/               Phase 3: evaluation, stored apart from it
 └── synthesis/                        Phase 4

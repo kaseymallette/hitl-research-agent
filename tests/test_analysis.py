@@ -13,21 +13,23 @@ from typing import Any
 import pytest
 from langchain_core.messages import AIMessage, BaseMessage
 
-from hitl_research_agent.analysis import AnalysisError, analyze_source
+from hitl_research_agent.analysis import AnalysisError, analyze_source, evaluate_argument
 from hitl_research_agent.config import Settings
 from hitl_research_agent.inputs import format_annotation, load_attachment
 from hitl_research_agent.models import (
     ANALYSIS_SCOPE,
     ANALYSIS_SCOPE_PDF,
     ANALYSIS_SCOPE_TEXT_AND_CROPS,
+    ArgumentEvaluation,
     Claim,
     Evidence,
     ExtractedAnalysis,
     PreparationGap,
     Provenance,
+    ReadingStep,
     SourceDocument,
-    Statement,
 )
+from hitl_research_agent.prompts import EVALUATION_PROMPT, SYSTEM_PROMPT
 
 PROVENANCE = Provenance(
     source_title="A Paper",
@@ -56,28 +58,31 @@ def _source(*, annotated: bool = False, text: str | None = None) -> SourceDocume
 
 def _content(claim_text: str = "Cooling drives water use.") -> ExtractedAnalysis:
     return ExtractedAnalysis(
-        research_problem=Statement(
-            text="Water use is unmeasured.", statement_origin="author_stated"
-        ),
-        central_claims=[
-            Claim(
-                text=claim_text,
-                statement_origin="author_stated",
-                evidence=[
-                    Evidence(
-                        text="Cooling accounted for most withdrawal.",
-                        evidence_form="paraphrased",
-                        relationship_to_claim="direct_support",
+        reading_path=[
+            ReadingStep(
+                location="page 1",
+                moves="a premise, with evidence",
+                claims=[
+                    Claim(
+                        text=claim_text,
+                        statement_origin="author_stated",
+                        evidence=[
+                            Evidence(
+                                text="Cooling accounted for most withdrawal.",
+                                evidence_form="paraphrased",
+                                relationship_to_claim="direct_support",
+                            )
+                        ],
                     )
                 ],
+                meaning="The opening premise.",
             )
         ],
-        argument_assessment="The conclusion follows only if measurement is feasible.",
     )
 
 
 def _response(
-    parsed: ExtractedAnalysis | None,
+    parsed: ExtractedAnalysis | ArgumentEvaluation | None,
     *,
     input_tokens: int = 100,
     output_tokens: int = 50,
@@ -136,7 +141,7 @@ def _clock() -> Any:
 def test_one_call_returns_the_analysis_the_model_produced() -> None:
     model = FakeModel([_response(_content())])
     result = analyze_source(_source(), model=model, settings=_settings(), clock=_clock())
-    assert result.analysis.content.central_claims[0].text == "Cooling drives water use."
+    assert result.analysis.content.reading_path[0].claims[0].text == "Cooling drives water use."
     assert result.analysis.provenance == PROVENANCE  # application-owned, not from the model
     assert result.attempt_count == 1
     assert result.model == "gpt-6.1-sol"
@@ -351,3 +356,40 @@ def test_the_result_round_trips_so_a_run_record_can_be_read_back() -> None:
     restored = AnalysisResult.model_validate_json(result.model_dump_json())
     assert restored.input_tokens == result.input_tokens
     assert restored.attempts[0].outcome == "valid"
+
+
+# --------------------------------------------------------------------------- the second call
+
+
+def test_the_evaluation_call_sends_its_own_prompt_the_article_and_the_close_reading() -> None:
+    """The evaluation is a separate call with its own instructions; the close
+    reading's prompt never reaches it."""
+    model = FakeModel([_response(ArgumentEvaluation(evaluation="The conclusion is permitted."))])
+    result = evaluate_argument(
+        _source(text="Body text of the article."),
+        _content("Cooling drives water use."),
+        model=model,
+        settings=_settings(),
+        clock=_clock(),
+    )
+    assert result.evaluation.evaluation == "The conclusion is permitted."
+    assert (result.input_tokens, result.output_tokens, result.attempt_count) == (100, 50, 1)
+    system, human = model.calls[0]
+    assert system.content == EVALUATION_PROMPT
+    assert SYSTEM_PROMPT not in str(human.content)
+    assert "Body text of the article." in str(human.content)
+    assert "Cooling drives water use." in str(human.content)
+
+
+def test_an_evaluation_that_stays_invalid_raises_with_both_attempts() -> None:
+    model = FakeModel(
+        [
+            _response(None, parsing_error=ValueError("not valid JSON")),
+            _response(None, parsing_error=ValueError("still not valid")),
+        ]
+    )
+    with pytest.raises(AnalysisError) as raised:
+        evaluate_argument(_source(), _content(), model=model, settings=_settings(), clock=_clock())
+    assert raised.value.kind == "invalid_after_correction"
+    assert [a.outcome for a in raised.value.attempts] == ["parse_error", "parse_error"]
+    assert (raised.value.input_tokens, raised.value.output_tokens) == (200, 100)

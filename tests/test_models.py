@@ -12,15 +12,16 @@ from pydantic import ValidationError
 
 from hitl_research_agent.inputs import format_annotation
 from hitl_research_agent.models import (
+    ArgumentEvaluation,
     Claim,
     Evidence,
     ExtractedAnalysis,
     PreparationGap,
     Provenance,
+    ReadingStep,
     ResearchBaseModel,
     SourceAnalysis,
     SourceDocument,
-    Statement,
     source_id_for,
 )
 
@@ -37,23 +38,26 @@ GAP = PreparationGap(id="U1", kind="figure", page=2, label="Figure 1", image="im
 
 def _content(**overrides: object) -> ExtractedAnalysis:
     defaults: dict[str, object] = {
-        "research_problem": Statement(
-            text="Water use is unmeasured.", statement_origin="author_stated"
-        ),
-        "central_claims": [
-            Claim(
-                text="Cooling drives most on-site water use.",
-                statement_origin="author_stated",
-                evidence=[
-                    Evidence(
-                        text="Cooling accounted for the majority of withdrawal.",
-                        evidence_form="paraphrased",
-                        relationship_to_claim="direct_support",
+        "reading_path": [
+            ReadingStep(
+                location="page 1, Introduction",
+                moves="a premise, supported by a reported figure",
+                claims=[
+                    Claim(
+                        text="Cooling drives most on-site water use.",
+                        statement_origin="author_stated",
+                        evidence=[
+                            Evidence(
+                                text="Cooling accounted for the majority of withdrawal.",
+                                evidence_form="paraphrased",
+                                relationship_to_claim="direct_support",
+                            )
+                        ],
                     )
                 ],
+                meaning="The opening premise; nothing precedes it.",
             )
         ],
-        "argument_assessment": "The conclusion follows only if measurement is feasible.",
     }
     return ExtractedAnalysis(**{**defaults, **overrides})  # type: ignore[arg-type]
 
@@ -63,9 +67,7 @@ def test_unknown_fields_are_rejected_so_an_invented_field_fails_loudly() -> None
     with pytest.raises(ValidationError):
         ResearchBaseModel.model_validate({"unexpected": 1})
     with pytest.raises(ValidationError):
-        Statement.model_validate(
-            {"text": "x", "statement_origin": "author_stated", "confidence": 0.9}
-        )
+        Claim.model_validate({"text": "x", "statement_origin": "author_stated", "confidence": 0.9})
 
 
 def test_the_model_cannot_supply_application_owned_fields() -> None:
@@ -79,8 +81,6 @@ def test_the_model_cannot_supply_application_owned_fields() -> None:
 
 
 def test_statement_origin_is_required_on_every_interpreted_statement() -> None:
-    with pytest.raises(ValidationError):
-        Statement.model_validate({"text": "unlabelled"})
     with pytest.raises(ValidationError):
         Claim.model_validate({"text": "unlabelled", "evidence": []})
 
@@ -100,7 +100,6 @@ def test_an_author_stated_claim_may_rest_on_a_paraphrase() -> None:
         ],
     )
     assert claim.evidence[0].evidence_form == "paraphrased"
-    assert claim.support_assessment is None  # unset means not assessed
 
 
 def test_a_claim_with_no_evidence_is_accepted() -> None:
@@ -110,7 +109,7 @@ def test_a_claim_with_no_evidence_is_accepted() -> None:
 
 def test_analysis_wraps_model_content_with_provenance_and_timestamp() -> None:
     analysis = SourceAnalysis(provenance=PROVENANCE, content=_content())
-    assert analysis.content.central_claims[0].statement_origin == "author_stated"
+    assert analysis.content.reading_path[0].claims[0].statement_origin == "author_stated"
     assert analysis.provenance.source_title == "Making AI Less Thirsty"
     assert analysis.analyzed_at.tzinfo is not None
     assert analysis.id != SourceAnalysis(provenance=PROVENANCE, content=_content()).id
@@ -173,10 +172,22 @@ def test_a_source_id_is_the_same_for_every_analysis_of_one_slug() -> None:
     assert source_id_for(slug) != source_id_for("lei_et_al_2025_water_use_data_center_workloads")
 
 
-def test_every_analysis_must_carry_a_whole_document_assessment() -> None:
-    """Claim-level assessment cannot see reasoning or organization that spans
-    the document, so the schema sent to the API requires the field."""
-    assert "argument_assessment" in ExtractedAnalysis.model_json_schema()["required"]
-    without = {k: v for k, v in _content().model_dump().items() if k != "argument_assessment"}
-    with pytest.raises(ValidationError):
-        ExtractedAnalysis.model_validate(without)
+def test_the_argument_evaluation_schema_holds_only_the_model_s_judgment() -> None:
+    """The second call's schema is the model's prose and nothing else: no
+    attribution label to misread as a claim about the source, and nothing
+    application-owned for the model to supply."""
+    assert set(ArgumentEvaluation.model_json_schema()["properties"]) == {"evaluation"}
+    for field in ("id", "analysis_id", "provenance", "statement_origin"):
+        with pytest.raises(ValidationError):
+            ArgumentEvaluation.model_validate({"evaluation": "It holds.", field: "x"})
+
+
+def test_a_reading_step_may_make_no_claim() -> None:
+    """A transition or a definition still belongs on the path; claims are what a
+    step states, not what it must state."""
+    step = ReadingStep(
+        location="page 3, Section 4",
+        moves="a turn to a new line of discussion",
+        meaning="Leaves the local conflicts behind for technical alternatives.",
+    )
+    assert step.claims == []

@@ -20,6 +20,9 @@ across arms.
 Writes <out>/<slug>/<config>/analysis.json (the analysis as the model returned
 it) and run_record.json (configuration, usage, calculated cost, runtime,
 request ids, every attempt, and fingerprints of the prompt, schema, and code).
+When the close reading succeeds, a second call gives the model the article and
+that close reading and writes its own judgment of the argument to
+argument_evaluation.json (ADR-0012); its usage and cost are recorded alongside.
 A cell that already holds an analysis is not rerun; delete its directory first.
 Rerunning a failed cell keeps the failed run's record as failed_run_<n>.json,
 since its tokens were billed.
@@ -42,18 +45,30 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 import pymupdf  # noqa: E402
 import yaml  # noqa: E402
 
-from hitl_research_agent.analysis import AnalysisError, AttemptRecord, analyze_source  # noqa: E402
+from hitl_research_agent.analysis import (  # noqa: E402
+    AnalysisError,
+    AttemptRecord,
+    analyze_source,
+    evaluate_argument,
+)
 from hitl_research_agent.config import Settings  # noqa: E402
 from hitl_research_agent.cost import calculated_cost  # noqa: E402
 from hitl_research_agent.inputs import LoadedAttachment, load_attachment  # noqa: E402
 from hitl_research_agent.models import (  # noqa: E402
+    ArgumentEvaluation,
     ExtractedAnalysis,
     PreparationGap,
     Provenance,
+    SourceAnalysis,
+    SourceArgumentEvaluation,
     SourceDocument,
     source_id_for,
 )
-from hitl_research_agent.prompts import INPUT_MODE_INSTRUCTIONS, SYSTEM_PROMPT  # noqa: E402
+from hitl_research_agent.prompts import (  # noqa: E402
+    EVALUATION_PROMPT,
+    INPUT_MODE_INSTRUCTIONS,
+    SYSTEM_PROMPT,
+)
 
 INPUT_MODES = {"pdf": "pdf", "text_crops": "prepared_text_and_crops", "text": "prepared_text"}
 
@@ -176,11 +191,42 @@ def fingerprints(input_mode: str) -> dict[str, Any]:
         "output_schema_sha256": sha256_text(
             json.dumps(ExtractedAnalysis.model_json_schema(), sort_keys=True)
         ),
+        "evaluation_prompt_sha256": sha256_text(EVALUATION_PROMPT),
+        "evaluation_schema_sha256": sha256_text(
+            json.dumps(ArgumentEvaluation.model_json_schema(), sort_keys=True)
+        ),
         "git_commit": git("rev-parse", "HEAD"),
         # The correction policy is code; uncommitted changes to it would make
         # git_commit an incomplete description of what ran.
         "code_uncommitted_changes": bool(git("status", "--porcelain", "--", "src", "scripts")),
     }
+
+
+def attempt_entries(attempts: list[AttemptRecord]) -> list[dict[str, Any]]:
+    return [
+        {
+            "attempt_number": a.attempt_number,
+            "outcome": a.outcome,
+            "request_id": a.request_id,
+            "elapsed_seconds": a.elapsed_seconds,
+            "usage": a.usage.model_dump(mode="json") if a.usage else None,
+            "problems": a.problems,
+            "error": a.error,
+        }
+        for a in attempts
+    ]
+
+
+def cost_of(model: str, totals: dict[str, int | None]) -> dict[str, Any]:
+    try:
+        return calculated_cost(
+            model,
+            input_tokens=totals["input_tokens"] or 0,
+            output_tokens=totals["output_tokens"] or 0,
+            cached_input_tokens=totals["cached_input_tokens"] or 0,
+        )
+    except ValueError as exc:
+        return {"error": str(exc)}
 
 
 def usage_totals(attempts: list[AttemptRecord]) -> dict[str, int | None]:
@@ -310,32 +356,13 @@ def main(argv: list[str] | None = None) -> int:
         "started_at": started.isoformat(),
         "elapsed_seconds": round((ended - started).total_seconds(), 3),
         "outcome": "analysis returned" if result else f"failed: {error.kind if error else '?'}",
-        "attempts": [
-            {
-                "attempt_number": a.attempt_number,
-                "outcome": a.outcome,
-                "request_id": a.request_id,
-                "elapsed_seconds": a.elapsed_seconds,
-                "usage": a.usage.model_dump(mode="json") if a.usage else None,
-                "problems": a.problems,
-                "error": a.error,
-            }
-            for a in attempts
-        ],
+        "attempts": attempt_entries(attempts),
     }
 
     totals = usage_totals(attempts)
     record["usage"] = totals
     tokens_in, tokens_out = totals["input_tokens"] or 0, totals["output_tokens"] or 0
-    try:
-        record["calculated_cost"] = calculated_cost(
-            settings.openai_model,
-            input_tokens=tokens_in,
-            output_tokens=tokens_out,
-            cached_input_tokens=totals["cached_input_tokens"] or 0,
-        )
-    except ValueError as exc:
-        record["calculated_cost"] = {"error": str(exc)}
+    record["calculated_cost"] = cost_of(settings.openai_model, totals)
 
     if result:
         record["analysis_scope"] = result.analysis_scope
@@ -347,7 +374,8 @@ def main(argv: list[str] | None = None) -> int:
         cost = record["calculated_cost"]
         print(f"analysis: {shown(analysis_path)}")
         print(
-            f"  {len(result.analysis.content.central_claims)} claims, "
+            f"  {len(result.analysis.content.reading_path)} steps, "
+            f"{sum(len(step.claims) for step in result.analysis.content.reading_path)} claims, "
             f"{tokens_in} in / {tokens_out} out, "
             f"{result.attempt_count} attempt(s), "
             f"{record['elapsed_seconds']}s, "
@@ -355,6 +383,12 @@ def main(argv: list[str] | None = None) -> int:
         )
     else:
         print(f"no analysis returned: {error.kind if error else '?'}: {error}", file=sys.stderr)
+
+    evaluated = False
+    if result:
+        evaluated = run_argument_evaluation(
+            source, result.analysis, settings, input_mode, attachments, destination, record
+        )
 
     record_path = destination / "run_record.json"
     if record_path.exists():
@@ -366,7 +400,70 @@ def main(argv: list[str] | None = None) -> int:
         print(f"previous failed run kept: {shown(kept)}")
     record_path.write_text(json.dumps(record, indent=2) + "\n")
     print(f"run record: {shown(destination / 'run_record.json')}")
-    return 0 if result else 1
+    return 0 if result and evaluated else 1
+
+
+def run_argument_evaluation(
+    source: SourceDocument,
+    analysis: SourceAnalysis,
+    settings: Settings,
+    input_mode: str,
+    attachments: list[LoadedAttachment],
+    destination: Path,
+    record: dict[str, Any],
+) -> bool:
+    """The second call. Its failure is recorded and the close reading is kept."""
+    started = datetime.now(UTC)
+    try:
+        evaluation = evaluate_argument(
+            source,
+            analysis.content,
+            settings=settings,
+            input_mode=input_mode,  # type: ignore[arg-type]
+            attachments=attachments,
+        )
+        attempts, outcome = list(evaluation.attempts), "evaluation returned"
+    except AnalysisError as exc:
+        evaluation, attempts, outcome = None, list(exc.attempts), f"failed: {exc.kind}"
+        print(f"no argument evaluation returned: {exc.kind}: {exc}", file=sys.stderr)
+    ended = datetime.now(UTC)
+
+    totals = usage_totals(attempts)
+    section: dict[str, Any] = {
+        "outcome": outcome,
+        "started_at": started.isoformat(),
+        "elapsed_seconds": round((ended - started).total_seconds(), 3),
+        "attempts": attempt_entries(attempts),
+        "usage": totals,
+        "calculated_cost": cost_of(settings.openai_model, totals),
+    }
+    record["argument_evaluation"] = section
+    costs = [
+        record["calculated_cost"].get("total_usd"),
+        section["calculated_cost"].get("total_usd"),
+    ]
+    record["total_calculated_cost_usd"] = (
+        round(sum(costs), 6) if all(c is not None for c in costs) else None
+    )
+
+    if evaluation is None:
+        return False
+    stored = SourceArgumentEvaluation(
+        analysis_id=analysis.id, provenance=analysis.provenance, content=evaluation.evaluation
+    )
+    path = destination / "argument_evaluation.json"
+    path.write_text(
+        json.dumps(json.loads(stored.model_dump_json()), indent=2, ensure_ascii=False) + "\n"
+    )
+    print(
+        f"argument evaluation: {shown(path)}\n"
+        f"  {len(evaluation.evaluation.evaluation.split())} words, "
+        f"{totals['input_tokens']} in / {totals['output_tokens']} out, "
+        f"{section['elapsed_seconds']}s, "
+        f"${section['calculated_cost'].get('total_usd', '?')} calculated; "
+        f"${record['total_calculated_cost_usd']} for both calls"
+    )
+    return True
 
 
 if __name__ == "__main__":
