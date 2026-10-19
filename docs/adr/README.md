@@ -85,5 +85,6 @@ without a record.
 | [0007](0007-one-analysis-error-with-a-kind.md) | One `AnalysisError` carrying a `kind`, not an exception hierarchy | 2026-10-15 | Accepted |
 | [0009](0009-phase-1-matrix-three-configurations-three-articles.md) | Phase 1 runs three model configurations over three articles | 2026-10-17 | Accepted |
 | [0010](0010-whole-document-argument-assessment.md) | Every analysis carries a whole-document argument assessment | 2026-10-18 | Accepted |
+| [0011](0011-claims-first-then-whole-document.md) | Claims first, then the whole document: test one call before two turns | 2026-10-18 | **Proposed** |
 
 New records start from [template.md](template.md).

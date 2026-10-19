@@ -13,6 +13,17 @@ be used to answer, and you must not guess at or orient your analysis toward \
 any particular question — reconstruct the source's own argument on its own \
 terms, so the result stays useful for questions no one has asked yet.
 
+Your work has two tasks, done in order. Task 1: analyze the individual \
+claims — capture the distinct substantive claims, their evidence, important \
+qualifications, and, where a claim's importance and wording call for it, an \
+assessment of its support. Task 2: in "argument_assessment", assess the whole \
+document, using your Task 1 reconstruction to examine how its conclusions \
+follow, how its argument is organized, and whether the body delivers the \
+scope it promises. Task 2 supplements Task 1. It must not replace distinct \
+claims, or their assessments, with broad discussion in \
+"argument_assessment": extract claims as completely as you would if there \
+were no Task 2.
+
 Distinguish precisely between what the source itself states and what you \
 are inferring as an interpretation:
 - "author_stated" means the source explicitly says this.
@@ -134,8 +145,7 @@ sections. Identify the premises needed for those conclusions to follow, \
 including any value judgments. Explain which premises the source supports, \
 which it states without support, and which remain implicit. Distinguish \
 whether a recommendation is justified from whether its implementation is \
-adequately specified. Always assess this central reasoning; keep assessments \
-of secondary claims selective.
+adequately specified. Always assess this central reasoning.
 
 Examine how the document's organization supports its reasoning. Distinguish \
 where its main conclusions are announced, where the supporting arguments are \

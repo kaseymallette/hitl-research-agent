@@ -89,14 +89,15 @@ Six exception classes became one with a `kind` field — nothing ever caught the
 subclasses individually. The response-metadata allowlist and its JSON-safety
 helpers went: they recorded fields nobody read.
 
-### `prompts.py` (239 lines)
+### `prompts.py` (249 lines)
 
 `SYSTEM_PROMPT` — the analysis instructions — plus the per-input-mode layout
 instructions and the correction message. Almost entirely prompt text rather than
 code, and **unchanged by the consolidation**: Phase 1 holds it fixed so input
-format and model stay the only variables. Its one Phase 1 revision, the
-whole-document assessment of ADR-0010, was made before any cell but Barnett's
-had run, and Barnett is rerun under it.
+format and model stay the only variables. Its Phase 1 revisions — the
+whole-document assessment of ADR-0010 and the two-task framing of ADR-0011 —
+were made before any cell but Barnett's had run, and Barnett is rerun under
+them.
 
 ### `inputs.py` (238 lines)
 
@@ -266,9 +267,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 12 files
+### `adr/` — 13 files
 
-One architectural decision per record: `0001`–`0010`, plus `template.md` for
+One architectural decision per record: `0001`–`0011`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -293,6 +294,12 @@ run count near the original, for 18 analyses over three articles.
 `0010` adds `argument_assessment` to the analysis schema and prompt: an
 assessment of the document as a whole, because claim-by-claim assessment could
 not see a conclusion that is announced early and developed only at the end.
+
+`0011` is `Proposed`. The ADR-0010 runs folded separate claims into fewer,
+broader ones, and it proposes restoring them with a prompt that gives the model
+two ordered tasks — claims, then the whole document — tested on two Barnett
+cells before anything else is rerun, with a two-turn conversation as the
+fallback if that is not enough.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

@@ -423,7 +423,78 @@ The new runs cost less overall but produced fewer claims. Astra went from 21 to 
 
 One more thing: all six new records show `code_uncommitted_changes: true` and the old commit, because the prompt change still isn't committed.
 
+## 23. Claims lost
 
+**Prompt:** But here's the problem. After ADR 0010, we lost substantial claims. We could split up the whole document analysis from the claims, but that would require two paid runs... I asked Chat if we could give the agent two tasks, and it said yes. 
+
+Yes. One agent, one call, two explicit tasks:
+
+Analyze the individual claims: capture the distinct substantive claims, their evidence, important qualifications, and assessments of their support.
+Assess the whole document: use that reconstruction to examine how the conclusions follow, how the argument is organized, and whether the body delivers its promised scope.
+Tell it explicitly that task 2 supplements task 1: it must not replace distinct claims or their assessments with a broad discussion in argument_assessment.
+
+**Response:** Yes, I think that could help.
+
+**Why it should help**
+- It names the cause directly. Two tasks, with "task 2 supplements task 1, it must not replace distinct claims," goes straight at what happened: the assessment field swallowed the claim work.
+- The order matches the schema. Claims first, then the assessment built on them. argument_assessment is already the last field, so the model writes it after the claims anyway.
+It's still one call. Same cost, no new architecture, no second-call failure case to design.
+
+**Two adjustments I'd make to the wording**
+- "Assessments of their support" should keep its current limit. The prompt already says most claims won't need a support_assessment. If task 1 reads as "assess every claim," the outputs get much longer and more expensive. Something like "and assessments of their support where the claim's importance and wording call for it."
+- Remove the sentence that probably caused this. "Keep assessments of secondary claims selective" should either go or say plainly that it's about support_assessment, not about which claims to extract. Otherwise the new framing and the old ambiguity sit side by side.
+
+What it can't guarantee: a wording fix can only nudge the model. And we still don't know how much the claim count varies between two runs of the same prompt. So test it on one or two runs before rerunning all six. Good candidates are the two with the biggest drops: Sol high on the text (33 → 25) and Astra on the PDF (21 → 16). That's about $0.70 for both, and if their claim lists come back to roughly the before level with the technology claims separate again, it worked.
+
+Bookkeeping: ADR-0010 quotes the prompt text word for word, so changing it means either a short ADR-0011 or a note in the ADR saying the wording was revised. And if it works, Barnett's six runs get redone a third time, into another folder next to the two existing ones.
+
+## 24. One call, two tasks
+
+**Prompt:** I said to tell it to run two tasks. I thought we are building agentic AI, which can run multiple tasks before closing the instance.
+
+**Response:** Yes, we can do that, and it's a more natural fit than I made it sound. First, what the system actually does today, because it explains the confusion.
+
+Right now, an "agent" here is a single request. We send the article and the instructions, and the model returns one JSON analysis. The README calls the three parts "agents," but none of them runs in steps on its own. There's no instance that does task 1, then task 2, then closes.
+
+What you're describing is one conversation with two turns:
+
+Turn 1: "Analyze the individual claims." The model returns the claims, evidence and per-claim assessments, using exactly the instructions we had before ADR-0010.
+Turn 2, in the same conversation: "Now assess the whole document, building on your claim analysis." The model sees the article and its own turn-1 output, and returns only the argument_assessment.
+
+The code already does something like this. When the model's first answer doesn't fit the schema, the correction attempt goes back into the same conversation with the previous answer and a follow-up message. Task 2 would use the same mechanism, just with a planned second turn instead of a fix-up.
+
+Why it might work better than one call with two tasks
+
+The claims come out exactly as they did before ADR-0010. Turn 1 has the old instructions, and nothing about the assessment can crowd out the claims.
+Turn 2 builds on finished claims. It assesses the argument with the full reconstruction in front of it instead of writing both at once.
+
+What it costs
+
+Money: less than double. The second turn re-sends the article, but the API can cache a repeated prefix and charge it at the cached rate, which is $0.10 instead of $2.00 per million tokens for Sol, and $1 instead of $10 for Astra. Whether caching actually kicks in, we'd see in the run records, which already log cached_input_tokens. Most of the extra cost is turn 2's output, roughly the length of one assessment plus its reasoning.
+Code:
+analyze_source makes two requests instead of one.
+The schema splits in two: claims without the assessment, and the assessment on its own.
+Each turn gets its own attempt record and its own correction attempt.
+There's one new failure case to settle: turn 1 succeeds and turn 2 fails. Do you keep the claims and report the assessment as missing? (ADR-0005 suggests yes: a missing assessment is reported, not a reason to withhold the claims.)
+That's an architecture change, so it needs its own ADR.
+
+The two options side by side
+
+	One call, two tasks (Chat's wording)	One conversation, two turns
+Do claims return to the before level?	Probably; it's a nudge	Yes; turn 1 is unchanged
+Cost per run	Same as now	More, though caching should keep it well below double
+Code change	Prompt wording only	analysis.py, schema split, records, ADR
+New failure case	None	Turn 2 can fail after turn 1 succeeds
+
+Both can be tested on one or two runs before rerunning Barnett. Which one you build is your call. The two-turn version is the closer match to what you described.
+
+## 25. ADR 0011: Two-Task Framing
+
+**Prompt:** Propose this in ADR 0011:
+
+One way to avoid choosing blind: try one call first, since it's only a prompt edit plus about $0.70 to test on the two runs that lost the most claims. If the claims come back, you're done. If they don't, you build two turns knowing you need them.
+
+**Response:** ADR-0011 is written as Proposed. It contains the draft two-task prompt wording, the $0.70 test on two Barnett runs, what counts as the claims coming back, and two turns as the fallback. It's listed in the ADR index, REPOSITORY.md and the README tree. The prompt is unchanged and nothing is committed.
 
 
 

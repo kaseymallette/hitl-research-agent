@@ -293,7 +293,7 @@ simplifies, or removes.
 │   ├── DESIGN.md                     the system, and the rules it holds to
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── adr/0001-0010.md              one record per architectural decision
+│   ├── adr/0001-0011.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── CLAUDE.md                         what Claude Code loads in every session
