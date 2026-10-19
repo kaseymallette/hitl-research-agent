@@ -241,15 +241,15 @@ The rest went with the code they covered.
 ## `data/research/`
 
 16 source PDFs, three of them in `ab_testing/` as the experiment set, plus
-`sources.yaml` and `notes/`.
+`sources.yaml`.
 
-`notes/` holds the researcher's own reading of an article, one Markdown file
-per slug: what the source says, its key numbers with their context, and the
+`ab_testing/notes/` holds the researcher's own reading of each experiment
+article, one Markdown file per slug, beside the PDFs it reads: what the source says, its key numbers with their context, and the
 researcher's assessment of its argument, kept apart from what the source
 states. Each is written before seeing any model analysis of that article, so it
 is an independent reference to compare analyses against, and to check the
-Phase 2 judge against. It is not model output and does not go under
-`outputs/`, which is not in git.
+Phase 2 judge against. It is not model output, so it stays with the sources
+rather than under `outputs/`.
 
 `sources.yaml` currently holds **one** entry, for
 `li_et_al_2025_making_ai_less_thirsty` — a collection article, not one of the
