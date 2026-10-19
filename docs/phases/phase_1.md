@@ -726,4 +726,10 @@ What's different
 
 **Prompt:** Yes, I love it, thanks! Can you add it to ADR 0012, like can it be part of the same ADR? Cause you have the whole system prompt for call 2 so I think adding the full system prompt for call 1 would be good. That way, if we need a new ADR after, it would mean the calls have changed.
 
+**Response:** The call-1 prompt is in place, with your reading-path text word for word. Now I'm updating the runner and tests for the new shape. Tests pass at 89. Next I'm writing call 1's full prompt into ADR-0012 and updating the docs. ADR-0012 now holds both full prompts: the close reading as your reading path, and your evaluation prompt. Call 1 records a path of steps with claims along the way, with no support_assessment and no centrality judgment. All 89 tests, Ruff and mypy pass. Nothing has been rerun or committed.
+
+## 35. Run Barnett for ADR-0012
+
+**Prompt:** Run Barnett's 6 runs under ADR-0012
+
 **Response:**
