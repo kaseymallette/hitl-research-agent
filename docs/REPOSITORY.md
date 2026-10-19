@@ -96,7 +96,7 @@ Six exception classes became one with a `kind` field — nothing ever caught the
 subclasses individually. The response-metadata allowlist and its JSON-safety
 helpers went: they recorded fields nobody read.
 
-### `prompts.py` (267 lines)
+### `prompts.py` (268 lines)
 
 `SYSTEM_PROMPT` — the close-reading instructions, written as an invitation to
 read the document step by step as a first-time reader — plus the per-input-mode
