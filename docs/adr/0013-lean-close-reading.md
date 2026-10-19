@@ -58,10 +58,14 @@ label, says whose words they are.**
 - **`reading_plan`** is a new first field of the close reading: the first
   look recorded in a sentence or two — the kind of document, how densely it
   reads, and the pace chosen — so the size of a reading can be understood.
-- The argument evaluation is asked to keep to about 1,000 words. The first
-  ADR-0012 run's evaluation was 1,809 words on a 7-page paper. A word range
-  rather than a token limit, since a generation cut off by a limit fails the
-  call.
+- **The argument evaluation is invited to be selective.** The first ADR-0012
+  run's evaluation was 1,809 words on a 7-page paper. A first revision asked
+  for about 1,000 words, and the evaluation that came back touched nearly
+  every point in half the space, losing its most developed reasoning. The
+  prompt now says it need not touch everything: choose the few judgments that
+  matter most and develop them fully, usually in 1,000 to 1,500 words. A word
+  range rather than a token limit, since a generation cut off by a limit
+  fails the call.
 
 The distinction `statement_origin` drew is kept, by placement: claims and their
 support are the author's; `moves` and `meaning` are the model's reading of the
@@ -190,7 +194,7 @@ For prepared text and crops:
 > the source's printed words.
 
 The argument-evaluation prompt, `EVALUATION_PROMPT`, in full. It is ADR-0012's
-with one sentence added at the end on length:
+with two sentences added at the end on selectivity and length:
 
 > You've been given a research article, along with a close reading of it: a
 > careful record of what the author states, prepared separately. Your work now
@@ -229,8 +233,9 @@ with one sentence added at the end on length:
 >
 > Be willing to make a judgment. Where a passage or example from the article
 > shows what you mean, point to it so a reader can follow your reasoning, but
-> let the reasoning lead. Keep the whole piece to about 1,000 words, giving the
-> reasoning that matters most the room it needs.
+> let the reasoning lead. You don't need to touch everything. Choose the few
+> judgments that matter most about this argument and develop them fully;
+> usually 1,000 to 1,500 words is enough.
 
 ## Alternatives considered
 

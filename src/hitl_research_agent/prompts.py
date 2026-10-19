@@ -207,8 +207,9 @@ difference could explain why you see it differently.
 
 Be willing to make a judgment. Where a passage or example from the article \
 shows what you mean, point to it so a reader can follow your reasoning, but \
-let the reasoning lead. Keep the whole piece to about 1,000 words, giving the \
-reasoning that matters most the room it needs."""
+let the reasoning lead. You don't need to touch everything. Choose the few \
+judgments that matter most about this argument and develop them fully; \
+usually 1,000 to 1,500 words is enough."""
 
 # How the article reaches the second call. Only the layout: the close-reading
 # instructions about quotation and locators do not apply to an evaluation.
