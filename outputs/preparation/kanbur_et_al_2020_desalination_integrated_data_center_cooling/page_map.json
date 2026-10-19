@@ -1,0 +1,128 @@
+[
+  {
+    "pdf_page": 1,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 0,
+    "end_offset": 3104
+  },
+  {
+    "pdf_page": 2,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 3104,
+    "end_offset": 9005
+  },
+  {
+    "pdf_page": 3,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 9005,
+    "end_offset": 14724
+  },
+  {
+    "pdf_page": 4,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 14724,
+    "end_offset": 17030
+  },
+  {
+    "pdf_page": 5,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 17030,
+    "end_offset": 21435
+  },
+  {
+    "pdf_page": 6,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 21435,
+    "end_offset": 26345
+  },
+  {
+    "pdf_page": 7,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 26345,
+    "end_offset": 30485
+  },
+  {
+    "pdf_page": 8,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 30485,
+    "end_offset": 35660
+  },
+  {
+    "pdf_page": 9,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 35660,
+    "end_offset": 40165
+  },
+  {
+    "pdf_page": 10,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 40165,
+    "end_offset": 44486
+  },
+  {
+    "pdf_page": 11,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 44486,
+    "end_offset": 48786
+  },
+  {
+    "pdf_page": 12,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 48786,
+    "end_offset": 52241
+  },
+  {
+    "pdf_page": 13,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 52241,
+    "end_offset": 55068
+  },
+  {
+    "pdf_page": 14,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 55068,
+    "end_offset": 59297
+  },
+  {
+    "pdf_page": 15,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 59297,
+    "end_offset": 64241
+  },
+  {
+    "pdf_page": 16,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 64241,
+    "end_offset": 69454
+  },
+  {
+    "pdf_page": 17,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 69454,
+    "end_offset": 76187
+  },
+  {
+    "pdf_page": 18,
+    "printed_label": null,
+    "mapped_text": true,
+    "start_offset": 76187,
+    "end_offset": 78495
+  }
+]

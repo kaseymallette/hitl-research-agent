@@ -1,0 +1,474 @@
+{
+  "slug": "kanbur_et_al_2020_desalination_integrated_data_center_cooling",
+  "source_pdf": "data/research/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf",
+  "pdf_sha256": "7b3304a2883b7aa450ff9a8342394126e9405117b844d0aa5c472a91c5e16f62",
+  "prepared_text": "prepared_text.txt",
+  "prepared_text_sha256": "35a1d76d5f14ddcafa6f1cbe7cf97e0cf5c422f5b9f61a91ceb41f16c777f26e",
+  "prepared_text_characters": 78495,
+  "max_source_characters": 200000,
+  "within_size_limit": true,
+  "is_excerpt": false,
+  "excerpt_description": null,
+  "parser": {
+    "name": "pymupdf4llm",
+    "version": "1.28.2",
+    "pymupdf": "1.28.2"
+  },
+  "parser_settings": {
+    "layout_mode": true,
+    "header": false,
+    "footer": false,
+    "use_ocr": false,
+    "page_chunks": true,
+    "page_image_dpi": 130,
+    "crop_image_dpi": 200,
+    "reorder_columns": "geometry_column_segments_v1"
+  },
+  "settings_sha256": "b48a727cf702e325fb6c776a50fe7eb12a688f94effe66daa4120c3bceb600c6",
+  "script_sha256": "86c57b6040701183cca4a0b98f9f2c221962302a4cb1ebcfb9c56829700b7085",
+  "pages": 18,
+  "timing": {
+    "started_at_utc": "2026-10-19T11:01:42.553070+00:00",
+    "elapsed_seconds": 10.22,
+    "measured": "wall clock of extraction, assembly and record writing",
+    "model_calls": 0,
+    "usage": "no model usage: local extraction only"
+  },
+  "provenance_basis": {
+    "source_title": "first page and PDF metadata; confirmed against Crossref",
+    "source_authors": "first-page byline, Nanyang Technological University; Crossref lists the same three",
+    "publication_date": "Crossref published-online 2020-07-23; the print issue followed on 2020-10-25",
+    "source_type": "'peer_reviewed_paper': the first page is headed 'RESEARCH ARTICLE' and prints 'Received: 18 April 2020, Revised: 23 May 2020, Accepted: 28 May 2020'",
+    "doi": "'DOI: 10.1002/er.5677' on the first page; resolves in Crossref",
+    "publisher": "Wiley per Crossref; International Journal of Energy Research 44, 10453-10470",
+    "url": "publication URL via DOI. The file arrived as a Gmail attachment; that origin is not recorded here",
+    "retrieved_at": "macOS quarantine timestamp on the PDF file"
+  },
+  "cleanup_applied": [
+    "parser header/footer removal; recurring margin lines removed (listed below)",
+    "continuation paragraphs joined only when the previous ends mid-sentence and the next starts lowercase; end-of-line hyphens joined or kept only where the document's own text supports it, otherwise kept as extracted and listed",
+    "no paraphrasing, summarizing, or reconstruction"
+  ],
+  "reading_order_changes": [
+    {
+      "page": 5,
+      "method": "geometry_column_segments_v1",
+      "columns_detected": 2,
+      "before": [
+        "is based on enthalpy-related thermodynamic assessm",
+        "where ti is the temperature of stream i with the C",
+        "In the DCMD module, the enthalpy rates of streams ",
+        "where W<sup>_</sup> fp and W<sup>_</sup> pp are th",
+        "The enthalpy is the function of temperature so tha",
+        "where αf is the convective heat transfer coefficie",
+        "where S is the salinity of seawater. The coefficie",
+        "where F1i is 0.5. The coefficients F2i − F4i and A",
+        "in which αp is the convective heat transfer coeffi",
+        "where k is the thermal conductivity of fluid and d"
+      ],
+      "after": [
+        "is based on enthalpy-related thermodynamic assessm",
+        "where ti is the temperature of stream i with the C",
+        "In the DCMD module, the enthalpy rates of streams ",
+        "where S is the salinity of seawater. The coefficie",
+        "where F1i is 0.5. The coefficients F2i − F4i and A",
+        "where W<sup>_</sup> fp and W<sup>_</sup> pp are th",
+        "The enthalpy is the function of temperature so tha",
+        "where αf is the convective heat transfer coefficie",
+        "in which αp is the convective heat transfer coeffi",
+        "where k is the thermal conductivity of fluid and d"
+      ]
+    },
+    {
+      "page": 7,
+      "method": "geometry_column_segments_v1",
+      "columns_detected": 2,
+      "before": [
+        "destruction and loss terms that are not able to be",
+        "total energy input. In the membrane distillation s",
+        "in which h0 and s0 are the specific enthalpy and e",
+        "where E<sup>_</sup> F , E<sup>_</sup> P, E<sup>_</",
+        "The energetic and exergetic assessments are done b",
+        "For the exergetic assessments, the exergy efficien",
+        "Hereby, it can be said that the increment in fuel "
+      ],
+      "after": [
+        "destruction and loss terms that are not able to be",
+        "in which h0 and s0 are the specific enthalpy and e",
+        "where E<sup>_</sup> F , E<sup>_</sup> P, E<sup>_</",
+        "The energetic and exergetic assessments are done b",
+        "total energy input. In the membrane distillation s",
+        "For the exergetic assessments, the exergy efficien",
+        "Hereby, it can be said that the increment in fuel "
+      ]
+    },
+    {
+      "page": 13,
+      "method": "geometry_column_segments_v1",
+      "columns_detected": 2,
+      "before": [
+        "5 cm<sup>2</sup> and the released heat of 1.5 kW w",
+        "Q_ DC may significantly affect the PP at higher DC",
+        "The levelized cost of the distilled water, C<sup>_",
+        "The conventional economic analysis is analyzed wit"
+      ],
+      "after": [
+        "5 cm<sup>2</sup> and the released heat of 1.5 kW w",
+        "The conventional economic analysis is analyzed wit",
+        "Q_ DC may significantly affect the PP at higher DC",
+        "The levelized cost of the distilled water, C<sup>_"
+      ]
+    }
+  ],
+  "removed_lines": [],
+  "hyphenation_notes": [
+    {
+      "page": 16,
+      "kind": "ambiguous_hyphenation",
+      "text": "air- and",
+      "kept_as": "air- and"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "E1",
+      "start_offset": 16140,
+      "end_offset": 16306,
+      "kind": "equation",
+      "page": 4,
+      "label": null,
+      "image": "images/E1_p04.png"
+    },
+    {
+      "id": "E2",
+      "start_offset": 17941,
+      "end_offset": 18107,
+      "kind": "equation",
+      "page": 5,
+      "label": null,
+      "image": "images/E2_p05.png"
+    },
+    {
+      "id": "E3",
+      "start_offset": 18563,
+      "end_offset": 18729,
+      "kind": "equation",
+      "page": 5,
+      "label": null,
+      "image": "images/E3_p05.png"
+    },
+    {
+      "id": "E4",
+      "start_offset": 20366,
+      "end_offset": 20532,
+      "kind": "equation",
+      "page": 5,
+      "label": null,
+      "image": "images/E4_p05.png"
+    },
+    {
+      "id": "E5",
+      "start_offset": 21153,
+      "end_offset": 21319,
+      "kind": "equation",
+      "page": 5,
+      "label": null,
+      "image": "images/E5_p05.png"
+    },
+    {
+      "id": "E6",
+      "start_offset": 22095,
+      "end_offset": 22261,
+      "kind": "equation",
+      "page": 6,
+      "label": null,
+      "image": "images/E6_p06.png"
+    },
+    {
+      "id": "E7",
+      "start_offset": 23089,
+      "end_offset": 23255,
+      "kind": "equation",
+      "page": 6,
+      "label": null,
+      "image": "images/E7_p06.png"
+    },
+    {
+      "id": "E8",
+      "start_offset": 28678,
+      "end_offset": 28844,
+      "kind": "equation",
+      "page": 7,
+      "label": null,
+      "image": "images/E8_p07.png"
+    },
+    {
+      "id": "T1",
+      "start_offset": 36313,
+      "end_offset": 36516,
+      "kind": "table",
+      "page": 9,
+      "label": null,
+      "image": "images/T1_p09.png"
+    },
+    {
+      "id": "T2",
+      "start_offset": 37489,
+      "end_offset": 37605,
+      "kind": "table",
+      "page": 9,
+      "label": null,
+      "image": "images/T2_p09.png"
+    },
+    {
+      "id": "E9",
+      "start_offset": 41065,
+      "end_offset": 41232,
+      "kind": "equation",
+      "page": 10,
+      "label": null,
+      "image": "images/E9_p10.png"
+    },
+    {
+      "id": "E10",
+      "start_offset": 43834,
+      "end_offset": 44003,
+      "kind": "equation",
+      "page": 10,
+      "label": null,
+      "image": "images/E10_p10.png"
+    },
+    {
+      "id": "T3",
+      "start_offset": 44304,
+      "end_offset": 44421,
+      "kind": "table",
+      "page": 10,
+      "label": null,
+      "image": "images/T3_p10.png"
+    },
+    {
+      "id": "E11",
+      "start_offset": 44651,
+      "end_offset": 44820,
+      "kind": "equation",
+      "page": 11,
+      "label": null,
+      "image": "images/E11_p11.png"
+    },
+    {
+      "id": "E12",
+      "start_offset": 45807,
+      "end_offset": 45976,
+      "kind": "equation",
+      "page": 11,
+      "label": null,
+      "image": "images/E12_p11.png"
+    },
+    {
+      "id": "E13",
+      "start_offset": 46638,
+      "end_offset": 46807,
+      "kind": "equation",
+      "page": 11,
+      "label": null,
+      "image": "images/E13_p11.png"
+    },
+    {
+      "id": "E14",
+      "start_offset": 50403,
+      "end_offset": 50572,
+      "kind": "equation",
+      "page": 12,
+      "label": null,
+      "image": "images/E14_p12.png"
+    },
+    {
+      "id": "E15",
+      "start_offset": 53168,
+      "end_offset": 53337,
+      "kind": "equation",
+      "page": 13,
+      "label": null,
+      "image": "images/E15_p13.png"
+    },
+    {
+      "id": "E16",
+      "start_offset": 59126,
+      "end_offset": 59295,
+      "kind": "equation",
+      "page": 14,
+      "label": null,
+      "image": "images/E16_p14.png"
+    },
+    {
+      "id": "T4",
+      "start_offset": 64122,
+      "end_offset": 64239,
+      "kind": "table",
+      "page": 15,
+      "label": null,
+      "image": "images/T4_p15.png"
+    },
+    {
+      "id": "T5",
+      "start_offset": 64256,
+      "end_offset": 64373,
+      "kind": "table",
+      "page": 16,
+      "label": null,
+      "image": "images/T5_p16.png"
+    },
+    {
+      "id": "T6",
+      "start_offset": 65032,
+      "end_offset": 65149,
+      "kind": "table",
+      "page": 16,
+      "label": null,
+      "image": "images/T6_p16.png"
+    },
+    {
+      "id": "E17",
+      "start_offset": 65229,
+      "end_offset": 65398,
+      "kind": "equation",
+      "page": 16,
+      "label": null,
+      "image": "images/E17_p16.png"
+    },
+    {
+      "id": "E18",
+      "start_offset": 65427,
+      "end_offset": 65596,
+      "kind": "equation",
+      "page": 16,
+      "label": null,
+      "image": "images/E18_p16.png"
+    },
+    {
+      "id": "E19",
+      "start_offset": 65625,
+      "end_offset": 65794,
+      "kind": "equation",
+      "page": 16,
+      "label": null,
+      "image": "images/E19_p16.png"
+    },
+    {
+      "id": "E20",
+      "start_offset": 65825,
+      "end_offset": 65994,
+      "kind": "equation",
+      "page": 16,
+      "label": null,
+      "image": "images/E20_p16.png"
+    },
+    {
+      "id": "T7",
+      "start_offset": 66168,
+      "end_offset": 66285,
+      "kind": "table",
+      "page": 16,
+      "label": null,
+      "image": "images/T7_p16.png"
+    },
+    {
+      "id": "T8",
+      "start_offset": 66337,
+      "end_offset": 66541,
+      "kind": "table",
+      "page": 16,
+      "label": null,
+      "image": "images/T8_p16.png"
+    },
+    {
+      "id": "T9",
+      "start_offset": 66738,
+      "end_offset": 66855,
+      "kind": "table",
+      "page": 16,
+      "label": null,
+      "image": "images/T9_p16.png"
+    },
+    {
+      "id": "E21",
+      "start_offset": 67184,
+      "end_offset": 67353,
+      "kind": "equation",
+      "page": 16,
+      "label": null,
+      "image": "images/E21_p16.png"
+    },
+    {
+      "id": "E22",
+      "start_offset": 67386,
+      "end_offset": 67555,
+      "kind": "equation",
+      "page": 16,
+      "label": null,
+      "image": "images/E22_p16.png"
+    },
+    {
+      "id": "E23",
+      "start_offset": 67587,
+      "end_offset": 67756,
+      "kind": "equation",
+      "page": 16,
+      "label": null,
+      "image": "images/E23_p16.png"
+    },
+    {
+      "id": "T10",
+      "start_offset": 68070,
+      "end_offset": 68189,
+      "kind": "table",
+      "page": 16,
+      "label": null,
+      "image": "images/T10_p16.png"
+    }
+  ],
+  "pages_without_text_layer_ocr_off": [],
+  "preparation_limits": [
+    "Figures and diagrams are not transcribed or interpreted. Each one is cropped and retained, and any whole page can be rendered from the PDF with the `page` command.",
+    "Equations appear only as the PDF's raw text layer, which is frequently not faithful.",
+    "Multi-level table headers lose their grouping; the data rows are extracted as-is.",
+    "Reading order is corrected only where block geometry shows a column jump. It is not proven correct anywhere.",
+    "An uncaptioned figure produces no annotation and no crop; it is visible only by rendering its page."
+  ],
+  "retained_images": [
+    "E10_p10.png",
+    "E11_p11.png",
+    "E12_p11.png",
+    "E13_p11.png",
+    "E14_p12.png",
+    "E15_p13.png",
+    "E16_p14.png",
+    "E17_p16.png",
+    "E18_p16.png",
+    "E19_p16.png",
+    "E1_p04.png",
+    "E20_p16.png",
+    "E21_p16.png",
+    "E22_p16.png",
+    "E23_p16.png",
+    "E2_p05.png",
+    "E3_p05.png",
+    "E4_p05.png",
+    "E5_p05.png",
+    "E6_p06.png",
+    "E7_p06.png",
+    "E8_p07.png",
+    "E9_p10.png",
+    "T10_p16.png",
+    "T1_p09.png",
+    "T2_p09.png",
+    "T3_p10.png",
+    "T4_p15.png",
+    "T5_p16.png",
+    "T6_p16.png",
+    "T7_p16.png",
+    "T8_p16.png",
+    "T9_p16.png"
+  ]
+}
