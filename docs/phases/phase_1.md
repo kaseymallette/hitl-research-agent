@@ -1067,3 +1067,154 @@ Fix the caption breaks in the model's prepared text too?
 Your workbook got the same fix, including one break that crossed a step boundary (around Figures 6 and 8).
 
 The workbook is at data/research/ab_testing/notes/kanbur_et_al_2020_desalination_integrated_data_center_cooling.md. Kanbur's preparation output and the workbook aren't committed yet.
+
+## 51. Test against ChatGPT app
+
+**Prompt:** Question: If I wanted to test how well this performs in my logged in version of ChatGPT 6.1 Sol Medium, what prompt should I give it to test if we should use the api?
+
+**Response:** Use the same prompts the API uses, word for word, so that the only difference is the app. Here's a setup that mirrors the two calls.
+
+Before you start
+- Use a Temporary Chat, or turn memory off. If ChatGPT remembers your earlier conversations about Barnett or this project, it may read the paper through your views, and the test would no longer be blind.
+- Test it on Barnett, so you can compare against what the API already produced in adr_0013/pdf__gpt-6.1-sol-medium/ (analysis.json and argument_evaluation_2.json).
+- The app can't take a JSON schema, so the messages below ask for the same structure as readable Markdown. That's the only change from the API prompts.
+
+## 52. New experimental design for ADR-0015
+
+**Prompt:** We may need ADR-0015 to document adding JSON-formatting instructions, which weren’t in the original API prompts, and a comparison between API runs, regular ChatGPT chats with memory, and temporary chats. That could help us assess whether we need the API or whether the app produces better analysis and reasoning.
+
+We could use Kanbur for this comparison because I haven’t discussed that article with ChatGPT. That would let us explore differences between the app’s memory-enabled and temporary-chat modes without prior discussion of the article influencing the results.
+
+**Response:** That works. Kanbur hasn't come up with ChatGPT, so running it both ways is a fairer test: once in a regular chat with memory on, and once in a Temporary Chat. Any difference between those two is about memory and the app's setup, not about earlier conversations of the paper.
+
+Two things to keep the test clean:
+- Write your kanbur notes before you read any of the app's output, the same as with Barnett. You can run the chats whenever you like; just don't open the results until your notes are done.
+- Memory can carry more than paper discussions. If ChatGPT remembers how you read research or what you think of policy arguments, that may color its evaluation even though it has never seen kanbur. That's part of what the memory-on run measures, so it's fine. Just read the difference between the two runs as "memory and app setup," not "my conversations about this paper."
+
+## 53. Drop Astra, low reasoning 
+
+**Prompt:** I think we need to change our A/B Testing, cause I really don't want to run on Astra 6 low anymore and I don't see a reason for the extracted text + crops. And that could save us time and money if we compare method = PDF and API = 6.1 Sol Medium / High vs. App = 6 Medium / High vs. Temp Chat / Regular Chat. 
+
+And maybe we just need to specify multiple experiments, like experiment 1 for paper 1: 3 x 2 = 6, experiment 2 for paper 2: 2 x 3  = 6. 
+
+**Response:** That's a clear plan. Here's how I read it, so we're on the same page:
+
+**Experiment 1 (Barnett, done):** 3 model configurations × 2 input methods = 6 runs, all saved in `adr_0013/`.
+
+**Experiment 2 (kanbur):** PDF only, 2 reasoning efforts × 3 ways of running it = 6 runs.
+
+| | API (GPT-6.1 Sol) | App, Temporary Chat (GPT-6) | App, regular chat with memory (GPT-6) |
+| --- | --- | --- | --- |
+| **Medium** | 1 | 1 | 1 |
+| **High** | 1 | 1 | 1 |
+
+Dropped going forward: Astra low and the extracted text + crops arm.
+
+Things ADR-0015 would need to cover:
+
+- **Dropping the text + crops arm settles ADR-0008's question.** ADR-0008 left "PDF or prepared text?" open until Phase 1 answered it, and said the answer gets its own record. ADR-0015 can be that record, with the evidence from Barnett:
+  - the analyses came out about the same quality
+  - preparation needed manual fixes on both papers
+  - kanbur's preparation lost every figure
+  
+  It would also mean `prepare_sources.py` and its pinned library are no longer needed. Removing them can wait.
+- **The app's JSON format instruction** is the one difference from the API prompts. It gets written down so the comparison stays honest.
+- **One limit to state plainly:** the API runs use GPT-6.1 Sol and the app runs use GPT-6, so a difference between them could come from the model or from the app. The Temporary Chat versus regular chat comparison has no such problem, since it's the same model in the same app with memory as the only difference.
+
+Two questions for when you're back:
+1. **What happens with lei?** A third experiment, part of Experiment 2, or dropped?
+2. **Should I draft ADR-0015 now,** or wait until you've shared your other thoughts?
+
+## 54. Design experiment 3 after experiment 2 results
+
+**Prompt:** We will design the 3rd experiment after these results, so keep the extracted text code cause maybe we can combine the results from experiments 1 and 2 and test again the pdf vs extracted text + crops on 1 or 2 models, so maybe since it's the longest one, do a 2 x 2 = 4 test
+
+**Response:** Got it. Then ADR-0015 leaves the PDF-or-text question open rather than settling it:
+
+Experiment 1 (Barnett, done): 3 models × 2 input methods = 6 runs.
+Experiment 2 (kanbur): PDF only, 2 efforts × 3 ways of running it (API, Temporary Chat, regular chat) = 6 runs.
+Experiment 3 (lei, designed after Experiment 2): probably PDF versus text + crops on 2 models = 4 runs. It's the longest paper, so it's where the input method matters most for cost.
+
+Since the text arm comes back in Experiment 3, prepare_sources.py stays, ADR-0008 stays open, and lei will need preparing when we get there. ADR-0015 would just say the text arm sits out Experiment 2 and returns in Experiment 3.
+
+Should I draft ADR-0015 now, or wait for your other thoughts?
+
+## 55. Propose ADR-0015 and revise Readme
+
+**Prompt:** Okay, so let's do ADR-0015 and then let's rewrite the Readme because I want the two system prompts for calls one and two for the single source analysis to be in their own document, that maybe we link to on the readme, so the prompts are easily accessible. And with ADR-0015, we need to redo the readme about the A/B experiment. So walk me through ADR-0015
+
+**Response:** Here's the plan, starting with ADR-0015.
+
+### ADR-0015: Phase 1 runs as three experiments, one per article
+
+**Context:** what Experiment 1 showed on Barnett, and why it changes the plan.
+- Across the six runs, the API's Astra low cost about four times as much as Sol and recorded fewer claims, with no visible advantage in quality.
+- The PDF and text + crops arms came out about the same, and the text arm needed manual fixes on both papers.
+- A new question came up: does the API do anything the ChatGPT app can't? A first app run on Barnett, unplanned and with memory on, came back schema-valid with clean numbers and citations.
+
+**Decision:**
+
+| Experiment | Article | Design | Runs |
+| --- | --- | --- | --- |
+| 1 (done) | Barnett | 3 models × 2 input methods | 6 |
+| 2 | kanbur | PDF only: 2 efforts (medium, high) × 3 ways of running it (API with GPT-6.1 Sol, app Temporary Chat with GPT-6, app regular chat with memory on) | 6 |
+| 3 | lei | designed after Experiment 2; likely PDF vs text + crops on 2 models | ~4 |
+
+- **Astra low is dropped** from Experiment 2 on, for its cost with no advantage on Barnett.
+- **Text + crops sits out Experiment 2 and returns in Experiment 3.** ADR-0008 stays open, and `prepare_sources.py` stays.
+- **The app runs follow a fixed procedure:**
+  - the same two prompts, word for word, with the PDF attached
+  - one addition to call 1: the JSON format instruction, quoted in full in the ADR, since the app can't enforce a schema
+  - call 2 in a new chat, with the close reading pasted in
+- **Your notes on each article come before you read any output,** API or app.
+- **Folder names:** `chat__gpt-6-medium-temp`, `chat__gpt-6-medium-memory`, `chat__gpt-6-high-temp` and `chat__gpt-6-high-memory`, beside `adr_0013/`.
+- **The memory-on Barnett app run is kept** as an exploratory run outside the experiments.
+
+**Consequences:**
+- **API versus app compares two different models** (GPT-6.1 Sol and GPT-6), so a difference may come from the model or from the app. Temporary versus regular chat has no such confound: same model, same app, only memory differs.
+- **The app gives no token counts or cost** (it's a subscription), and it adds a hidden system prompt of its own.
+- **ADR-0009's matrix is superseded** for Experiments 2 and 3. Barnett stays as it ran.
+
+### The README and a prompts document
+
+- **New `docs/PROMPTS.md`:** the current call 1 and call 2 system prompts in full, plus the per-input layout instructions and the JSON format line the app runs use. The README links to it.
+
+  To keep it from drifting from the code, I'd add a small test that fails if `PROMPTS.md` no longer contains the exact prompt text. The ADRs keep the history; `PROMPTS.md` is always the current version.
+- **The README's A/B experiment section** gets rewritten around the three experiments.
+
+**One question:** the README's section on `statement_origin` (`author_stated` / `model_inferred`) is out of date since ADR-0013. You said earlier you'd rewrite the README's design story once things settled. Should I update that section in this pass too, or only the A/B section and the prompts link?
+
+## 56. Add Design section to Readme
+
+**Prompt:** I think we should talk about the design more, I added a section ## Design in Readme. 
+
+**Response:** I've read your new `## Design` heading. Under it, the README is now describing a system that's partly gone. Here's what's out of date and a possible structure, so we can talk it through.
+
+### What no longer matches the system
+
+- **The workflow line** (`article + prompt → model → JSON → separate evaluation → …`) shows one call. There are two now: the close reading, then the argument evaluation.
+- **"`statement_origin` records an attribution"** describes labels that ADR-0013 removed. What it describes, keeping the author's words apart from the model's, still holds; it's now done by *where* things sit instead of by a label.
+- **"What can be checked mechanically"** still talks about `evidence_form` and `author_stated` paraphrases. The checks themselves still work, now on `verbatim` claims, numbers and citations.
+- **The evaluation-design table** names `author_stated` and `relationship_to_claim`. The failure modes still apply, but a few rows need rewording for the reading path.
+- **The A/B experiment section** describes the 18-run matrix that ADR-0015 replaces.
+
+### A possible shape for `## Design`
+
+1. **How the system supports the researcher:** the three agents, the human decision, no quality gates. Mostly as now.
+2. **Single-source analysis: two readings.**
+   - The **close reading** follows the paper step by step: where we are, the author's moves, the claims with their support, and what each step means.
+   - The **argument evaluation** is the model's own judgment of the argument, read as interpretation.
+   - A link to `docs/PROMPTS.md` for both prompts.
+3. **Whose words are whose:** claims and support are the author's, marked verbatim or paraphrased; moves and meaning are the model's reading of the path; the evaluation is the model's judgment. This replaces the `statement_origin` section.
+4. **What can be checked, and how:** mechanically (verbatim text, numbers, citations against the article) and by reading (your notes, written first, and later the Phase 2 judge).
+5. **Your notes as the independent reference:** notes before any output, and the workbook split for longer papers.
+
+The evaluation design and the experiments would then follow as their own sections.
+
+**What I'd like from you:** does this match how you think about the design, and is anything missing? You mentioned having thoughts. If your view of the design has moved further, for example toward reading the evaluation differently or the close reading serving a different purpose, I'd rather hear that before writing anything.
+
+## 57. Revise Readme and write ADR-0015
+
+**Prompt:** Yes, this matches what I'm thinking about for the design. Please execute the changes proposed.
+
+**Response:** ADR-0015, docs/PROMPTS.md with a sync test, and the new README Design and A/B experiments sections are written. BUILD_PLAN, DESIGN, REPOSITORY and the ADR index match, and all 91 tests pass.
