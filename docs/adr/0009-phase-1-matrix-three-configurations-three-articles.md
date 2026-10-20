@@ -1,6 +1,6 @@
 # ADR-0009 — Phase 1 runs three model configurations over three articles
 
-- **Status:** Accepted; its choice of katakam over kanbur is superseded by [ADR-0014](0014-kanbur-replaces-katakam.md)
+- **Status:** Accepted for Barnett (Experiment 1); its choice of katakam is superseded by [ADR-0014](0014-kanbur-replaces-katakam.md), and its matrix for the other articles by [ADR-0015](0015-phase-1-as-three-experiments.md)
 - **Date:** 2026-10-17
 - **Landed in:** `eaa3114`
 
@@ -118,3 +118,6 @@ supersedes both.
 ADR-0014 reverses the choice between katakam and kanbur: katakam shares
 Barnett's journal, so kanbur replaces it. The matrix and configurations here
 stand.
+
+ADR-0015 keeps this matrix for Barnett only, as Experiment 1, and gives kanbur
+and lei experiments of their own.

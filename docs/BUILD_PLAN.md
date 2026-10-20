@@ -113,11 +113,30 @@ nothing.
 Phase 1 produces the evidence. It does not choose — Phase 2 chooses, on quality
 and cost together.
 
-### The matrix
+### Three experiments
 
-3 articles × 2 input methods × 3 model configurations = **18 analyses**
-([ADR-0009](adr/0009-phase-1-matrix-three-configurations-three-articles.md)
-revised [ADR-0008](adr/0008-compare-pdf-against-prepared-text.md)'s 2 × 2 over
+Phase 1 runs as three experiments, one per article, each designed around what
+the one before left open
+([ADR-0015](adr/0015-phase-1-as-three-experiments.md)).
+
+| Experiment | Article | Design | Runs |
+| --- | --- | --- | --- |
+| 1 | Barnett | 3 model configurations × 2 input methods | 6, complete |
+| 2 | kanbur | PDF only: 2 efforts (medium, high) × 3 ways of running (API with GPT-6.1 Sol; ChatGPT app with GPT-6 in a Temporary Chat; the app in a regular chat with memory) | 6 |
+| 3 | lei | designed after Experiment 2; likely PDF against prepared text on two models | to be decided |
+
+Astra low is dropped after Experiment 1, and prepared text sits out
+Experiment 2 and returns in Experiment 3. The app runs are run by hand with the
+same two prompts, as set out in [PROMPTS.md](PROMPTS.md#running-the-prompts-in-the-chatgpt-app),
+and saved in `chat__gpt-6-<effort>-temp/` and `chat__gpt-6-<effort>-memory/`
+beside the API's runs: `analysis.json` and `argument_evaluation.md`, as
+returned. The app reports no usage or cost, so those runs have no run record.
+
+The rest of this section describes Experiment 1's matrix, which set the
+articles, configurations, and slugs. Its 3 articles × 2 input methods × 3
+configurations were the original plan for all of Phase 1
+([ADR-0009](adr/0009-phase-1-matrix-three-configurations-three-articles.md),
+revising [ADR-0008](adr/0008-compare-pdf-against-prepared-text.md)'s 2 × 2 over
 four articles; [ADR-0014](adr/0014-kanbur-replaces-katakam.md) set the third
 article).
 
@@ -228,11 +247,12 @@ crops vary with the article, not with a condition anyone assigned.
 Phase 0 left the code and the provenance ready for these; nothing here is
 cleanup, and nothing is blocked.
 
-1. Prepare the three articles with `prepare_sources.py`, timing each; record
-   gaps and crops.
-2. Run the 18 cells with `run_analysis.py`: it takes an article, an input
-   method, and a model, and writes `analysis.json` and `run_record.json` with
-   usage, calculated cost, and runtime.
+1. Prepare each article with `prepare_sources.py`, timing it; record gaps and
+   crops. Barnett and kanbur are prepared; lei waits for Experiment 3's design.
+2. Run each experiment's API cells with `run_analysis.py`: it takes an
+   article, an input method, and a model, and writes `analysis.json`,
+   `argument_evaluation.json`, and `run_record.json` with usage, calculated
+   cost, and runtime. Run Experiment 2's app cells by hand.
 3. Write `summary.csv` — one row per cell, the only new code this phase needs.
 
 Cost: on the one measured v1 data point, two Sol-medium analyses of a 36.6k-char
@@ -256,16 +276,19 @@ half-written directory, and that `summary.csv` reports what the run records hold
 
 ### Acceptance criteria
 
-- [ ] 18 `analysis.json` files exist, one per cell, indented and readable, each
-      the analysis the model returned, unmodified.
-- [ ] 18 `argument_evaluation.json` files, one per cell, or a run record saying
-      why that cell's evaluation failed.
-- [ ] Each cell has a `run_record.json` with usage, calculated cost, runtime,
-      and per-attempt records for both calls; no fabricated values.
-- [ ] Preparation effort recorded for all three articles.
-- [ ] The prompt, schema, and correction policy are identical across all 18
-      cells, and that is demonstrable from the records.
-- [ ] `summary.csv` lets Phase 2 pick up the comparison without rereading 18
+- [ ] Every cell of each experiment has an `analysis.json`, indented and
+      readable, the analysis the model returned, unmodified.
+- [ ] Every cell has its argument evaluation — `argument_evaluation.json` from
+      the API, `argument_evaluation.md` from the app — or a run record saying
+      why the API's evaluation failed.
+- [ ] Each API cell has a `run_record.json` with usage, calculated cost,
+      runtime, and per-attempt records for both calls; no fabricated values.
+- [ ] Preparation effort recorded for every article given the text arm.
+- [ ] Within an experiment, the prompts, schema, and correction policy are
+      identical across API cells, demonstrably from the records; app cells use
+      the same prompts with only the format instruction added.
+- [ ] My notes on each article are written before its outputs are read.
+- [ ] `summary.csv` lets Phase 2 pick up the comparison without rereading the
       run records.
 - [ ] No quality check anywhere can prevent an analysis from being written.
 
@@ -282,8 +305,8 @@ against the original images. Phase 1 hands Phase 2 artifacts and measurements.
 
 ### Goal
 
-Design metrics and rubrics, evaluate the 18 analyses, and choose the model and
-input method on quality and cost together.
+Design metrics and rubrics, evaluate the Phase 1 runs, and choose the model,
+input method, and way of running on quality and cost together.
 
 ### The behavioral axes
 
@@ -328,7 +351,7 @@ taste, so it needs the tightest rubric and the closest human spot-checking.
 - Rubrics specific enough that two runs of the judge on the same analysis agree,
   and the scale each metric reports on.
 - The judge model and configuration, and its cost — the judge is itself a paid
-  model call across 18 analyses and several metrics.
+  model call across the Phase 1 runs and several metrics.
 - How the judge gets the source: it faces the same input-method question the
   analyses do, and a judge that only reads extracted text cannot assess a
   reading of a figure.

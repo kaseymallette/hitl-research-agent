@@ -29,7 +29,7 @@ selects.
 ## Workflow contract
 
 ```
-article + prompt → model → JSON → separate evaluation → accept · reject · revise · rerun
+article → close reading → argument evaluation → evaluation of both → accept · reject · revise · rerun
 ```
 
 Four rules hold across every phase:

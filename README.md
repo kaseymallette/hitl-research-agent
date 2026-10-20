@@ -43,13 +43,15 @@ of which are the experiment set in
 I collected the 16 articles for this pilot study myself, using the research question to identify relevant sources. The planned literature review agent will assist with that work by finding candidate articles and explaining their relevance for me to review. Single source analysis and synthesis remain question-independent so their outputs can support other research questions as the collection grows.
 
 
-## How the system supports the researcher
+## Design
+
+### How the system supports the researcher
 
 Three agents do the preparatory work.
 
 | Agent | Given | Produces |
 | --- | --- | --- |
-| **Single source analysis** | one article | two documents: a close reading as structured JSON, a step-by-step reading path through the paper with the claims, evidence, and citations met along the way, and, from a second call, the model's own evaluation of the argument |
+| **Single source analysis** | one article | two readings of it: a close reading, which follows the article step by step and records the author's claims and what each step is doing, and an argument evaluation, the model's own judgment of the argument |
 | **Synthesis** | several accepted analyses | a cross-source comparison of agreements, disagreements, methodological differences, limitations, and open questions, with each position still attributed to its source |
 | **Literature review** | an explicit research question | candidate articles with an explanation of why each one is relevant |
 
@@ -59,90 +61,107 @@ compares what the sources say to each other, not to a question. Only the
 literature review agent sees a question, and it only proposes articles.
 
 ```
-article + prompt → model → JSON → separate evaluation → accept · reject · revise · rerun
+article → close reading → argument evaluation → evaluation of both → accept · reject · revise · rerun
 ```
 
-The planned review workflow will present the structured analysis, the citations
-supporting it, the evaluation scores, and the evaluation’s explanation of those
-scores. Evaluation will inform my review rather than replacing it, and it will
-not act as a gate. A
-paraphrase, a missing evidence label, or a thin claim gets reported rather than
-withheld, because I want to see the analysis and judge it myself. Only a
-technical failure stops a run: an API error, an unreadable response, or output
-that will not parse.
+The planned review workflow will present both readings, the citations
+supporting them, the evaluation scores, and the evaluation's explanation of
+those scores. Evaluation will inform my review rather than replacing it, and it
+will not act as a gate. A paraphrase, a claim with no support, or a thin reading
+gets reported rather than withheld, because I want to see the analysis and
+judge it myself. Only a technical failure stops a run: an API error, an
+unreadable response, or output that will not parse.
 
 The decision stays with me. I accept, reject, revise, or rerun, and only
 accepted analyses enter the research collection. The agents interpret sources
 and assess arguments. I review those assessments, decide which conclusions
 are justified, and choose what to pursue next.
 
-## What an analysis records, and what needs checking
+### Single source analysis: two readings
 
-An analysis records four kinds of content: what the source states, what the
-model interprets, the evidence offered for each claim, and provenance, meaning
-the source’s identity, where each piece of evidence sits in it, and what the
-source itself cites.
+Reading an argument well asks for two different things, and in one prompt each
+got in the way of the other. Recording what an author says takes restraint:
+report it faithfully, and keep your own view out of it. Judging the argument
+takes the opposite: reason independently, question whether the conclusions
+follow, and say what you think. So single source analysis is two calls, with
+two prompts, producing two documents
+([ADR-0012](docs/adr/0012-close-reading-and-argument-evaluation-are-two-calls.md)).
 
-All of it is produced by the model, including the parts labeled as the source’s
-own statements. That is the part most easily misread.
+**The close reading** follows the article the way a careful reader meets it for
+the first time, from the opening to the last page. It first takes a look at the
+kind of writing it is and how densely it is written, and lets that set the
+pace: each step takes in roughly 200 to 500 words of the article. At each step
+it records where we are, the move the author is making — a premise, evidence, a
+definition, an inference, a qualification, a conclusion — the claims made
+there with the support the author offers, and what the step means given what
+came before. It knows only what it has read so far, and it does not judge
+whether the argument holds.
 
-### `statement_origin` records an attribution, not a verification
+**The argument evaluation** is given the article and the close reading and asks
+for the model's own judgment of the argument as a whole: where the paper was
+published and for whom, what it rests on, how it spends its attention, whether
+its conclusions are required by the evidence or only permitted by it, and what
+bias shapes the author's framing and the model's own reading. It is written in
+the model's voice and read as its interpretation, not as a report of what the
+author said.
 
-Each claim in the close reading carries `statement_origin`:
+Both prompts are in [docs/PROMPTS.md](docs/PROMPTS.md).
 
-| Value | What it means | What it does not mean |
+### Whose words are whose
+
+All of an analysis is produced by the model, including the parts that report
+what the author said. That is the part most easily misread.
+
+The close reading keeps the author's words and the model's reading apart by
+where they sit
+([ADR-0013](docs/adr/0013-lean-close-reading.md)):
+
+| Where | Whose | What it means |
 | --- | --- | --- |
-| `author_stated` | the model asserts that the source says this | that the source has been checked and does say this |
-| `model_inferred` | the model is interpreting rather than reporting | that the inference is sound |
+| a step's claims and their support | the author's | the model asserts the article says this, in the author's words where it can; not that anyone has checked |
+| a step's moves and meaning | the model's | its reading of what the author is doing and how the step fits the path |
+| the argument evaluation | the model's | its judgment of the argument |
 
-`author_stated` is the model’s claim about provenance, and it can be wrong in
-either direction: an interpretation presented as something the authors said, or
-something the authors did say recorded as the model’s interpretation. This is
-the hardest part of the system to get right. Saying that the analysis separates
-author statements from model inference describes the schema correctly but
-promises nothing, because the separation is only as good as the model’s
-attributions. Checking them is what the evaluation step is for.
+Each claim and each piece of support is marked `verbatim`, the author's exact
+wording, or `paraphrased`. A faithful paraphrase is not a lesser answer than a
+quotation the model was unsure of. Either way, a claim recorded as the author's
+is the model's assertion about the article, and it can be wrong in either
+direction: an interpretation presented as something the author said, or
+something the author did say left out or softened. Checking that is what the
+rest of the design is for.
 
-### What can and cannot be checked mechanically
+### What can be checked, and how
 
-When evidence is marked `verbatim`, a text search can look for it in the
-document, and a match is good evidence that the quotation is real. A failure to
-match is weaker evidence than it looks: PDF extraction, markdown formatting,
-line-break hyphenation, and OCR all break exact matching on text the source
-genuinely contains, so a miss marks a passage to look at by eye rather than a
-fabrication.
+Some of it can be checked mechanically against the article:
 
-A faithful paraphrase is also `author_stated` and does not appear in the
-document at all, so a text search cannot tell a paraphrase that preserves the
-authors’ meaning from one that drops a qualification. Paraphrased attributions
-are reachable only through evaluation and my own review, which is why
-`author_stated` needs checking rather than trust.
+- **Verbatim text.** A text search can look for a `verbatim` claim in the
+  article, and a match is good evidence the wording is real. A miss is weaker
+  evidence than it looks: PDF extraction, hyphenation, and accented characters
+  all break exact matching on text the article genuinely contains, so a miss
+  marks a passage to look at, not a fabrication.
+- **Numbers.** Every figure in a claim or its support can be searched for in
+  the article, which catches a number that is not there.
+- **Citations.** A recorded reference entry can be matched against the
+  article's own reference list, which catches an invented or garbled entry.
 
-`evidence_form`, either `verbatim` or `paraphrased`, is independent of
-`statement_origin`. It describes the form of the evidence text rather than who
-is committed to its content, and a faithful paraphrase is not a lesser answer
-than a quotation the model was unsure of.
+None of that can tell a paraphrase that keeps the author's meaning from one that
+drops a qualification, a number attached to the wrong thing, or a judgment that
+is badly reasoned. Those are checked by reading: by my own notes, and later by
+the Phase 2 evaluation, which is itself checked against my scoring.
 
-### Evaluating the model and the authors’ arguments
+Neither reading retrieves the works an article cites or verifies their
+findings. Both work from what the article provides.
 
-Evaluation will check two things. Does the model faithfully represent the
-source, preserving what the authors actually claim and distinguishing it from
-the model’s own interpretation? And does the model make a defensible assessment
-of the argument, grounding its judgments in the source’s evidence and reasoning?
-Accurately reporting a claim does not establish that the claim is well supported,
-and identifying a supposed weakness does not establish that the model is right.
+### My notes as the independent reference
 
-The evaluation will examine both the accuracy of the model’s account and
-the reasoning behind its assessment. Human review will check those judgments,
-including the judgments made by the evaluation model. The goal is to establish
-whether AI can help me evaluate arguments, and where its assessments need
-correction.
-
-The current analysis step works from the supplied article. It records the
-article’s citations but does not retrieve the cited studies or independently
-verify their findings. Its assessment of an argument is based on what the
-article provides.
-
+For each article I write my own reading before I look at any model output:
+what the article says, its key figures with their context, and my judgment of
+its argument. Those notes are the reference both readings are compared
+against, so they have to be independent of them. For longer articles, the text
+is split mechanically into steps of the same 200 to 500 words, so I can write
+notes against each step without deciding how to organize them; nothing in the
+split names a move or says what a step means. The notes are in
+[`data/research/ab_testing/notes/`](data/research/ab_testing/notes).
 
 ## Evaluation design
 
@@ -151,10 +170,10 @@ something concrete rather than a general impression of quality.
 
 | Failure mode | What it looks like | Axis |
 | --- | --- | --- |
-| Invented attribution | a claim labeled `author_stated` that the source does not make | source faithfulness |
+| Invented attribution | a claim recorded as the author's that the article does not make | source faithfulness |
 | Omitted qualification | hedges, conditions, sample, or scope stripped from a claim the source stated carefully | source faithfulness, limitation discipline |
-| Unsupported inference | reasoning past what the source supports, or inference presented as report | inference control, assumption discipline |
-| Mismatched evidence | evidence attached to a claim it does not support, or a wrong `relationship_to_claim` | evidence mapping |
+| Unsupported inference | reasoning past what the article supports, or the model's reading presented as the author's claim | inference control, assumption discipline |
+| Mismatched evidence | support attached to a claim it does not support | evidence mapping |
 | Inaccurate citation extraction | a misquoted marker, an invented reference entry, a citation attached to the wrong passage | citation faithfulness |
 | Missing central argument | an argument the source’s case rests on, absent from the analysis | argument reconstruction |
 | Faulty argument assessment | the model accepts an unsupported conclusion or criticizes an argument without adequate justification | argument assessment |
@@ -171,51 +190,65 @@ an analysis is good.
 Rubrics, scales, and the evaluation procedure are in the
 [build plan](docs/BUILD_PLAN.md).
 
-### The A/B experiment
+### The A/B experiments
 
 The coding assistants suggested extracting text from the PDFs and preparing
 image crops for content such as figures and tables. After that approach was
 underway, I asked: **Why not just send the PDF?** We had built a preparation
-pipeline without first testing whether it improved the analysis. This
-experiment compares the two approaches to find out whether that extra work
-is worthwhile.
+pipeline without first testing whether it improved the analysis. Phase 1 tests
+that, along with which model to use and, now, whether the API is needed at all.
 
-I’m also testing GPT-6.1 Sol at medium and high reasoning effort against
-GPT-6 Astra at low reasoning effort. Sol could lower the cost of analyzing the
-collection, but I want to see whether it represents and assesses the authors’
-arguments as well as Astra, and whether any improvement from Astra justifies
-its additional cost. Running Sol at two effort levels keeps the model and the
-effort from being confounded: if Astra comes out ahead of Sol medium, Sol high
-shows whether Sol only needed more reasoning.
+Phase 1 runs as three experiments, one per article, each designed around what
+is still open after the one before
+([ADR-0015](docs/adr/0015-phase-1-as-three-experiments.md)). The two prompts
+stay the same throughout; what changes is how they are run.
 
-Each configuration will analyze the same three articles using both input
-methods, producing **18 analyses**:
+**Experiment 1 — Barnett (complete).** Three model configurations, each with
+both input methods, for six runs:
 
 | | GPT-6.1 Sol, medium effort | GPT-6.1 Sol, high effort | GPT-6 Astra, low effort |
 | --- | --- | --- | --- |
-| **Full PDF** | 3 analyses | 3 analyses | 3 analyses |
-| **Extracted text + crops** | 3 analyses | 3 analyses | 3 analyses |
+| **Full PDF** | 1 | 1 | 1 |
+| **Extracted text + crops** | 1 | 1 | 1 |
 
-The experiment began as a 2 × 2 over four articles. Adding Sol high and
-dropping one of the two desalination articles kept the number of analyses
-close to the original; the reasons are in
-[ADR-0009](docs/adr/0009-phase-1-matrix-three-configurations-three-articles.md).
+Astra cost about four times as much as Sol and recorded fewer claims, without
+reading the article better that I could see. The two input methods produced
+readings of about the same quality, while the prepared text needed manual
+fixes and, on the next article, lost every figure.
 
-The analysis prompt, output schema, one-correction policy, and
-question-independence of the task stay fixed. The intended differences are
-the input method and model configuration.
+**Experiment 2 — kanbur.** The PDF only, and a new question: does the API add
+anything over the ChatGPT app I already use? The same two prompts are run
+three ways, at two reasoning efforts, for six runs:
 
-I will compare the analyses for faithful representation of the sources and
-the quality of their assessments of the authors’ arguments. Alongside those
-results, I will record token usage, calculated cost, runtime, and the time
-and manual work needed to prepare the text and crops. That will let me weigh
-any improvement in analysis against what it costs to produce.
+| | API, GPT-6.1 Sol | App, GPT-6, Temporary Chat | App, GPT-6, regular chat with memory |
+| --- | --- | --- | --- |
+| **Medium effort** | 1 | 1 | 1 |
+| **High effort** | 1 | 1 | 1 |
 
-The results will help me choose a configuration for the full 16-article
-collection. Three articles provide an initial comparison, not a conclusion
-about which approach works best across all research topics. The broader
-question remains whether the system improves my research enough to justify
-the time spent preparing, reviewing, and correcting its output.
+The app runs are done by hand, with one addition the app needs: since it
+cannot enforce the output schema, call 1 asks for JSON in that shape. If the
+app reads as well, the API's value is what surrounds the model: enforced
+structure, run records with exact usage and cost, the same settings every
+time, and analyzing a collection without pasting it article by article. The
+comparison has a limit I will keep in view: the API runs use GPT-6.1 Sol and the
+app offers GPT-6, so a difference between them may come from the model rather
+than the app. Temporary Chat against regular chat has no such confound; only
+memory differs.
+
+**Experiment 3 — lei.** Designed once Experiment 2 is in. Lei, at 60 pages, is
+where the input method matters most for cost, so it is the likely place to
+compare the PDF and the prepared text again, on two models.
+
+For every run I record what the API reports: token usage, calculated cost, and
+runtime. The app reports none of these. I compare the readings for faithful
+representation of the article and the quality of their judgments about its
+argument, against my own notes, written first.
+
+The results will help me choose how to analyze the full 16-article collection.
+Three articles provide an initial comparison, not a conclusion about which
+approach works best across all research topics. The broader question remains
+whether the system improves my research enough to justify the time spent
+preparing, reviewing, and correcting its output.
 
 ## Development approach and lessons
 
@@ -244,15 +277,15 @@ What has been difficult about working this way:
 
 | | |
 | --- | --- |
-| **Working now** | the analysis data model, single source analysis running end to end and returning JSON, and PDF preparation into cleaned text and crops |
+| **Working now** | single source analysis as two calls — the close reading and the argument evaluation — running end to end with run records, and PDF preparation into cleaned text and crops |
 | **Designed, not yet built** | evaluation against the axes above, synthesis, literature review, and retrieval |
-| **Next** | the A/B experiment, which decides the configuration the collection is analyzed with |
+| **Next** | Experiments 2 and 3 of Phase 1, which decide how the collection is analyzed |
 
 | Phase | What it does |
 | --- | --- |
 | 0 | **Review and redesign**: audit the earlier code and restructure the repository and documentation around these phases *(complete)* |
-| 1 | **A/B testing**: the 2 × 3 above, recording usage, cost, runtime, and preparation effort |
-| 2 | **DeepEval**: rubrics for the axes above, applied to the 18 analyses, with independent human scoring of a sample, and the choice of model and input method |
+| 1 | **A/B testing**: three experiments, one per article, comparing models, input methods, and the API against the ChatGPT app *(Experiment 1 complete)* |
+| 2 | **DeepEval**: rubrics for the axes above, applied to the Phase 1 runs, with independent human scoring of a sample, and the choice of model and input method |
 | 3 | **Research collection**: analyze and evaluate all 16 articles with the chosen configuration, reusing suitable experiment outputs |
 | 4 | **Synthesis agent**: compare sources, with its own evaluation design |
 | 5 | **Literature review agent**: find relevant articles for explicit research questions |
@@ -284,15 +317,18 @@ simplifies, or removes.
 ├── tests/
 │   ├── test_analysis.py              the call path, failures, usage arithmetic
 │   ├── test_inputs.py                per-mode validation, identical prompt
-│   ├── test_models.py                schema rules, attribution labels, round trip
+│   ├── test_models.py                schema rules, the reading path, round trip
+│   ├── test_prompts_doc.py           PROMPTS.md matches the prompts in code
 │   ├── test_cost.py                  rates, cached input, unknown model
+│   ├── test_run_analysis.py          the runner, offline: provenance, records, both calls
 │   └── preparation/                  PDF extraction behavior, with fixtures
 ├── docs/
 │   ├── BUILD_PLAN.md                 the phases in engineering detail
 │   ├── DESIGN.md                     the system, and the rules it holds to
+│   ├── PROMPTS.md                    the two analysis prompts, as the code sends them
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── adr/0001-0014.md              one record per architectural decision
+│   ├── adr/0001-0015.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── CLAUDE.md                         what Claude Code loads in every session
@@ -347,6 +383,8 @@ uv run mypy src
   model, and the rules that hold across every phase
 - [Build Plan](docs/BUILD_PLAN.md) — the phases in engineering detail, with
   rubrics and procedures
+- [Prompts](docs/PROMPTS.md) — the close-reading and argument-evaluation
+  prompts in full, and how they are run in the ChatGPT app
 - [Repository Inventory](docs/REPOSITORY.md) — every file, what it is for, and
   where the code is heavier than it needs to be
 - [Decision Records](docs/adr/) — one dated record per architectural decision,

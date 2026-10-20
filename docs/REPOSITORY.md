@@ -209,7 +209,7 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 90 tests
+## `tests/` — 91 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
@@ -219,6 +219,7 @@ keeping. If it loses, most of these 793 lines go.
 | `test_models.py` | 14 | Application-owned fields rejected from model content, a required verbatim/paraphrased form, an asserted claim standing without support, no attribution labels on the close reading, the evaluation schema holding only the model's judgment, a reading step with no claim, the reading plan first and required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
 | `test_run_analysis.py` | 15 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun, both documents written, a failed evaluation keeping the close reading |
+| `test_prompts_doc.py` | 1 | `docs/PROMPTS.md` holds every prompt exactly as the code sends it |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file
 path, since `scripts/` is not importable, and `preparation/pdf_fixtures.py`
@@ -265,7 +266,17 @@ thing blocking it.
 ## `docs/`
 
 `DESIGN.md` and `BUILD_PLAN.md` (below), this file, `prompt_log.md` and its
-per-phase logs in `phases/`, and:
+per-phase logs in `phases/`, `PROMPTS.md`, and:
+
+### `PROMPTS.md`
+
+The two analysis prompts — the close reading and the argument evaluation — in
+full, with the input instructions and message layout for each call, the
+correction message, and how the prompts are run by hand in the ChatGPT app for
+Experiment 2. It exists so the prompts can be read without opening the code.
+It is the current version only; each earlier version is quoted in the ADR that
+introduced it. `tests/test_prompts_doc.py` fails if it stops matching
+`prompts.py`.
 
 ### `DESIGN.md` and `BUILD_PLAN.md`
 
@@ -281,9 +292,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 16 files
+### `adr/` — 17 files
 
-One architectural decision per record: `0001`–`0014`, plus `template.md` for
+One architectural decision per record: `0001`–`0015`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -324,6 +335,11 @@ It carries both calls' prompts in full, so a change to either is a new record.
 
 `0014` replaces katakam with kanbur as the third experiment article, since
 katakam shares Barnett's journal; ADR-0009's matrix is unchanged.
+
+`0015` turns Phase 1 into three experiments, one per article: Barnett's six
+runs as Experiment 1, kanbur comparing the API against the ChatGPT app with
+and without memory on the PDF alone, and lei designed after that. Astra low is
+dropped, and the text arm waits for Experiment 3, leaving ADR-0008 open.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

@@ -83,11 +83,12 @@ without a record.
 | [0008](0008-compare-pdf-against-prepared-text.md) | Compare sending the full PDF against prepared text plus crops | 2026-10-15 | **Provisional** |
 | [0006](0006-analysis-and-synthesis-never-receive-the-question.md) | Single-source analysis and synthesis never receive the research question | 2026-10-15 | Accepted |
 | [0007](0007-one-analysis-error-with-a-kind.md) | One `AnalysisError` carrying a `kind`, not an exception hierarchy | 2026-10-15 | Accepted |
-| [0009](0009-phase-1-matrix-three-configurations-three-articles.md) | Phase 1 runs three model configurations over three articles | 2026-10-17 | Accepted; article choice superseded by 0014 |
+| [0009](0009-phase-1-matrix-three-configurations-three-articles.md) | Phase 1 runs three model configurations over three articles | 2026-10-17 | Accepted for Barnett; superseded in part by 0014 and 0015 |
 | [0010](0010-whole-document-argument-assessment.md) | Every analysis carries a whole-document argument assessment | 2026-10-18 | Superseded by 0012 |
 | [0011](0011-claims-first-then-whole-document.md) | Claims first, then the whole document: test one call before two turns | 2026-10-18 | Superseded by 0012 |
 | [0012](0012-close-reading-and-argument-evaluation-are-two-calls.md) | The close reading and the argument evaluation are two calls | 2026-10-19 | Superseded by 0013 |
 | [0013](0013-lean-close-reading.md) | A lean close reading: the author's words once, no labels | 2026-10-19 | Accepted |
 | [0014](0014-kanbur-replaces-katakam.md) | Kanbur replaces katakam as the third experiment article | 2026-10-19 | Accepted |
+| [0015](0015-phase-1-as-three-experiments.md) | Phase 1 runs as three experiments, one per article | 2026-10-20 | Accepted |
 
 New records start from [template.md](template.md).
