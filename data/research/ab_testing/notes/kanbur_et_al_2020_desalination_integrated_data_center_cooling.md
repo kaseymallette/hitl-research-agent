@@ -25,39 +25,79 @@ after it. Equations and tables are marked with their crop image.
 >
 > K E Y W O R D S combined energy system, data center cooling, desalination, multiobjective optimization, thermodynamic analysis, thermoeconomic assessment
 
-**Moves:**
+**Notes:** 
+- Study proposes: Hybrid desalination-data center cooling system
+- Two phase liquid immersion cooling unit (0.7-1.5 kW)
+- High heat flux removal performance could be promising
+- Waste heat is used to heat up the feed side of the desalination module
+- Evaluated on thermodynamic, economic, and thermoeconomic aspects
+    - thermoeconomic: unique exergy-cost matrix
+- Thermal and exergy efficiencies: 64.5% and 53.7%, respectively
+- Daily distilled water rate can reach 6.13 kg at highest cooling load and largest membrane area
+- Compared to stand-alone data center cooling, hybrid system has higher captial and operational costs
+- Payback period: 3.72 years
+- Levelized product cost: 2.69 to 5.33 SGD/h
+- Multiobjective optimization study: best trade-off point at cooling load of 1.1 kW, membrane area 5.12-5.19 cm²
 
-**Claims:**
+**Evaluation:** I have absolutely no idea what these numbers mean in context, relative to what? Is 64.5% good for thermal efficiency? Compared to what? What is exergy? I thought that said energy. What is a payback period? What is SGD/h a unit of measure of? What is a membrane area? Why does the hybrid study have higher costs? Why is 6.13 kg the best number when optimizing for both highest cooling load and largest membrane area? Again, releative to what?
 
-**Meaning:**
 
 ---
 
 ## Step 2 — 1 | INTRODUCTION (page 1, ~501 words)
 
-> The increasing demand for the Information and Communication Technology (ICT) facilities make their uninterrupted operations more important compared to the past. Hence, the management of their housing spaces, which are called as Data Centers (DCs), have been becoming more crucial over time. The uninterrupted and stable operations of DCs bring a huge cost drawback from the point of energy consumption. In 2018, the global energy demand by DCs has reached 200 TWh.<sup>1</sup> The near-future projections state that the data centerrelated energy consumption will reach 70 TWh in 2020 only for the United States.<sup>2</sup> Compared to the standard office facilities, the energy demand by ICT equipment corresponds up to 100 times higher.<sup>3</sup> During the DC operation, the ICT equipment like network infrastructures and computing systems generate thermal energy at the chip, server, or rack level. The generated thermal energy must be released via cooling systems to achieve zero downtime and uninterrupted operations. That is, the main goal of the DC cooling process is to maintain the ICT equipment temperature at the desired levels. Rong et al<sup>4</sup> stated that the energy consumption of DC cooling systems shares roundly 40% of the total DC energy consumptions. Namely, the DC cooling systems have a pivotal role in the thermal management of DC systems. There are two DC cooling types which are air-cooled and liquid-cooled DC systems.<sup>5</sup> The air-cooled DC systems are the traditional systems to release the heat from DC units. The liquid-cooled DC systems have been recently being popular thanks to their high heat removal performance. Although the air-cooled and liquid-cooled DC systems have different configurations to cool down the DC unit, they generally use dry towers or economizers as common equipment to release the thermal energy to environment.<sup>6,7</sup> Alternatively, the released thermal energy from data centers systems can be used in waste heat recovery technologies such as combined heating and cooling,<sup>8</sup> district heating and hot water production,<sup>9</sup> and vapor compression.<sup>10</sup> Besides the above-mentioned waste heat recovery techniques, the seawater desalination by using the waste heat (steam) of data center cooling systems has also been proposed as an idea by Ebrahimi et al.<sup>11</sup> However, the modeling and performance assessment details were not given in that study. In fact, integration of the desalination process is a widely-proposed approach for different energy systems such as nuclear power plants,<sup>12</sup> marine energy and industry,<sup>13,14</sup> solar energy,<sup>15,16</sup> fuel cell and gas turbine<sup>17</sup> and thermoelectric coolers.<sup>18</sup> Those studies inferred that low-temperature energy systems can be efficiently combined with the desalination process. Thus, the combined solution of DC cooling and seawater desalination has also a strong potential for the real-scale systems. The generated thermal energy from the DC waste heat systems is able to provide a sufficient amount of energy for desalination units. In addition, the combined DC cooling and desalination has critical importance since it addresses both UN Sustainable Development Goals (SDGs) 6 (Clean Water and Sanitation) and 7 (Affordable and Clean Energy). Therefore, the current idea is in the scope of energywater nexus concept, which is compatible with the
+> The increasing demand for the Information and Communication Technology (ICT) facilities make their uninterrupted operations more important compared to the past. Hence, the management of their housing spaces, which are called as Data Centers (DCs), have been becoming more crucial over time. The uninterrupted and stable operations of DCs bring a huge cost drawback from the point of energy consumption. In 2018, the global energy demand by DCs has reached 200 TWh.<sup>1</sup> The near-future projections state that the data centerrelated energy consumption will reach 70 TWh in 2020 only for the United States.<sup>2</sup> Compared to the standard office facilities, the energy demand by ICT equipment corresponds up to 100 times higher.<sup>3</sup> During the DC operation, the ICT equipment like network infrastructures and computing systems generate thermal energy at the chip, server, or rack level. The generated thermal energy must be released via cooling systems to achieve zero downtime and uninterrupted operations. That is, the main goal of the DC cooling process is to maintain the ICT equipment temperature at the desired levels. Rong et al<sup>4</sup> stated that the energy consumption of DC cooling systems shares roundly 40% of the total DC energy consumptions. Namely, the DC cooling systems have a pivotal role in the thermal management of DC systems. There are two DC cooling types which are air-cooled and liquid-cooled DC systems.<sup>5</sup> The air-cooled DC systems are the traditional systems to release the heat from DC units. The liquid-cooled DC systems have been recently being popular thanks to their high heat removal performance. Although the air-cooled and liquid-cooled DC systems have different configurations to cool down the DC unit, they generally use dry towers or economizers as common equipment to release the thermal energy to environment.<sup>6,7</sup> Alternatively, the released thermal energy from data centers systems can be used in waste heat recovery technologies such as combined heating and cooling,<sup>8</sup> district heating and hot water production,<sup>9</sup> and vapor compression.<sup>10</sup> Besides the above-mentioned waste heat recovery techniques, the seawater desalination by using the waste heat (steam) of data center cooling systems has also been proposed as an idea by Ebrahimi et al.<sup>11</sup> However, the modeling and performance assessment details were not given in that study. In fact, integration of the desalination process is a widely-proposed approach for different energy systems such as nuclear power plants,<sup>12</sup> marine energy and industry,<sup>13,14</sup> solar energy,<sup>15,16</sup> fuel cell and gas turbine<sup>17</sup> and thermoelectric coolers.<sup>18</sup> Those studies inferred that low-temperature energy systems can be efficiently combined with the desalination process. Thus, the combined solution of DC cooling and seawater desalination has also a strong potential for the real-scale systems. The generated thermal energy from the DC waste heat systems is able to provide a sufficient amount of energy for desalination units. In addition, the combined DC cooling and desalination has critical importance since it addresses both UN Sustainable Development Goals (SDGs) 6 (Clean Water and Sanitation) and 7 (Affordable and Clean Energy). Therefore, the current idea is in the scope of energywater nexus concept, which is compatible with the United Nations goals. Up to now, there is no detailed understanding study for this concept so that it addresses a research gap to be filled. Furthermore, when the waste heat utilization of DC cooling systems is investigated in detail, it is seen that they have been usually based on the air-cooled systems. Nevertheless, the system-scale waste heat utilization studies on the liquid-cooled DC systems have not been widely-performed as far as we know. Hence, this brings another research gap that has a strong potential to develop more efficient waste heat utilization works.
 
-**Moves:**
+**Notes:**
+- ICT (Information and Communication Technology) Equipment: Network infrastructures and computing systems
+    - Generate thermal energy at the chip, server, or rack level
+    - Must be released via cooling systems to achieve zero downtime and uninterrupted operations
+    - Main goal of DC cooling process is to maintain ICT equipment temperature at desired levels
+- Data Centers (DC)
+    - Housing spaces for ICT equipment
+    - Energy consumption: 200 TWh globally in 2018, 70 TWh in US only in 2020
+    - 100 times higher than standard office facilities
+    - Cooling systems consume 40% of total DC energy consumption
+- Two cooling types:
+    - Air-cooled DC systems: Traditional systems to release heat from DC units
+    - Liquid-cooled DC systems: Recently popular due to high heat removal performance
+- Alternative cooling:
+    - Waste heat recovery technologies: Combined heating and cooling, district heating and hot water production, vapor compression
+    - Seawater desalination using waste heat (steam) from DC cooling systems
+- Desalination as integrated approach:
+    - Widely proposed approach for different energy systems (nuclear power plants, marine energy, solar energy, fuel cell and gas turbine, thermoelectric coolers)
+    - Low-temperature energy systems can be efficiently combined with desalination process
+    - Critical significance: UN Sustainable Development Goals (SDGs) 6 (Clean Water and Sanitation) and 7 (Affordable and Clean Energy)
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
+- Desalination is a promising integrated approach for waste heat utilization from data center cooling systems that has not been fully explored. Studies have mostly been done on air cooling systems, while studies on liquid cooling systems have not been widely performed. 
 
 ---
 
 ## Step 3 — 1 | INTRODUCTION (continued) (page 1, ~585 words)
 
-> Baris Burak Kanbur and Chenlong Wu share the first authorship.
->
-> United Nations goals.<sup>19,20</sup> Up to now, there is no detailed understanding study for this concept so that it addresses a research gap to be filled. Furthermore, when the waste heat utilization of DC cooling systems is investigated in detail, it is seen that they have been usually based on the air-cooled systems. Nevertheless, the system-scale waste heat utilization studies on the liquid-cooled DC systems have not been widely-performed as far as we know. Hence, this brings another research gap that has a strong potential to develop more efficient waste heat utilization works.
->
 > The liquid-cooled DC systems are able to remove higher heat flux compared to the air-cooled systems because the working liquids have higher heat removal performance; and therefore, they have been becoming more popular for the rapidly developing ICT facilities such as big data, cloud computing, smart cities/ manufacturing. The liquid-cooled DC systems can be categorized as direct and indirect DC cooling systems. Compared to the direct cooling systems, the indirect cooling systems are more established systems but they have also two major drawbacks which are (a) the leakage potential during the liquid circulation in a piping system and (b) the specific system layout sizing according to the required DC cooling load. The direct cooling systems overcome these challenges; (a) they directly contact the ICT equipment surface by means of the dielectric liquids that mean no liquid piping requirement at server or rack level, (b) they are very flexible systems which can be modified for different DC cooling loads. The direct cooling systems are the methods of jet impingement, spray cooling, and two-phase liquid-immersion cooling. In principle, these methods can be set up for an independent DC cooling operation or combined with the conventional air-cooled techniques. Amongst others, the twophase liquid-immersion cooling systems provide a more uniform temperature distribution on the ICT equipment surface thanks to its two-phase heat transfer (latent heat transfer mechanism). More details on the liquid-cooled DC systems can be found in References 21–24. Even though the direct cooling systems are less complex and the two-phase liquid-immersion cooling systems are more advantageous, they still do not have wide-spread system-scale studies. Recently, some ICT companies like Submer Inc., GIGABYTE, 3M, and FUJITSU have been conducting system-scale studies on the two-phase liquidimmersion cooling studies, but there is still a lack of thermal management and economic assessment research that brings an important gap from the academic perspective. To fill this gap, we have recently started to work on the system-scale performance assessments of the two-phase liquid-immersion DC cooling systems. In our first study, we developed a real-scale experimental setup and investigated the transient performance of the system up to 21 kW.<sup>25</sup> Since the results achieved satisfying steady performance in real conditions, we have developed a mathematical model for the DC cooling unit and combined the system with a polymer electrolyte membrane fuel cell unit to generate electricity with the waste heat of the DC cooling unit.<sup>26</sup> That study inferred that the lowcarbon electricity generation can be obtained with the DC cooling load of nearly 6 kW. However, as mentioned above, the two-phase liquid-immersion DC cooling systems can be flexible with respect to the cooling load. For the DC cooling loads below 6 kW, the waste heat utilization may not be efficient for low-carbon electricity generation or other well-known thermal processes. Therefore, for lower DC cooling loads, there is a research gap for more efficient and economic operations of the two-phase liquid-immersion DC cooling systems.
 
-**Moves:**
+**Notes:**
+Liquid cooled systems:
+- Remove higher heat flux compared to air cool systems
+- More popular than air cooled systems
+- Comes in direct and indirect forms. 
+    - Indirect has two drawbacks: leaks in the piping, and sizing tied to a fixed load. 
+    - Direct cooling avoids both.
+- Two-phase immersion gives a more uniform temperature across the equipment.
 
-**Claims:**
+Problem: Companies (Submer, GIGABYTE, 3M, FUJITSU) are testing at system scale, but academic thermal and economic research is lacking.
 
-**Meaning:**
+Solution: This paper fills that gap by conducting system-scale performance assessments of two-phase liquid-immersion DC cooling systems.
+
+First study: Developed a real-scale experimental setup and investigated transient performance up to 21 kW.
+
+Second study: Developed a mathematical model for the DC cooling unit; paired the cooling unit with a fuel cell, which worked at about 6 kW. For loads below 6 kW, the waste heat utilization may not be efficient. Still a research gap for below 6 kW. 
+
+**Evaluation:** The author claims that most experiments have studied air cooling systems, but then claims that liquid cooling systems remove higher heat flux. Given that studies on liquid cooling are limited, is there enough data to back up this claim? The author lists a citation, References 21-24.
+
+Section mostly discusses liquid immersion cooling systems and their advantages over air cooling systems. Yet, it argues that research on liquid cooling systems is still lacking. Authors designed prelimiary studies and showed promise for 6 kW cooling loads, but for cooling loads below 6 kW, there is still a real resarch gap that this study plans to fill. 
 
 ---
 
@@ -65,11 +105,9 @@ after it. Equations and tables are marked with their crop image.
 
 > The study points out the highlighted research gap and proposes a novel hybrid system solution. The main original contributions are listed as follows: (a) the proposed system has not been investigated before. It utilizes the waste heat of the data center cooling system in the direct contact membrane distillation (DCMD) module. In this way, clean water production can be achieved. (b) it is the first time of the two-phase liquid-immersion cooling system for the waste heat utilization via desalination purposes. This brings a new alternative to the data center cooling systems, especially for low DC cooling loads. (c) A unique exergy-cost matrix is built since the proposed hybrid system is new and has not been investigated before. Besides the thermoeconomic model, the hybrid design is assessed according to the economic and thermodynamic aspects. The generated exergy-cost matrix can be useful in the waste heat utilization studies of future two-phase liquid-immersion cooling systems. (d) The fourth and last contribution is the multiobjective optimization study. The minimization of the distilled water cost and system product cost and the maximization of exergy efficiency are the multiple objectives. The design constraints are the DC cooling load and the membrane application area with the ranges of 0.7 to 1.5 kW, and 5 to 75 cm<sup>2</sup> , respectively.
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -77,11 +115,9 @@ after it. Equations and tables are marked with their crop image.
 
 > The simplified schematic of the new proposed combined system is shown in Figure 1. Stream 1 denotes the seawater with the salinity of 35 g/L (TDS of standard seawater<sup>27</sup> ) and temperature of 302.75 K (Singapore seawater temperature<sup>28</sup> ) at 1 atm. It enters the two-phase liquidimmersion DC cooling unit that has a pump and a server tank. The seawater inlet to the server tank is denoted by stream 2. The pump is assumed as EB120 pump by Euroflo while the server tank is a customized server tank that can operate the liquid-immersion cooling operations up to 2 kW released heat rate from the servers. The server tank is filled with NOVEC 7100 dielectric liquid with the boiling temperature of 61<sup>�</sup> C. The servers are submerged in the dielectric liquid bath and the generated energy from the servers increases the liquid bath temperature up to boiling temperature value. The imposed power rate by the servers is assumed constant that can allow steadystate thermodynamic assessments.<sup>29</sup> The vapor bubbles in the liquid bath start to rise at the top of the tank where the condenser pipes, which circulates coolant inside, are located. Since the circulated coolant temperature is lower than the boiling temperature, the vapor bubbles condense on the pipe surface. Then they drop into the liquid bath. During this process, the coolant temperature increases due to the heat transfer from the vapor bubbles. The proposed two-phase liquid-immersion DC cooling setup was experimentally operated and verified in our previous work.<sup>25</sup> In this study, we circulate the seawater as a coolant so that it is heated up in the DC tank. The seawater outlet temperature, T3, increases before entering the DCMD module. At this point, a temperature limit arises as a design criterion. As the nature of heat transfer and thermodynamics, the seawater temperature (stream 3) cannot be higher than the boiling temperature of the dielectric liquid bath, 61<sup>�</sup> C. From the point of engineering, stream 3 temperature must be lower than 61<sup>�</sup> C; therefore, we determine the temperature difference limit as 3 K between the boiling temperature of dielectric liquid and the seawater 3 temperature. Then, stream 3 enters the feed side of the DCMD module that is the oldest technique of membrane distillation with a membrane interface excluding the air gap or conductive material interface.<sup>30</sup> On the another side of the DCMD module, the permeate flow enters the module as stream 6 after pumping via another circulation pump that has inlet stream (stream 5) with the temperature of 293.15 K. In the module, due to the temperature difference between the feed and permeate sides, the vapor pressure at feed and permeate sides becomes different than each other; in this way, the mass and heat transport occurs through the hydrophobic membrane that blocks the liquid transport whilst allow for the vapor transfer. By means of the transport phenomena, the mass flow rates of inlet streams are not equal to the mass flow rates of outlet streams. For the feed side, the mass flow rate of seawater outlet, stream 4, is lower while the mass flow rate of permeate outlet, stream 7, has higher mass flow rate than the inlet stream (stream 6).
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -91,11 +127,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > *[equation E1, page 4 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E1_p04.png)]*
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -117,11 +151,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > where F1i is 0.5. The coefficients F2i − F4i and A1i −A4i are presented in Appendix B. Similar to the water enthalpy rate, the seawater enthalpy rate at stream i, Hswi , can be obtained by multiplying the mass flow rate of seawater at stream i, m_ swi , and hswi . Following Equations (1) to (4), H1 and H5 can be found at the feed side and permeate side, respectively. The values of H1 and H5 allow us calculating H2 and H6 by using the pump work rate. Equations (5) and (6) present the calculation of H2 and H6, respectively, where W<sup>_</sup> fp and W<sup>_</sup> pp are the power rates of the feed and permeate pumps, respectively. The calculation of H2 makes the possible to write an energy balance for DC server tank as shown in Equation (7),
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -145,11 +177,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > *[equation E7, page 6 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E7_p06.png)]*
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -159,11 +189,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > The solution procedure between Equations (8) to (14) requires an iterative study since the defined parameters are depend on the temperature values where T3 and T6 are known and Tf, m and Tp, m are unknown. As the initial step, Tf, m is estimated; and then, the iterative study is completed when Equation (14) is obtained. After that, the exact mass flux, transferred mass, and all the temperature values can be seen. In the iteration loop (Equations (8) to (14)), the Prandtl number (Pr) in Equation (11) is calculated for the feed and permeate sides separately since feed and permeate temperatures are different than one another. For the feed side, the Pr is calculated at the temperature value of (Tf + Tf, m)/2 while it is calculated at the temperature value of (Tp + Tp, m)/2 for the permeate side.<sup>31</sup> Once the iteration study is accurately done, the final Pr value is calculated according to the iterated Tf, Tf, m, Tp, m and Tp values. It must be noted that the use of average temperature to calculate the Pr at both feed and permeate sides is a reasonable solution step for the small-scale DCMD setups. However, it must be replaced by the dynamic observation of temperature gradients between Tf and Tf, m and Tp and Tp, m for the large-scale commercial DCMD systems since the temperature changes may not be linear between the feed/permeate and membrane surface. The overall energy balance is written for the DCMD module to calculate the temperature, enthalpy, and entropy of streams 4 and 7. The energy balance of the DCMD module is written in Equation (15),
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -179,11 +207,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > Hereby, it can be said that the increment in fuel exergy rate via better utilization grows the SI of the combined system. Also, the decrement in the exergy destruction rate via better design considerations achieves higher SI trends.
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -197,11 +223,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > Besides, the thermodynamic validation of the twophase liquid-immersion DC cooling system was achieved via our former studies. In our experimental study, we have already provided that the system-scale two-phase liquid-immersion DC cooling unit can be operated at steady conditions up to the Q<sup>_</sup> DC of 21 kW.<sup>25</sup> On the other hand, the mathematical model of the data center cooling unit was developed in our previous modeling study.<sup>26</sup> More details on the experimental thermodynamic operation and mathematical modeling can be found in References 25 and 26. It is worth to remind that the validation of the proposed hybrid model is currently not possible since the proposed system is firstly presented in this paper; but, further studies will focus on their small-scale demonstration.
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -209,11 +233,9 @@ after it. Equations and tables are marked with their crop image.
 
 > The economic performance assessment is done with the payback period calculation. Payback period, PP, simply means the return of the investment over time. The PP calculation of the proposed hybrid system is done by referring to the stand-alone two-phase liquid-immersion DC cooling unit. In the stand-alone system, the DC cooling unit is assumed with the streams 1 to 3 in Figure 1. That is, the stand-alone DC cooling system has a seawater inlet with the feed pump power; and then, it leaves the DC cooling tank as stream 3. Compared to the proposed hybrid design, the stand-alone system does not consist of the permeate pump and the DCMD module. Therefore, its capital investment cost and future cost (eg, electricity consumption, operation and maintenance cost, replacement cost) are lower than the hybrid system costs. However, even though the hybrid system has higher capital investment and future cost terms, the distilled water is the product of the DCMD module, and the economic impact of the distilled water can be used to understand whether the proposed hybrid system is economically more feasible than the stand-alone DC cooling operation or not. The payback period is explained in Equation (26), where TCI is the total capital investment, Cw is the annual cost of the distilled water generated by the system, Chyb is the total annual cost of the hybrid system, and Cs − alone is the total annual cost of the stand-alone system. TCI consists of fixed capital investment and other outlays.<sup>36</sup> The fixed capital investment includes the direct costs (eg, purchased equipment cost, installation of purchased equipment, piping, instrumentation and control, electrical equipment, land, and structural costs) and the indirect costs (engineering and supervision cost, contingencies, etc.). On the other hand, the other outlays mean the startup cost, working capital, and R&D costs. In fact, TCI is a very wide definition so that it is very difficult to calculate it for the energy systems, especially for the newproposed energy systems like the current idea. To deal with this complexity, Bejan et al<sup>36</sup> presented a simple formula that gives a direct relation between the TCI and the purchased equipment cost, PEC, as shown in Equation (27), where PEC is the purchased equipment cost of the system equipment that is presented in Table 2 according to our experimental setup study<sup>25</sup> and the study by Swaminathan et al<sup>39</sup> for the DC cooling and DCMD modules, respectively. It must be noted that the coefficient of 6.32 is a cost estimation approach for TCI by using the PEC values. There are also other cost estimation techniques or coefficients, but we prefer to use the coefficient of 6.32 from Bejan et al<sup>36</sup> since it is a well-known and widely-preferred coefficient. It is worth mentioning that the given payback period definition is a simple definition for the economic assessment. Since both hybrid and stand-alone systems have the same system lifetime and interest rate values, the basic payback period definition seems sufficient for a comparison purpose. For more detailed economic assessments, the life cycle costing-based economic analyses (eg, payback period calculation via cumulative present worth trends, or return on investment analyses via annual costs) can be preferred. Cw is calculated by the product of distilled water rate with the unit water cost of Singapore cw, as shown in Equation (31), where cw = 2.74 m<sup>3</sup> /h,<sup>40</sup> and m_ dw = m_ 3 −m_ 4 = m_ 7 −m_ 6 . Chyb is the summation of the annual electricity cost of the hybrid system, Celhyb , annual operation and maintenance cost of the hybrid system, COMhyb , and the annual replacement cost of the hybrid system, CRChyb . The COMhyb is assumed 1.092% of the PEChyb. This assumed value is widely-used in energy systems<sup>41</sup> and we previously used in our previous economic and thermoeconomic assessments.<sup>42</sup> The CRChyb term is directly related to the DCMD module, because the DC cooling unit has nothing crucial for the replacement cost and the required replacement
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -253,11 +275,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > In the economic analysis, the system lifetime is assumed 20 years; therefore, the PP will be economically infeasible if it will be calculated for more than 20 years. It is worth mentioning that the assumed lifetime is not the lifetime of the operated servers (ICT equipment) in the cooling tank, because the ICT equipment can be replaced multiple times according to its performance. The system lifetime directly means the lifetime of the DC cooling and DCMD equipment. The n value of 20 years is
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -269,11 +289,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > where i and n are the interest rate and system lifetime with 1.7% and 20 years, respectively. The exergy cost matrix consists of relationships between the balance equations of system components; therefore the unit costs of the internal streams can be calculated. Table 3 presents the thermoeconomic balance equations for all system components, and the exergy-cost matrix of the hybrid system is given in Equation (34), where u1 − 4 are unknown unit cost parameters and represent internal streams of the hybrid system as projected in Table 3. In thermoeconomic assessments, the main goal is to reach the minimum C<sup>_</sup> p value for the overall system.<sup>36</sup> Besides the minimum C<sup>_</sup> p goal, the minimum levelized cost of the produced distilled water, C<sup>_</sup> dw, can be specifically aimed in this study.
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -307,11 +325,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > *[equation E13, page 11 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E13_p11.png)]*
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -325,11 +341,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > FIGURE 4 Produced water rate from the combined system [Colour figure can be viewed at wileyonlinelibrary.com]
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -349,11 +363,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > FIGURE 8 Payback period trends of the combined system [Colour figure can be viewed at wileyonlinelibrary.com]
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -365,11 +377,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > Q_ DC may significantly affect the PP at higher DC cooling load operations. Similarly, higher membrane areas can also affect the PP trends more remarkably. Since the current study focused on the low Q<sup>_</sup> DC in the range of 0.7 to 1.5 kW with small Am values between 5 and 75 cm<sup>2</sup> , the PP is assumed constant. Further studies can better analyze the impact of higher Q<sup>_</sup> DC and Am values on the PP calculation.
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -381,11 +391,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > FIGURE 10 The best trade-off point selection of the hybrid system with the Pareto frontier plots [Colour figure can be viewed at wileyonlinelibrary.com]
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -397,11 +405,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > the Am has more dominant impact on the C<sup>_</sup> dw trends while its impact on the C<sup>_</sup> p is less. It is worth reminding that the obtained outcomes are for the low Q<sup>_</sup> DC values, and the BToP trends can give different outcomes for larger Q<sup>_</sup> DC and Am values. Since the main focus of the current study is to propose a hybrid solution for the Q<sup>_</sup> DC values, larger-scale Q<sup>_</sup> DC and Am are not considered in this work.
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
@@ -427,11 +433,9 @@ after it. Equations and tables are marked with their crop image.
 >
 > In light of the foregoing outcomes, future studies can be directed in two different ways. The first way is the real-scale demonstration of the proposed hybrid design since the thermodynamic, economic, and thermoeconomic results showed satisfying performances. The hybrid system can be efficiently operated for the low data center cooling loads. Therefore, real-scale demonstration studies and relevant system limitations can be focused in future studies. In this step, different membrane characteristics, distillation techniques, or the dielectric liquid types can be investigated. Also, the impact of corrosion and salt deposition on the condenser pipe can be experimentally tested. The second way is the study of the hybrid system for large scale operations. In this way, the impact of large-scale operations can be seen on thermodynamic and thermoeconomic results. The experimental corrosion and salt deposition investigations can be performed for larger-scale operations as well.
 
-**Moves:**
+**Notes:**
 
-**Claims:**
-
-**Meaning:**
+**Evaluation:**
 
 ---
 
