@@ -23,10 +23,10 @@ design ([ADR-0013](0013-lean-close-reading.md)). Three things came out of it:
   and preparation kept no crops of kanbur's figures, so the text arm never
   sees its result plots.
 - **A new question:** does the API do anything the ChatGPT app cannot? I use
-  the app with a subscription. If the app reads and reasons as well, the
-  API's value is everything around the model — enforced structure, run
-  records, exact cost, repeatable settings, and scale — rather than the
-  reading itself.
+  the app with a subscription, set up with my own instructions for Sunny, the
+  persona I work with. If the app reads and reasons as well — or better, with
+  those instructions — the API's value is everything around the model:
+  enforced structure, run records, exact cost, repeatable settings, and scale.
 
 Running the remaining two articles through the same 18-run matrix would spend
 most of its cost on Astra and on an input comparison Barnett has already made
@@ -46,10 +46,19 @@ still open.**
 **Experiment 2** compares ways of running the same two prompts, with the PDF
 as the input throughout:
 
-| | API, GPT-6.1 Sol | App, GPT-6, Temporary Chat | App, GPT-6, regular chat with memory |
+| | API, GPT-6.1 Sol | App, GPT-6.1 Sol, work mode | App, GPT-6, regular chat |
 | --- | --- | --- | --- |
 | **Medium effort** | 1 | 1 | 1 |
 | **High effort** | 1 | 1 | 1 |
+
+Both app columns run with memory off and my custom instructions for Sunny on.
+The comparisons it supports:
+
+- **API against app, same model** (the first two columns): whether the app,
+  with Sunny's instructions, reads and judges the article as well as the API.
+- **Work mode against regular chat** (the last two columns): whether the
+  more playful regular chat does differently from work mode.
+- **Medium against high effort,** in each column.
 
 - **Astra low is dropped** from Experiment 2 on, for its cost, with no
   advantage shown on Barnett.
@@ -74,11 +83,11 @@ an API run is the way it is run:
    attached, and one message holding the source header (title, type,
    publisher, DOI), the PDF note, `EVALUATION_PROMPT`, and call 1's close
    reading.
-3. **Temporary Chat** is the app with memory and past chats unavailable to the
-   model. **Regular chat** is the app as I normally use it, memory on.
+3. **Memory is off** for every app run, and my custom instructions for Sunny
+   stay on: they are part of what is being tested.
 
 App results are saved by hand beside the API's, in folders named
-`chat__gpt-6-<effort>-temp` and `chat__gpt-6-<effort>-memory`: the close
+`app__gpt-6.1-sol-<effort>-work` and `app__gpt-6-<effort>-chat`: the close
 reading as `analysis.json`, as returned, and the evaluation as
 `argument_evaluation.md`, as returned.
 
@@ -94,24 +103,31 @@ compare both against.
   settle ADR-0008 on one article. Lei is the stronger test of whether
   preparation pays off, so the decision waits for it.
 - **Test the app on Barnett.** An app run on Barnett was tried and discarded:
-  it was not in a Temporary Chat, and I had discussed Barnett with ChatGPT, so
-  memory could have shaped its reading. Kanbur has not come up with it.
+  memory was on, and I had discussed Barnett with ChatGPT, so memory could
+  have shaped its reading. Kanbur has not come up with it.
+- **Temporary Chat against regular chat with memory** (this record's first
+  design). With memory now off in the app, that comparison no longer separates
+  anything; the app's two modes and its GPT-6.1 Sol model are the more useful
+  contrast.
+- **Turn my custom instructions off** for a cleaner API-against-app
+  comparison. Sunny's instructions are what I want to test, so they stay on.
 
 ## Consequences
 
-**API against app compares two models as well as two ways of running.** The
-API runs use GPT-6.1 Sol; the app offers GPT-6. A difference between them may
-come from the model, from the app's own hidden instructions, or from how each
-handles the PDF. Temporary Chat against regular chat has no such confound: the
-same model in the same app, with memory the only difference.
+**API against app compares the same model, run two ways.** With GPT-6.1 Sol on
+both sides, a difference comes from the app: Sunny's instructions, the app's
+own hidden instructions, work mode itself, and how each handles the PDF. The
+experiment shows whether the app with Sunny does better or worse, not which of
+those is responsible; isolating Sunny would take an app run with my
+instructions off.
+
+**Work mode against regular chat changes two things.** The modes run different
+models — GPT-6.1 Sol and GPT-6 — so a difference between them may come from
+the model as well as the mode.
 
 **The app gives no usage or cost.** It is a subscription, and the app reports
 no tokens, so app runs have no run record. Their cost is the subscription and
 the time spent running them by hand.
-
-**Memory can carry more than earlier discussion of an article.** What the app
-remembers of how I read or what I think may shape its reading even of an
-article it has never seen. That is part of what the memory-on run measures.
 
 **ADR-0009's matrix is superseded** for kanbur and lei. Barnett's six runs stand
 as Experiment 1, under ADR-0013's prompts.
@@ -125,3 +141,8 @@ version as it was decided.
 
 Supersedes ADR-0009's matrix for Experiments 2 and 3 only. ADR-0008 remains
 open.
+
+Revised 2026-10-23, before any Experiment 2 run: with memory turned off in the
+app, Experiment 2's app columns changed from Temporary Chat and regular chat
+with memory (both GPT-6) to GPT-6.1 Sol in work mode and GPT-6 in regular chat,
+both with memory off and my instructions for Sunny on.

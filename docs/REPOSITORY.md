@@ -337,8 +337,9 @@ It carries both calls' prompts in full, so a change to either is a new record.
 katakam shares Barnett's journal; ADR-0009's matrix is unchanged.
 
 `0015` turns Phase 1 into three experiments, one per article: Barnett's six
-runs as Experiment 1, kanbur comparing the API against the ChatGPT app with
-and without memory on the PDF alone, and lei designed after that. Astra low is
+runs as Experiment 1, kanbur comparing the API against the ChatGPT app — in
+work mode with the same model and in regular chat — on the PDF alone, and lei
+designed after that. Astra low is
 dropped, and the text arm waits for Experiment 3, leaving ADR-0008 open.
 
 **Why, given that this file already explains most of them.** The two documents

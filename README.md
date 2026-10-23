@@ -217,23 +217,26 @@ readings of about the same quality, while the prepared text needed manual
 fixes and, on the next article, lost every figure.
 
 **Experiment 2 — kanbur.** The PDF only, and a new question: does the API add
-anything over the ChatGPT app I already use? The same two prompts are run
-three ways, at two reasoning efforts, for six runs:
+anything over the ChatGPT app I already use, set up with my instructions for
+Sunny, the persona I work with? The same two prompts are run three ways, at
+two reasoning efforts, for six runs:
 
-| | API, GPT-6.1 Sol | App, GPT-6, Temporary Chat | App, GPT-6, regular chat with memory |
+| | API, GPT-6.1 Sol | App, GPT-6.1 Sol, work mode | App, GPT-6, regular chat |
 | --- | --- | --- | --- |
 | **Medium effort** | 1 | 1 | 1 |
 | **High effort** | 1 | 1 | 1 |
+
+In the app, memory is off and my instructions for Sunny are on. The API and
+work mode run the same model, so their comparison shows whether the app with
+Sunny reads and judges the article as well as the API, or better. Work mode
+against regular chat shows whether the more playful regular chat does
+differently, though the two modes also run different models.
 
 The app runs are done by hand, with one addition the app needs: since it
 cannot enforce the output schema, call 1 asks for JSON in that shape. If the
 app reads as well, the API's value is what surrounds the model: enforced
 structure, run records with exact usage and cost, the same settings every
-time, and analyzing a collection without pasting it article by article. The
-comparison has a limit I will keep in view: the API runs use GPT-6.1 Sol and the
-app offers GPT-6, so a difference between them may come from the model rather
-than the app. Temporary Chat against regular chat has no such confound; only
-memory differs.
+time, and analyzing a collection without pasting it article by article.
 
 **Experiment 3 — lei.** Designed once Experiment 2 is in. Lei, at 60 pages, is
 where the input method matters most for cost, so it is the likely place to
