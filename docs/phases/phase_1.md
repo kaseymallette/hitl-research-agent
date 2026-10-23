@@ -1218,3 +1218,51 @@ The evaluation design and the experiments would then follow as their own section
 **Prompt:** Yes, this matches what I'm thinking about for the design. Please execute the changes proposed.
 
 **Response:** ADR-0015, docs/PROMPTS.md with a sync test, and the new README Design and A/B experiments sections are written. BUILD_PLAN, DESIGN, REPOSITORY and the ADR index match, and all 91 tests pass.
+
+## 58. Three components to single source analysis 
+
+**Prompt:** Okay, here's what I'm thinking. This might be ADR-0016. What if we give single source analysis three parts: (a) comprehension (close reading) (b) critique (argument evaluation) (c) integration (within-source synthesis)?
+
+**Response:** I like it. The names fit what each part does, and (c) fills a gap your notes keep pointing at. Before writing ADR-0016, I want to make sure I understand what you mean by integration, since it could be a few different things.
+
+What I think (c) could be. It would take the close reading and the critique and pull them into one account of the paper. 
+
+Questions that would shape the ADR:
+
+Who is (c) for? Is it mainly your entry point to a paper, the thing you read before the article, or a record for the collection that later synthesis builds on? It could be both, but the answer changes what it emphasizes.
+Does (c) read the article again, or only (a) and (b)? Working only from the two readings is cheaper and keeps it honestly "integration." But anything (a) missed, (c) can't recover.
+Does it include a glossary of terms? Your kanbur experience suggests yes for unfamiliar fields. That's a choice about what the system is for.
+
+Two boundaries it would need to respect:
+
+Still no research question. Like (a) and (b), integration stays question-independent (ADR-0006), so a paper's integration doesn't tilt toward what you're looking for.
+Distinct from Phase 4 synthesis. That compares across papers; this works within one. Calling it "within-source synthesis," as you did, keeps the line clear.
+
+## 59. Integrate close reading and argument evaluation 
+
+**Prompt:** C should read A and B. Remember when you tried to create the Markdown from the json, and I felt it was messing up the evaluation of the faithfulness of the argument? What if C is the markdown and integrates A and B? We can judge A on it's faithfulness, B on it's ability to argue and C on it's ability to integrate two different epistemic tasks.
+
+**Response:** Yes, I remember: you questioned asking the app for Markdown when the system uses JSON. This design answers that cleanly. Each part has one job and is judged on one thing:
+
+| Part | Reads | Produces | Judged on |
+| --- | --- | --- | --- |
+| **(a) Comprehension**, the close reading | the article | structured JSON | faithfulness to the article |
+| **(b) Critique**, the argument evaluation | the article + (a) | prose | quality of its reasoning |
+| **(c) Integration** | (a) + (b) only | a readable Markdown document | how well it brings two different kinds of reading together |
+
+The structured JSON stays where checking needs structure, and the readable document becomes its own product. It doesn't get mixed into the parts being checked for faithfulness.
+
+**What reading only (a) and (b) gives you:** everything in (c) should trace back to one or the other. That makes integration checkable in its own right:
+- **Carried accurately:** (a)'s claims and figures arrive in (c) unchanged.
+- **Voices kept apart:** what the author says and what the critique judges stay distinguishable in the prose, even without JSON fields to separate them.
+- **Nothing new:** no claim appears that isn't in (a) or (b).
+- **Real integration:** where the critique questions a claim, (c) brings the two together, for example the payback figure next to the doubt about scale, instead of listing them separately.
+
+**A practical benefit:** since (c) reads only stored outputs, it doesn't hold anything up. Experiment 2 can run (a) and (b) as designed, and (c) can be run afterward on every saved pair, including Barnett's six ADR-0013 runs, without rerunning anything. It's also cheap: no article in the input, just the two readings and one document out.
+
+**What ADR-0016 needs, besides the decision:**
+- **The (c) prompt.** Like the other two, I'd rather draft it *with* you, in the inviting voice you set. It needs to say what integration means, how to keep the author's voice and the critique's voice apart in prose, and what the document is for (your entry point to the paper).
+- **Where it's saved:** `integration.md` in each run's folder.
+- **For the app runs:** does (c) run in the app too, or through the API on the app's (a) and (b)?
+
+**Pending decisions:** Should I draft ADR-0016 and a first version of the (c) prompt for you to shape?
