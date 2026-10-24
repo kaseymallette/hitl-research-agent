@@ -1,0 +1,120 @@
+{
+  "slug": "kanbur_et_al_2020_desalination_integrated_data_center_cooling",
+  "config": "pdf__gpt-6.1-sol-high",
+  "input_method": "pdf",
+  "input_mode": "pdf",
+  "crops_sent": null,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "max_output_tokens": null,
+  "openai_max_retries": 0,
+  "system_prompt_sha256": "0e3b6c9966a84912b47150ddd281b956662360e03ebcf5f7037745ea799e4ad9",
+  "input_mode_instructions_sha256": "db1e74480a2f36e3b91dc2f075038705c7739f15a0d2b67243f642b04d374692",
+  "output_schema_sha256": "562a68a7827aa045698585636d5b042edf5d354f8b5038738a2bf5eab5cc4046",
+  "evaluation_prompt_sha256": "e662aa71e4ee3dd82d96e936e9804c5370977c6f1db50ca225c379b520409f83",
+  "evaluation_schema_sha256": "3260d2771db638022efbf52f89e360cc41bc1930a6de948285d2f388e624cc00",
+  "git_commit": "948548377c6b0d62705d900c2839e8c7a14e2f43",
+  "code_uncommitted_changes": false,
+  "model_inputs": [
+    {
+      "kind": "pdf",
+      "path": "data/research/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf",
+      "mime_type": "application/pdf",
+      "sha256": "7b3304a2883b7aa450ff9a8342394126e9405117b844d0aa5c472a91c5e16f62",
+      "byte_size": 2084602,
+      "page": null,
+      "gap_id": null,
+      "label": null
+    }
+  ],
+  "started_at": "2026-10-24T10:38:17.837651+00:00",
+  "elapsed_seconds": 362.209,
+  "outcome": "analysis returned",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_05c738dd11cdb760006adc8a9b0e8887d090e4f6c7a61aaaa6",
+      "elapsed_seconds": 362.091313,
+      "usage": {
+        "input_tokens": 72234,
+        "output_tokens": 25545,
+        "reasoning_tokens": 1988,
+        "cached_input_tokens": 0,
+        "cache_creation_input_tokens": 72231
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 72234,
+    "output_tokens": 25545,
+    "reasoning_tokens": 1988,
+    "cached_input_tokens": 0
+  },
+  "calculated_cost": {
+    "model": "gpt-6.1-sol",
+    "input_tokens": 72234,
+    "cached_input_tokens": 0,
+    "output_tokens": 25545,
+    "input_usd": 0.144468,
+    "cached_input_usd": 0.0,
+    "output_usd": 0.25545,
+    "total_usd": 0.399918,
+    "rates_usd_per_mtok": {
+      "input": 2.0,
+      "output": 10.0,
+      "cached_input": 0.1
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  },
+  "analysis_scope": "The model received the original source PDF, so nothing was withheld from it. Content it reports from a figure, table, or equation was read from a page image and is unverified until a human checks it against that page.",
+  "argument_evaluation": {
+    "outcome": "evaluation returned",
+    "started_at": "2026-10-24T10:44:20.058017+00:00",
+    "elapsed_seconds": 147.865,
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "outcome": "valid",
+        "request_id": "resp_074ee46d5556b33b006adc8c053d8487d0ad091b5a01736765",
+        "elapsed_seconds": 147.83833,
+        "usage": {
+          "input_tokens": 94366,
+          "output_tokens": 5449,
+          "reasoning_tokens": 3624,
+          "cached_input_tokens": 0,
+          "cache_creation_input_tokens": 94363
+        },
+        "problems": [],
+        "error": null
+      }
+    ],
+    "usage": {
+      "input_tokens": 94366,
+      "output_tokens": 5449,
+      "reasoning_tokens": 3624,
+      "cached_input_tokens": 0
+    },
+    "calculated_cost": {
+      "model": "gpt-6.1-sol",
+      "input_tokens": 94366,
+      "cached_input_tokens": 0,
+      "output_tokens": 5449,
+      "input_usd": 0.188732,
+      "cached_input_usd": 0.0,
+      "output_usd": 0.05449,
+      "total_usd": 0.243222,
+      "rates_usd_per_mtok": {
+        "input": 2.0,
+        "output": 10.0,
+        "cached_input": 0.1
+      },
+      "rate_source": "OpenAI model pages, read 2026-10-15",
+      "note": "calculated from reported usage; not confirmed billing"
+    }
+  },
+  "total_calculated_cost_usd": 0.64314
+}

@@ -1,0 +1,51 @@
+{
+  "slug": "kanbur_et_al_2020_desalination_integrated_data_center_cooling",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "primer_prompt_sha256": "41b32491dd485fbd0384082a7dc5a24f3cc83a15455f6e03a2b0d852632e2e0a",
+  "git_commit": "948548377c6b0d62705d900c2839e8c7a14e2f43",
+  "code_uncommitted_changes": false,
+  "started_at": "2026-10-24T10:36:52.073368+00:00",
+  "elapsed_seconds": 82.833,
+  "outcome": "primer returned",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "outcome": "valid",
+      "request_id": "resp_0eac7832ff1fe4cd006adc8a45370887d0accb75645ec6b509",
+      "elapsed_seconds": 82.732612,
+      "usage": {
+        "input_tokens": 70587,
+        "output_tokens": 3080,
+        "reasoning_tokens": 861,
+        "cached_input_tokens": 0,
+        "cache_creation_input_tokens": 70584
+      },
+      "problems": [],
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 70587,
+    "output_tokens": 3080,
+    "reasoning_tokens": 861,
+    "cached_input_tokens": 0
+  },
+  "calculated_cost": {
+    "model": "gpt-6.1-sol",
+    "input_tokens": 70587,
+    "cached_input_tokens": 0,
+    "output_tokens": 3080,
+    "input_usd": 0.141174,
+    "cached_input_usd": 0.0,
+    "output_usd": 0.0308,
+    "total_usd": 0.171974,
+    "rates_usd_per_mtok": {
+      "input": 2.0,
+      "output": 10.0,
+      "cached_input": 0.1
+    },
+    "rate_source": "OpenAI model pages, read 2026-10-15",
+    "note": "calculated from reported usage; not confirmed billing"
+  }
+}
