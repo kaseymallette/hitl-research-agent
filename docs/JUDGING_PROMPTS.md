@@ -39,7 +39,6 @@ judgments/                       empty to start
 4. Evaluation, first run (run A)
 5. Evaluation, each further run (once per run: B, C, …)
 6. Evaluations, head to head
-7. Primers, only where runs have them
 
 For two runs that's six sessions: 1, 2 for B, 3, 4, 5 for B, and 6. Run each
 in a new chat, so no session carries another's context. Sessions 1 and 4 must
@@ -68,8 +67,8 @@ use your list as written, so take care that it's complete.
 Then open runs/A/analysis.json and judge it against the article and your
 list on A1–A5. Write the judgment to judgments/close_reading_A.md.
 
-Please open only these files. Don't read any argument evaluation, primer, or
-other run.
+Please open only these files. Don't read any argument evaluation or other
+run.
 ```
 
 ## 2. Close reading, each further run
@@ -87,7 +86,7 @@ Then open runs/<RUN>/analysis.json and judge it against the article and the
 list on A1–A5. Write the judgment to judgments/close_reading_<RUN>.md.
 
 Please open only these files. Don't read any other judgment, argument
-evaluation, primer, or run.
+evaluation, or run.
 ```
 
 ## 3. Close readings, head to head
@@ -105,8 +104,8 @@ Compare them as the rubric's "Comparing head to head" describes, using A1–A5
 as the grounds, and write the comparison to
 judgments/close_reading_head_to_head.md.
 
-Please don't read the other judgments in judgments/, any argument
-evaluation, or any primer. Your ranking should be your own.
+Please don't read the other judgments in judgments/ or any argument
+evaluation. Your ranking should be your own.
 ```
 
 ## 4. Evaluation, first run
@@ -126,8 +125,8 @@ Then open run A's argument evaluation in runs/A/ and judge it against the
 article and your list on B1–B6. Write the judgment to
 judgments/evaluation_A.md.
 
-Please open only these files. Don't read any close reading, primer, other
-judgment, or other run.
+Please open only these files. Don't read any close reading, other judgment,
+or other run.
 ```
 
 ## 5. Evaluation, each further run
@@ -147,7 +146,7 @@ the article and the list on B1–B6. Write the judgment to
 judgments/evaluation_<RUN>.md.
 
 Please open only these files. Don't read any other judgment, close reading,
-primer, or run.
+or run.
 ```
 
 ## 6. Evaluations, head to head
@@ -166,20 +165,6 @@ Compare them as the rubric's "Comparing head to head" describes, using B1–B6
 as the grounds, and write the comparison to
 judgments/evaluation_head_to_head.md.
 
-Please don't read the other judgments in judgments/, any close reading, or
-any primer. Your ranking should be your own.
-```
-
-## 7. Primers
-
-```
-Hi! You're judging primers: background on an academic article's field,
-written for a reader new to it, to read before the article. Please start by
-reading RUBRIC.md, which explains the setup and the criteria.
-
-Read article.pdf, then the primer.md in each folder under runs/ that has one.
-Judge each on P, then rank them with reasons, and write it all to
-judgments/primers.md.
-
-Please don't read any close reading, argument evaluation, or judgment.
+Please don't read the other judgments in judgments/ or any close reading.
+Your ranking should be your own.
 ```
