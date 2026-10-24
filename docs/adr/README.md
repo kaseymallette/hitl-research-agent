@@ -94,5 +94,6 @@ without a record.
 | [0017](0017-experiment-2-api-against-the-app-with-the-primer.md) | Experiment 2: the API against the app on GPT-6.1 Sol, with the primer | 2026-10-24 | Accepted |
 | [0018](0018-three-agents-analysis-synthesis-research-assistant.md) | Three agents: single-source analysis, synthesis, and a research assistant | 2026-10-24 | Accepted |
 | [0019](0019-four-phases-head-to-head-evaluation.md) | Four phases, two experiment articles, and a head-to-head evaluation | 2026-10-24 | Accepted |
+| [0020](0020-codex-joins-experiment-2.md) | Codex joins Experiment 2 as a third way of running the prompts | 2026-10-24 | Accepted |
 
 New records start from [template.md](template.md).

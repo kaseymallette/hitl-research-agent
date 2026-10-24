@@ -94,3 +94,5 @@ ADR-0015's Experiments 1 and 3 stand.
 
 The app runs skip the primer: only the API runs write one, so primers are not
 compared between the API and the app.
+
+ADR-0020 adds a third column, Codex, to this design.

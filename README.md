@@ -235,22 +235,26 @@ reading the article better that I could see. The two input methods produced
 readings of about the same quality, while the prepared text needed manual
 fixes and, on the next article, lost every figure.
 
-**Experiment 2 — kanbur (complete).** The PDF only, and a new question: does the API add
+**Experiment 2 — kanbur.** The PDF only, and a new question: does the API add
 anything over the ChatGPT app I already use, set up with my instructions for
-Sunny, the persona I work with? The same prompts run on the same model, GPT-6.1
-Sol, through the API and through the app in work mode, at two reasoning
-efforts, for four runs
-([ADR-0017](docs/adr/0017-experiment-2-api-against-the-app-with-the-primer.md)):
+Sunny, the persona I work with — or over Codex, the coding agent I build this
+project with? The same prompts run on the same model, GPT-6.1 Sol, three ways,
+at two reasoning efforts, for six runs
+([ADR-0017](docs/adr/0017-experiment-2-api-against-the-app-with-the-primer.md),
+[ADR-0020](docs/adr/0020-codex-joins-experiment-2.md)):
 
-| | API, GPT-6.1 Sol | App, GPT-6.1 Sol, work mode |
-| --- | --- | --- |
-| **Medium effort** | 1 | 1 |
-| **High effort** | 1 | 1 |
+| | API | App, work mode | Codex |
+| --- | --- | --- | --- |
+| **Medium effort** | 1 | 1 | 1 |
+| **High effort** | 1 | 1 | 1 |
 
-Each run makes all three calls: the primer, the close reading, and the
-argument evaluation. In the app, memory is off and my instructions for Sunny
-are on. With the same model on both sides, a difference between the API and
-the app comes from the app itself.
+Each run makes the close reading and the argument evaluation, and the API runs
+also write the primer. In the app, memory is off and my instructions for Sunny
+are on. With the same model throughout, a difference between them comes from
+how the prompts are run. Codex reads its instructions from
+[`prompts/`](prompts) and writes its own output, and says how it read the PDF:
+a coding agent may extract its text rather than view its pages, which would
+make its run closer to the prepared-text method than to the PDF.
 
 I started my notes on kanbur and stopped after three sections: the paper is
 written for specialists, and without background I was recording mostly what I
@@ -309,12 +313,12 @@ What has been difficult about working this way:
 | --- | --- |
 | **Working now** | single source analysis as two calls — the close reading and the argument evaluation — running end to end with run records, the primer, and PDF preparation into cleaned text and crops |
 | **Designed, not yet built** | the head-to-head evaluation, synthesis with its claims store and retrieval, and the research assistant's guided questions |
-| **Next** | Phase 2's head-to-head evaluation, which decides how the collection is analyzed |
+| **Next** | Experiment 2's Codex runs, then Phase 2's head-to-head evaluation, which decides how the collection is analyzed |
 
 | Phase | What it does |
 | --- | --- |
 | 0 | **Review and redesign**: audit the earlier code and restructure the repository and documentation around these phases *(complete)* |
-| 1 | **A/B testing**: two experiments — Barnett comparing models and input methods, kanbur comparing the API against the ChatGPT app *(complete)* |
+| 1 | **A/B testing**: two experiments — Barnett comparing models and input methods, kanbur comparing the API against the ChatGPT app and Codex *(Codex runs left)* |
 | 2 | **Evaluation**: a head-to-head judgment of both experiments by Claude, checked by me, and the choice of model, effort, input method, and API or app |
 | 3 | **Synthesis**: analyze the rest of the collection and accept each analysis; a claims store from the close readings; synthesis across sources; and retrieval on the same store |
 | 4 | **Research assistant**: the primer and guided questions about the article |
@@ -342,6 +346,7 @@ simplifies, or removes.
 │   ├── inputs.py                     attachment loading and validation; annotations
 │   ├── cost.py                       per-model rates; cost from reported usage
 │   └── config.py                     Settings: key, model, effort, limits
+├── prompts/                          close-reading and evaluation instructions for an agent run
 ├── scripts/
 │   ├── run_analysis.py               one A/B cell -> analysis, argument evaluation, run record
 │   ├── write_primer.py               an article -> a primer on its field, to read first
@@ -361,7 +366,7 @@ simplifies, or removes.
 │   ├── PROMPTS.md                    the two analysis prompts, as the code sends them
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── adr/0001-0019.md              one record per architectural decision
+│   ├── adr/0001-0020.md              one record per architectural decision
 │   ├── phases/phase_1-4.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── CLAUDE.md                         what Claude Code loads in every session

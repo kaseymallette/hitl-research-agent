@@ -152,6 +152,15 @@ Your previous analysis was invalid for the following reason(s):
 Return a corrected, complete analysis that fixes every issue above.
 ```
 
+## Running the prompts with an agent
+
+[`prompts/`](../prompts) holds the close reading and the argument evaluation as
+instruction files an agent such as Codex can follow: the same prompt text,
+with the source header to fill from `sources.yaml`, the JSON format for the
+close reading, and where to write each output and a note on how the PDF was
+read ([ADR-0020](adr/0020-codex-joins-experiment-2.md)). A test keeps their
+prompt text identical to the code's.
+
 ## Running the prompts in the ChatGPT app
 
 For Experiment 2 ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)),

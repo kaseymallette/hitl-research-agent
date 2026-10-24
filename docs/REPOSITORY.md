@@ -140,6 +140,19 @@ a change to two of these fields, which is why they are configuration.
 
 ---
 
+## `prompts/`
+
+`close-reading.md` and `evaluate-argument.md`: the two analysis calls as
+instruction files for an agent such as Codex, which reads the article and
+writes its own output ([ADR-0020](adr/0020-codex-joins-experiment-2.md)).
+Each holds the prompt the API sends, word for word, with the source header to
+fill from `sources.yaml`, the close reading's JSON format, where to write, and
+a request to note in `run_note.md` how the PDF was read. They exist so an agent
+run needs no pasting; `tests/test_prompts_doc.py` keeps their prompt text
+identical to `prompts.py`.
+
+---
+
 ## `scripts/`
 
 Not installed, not shipped, not type-checked (`mypy src` covers `src/` only).
@@ -224,7 +237,7 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 94 tests
+## `tests/` — 95 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
@@ -234,7 +247,7 @@ keeping. If it loses, most of these 793 lines go.
 | `test_models.py` | 14 | Application-owned fields rejected from model content, a required verbatim/paraphrased form, an asserted claim standing without support, no attribution labels on the close reading, the evaluation schema holding only the model's judgment, a reading step with no claim, the reading plan first and required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
 | `test_run_analysis.py` | 15 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun, both documents written, a failed evaluation keeping the close reading |
-| `test_prompts_doc.py` | 1 | `docs/PROMPTS.md` holds every prompt exactly as the code sends it |
+| `test_prompts_doc.py` | 2 | `docs/PROMPTS.md` holds every prompt exactly as the code sends it, and the agent files in `prompts/` carry the same prompt text |
 | `test_write_primer.py` | 2 | The primer script, offline: a labelled primer with its cost, and a failure that leaves a record and no primer |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file
@@ -308,9 +321,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 21 files
+### `adr/` — 22 files
 
-One architectural decision per record: `0001`–`0019`, plus `template.md` for
+One architectural decision per record: `0001`–`0020`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -374,6 +387,9 @@ research question.
 `0019` simplifies the plan to four phases after Phase 0 — A/B testing on two
 articles, a head-to-head evaluation by Claude, synthesis with the collection
 and retrieval, and the research assistant — and moves lei to the collection.
+
+`0020` adds Codex to Experiment 2 as a third way of running the prompts,
+from the instruction files in `prompts/`, recording how it read the PDF.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

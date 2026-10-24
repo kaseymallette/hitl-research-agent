@@ -123,15 +123,16 @@ and cost together.
 
 ### Three experiments
 
-**Phase 1 is complete.** It ran as two experiments, one per article, the
-second designed around what the first left open
+**Phase 1 is complete apart from Experiment 2's Codex runs**
+([ADR-0020](adr/0020-codex-joins-experiment-2.md)). It ran as two experiments,
+one per article, the second designed around what the first left open
 ([ADR-0015](adr/0015-phase-1-as-three-experiments.md),
 [ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)).
 
 | Experiment | Article | Design | Runs |
 | --- | --- | --- | --- |
 | 1 | Barnett | 3 model configurations × 2 input methods | 6, complete |
-| 2 | kanbur | PDF only: 2 efforts (medium, high) × 2 ways of running GPT-6.1 Sol (the API; the ChatGPT app in work mode, memory off, my instructions for Sunny on); the API runs also write the primer ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)) | 4, complete |
+| 2 | kanbur | PDF only: 2 efforts (medium, high) × 2 ways of running GPT-6.1 Sol (the API; the ChatGPT app in work mode, memory off, my instructions for Sunny on); the API runs also write the primer ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)); and Codex, from the instruction files in `prompts/` ([ADR-0020](adr/0020-codex-joins-experiment-2.md)) | 6, Codex's two left |
 
 Astra low is dropped after Experiment 1, and prepared text sits out
 Experiment 2. There is no Experiment 3: lei is analyzed with the rest of the
