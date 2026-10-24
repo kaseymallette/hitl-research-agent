@@ -252,9 +252,11 @@ Each run makes the close reading and the argument evaluation, and the API runs
 also write the primer. In the app, memory is off and my instructions for Sunny
 are on. With the same model throughout, a difference between them comes from
 how the prompts are run. Codex reads its instructions from
-[`prompts/`](prompts) and writes its own output, and says how it read the PDF:
-a coding agent may extract its text rather than view its pages, which would
-make its run closer to the prepared-text method than to the PDF.
+[`prompts/`](prompts) and writes its own output, and says how it read the PDF.
+A coding agent might have extracted the text alone, which would have made its
+runs closer to the prepared-text method; instead, in every session it
+extracted the text and also viewed the pages as images, so it saw the figures,
+tables, and equations as printed, as the API and the app do.
 
 I started my notes on kanbur and stopped after three sections: the paper is
 written for specialists, and without background I was recording mostly what I
@@ -274,7 +276,10 @@ the collection, and the question of the PDF against prepared text is settled
 in Phase 2 from Barnett, where both ran.
 
 For every run I record what the API reports: token usage, calculated cost, and
-runtime. The app reports none of these. Phase 2 compares the runs head to head
+runtime. The app reports none of these. Codex, on my ChatGPT Pro plan, reports
+no tokens either, only a weekly limit: its four sessions took about 7 to 8
+minutes per close reading and 3 per evaluation, and used about 1% of the week.
+Phase 2 compares the runs head to head
 for faithful representation of the article and the quality of their
 judgments about its argument.
 
