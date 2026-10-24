@@ -225,15 +225,9 @@ EVALUATION_INPUT_NOTES: dict[InputMode, str] = {
 }
 
 
-def build_evaluation_messages(
-    source: SourceDocument,
-    close_reading: ExtractedAnalysis,
-    *,
-    input_mode: InputMode,
-    attachments: Sequence[LoadedAttachment] = (),
-) -> list[BaseMessage]:
-    """The evaluation prompt plus one human message carrying the article, in
-    the same input mode as the close reading, and the close reading itself."""
+def _article_sections(source: SourceDocument, input_mode: InputMode) -> list[str]:
+    """The source's details, how the article is supplied, and the article itself
+    when it is sent as text: the opening of the evaluation and primer messages."""
     provenance = source.provenance
     header = [
         f"Source title: {provenance.source_title}",
@@ -246,14 +240,73 @@ def build_evaluation_messages(
     sections = ["\n".join(header), EVALUATION_INPUT_NOTES[input_mode]]
     if input_mode != "pdf":
         sections.append(source.text)
-    sections.append("Close reading of this article:\n" + close_reading.model_dump_json(indent=2))
-    framing = "\n\n".join(sections)
+    return sections
+
+
+def _with_attachments(
+    system_prompt: str, framing: str, attachments: Sequence[LoadedAttachment]
+) -> list[BaseMessage]:
     if not attachments:
-        return [SystemMessage(EVALUATION_PROMPT), HumanMessage(framing)]
+        return [SystemMessage(system_prompt), HumanMessage(framing)]
     content: list[str | dict[Any, Any]] = [{"type": "text", "text": framing}]
     for attachment in attachments:
         content.extend(attachment.content_blocks())
-    return [SystemMessage(EVALUATION_PROMPT), HumanMessage(content=content)]
+    return [SystemMessage(system_prompt), HumanMessage(content=content)]
+
+
+def build_evaluation_messages(
+    source: SourceDocument,
+    close_reading: ExtractedAnalysis,
+    *,
+    input_mode: InputMode,
+    attachments: Sequence[LoadedAttachment] = (),
+) -> list[BaseMessage]:
+    """The evaluation prompt plus one human message carrying the article, in
+    the same input mode as the close reading, and the close reading itself."""
+    sections = _article_sections(source, input_mode)
+    sections.append("Close reading of this article:\n" + close_reading.model_dump_json(indent=2))
+    return _with_attachments(EVALUATION_PROMPT, "\n\n".join(sections), attachments)
+
+
+# A reading aid run apart from the analysis: background on the article's field
+# for the researcher, never given to the close reading or the evaluation
+# (ADR-0016).
+
+PRIMER_PROMPT = """\
+Before we read this article closely, we'd like your help getting our \
+bearings. Picture a reader who is curious and capable but new to this field. \
+They'll read the article next, and they want to understand what it's talking \
+about when they get there.
+
+Explain the concepts and terms the article relies on without stopping to \
+explain them: what each means in plain language, and why it matters for a \
+paper like this.
+
+Help the reader know what to compare the numbers against. Say what the units \
+measure, and what typical or reference values look like in this field, so a \
+figure like an efficiency, a cost, or a scale can be read as high, low, or \
+ordinary. Where you aren't sure what's typical, say so.
+
+Place the article in its field: what kind of work it is, the problem it \
+belongs to, and the main approaches it builds on or competes with.
+
+This is background, not a summary or a verdict. Leave the article's own \
+argument for the reader to meet, and don't judge whether it's right. Because \
+this draws on your general knowledge rather than the article itself, write it \
+as your own explanation, the way you'd brief a colleague before a meeting. A \
+page or two is plenty."""
+
+
+def build_primer_messages(
+    source: SourceDocument,
+    *,
+    input_mode: InputMode,
+    attachments: Sequence[LoadedAttachment] = (),
+) -> list[BaseMessage]:
+    """The primer prompt plus one human message carrying the article."""
+    return _with_attachments(
+        PRIMER_PROMPT, "\n\n".join(_article_sections(source, input_mode)), attachments
+    )
 
 
 def build_correction_messages(

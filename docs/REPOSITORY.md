@@ -30,7 +30,7 @@ The importable package. The directory name is the import name; the `src/`
 wrapper means the package can only be imported through the editable install,
 not from the working directory, so tests exercise what would ship.
 
-### `models.py` (304 lines)
+### `models.py` (311 lines)
 
 Every research type, in one module, in two layers:
 
@@ -44,6 +44,9 @@ Every research type, in one module, in two layers:
   the model's own judgment of the argument. **`SourceArgumentEvaluation`** wraps
   it with its own `id`, the `analysis_id` of the close reading it was given,
   `provenance`, and `evaluated_at` ([ADR-0012](adr/0012-close-reading-and-argument-evaluation-are-two-calls.md)).
+- **`Primer`** is the schema for the primer: one prose field of background on
+  the article's field, outside the analysis
+  ([ADR-0016](adr/0016-a-primer-before-the-reading.md)).
 
 Inside the model's content: `ReadingStep` (location, the author's moves in the
 terms of argument, the claims stated there, and what the step means given what
@@ -69,7 +72,7 @@ to strip UUIDs the model must not supply; those UUIDs were never read anywhere,
 so dropping them removed both duplicate classes and the 40-line function that
 copied between them.
 
-### `analysis.py` (522 lines)
+### `analysis.py` (576 lines)
 
 `analyze_source()`: build the messages, call the model, accept one correction
 attempt if the output does not fit the schema, return an `AnalysisResult`.
@@ -96,7 +99,7 @@ Six exception classes became one with a `kind` field — nothing ever caught the
 subclasses individually. The response-metadata allowlist and its JSON-safety
 helpers went: they recorded fields nobody read.
 
-### `prompts.py` (268 lines)
+### `prompts.py` (321 lines)
 
 `SYSTEM_PROMPT` — the close-reading instructions, written as an invitation to
 read the document step by step as a first-time reader — plus the per-input-mode
@@ -187,6 +190,18 @@ uv run python scripts/run_analysis.py --slug <slug> --input text_crops \
 
 Replaces `analyze_pdf.py`, which handled only the PDF arm and recorded no cost.
 
+### `write_primer.py` (128 lines)
+
+Writes a primer for one article on request: background on its field — the
+concepts and terms it relies on, what its numbers are measured against, where
+it sits among other approaches — for me to read before the article
+([ADR-0016](adr/0016-a-primer-before-the-reading.md)). It sends the PDF with
+`PRIMER_PROMPT` through `write_primer()` in `analysis.py`, and writes
+`outputs/primers/<slug>/primer.md`, labelled as the model's general knowledge
+and unchecked, with `primer_record.json` for usage and cost. It reuses the
+runner's manifest, cost, and record helpers. Nothing it writes reaches the
+analysis.
+
 ### `prepare_sources.py` (793 lines)
 
 PDF → cleaned text (`prepared_text.txt`), element crops, page images, and a
@@ -209,17 +224,18 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 91 tests
+## `tests/` — 94 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
 | `preparation/test_prepare.py` | 27 | PDF extraction: reading order, hyphen joining, header removal, annotation placement, crop retention |
-| `test_analysis.py` | 18 | The call path: the correction attempt, each run-stopping failure, attempt records, usage arithmetic, attachments resent on correction, and the evaluation call's own prompt and inputs |
+| `test_analysis.py` | 19 | The call path: the correction attempt, each run-stopping failure, attempt records, usage arithmetic, attachments resent on correction, and the evaluation and primer calls' own prompts and inputs |
 | `test_inputs.py` | 11 | Per-mode attachment validation, that every mode sends the same analysis prompt, byte-exact hashing |
 | `test_models.py` | 14 | Application-owned fields rejected from model content, a required verbatim/paraphrased form, an asserted claim standing without support, no attribution labels on the close reading, the evaluation schema holding only the model's judgment, a reading step with no claim, the reading plan first and required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
 | `test_run_analysis.py` | 15 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun, both documents written, a failed evaluation keeping the close reading |
 | `test_prompts_doc.py` | 1 | `docs/PROMPTS.md` holds every prompt exactly as the code sends it |
+| `test_write_primer.py` | 2 | The primer script, offline: a labelled primer with its cost, and a failure that leaves a record and no primer |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file
 path, since `scripts/` is not importable, and `preparation/pdf_fixtures.py`
@@ -292,9 +308,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 17 files
+### `adr/` — 18 files
 
-One architectural decision per record: `0001`–`0015`, plus `template.md` for
+One architectural decision per record: `0001`–`0016`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -341,6 +357,10 @@ runs as Experiment 1, kanbur comparing the API against the ChatGPT app — in
 work mode with the same model and in regular chat — on the PDF alone, and lei
 designed after that. Astra low is
 dropped, and the text arm waits for Experiment 3, leaving ADR-0008 open.
+
+`0016` adds a primer: background on an article's field, written on request for
+me to read before the article, separate from the analysis and never given to
+it.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

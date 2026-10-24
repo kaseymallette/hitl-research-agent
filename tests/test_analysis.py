@@ -13,7 +13,12 @@ from typing import Any
 import pytest
 from langchain_core.messages import AIMessage, BaseMessage
 
-from hitl_research_agent.analysis import AnalysisError, analyze_source, evaluate_argument
+from hitl_research_agent.analysis import (
+    AnalysisError,
+    analyze_source,
+    evaluate_argument,
+    write_primer,
+)
 from hitl_research_agent.config import Settings
 from hitl_research_agent.inputs import format_annotation, load_attachment
 from hitl_research_agent.models import (
@@ -24,12 +29,13 @@ from hitl_research_agent.models import (
     Claim,
     ExtractedAnalysis,
     PreparationGap,
+    Primer,
     Provenance,
     ReadingStep,
     SourceDocument,
     Support,
 )
-from hitl_research_agent.prompts import EVALUATION_PROMPT, SYSTEM_PROMPT
+from hitl_research_agent.prompts import EVALUATION_PROMPT, PRIMER_PROMPT, SYSTEM_PROMPT
 
 PROVENANCE = Provenance(
     source_title="A Paper",
@@ -81,7 +87,7 @@ def _content(claim_text: str = "Cooling drives water use.") -> ExtractedAnalysis
 
 
 def _response(
-    parsed: ExtractedAnalysis | ArgumentEvaluation | None,
+    parsed: ExtractedAnalysis | ArgumentEvaluation | Primer | None,
     *,
     input_tokens: int = 100,
     output_tokens: int = 50,
@@ -392,3 +398,24 @@ def test_an_evaluation_that_stays_invalid_raises_with_both_attempts() -> None:
     assert raised.value.kind == "invalid_after_correction"
     assert [a.outcome for a in raised.value.attempts] == ["parse_error", "parse_error"]
     assert (raised.value.input_tokens, raised.value.output_tokens) == (200, 100)
+
+
+# --------------------------------------------------------------------------- the primer
+
+
+def test_the_primer_sends_its_own_prompt_and_the_article_and_nothing_from_the_analysis() -> None:
+    """The primer is background for the researcher, run apart from the
+    analysis: no close reading goes into it, and its prompt is its own."""
+    model = FakeModel([_response(Primer(primer="Exergy is the useful part of energy."))])
+    result = write_primer(
+        _source(text="Body text of the article."),
+        model=model,
+        settings=_settings(),
+        clock=_clock(),
+        input_mode="prepared_text",
+    )
+    assert result.primer.primer == "Exergy is the useful part of energy."
+    system, human = model.calls[0]
+    assert system.content == PRIMER_PROMPT
+    assert "Body text of the article." in str(human.content)
+    assert "Close reading" not in str(human.content)

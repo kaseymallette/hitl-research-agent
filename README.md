@@ -163,6 +163,21 @@ notes against each step without deciding how to organize them; nothing in the
 split names a move or says what a step means. The notes are in
 [`data/research/ab_testing/notes/`](data/research/ab_testing/notes).
 
+### A primer before the reading
+
+Some articles are written for specialists and explain nothing their field
+takes for granted. Reading kanbur, I could record its numbers but not tell
+whether they were good, bad, or ordinary. So on request the system writes a
+primer: the concepts and terms an article relies on, what its numbers are
+measured against, and where it sits in its field, for me to read before the
+article ([ADR-0016](docs/adr/0016-a-primer-before-the-reading.md)).
+
+The primer is the model's general knowledge rather than a reading of the
+article, so it can be wrong in ways a check against the article will not catch.
+I treat it as a colleague's briefing, not as evidence. It is separate from the
+analysis and never given to either reading. For an article in an experiment, I
+read it after writing my notes, so the notes stay independent.
+
 ## Evaluation design
 
 Each axis targets a specific failure, so a rubric can be written against
@@ -316,6 +331,7 @@ simplifies, or removes.
 │   └── config.py                     Settings: key, model, effort, limits
 ├── scripts/
 │   ├── run_analysis.py               one A/B cell -> analysis, argument evaluation, run record
+│   ├── write_primer.py               an article -> a primer on its field, to read first
 │   └── prepare_sources.py            PDF -> text + crops (the experimental arm)
 ├── tests/
 │   ├── test_analysis.py              the call path, failures, usage arithmetic
@@ -324,6 +340,7 @@ simplifies, or removes.
 │   ├── test_prompts_doc.py           PROMPTS.md matches the prompts in code
 │   ├── test_cost.py                  rates, cached input, unknown model
 │   ├── test_run_analysis.py          the runner, offline: provenance, records, both calls
+│   ├── test_write_primer.py          the primer script, offline
 │   └── preparation/                  PDF extraction behavior, with fixtures
 ├── docs/
 │   ├── BUILD_PLAN.md                 the phases in engineering detail
@@ -331,7 +348,7 @@ simplifies, or removes.
 │   ├── PROMPTS.md                    the two analysis prompts, as the code sends them
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── adr/0001-0015.md              one record per architectural decision
+│   ├── adr/0001-0016.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── CLAUDE.md                         what Claude Code loads in every session
@@ -348,6 +365,7 @@ simplifies, or removes.
 outputs/                              created by the pipeline, not in git
 ├── preparation/<slug>/               prepared text, crops, prep_record.json
 ├── ab_testing/<slug>/<config>/       Phase 1: analysis, argument evaluation, run record
+├── primers/<slug>/                   primer.md + primer_record.json, on request
 ├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
 ├── evaluations/<slug>/               Phase 3: evaluation, stored apart from it
 └── synthesis/                        Phase 4

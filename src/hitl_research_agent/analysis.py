@@ -30,11 +30,17 @@ from .models import (
     ExtractedAnalysis,
     NonEmptyStr,
     PreparationGap,
+    Primer,
     ResearchBaseModel,
     SourceAnalysis,
     SourceDocument,
 )
-from .prompts import build_correction_messages, build_evaluation_messages, build_messages
+from .prompts import (
+    build_correction_messages,
+    build_evaluation_messages,
+    build_messages,
+    build_primer_messages,
+)
 
 AttemptOutcome = Literal[
     "valid",
@@ -136,6 +142,17 @@ class ArgumentEvaluationResult(ResearchBaseModel):
     call, with the same accounting as `AnalysisResult`."""
 
     evaluation: ArgumentEvaluation
+    model: NonEmptyStr
+    input_tokens: int = Field(ge=0)
+    output_tokens: int = Field(ge=0)
+    attempt_count: int = Field(ge=1, le=2)
+    attempts: list[AttemptRecord] = Field(default_factory=list)
+
+
+class PrimerResult(ResearchBaseModel):
+    """What `write_primer()` returns: the primer plus the facts of the call."""
+
+    primer: Primer
     model: NonEmptyStr
     input_tokens: int = Field(ge=0)
     output_tokens: int = Field(ge=0)
@@ -514,6 +531,43 @@ def evaluate_argument(
         raise
     return ArgumentEvaluationResult(
         evaluation=content,
+        model=settings.openai_model,
+        input_tokens=input_tokens,
+        output_tokens=output_tokens,
+        attempt_count=len(attempts),
+        attempts=list(attempts),
+    )
+
+
+def write_primer(
+    source: SourceDocument,
+    *,
+    model: StructuredOutputModel | None = None,
+    settings: Settings | None = None,
+    clock: Callable[[], datetime] | None = None,
+    input_mode: InputMode = "pdf",
+    attachments: Sequence[LoadedAttachment] = (),
+) -> PrimerResult:
+    """Background on the article's field, for the researcher to read first.
+
+    Separate from the analysis: its output is never given to the close reading
+    or the argument evaluation (ADR-0016).
+    """
+    settings = settings or Settings()
+    clock = clock or _utc_now
+    validate_attachments(input_mode, attachments, [gap.id for gap in source.preparation_gaps])
+    attempts: list[AttemptRecord] = []
+    try:
+        runnable = model or _build_default_model(settings, Primer)
+        messages = build_primer_messages(source, input_mode=input_mode, attachments=attachments)
+        content, input_tokens, output_tokens = _call_with_correction(
+            runnable, messages, settings.openai_model, Primer, attempts, clock
+        )
+    except AnalysisError as exc:
+        exc.attempts = list(attempts)
+        raise
+    return PrimerResult(
+        primer=content,
         model=settings.openai_model,
         input_tokens=input_tokens,
         output_tokens=output_tokens,

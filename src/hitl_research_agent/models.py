@@ -218,6 +218,13 @@ class ArgumentEvaluation(ResearchBaseModel):
     evaluation: NonEmptyStr
 
 
+class Primer(ResearchBaseModel):
+    """Background on an article's field for the researcher: the model's general
+    knowledge, not a reading of the article, and never given to the analysis."""
+
+    primer: NonEmptyStr
+
+
 class SourceArgumentEvaluation(ResearchBaseModel):
     """One argument evaluation, tied to the close reading it was given."""
 

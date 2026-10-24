@@ -90,5 +90,6 @@ without a record.
 | [0013](0013-lean-close-reading.md) | A lean close reading: the author's words once, no labels | 2026-10-19 | Accepted |
 | [0014](0014-kanbur-replaces-katakam.md) | Kanbur replaces katakam as the third experiment article | 2026-10-19 | Accepted |
 | [0015](0015-phase-1-as-three-experiments.md) | Phase 1 runs as three experiments, one per article | 2026-10-20 | Accepted |
+| [0016](0016-a-primer-before-the-reading.md) | A primer on the article's field, for me to read first | 2026-10-24 | Accepted |
 
 New records start from [template.md](template.md).

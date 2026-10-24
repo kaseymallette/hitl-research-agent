@@ -117,9 +117,32 @@ Prepared text alone:
 The article is given as prepared text.
 ```
 
+## The primer — background before the reading
+
+Not part of single-source analysis: a reading aid written on request by
+`scripts/write_primer.py`, never given to either call
+([ADR-0016](adr/0016-a-primer-before-the-reading.md)). The system prompt,
+`PRIMER_PROMPT`:
+
+```text
+Before we read this article closely, we'd like your help getting our bearings. Picture a reader who is curious and capable but new to this field. They'll read the article next, and they want to understand what it's talking about when they get there.
+
+Explain the concepts and terms the article relies on without stopping to explain them: what each means in plain language, and why it matters for a paper like this.
+
+Help the reader know what to compare the numbers against. Say what the units measure, and what typical or reference values look like in this field, so a figure like an efficiency, a cost, or a scale can be read as high, low, or ordinary. Where you aren't sure what's typical, say so.
+
+Place the article in its field: what kind of work it is, the problem it belongs to, and the main approaches it builds on or competes with.
+
+This is background, not a summary or a verdict. Leave the article's own argument for the reader to meet, and don't judge whether it's right. Because this draws on your general knowledge rather than the article itself, write it as your own explanation, the way you'd brief a colleague before a meeting. A page or two is plenty.
+```
+
+The user message holds the source's title, type, publisher, and DOI and the
+note on how the article is supplied, the same opening as call 2's, without a
+close reading.
+
 ## If an output does not fit its schema
 
-Either call gets one correction attempt. The model's previous response is
+Each call, and the primer, gets one correction attempt. The model's previous response is
 returned to it with this message, listing what was wrong:
 
 ```text
