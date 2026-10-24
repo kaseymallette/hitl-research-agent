@@ -2163,6 +2163,67 @@ It also added what the article covers that your notes don't: Alibaba's Qiandao L
 
 One thing to watch: each new entry bundles several points, such as conclusion, trade-offs, scalability and examples. A run might catch some of an entry and miss the rest. The rubric's "caught without what it shows" category covers that, but see whether the A judgment says what was partial rather than just counting the entry as caught.
 
+### 14. Review results of experiment 1
+
+**Prompt:** I finished experiment 1! Please review the results for Experiment 1 and determine a winner. Show your reasoning.  @outputs/judgments/exp1_barnett_pdf_sol_high_vs_medium
+
+**Response:** I've checked the key findings against the runs. Writing up the verdict now.
+
+## Experiment 1 winner: B, GPT-6.1 Sol medium effort (narrowly, and mostly on cost)
+
+The two halves of the judging point in opposite directions, and both margins are small. Higher effort didn't make either document reliably better, and B costs about 14% less ($0.302 against $0.351).
+
+### Close readings: A, narrowly
+
+| | A (high) | B (medium) |
+| --- | --- | --- |
+| A1, judged alone (30 sampled claims) | 97% scored 2, 3% scored 1 | 87% scored 2, 13% scored 1 |
+| A1, head to head (15 each, same seed) | 15/15 scored 2 | 15/15 scored 2 |
+| A2, coverage of the 26 section conclusions | 23 caught, 3 partly caught | 26 caught |
+| A3, strength of language | 1 | 1 |
+| A4, mechanical checks | clean (one "4,000" vs "4000" formatting difference) | clean |
+| Steps, claims | 25, 135 | 25, 117 |
+
+Each reading has one weakness that matters, and I confirmed both in the runs:
+- **B drops a scope condition.** In §4.2 the article limits the curtailment risk to "once-through or open-loop" cooling. B's claim makes it apply to all natural-water cooling, including the closed-loop systems the section actually describes. A keeps the condition.
+- **A leaves out the hopeful half of the thesis.** The article says several times, in §4, §5, §6 and the closing, that water-sustainable AI is achievable. A records none of it as a claim. B records it at §4 ("technically achievable") and at the close ("water-sustainable AI is achievable").
+
+The head-to-head session counted B's error as the more serious one and found that A follows the prompt's rules more closely. A records the graphical abstract as paraphrased support, keeps distinct claims apart, and copies citation markers exactly as printed. The verdict held in both reading orders.
+
+I'd call this closer than the head-to-head does. A's gap is a pattern across the whole article, about half of its central claim, while B's is a single scope error. The solo coverage counts favor B as well.
+
+### Argument evaluations: B, narrowly
+
+The head-to-head session compared both runs against the 34-problem list:
+- **Found only by B:**
+  - P3: blaming limited deployment on policy gaps, with no evidence. This is a Major problem.
+  - P28: concluding that reform is necessary without showing that the alternatives fail.
+  - P29: dismissing the corporate pledges by assertion.
+  - P24: two citations that don't support the claims they're attached to. I confirmed B's text on Jain (2025) and on the aquifer study from a different Mexican basin.
+  - P31: the gap between descriptive evidence and a ranking of uses, which B states more exactly than A.
+- **Found only by A:**
+  - P21: the article uses data-center figures as if they were AI figures. This is a Major problem, and it runs through most of the article.
+  - P9 and P12.
+  - A also handles the article's statement that it isn't proposing bans more carefully than B. B's "rationing" wording drifts toward a claim the article disowns.
+- **Shared:**
+  - Neither makes a factual error beyond dropping "U.S." from the §3 comparison, which both do.
+  - Neither checks a single number in the article, so P13's arithmetic goes unfound by both.
+
+This verdict also held in both orders.
+
+**A calibration note.** The two solo evaluation sessions graded differently. The A session counted 9 problems found and 8 partly found, while the B session counted 15 found and 4 partly found and was more generous: it marked P1 and P2 as found where the head-to-head called P2 partial. The solo counts therefore overstate B's lead. The head-to-head compared both runs in one session, and it still came out for B.
+
+### Why B wins overall
+
+1. **It's one run each way.** Each run narrowly wins one document, and each win comes from the same kind of thing: one run catching something the other missed.
+2. **Higher effort doesn't consistently help.** A spent more tokens on reasoning (1,552 against 249 on the close reading), but neither document is reliably better for it.
+3. **Cost breaks the tie.** A costs about 16% more than B.
+
+**The case for A.** In Phase 3, synthesis reads only the close readings, so a close-reading edge could fairly count for more. Even so, A's edge is narrow, and A's own weak spot, the missing "achievable" claims, would also go into the claims store. I don't think it's enough to justify the extra cost.
+
+**What it means next:** Experiment 3 would put B (Sol medium, PDF) against GPT-6 Astra low.
+
+
 ---
 
 ## Phase 3 — Synthesis
