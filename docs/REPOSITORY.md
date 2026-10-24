@@ -428,5 +428,4 @@ Six runtime dependencies: `langchain-core` and `langchain-openai` for the
 Responses API call, `pydantic` and `pydantic-settings` for the schemas and
 config, `pymupdf4llm` (pinned, because its layout-mode behavior was verified
 against that exact version) for extraction, and `pyyaml` for the manifest. Four
-dev dependencies: pytest, ruff, mypy, pre-commit. DeepEval is a Phase 2 addition
-and is deliberately not installed yet.
+dev dependencies: pytest, ruff, mypy, pre-commit.

@@ -332,68 +332,58 @@ against the original images. Phase 1 hands Phase 2 artifacts and measurements.
 
 ---
 
-## Phase 2 — DeepEval
+## Phase 2 — Evaluation
 
 ### Goal
 
-Design metrics and rubrics, evaluate the Phase 1 runs, and choose the model,
-input method, and way of running on quality and cost together.
+Judge both experiments head to head, and choose how the collection is
+analyzed: model, effort, input method, and API or app, on quality and cost
+together ([ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)).
 
-### The behavioral axes
+### The head-to-head judgment
 
-The four questions below are what the researcher wants answered. Each is
-measured through named behaviors, so a rubric targets a specific failure rather
-than a general impression of quality:
+For each experiment, Claude reads the article and every run side by side and
+writes one judgment, saved apart from the analyses as
+`outputs/judgments/<slug>.md`:
 
-| Question | Axes |
-| --- | --- |
-| Claim attribution | source faithfulness, argument reconstruction |
-| Qualification and citation fidelity | citation faithfulness, evidence mapping |
-| Interpretation discipline | assumption discipline, limitation discipline, inference control |
-| Argument coverage | argument reconstruction, research usefulness |
+- **Close readings:** how many of the article's claims and figures each run
+  caught or missed; how faithfully each is recorded against the article —
+  qualifiers and strength of language kept, nothing invented, citations as
+  printed; and how detailed and readable each is.
+- **Argument evaluations:** whose reasoning holds up, what each found that the
+  others did not, and where each is wrong.
+- **Primers** (kanbur's API runs): accuracy and usefulness for a reader new to
+  the field.
+- **A ranking with reasons,** beside each run's cost.
 
-`research usefulness` is the one axis that is not a faithfulness measure: it
-asks whether the analysis is actually usable as research input, which is the
-question Phase 1's counts cannot answer and the one most likely to separate the
-two models. It is also the axis most at risk of collapsing into the judge's
-taste, so it needs the tightest rubric and the closest human spot-checking.
+The failure modes in the README's evaluation design are what it looks for. The
+mechanical checks already run — verbatim text, numbers, and reference entries
+against each article — feed into it.
 
-### The four questions to measure
+### Decisions this phase makes
 
-1. **Claim attribution** — do claims marked `author_stated` actually reflect
-   what the source says? Faithful paraphrases are acceptable: a paraphrase that
-   preserves the authors' meaning is a correct answer, not a defect. v1's
-   requirement of a verbatim quotation per author-stated claim was removed for
-   this reason and is not to return as a metric.
-2. **Qualification and citation fidelity** — are hedges, conditions, scope
-   limits, and strength of language preserved rather than softened or
-   hardened? Are in-text citation markers and reference entries recorded as the
-   source prints them, without invented bibliography detail?
-3. **Interpretation discipline** — is `model_inferred` content actually absent
-   from the source, and is `author_stated` content actually in it? Both
-   directions are errors: an interpretation presented as the authors' claim, and
-   an authors' claim demoted to interpretation.
-4. **Argument coverage** — are the arguments that matter to the source present?
-   Coverage is about what was missed, not about volume; a longer analysis is not
-   a better one.
+- **The configuration for the collection:** GPT-6.1 Sol at medium or high
+  effort, and the API or the app, weighing quality against the cost each run
+  recorded.
+- **The input method:** the PDF or prepared text with crops, from Barnett,
+  where both ran. This settles
+  [ADR-0008](adr/0008-compare-pdf-against-prepared-text.md); if the PDF wins,
+  `prepare_sources.py` can go.
 
-### Decisions this phase must make
+### Checking the judge
 
-- Rubrics specific enough that two runs of the judge on the same analysis agree,
-  and the scale each metric reports on.
-- The judge model and configuration, and its cost — the judge is itself a paid
-  model call across the Phase 1 runs and several metrics.
-- How the judge gets the source: it faces the same input-method question the
-  analyses do, and a judge that only reads extracted text cannot assess a
-  reading of a figure.
-- **Human spot checks of the judge**, designed in: a sample the researcher
-  scores independently, compared against the judge's scores, so the judge's own
-  reliability is evidence rather than assumption. A judge that disagrees with
-  the researcher is a finding about the judge.
-- Where evaluations are stored, separately from the analyses they assess.
+Claude is not a blind judge: it helped design the prompts and knows my views
+on the articles. It is a different model from the one judged, so it is not
+grading its own work. I check its judgment against my own reading, at least
+for Barnett, where I have full notes. Where we disagree, that is a case to look
+into, not a verdict either way.
 
-The output is a recommended configuration with the measured quality and cost
-behind it, including the cases where the two point in different directions.
+### Done when
+
+- [ ] A judgment for each experiment, saved in `outputs/judgments/`.
+- [ ] My check of at least one, with any disagreement noted.
+- [ ] The configuration for the collection chosen and recorded in an ADR,
+      with the input-method question settled.
 
 ---
 
