@@ -18,7 +18,7 @@ single-source analysis pipeline and then spent a long sequence of turns on
 grounding checks that were ultimately removed; what survives of that history
 here is the audit in Phase 0 below. The v1 prompt logs and experiment outputs
 were removed in the redesign and stay at the `v1-final` tag;
-[`docs/prompt_log.md`](prompt_log.md) now indexes one log per phase.
+[`docs/prompt_log.md`](prompt_log.md) now holds one log for every phase.
 
 The architecture these phases build — the three agents, the workflow
 contract, the data model, and the rules that hold across every phase — is in

@@ -294,8 +294,8 @@ thing blocking it.
 
 ## `docs/`
 
-`DESIGN.md` and `BUILD_PLAN.md` (below), this file, `prompt_log.md` and its
-per-phase logs in `phases/`, `PROMPTS.md`, and:
+`DESIGN.md` and `BUILD_PLAN.md` (below), this file, `prompt_log.md`, `PROMPTS.md`,
+and:
 
 ### `PROMPTS.md`
 

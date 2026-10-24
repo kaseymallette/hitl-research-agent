@@ -372,8 +372,7 @@ simplifies, or removes.
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
 │   ├── adr/0001-0020.md              one record per architectural decision
-│   ├── phases/phase_1-4.md           one prompt log per phase
-│   └── prompt_log.md                 index of those logs, and the conventions
+│   └── prompt_log.md                 the prompt log, every phase in one file
 ├── CLAUDE.md                         what Claude Code loads in every session
 ├── pyproject.toml                    dependencies, Ruff, mypy, the src/ package
 ├── uv.lock                           resolved dependency set
@@ -433,5 +432,5 @@ uv run mypy src
   where the code is heavier than it needs to be
 - [Decision Records](docs/adr/) — one dated record per architectural decision,
   with the alternatives and what each one cost
-- [Prompt Log](docs/prompt_log.md) — one log per phase, recording the prompts
+- [Prompt Log](docs/prompt_log.md) — one log for every phase, recording the prompts
   given to Claude Code and Codex while building this and what came back
