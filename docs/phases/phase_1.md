@@ -1266,3 +1266,110 @@ The structured JSON stays where checking needs structure, and the readable docum
 - **For the app runs:** does (c) run in the app too, or through the API on the app's (a) and (b)?
 
 **Pending decisions:** Should I draft ADR-0016 and a first version of the (c) prompt for you to shape?
+
+## 60. Conceptual Knowledge
+
+**Prompt:** Wait, I changed my mind. I think this call should be conceptual knowledge. I was thinking of running this call first with the article. Then running the close reading and evaluation calls. What do you think?
+
+**Response:** I think it's a good idea, and it answers what kanbur showed: you couldn't judge the numbers because you didn't know the field. A conceptual call first is the "lecture before the reading" you wanted in your master's.
+
+A few design questions to settle, though, because this call is different in kind from the other two.
+
+**1. It brings in knowledge from outside the article.** The close reading and the evaluation both work from the article. A conceptual primer can't: kanbur never explains exergy or what a typical membrane-distillation efficiency is. So this call draws on the model's general knowledge, and that can't be checked against the article the way verbatim claims and numbers can. A confident mistake here, say a wrong "typical range," would look just as authoritative as a correct one. It needs to be clearly marked as the model's background knowledge, and judged on accuracy by you, or later against sources.
+
+**2. Does it feed the other two calls, or only you?** This is the biggest choice.
+- **Only you:** the close reading and evaluation stay exactly as they are, and the primer is your entry point to the paper. It's simple, and it changes nothing in Experiment 2.
+- **Also the evaluation:** the critique could judge "64.5% relative to what?" with context. But it would then inherit the primer's framing and any of its errors. If the primer says "64.5% is typical," the critique may simply accept that.
+- **Also the close reading:** I'd avoid this. The close reading is about what the *author* says, and outside background could blur that.
+
+I'd start with **only you**, and test feeding it to the evaluation later as its own experiment. That way you can see whether it helps or just transfers the primer's assumptions.
+
+**3. It changes your notes.** If you read the primer first, your notes are no longer independent of the model, because the primer has shaped what you notice. That's the point when you're using the system for real research. But in the experiments, your notes are the reference for judging the analyses. For kanbur you've already started without it, which keeps Experiment 2 clean. Going forward, you'd choose per article: primer first when the article is for your research, notes first when it's a test article.
+
+**4. Still no research question.** The primer explains the article's field, not what you're looking for, so it stays question-independent like the other calls.
+
+If this matches your thinking, ADR-0016 would record:
+- the conceptual call, run first, on the article
+- what it produces: the key terms, what the numbers are measured against, and where this paper sits in its field
+- whom it serves (you, to start)
+- that it's the model's background knowledge, labeled as such
+
+We'd draft its prompt together, like the other two. Does "only for you, to start" match what you had in mind?
+
+## 61. Decisions about conceptual knowledge agent
+
+**Prompt:** Make it only for me. Don't affect the other phases. I think we need to be okay with imperfections in truth. We are holding this model to such a high standard and it is preventing us from getting work done.
+
+**Response:** Agreed. Everything the model writes is something you read and judge, and the primer is a reading aid, not evidence. Holding it to the same bar as the close reading would just stall you. ADR-0016 can say that plainly: background knowledge, labeled as the model's, good enough to orient you.
+
+To keep it from touching the experiments, I'd make it **a separate step, not part of the analysis runs:**
+- **Its own small script,** run on an article whenever you want a primer, using GPT-6.1 Sol through the API by default.
+- **Output to `outputs/primers/<slug>/primer.md`,** a readable document, plus a small record of its cost.
+- **The experiment runs, their prompts and their records stay exactly as they are.**
+
+**A first draft of the prompt, in the same voice as the other two:**
+
+> Before we read this article closely, we'd like your help getting our bearings. Picture a reader who is curious and capable but new to this field. They'll read the article next, and they want to understand what it's talking about when they get there.
+>
+> Explain the concepts and terms the article relies on without stopping to explain them: what each means in plain language, and why it matters for a paper like this.
+>
+> Help the reader know what to compare the numbers against. Say what the units measure, and what typical or reference values look like in this field, so a figure like an efficiency, a cost, or a scale can be read as high, low, or ordinary. Where you aren't sure what's typical, say so.
+>
+> Place the article in its field: what kind of work it is, the problem it belongs to, and the main approaches it builds on or competes with.
+>
+> This is background, not a summary or a verdict. Leave the article's own argument for the reader to meet, and don't judge whether it's right. Because this draws on your general knowledge rather than the article itself, write it as your own explanation, the way you'd brief a colleague before a meeting. A page or two is plenty.
+
+"Leave the article's own argument for the reader to meet" keeps the primer from pre-reading the paper for you. It gives you the field, not the paper's conclusions.
+
+If the prompt reads right, I'll write ADR-0016, add the script and its prompt (in `PROMPTS.md` too), run it on kanbur so you have a primer for the rest of your reading, and commit. That's about $0.10.
+
+## 62. Write ADR-0016
+
+**Prompt:** Love it! Write ADR-0016
+
+**Response:** ADR-0016 and the primer are built: write_primer.py writes outputs/primers/<slug>/primer.md, labeled as the model's background knowledge and never given to the analysis. PROMPTS, README, REPOSITORY and the ADR index match, and all 94 tests pass. 
+
+## 63. Update A/B test on kanbur
+
+**Prompt:** Okay, now real quick. I want to run these three calls on Kanbur. I am suspending my notetaking because I discovered we needed a conceptual knowledge call from my reading and that is what my findings can contribute. We are running on 6.1 Sol (med/high) in the api and I was going to run it in my app on 6.1 Sol (med/high) in work mode. I think we can just make the A/B test that. What would we have to change in terms of ADR's?
+
+**Response:** Here's what changes, and where.
+
+**Experiment 2, as you're describing it:**
+
+| | API, GPT-6.1 Sol | App, GPT-6.1 Sol, work mode |
+| --- | --- | --- |
+| **Medium** | 1 | 1 |
+| **High** | 1 | 1 |
+
+That's 4 runs, each with three calls: the primer, the close reading and the argument evaluation. The primer still doesn't feed the other two calls; it runs alongside them.
+
+**Three decisions shift:**
+1. **ADR-0015's Experiment 2** loses the GPT-6 regular-chat column, becoming a 2 × 2 instead of 2 × 3.
+2. **ADR-0015 says your notes come first** as the independent reference. With note-taking suspended, Experiment 2 is judged without them, apart from your first three steps. That's worth stating plainly, because it changes what the comparison can be checked against.
+3. **ADR-0016 says the primer is for you and is read after your notes** on experiment articles. Now the primer is *part of the experiment* (API against app), and kanbur showed you why the call is needed. That's your finding, and the record should say so.
+
+**Two ways to record it:**
+- **Revise ADR-0015 in place again** with a second dated note, and add a line to ADR-0016. Nothing has run, so that's honest. But it's the second revision, and it reaches into two records.
+- **Write ADR-0017,** "Experiment 2: API against the app on GPT-6.1 Sol, with the primer." It would supersede ADR-0015's Experiment 2 and ADR-0016's note-order rule for this experiment, and it would record your finding: reading kanbur without background is what showed the primer was needed.
+
+I'd go with **ADR-0017**. It touches two records, and the change of plan is itself worth keeping: you stopped the notes because the reading taught you something.
+
+The docs that follow either way:
+- **`PROMPTS.md`:** running the primer in the app (same message layout, PDF attached, no format line needed)
+- **README and BUILD_PLAN:** the 2 × 2 table and the note-taking change
+- **New folders:** `app__gpt-6.1-sol-<effort>-work/`, each holding `primer.md` as well
+
+Should I write ADR-0017?
+
+## 64. Write ADR-0017
+
+**Prompt:** Yes, write ADR-0017
+
+**Response:** ADR-0017 makes Experiment 2 a 2 × 2 on kanbur: the API against the app, both on GPT-6.1 Sol, each run making the primer, close reading and evaluation calls, with your notes suspended. ADR-0015 and ADR-0016 point to it, and the docs match. All 94 tests pass.
+
+Run the two API cells on kanbur now?
+
+## 65. Run Kanbur experiment
+
+**Prompt:** Yes, run the two API cells on kanbur under ADR-0017: the primer, close reading, and evaluation for Sol medium and Sol high, into adr_0017.
