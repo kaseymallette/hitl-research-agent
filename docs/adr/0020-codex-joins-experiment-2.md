@@ -92,3 +92,6 @@ times: close readings 7 min 25 s (medium) and 7 min 58 s (high); evaluations
 ChatGPT Pro, which shows only a weekly limit: the four sessions moved it from
 98% to 97% remaining. Codex could not confirm the model or effort it ran at
 beyond the label requested.
+
+`docs/PROMPTS.md` was later removed: the prompts are in `prompts/` and in
+`prompts.py`, and the test keeps the two identical.

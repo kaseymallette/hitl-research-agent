@@ -148,7 +148,7 @@ writes its own output ([ADR-0020](adr/0020-codex-joins-experiment-2.md)).
 Each holds the prompt the API sends, word for word, with the source header to
 fill from `sources.yaml`, the close reading's JSON format, where to write, and
 a request to note in `run_note.md` how the PDF was read. They exist so an agent
-run needs no pasting; `tests/test_prompts_doc.py` keeps their prompt text
+run needs no pasting; `tests/test_prompt_files.py` keeps their prompt text
 identical to `prompts.py`.
 
 ---
@@ -237,7 +237,7 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 95 tests
+## `tests/` — 94 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
@@ -247,7 +247,7 @@ keeping. If it loses, most of these 793 lines go.
 | `test_models.py` | 14 | Application-owned fields rejected from model content, a required verbatim/paraphrased form, an asserted claim standing without support, no attribution labels on the close reading, the evaluation schema holding only the model's judgment, a reading step with no claim, the reading plan first and required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
 | `test_run_analysis.py` | 15 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun, both documents written, a failed evaluation keeping the close reading |
-| `test_prompts_doc.py` | 2 | `docs/PROMPTS.md` holds every prompt exactly as the code sends it, and the agent files in `prompts/` carry the same prompt text |
+| `test_prompt_files.py` | 1 | The agent files in `prompts/` carry the prompt text the code sends |
 | `test_write_primer.py` | 2 | The primer script, offline: a labelled primer with its cost, and a failure that leaves a record and no primer |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file
@@ -294,18 +294,36 @@ thing blocking it.
 
 ## `docs/`
 
-`DESIGN.md` and `BUILD_PLAN.md` (below), this file, `prompt_log.md`, `PROMPTS.md`,
-and:
+`DESIGN.md` and `BUILD_PLAN.md` (below), this file, `PROMPT_LOG.md`, `RUBRIC.md`,
+`JUDGING_PROMPTS.md`, `EVALUATION_KEY.md`, and:
 
-### `PROMPTS.md`
+### `RUBRIC.md`
 
-The two analysis prompts — the close reading and the argument evaluation — in
-full, with the input instructions and message layout for each call, the
-correction message, and how the prompts are run by hand in the ChatGPT app for
-Experiment 2. It exists so the prompts can be read without opening the code.
-It is the current version only; each earlier version is quoted in the ADR that
-introduced it. `tests/test_prompts_doc.py` fails if it stops matching
-`prompts.py`.
+The criteria Phase 2's head-to-head judgment applies to each experiment: the
+close readings (attribution, coverage, strength of language, the mechanical
+checks, detail), the argument evaluations (acceptability, relevance,
+sufficiency, unstated warrants, self-attribution, correctness), the primers,
+and a ranking. It reports and never withholds a result
+([ADR-0005](adr/0005-no-hard-quality-gates.md)). It is written to stand alone,
+for a judge in a fresh session with no other context: it describes the run
+folder, with runs labelled by letter and nothing about their configuration or
+cost, and the separate sessions — each run's close reading and evaluation on
+its own, then each head to head. It exists so every judgment is made against
+the same criteria, written down before the runs are read.
+
+### `JUDGING_PROMPTS.md`
+
+The prompts that start each judging session, in order, and how to set up the
+folder they work in. It exists so each experiment is judged the same way, by
+pasting the same prompts into new chats.
+
+### `EVALUATION_KEY.md`
+
+The key to the blind judgments: for each experiment, which configuration
+each lettered run is, its cost and runtime, the question the comparison
+answers, and which output files were copied as each run. It is never given
+to the judge; the judgment's ranking is compared with cost and runtime
+afterwards.
 
 ### `DESIGN.md` and `BUILD_PLAN.md`
 

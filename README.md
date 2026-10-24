@@ -108,7 +108,8 @@ bias shapes the author's framing and the model's own reading. It is written in
 the model's voice and read as its interpretation, not as a report of what the
 author said.
 
-Both prompts are in [docs/PROMPTS.md](docs/PROMPTS.md).
+Both prompts are in [prompts/](prompts/), and in the code in
+`src/hitl_research_agent/prompts.py`.
 
 ### Whose words are whose
 
@@ -295,7 +296,7 @@ Two coding assistants helped me build this project.
 
 - **Claude Code** is responsible for all of the code.
 - **Codex** helps with design and prompt writing, and maintains the
-  [prompt log](docs/prompt_log.md).
+  [prompt log](docs/PROMPT_LOG.md).
 
 Neither decides what I research or what the evidence means.
 
@@ -360,7 +361,7 @@ simplifies, or removes.
 │   ├── test_analysis.py              the call path, failures, usage arithmetic
 │   ├── test_inputs.py                per-mode validation, identical prompt
 │   ├── test_models.py                schema rules, the reading path, round trip
-│   ├── test_prompts_doc.py           PROMPTS.md matches the prompts in code
+│   ├── test_prompt_files.py          prompts/ matches the prompts in code
 │   ├── test_cost.py                  rates, cached input, unknown model
 │   ├── test_run_analysis.py          the runner, offline: provenance, records, both calls
 │   ├── test_write_primer.py          the primer script, offline
@@ -368,11 +369,13 @@ simplifies, or removes.
 ├── docs/
 │   ├── BUILD_PLAN.md                 the phases in engineering detail
 │   ├── DESIGN.md                     the system, and the rules it holds to
-│   ├── PROMPTS.md                    the two analysis prompts, as the code sends them
+│   ├── EVALUATION_KEY.md             Phase 2: what each blind run is, kept from the judge
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
+│   ├── JUDGING_PROMPTS.md            Phase 2: the prompts that start each judging session
 │   ├── REPOSITORY.md                 every file, and why it exists
+│   ├── RUBRIC.md                     Phase 2: the criteria for the head-to-head judgment
 │   ├── adr/0001-0020.md              one record per architectural decision
-│   └── prompt_log.md                 the prompt log, every phase in one file
+│   └── PROMPT_LOG.md                 the prompt log, every phase in one file
 ├── CLAUDE.md                         what Claude Code loads in every session
 ├── pyproject.toml                    dependencies, Ruff, mypy, the src/ package
 ├── uv.lock                           resolved dependency set
@@ -388,7 +391,7 @@ outputs/                              created by the pipeline
 ├── preparation/<slug>/               prepared text, crops, prep_record.json
 ├── ab_testing/<slug>/<config>/       Phase 1: analysis, argument evaluation, run record
 ├── primers/<slug>/                   primer.md + primer_record.json, on request
-├── judgments/<slug>.md               Phase 2: head-to-head judgment of an experiment
+├── judgments/<experiment>/          Phase 2: the blind judgments of an experiment
 ├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
 └── synthesis/                        Phase 3
 ```
@@ -426,11 +429,12 @@ uv run mypy src
   model, and the rules that hold across every phase
 - [Build Plan](docs/BUILD_PLAN.md) — the phases in engineering detail, with
   rubrics and procedures
-- [Prompts](docs/PROMPTS.md) — the close-reading and argument-evaluation
-  prompts in full, and how they are run in the ChatGPT app
+- [Prompts](prompts/) — the close-reading and argument-evaluation prompts in
+  full, as instruction files for an agent run
 - [Repository Inventory](docs/REPOSITORY.md) — every file, what it is for, and
   where the code is heavier than it needs to be
 - [Decision Records](docs/adr/) — one dated record per architectural decision,
   with the alternatives and what each one cost
-- [Prompt Log](docs/prompt_log.md) — one log for every phase, recording the prompts
+- [Rubric](docs/RUBRIC.md) — the criteria for Phase 2's head-to-head judgment
+- [Prompt Log](docs/PROMPT_LOG.md) — one log for every phase, recording the prompts
   given to Claude Code and Codex while building this and what came back

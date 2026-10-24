@@ -18,7 +18,7 @@ single-source analysis pipeline and then spent a long sequence of turns on
 grounding checks that were ultimately removed; what survives of that history
 here is the audit in Phase 0 below. The v1 prompt logs and experiment outputs
 were removed in the redesign and stay at the `v1-final` tag;
-[`docs/prompt_log.md`](prompt_log.md) now holds one log for every phase.
+[`docs/PROMPT_LOG.md`](PROMPT_LOG.md) now holds one log for every phase.
 
 The architecture these phases build — the three agents, the workflow
 contract, the data model, and the rules that hold across every phase — is in
@@ -137,7 +137,7 @@ added to the second ([ADR-0020](adr/0020-codex-joins-experiment-2.md)).
 Astra low is dropped after Experiment 1, and prepared text sits out
 Experiment 2. There is no Experiment 3: lei is analyzed with the rest of the
 collection, and the input-method question is settled in Phase 2 from Barnett. The app runs are run by hand with the
-same prompts, as set out in [PROMPTS.md](PROMPTS.md#running-the-prompts-in-the-chatgpt-app),
+same prompts,
 and saved with the API's runs in `outputs/ab_testing/<slug>/adr_0017/`: the API
 as `pdf__gpt-6.1-sol-<effort>/`, the app as `app__gpt-6.1-sol-<effort>-work/`,
 each holding `primer.md`, `analysis.json`, and the argument evaluation. The app
@@ -345,9 +345,13 @@ together ([ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)).
 
 ### The head-to-head judgment
 
-For each experiment, Claude reads the article and every run side by side and
-writes one judgment, saved apart from the analyses as
-`outputs/judgments/<slug>.md`:
+For each experiment, Claude judges the runs blind, in new sessions that know
+nothing of this project or of which run is which: each run's close reading and
+argument evaluation on its own, then each head to head, following
+[RUBRIC.md](RUBRIC.md) and [JUDGING_PROMPTS.md](JUDGING_PROMPTS.md). The
+judgments are saved apart from the analyses, in
+`outputs/judgments/<experiment>/`, and compared with each run's cost and
+runtime afterwards, from [EVALUATION_KEY.md](EVALUATION_KEY.md). They cover:
 
 - **Close readings:** how many of the article's claims and figures each run
   caught or missed; how faithfully each is recorded against the article —
@@ -357,7 +361,7 @@ writes one judgment, saved apart from the analyses as
   others did not, and where each is wrong.
 - **Primers** (kanbur's API runs): accuracy and usefulness for a reader new to
   the field.
-- **A ranking with reasons,** beside each run's cost.
+- **A ranking with reasons.**
 
 The failure modes in the README's evaluation design are what it looks for. The
 mechanical checks already run — verbatim text, numbers, and reference entries
@@ -375,9 +379,10 @@ against each article — feed into it.
 
 ### Checking the judge
 
-Claude is not a blind judge: it helped design the prompts and knows my views
-on the articles. It is a different model from the one judged, so it is not
-grading its own work. I check its judgment against my own reading, at least
+The judging sessions start fresh, so they carry none of this project's design
+discussion or my views on the articles, and the runs reach them by letter
+only. Claude is a different model from the one judged, so it is not grading
+its own work. I check its judgment against my own reading, at least
 for Barnett, where I have full notes. Where we disagree, that is a case to look
 into, not a verdict either way.
 

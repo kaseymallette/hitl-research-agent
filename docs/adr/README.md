@@ -29,7 +29,7 @@ legible in aggregate, months later.
 to mark it superseded. A decision that gets reversed produces a *new* record
 that supersedes the old one and says why the reversal happened. The wrong turn
 stays readable, for the same reason nothing is rewritten in the
-[prompt log](../prompt_log.md): the record of how the thinking moved is the
+[prompt log](../PROMPT_LOG.md): the record of how the thinking moved is the
 point.
 
 Repairing a link whose target moved is not an edit to the record. The
@@ -62,7 +62,7 @@ still a decision, and writing it down is what stops it drifting closed.
 | [DESIGN.md](../DESIGN.md) | what the system is and the rules it holds to | present: the stable contract |
 | [REPOSITORY.md](../REPOSITORY.md) | what every file currently is and why it exists | present: current state |
 | [BUILD_PLAN.md](../BUILD_PLAN.md) | the phases, in engineering detail | future: what is planned |
-| [prompt_log.md](../prompt_log.md) | the prompts given to the assistants, and what came back | past: how the work went |
+| [PROMPT_LOG.md](../PROMPT_LOG.md) | the prompts given to the assistants, and what came back | past: how the work went |
 
 The overlap to watch is with `REPOSITORY.md`. That document describes the
 repository as it stands and is rewritten as the repository changes; an ADR

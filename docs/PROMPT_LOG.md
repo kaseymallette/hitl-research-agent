@@ -433,7 +433,7 @@ These runs will also show the prompt change as uncommitted in their records, lik
 
 All five reruns returned an analysis on the first attempt. All six new runs are now in `after_adr_0010/`, next to the originals in `before_adr_0010/`.
 
-### What the six new assessments say
+#### What the six new assessments say
 
 **All six describe the paper's structure now.** Each says where the thesis is announced (the abstract), how much space the technical sections take (most of pages 2–5), and where governance is developed (pages 5–6). Before the change, none of them did this.
 
@@ -449,11 +449,11 @@ All five reruns returned an analysis on the first attempt. All six new runs are 
 - **Meta's Luleå data center.** Both Sol runs on the text arm used Table 1's footnote: the annual withdrawal figure can't show how efficient a hyperscale site is, because the facility's IT capacity isn't disclosed. That bears directly on your Takeaway 4, which uses Meta Sweden as a success. The footnote only shows up in the prepared text, which may be why the text arm caught it.
 - **Heat recovery.** Four of the six say the conclusion promises firmer water benefits than Section 4.5 supports.
 
-### Why all six might agree
+#### Why all six might agree
 
 When all six land on the same verdict against you, it could mean the paper reads that way. It could also be the prompt. "Reconstruct the argument on its own terms" and "do not treat section placement or length alone as evidence of weakness" both push the models toward the charitable reading. The guard against judging on length was meant to stop routine fault-finding. It may also be stopping a critique like yours. One article can't tell these two apart. Katakam and lei, with your notes on them, will show more.
 
-### Cost and size
+#### Cost and size
 
 | Configuration | Before | After | Assessment |
 | --- | --- | --- | --- |
@@ -1805,6 +1805,135 @@ effort, input method, and API or app
 ([ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)). The judgments
 themselves are saved as `outputs/judgments/<slug>.md`; this log records their
 results.
+
+### 1. Set up rubric for evaluations
+
+**Prompt:** Now, for the rubric, I am going to run your evaluations on a separate folder on my computer, just like I did for the Codex experiments, since like you said, you've already discussed the articles here. In that case, I think the rubric shouldn't have references to specific ADR files, and should be able to stand as it's own. It should explain the structure on how to evaluate, and maybe we could do head to head vs evaluating articles on their own?
+
+**Response:** I rewrote [docs/RUBRIC.md](docs/RUBRIC.md) so a judge with no other context can follow it. It has no ADR references, and it does both of the things you raised: each run is judged on its own first, then the runs are compared head to head.
+
+**The folder it expects you to set up:**
+- `article.pdf`
+- `runs/A/`, `runs/B/` and so on, each holding `analysis.json`, the argument evaluation, and `primer.md` where a run has one.
+- `prompts/`, optional, with the instructions the runs followed.
+- `key.md`, saying what each lettered run is, what it cost, and any question you want answered, such as which input method did better.
+
+Labelling the runs by letter means the judge scores what each run wrote, not which configuration produced it.
+
+**The four steps:**
+1. Read the article alone and write two lists: the article's own claims, and the problems in its argument.
+2. Score each run alone against the article (A1–A5, B1–B6, and P where there's a primer).
+3. Compare the runs head to head: what each caught that the others missed, a ranking with reasons, and the close calls checked in both orders.
+4. Open `key.md`, then add cost and configuration beside the ranking. Scores aren't changed after reading the key.
+
+**What the judge is told:** what the close-reading fields mean and what the close reading and evaluation were asked to do, so it can score against those instructions. The output goes to `judgment.md`. I took out the specific kanbur problems as examples, so the judge finds them itself.
+
+Two things to do when you set up each folder:
+- **Barnett's API runs each have two evaluations**, `argument_evaluation.json` and `argument_evaluation_2.json`. Copy only the one you want judged.
+- **Rename each `judgment.md`** to `<slug>.md` when you bring it back into `outputs/judgments/`.
+
+I added a note to the rubric's [REPOSITORY.md](docs/REPOSITORY.md) entry saying it's meant for a fresh session. Nothing is committed yet. That includes the earlier changes: removing `PROMPTS.md`, the new test file, and the upper-case renames.
+
+### 2. Evaluation Key 
+
+**Prompt:** Okay, make the EVALUATION_KEY.md file here. I want it to be a blind experiment. The first experiment is for Barnett, PDF, A = 6.1 Sol High and B = 6.1 Sol Medium. 
+
+**Response:** I created [docs/EVALUATION_KEY.md](docs/EVALUATION_KEY.md). Experiment 1 is its first section: Barnett, PDF input, the same model and instructions, differing only in reasoning effort.
+
+| Run | Effort | Close reading | Evaluation | Total |
+| --- | --- | --- | --- | --- |
+| A | GPT-6.1 Sol high | $0.249 · 5 min 24 s | $0.102 · 1 min 16 s | $0.351 |
+| B | GPT-6.1 Sol medium | $0.214 · 5 min 2 s | $0.088 · 1 min 3 s | $0.302 |
+
+The key also lists token counts, and it asks the judge whether the higher effort shows in the work and is worth about 16% more cost.
+
+**Setting up the judge's folder:**
+- Copy the key in as `EVALUATION_KEY.md`, along with `article.pdf`.
+- `runs/A/` gets `analysis.json` and `argument_evaluation.json` from `pdf__gpt-6.1-sol-high/`.
+- `runs/B/` gets `analysis.json` from `pdf__gpt-6.1-sol-medium/`, plus that folder's `argument_evaluation_2.json` renamed to `argument_evaluation.json`. Renaming it keeps the "_2" from telling the judge anything.
+
+The key itself says which files the runs came from, so it stays blind only if the judge waits to open it. [docs/RUBRIC.md](docs/RUBRIC.md) already tells it not to open the key until both passes are written.
+
+I changed the rubric's `key.md` references to `EVALUATION_KEY.md`. The README tree and [REPOSITORY.md](docs/REPOSITORY.md) have entries for the new file. Nothing is committed yet. That includes the earlier work: removing `PROMPTS.md`, the renames, and the rubric rewrite.
+
+### 3. Run blind tests
+
+**Prompt:** Can't we just have it run a blind test and then we can compare the results to the cost and runtime?
+
+**Response:** Yes, that's simpler, so I've set it up that way.
+
+**What the judge gets:** `article.pdf` and `runs/A/`, `runs/B/` with the analysis files, plus `prompts/` if you include them. [docs/RUBRIC.md](docs/RUBRIC.md) no longer has the key step. It tells the judge it won't be told which configuration made each run or what it cost. Its judgment ends with the head-to-head ranking and the close calls.
+
+**What stays here:** [docs/EVALUATION_KEY.md](docs/EVALUATION_KEY.md) now says it's never given to the judge. Its costs, runtimes and the effort question are for us. When you bring the judgment back, we compare its ranking with A's $0.351 and B's $0.302 here.
+
+I updated the README and [REPOSITORY.md](docs/REPOSITORY.md) entries to match. Nothing is committed yet.
+
+### 4. Store evaluations
+
+**Prompt:** And where do they store the evaluations?
+
+**Response:** Under the current rubric, the judge writes one file, `judgment.md`, at the top of its own folder next to `article.pdf` and `runs/`. Nothing is written inside the run folders. When it's done, you copy that file back here into `outputs/judgments/`.
+
+The plan currently names those files `outputs/judgments/<slug>.md`, one per article. That won't work if Barnett gets more than one blind comparison: this one (PDF, high against medium), and possibly PDF against text with crops later. The second judgment would overwrite the first.
+
+I'd name each file after the experiment instead, for example `outputs/judgments/barnett_pdf_sol_high_vs_medium.md`, and record the same name in `EVALUATION_KEY.md` next to that experiment. Should I make that change in the build plan and the key?
+
+### 5. How to run experiment 1
+
+**Prompt:** Right, basically for this first experiment, I want it to judge A, then judge B, then judge A + B. So that's three different calls, right?
+
+**Response:** Yes, three separate calls, each in a fresh session:
+
+1. **A alone:** the article and `runs/A/`.
+2. **B alone:** the article and `runs/B/`, in a session that hasn't seen A or its judgment.
+3. **A and B head to head:** the article and both runs.
+
+One thing needs settling first: the two reference lists, meaning the article's own claims and the problems in its argument. If each call builds its own lists, they'll differ from session to session. A's coverage would then be counted against one list and B's against another, and those numbers can't be compared.
+
+I'd recommend this:
+- **Call 1** writes the lists to `reference.md` before it opens `runs/A/`. They're built from the article alone, so A doesn't shape them.
+- **Calls 2 and 3** get that same `reference.md`. A problem a run finds that isn't on the list is noted in that run's judgment, and `reference.md` stays unchanged.
+- **Call 3** gets the runs, not the two solo judgments. Its ranking is then its own, and we can check whether it agrees with the solo scores. If they disagree, that's worth looking at.
+
+That makes four files per experiment: `reference.md`, `judgment_A.md`, `judgment_B.md` and `head_to_head.md`. They'd be stored here under `outputs/judgments/barnett_pdf_sol_high_vs_medium/`.
+
+Should I rewrite the rubric around those three calls?
+
+### 6. Calls for experiment 1
+
+**Prompt:** Wait, hold on. It has to evaluate close reading separate from evaluation. So it would be 6, no?
+
+**Response:** Yes, six calls, each in a fresh session:
+
+| Call | Judges | Rubric section |
+| --- | --- | --- |
+| 1 | A's close reading | A1–A5 |
+| 2 | B's close reading | A1–A5 |
+| 3 | A's and B's close readings, head to head | comparison and ranking |
+| 4 | A's argument evaluation | B1–B6 |
+| 5 | B's argument evaluation | B1–B6 |
+| 6 | A's and B's argument evaluations, head to head | comparison and ranking |
+
+The split also separates the two reference lists:
+- **The article's own claims** are only used for close readings (A2 coverage). Call 1 writes the list before it opens A's reading, and calls 2 and 3 get the same list.
+- **The problems in the argument** are only used for evaluations (B6 correctness). Call 4 writes that list before it opens A's evaluation, and calls 5 and 6 get it.
+
+The evaluation calls shouldn't get the close readings. They judge the evaluation against the article, so a strong or weak close reading can't colour the score. Barnett has no primers, so there's no P call for this experiment.
+
+That makes eight files under `outputs/judgments/barnett_pdf_sol_high_vs_medium/`:
+- `claims_reference.md` and `problems_reference.md`
+- `close_reading_A.md`, `close_reading_B.md` and `close_reading_head_to_head.md`
+- `evaluation_A.md`, `evaluation_B.md` and `evaluation_head_to_head.md`
+
+Should I rewrite the rubric around these six calls?
+
+### 7. Write evaluation calls as prompts 
+
+**Prompt:** Well why don't you write a markdown where you paste the prompts for these 6 calls? We are going to reuse this template, and then I can start new chats and use the prompts.
+
+**Response:** docs/JUDGING_PROMPTS.md now has the folder setup and seven reusable prompts; Barnett uses six of them. RUBRIC.md is split into separate sessions, and the key, build plan and docs point to outputs/judgments/<experiment>/.
+
+
 
 ---
 
