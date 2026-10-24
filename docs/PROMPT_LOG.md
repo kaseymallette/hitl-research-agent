@@ -1933,7 +1933,235 @@ Should I rewrite the rubric around these six calls?
 
 **Response:** docs/JUDGING_PROMPTS.md now has the folder setup and seven reusable prompts; Barnett uses six of them. RUBRIC.md is split into separate sessions, and the key, build plan and docs point to outputs/judgments/<experiment>/.
 
+### 8. Designing head to head evaluations
 
+**Prompt:** For the experiments, I was doing head to head to eliminate as we go. 
+
+Experiment 1: Barnett, PDF, 6.1 Sol High vs. 6.1 Sol Medium 
+Experiment 2: Barnett, Extracted text + crops, 6.1 Sol High vs. 6.1 Sol Medium 
+Experiment 3: Barnett, PDF, 1 winner vs. 6 Astra Low
+Experiment 4: Barnett, Extracted + Crops, 2 winner vs. 6 Astra Low
+Experiment 5: Winner 3 vs. Winner 4
+
+**Response:** EVALUATION_KEY.md now lays out the five-experiment Barnett bracket. Experiment 2 has its costs and sources filled in, and Experiments 3–5 are filled in as far as is known before the winners.
+
+**Pending decisions:** Reuse Experiment 1's reference lists for all five experiments?
+Yes
+
+### 9. Review claims_reference for experiment 1
+
+**Prompt:** I ran the first prompt. Here was the output. Thoughts?
+
+I've pulled the article's text and page images. Now I'm reading it before drafting the claims list.
+I've read the whole article (7 pages, one table, one graphical abstract, no numbered figures). Now I'm writing the claims reference list.
+The reference list is written. Now I'm opening run A's close reading.
+Mechanical checks mostly show "no match" hits caused by PDF extraction artifacts like split accents and broken hyphens. I'll rerun with looser matching and dig into the two verbatim misses next.
+All checks pass: 12/12 verbatim texts, 114/114 numbers, and 66/66 references accounted for. Now checking whether the run captures the article's repeated "achievable" claim.
+The article explicitly claims four times that water-sustainable AI is "achievable," but the run records never state this directly—only hinting at it in internal notes. I'll write up the judgment reflecting this gap now.
+I've written both files. Run A is a faithful, careful close reading with one consistent blind spot: it never records the article's claims that water-sustainable AI is achievable.
+The claims list ([judgments/claims_reference.md](https://claude.ai/epitaxy/judgments/claims_reference.md)) was written from the article alone, before I opened the run:
+
+* What it covers: the highlights, graphical abstract, abstract, and the main text from §1 to §6.3, including Table 1. The article has no appendices.
+* What's on it: 6 self-described contributions (the article doesn't number them), 5 highlights, 7 abstract claims, 21 conclusions, 1 figure (the graphical abstract, which has no figure number) and 1 table.
+* What's added: a short list of the main numbers in the body, so later sessions can look them up quickly. It's marked as not counted for coverage.
+
+Run A's judgment ([judgments/close_reading_A.md](https://claude.ai/epitaxy/judgments/close_reading_A.md)), with sample seed 20261024:
+
+* A1, attribution: all 30 sampled claims score 2. Of their 18 support items, 17 score 2 and 1 scores 1, because it adds "approximately" and "as evidence" to the closing Luleå claim.
+* A2, coverage: every contribution, highlight, table row and footnote is caught, and the graphical abstract is read and correctly marked as paraphrased. The one consistent gap is the article's four statements that water-efficient or water-sustainable AI "is achievable." The run never records them as claims, only alludes to them in its own notes. So the claims show only the "technology alone is insufficient" half of the argument.
+* A3, strength of language: 2. Both the author's strong wording ("systematic disregard", "governance failure") and their hedges ("suggests", "proposed") are kept. A few small slips run in no particular direction, such as dropping the condition "If this increase in AI use continues" on the 2027 projection.
+* A4, mechanical checks: all 12 verbatim texts, 114 numbers and 66 reference entries match the article. The first pass flagged 23 references and 2 verbatim texts, but all of those turned out to be text-extraction glitches, not errors in the run.
+* A5, detail: 25 steps, evenly spread across the article, with little repetition and useful reflections at each step.
+
+There's also a smaller problem: a few support items include the run's own cross-references (for example "develops the example already introduced in Table 1"). These belong in the run's own reflection fields, not in fields meant for the author's words.
+To check the article I installed PyMuPDF in a scratch environment, because the machine had no PDF tools. I opened only the rubric, the prompt, the article and `runs/A/analysis.json`.
+
+**Response:** This is a good first session, and it followed the setup. It opened only the four files it was allowed, wrote the claims list before opening run A, used real tools for the checks, and recorded a seed. It also caught 25 false alarms (23 references and 2 verbatim texts) as PDF extraction glitches instead of counting them against the run.
+
+**The "achievable" finding holds up.** I checked run A's `analysis.json`. Its claims include "Achieving water-sustainable AI demands... policy reform" and the claims that immersion cooling "can achieve near-zero" water use. None records the article's own statement that water-sustainable AI *is achievable*. That's a real gap: the reading keeps the "technology isn't enough" half of the argument and drops its hopeful half. Whether B makes the same omission will show in the head to head.
+
+**A1 may not separate the runs.** All 30 sampled claims scored 2. If B also scores near-perfect, attribution won't tell them apart, and the decision will rest on coverage (A2), qualifiers (A3), and the evaluations. That's still a useful finding about Sol at either effort.
+
+**The cross-references in support items are minor but real.** A note like "develops the example already introduced in Table 1" is the run's own wording, placed in a field meant for the author's words. It scored them as 2 anyway. It's worth seeing whether the head to head treats it as a pattern.
+
+**Two small departures from the rubric, both harmless:**
+- It added a list of the article's main numbers to `claims_reference.md`, marked as not counted for coverage. Later sessions may find it useful.
+- It used today's date as the seed. Run B's session will probably pick its own seed, which is fine, since B's claims differ anyway.
+
+**Check the claims list before you go on.** All five Barnett experiments are scored against `claims_reference.md`, so a gap there carries through every one of them. It lists 6 contributions, 5 highlights, 7 abstract claims, 21 conclusions, the graphical abstract and Table 1. Compare that with your Barnett notes before running prompt 2. If anything's missing, fix the list now, while only run A has been scored against it.
+
+### 10. Compare Notes
+
+**Prompt:** Check my notes vs the claims reference to see what was missed. 
+
+**Response:** It's good, with one real gap.
+
+**What matches your notes:**
+- **The things I asked you to check are all there:**
+  - semiconductor manufacturing (AB2, and the graphical abstract)
+  - the water-pricing incentive (CO8, CO11)
+  - the "water positive" pledges (CO15)
+  - Virginia's bill (CO16)
+  - the closing question about intelligence per liter (CO19)
+- **The "achievable" claim appears three times,** at CO7, CO10 and CO21. CO10 is the line in your notes: "Previous sections demonstrate water efficient AI is achievable."
+- **The moral turn from your takeaway 1 is captured.** CO2 records that data-center water serves services "whose societal necessity varies widely", and CO12 records the graduated benefit-versus-cost approach.
+- **The rest of your notes' later sections are covered:** Colón and the concession system (CO6, CO20), "awareness is insufficient" (CO14), and the five research priorities and four policy imperatives (CO17, CO18).
+- **It checked the article's structure:** no numbered figures, one table, no appendices. It even warns that a run citing "Figure 1" is describing something that doesn't exist.
+
+**The gap is the technical solutions section.** Your notes treat that section as most of the paper (takeaways 1, 3 and 5), with a trade-off for each of the five technologies. The list has no conclusion for §4.1–4.5 individually, only the summaries at CO7 and CO8. The examples (Meta Luleå, Google Hamina, Hainan, Deep Green, Equinix, Stockholm) are only in the supplementary section, which isn't counted for coverage. Table 1's trade-off column covers four of the five technologies. Waste heat recovery isn't in the table, so its conclusion is on the list nowhere: still pilot scale, needs nearby heat demand, needs coordinated planning. So A2 can't tell whether a run caught each technology's trade-off, and for this paper that's a large share of what a reader needs.
+
+**What I'd do:** add five conclusions, one per technology in §4.1–4.5, each with its trade-off and example. Then rerun prompt 1 in a new chat. The list already exists, so prompt 1 will use it as written and re-score run A against the fuller list. Only A has been scored so far, so this is the cheapest point to fix it.
+
+The additions should come from you or a fresh session reading the article, not from me. I've seen the runs, so anything I add could lean toward what they happened to cover. Your notes' Technical Solutions section already has the five trade-offs, so writing them in yourself would be quick.
+
+### 11. Write prompt to add to claims reference
+
+**Prompt:** Can you write up the prompt for me to send it with my notes added?
+
+**Response:** Paste this into a new chat in the judging folder:
+
+```
+Hi! You're helping finish a reference list for judging close readings of an
+academic article. Please start by reading RUBRIC.md, especially "The
+reference lists", then article.pdf, then judgments/claims_reference.md.
+
+The list is missing the conclusions of the article's technical solutions
+section, §4.1–4.5. It summarizes them at CO7 and CO8, and Table 1 covers some
+of the trade-offs, but it has no conclusion for each technology on its own.
+Please add five conclusions, one per subsection, as CO22–CO26, in the
+section's order:
+
+- §4.1 cold-climate siting
+- §4.2 natural water bodies
+- §4.3 subsea data centers
+- §4.4 waterless systems
+- §4.5 waste heat recovery
+
+Each entry should give the conclusion the author draws about that technology,
+its trade-offs and limits as the article states them, and the example or
+examples it rests on, with the location. Use the article's exact words in
+quotation marks where you can, and keep its hedges and its strength of
+language.
+
+My own notes on that section are below, as a guide to what the section
+covers. Write each entry from the article, not from my notes: if my notes and
+the article differ, the article wins, and nothing goes on the list that the
+article doesn't say.
+
+<notes>
+### 1. Cold-climate siting
+- Data centers in colder climates can use free air cooling
+- Example: Meta's data center in Sweden:
+  - Withdraws only 25.4 million liters annually
+  - Uses hydropower → still requires water
+- Tradeoff: Limited geography and seasonality
+
+### 2. Natural water bodies
+- Site data centers near lakes, rivers, or seawater
+- Example: Google's data center in Finland uses seawater from the bay
+  - Described as the company's most efficient data center
+- Low WUE and low water consumption, but ecological questions remain:
+  - Warming plumes
+  - Stratification
+  - Cumulative impacts
+- Ecological concerns:
+  - Discharge temperatures elevated by 5–8°C
+  - Can disrupt thermal stratification in lakes and affect dissolved oxygen levels
+  - The EU has restrictions on temperatures of returned cooling water
+- Sustainability tradeoffs:
+  - Operational and financial risk
+  - Restricted scalability
+
+### 3. Subsea data centers
+- Place sealed server capsules directly on the seabed
+- Use surrounding seawater as a passive heat sink
+- Example: China sealed 400–800 AI servers, achieving WUE close to 0 by eliminating freshwater consumption
+- Microsoft noted economic and operational constraints → discontinued despite success
+- Potential impacts:
+  - Effects on local temperature
+  - Marine life
+  - Electromagnetic emissions
+- Initial assessments indicate low thermal effects: <1°C temperature rise
+- Costly and complex maintenance
+
+### 4. Waterless systems
+- Modular data centers using:
+  - Immersion cooling
+  - Direct-to-chip liquid cooling
+- Can achieve near-zero WUE
+- Example: Deep Green deploys immersion-cooled units, capturing 96% of waste heat for reuse
+- Example: AWS operates reclaimed wastewater systems at 20 facilities
+- Tradeoffs:
+  - Increase electricity use by 10–25% compared with evaporative cooling
+  - Electricity makes up 40–60% of operating costs
+  - Operators face incentives to lower costs by using evaporative cooling
+  - Dry cooling performance degrades in hot climates
+
+### 5. Waste heat recovery
+- Some companies use waste heat as a resource
+- Example: Deep Green uses waste heat to heat a UK swimming pool, offsetting 62% of conventional natural gas heating
+- Example: For the 2024 Paris Olympics, Equinix reused server heat for the Olympic Aquatic Center
+- Example: Stockholm's Open District Heating provides heat for 30,000 apartments
+- System benefits: Enhances overall energy efficiency by enabling dual services
+- Tradeoff: Requires proximity to heat demand and seasonal alignment with data center operation
+- Scalability: Currently pilot-scale; systematic integration requires coordinated planning and policy frameworks
+</notes>
+
+Add the five entries to the CO table, and add a line under "Scope" saying
+that CO22–CO26 were added afterwards, from the article, to cover §4.1–4.5.
+Change nothing else in the list.
+
+Please open only RUBRIC.md, article.pdf, and judgments/claims_reference.md.
+Don't open anything in runs/ or any other judgment.
+```
+
+Before you send it, move `judgments/close_reading_A.md` out of the judging folder. That judgment was scored against the old list.
+
+Then run prompt 1 again in a new chat. The list now exists, so prompt 1 will use it as written and re-score run A against all 26 conclusions. After that, copy the updated `claims_reference.md` and the new `close_reading_A.md` into `outputs/judgments/exp1_barnett_pdf_sol_high_vs_medium/`, replacing the old ones.
+
+### 12. Changes to rubric
+
+**Prompt:** Does what you changed in the rubric affect the claims reference we just ran and should I replace the old one?
+
+**Response:** Yes, it affects it. The change is exactly the gap we found. The rubric now asks the claims list to cover "the conclusion of every section and subsection." The list you have meets that everywhere except §4.1–4.5, the five technologies. Every other section and subsection has its conclusion on the list: §1, §3, §3.1, §3.2, the §4 introduction and end, §5.1–5.3, and §6.1–6.3.
+
+So you don't need to replace it, just fill the gap. I'd use the prompt I wrote earlier, the one that adds CO22–CO26 from the article with your notes as a guide, rather than regenerating the whole list:
+- **Patching** keeps the 39 entries you've already checked against your notes and adds only the missing five.
+- **Regenerating** would give you a new list you'd have to check again from scratch, for the same result at best.
+
+In the judging folder:
+1. **Copy in the new `RUBRIC.md`** to replace the old one. The patching prompt points the session at its reference-list section.
+2. **Move `judgments/close_reading_A.md` out.** It was scored against the incomplete list.
+3. **Send the patching prompt** in a new chat.
+4. **Check CO22–CO26** against your Technical Solutions notes.
+5. **Run prompt 2 (Close reading, run A)** in a new chat. It was prompt 1 before the split, and it now judges A against the finished list.
+
+Then copy the patched `claims_reference.md` and the new `close_reading_A.md` into `outputs/judgments/exp1_barnett_pdf_sol_high_vs_medium/`, replacing the old ones.
+
+### 13. Check the new claims reference for experiment 1
+
+**Prompt:** Okay, can you check the new claims reference?
+
+**Response:** The patched list is good, and you can run prompt 2 (Close reading, run A) against it.
+
+**Every point in your Technical Solutions notes is in CO22–CO26:**
+- **Cold-climate siting (CO22):** free-air cooling, Meta Luleå's 25.4 million liters, hydropower still costing water, and the limits of geography and seasons.
+- **Natural water bodies (CO23):** Google Hamina; warming plumes, stratification and cumulative impacts; the 5–8 °C discharge and dissolved oxygen; EU temperature limits; operational and financial risk; limited scalability.
+- **Subsea (CO24):** 400–800 servers, WUE of zero, Microsoft discontinuing despite success, impacts on temperature, marine life and electromagnetics, under 1 °C so far, costly maintenance.
+- **Waterless (CO25):** immersion and direct-to-chip cooling, near-zero WUE, Deep Green's 96%, AWS's 20 facilities, the 10–25% electricity penalty, electricity at 40–60% of operating costs, the incentive toward evaporative cooling, and poor performance in hot climates.
+- **Waste heat (CO26):** the 62% pool offset, Equinix at the Olympics, Stockholm's 30,000 apartments, dual services, needing nearby demand and seasonal fit, pilot scale, coordinated planning.
+
+**Where your notes and the article differ, it followed the article:**
+- Hainan has *capacity* for 400–800 servers.
+- Hamina is Google's most *energy*-efficient data center.
+- The discontinuation reason carries the author's hedge, "suggesting economic or operational constraints."
+- The curtailment risk applies only to once-through or open-loop systems.
+
+It also added what the article covers that your notes don't: Alibaba's Qiandao Lake, ZutaCore, Los Alamos, Microsoft's planned Espoo heat supply (marked as "expected"), and each subsection's scalability limits.
+
+**The rest is intact:** all 46 entries are present (C1–C6, H1–H5, AB1–AB7, CO1–CO26, F1, T1), and the scope note says CO22–CO26 were added afterwards.
+
+One thing to watch: each new entry bundles several points, such as conclusion, trade-offs, scalability and examples. A run might catch some of an entry and miss the rest. The rubric's "caught without what it shows" category covers that, but see whether the A judgment says what was partial rather than just counting the entry as caught.
 
 ---
 

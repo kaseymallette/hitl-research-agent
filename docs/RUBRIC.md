@@ -7,10 +7,11 @@ of articles. It guides that choice; it doesn't prove it, and a researcher
 checks it against their own reading.
 
 The judging is split into separate sessions, and you're doing one of them.
-The prompt that started this session says which: one run's close reading, one
-run's argument evaluation, or both runs' close readings or evaluations head
-to head. Judging each run alone first, in its own session, keeps its scores
-tied to the article rather than to the other run. Read the whole rubric, then use the sections your session needs.
+The prompt that started this session says which: one of the two reference
+lists, one run's close reading, one run's argument evaluation, or both runs'
+close readings or evaluations head to head. Judging each run alone first, in its own
+session, keeps its scores tied to the article rather than to the other run.
+Read the whole rubric, then use the sections your session needs.
 
 This rubric reports; it never withholds. There are no thresholds and no pass
 mark. A run that does badly is still judged in full, and the judgment says
@@ -89,10 +90,12 @@ what you're judging before you open a run.
 
 | Session | Reads | Scores | Writes |
 | --- | --- | --- | --- |
-| Close reading, run A | the article, then run A's `analysis.json` | the claims reference list if it isn't written yet, then A1–A5 | `claims_reference.md` if new, `close_reading_A.md` |
+| Claims reference list | the article alone | — | `claims_reference.md` |
+| Close reading, run A | the article, `claims_reference.md`, run A's `analysis.json` | A1–A5 | `close_reading_A.md` |
 | Close reading, run B | the article, `claims_reference.md`, run B's `analysis.json` | A1–A5 | `close_reading_B.md` |
 | Close readings, head to head | the article, `claims_reference.md`, both runs' `analysis.json` | comparison and verdict | `close_reading_head_to_head.md` |
-| Evaluation, run A | the article, then run A's argument evaluation | the problems reference list if it isn't written yet, then B1–B6 | `problems_reference.md` if new, `evaluation_A.md` |
+| Problems reference list | the article alone | — | `problems_reference.md` |
+| Evaluation, run A | the article, `problems_reference.md`, run A's argument evaluation | B1–B6 | `evaluation_A.md` |
 | Evaluation, run B | the article, `problems_reference.md`, run B's argument evaluation | B1–B6 | `evaluation_B.md` |
 | Evaluations, head to head | the article, `problems_reference.md`, both runs' argument evaluations | comparison and verdict | `evaluation_head_to_head.md` |
 
@@ -102,13 +105,13 @@ article alone.
 
 ## The reference lists
 
-Each list is written once per article, by the first session that needs it,
-from the article alone and before that session opens any run, so no run
-shapes it. Every later session on that article, in any comparison, uses it as
+Each list is written once per article, in a session of its own, from the
+article alone, so no run shapes it. Every later session on that article, in any comparison, uses it as
 written and doesn't change it.
 
 - **`claims_reference.md` — the article's own claims.** Every enumerated
-  contribution, every claim in the abstract, every conclusion, and every
+  contribution, every claim in the abstract, the conclusion of every section
+  and subsection as well as the article's overall conclusions, and every
   figure and table, each with what it shows and where it is. Say where the
   article ends for this purpose: the main text, or the appendices too.
 - **`problems_reference.md` — problems in the argument.** Where the article's
