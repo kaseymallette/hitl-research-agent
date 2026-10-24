@@ -22,14 +22,18 @@ what is wrong with it.
 ## What's in the folder
 
 ```
-article.pdf
+RUBRIC.md                      this file
+article.pdf                    the article
+prompts/                       the instructions the runs followed
+  close-reading.md
+  evaluate-argument.md
 runs/
   A/
     analysis.json              the close reading
-    argument_evaluation.*      the argument evaluation, .json or .md
+    argument_evaluation.json   the argument evaluation
   B/
-  …
-prompts/                       the instructions the runs followed, if included
+    analysis.json
+    argument_evaluation.json
 judgments/                     where every session writes
 ```
 
@@ -77,8 +81,8 @@ and what bias shapes the author's framing and the run's own reading. It was
 asked to be selective rather than exhaustive, and to point to the article
 when it makes a judgment.
 
-If `prompts/` is in the folder, read it before the runs. It holds the exact
-instructions the runs followed.
+`prompts/` holds the exact instructions the runs followed. Read the file for
+what you're judging before you open a run.
 
 ---
 
