@@ -303,7 +303,7 @@ The criteria Phase 2's head-to-head judgment applies to each experiment: the
 close readings (attribution, coverage, strength of language, the mechanical
 checks, detail), the argument evaluations (acceptability, relevance,
 sufficiency, unstated warrants, self-attribution, correctness), and a
-ranking. It reports and never withholds a result
+verdict. It reports and never withholds a result
 ([ADR-0005](adr/0005-no-hard-quality-gates.md)). It is written to stand alone,
 for a judge in a fresh session with no other context: it describes the run
 folder, with runs labelled by letter and nothing about their configuration or

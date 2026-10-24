@@ -1,6 +1,6 @@
 # Rubric
 
-You're judging several analyses of one article. Each analysis came from the
+You're judging two analyses of one article, runs A and B. Both came from the
 same instructions, run with a different model configuration or input method.
 Your judgment helps choose which configuration to use for a larger collection
 of articles. It guides that choice; it doesn't prove it, and a researcher
@@ -8,10 +8,9 @@ checks it against their own reading.
 
 The judging is split into separate sessions, and you're doing one of them.
 The prompt that started this session says which: one run's close reading, one
-run's argument evaluation, or every run's close readings or evaluations head
-to head. Judging each run alone first, in its own session, keeps
-its scores tied to the article rather than to whichever run was read before
-it. Read the whole rubric, then use the sections your session needs.
+run's argument evaluation, or both runs' close readings or evaluations head
+to head. Judging each run alone first, in its own session, keeps its scores
+tied to the article rather than to the other run. Read the whole rubric, then use the sections your session needs.
 
 This rubric reports; it never withholds. There are no thresholds and no pass
 mark. A run that does badly is still judged in full, and the judgment says
@@ -90,12 +89,12 @@ what you're judging before you open a run.
 
 | Session | Reads | Scores | Writes |
 | --- | --- | --- | --- |
-| Close reading, first run | the article, then run A's `analysis.json` | the claims reference list, then A1–A5 | `claims_reference.md`, `close_reading_A.md` |
-| Close reading, each further run | the article, `claims_reference.md`, that run's `analysis.json` | A1–A5 | `close_reading_<run>.md` |
-| Close readings, head to head | the article, `claims_reference.md`, every run's `analysis.json` | comparison and ranking | `close_reading_head_to_head.md` |
-| Evaluation, first run | the article, then run A's argument evaluation | the problems reference list, then B1–B6 | `problems_reference.md`, `evaluation_A.md` |
-| Evaluation, each further run | the article, `problems_reference.md`, that run's argument evaluation | B1–B6 | `evaluation_<run>.md` |
-| Evaluations, head to head | the article, `problems_reference.md`, every run's argument evaluation | comparison and ranking | `evaluation_head_to_head.md` |
+| Close reading, run A | the article, then run A's `analysis.json` | the claims reference list if it isn't written yet, then A1–A5 | `claims_reference.md` if new, `close_reading_A.md` |
+| Close reading, run B | the article, `claims_reference.md`, run B's `analysis.json` | A1–A5 | `close_reading_B.md` |
+| Close readings, head to head | the article, `claims_reference.md`, both runs' `analysis.json` | comparison and verdict | `close_reading_head_to_head.md` |
+| Evaluation, run A | the article, then run A's argument evaluation | the problems reference list if it isn't written yet, then B1–B6 | `problems_reference.md` if new, `evaluation_A.md` |
+| Evaluation, run B | the article, `problems_reference.md`, run B's argument evaluation | B1–B6 | `evaluation_B.md` |
+| Evaluations, head to head | the article, `problems_reference.md`, both runs' argument evaluations | comparison and verdict | `evaluation_head_to_head.md` |
 
 The close-reading sessions never read an argument evaluation, and the
 evaluation sessions never read a close reading. Each is judged against the
@@ -103,9 +102,10 @@ article alone.
 
 ## The reference lists
 
-Each list is written once, by the first session that needs it, from the
-article alone and before that session opens any run, so no run shapes it.
-Later sessions use it as written and don't change it.
+Each list is written once per article, by the first session that needs it,
+from the article alone and before that session opens any run, so no run
+shapes it. Every later session on that article, in any comparison, uses it as
+written and doesn't change it.
 
 - **`claims_reference.md` — the article's own claims.** Every enumerated
   contribution, every claim in the abstract, every conclusion, and every
@@ -131,17 +131,17 @@ on the run's main strengths and weaknesses.
 
 ## Comparing head to head
 
-With every run in front of you, write:
+With both runs in front of you, write:
 
-- **What each caught that the others missed.** For close readings, against
+- **What each caught that the other missed.** For close readings, against
   `claims_reference.md`. For evaluations, against `problems_reference.md`; a
   problem a run found that isn't on the list, and that you confirm against
   the article, is recorded here as found by that run, and the list itself
   stays as it is.
-- **Where each is wrong** that the others aren't.
-- **A ranking,** best to worst, with reasons drawn from the criteria.
-- **Close calls.** Where two runs are close, compare just those two, twice,
-  once in each order, and record whether the verdict held. A verdict that
+- **Where each is wrong** that the other isn't.
+- **A verdict:** which run is better, with reasons drawn from the criteria.
+- **An order check.** Make the comparison twice, once reading A first and
+  once reading B first, and record whether the verdict held. A verdict that
   flips with the order is a tie.
 
 You don't need to rescore every criterion; use them as the grounds for the
@@ -274,7 +274,7 @@ Counted, not scored:
   passage misdescribed. Name each.
 
 What a run found that no other did is recorded in the head-to-head session,
-once every run is read.
+once both runs are read.
 
 ---
 
