@@ -8,8 +8,8 @@ checks it against their own reading.
 
 The judging is split into separate sessions, and you're doing one of them.
 The prompt that started this session says which: one run's close reading, one
-run's argument evaluation, every run's close readings or evaluations head to
-head, or the primers. Judging each run alone first, in its own session, keeps
+run's argument evaluation, or every run's close readings or evaluations head
+to head. Judging each run alone first, in its own session, keeps
 its scores tied to the article rather than to whichever run was read before
 it. Read the whole rubric, then use the sections your session needs.
 
@@ -27,7 +27,6 @@ runs/
   A/
     analysis.json              the close reading
     argument_evaluation.*      the argument evaluation, .json or .md
-    primer.md                  background on the field, in some runs only
   B/
   …
 prompts/                       the instructions the runs followed, if included
@@ -45,7 +44,7 @@ runtime are weighed against your judgment afterwards, outside it.
 Work from the article. Don't look up the works it cites or check its findings
 against outside sources; the runs weren't asked to either.
 
-### The three documents in a run
+### The two documents in a run
 
 **The close reading** (`analysis.json`) is a reading of the article from start
 to finish, recording what the author says without judging it:
@@ -78,10 +77,6 @@ and what bias shapes the author's framing and the run's own reading. It was
 asked to be selective rather than exhaustive, and to point to the article
 when it makes a judgment.
 
-**The primer**, where there is one, is background on the article's field for
-a reader new to it, written before the reading. It's allowed imperfections;
-it's judged on whether it helps.
-
 If `prompts/` is in the folder, read it before the runs. It holds the exact
 instructions the runs followed.
 
@@ -97,7 +92,6 @@ instructions the runs followed.
 | Evaluation, first run | the article, then run A's argument evaluation | the problems reference list, then B1–B6 | `problems_reference.md`, `evaluation_A.md` |
 | Evaluation, each further run | the article, `problems_reference.md`, that run's argument evaluation | B1–B6 | `evaluation_<run>.md` |
 | Evaluations, head to head | the article, `problems_reference.md`, every run's argument evaluation | comparison and ranking | `evaluation_head_to_head.md` |
-| Primers, where runs have them | the article, every run's `primer.md` | P, and a ranking | `primers.md` |
 
 The close-reading sessions never read an argument evaluation, and the
 evaluation sessions never read a close reading. Each is judged against the
@@ -277,18 +271,6 @@ Counted, not scored:
 
 What a run found that no other did is recorded in the head-to-head session,
 once every run is read.
-
----
-
-## P. Primer
-
-Where a run has one:
-
-- **Accuracy:** errors about the field, named, and whether any would mislead a
-  reader of this article.
-- **Usefulness:** whether a reader new to the field could follow the article
-  after reading it — the terms it explains, and the ones the article needs
-  that it leaves out.
 
 ---
 
