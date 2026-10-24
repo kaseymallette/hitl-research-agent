@@ -2169,11 +2169,11 @@ One thing to watch: each new entry bundles several points, such as conclusion, t
 
 **Response:** I've checked the key findings against the runs. Writing up the verdict now.
 
-## Experiment 1 winner: B, GPT-6.1 Sol medium effort (narrowly, and mostly on cost)
+**Experiment 1 winner:** B, GPT-6.1 Sol medium effort (narrowly, and mostly on cost)
 
 The two halves of the judging point in opposite directions, and both margins are small. Higher effort didn't make either document reliably better, and B costs about 14% less ($0.302 against $0.351).
 
-### Close readings: A, narrowly
+#### Close readings: A, narrowly
 
 | | A (high) | B (medium) |
 | --- | --- | --- |
@@ -2192,7 +2192,7 @@ The head-to-head session counted B's error as the more serious one and found tha
 
 I'd call this closer than the head-to-head does. A's gap is a pattern across the whole article, about half of its central claim, while B's is a single scope error. The solo coverage counts favor B as well.
 
-### Argument evaluations: B, narrowly
+#### Argument evaluations: B, narrowly
 
 The head-to-head session compared both runs against the 34-problem list:
 - **Found only by B:**
@@ -2213,7 +2213,7 @@ This verdict also held in both orders.
 
 **A calibration note.** The two solo evaluation sessions graded differently. The A session counted 9 problems found and 8 partly found, while the B session counted 15 found and 4 partly found and was more generous: it marked P1 and P2 as found where the head-to-head called P2 partial. The solo counts therefore overstate B's lead. The head-to-head compared both runs in one session, and it still came out for B.
 
-### Why B wins overall
+#### Why B wins overall
 
 1. **It's one run each way.** Each run narrowly wins one document, and each win comes from the same kind of thing: one run catching something the other missed.
 2. **Higher effort doesn't consistently help.** A spent more tokens on reasoning (1,552 against 249 on the close reading), but neither document is reliably better for it.
@@ -2223,6 +2223,29 @@ This verdict also held in both orders.
 
 **What it means next:** Experiment 3 would put B (Sol medium, PDF) against GPT-6 Astra low.
 
+### 15. Record B as winner for experiment 1
+
+**Prompt:** Yes, record B (GPT-6.1 Sol medium) as Experiment 1's winner in EVALUATION_KEY.md and fill in Experiment 3's row.
+
+**Response:** I've recorded B as Experiment 1's winner in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) and filled in Experiment 3's row. Nothing is committed yet.
+
+- **Experiment 1's winner:** B, GPT-6.1 Sol medium. The entry gives the reason in brief: each run narrowly won one document, higher effort didn't help either one consistently, and cost decided it.
+- **Experiment 3's first row:** now GPT-6.1 Sol medium, with its close reading at $0.214 and 5 min 2 s, its evaluation at $0.088 and 1 min 3 s, and $0.302 in total. That's about a quarter of GPT-6 Astra low's $1.293, which matches the "about four times" in Experiment 3's question.
+
+Both rows in Experiment 3 still show "?" for the run letter. You'll choose which configuration is A and which is B when you set up the judging folder, and record it then. The sources line, "the winner's files as in Experiment 1", now points to B's files: `pdf__gpt-6.1-sol-medium/analysis.json`, and `argument_evaluation_2.json` renamed to `argument_evaluation.json`.
+
+### 16. Add support for decision for experiment 1
+
+**Prompt:** Please write up and summarize your reasoning in the evaluation key, using the findings we discussed
+
+**Response:** I've written the reasoning into the Experiment 1 "Winner" entry in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md). Nothing is committed yet.
+
+The entry has four parts:
+
+- **Close readings: A, narrowly.** A table compares A1–A4 and the step and claim counts. The entry then names the two weaknesses that decided it, both of which I confirmed in the runs. B drops the "once-through or open-loop" condition in §4.2. A never records the article's claims that water-sustainable AI is achievable. It also notes that the margin is probably closer than the head-to-head made it.
+- **Argument evaluations: B, narrowly.** It lists the problems only B found (P3, P28, P29, P24, P31) and those only A found (P21, P9, P12), plus what both missed. It also notes that the two solo sessions graded at different strictness, so their counts overstate B's lead.
+- **Why B.** It's one document each way, A's extra reasoning tokens didn't produce a consistently better document, and A costs 16% more.
+- **The case for A.** Phase 3's synthesis reads only the close readings, and the entry gives the reason this still didn't tip the result.
 
 ---
 

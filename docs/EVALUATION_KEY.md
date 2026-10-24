@@ -65,7 +65,67 @@ B's?
   `argument_evaluation_2.json`, copied as `argument_evaluation.json`. Its first
   evaluation was written under an earlier prompt and isn't judged.
 
-**Winner:**
+**Winner:** B, GPT-6.1 Sol medium. Each run narrowly won one document, and
+each verdict held in both reading orders. The higher effort didn't show
+consistently, so B's lower cost decides it.
+
+**Close readings: A, narrowly.**
+
+| | A (high) | B (medium) |
+| --- | --- | --- |
+| A1, solo (30 sampled claims) | 97% at 2, 3% at 1 | 87% at 2, 13% at 1 |
+| A1, head to head (15 each, same seed) | 15/15 at 2 | 15/15 at 2 |
+| A2, section conclusions (26) | 23 caught, 3 in part | 26 caught |
+| A3, strength of language | 1 | 1 |
+| A4, mechanical checks | clean | clean |
+| Steps · claims | 25 · 135 | 25 · 117 |
+
+Each reading has one weakness that matters, both confirmed in the runs:
+
+- **B drops a scope condition.** In §4.2 the article limits the curtailment
+  risk to "once-through or open-loop" cooling. B applies it to all
+  natural-water cooling, including the closed-loop systems the section
+  describes. A keeps the condition.
+- **A leaves out the hopeful half of the thesis.** The article says in §4,
+  §5, §6, and the closing that water-sustainable AI is achievable. A records
+  none of these as a claim and keeps only the limitation each is paired with.
+  B records it in §4 and the closing.
+
+The head-to-head weighed B's scope error more heavily, and found that A
+follows the prompt's rules more closely: it records the graphical abstract as
+paraphrased support, keeps distinct claims separate, and copies citation
+markers as printed. The margin is arguably closer than the head-to-head says:
+A's omission is a pattern across the article and concerns half its central
+claim, where B's is one error, and the solo coverage counts favor B.
+
+**Argument evaluations: B, narrowly.** Against the 34-problem list, in the
+head-to-head:
+
+- **Found only by B:** P3 (limited deployment blamed on policy gaps without
+  evidence, Major), P28 (reform concluded necessary without showing
+  alternatives fail), P29 (corporate pledges dismissed by assertion), P24
+  (two citations that don't fit their claims, Jain 2025 and the aquifer study
+  of another basin), and P31 (descriptive evidence to a normative ranking),
+  stated more exactly than A.
+- **Found only by A:** P21 (data-center figures used as AI figures, Major and
+  pervasive), P9, and P12. A also credits the article's disclaimer of
+  prohibition, where B's "rationing" drifts toward a position the article
+  rejects.
+- **Shared:** no factual errors beyond both dropping "U.S." from the §3
+  comparison. Neither checks any of the article's numbers, so P13's
+  arithmetic is found by neither.
+
+The two solo sessions graded at different strictness: A's counted 9 found and
+8 partial, B's 15 found and 4 partial, crediting B with problems the
+head-to-head calls partial. The solo counts overstate B's lead; the
+head-to-head, reading both in one session, still favors B.
+
+**Why B.** The results split one each way, on narrow margins. A's reasoning
+tokens (1,552 against 249 on the close reading) didn't buy a reliably better
+document, and A costs about 16% more. The case for A is that Phase 3's
+synthesis reads only close readings, so a close-reading edge could count for
+more; but A's edge is narrow, and its missing "achievable" claims would enter
+the claims store too.
 
 ---
 
@@ -110,7 +170,7 @@ Judgments: `outputs/judgments/exp3_barnett_pdf_winner_vs_astra_low/`
 
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
-| **?** | the winner of Experiment 1 | | | | |
+| **?** | GPT-6.1 Sol (winner of Experiment 1) | medium | $0.214 · 5 min 2 s | $0.088 · 1 min 3 s | $0.302 |
 | **?** | GPT-6 Astra | low | $0.892 · 3 min 30 s | $0.401 · 38 s | $1.293 |
 
 GPT-6 Astra low's tokens: close reading 18,479 input, 14,145 output, 41
