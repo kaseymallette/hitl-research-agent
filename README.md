@@ -1,6 +1,6 @@
 # hitl-research-agent
 
-A human-in-the-loop multi-agent research framework for building and examining a collection of evidence across articles. Three AI agents handle these tasks: single source analysis, synthesis, and literature review, giving researchers a way to examine individual arguments and understand how they relate across a research collection.
+A human-in-the-loop multi-agent research framework for building and examining a collection of evidence across articles. Three AI agents handle these tasks: single source analysis, synthesis, and a research assistant, giving researchers a way to examine individual arguments, understand how they relate across a research collection, and get their bearings in an unfamiliar field.
 
 The analyses connect authors’ claims to their evidence, methods, assumptions, and limitations, while making the model’s own interpretations explicit. A separate evaluation step will check whether those analyses faithfully represent the sources and whether their assessments of the authors’ arguments are justified. Researchers will review the results before adding them to their collection and use that collection to investigate disagreements, gaps, and new questions.
 
@@ -36,11 +36,11 @@ matter for relevance: a source about process-grade cooling water is not
 evidence about drinking water, and treating them as the same thing is the first
 way a judgment about relevance goes wrong.
 
-The source collection is 16 articles in [`data/research/`](data/research), three
+The source collection is 16 articles in [`data/research/`](data/research), two
 of which are the experiment set in
 [`data/research/ab_testing/`](data/research/ab_testing).
 
-I collected the 16 articles for this pilot study myself, using the research question to identify relevant sources. The planned literature review agent will assist with that work by finding candidate articles and explaining their relevance for me to review. Single source analysis and synthesis remain question-independent so their outputs can support other research questions as the collection grows.
+I collected the 16 articles for this pilot study myself, using the research question to identify relevant sources. For finding articles later, I plan to pilot Consensus, a tool built for that work. Nothing in this system receives the research question, so its outputs can support other research questions as the collection grows.
 
 
 ## Design
@@ -52,13 +52,16 @@ Three agents do the preparatory work.
 | Agent | Given | Produces |
 | --- | --- | --- |
 | **Single source analysis** | one article | two readings of it: a close reading, which follows the article step by step and records the author's claims and what each step is doing, and an argument evaluation, the model's own judgment of the argument |
-| **Synthesis** | several accepted analyses | a cross-source comparison of agreements, disagreements, methodological differences, limitations, and open questions, with each position still attributed to its source |
-| **Literature review** | an explicit research question | candidate articles with an explanation of why each one is relevant |
+| **Synthesis** | the accepted close readings | a cross-source comparison of what the authors claim — agreements, disagreements, methodological differences, limitations, and open questions — with each position still attributed to its source |
+| **Research assistant** | one article | a conceptual framework for reading it — the primer — and, planned, guided questions about the article |
 
-Neither single source analysis nor synthesis receives a research question, so
-their output stays useful for questions I have not asked yet. Synthesis
-compares what the sources say to each other, not to a question. Only the
-literature review agent sees a question, and it only proposes articles.
+No agent receives a research question, so their output stays useful for
+questions I have not asked yet
+([ADR-0018](docs/adr/0018-three-agents-analysis-synthesis-research-assistant.md)). Synthesis compares what the authors claim to each
+other, not to a question, and reads only close readings: the argument
+evaluation is the model's judgment, kept as its own document rather than
+blended into what the sources say. The research assistant serves me as a
+reader, alongside the pipeline.
 
 ```
 article → close reading → argument evaluation → evaluation of both → accept · reject · revise · rerun
@@ -194,16 +197,16 @@ something concrete rather than a general impression of quality.
 | Faulty argument assessment | the model accepts an unsupported conclusion or criticizes an argument without adequate justification | argument assessment |
 | Unusable output | faithful, complete, and still no help to me | research usefulness |
 
-The judge needs checking as well, since it is a model making claims about
-another model’s claims. I will score a sample myself, without seeing the
-judge’s scores, and compare the two. Where we disagree, that marks a case worth
-investigating rather than a verdict: the judge may have applied the rubric
-badly, or my own reading may be the one that is wrong, and finding out which
-is the point of looking. An evaluation I have not checked is not evidence that
-an analysis is good.
-
-Rubrics, scales, and the evaluation procedure are in the
-[build plan](docs/BUILD_PLAN.md).
+In Phase 2, these failure modes are what a head-to-head judgment looks for.
+Claude, which helped build the system, reads each experiment's article and
+every run side by side and judges which runs caught the most, recorded it
+most faithfully, and reasoned best about the argument, beside what each cost
+([ADR-0019](docs/adr/0019-four-phases-head-to-head-evaluation.md)). The judge
+needs checking as well, since it is a model making claims about another
+model's claims, and it is not blind: it knows the prompts and my views. So I
+check a sample of its judgments against my own reading. Where we disagree,
+that marks a case worth investigating rather than a verdict. An evaluation I
+have not checked is not evidence that an analysis is good.
 
 ### The A/B experiments
 
@@ -213,9 +216,10 @@ underway, I asked: **Why not just send the PDF?** We had built a preparation
 pipeline without first testing whether it improved the analysis. Phase 1 tests
 that, along with which model to use and, now, whether the API is needed at all.
 
-Phase 1 runs as three experiments, one per article, each designed around what
-is still open after the one before
-([ADR-0015](docs/adr/0015-phase-1-as-three-experiments.md)). The two prompts
+Phase 1 runs as two experiments, one per article, the second designed around
+what the first left open
+([ADR-0015](docs/adr/0015-phase-1-as-three-experiments.md),
+[ADR-0019](docs/adr/0019-four-phases-head-to-head-evaluation.md)). The prompts
 stay the same throughout; what changes is how they are run.
 
 **Experiment 1 — Barnett (complete).** Three model configurations, each with
@@ -260,14 +264,15 @@ app reads as well, the API's value is what surrounds the model: enforced
 structure, run records with exact usage and cost, the same settings every
 time, and analyzing a collection without pasting it article by article.
 
-**Experiment 3 — lei.** Designed once Experiment 2 is in. Lei, at 60 pages, is
-where the input method matters most for cost, so it is the likely place to
-compare the PDF and the prepared text again, on two models.
+There is no third experiment
+([ADR-0019](docs/adr/0019-four-phases-head-to-head-evaluation.md)). Lei, the third article, is analyzed with the rest of
+the collection, and the question of the PDF against prepared text is settled
+in Phase 2 from Barnett, where both ran.
 
 For every run I record what the API reports: token usage, calculated cost, and
-runtime. The app reports none of these. I compare the readings for faithful
-representation of the article and the quality of their judgments about its
-argument, against my own notes, written first.
+runtime. The app reports none of these. Phase 2 compares the runs head to head
+for faithful representation of the article and the quality of their
+judgments about its argument.
 
 The results will help me choose how to analyze the full 16-article collection.
 Three articles provide an initial comparison, not a conclusion about which
@@ -303,18 +308,19 @@ What has been difficult about working this way:
 | | |
 | --- | --- |
 | **Working now** | single source analysis as two calls — the close reading and the argument evaluation — running end to end with run records, and PDF preparation into cleaned text and crops |
-| **Designed, not yet built** | evaluation against the axes above, synthesis, literature review, and retrieval |
-| **Next** | Experiments 2 and 3 of Phase 1, which decide how the collection is analyzed |
+| **Designed, not yet built** | the head-to-head evaluation, synthesis with its claims store and retrieval, and the research assistant's guided questions |
+| **Next** | Experiment 2's app runs, then Phase 2's evaluation, which decides how the collection is analyzed |
 
 | Phase | What it does |
 | --- | --- |
 | 0 | **Review and redesign**: audit the earlier code and restructure the repository and documentation around these phases *(complete)* |
-| 1 | **A/B testing**: three experiments, one per article, comparing models, input methods, and the API against the ChatGPT app *(Experiment 1 complete)* |
-| 2 | **DeepEval**: rubrics for the axes above, applied to the Phase 1 runs, with independent human scoring of a sample, and the choice of model and input method |
-| 3 | **Research collection**: analyze and evaluate all 16 articles with the chosen configuration, reusing suitable experiment outputs |
-| 4 | **Synthesis agent**: compare sources, with its own evaluation design |
-| 5 | **Literature review agent**: find relevant articles for explicit research questions |
-| 6 | **RAG**: retrieval across sources, analyses, evaluations, and syntheses |
+| 1 | **A/B testing**: two experiments — Barnett comparing models and input methods, kanbur comparing the API against the ChatGPT app *(Experiment 1 complete)* |
+| 2 | **Evaluation**: a head-to-head judgment of both experiments by Claude, checked by me, and the choice of model, effort, input method, and API or app |
+| 3 | **Synthesis**: analyze the rest of the collection and accept each analysis; a claims store from the close readings; synthesis across sources; and retrieval on the same store |
+| 4 | **Research assistant**: the primer and guided questions about the article |
+
+The phases were simplified from seven to four
+([ADR-0019](docs/adr/0019-four-phases-head-to-head-evaluation.md)).
 
 The [build plan](docs/BUILD_PLAN.md) has each phase in engineering detail,
 including Phase 1’s open items and what earlier code each phase reuses,
@@ -325,8 +331,8 @@ simplifies, or removes.
 ```
 .
 ├── data/research/                    the 16 source articles
-│   ├── <13 collection PDFs>
-│   ├── ab_testing/                   the 3 A/B experiment articles
+│   ├── <14 collection PDFs>
+│   ├── ab_testing/                   the 2 A/B experiment articles
 │   │   └── notes/                    my own reading of each, by slug
 │   └── sources.yaml                  provenance manifest, owner-confirmed
 ├── src/hitl_research_agent/
@@ -355,7 +361,7 @@ simplifies, or removes.
 │   ├── PROMPTS.md                    the two analysis prompts, as the code sends them
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── adr/0001-0017.md              one record per architectural decision
+│   ├── adr/0001-0019.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── CLAUDE.md                         what Claude Code loads in every session
@@ -369,13 +375,13 @@ simplifies, or removes.
 
 ### Output layout
 ```
-outputs/                              created by the pipeline, not in git
+outputs/                              created by the pipeline
 ├── preparation/<slug>/               prepared text, crops, prep_record.json
 ├── ab_testing/<slug>/<config>/       Phase 1: analysis, argument evaluation, run record
 ├── primers/<slug>/                   primer.md + primer_record.json, on request
+├── judgments/<slug>.md               Phase 2: head-to-head judgment of an experiment
 ├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
-├── evaluations/<slug>/               Phase 3: evaluation, stored apart from it
-└── synthesis/                        Phase 4
+└── synthesis/                        Phase 3
 ```
 
 Analyses and evaluations are stored separately so neither is confused with the
@@ -387,7 +393,7 @@ material. The only files the pipeline writes are JSON, plus the `.txt` and
 ## Stack, setup, and documentation
 
 Python 3.12 · LangChain + OpenAI Responses API · Pydantic · PyMuPDF ·
-DeepEval *(Phase 2)* · embeddings and retrieval *(Phase 6)* · uv · Ruff · mypy ·
+embeddings and retrieval *(Phase 3)* · uv · Ruff · mypy ·
 pre-commit · GitHub Actions
 
 **Prerequisites:** [uv](https://docs.astral.sh/uv/) (manages Python 3.12

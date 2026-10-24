@@ -13,18 +13,21 @@ A change to this document contradicts a decision record or needs a new one.
 
 ## The three agents
 
-| Agent | Input | Output | Question-aware? |
-| --- | --- | --- | --- |
-| **Single-source analysis** | one article | a close reading as structured JSON, and the model's own evaluation of the argument | No — never receives a research question |
-| **Synthesis** | several accepted analyses | a cross-source comparison | No |
-| **Literature review** | an explicit research question | candidate articles with stated relevance | Yes — this is the only question-aware agent |
+| Agent | Input | Output |
+| --- | --- | --- |
+| **Single-source analysis** | one article | a close reading as structured JSON, and the model's own evaluation of the argument |
+| **Synthesis** | the accepted close readings | a comparison of what the authors claim, across sources |
+| **Research assistant** | one article | a primer on the article's field, and, planned, guided questions about the article, for the researcher |
 
+No agent receives the research question
+([ADR-0018](adr/0018-three-agents-analysis-synthesis-research-assistant.md)).
 Single-source analysis stays question-independent so that an analysis produced
 today remains usable for a question asked later, and so that no analysis is
 shaped toward a conclusion the researcher is looking for. Synthesis compares
-what the sources say to each other, not to a question. Only the literature
-review agent reads the research question, and it only proposes; the researcher
-selects.
+what the authors claim to each other, not to a question, and reads only close
+readings, never the evaluations. The research assistant explains an article's
+field to the researcher and is never given to the analysis. Finding articles
+is outside the system: the researcher selects them.
 
 ## Workflow contract
 
@@ -52,8 +55,8 @@ Four rules hold across every phase:
 4. **The human operates a gate, not a reading chair.** Analysis and evaluation
    end at a four-state decision — **accept, reject, revise, rerun** — and only
    accepted analyses enter the research collection. This is a runtime boundary
-   rather than a phase: Phase 2 exercises it on the judge's own output, Phase 3
-   on what enters the collection, Phase 4 on syntheses. What the researcher
+   rather than a phase: Phase 2 exercises it on the judge's own output, and
+   Phase 3 on what enters the collection and on syntheses. What the researcher
    needs in front of them to make that decision — the analysis, its citations,
    the evaluation scores, and the evaluation's explanations — is therefore a
    requirement on how analyses and evaluations are stored, not a later
@@ -112,6 +115,7 @@ explains what they mean for someone reading an analysis, and
   a result is returned. Rules 1 and 2 above are the same statement from two
   directions.
 - **The input format is not settled.** Whether the model receives a full PDF
-  or prepared text plus crops is decided by the Phase 1 experiment
-  ([ADR-0008](adr/0008-compare-pdf-against-prepared-text.md)), and
+  or prepared text plus crops is decided in Phase 2, from Barnett's
+  Experiment 1 ([ADR-0008](adr/0008-compare-pdf-against-prepared-text.md),
+  [ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)), and
   `scripts/prepare_sources.py` is frozen until it is.

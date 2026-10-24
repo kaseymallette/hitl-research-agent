@@ -1,5 +1,13 @@
 # Build Plan
 
+> **Being rewritten.** [ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)
+> replaces this plan's seven phases with four after Phase 0: A/B testing on two
+> articles, a head-to-head evaluation, synthesis with the collection and
+> retrieval, and the research assistant
+> ([ADR-0018](adr/0018-three-agents-analysis-synthesis-research-assistant.md)).
+> Until this document is rewritten around them, the phases below describe the
+> earlier plan.
+
 This document turns the phases in [README.md](../README.md) into an engineering
 plan. It is developed one phase at a time: the current phase is specified in
 full, later phases state their goal and the decisions they must make, and are

@@ -260,7 +260,7 @@ The rest went with the code they covered.
 
 ## `data/research/`
 
-16 source PDFs, three of them in `ab_testing/` as the experiment set, plus
+16 source PDFs, two of them in `ab_testing/` as the experiment set, plus
 `sources.yaml`.
 
 `ab_testing/notes/` holds the researcher's own reading of each experiment
@@ -308,9 +308,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 19 files
+### `adr/` — 21 files
 
-One architectural decision per record: `0001`–`0017`, plus `template.md` for
+One architectural decision per record: `0001`–`0019`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -365,6 +365,15 @@ it.
 `0017` makes Experiment 2 a 2 × 2 on kanbur — the API against the app, both on
 GPT-6.1 Sol, at medium and high effort — with every run writing the primer as
 well as the two readings, and suspends my notes on kanbur.
+
+`0018` sets the system's three agents: single-source analysis, synthesis over
+close readings only, and a research assistant whose first capability is the
+primer. Finding articles moves outside the system, and no agent receives the
+research question.
+
+`0019` simplifies the plan to four phases after Phase 0 — A/B testing on two
+articles, a head-to-head evaluation by Claude, synthesis with the collection
+and retrieval, and the research assistant — and moves lei to the collection.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

@@ -1,6 +1,6 @@
 # ADR-0015 — Phase 1 runs as three experiments, one per article
 
-- **Status:** Accepted; its Experiment 2 design is superseded by [ADR-0017](0017-experiment-2-api-against-the-app-with-the-primer.md)
+- **Status:** Accepted for Experiment 1; its Experiment 2 is superseded by [ADR-0017](0017-experiment-2-api-against-the-app-with-the-primer.md), and its Experiment 3 by [ADR-0019](0019-four-phases-head-to-head-evaluation.md)
 - **Date:** 2026-10-20
 - **Landed in:** not yet committed
 

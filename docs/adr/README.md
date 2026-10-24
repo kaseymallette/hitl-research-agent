@@ -89,8 +89,10 @@ without a record.
 | [0012](0012-close-reading-and-argument-evaluation-are-two-calls.md) | The close reading and the argument evaluation are two calls | 2026-10-19 | Superseded by 0013 |
 | [0013](0013-lean-close-reading.md) | A lean close reading: the author's words once, no labels | 2026-10-19 | Accepted |
 | [0014](0014-kanbur-replaces-katakam.md) | Kanbur replaces katakam as the third experiment article | 2026-10-19 | Accepted |
-| [0015](0015-phase-1-as-three-experiments.md) | Phase 1 runs as three experiments, one per article | 2026-10-20 | Accepted; Experiment 2 superseded by 0017 |
+| [0015](0015-phase-1-as-three-experiments.md) | Phase 1 runs as three experiments, one per article | 2026-10-20 | Accepted for Experiment 1; superseded in part by 0017 and 0019 |
 | [0016](0016-a-primer-before-the-reading.md) | A primer on the article's field, for me to read first | 2026-10-24 | Accepted |
 | [0017](0017-experiment-2-api-against-the-app-with-the-primer.md) | Experiment 2: the API against the app on GPT-6.1 Sol, with the primer | 2026-10-24 | Accepted |
+| [0018](0018-three-agents-analysis-synthesis-research-assistant.md) | Three agents: single-source analysis, synthesis, and a research assistant | 2026-10-24 | Accepted |
+| [0019](0019-four-phases-head-to-head-evaluation.md) | Four phases, two experiment articles, and a head-to-head evaluation | 2026-10-24 | Accepted |
 
 New records start from [template.md](template.md).

@@ -86,7 +86,7 @@ sources:
       retrieved_at: "macOS quarantine timestamp on the PDF file"
 
   - slug: lei_et_al_2025_water_use_data_center_workloads
-    pdf: data/research/ab_testing/lei_et_al_2025_water_use_data_center_workloads.pdf
+    pdf: data/research/lei_et_al_2025_water_use_data_center_workloads.pdf
     source_title: "The water use of data center workloads: A review and assessment of key determinants"
     source_authors: [Nuoa Lei, Jun Lu, Arman Shehabi, Eric Masanet]
     publication_date: "2025-06-01"
