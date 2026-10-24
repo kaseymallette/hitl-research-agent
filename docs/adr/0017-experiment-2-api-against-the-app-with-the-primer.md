@@ -91,3 +91,6 @@ handling of the PDF — not from the model.
 Supersedes ADR-0015's design for Experiment 2, and, for Experiment 2 only,
 ADR-0016's rule that an experiment article's primer is read after my notes.
 ADR-0015's Experiments 1 and 3 stand.
+
+The app runs skip the primer: only the API runs write one, so primers are not
+compared between the API and the app.

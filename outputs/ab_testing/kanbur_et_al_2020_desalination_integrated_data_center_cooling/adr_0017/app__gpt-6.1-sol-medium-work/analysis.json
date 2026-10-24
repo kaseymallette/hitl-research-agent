@@ -1,0 +1,1760 @@
+{
+  "reading_plan": "This is an 18-page research article in the International Journal of Energy Research, written in a dense, two-column technical style. It combines explanatory prose, numbered equations, system diagrams, numerical tables, performance plots, a conclusion, nomenclature, references, and three short mathematical appendices. I will follow its printed order, generally taking a few paragraphs at a time and slowing down around assumptions, equations, and changes in assessment method. Claims and supporting material will be recorded separately. Readings of visual elements will be paraphrased and identified by element number. Repeated claims will be identified as restatements rather than entered again, except where the later wording introduces a different numerical statement or qualification.",
+  "reading_path": [
+    {
+      "location": "Page 10453, title and Summary",
+      "moves": "Introduces the proposed system, states its motivation and operating scope, and previews the methods and principal findings.",
+      "claims": [
+        {
+          "text": "The waste heat management of the data center cooling systems has a significant share in the energy-efficient operations of the data centers.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The proposed hybrid uses waste heat from two-phase liquid-immersion data center cooling to heat the feed of a direct contact membrane distillation module. The cooling load is 0.7–1.5 kW and the membrane area is 5–75 cm².",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Two-phase liquid-immersion cooling is promising because of its high heat flux removal performance, but research on its waste heat management remains insufficient.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The study assesses the hybrid thermodynamically, economically, and thermoeconomically, using a system-specific exergy-cost matrix.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The reported maximum thermal and exergy efficiencies are 64.5% and 53.7%, respectively; daily distilled water production reaches 6.13 kg at the highest cooling load and membrane area.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Although the hybrid has higher capital and operating costs than stand-alone cooling, its reported payback period of 3.72 years makes it economically feasible for real applications.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The hybrid's levelized product cost is reported as 2.69–5.33 SGD/h. The Summary places the optimization trade-off at 1.1 kW and a membrane area between 5.12 and 5.19 cm².",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The opening supplies a compressed account of the whole project. These are the authors' announced findings; the body has not yet supplied the model, assumptions, or calculations supporting them."
+    },
+    {
+      "location": "Pages 10453–10454, Section 1, opening discussion of data center energy demand",
+      "moves": "Establishes the practical problem with demand figures, explains why cooling is necessary, and distinguishes two cooling families.",
+      "claims": [
+        {
+          "text": "Increasing demand for ICT makes uninterrupted data center operation increasingly important, while stable operation entails substantial energy consumption.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Global data center energy demand reached 200 TWh in 2018.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite Jones for this global demand figure.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "1",
+                  "reference_entry": "Jones N. The information factories. Nature. 2018;561:163-166. https://doi.org/10.1038/d41586-018-06610-y."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The cited projection puts United States data center energy consumption at 70 TWh in 2020.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The projection is attributed to Jin and Bai.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "2",
+                  "reference_entry": "Jin C, Bai X. The study of servers' arrangement and air distribution strategy under partial load in data centers. Sust Cities Soc. 2019;49:101617. https://doi.org/10.1016/j.scs.2019.101617."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "ICT equipment can demand up to 100 times the energy of standard office facilities.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors support this comparison with the review by Oro and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "3",
+                  "reference_entry": "Oro E, Depoorter V, Garcia A, Salom J. Energy efficiency and renewable energy integration in data centres. Strategies and modeling review. Renew Sust Energ Rev. 2015;42:429-445. https://doi.org/10.1016/j.rser.2014.10.035."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Cooling must remove heat generated at chip, server, or rack level to maintain desired equipment temperatures and uninterrupted operation; cooling accounts for approximately 40% of total data center energy consumption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Rong and colleagues are cited for the approximately 40% share.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "4",
+                  "reference_entry": "Rong H, Zhang H, Xiao S, Li C, Hu C. Optimizing energy consumption for data centers. Renew Sust Energ Rev. 2016;58:674-691. https://doi.org/10.1016/j.rser.2015.12.283."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Air cooling is the traditional approach, while liquid cooling is becoming popular because of its high heat removal performance.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The distinction between air-cooled and liquid-cooled systems is introduced with a review citation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "5",
+                  "reference_entry": "Khalaj AH, Halgamuge SK. A review on efficient thermal management of air- and liquid-cooled data centers: from chip to the cooling system. Appl Energy. 2017;205:1165-1188. https://doi.org/10.1016/j.apenergy.2017.08.037."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The introduction develops the motivation announced in the Summary. Its perspective is operational and energy-focused: cooling is necessary infrastructure whose large energy share makes it a consequential target for improvement."
+    },
+    {
+      "location": "Page 10454, Section 1, heat rejection and existing waste heat uses",
+      "moves": "Surveys established alternatives and identifies an earlier desalination proposal whose modeling details were absent.",
+      "claims": [
+        {
+          "text": "Both air-cooled and liquid-cooled data centers generally reject thermal energy to the environment through equipment such as dry towers or economizers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Two reviews support this description of conventional heat rejection.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "6,7",
+                  "reference_entry": "Fulpagare Y, Bhargav A. Advances in data center thermal management. Renew Sust Energ Rev. 2015;43:981-996. https://doi.org/10.1016/j.rser.2014.11.056."
+                },
+                {
+                  "citation_text": "6,7",
+                  "reference_entry": "Ni J, Bai X. A review of air conditioning energy performance in data centers. Renew Sust Energ Rev. 2017;67:625-640. https://doi.org/10.1016/j.rser.2016.09.050."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Data center heat can alternatively serve combined heating and cooling, district heating and hot water production, or vapor compression.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors supply one cited example for each application.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "8",
+                  "reference_entry": "Davies GF, Maidment GG, Tozer RM. Using data centres for combined heating and cooling: an investigation for London. Appl Therm Eng. 2016;94:296-304. https://doi.org/10.1016/j.applthermaleng.2015.09.111."
+                },
+                {
+                  "citation_text": "9",
+                  "reference_entry": "Oro E, Taddedo P, Salom J. Waste heat recovery from urban air cooled data centres to increase energy efficiency of district heating networks. Sust Cities Soc. 2019;45:522-542. https://doi.org/10.1016/j.scs.2018.12.012."
+                },
+                {
+                  "citation_text": "10",
+                  "reference_entry": "Beitelmal AH, Patel CD. A steady-state model for the design and optimization of a centralized cooling system. Int J Energy Res. 2010;34:1239-1248. https://doi.org/10.1002/er.1663."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Ebrahimi and colleagues proposed seawater desalination using data center waste heat or steam, but did not give modeling and performance assessment details.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The earlier proposal is located in a review of data center cooling and low-grade heat recovery.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "11",
+                  "reference_entry": "Ebrahimi K, Jones GF, Fleischer AS. A review of data center cooling technology, operating conditions and the corresponding low-grade waste heat recovery opportunities. Renew Sust Energ Rev. 2014;31:622-638. https://doi.org/10.1016/j.rser.2013.12.007."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The discussion moves from the need to remove heat to the possibility of using it. The earlier desalination idea establishes a precedent while leaving room for the detailed assessment this article proposes."
+    },
+    {
+      "location": "Page 10454, Section 1, desalination integration and energy-water framing",
+      "moves": "Reasons by analogy from other integrated energy systems, asserts practical potential, and gives the proposal a sustainable-development rationale.",
+      "claims": [
+        {
+          "text": "Desalination has been proposed in combination with nuclear power, marine energy and industry, solar energy, fuel cell and gas turbine systems, and thermoelectric coolers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite the following integration studies as precedents.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "12",
+                  "reference_entry": "Khan SU, Danish SN, Haider S, Khan SU. Theoretical calculation simulation studies of ABV nuclear reactor coupled with desalination system. Int J Energy Res. 2015;39:1554-1563. https://doi.org/10.1002/er.3363."
+                },
+                {
+                  "citation_text": "13,14",
+                  "reference_entry": "Park S, Chun W, Kim N. Simulated production of electric power and desalination using solar-OTEC hybrid system. Int J Energy Res. 2017;41:637-649. https://doi.org/10.1002/er.3641."
+                },
+                {
+                  "citation_text": "13,14",
+                  "reference_entry": "Gude VG. Thermal desalination of ballast water using onboard waste heat in marine industry. Int J Energy Res. 2019;43:6026-6037. https://doi.org/10.1002/er.4647."
+                },
+                {
+                  "citation_text": "15,16",
+                  "reference_entry": "Shekarchi N, Shahnja F. A comprehensive review of solar-driven desalination technologies for off-grid greenhouses. Int J Energy Res. 2019;43:1357-1386. https://doi.org/10.1002/er.4268."
+                },
+                {
+                  "citation_text": "15,16",
+                  "reference_entry": "Leblanc J, Andrews J, Akbarzadeh A. Low-temperature solar-thermal multi-effect evaporation desalination systems. Int J Energy Res. 2010;34:393-403. https://doi.org/10.1002/er.1642."
+                },
+                {
+                  "citation_text": "17",
+                  "reference_entry": "Hosseini M, Dincer I, Ahmadi P, Avval HA, Ziaasharhagh M. Low-temperature solar-thermal multi-effect evaporation desalination systems. Int J Energy Res. 2013;37:426-434. https://doi.org/10.1002/er.1945."
+                },
+                {
+                  "citation_text": "18",
+                  "reference_entry": "Hosseini M, Dincer I, Ahmadi P, Avval HA, Ziaasharhagh M. Theoretical and experimental investigation of bubble column humidification and thermoelectric cooler dehumidification water desalination system. Int J Energy Res. 2020;44:890-901. https://doi.org/10.1002/er.4931."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "From those studies, the authors infer that low-temperature energy systems can be efficiently combined with desalination and that data center heat can supply sufficient energy for desalination units.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The preceding examples of desalination integration supply the analogy; no data center-specific calculation is presented at this point.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Combining data center cooling and desalination is critically important because it addresses SDG 6, Clean Water and Sanitation, and SDG 7, Affordable and Clean Energy, and belongs within the energy-water nexus.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "United Nations documents supply the policy frame.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "19,20",
+                  "reference_entry": "United Nations. Transforming our world: the 2030 agenda for sustainable development. 2015."
+                },
+                {
+                  "citation_text": "19,20",
+                  "reference_entry": "United Nations. Paris Agreement. 2015. https://unfccc.int/files/essential_background/convention/application/pdf/english_paris_agreement.pdf. Accessed March 23, 2020)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Detailed understanding of this combined concept is lacking, and system-scale waste heat utilization studies have largely concerned air-cooled rather than liquid-cooled data centers.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The proposal now has both an engineering analogy and a policy rationale. The authors treat useful water production and efficient heat utilization as desirable together, then identify the absence of detailed liquid-cooling studies as a research gap."
+    },
+    {
+      "location": "Pages 10454–10455, Section 1, direct liquid cooling and the authors' earlier work",
+      "moves": "Classifies cooling technologies, compares their advantages and drawbacks, and narrows the gap through prior experiments and modeling.",
+      "claims": [
+        {
+          "text": "Liquid cooling can remove higher heat flux than air cooling. Indirect liquid cooling is more established, but piping introduces leakage potential and its layout must be sized for the required cooling load.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Direct cooling uses dielectric liquids in contact with ICT surfaces, eliminating server- or rack-level liquid piping and allowing flexible adaptation to different loads. The authors identify jet impingement, spray cooling, and two-phase liquid immersion as direct methods.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Two-phase liquid immersion provides a more uniform equipment-surface temperature through latent heat transfer; direct methods may operate independently or alongside conventional air cooling.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors direct readers to four works for further details on liquid cooling.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "21–24",
+                  "reference_entry": "Saini M, Webb RL. Heat rejection limits of air cooled plane fin heat sinks for computer cooling. IEEE Trans Compon Packag Technol. 2013;26:71-79. https://doi.org/10.1109/TCAPT.2003.811465."
+                },
+                {
+                  "citation_text": "21–24",
+                  "reference_entry": "Tuma PE. Fluoroketone C2F5C(O)CF(CF3)2 as a heat transfer fluid for passive and pumped 2-phase applications. Paper presented at: Proceedings of the 24th Annual IEEE Semiconductor Thermal Measurement and Management Symposium (SEMI-THERM); March 16-20, 2008; San Jose (CA), USA. doi:https://doi.org/10.1109/STHERM.2008.4509386."
+                },
+                {
+                  "citation_text": "21–24",
+                  "reference_entry": "Tuma PE. The merits of open bath immersion cooling of datacom equipment. Paper presented at: Proceedings of the 26th Annual IEEE Semiconductor Thermal Measurement and Management Symposium (SEMI-THERM); February 21-25, 2010; Santa Clara (CA), USA. doi:https://doi.org/10.1109/STHERM.2010.5444305."
+                },
+                {
+                  "citation_text": "21–24",
+                  "reference_entry": "Bar-Cohen A, Arik M, Ohadi M. Direct liquid cooling of high flux micro and nano electronic components. Proc IEEE. 2006;94:1549-1570. https://doi.org/10.1109/JPROC.2006.879791."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Despite work by Submer, GIGABYTE, 3M, and FUJITSU, system-scale thermal management and economic assessment of two-phase immersion remain insufficiently studied.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors previously obtained satisfactory steady performance in an experimental immersion system tested up to 21 kW, then modeled integration with a polymer electrolyte membrane fuel cell to obtain low-carbon electricity at a cooling load near 6 kW.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The experimental and hybrid modeling studies provide the immediate research background.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Wu C, Tong W, Kanbur BB, Duan F. Full-scale two-phase liquid immersion cooing data center system in tropical environment. Paper presented at: Proceedings of 2019 18th IEEE Intersociety Conference on Thermal and Thermomechanical Phenomena in Electronic Systems (ITherm); May 27-31, 2019; Las Vegas (NV), USA. doi:https://doi.org/10.1109/ITHERM.2019.8757316."
+                },
+                {
+                  "citation_text": "26",
+                  "reference_entry": "Kanbur BB, Wu C, Duan F. Combined heat and power generation via hybrid data center cooling-polymer electrolyte membrane fuel cell system. Int J Energy Res. 2020;44:4759-4772. https://doi.org/10.1002/er.5256."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Below 6 kW, waste heat utilization may be inefficient for low-carbon electricity generation or other familiar thermal processes, leaving a need for more efficient and economical low-load immersion systems.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The broad research gap becomes a particular operating niche: low cooling loads. The earlier studies explain why these authors move from electricity generation toward another use for the available heat."
+    },
+    {
+      "location": "Page 10455, Section 1, paragraph listing original contributions",
+      "moves": "States novelty claims, restates the proposed integration, and specifies the optimization objectives and design bounds.",
+      "claims": [
+        {
+          "text": "The authors claim that this particular hybrid has not previously been investigated and that it is the first use of two-phase liquid-immersion cooling waste heat for desalination.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The new exergy-cost matrix is presented as a potentially useful tool for future waste heat utilization studies of two-phase liquid-immersion systems.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The optimization seeks minimum distilled water cost and system product cost alongside maximum exergy efficiency, within the previously announced cooling-load and membrane-area bounds.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The introduction closes by turning its gap into a declared contribution. The system concept and operating ranges repeat the Summary, while novelty and future methodological usefulness receive explicit emphasis."
+    },
+    {
+      "location": "Page 10455, Section 2, seawater inlet and immersion tank operation",
+      "moves": "Describes the physical system, assigns stream identities, introduces site-specific inputs, and explains the phase-change mechanism.",
+      "claims": [
+        {
+          "text": "Stream 1 is seawater at 35 g/L salinity, 302.75 K, and 1 atm; the salinity represents standard seawater and the temperature represents Singapore seawater.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The salinity and temperature inputs are attributed to these sources.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "27",
+                  "reference_entry": "Al-Obaidani S, Curcio E, Macedonio F, Di Profio G, Al-Hinai H, Drioli E. Potential of membrane distillation in seawater desalination: thermal efficiency, sensitivity study and cost estimation. J Membr Sci. 2008;323:85-98. https://doi.org/10.1016/j.memsci.2008.06.006."
+                },
+                {
+                  "citation_text": "28",
+                  "reference_entry": "World Sea Temperatures. Singapore sea temperatures. 2019. https://www.seatemperature.org/asia/singapore/singapore.htm. Accessed March 23, 2020."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The system uses an assumed Euroflo EB120 pump and a customized immersion tank capable of handling up to 2 kW of server heat. The tank contains NOVEC 7100 dielectric liquid, whose boiling temperature is 61°C.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Constant server power is assumed so that steady-state thermodynamic assessments can be made.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The constant-power assumption is accompanied by a citation to Shah and Patel.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "29",
+                  "reference_entry": "Shah AJ, Patel CD. Designing environmentally sustainable electronic cooling systems using exergo-thermo-volumes. Int J Energy Res. 2009;33:1266-1277. https://doi.org/10.1002/er.1663."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Server heat boils the dielectric bath. Rising vapor condenses on cooler pipes at the top of the tank and returns to the bath, while seawater flowing inside the pipes gains heat.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors refer back to their previously operated and verified immersion setup.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Wu C, Tong W, Kanbur BB, Duan F. Full-scale two-phase liquid immersion cooing data center system in tropical environment. Paper presented at: Proceedings of 2019 18th IEEE Intersociety Conference on Thermal and Thermomechanical Phenomena in Electronic Systems (ITherm); May 27-31, 2019; Las Vegas (NV), USA. doi:https://doi.org/10.1109/ITHERM.2019.8757316."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The proposed integration is now a physical sequence rather than an abstract combination. The local seawater conditions and equipment choices begin to define the particular system being modeled."
+    },
+    {
+      "location": "Page 10455, Section 2, tank outlet and membrane distillation",
+      "moves": "Derives a temperature restriction, selects an engineering margin, and explains heat and mass transport through the membrane.",
+      "claims": [
+        {
+          "text": "Seawater leaving the tank cannot be hotter than the 61°C dielectric boiling temperature. The authors require an engineering temperature difference of 3 K below that boiling temperature.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Heated stream 3 enters the DCMD feed side. DCMD is described as the oldest membrane-distillation technique, with a membrane interface rather than an air gap or conductive-material interface.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The description of the membrane-distillation configuration cites Swaminathan and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "30",
+                  "reference_entry": "Swaminathan J, Chung HW, Warsinger DM, Lienhard VJH. Membrane distillation model based on heat exchanger theory and configuration comparison. Appl Energy. 2016;184:491-505. https://doi.org/10.1016/j.apenergy.2016.09.090."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Permeate-side inlet water begins as stream 5 at 293.15 K and becomes stream 6 after its circulation pump.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The temperature difference creates a vapor-pressure difference across a hydrophobic membrane that blocks liquid transport while permitting vapor transfer. Feed outlet stream 4 therefore has less mass flow than stream 3, while permeate outlet stream 7 has more than stream 6.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The heat recovery pathway now reaches its product-forming mechanism. The 3 K margin is a selected design condition, while the changing stream flow rates follow from the described vapor transfer."
+    },
+    {
+      "location": "Pages 10455–10456, Section 2, assumptions and input parameters",
+      "moves": "Makes simplifying assumptions explicit and fixes the hydraulic, membrane, and reference-state parameters.",
+      "claims": [
+        {
+          "text": "The model assumes steady-state operation, neglects membrane fouling, and treats the tank and DCMD module as having no heat loss.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The piping is also treated as insulated because the earlier experiment found very small pipe heat loss, attributed to insulation and a small fluid-to-ambient temperature difference.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The earlier experimental cooling study supplies the stated basis for this simplification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Wu C, Tong W, Kanbur BB, Duan F. Full-scale two-phase liquid immersion cooing data center system in tropical environment. Paper presented at: Proceedings of 2019 18th IEEE Intersociety Conference on Thermal and Thermomechanical Phenomena in Electronic Systems (ITherm); May 27-31, 2019; Las Vegas (NV), USA. doi:https://doi.org/10.1109/ITHERM.2019.8757316."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Feed velocity is 1.85 m/s and permeate velocity is 2.92 m/s, with a hydraulic diameter of 0.003 m on both sides. Corrosion and salt deposition are neglected both in performance calculations and for pipeline damage.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The selected PVDF membrane has thickness 126 μm, thermal conductivity 0.41 W/mK, porosity 0.75, and pore size 0.22 μm. These membrane properties and the DCMD transfer characteristics come from Reference 31, which also serves as the validation source.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The input data are taken from the DCMD heat and mass transfer study by Termpiyakul and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "31",
+                  "reference_entry": "Termpiyakul P, Jiraratananon R, Srisurichan S. Heat and mass transfer characteristics of a direct contact membrane distillation process for desalination. Desalination. 2005;177:133-141. https://doi.org/10.1016/j.desal.2004.11.019."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The thermodynamic reference state is 293.15 K and 1 atm.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The model's scope is now explicit. The idealized treatment excludes fouling, corrosion, salt deposition, and external heat loss, while the membrane submodel is anchored to a particular published dataset."
+    },
+    {
+      "location": "Page 10456, Section 3 opening and Figures 1–2",
+      "moves": "Organizes the modeling program and presents the physical and computational arrangements visually.",
+      "claims": [
+        {
+          "text": "The modeling comprises thermodynamic analysis, thermodynamic validation, economic analysis, thermoeconomic analysis, and multiobjective optimization.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Figure 1 shows seawater passing through a feed pump and the tank's condenser piping before entering the membrane feed channel; a separately pumped permeate stream passes along the other membrane side. The diagram also identifies the two pump power inputs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Figure 2 shows a staged calculation: inlet properties and pump work lead to the heated feed state, iterative membrane calculations, mass transfer and outlet states, then energetic, exergetic, economic, and thermoeconomic assessments, ending with genetic-algorithm optimization.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The figures consolidate the system description and make the dependencies among calculations visible. The article then begins following that computational sequence."
+    },
+    {
+      "location": "Page 10457, Section 3.1, fluid properties and Equations (1)–(7)",
+      "moves": "Defines property correlations and derives stream enthalpy rates through pumps and the server tank.",
+      "claims": [
+        {
+          "text": "Water and seawater require different thermophysical correlations. The water enthalpy correlation uses Celsius temperature and yields J/kg; seawater enthalpy adds salinity-dependent terms, with coefficients deferred to Appendix A.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The property correlations are attributed to Sharqawy and colleagues. Equations (1)–(4) provide the water and seawater enthalpy and density relationships, with the seawater density coefficients deferred to Appendix B.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "32",
+                  "reference_entry": "Sharqawy MH, Lienhard VJH, Zubair SM. Thermophysical properties of seawater: a review of existing correlations and data. Desalin Water Treat. 2010;16:354-380. https://doi.org/10.5004/dwt.2010.1079."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Mass flow is obtained from volumetric flow and density, with volumetric flow determined from hydraulic diameter and velocity. Multiplying mass flow by specific enthalpy gives the stream enthalpy rate.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equations (5) and (6) add the respective pump power to the inlet enthalpy rates to obtain streams 2 and 6; Equation (7) adds server heat to stream 2 to obtain stream 3.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Because enthalpy depends on temperature, calculating stream 3 enthalpy allows its temperature to be found and supplies the feed temperature for the membrane model.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The calculation begins with material properties and conservation of energy. This develops the earlier physical description into a procedure for obtaining the membrane's inlet conditions."
+    },
+    {
+      "location": "Pages 10457–10458, Section 3.1, interfacial convection and Equations (8)–(11)",
+      "moves": "Divides the heat-transfer path into regions, defines temperatures, and selects a convection correlation.",
+      "claims": [
+        {
+          "text": "Heat passes from the warmer feed through the membrane to the cooler permeate, requiring separate expressions for feed-side convection, membrane transport, and permeate-side convection.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equations (8) and (9) express the two convective heat fluxes as heat-transfer coefficients multiplied by bulk-to-membrane temperature differences. The specified temperature ordering is feed bulk, feed membrane surface, permeate membrane surface, then permeate bulk, from highest to lowest.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (10) obtains the convective coefficient from Nusselt number, fluid thermal conductivity, and hydraulic diameter; Equation (11) supplies the Dittus and Boelter correlation using Reynolds number, Prandtl number, and a hydraulic-diameter-to-module-length term.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The selected convection correlation is cited to Reference 31.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "31",
+                  "reference_entry": "Termpiyakul P, Jiraratananon R, Srisurichan S. Heat and mass transfer characteristics of a direct contact membrane distillation process for desalination. Desalination. 2005;177:133-141. https://doi.org/10.1016/j.desal.2004.11.019."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The authors slow down at the membrane boundary layers. Bulk inlet temperatures alone are insufficient; the model must also obtain membrane-surface temperatures."
+    },
+    {
+      "location": "Page 10458, Section 3.1, membrane heat and mass transfer, Equations (12)–(14)",
+      "moves": "Separates useful latent transport from conduction, defines mass flux, compares alternative calculations, and closes the local energy balance.",
+      "claims": [
+        {
+          "text": "Membrane heat transport has two mechanisms: latent heat associated with evaporation and conductive heat transfer. Equation (12) adds these contributions, using mass flux, vaporization enthalpy, membrane conductivity and thickness, and the membrane-surface temperature difference.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The study takes an experimental vaporization-enthalpy correlation from Reference 31; the authors also identify a physical derivation through nonequilibrium thermodynamics and the Clausius-Clapeyron equation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Luo and Lior are cited for the alternative physical treatment and further modeling detail.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "33",
+                  "reference_entry": "Luo A, Lior N. Critical review of membrane distillation performance criteria. Desalin Water Treat. 2016;57:20093–20140. https://doi.org/10.1080/19443994.2016.1152637."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Equation (13) defines mass flux from the feed's mass-flow decrease, or equivalently the permeate's increase, divided by membrane area. The authors regard this as easier for experimental setups than methods requiring permeability or detailed membrane-characterization inputs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Alternative flux calculations use membrane permeability and vapor-pressure difference or nonequilibrium thermodynamic and membrane parameters; experimental characterization of those parameters can introduce additional uncertainty.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The uncertainty point is accompanied by a membrane-characterization study.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "34",
+                  "reference_entry": "Tanis Kanbur MB, Peinador RI, Hu X, Calvo JI, Chew JW. Membrane characterization via evapoporometry (EP) and liquid-liquid displacement porosimetry (LLDP) techniques. J Membr Sci. 2019;586:248-258. https://doi.org/10.1016/j.memsci.2019.05.077."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "With external module heat loss neglected, Equation (14) sets feed-side, membrane, and permeate-side heat fluxes equal.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The membrane model now distinguishes heat that accompanies vapor production from heat conducted across the membrane. Equality of the regional fluxes supplies the condition needed to solve the unknown surface temperatures."
+    },
+    {
+      "location": "Page 10458, Section 3.1, iterative solution, outlet states, and Equations (15)–(17)",
+      "moves": "Explains the numerical procedure, qualifies a small-scale approximation, and extends the calculation to outlet enthalpy and entropy.",
+      "claims": [
+        {
+          "text": "The model estimates the feed-side membrane temperature and iterates Equations (8)–(14) until their heat fluxes agree, after which mass flux, transferred mass, and temperatures can be obtained.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Prandtl numbers are calculated separately for the two sides using the mean of each bulk and membrane-surface temperature.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The temperature-averaging procedure follows Reference 31.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "31",
+                  "reference_entry": "Termpiyakul P, Jiraratananon R, Srisurichan S. Heat and mass transfer characteristics of a direct contact membrane distillation process for desalination. Desalination. 2005;177:133-141. https://doi.org/10.1016/j.desal.2004.11.019."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A mean-temperature approximation is reasonable for small DCMD setups, but must be replaced by dynamic observation of temperature gradients for large commercial systems because those gradients may be nonlinear.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (15) equates feed enthalpy loss and permeate enthalpy gain to heat flux multiplied by membrane area, allowing outlet states to be calculated. Equations (16) and (17) then give separate water and seawater entropy correlations, with seawater coefficients supplied in Appendix C.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The entropy correlations use the same seawater-property reference as the enthalpy correlations.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "32",
+                  "reference_entry": "Sharqawy MH, Lienhard VJH, Zubair SM. Thermophysical properties of seawater: a review of existing correlations and data. Desalin Water Treat. 2010;16:354-380. https://doi.org/10.5004/dwt.2010.1079."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The local heat-transfer model becomes a complete stream-state calculation. The explicit scale qualification limits how directly its averaging procedure can be carried into a commercial installation."
+    },
+    {
+      "location": "Pages 10458–10459, Section 3.1, exergy formulation and Equations (18)–(19)",
+      "moves": "Introduces second-law accounting, defines a reference-state measure, and states exclusions and balance terms.",
+      "claims": [
+        {
+          "text": "Exergy analysis supplies destruction and loss information that energy analysis cannot provide.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (18) defines stream specific exergy as its enthalpy difference from the reference state minus reference temperature multiplied by its entropy difference; multiplication by mass flow gives exergy rate.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The equation is introduced with an earlier exergy-analysis paper.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "35",
+                  "reference_entry": "Kanbur BB, Xiang L, Dubey S, Choo FH, Duan F. A micro cogeneration system with LNG cold utilization-part 2: exergy analyses. Energy Procedia. 2017;105:1910-1917. https://doi.org/10.1016/j.egypro.2017.03.559."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Chemical exergy is omitted because, the authors state, there is no change in the streams' chemical components.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (19) balances fuel exergy against product, destruction, loss, and gain terms. Heat-loss exergy is neglected under the zero-heat-loss assumption, while the gain term must be retained because the servers supply heat.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The discussion directs readers to two general thermodynamic references for further exergy detail.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "36 and 37",
+                  "reference_entry": "Bejan A, Tsatsaronis G, Moran MJ. Thermal Design and Optimization. New York: Wiley; 1996."
+                },
+                {
+                  "citation_text": "36 and 37",
+                  "reference_entry": "Cengel YA, Boles MA. Thermodynamics: an Engineering Approach. 5th ed. Boston, MA: McGraw-Hill; 2006."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The analysis adds a second-law perspective to the already established energy balances. The treatment remains tied to the earlier idealization of an insulated system and explicitly excludes chemical exergy."
+    },
+    {
+      "location": "Page 10459, Section 3.1, performance criteria and Equations (20)–(25)",
+      "moves": "Defines assessment metrics and connects exergy accounting to a sustainability indicator.",
+      "claims": [
+        {
+          "text": "Equation (20) defines cooling COP as server heat removal divided by feed-pump power. Equation (21) defines membrane thermal efficiency as latent heat flux divided by total heat flux.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "GOR measures vapor-associated heat transfer relative to total heat input, and higher GOR is desired. PR measures clean water production relative to inlet feed flow.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Equations (22) and (23) express these definitions using latent heat transport, server heat, product mass flow, and inlet feed mass flow.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The authors identify exergy efficiency as a principal exergetic criterion. Equation (24), labeled as exergy efficiency, prints the same latent-heat-output-to-server-heat expression that appears for GOR in Equation (22).",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The sustainability index is fuel exergy divided by exergy destruction. The authors state that increasing fuel exergy through better utilization, or decreasing destruction through better design, increases this index.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The index is attributed to Rosen and colleagues and expressed in Equation (25).",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "38",
+                  "reference_entry": "Rosen MA, Dincer I, Kanoglu M. Role of exergy in increasing efficiency and sustainability and reducing environmental impact. Energ Policy. 2008;36:128-137. https://doi.org/10.1016/j.enpol.2007.09.006."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The article establishes the vocabulary through which it will report performance. The printed expressions are recorded as they stand, without replacing them with inferred alternatives."
+    },
+    {
+      "location": "Pages 10459–10460, Section 3.2, DCMD model validation; Table 1 on page 10461",
+      "moves": "Compares the membrane submodel with an existing study, quantifies agreement, and draws a validation conclusion.",
+      "claims": [
+        {
+          "text": "For validation, the cooling unit is excluded and the DCMD model uses the reference study's flow conditions, feed temperatures of 40, 50, 60, and 70°C, and a permeate temperature of 20°C.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The comparison uses the same DCMD study from which the membrane inputs were drawn.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "31",
+                  "reference_entry": "Termpiyakul P, Jiraratananon R, Srisurichan S. Heat and mass transfer characteristics of a direct contact membrane distillation process for desalination. Desalination. 2005;177:133-141. https://doi.org/10.1016/j.desal.2004.11.019."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors conclude that the present DCMD model agrees very well with the reference study: relative differences are below 1% at 40, 60, and 70°C, and below 1.5% at 50°C.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 1 lists three comparison blocks. At 40°C, current/reference values are 524.75/524.88 for U and 10495.00/10498.00 and 4532.90/4496.00 for the two heat-flux blocks, with differences of 0.025%, 0.029%, and 0.821%. At 50°C they are 692.81/701.01, 20784.00/21030.00, and 12098.00/12252.00, with differences of 1.169%, 1.170%, and 1.257%. At 60°C they are 844.81/841.32, 33792.00/33853.00, and 22278.00/22159.00, with differences of 0.415%, 0.180%, and 0.537%. At 70°C they are 980.75/985.34, 49037.00/49267.00, and 35073.00/35147.00, with differences of 0.466%, 0.467%, and 0.211%. U is listed in W/m²K and the heat-flux blocks in W/m².",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The validation tests the membrane calculation separately under published conditions. It provides numerical support for that submodel rather than yet demonstrating the full integrated apparatus."
+    },
+    {
+      "location": "Page 10460, Section 3.2, cooling validation and hybrid limitation",
+      "moves": "Recalls prior validation and explicitly limits what has been demonstrated.",
+      "claims": [
+        {
+          "text": "The immersion cooling submodel relies on the authors' prior experimental operation up to 21 kW and their earlier mathematical model.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The section again points to the experimental and modeling papers already introduced in the literature review.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25 and 26",
+                  "reference_entry": "Wu C, Tong W, Kanbur BB, Duan F. Full-scale two-phase liquid immersion cooing data center system in tropical environment. Paper presented at: Proceedings of 2019 18th IEEE Intersociety Conference on Thermal and Thermomechanical Phenomena in Electronic Systems (ITherm); May 27-31, 2019; Las Vegas (NV), USA. doi:https://doi.org/10.1109/ITHERM.2019.8757316."
+                },
+                {
+                  "citation_text": "25 and 26",
+                  "reference_entry": "Kanbur BB, Wu C, Duan F. Combined heat and power generation via hybrid data center cooling-polymer electrolyte membrane fuel cell system. Int J Energy Res. 2020;44:4759-4772. https://doi.org/10.1002/er.5256."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Validation of the proposed integrated hybrid is not currently possible because the system is first presented in this paper; future work will pursue a small-scale demonstration.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The authors distinguish validation of the constituent models from validation of their new combination. This qualification closes the thermodynamic validation section before the discussion turns to costs."
+    },
+    {
+      "location": "Page 10460, Section 3.3, comparison system and payback definition",
+      "moves": "Defines the economic comparator, identifies the incremental costs and benefit, and introduces a decision criterion.",
+      "claims": [
+        {
+          "text": "The comparator is stand-alone immersion cooling comprising streams 1–3, a feed pump, and the server tank, without the permeate pump or DCMD module.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The hybrid therefore has higher investment and future costs, but the economic value of its distilled water can establish whether it is more feasible than stand-alone cooling.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (26) defines simple payback as the hybrid's additional total capital investment divided by annual distilled water value minus the hybrid's additional annual cost relative to stand-alone operation.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The economic question is framed incrementally. Cooling itself is common to both designs, while the added desalination equipment creates both extra costs and a saleable or valued water product."
+    },
+    {
+      "location": "Page 10460, Section 3.3, capital investment and the chosen estimation approach",
+      "moves": "Defines a broad cost category, acknowledges estimation difficulty, chooses a simplifying coefficient, and qualifies the payback method.",
+      "claims": [
+        {
+          "text": "Total capital investment includes fixed capital investment and other outlays: direct equipment and installation-related expenses, indirect engineering and contingency expenses, and startup, working-capital, and R&D costs.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The capital-cost framework is attributed to Bejan and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "36",
+                  "reference_entry": "Bejan A, Tsatsaronis G, Moran MJ. Thermal Design and Optimization. New York: Wiley; 1996."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Because detailed TCI estimation is difficult for a new energy system, Equation (27) estimates TCI as 6.32 times purchased equipment cost. The authors choose this coefficient because they regard it as well-known and widely used, while acknowledging other estimation methods.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The 6.32 coefficient is taken from the same thermal-design reference.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "36",
+                  "reference_entry": "Bejan A, Tsatsaronis G, Moran MJ. Thermal Design and Optimization. New York: Wiley; 1996."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors regard simple payback as sufficient for comparison because both systems have the same lifetime and interest rate. They identify life-cycle costing, cumulative present worth, and annual-cost return-on-investment analysis as alternatives for more detailed assessment.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The economic model is deliberately an estimate rather than a component-by-component project budget. The authors explain both the chosen shortcut and the narrower comparative purpose for which they consider it adequate."
+    },
+    {
+      "location": "Pages 10460–10461, Section 3.3, purchased equipment, water value, and maintenance",
+      "moves": "Supplies cost inputs, links production to annual benefit, and separates recurring membrane replacement from ordinary maintenance.",
+      "claims": [
+        {
+          "text": "Table 2 lists a cooling tank cost of 1775.00 SGD per kW of cooling load, feed and permeate pumps at 950.00 SGD, and the DCMD module at 140.00 SGD/m². The tank figure includes tank, condenser pipe, and dielectric liquid; cooling equipment prices come from the authors' experimental setup, and the membrane-module price is converted from USD.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The table cites the experimental setup and a membrane-distillation cost source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Wu C, Tong W, Kanbur BB, Duan F. Full-scale two-phase liquid immersion cooing data center system in tropical environment. Paper presented at: Proceedings of 2019 18th IEEE Intersociety Conference on Thermal and Thermomechanical Phenomena in Electronic Systems (ITherm); May 27-31, 2019; Las Vegas (NV), USA. doi:https://doi.org/10.1109/ITHERM.2019.8757316."
+                },
+                {
+                  "citation_text": "39",
+                  "reference_entry": "Swaminathan J, Chung HW, Warsinger DM, Lienhard VJH. Energy efficiency of membrane distillation up to high salinity: evaluating critical system size and optimal membrane thickness. Appl Energy. 2018;211:715-734. https://doi.org/10.1016/j.apenergy.2017.11.043."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Equation (28) calculates distilled water value by multiplying production rate by the Singapore unit water cost. The accompanying prose prints that input as cw = 2.74 m³/h.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The water-cost input is cited to the authors' earlier thermoeconomic study.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "40",
+                  "reference_entry": "Kanbur BB, Xiang L, Dubey S, Choo FH, Duan F. Life-cycle-integrated thermoeconomic and enviroeconomic assessments of the small-scale-liquefied natural gas cold utilization systems. Int J Energy Res. 2019;43:4104-4126. https://doi.org/10.1002/er.4510."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Annual hybrid costs comprise electricity, operation and maintenance, and replacement. Operation and maintenance is assumed to be 1.092% of purchased equipment cost.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors describe the maintenance fraction as widely used and previously applied in their work.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "41",
+                  "reference_entry": "Tsatsaronis G, Pisa J. Exergoeconomic evaluation and optimization of energy systems - application to the CGAM problem. Energy. 1994;19:287-321. https://doi.org/10.1016/0360-5442(94)90113-9."
+                },
+                {
+                  "citation_text": "42",
+                  "reference_entry": "Kanbur BB, Xiang L, Dubey S, Choo FH, Duan F. Thermoeconomic analysis and optimization of the small scale power generation with CO2 capture system from liquefied natural gas. Energy Convers Manag. 2019;181:507-518. https://doi.org/10.1016/j.enconman.2018.11.077."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Membrane replacement is treated separately because it is periodic and substantial, whereas cooling-unit replacements can be included in ordinary maintenance. Membrane replacement cost is taken as 15% of the membrane module's purchased cost.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The 15% replacement fraction follows Al-Obaidani and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "27",
+                  "reference_entry": "Al-Obaidani S, Curcio E, Macedonio F, Di Profio G, Al-Hinai H, Drioli E. Potential of membrane distillation in seawater desalination: thermal efficiency, sensitivity study and cost estimation. J Membr Sci. 2008;323:85-98. https://doi.org/10.1016/j.memsci.2008.06.006."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The payback model receives its monetary inputs. The distinction between ordinary cooling maintenance and periodic membrane replacement makes one recurring cost of adding desalination explicit."
+    },
+    {
+      "location": "Page 10461, Section 3.3, electricity and equipment lifetime",
+      "moves": "Completes the recurring-cost comparison, fixes the economic horizon, and distinguishes equipment life from server replacement.",
+      "claims": [
+        {
+          "text": "Hybrid electricity cost includes both pumps, while stand-alone electricity cost includes only the feed pump. The electricity price is 0.2552 SGD/kWh.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Equations (29) and (30) give the respective power-cost expressions; the tariff source is the Energy Market Authority.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "43",
+                  "reference_entry": "Energy Market Authority. Electricity Tariffs. 2019. https://www.ema.gov.sg/Residential_Electricity_Tariffs.aspx. Accessed March 23, 2020, but the withdrawn data was accessed: March 2019."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Stand-alone maintenance also uses 1.092% of equipment cost, with separate replacement cost set to zero.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The assumed system life is 20 years, so payback beyond 20 years is economically infeasible. This is the life of the cooling and DCMD equipment; servers may be replaced multiple times according to performance.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors consider the 20-year horizon acceptable in light of earlier cooling and membrane-distillation economic analyses.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "44,45",
+                  "reference_entry": "Cho K, Chang H, Jung Y, Yoon Y. Economic analysis of data center cooling strategies. Sust Cities Soc. 2017;31:234-243. https://doi.org/10.1016/j.scs.2017.03.008."
+                },
+                {
+                  "citation_text": "44,45",
+                  "reference_entry": "Deymi-Dashtebayaz M, Namanlo SV. Potentiometric and economic analysis of using air and water-side economizers for data center cooling based on various weather conditions. Int J Refrig-Rev Int Froid. 2019;99:213-225. https://doi.org/10.1016/j.ijrefrig.2019.01.011."
+                },
+                {
+                  "citation_text": "27",
+                  "reference_entry": "Al-Obaidani S, Curcio E, Macedonio F, Di Profio G, Al-Hinai H, Drioli E. Potential of membrane distillation in seawater desalination: thermal efficiency, sensitivity study and cost estimation. J Membr Sci. 2008;323:85-98. https://doi.org/10.1016/j.memsci.2008.06.006."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The conventional economic comparison is complete. Its feasibility threshold concerns infrastructure investment, not an assumption that the same computing hardware operates for two decades."
+    },
+    {
+      "location": "Pages 10461–10462, Section 3.4, thermoeconomic framework and inlet costs",
+      "moves": "Combines the previously separate assessment domains, assigns boundary costs, and introduces unknown internal costs.",
+      "claims": [
+        {
+          "text": "Thermoeconomics combines economic and thermodynamic parameters in one methodology. This study uses exergy and a cost matrix unique to the system.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The matrix-based approach cites an earlier life-cycle thermoeconomic methodology.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "46",
+                  "reference_entry": "Kanbur BB, Xiang L, Dubey S, Choo FH, Duan F. Life cycle integrated thermoeconomic assessment method for energy conversion systems. Energy Convers Manag. 2017;148:1409-1425. https://doi.org/10.1016/j.enconman.2017.06.079."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Seawater entering at atmospheric conditions is assigned zero unit cost. Stream 5 uses the previously specified water-cost input, and pump electricity uses 0.2552 SGD/kWh; unit costs of the internal streams remain to be calculated.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (31) balances levelized product cost against levelized fuel cost plus levelized component cost. A stream's levelized cost is obtained by multiplying its unit cost by its exergy rate.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The article changes from comparing annual monetary totals to assigning costs through exergy flows. The earlier economic inputs become boundary conditions for this new accounting system."
+    },
+    {
+      "location": "Page 10462, Section 3.4, component levelization, Table 3, and Equation (34)",
+      "moves": "Annualizes component costs, sets financial parameters, assembles the matrix, and identifies its unknowns and goals.",
+      "claims": [
+        {
+          "text": "Equation (32) calculates levelized component cost from purchased equipment cost, capital recovery factor, maintenance allowance, and 8000 annual operating hours. Equation (33) uses a 1.7% interest rate and the already selected 20-year life.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table 3 gives component cost balances for the feed pump, tank, membrane, and permeate pump. It assigns equal unit costs across selected linked streams and introduces separate unknown costs for server heat and distilled water.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (34) presents a four-by-four exergy-cost matrix acting on four unknown unit-cost parameters, with component levelized costs and pump electricity costs on the right-hand side.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The thermoeconomic goal is minimum overall levelized product cost; this particular hybrid also permits distilled water's levelized cost to be minimized as a separate goal.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The general minimum-product-cost objective is attributed to Bejan and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "36",
+                  "reference_entry": "Bejan A, Tsatsaronis G, Moran MJ. Thermal Design and Optimization. New York: Wiley; 1996."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The promised original matrix is now specified. It turns the system's component balances into internal cost allocations, which also supply the quantities needed for optimization."
+    },
+    {
+      "location": "Pages 10462–10463, Section 3.5, objective pairs and search procedure",
+      "moves": "Justifies multicriteria decision-making, selects two paired optimization problems, and identifies the computational method.",
+      "claims": [
+        {
+          "text": "Because the assessment criteria and their trends differ, the authors consider multicriteria decision-making necessary and use MATLAB's genetic algorithm tool to find a best trade-off.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The first objective pair maximizes exergy efficiency while minimizing overall levelized product cost; the second maximizes exergy efficiency while minimizing distilled water cost.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The first pairing is described as common in energy-system optimization, with a citation to the authors' earlier optimization work.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "47",
+                  "reference_entry": "Kanbur BB, Xiang L, Dubey S, Choo FH, Duan F. Sustainability and thermoenvironmental indicators on the multiobjective optimization of the liquefied natural gas fired micro-cogeneration systems. Chem Eng Sci. 2019;202:429-446. https://doi.org/10.1016/j.ces.2019.03.024."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The second pairing is justified by the system's energy-water nexus role, making water cost an explicit objective rather than considering only the combined product.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (35) applies both paired objectives within cooling loads of 0.7–1.5 kW and membrane areas of 5–75 cm². The genetic algorithm generates Pareto-frontier solutions from the computed performance data.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Optimization follows directly from the cost and efficiency measures already defined. The choice to optimize water cost separately carries the earlier energy-water framing into the actual decision procedure."
+    },
+    {
+      "location": "Page 10463, Section 3.5, Pareto interpretation, normalization, and weighting",
+      "moves": "Explains how a preferred point is selected from optimal alternatives and makes the preference weights explicit.",
+      "claims": [
+        {
+          "text": "A Pareto frontier provides optimal alternatives, but selecting a best trade-off still depends on the decision-maker's design criteria; the decision-maker may be a person or an algorithm.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors choose weighted-sum selection rather than other weighting approaches such as weighted-product.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The discussion of alternative weighting approaches cites the same multiobjective optimization study.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "47",
+                  "reference_entry": "Kanbur BB, Xiang L, Dubey S, Choo FH, Duan F. Sustainability and thermoenvironmental indicators on the multiobjective optimization of the liquefied natural gas fired micro-cogeneration systems. Chem Eng Sci. 2019;202:429-446. https://doi.org/10.1016/j.ces.2019.03.024."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Equation (36) normalizes each objective by its distance from the utopia value divided by the utopia-to-pseudo-nadir range. Utopia denotes the ideal case; pseudo-nadir denotes the worst case between the frontier's anchor points.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (37) forms a weighted sum of the two normalized objectives. Each objective receives a 50% weight.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The term best trade-off is now tied to a declared selection rule. Equal weighting is an explicit modeling preference, rather than something determined by the physical balances alone."
+    },
+    {
+      "location": "Page 10463, Section 4 opening, stand-alone performance and Figure 3",
+      "moves": "Begins reporting results, compares operating extremes, and links cooling load to downstream membrane performance.",
+      "claims": [
+        {
+          "text": "Increasing server heat from 0.7 to 1.5 kW raises stream 3 temperature from 316.68 to 330.92 K, approximately 4.5%. The authors infer a crucial effect on DCMD performance because that performance depends directly on the heated feed temperature.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 3A plots increasing tank-outlet temperature and cooling COP against released server heat.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "At the maximum cooling load, COP is reported as 2.15 times its value at the minimum load.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The comparison is reported in the prose discussing Figure 3A.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "At 1.5 kW, maximum heat flux and mass flux are 30.68 kW/m² and 34.05 kg/m²h. Reducing heat input to 0.7 kW lowers them by 55.1% and 64.9%, respectively.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 3B plots the heat-flux and mass-flux responses to server heat; the precise values and percentage changes are supplied in the accompanying prose.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The results begin with the components before returning to the whole hybrid. The earlier mechanism—server heat raising feed temperature—now receives calculated numerical consequences."
+    },
+    {
+      "location": "Pages 10463–10464, Section 4, water production and Figure 4",
+      "moves": "Quantifies product sensitivity, compares the two design variables, and introduces the production-versus-cost trade-off.",
+      "claims": [
+        {
+          "text": "Water production falls by nearly 65% when cooling load decreases from 1.5 to 0.7 kW.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 4 presents water production as a surface over membrane area and released data center heat.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Production at 5 cm² is 93.3% smaller than at 75 cm², showing that membrane area has a pivotal effect on the amount of water produced.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The comparison is reported in the prose interpreting Figure 4.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Increasing membrane area also brings higher future operation, maintenance, replacement, and energy costs, so the optimization must account for the membrane module's cost.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors refer back to the DCMD module cost in Table 2 when introducing this trade-off.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Assuming uninterrupted 24-hour operation, the calculated daily production range is 0.14–6.13 kg.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The maximum production announced in the Summary is placed within a full operating range. More membrane area produces more water, but the authors explicitly resist treating maximum production alone as the design objective."
+    },
+    {
+      "location": "Page 10464, Section 4, thermal and exergy efficiency and Figure 5",
+      "moves": "Distinguishes two efficiency responses, explains their dependencies, and supplies relative changes.",
+      "claims": [
+        {
+          "text": "Membrane thermal efficiency is independent of membrane area because it is a ratio of latent heat flux to total heat flux. It increases by 28.8% from the lowest to the highest cooling load.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 5A shows thermal efficiency rising with released heat. The prose gives the previously announced maximum of 64.5% and adds the minimum of 50.1%.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Overall exergy efficiency depends on both cooling load and membrane area through differences in exergy destruction. Increasing load from 0.7 to 1.5 kW raises it by 70.2% at 5 cm² and 62.7% at 75 cm².",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 5B maps overall exergy efficiency over the two design variables.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Smaller membrane areas yield higher exergy efficiency because they incur less exergy destruction. The reported minimum is 27.3%, accompanying the previously stated maximum of 53.7%.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Efficiency and production do not have identical dependencies. The area that increases water output is described here as reducing exergy efficiency, giving the coming optimization a further trade-off."
+    },
+    {
+      "location": "Page 10464, Section 4, GOR, PR, and pump-power discussion; Figure 6 on page 10465",
+      "moves": "Reports additional performance measures, considers a possible pumping penalty, and restricts that consideration to the studied scale.",
+      "claims": [
+        {
+          "text": "The prose states that GOR and PR are highest at the minimum membrane area of 5 cm² and differ by nearly a factor of 14 across the membrane-area range.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors attribute these trends to Figure 6. Read directly as images, Figure 6A and Figure 6B show their plotted surfaces rising toward larger membrane areas. This records the visual reading separately from the prose's statement about minimum area.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "For the selected pumps, increasing membrane area from 5 to 75 cm² does not appreciably change pump power. Larger membrane areas and cooling loads could affect pumping requirements, but the authors do not consider that effect critical within the present small-scale range.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The stated basis is the selected pumps' performance curves; numerical pump-curve data are not supplied in this discussion.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Raising cooling load from 0.7 to 1.5 kW increases GOR by approximately 33.8%; PR reaches 1.9 times its lower-load value.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The discussion adds two product-oriented ratios and considers whether additional membrane area imposes a pumping penalty. Its reassurance about pumping is explicitly confined to the selected equipment and operating scale. The prose and the visual area trends are retained separately."
+    },
+    {
+      "location": "Pages 10464–10465, Section 4, sustainability index and Figure 7",
+      "moves": "Reports a second-law-derived index, compares extreme designs, and proposes an alternative assessment use.",
+      "claims": [
+        {
+          "text": "Smaller membrane area and higher server heat produce higher sustainability index values. The maximum is 2.16 at 5 cm² and 1.5 kW; the minimum is 1.38 at 75 cm² and 0.7 kW.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 7 displays sustainability index across five membrane areas with separate traces for the cooling loads.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The smallest membrane area has a sustainability index 20.1% above the largest area at 1.5 kW, compared with 6.2% above it at 0.7 kW.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Because sustainability index and exergy efficiency have parallel trends, the authors suggest using the index instead when exergy-efficiency calculations become more complex in other hybrid designs.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The stated basis is the correspondence between the sustainability-index results and the earlier exergy-efficiency results.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The sustainability framing becomes a calculated indicator. The authors move from reporting this system's index to suggesting a methodological use for it in future, more complicated systems."
+    },
+    {
+      "location": "Page 10465, Section 4, payback results and Figure 8",
+      "moves": "Reports the conventional economic outcome, offers a tentative explanation for weak sensitivity, and qualifies extrapolation.",
+      "claims": [
+        {
+          "text": "Payback remains approximately 3.72 years throughout the studied range, far below the assumed 20-year life. Cooling load changes it little, while membrane area has only a very small effect.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 8 shows membrane-area-dependent payback bars on a narrow axis extending approximately from 3.719 to 3.727 years. The exact bar endpoints are not printed, so no more precise payback values are inferred from the image.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The authors suggest that low cooling loads may explain the nearly stable payback. Higher loads and larger membranes could have more substantial effects, which future work should analyze.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The announced payback result now appears as a nearly insensitive outcome over the chosen domain. Its proposed explanation remains tentative, and the authors do not extend the constancy claim to larger systems."
+    },
+    {
+      "location": "Pages 10465–10466, Section 4, levelized water cost and Figure 9A",
+      "moves": "Turns from simple payback to thermoeconomic results and compares sensitivity to the two design variables.",
+      "claims": [
+        {
+          "text": "The thermoeconomic assessment considers levelized distilled water cost, overall system product cost, and data center cooling cost.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Membrane area has negligible effect on levelized distilled water cost compared with cooling load. Increasing cooling load from 0.7 to 1.5 kW raises that cost to approximately 1.9 times its initial value.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 9A shows a water-cost surface that changes principally along the released-heat axis and only weakly along membrane area.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Overall product cost and cooling cost follow similar increasing trends, so their equivalent surfaces are omitted and their differing magnitudes are compared in Figure 9B instead.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The stable simple-payback result does not exhaust the economic discussion. The exergy-based cost accounting produces a pronounced cooling-load response and distinguishes the costs attributed to different products or subsystems."
+    },
+    {
+      "location": "Page 10466, Section 4, comparative levelized costs and Figure 9B",
+      "moves": "Ranks the cost measures, quantifies their gaps, and explains those gaps through capital and exergy-cost allocation.",
+      "claims": [
+        {
+          "text": "Overall product cost is highest because it includes cooling and membrane distillation. Cooling cost is next, and is 2.1% below overall product cost at 0.7 kW and 1.3% below it at 1.5 kW.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 9B compares the three costs at five released-heat values; the authors relate their ordering to the exergy-cost matrix in Equation (34).",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Distilled water has the lowest levelized cost because the DCMD module's capital cost is lower than the capital cost of the cooling equipment or entire hybrid.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The explanation refers back to the purchased-equipment costs in Table 2.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "At 0.7 kW, distilled water cost is 0.68% below cooling cost. At the higher cooling load it becomes 6.6% lower, because cooling-unit capital cost increases more sharply than DCMD capital cost.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Levelized costs rise dramatically with cooling load, while their magnitudes also depend on whether exergy costs are assigned to the whole hybrid, the cooling unit, or the membrane module.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The authors interpret the cost ordering through the accounting structure and equipment inputs already introduced. This comparison motivates testing whether optimizing the overall product or water alone selects a different design."
+    },
+    {
+      "location": "Pages 10466–10467, Section 4, optimization outcomes and Figure 10",
+      "moves": "Applies the paired objectives, explains why one cost is omitted, reports selected designs, and limits generalization.",
+      "claims": [
+        {
+          "text": "Cooling cost is not used as a separate optimization objective because its trend lies between overall product cost and distilled water cost.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "With equal weights on efficiency and cost, the overall-product objective selects 1.1 kW and 5.13 cm², while the distilled-water objective selects 1.1 kW and 5.19 cm².",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 10 plots the two cost-versus-exergy-efficiency Pareto frontiers and marks their selected trade-off points. The design-variable values are supplied by the accompanying prose.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The authors explain the common 1.1 kW selection by cooling load's strong effects on both efficiency and cost, and the near-minimum membrane areas by membrane area's smaller influence on those objectives.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "They refer back to Figures 5B and 9B for the efficiency and cost responses.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The slightly larger area selected for the water-cost objective is attributed to membrane area's greater influence on water cost than on overall product cost.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "These trade-off results apply to low cooling loads. Larger cooling loads and membrane areas may produce different outcomes and are outside this study.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The optimization completes the sequence promised in the modeling flowchart. The body gives 5.13 cm² for the overall-product optimum, whereas the Summary's announced range began at 5.12 cm²; these are retained at their respective locations without resolving the difference."
+    },
+    {
+      "location": "Page 10467, Section 5, opening and first conclusion bullets",
+      "moves": "Recapitulates the system and novelty, restates major results, and compresses several load comparisons into concluding numerical statements.",
+      "claims": [
+        {
+          "text": "Although designed for a specific cooling-load range, the authors consider the results potentially useful for future real-scale operation and describe the hybrid as an energy-water nexus example.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The conclusion states that COP at 1.5 kW was 1.5 times higher than at 0.7 kW.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The conclusion states that a 0.8 kW increase in released data center heat increased water production 1.85 times.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The conclusion restates the integration, original matrix, optimization program, maximum daily production, and efficiency ranges rather than introducing new evidence. Its COP and water-production comparisons are recorded separately because their numerical wording differs from the earlier results discussion."
+    },
+    {
+      "location": "Page 10467, Section 5, remaining conclusion bullets",
+      "moves": "Restates the sustainability and feasibility interpretations, consolidates the cost findings, and repeats the selected hybrid design.",
+      "claims": [
+        {
+          "text": "The reported hourly overall product cost range of 2.69–5.33 SGD/h corresponds to 64.6–127.9 SGD per day.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The remaining bullets gather earlier findings: parallel sustainability-index and exergy-efficiency trends, 3.72-year payback, cooling load's dominant influence on costs, the DCMD module's lowest allocated cost, and the 1.1 kW, 5.13 cm² hybrid optimum. The daily cost conversion adds a new reporting scale; the other claims are restatements."
+    },
+    {
+      "location": "Page 10467, Section 5, final paragraph",
+      "moves": "Recommends two future research directions and names assumptions and design choices that require further investigation.",
+      "claims": [
+        {
+          "text": "The authors recommend real-scale demonstration because they regard the modeled thermodynamic, economic, and thermoeconomic performance as satisfactory and the system as efficient at low cooling loads.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The recommendation is grounded in the preceding calculated outcomes rather than an integrated-system experiment.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Demonstration studies should examine system limitations, alternative membrane characteristics, other distillation techniques, and different dielectric liquids.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Corrosion and salt deposition on the condenser pipe should be tested experimentally.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A second direction is larger-scale hybrid operation, examining its thermodynamic and thermoeconomic effects and again investigating corrosion and salt deposition.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The article ends its substantive argument by returning to what the model leaves open. The phenomena excluded in the assumptions reappear as experimental research tasks, alongside scale-up and alternative component choices."
+    },
+    {
+      "location": "Pages 10467–10468, Nomenclature, Greek letters, subscripts, superscripts, and abbreviations",
+      "moves": "Provides a notation reference rather than advancing the argument.",
+      "claims": [
+        {
+          "text": "The nomenclature distinguishes annual cost C, levelized cost Ċ, unit cost c, purchased equipment cost PEC, total capital investment TCI, and payback period PP.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The notation separately identifies thermal efficiency η, exergy efficiency ε, sustainability index SI, gain output ratio GOR, performance ratio PR, and coefficient of performance COP.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The notation keys distinguish feed and permeate quantities, their membrane-surface values, the two pumps, fuel/product/destruction/loss-related categories, the reference state, and the utopia and pseudo-nadir optimization quantities.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The reading shifts from the argument to apparatus that supports checking its formulas and terminology. These entries fix meanings and units but supply no additional performance evidence."
+    },
+    {
+      "location": "Page 10468, Acknowledgments and ORCID",
+      "moves": "Discloses funding support and identifies authors through researcher identifiers.",
+      "claims": [
+        {
+          "text": "The authors gratefully thank the funding supports from the joint project by Nanyang Technological University and the Defense, Science & Technology Agency, Singapore.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "This is contextual disclosure rather than a further engineering inference. ORCID identifiers for Baris Burak Kanbur and Fei Duan follow the funding acknowledgment."
+    },
+    {
+      "location": "Pages 10468–10469, References 1–24",
+      "moves": "Supplies the bibliographic entries behind the introduction's factual context, comparisons, and examples.",
+      "claims": [],
+      "meaning": "The reference list begins with data center energy demand, cooling reviews, heat recovery, desalination integration, United Nations documents, and direct liquid cooling. These entries identify the works cited earlier; their titles are not treated as new claims established by this paper."
+    },
+    {
+      "location": "Page 10469, References 25–39",
+      "moves": "Documents the immediate experimental lineage, membrane inputs, property correlations, and thermodynamic assessment sources.",
+      "claims": [],
+      "meaning": "This portion connects the paper's model to the authors' earlier immersion work and to the membrane-distillation, seawater-property, exergy, and sustainability literature. The matching entries have been recorded with the relevant supporting claims above."
+    },
+    {
+      "location": "Page 10470, References 40–47 and article citation box",
+      "moves": "Completes the economic and optimization bibliography and provides the source's own citation.",
+      "claims": [
+        {
+          "text": "The article's citation box identifies Kanbur, Wu, and Duan as authors and gives the publication as International Journal of Energy Research, 2020, volume 44, pages 10453–10470, DOI 10.1002/er.5677.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The bibliography closes with economic inputs, thermoeconomic methods, and multiobjective optimization. The citation box fixes the identity of the article being read rather than adding a result."
+    },
+    {
+      "location": "Page 10470, Appendix A, The Coefficients of Enthalpy Calculations",
+      "moves": "Supplies deferred mathematical definitions for the seawater enthalpy correlation.",
+      "claims": [
+        {
+          "text": "Appendix A supplies temperature-polynomial expressions for Ai, Bi, and Ci in Equations (A1)–(A3), completing the coefficient definitions used by the seawater enthalpy relationship in Equation (3).",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The appendix heading attributes these coefficients to Reference 32.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "[32]",
+                  "reference_entry": "Sharqawy MH, Lienhard VJH, Zubair SM. Thermophysical properties of seawater: a review of existing correlations and data. Desalin Water Treat. 2010;16:354-380. https://doi.org/10.5004/dwt.2010.1079."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The article returns to a dependency deferred near the start of the model. This appendix completes an input relationship rather than introducing a separate argument or empirical finding."
+    },
+    {
+      "location": "Page 10470, Appendix B, The Coefficients of Density Calculations",
+      "moves": "Defines the remaining temperature- and salinity-dependent terms for seawater density.",
+      "claims": [
+        {
+          "text": "Appendix B defines F2i, F3i, and F4i as temperature-based expressions in Equations (B1)–(B3), A1i through A4i as combinations of G terms in Equations (B4)–(B7), and G2i and G3i through salinity in Equations (B8)–(B9). These supply coefficients used by Equation (4).",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The density-coefficient appendix also cites Reference 32.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "[32]",
+                  "reference_entry": "Sharqawy MH, Lienhard VJH, Zubair SM. Thermophysical properties of seawater: a review of existing correlations and data. Desalin Water Treat. 2010;16:354-380. https://doi.org/10.5004/dwt.2010.1079."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The deferred property definitions continue. Their role is computational: density connects channel flow to mass flow and thereby to the energy and exergy rates used throughout the model."
+    },
+    {
+      "location": "Page 10470, Appendix C, The Coefficients of Entropy Calculations; end of document",
+      "moves": "Completes the final deferred property correlation and closes the document with mathematical supporting material.",
+      "claims": [
+        {
+          "text": "Appendix C gives temperature-polynomial definitions for Asi, Bsi, and Csi in Equations (C1)–(C3), completing the seawater entropy correction in Equation (17).",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The entropy-coefficient appendix cites the same seawater-property source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "[32]",
+                  "reference_entry": "Sharqawy MH, Lienhard VJH, Zubair SM. Thermophysical properties of seawater: a review of existing correlations and data. Desalin Water Treat. 2010;16:354-380. https://doi.org/10.5004/dwt.2010.1079."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The last page closes the model's remaining property-definition loop. The final material supports calculation of the entropy values needed for exergy accounting; it does not revise the conclusions or add a further demonstration."
+    }
+  ]
+}
