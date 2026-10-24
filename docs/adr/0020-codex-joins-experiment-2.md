@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-10-24
-- **Landed in:** not yet committed
+- **Landed in:** `1edaa18`
 
 ## Context
 
@@ -80,3 +80,15 @@ priced by `cost.py`.
 ## Notes
 
 Adds a column to ADR-0017's design; the API and app columns stand.
+
+How the Codex runs went: each session ran in its own Codex chat, archived
+before the next, so no session could draw on another. Codex read the PDF as
+both extracted text and page images in every session, choosing its own tools
+— `pypdf` and `pypdfium2` for the medium close reading, `pdfplumber` and
+Poppler's `pdftoppm` for the high one. `run_note.md` records the close
+reading; the high evaluation added its own section unprompted. Session
+times: close readings 7 min 25 s (medium) and 7 min 58 s (high); evaluations
+2 min 45 s (medium) and 3 min 28 s (high). Token usage is not available on
+ChatGPT Pro, which shows only a weekly limit: the four sessions moved it from
+98% to 97% remaining. Codex could not confirm the model or effort it ran at
+beyond the label requested.

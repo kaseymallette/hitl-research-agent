@@ -121,18 +121,18 @@ nothing.
 Phase 1 produces the evidence. It does not choose — Phase 2 chooses, on quality
 and cost together.
 
-### Three experiments
+### Two experiments
 
-**Phase 1 is complete apart from Experiment 2's Codex runs**
-([ADR-0020](adr/0020-codex-joins-experiment-2.md)). It ran as two experiments,
-one per article, the second designed around what the first left open
+**Phase 1 is complete.** It ran as two experiments, one per article, the
+second designed around what the first left open
 ([ADR-0015](adr/0015-phase-1-as-three-experiments.md),
-[ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)).
+[ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)), with Codex
+added to the second ([ADR-0020](adr/0020-codex-joins-experiment-2.md)).
 
 | Experiment | Article | Design | Runs |
 | --- | --- | --- | --- |
 | 1 | Barnett | 3 model configurations × 2 input methods | 6, complete |
-| 2 | kanbur | PDF only: 2 efforts (medium, high) × 2 ways of running GPT-6.1 Sol (the API; the ChatGPT app in work mode, memory off, my instructions for Sunny on); the API runs also write the primer ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)); and Codex, from the instruction files in `prompts/` ([ADR-0020](adr/0020-codex-joins-experiment-2.md)) | 6, Codex's two left |
+| 2 | kanbur | PDF only: 2 efforts (medium, high) × 2 ways of running GPT-6.1 Sol (the API; the ChatGPT app in work mode, memory off, my instructions for Sunny on); the API runs also write the primer ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)); and Codex, from the instruction files in `prompts/` ([ADR-0020](adr/0020-codex-joins-experiment-2.md)) | 6, complete |
 
 Astra low is dropped after Experiment 1, and prepared text sits out
 Experiment 2. There is no Experiment 3: lei is analyzed with the rest of the
@@ -282,7 +282,8 @@ API — $3.81 for Barnett's six, Astra's two accounting for $2.47 of it, and
 $1.53 for kanbur's two API runs with their primers. Kanbur's PDF costs about
 70,000 input tokens per call against Barnett's 19,000. The app runs cost
 nothing beyond the subscription. Earlier runs under superseded prompts are not
-counted.
+counted. The four Codex sessions — two close readings and two evaluations —
+used about 1% of a ChatGPT Pro weekly limit, which reports no tokens.
 
 Billed in all: $11.89 on the OpenAI account. The run records account for
 $10.61 of it — Barnett under ADR-0009 ($1.97), ADR-0010 ($1.77), ADR-0011
@@ -304,7 +305,7 @@ half-written directory, and that `summary.csv` reports what the run records hold
 - [x] Every cell of each experiment has an `analysis.json`, indented and
       readable, the analysis the model returned, unmodified.
 - [x] Every cell has its argument evaluation — `argument_evaluation.json` from
-      the API, `argument_evaluation.md` from the app. Where an evaluation was
+      the API, `argument_evaluation.md` from the app and from Codex. Where an evaluation was
       rerun on a saved close reading, after a connection error or a prompt
       revision, the rerun has its own record.
 - [x] Each API cell has a `run_record.json` with usage, calculated cost,
@@ -315,7 +316,8 @@ half-written directory, and that `summary.csv` reports what the run records hold
       identical across API cells, demonstrably from the records: every close
       reading carries the same `SYSTEM_PROMPT` fingerprint, and every
       evaluation in use the same `EVALUATION_PROMPT` fingerprint. App cells
-      use the same prompts with only the format instruction added.
+      use the same prompts with only the format instruction added; Codex
+      cells use the same prompt text from `prompts/`, checked by a test.
 - [x] My notes on each article are written before its outputs are read —
       for Barnett. Kanbur's were suspended after three steps
       ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)).

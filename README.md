@@ -235,7 +235,7 @@ reading the article better that I could see. The two input methods produced
 readings of about the same quality, while the prepared text needed manual
 fixes and, on the next article, lost every figure.
 
-**Experiment 2 — kanbur.** The PDF only, and a new question: does the API add
+**Experiment 2 — kanbur (complete).** The PDF only, and a new question: does the API add
 anything over the ChatGPT app I already use, set up with my instructions for
 Sunny, the persona I work with — or over Codex, the coding agent I build this
 project with? The same prompts run on the same model, GPT-6.1 Sol, three ways,
@@ -313,12 +313,12 @@ What has been difficult about working this way:
 | --- | --- |
 | **Working now** | single source analysis as two calls — the close reading and the argument evaluation — running end to end with run records, the primer, and PDF preparation into cleaned text and crops |
 | **Designed, not yet built** | the head-to-head evaluation, synthesis with its claims store and retrieval, and the research assistant's guided questions |
-| **Next** | Experiment 2's Codex runs, then Phase 2's head-to-head evaluation, which decides how the collection is analyzed |
+| **Next** | Phase 2's head-to-head evaluation, which decides how the collection is analyzed |
 
 | Phase | What it does |
 | --- | --- |
 | 0 | **Review and redesign**: audit the earlier code and restructure the repository and documentation around these phases *(complete)* |
-| 1 | **A/B testing**: two experiments — Barnett comparing models and input methods, kanbur comparing the API against the ChatGPT app and Codex *(Codex runs left)* |
+| 1 | **A/B testing**: two experiments — Barnett comparing models and input methods, kanbur comparing the API against the ChatGPT app and Codex *(complete)* |
 | 2 | **Evaluation**: a head-to-head judgment of both experiments by Claude, checked by me, and the choice of model, effort, input method, and API or app |
 | 3 | **Synthesis**: analyze the rest of the collection and accept each analysis; a claims store from the close readings; synthesis across sources; and retrieval on the same store |
 | 4 | **Research assistant**: the primer and guided questions about the article |
