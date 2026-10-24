@@ -1611,3 +1611,145 @@ Close reading of this article:
 ```
 
 Match the runs: the **medium** close reading goes into the **medium** evaluation chat, and the high into the high. Save each answer in that run's `argument_evaluation.md`.
+
+## 71. Analysis in Codex
+
+**Prompt:** Okay, so here's what I was thinking. What if we had a prompts folder, and I used Codex? And I said use prompts/close-reading to analyze kanbur and store in outputs/.... and then another call to use the close reading and article to run prompts/evaluate-argument and store in outputs/... ? Because Codex could be another alternative to the API and we could look at usage there too. This would add one more component to our A/B test, and one last thing for phase 1
+
+**Response:** That makes sense, and it's a natural third way to run the same prompts. Codex is an agent: it can read the files itself, run the prompt and write the output where you tell it, so the copy-pasting you did in the app goes away. Here's how I'd set it up, plus three things to settle.
+
+### The setup
+
+A **`prompts/` folder** with one file per call, each a complete instruction Codex can follow:
+- `prompts/close-reading.md`: the close-reading prompt, the PDF input instructions and the JSON format, plus where to write the output.
+- `prompts/evaluate-argument.md`: the evaluation prompt, with instructions to read the article and the saved close reading and write the evaluation.
+- maybe `prompts/primer.md` too, so the folder covers all three calls.
+
+You'd then tell Codex, for example: "Follow `prompts/close-reading.md` on kanbur and save the result to `outputs/ab_testing/kanbur…/adr_00XX/codex__<model>-<effort>/analysis.json`." Then in a **fresh Codex session**, so the evaluation doesn't inherit the first call's context: "Follow `prompts/evaluate-argument.md` with that close reading."
+
+**Keeping prompts in one place:** the prompt text currently lives in `prompts.py`, with `PROMPTS.md` as a readable copy kept in sync by a test. The `prompts/` files would be a third copy, so I'd extend the same test to check them too. Any edit to a prompt then fails the tests until all three match. Alternatively, `prompts/` could replace `PROMPTS.md`, leaving one readable place for prompts.
+
+### Things to settle
+
+1. **How Codex reads the PDF.** This matters most. The API and the app send the PDF itself, page images included. Codex is a coding agent, and it may read the PDF by extracting its text with a tool instead. If it does, Codex is effectively running the *text* input method, not the PDF one. It would also miss image-only content, like kanbur's equations. Ask it in the prompt to state how it read the PDF, and record that with the run. It's useful either way, but it changes what the comparison means.
+2. **Which model and effort.** Codex runs whatever model is set in its configuration. To compare cleanly with the API and app runs, set it to GPT-6.1 Sol at medium and at high if it allows, and record exactly what it used.
+3. **Usage.** Codex reports token usage per session. Copy those numbers into a small note for each run, and we can set them beside the API's records.
+
+### The record
+
+Adding a Codex arm changes Experiment 2's design, so by your rule it's an ADR: **ADR-0020**, adding Codex to Experiment 2, with Phase 1 reopened until it's done. Its folders would be `codex__gpt-6.1-sol-<effort>/`, beside the API and app runs, with your `phase_1.md` log picking up the entries.
+
+Should I write ADR-0020, create the `prompts/` folder and extend the sync test? If so, tell me whether `prompts/` replaces `PROMPTS.md` or sits alongside it.
+
+## 72. Follow up to Codex setup 
+
+**Prompt:** Add how it read the pdf, and we will test on 6.1 Sol (Med/High) again
+
+**Response:** ADR-0020 adds Codex to Experiment 2. prompts/close-reading.md and prompts/evaluate-argument.md carry the API's exact prompts, a test keeps them in sync, and each run records how Codex read the PDF. The Codex folders are ready, all 95 tests pass.
+
+## 73. Run blind test on Codex
+
+**Prompt:** I created a separate folder on my Mac to separate this experiment from the others for kanbur, so Codex can't use those results. Can I send this?
+
+Follow close-reading.md for the article kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf. Save the close reading as analysis.json and write your output to codex__gpt-6.1-sol-medium.
+
+**Response:** Yes, with one addition. `close-reading.md` tells Codex to find the article's title and type in `data/research/sources.yaml`, and that file won't be in your separate folder. Give Codex those details in the request:
+
+```text
+Follow close-reading.md for the article kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf. The source details are: source_title "Multi-criteria thermoeconomic and thermodynamic assessments of the desalination-integrated two-phase liquid-immersion data center cooling system", source_type "peer_reviewed_paper". Save the close reading as analysis.json and your note on how you read the PDF as run_note.md, both in codex__gpt-6.1-sol-medium.
+```
+
+For the evaluation sessions, `evaluate-argument.md` also needs the publisher and DOI:
+
+```text
+Follow evaluate-argument.md for the article kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf, using the close reading in codex__gpt-6.1-sol-medium/analysis.json. The source details are: source_title "Multi-criteria thermoeconomic and thermodynamic assessments of the desalination-integrated two-phase liquid-immersion data center cooling system", source_type "peer_reviewed_paper", publisher "Wiley", doi "10.1002/er.5677". Save the evaluation as argument_evaluation.md in codex__gpt-6.1-sol-medium, and add your note on how you read the PDF to codex__gpt-6.1-sol-medium/run_note.md.
+```
+
+For the high runs, change `medium` to `high` in both.
+
+Keeping this in a separate folder is a good idea: Codex can't see the other runs at all. When all four sessions are done, copy the two `codex__…` folders into `outputs/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling/adr_0020/`, or tell me where they are and I'll move them and run the checks.
+
+## 74. Review Codex close reading for GPT-6.1 Sol Medium 
+
+**Prompt:** I just pasted the medium run for close reading. check it out. 
+
+**Response:** Codex's close reading is solid. It's valid JSON in exactly the schema, and it passes every check:
+
+| Medium effort | Steps | Claims | Support | Words in claims | Verbatim | References matched | Numbers not in article |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| API | 34 | 129 | 75 | 2,671 | 2 | 47 / 47 | 0 |
+| App | 46 | 147 | 66 | 3,844 | 2 | 47 / 47 | 0 |
+| **Codex** | **36** | **151** | **88** | **3,164** | **0** | **47 / 47** | **0** |
+
+**How it read the PDF, from its `run_note.md`:**
+- It extracted the text of every page with `pypdf`.
+- It rendered every page to an image with `pypdfium2`.
+- It viewed most pages individually as images, so it could see the figures, tables and equations as printed, and it checked the notation and references against those images.
+
+That's text plus page images, comparable to the API and app's PDF reading, not the prepared-text method.
+
+**What stands out:**
+- **Its pace is closest to the API's:** 36 steps against the API's 34, while the app took 46.
+- **It records the most support** (88 items) and every reference entry correctly, transcribed by hand from the PDF.
+- **It noticed the paper's problems without judging them,** which is exactly right for a close reading. It records that Equations (22) and (24) are printed as identical "without silently substituting a different exergy-efficiency definition," and it keeps the odd water-price unit "rather than converting it into an unprinted unit." It's noting what's on the page and leaving the judgment to the evaluation.
+- **It marks every claim paraphrased,** by design, so it has no verbatim claims.
+
+**One honest caveat from its own note:** it can't confirm which model and effort it actually ran at. "My exact backend model identifier and reasoning-effort setting are not independently exposed." So "GPT-6.1 Sol medium" is what you set, not something the run can verify. That's worth keeping in mind in Phase 2.
+
+It took 7 minutes 25 seconds, against the API's 3.5 minutes for the same call, and used none of your weekly limit you could see. Next is the medium evaluation session.
+
+## 75. Review Codex evaluation for GPT 6.1 Sol Medium 
+
+**Prompt:** Evaluation for sol 6.1 medium took 2 min 45 seconds and is in. 
+
+**Response:** Codex's evaluation is strong and lands on the same core judgment as the API and app runs:
+
+- **The payback claim:** at the apparent price, maximum production is worth about SGD 6 a year, which can't recover the added pump.
+- **Equation (24) repeats Equation (22),** so the "exergy efficiency" doesn't match the results reported for it.
+- **The cold-water supply is assumed, not accounted for.**
+- **The validation is against the study the model takes its inputs from.**
+- **Chemical exergy is excluded,** even though desalination is a separation process.
+- **The optimization's weights are preferences, not findings.**
+
+**What it adds that the others didn't:**
+- **A sharper case on Equation (24):** at a fixed cooling load, the model's water flux doesn't depend on membrane area, so the printed formula must *rise* with area, but Figure 5B shows it *falling*. That's the clearest proof yet that the printed equation isn't what was computed.
+- **The flat payback as evidence of an error:** water production changes fifteenfold across the membrane areas, yet the payback barely moves from 3.72 years. It calls that "an unresolved diagnostic problem."
+- **Calibrated hedging:** it labels its own arithmetic "my conditional calculation, not a verified correction," which is the right stance for an evaluation.
+
+At 1,362 words it's within the 1,000–1,500 range, and it took 2 minutes 45 seconds.
+
+Next are the two high-effort sessions.
+
+## 76. Review Codex close reading for GPT 6.1 Sol High
+
+**Prompt:** Analysis on high worked for 7 min 58 s. Check it out.
+
+**Response:** The high-effort Codex close reading is in and passes everything: valid JSON, all 47 reference entries matched, and no number missing from the article. Its 2 verbatim claims are word for word.
+
+| High effort | Steps | Claims | Support | Words in claims | Verbatim | Time |
+| --- | --- | --- | --- | --- | --- | --- |
+| API | 37 | 173 | 86 | 3,401 | 4 | 6 min |
+| App | 42 | 167 | 104 | 3,768 | 0 | — |
+| **Codex** | **37** | **158** | **111** | **3,467** | **2** | **8 min** |
+
+(The app's 44 "missing" numbers are the equation coefficients it read off the page images, which I confirmed earlier.)
+
+**How it read the PDF:** this session used different tools from the medium run, `pdfplumber` for text and `pdftoppm` for page images. It also extracted the left and right columns separately on two-column pages, which avoids text from the two columns getting mixed together. It viewed every page as an image too, so it could see the figures, tables and equations as printed.
+
+That's worth noting: Codex picks its own tools each session, so the medium and high runs didn't read the PDF in quite the same way. Both used text plus page images, though, so they're comparable.
+
+**Compared with the medium Codex run,** high effort produced the same number of steps, a few more claims (158 against 151), more support (111 against 88), and moves almost twice as detailed (948 words against 543). That's the same pattern as the API: high effort adds detail more than structure.
+
+## 77. Review Codex evaluation for GPT 6.1 Sol High
+
+**Prompt:** Evaluation worked in 3 min 28 seconds, and it added to the run note without me telling it! 
+
+**Response:** Nice, it added the note on its own. Its evaluation is strong too.
+
+**How it read the PDF for the evaluation:** text extracted with `pdfplumber`, plus page images of just the pages it needed (7–9 and 12–14), so it could check the efficiency formulas, the economic inputs, the cost tables and the result plots. It also says it calculated the water-revenue bound itself, "explicitly treating 2.74 SGD/m³ as a conditional interpretation." Reading selectively and checking the key numbers itself is a sensible way to read for an evaluation.
+
+**The evaluation (1,373 words, 3 minutes 28 seconds)** reaches the same core verdict as the other five, with its own sharp points:
+- **It proves the exergy problem from the figures:** Equations (22) and (24) are identical, yet Figure 5B shows exergy efficiency *falling* with membrane area while Figure 6A shows the gain output ratio *rising*. "Identical formulas evaluated for the same system cannot generate those opposite dependencies."
+- **The payback bound:** at SGD 6 a year in water value, a 3.72-year payback could repay only about SGD 23 of equipment, against an SGD 950 pump with a 6.32× installation multiplier.
+- **Hourly cost is the wrong measure:** minimizing cost per *hour* can favor a tiny membrane even though cost per *cubic meter of water* is what a water-supply decision needs. That explains why the "optimal" design produces so little water.
+- **The bias it names:** the clearer bias is methodological. "Novelty, recoverable heat, and favorable calculated indicators receive more attention than competing uses, installation boundaries, or the value of the small water output."
