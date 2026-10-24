@@ -1,6 +1,6 @@
 # ADR-0015 — Phase 1 runs as three experiments, one per article
 
-- **Status:** Accepted
+- **Status:** Accepted; its Experiment 2 design is superseded by [ADR-0017](0017-experiment-2-api-against-the-app-with-the-primer.md)
 - **Date:** 2026-10-20
 - **Landed in:** not yet committed
 
@@ -146,3 +146,7 @@ Revised 2026-10-23, before any Experiment 2 run: with memory turned off in the
 app, Experiment 2's app columns changed from Temporary Chat and regular chat
 with memory (both GPT-6) to GPT-6.1 Sol in work mode and GPT-6 in regular chat,
 both with memory off and my instructions for Sunny on.
+
+ADR-0017 replaces Experiment 2's design with a 2 × 2 — the API against the app,
+both with GPT-6.1 Sol, each run adding the primer — and suspends my notes on
+kanbur. Experiments 1 and 3 here stand.

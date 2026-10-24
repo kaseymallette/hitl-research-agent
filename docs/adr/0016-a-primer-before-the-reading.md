@@ -107,3 +107,8 @@ only when I want one.
 ## Notes
 
 Recorded during Experiment 2, before any of its runs.
+
+For Experiment 2 only, ADR-0017 makes the primer part of each run and suspends
+my notes on kanbur, so the rule that an experiment article's primer is read
+after my notes does not apply there. The primer is still never given to the
+close reading or the evaluation.

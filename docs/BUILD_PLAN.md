@@ -122,15 +122,16 @@ the one before left open
 | Experiment | Article | Design | Runs |
 | --- | --- | --- | --- |
 | 1 | Barnett | 3 model configurations × 2 input methods | 6, complete |
-| 2 | kanbur | PDF only: 2 efforts (medium, high) × 3 ways of running (API with GPT-6.1 Sol; ChatGPT app with GPT-6.1 Sol in work mode; the app with GPT-6 in regular chat — memory off, my instructions for Sunny on) | 6 |
+| 2 | kanbur | PDF only: 2 efforts (medium, high) × 2 ways of running GPT-6.1 Sol (the API; the ChatGPT app in work mode, memory off, my instructions for Sunny on), each run making the primer, close reading, and evaluation calls ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)) | 4 |
 | 3 | lei | designed after Experiment 2; likely PDF against prepared text on two models | to be decided |
 
 Astra low is dropped after Experiment 1, and prepared text sits out
 Experiment 2 and returns in Experiment 3. The app runs are run by hand with the
-same two prompts, as set out in [PROMPTS.md](PROMPTS.md#running-the-prompts-in-the-chatgpt-app),
-and saved in `app__gpt-6.1-sol-<effort>-work/` and `app__gpt-6-<effort>-chat/`
-beside the API's runs: `analysis.json` and `argument_evaluation.md`, as
-returned. The app reports no usage or cost, so those runs have no run record.
+same prompts, as set out in [PROMPTS.md](PROMPTS.md#running-the-prompts-in-the-chatgpt-app),
+and saved with the API's runs in `outputs/ab_testing/<slug>/adr_0017/`: the API
+as `pdf__gpt-6.1-sol-<effort>/`, the app as `app__gpt-6.1-sol-<effort>-work/`,
+each holding `primer.md`, `analysis.json`, and the argument evaluation. The app
+reports no usage or cost, so its runs have no run record.
 
 The rest of this section describes Experiment 1's matrix, which set the
 articles, configurations, and slugs. Its 3 articles × 2 input methods × 3

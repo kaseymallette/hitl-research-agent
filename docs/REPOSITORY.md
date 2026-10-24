@@ -308,9 +308,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 18 files
+### `adr/` — 19 files
 
-One architectural decision per record: `0001`–`0016`, plus `template.md` for
+One architectural decision per record: `0001`–`0017`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -361,6 +361,10 @@ dropped, and the text arm waits for Experiment 3, leaving ADR-0008 open.
 `0016` adds a primer: background on an article's field, written on request for
 me to read before the article, separate from the analysis and never given to
 it.
+
+`0017` makes Experiment 2 a 2 × 2 on kanbur — the API against the app, both on
+GPT-6.1 Sol, at medium and high effort — with every run writing the primer as
+well as the two readings, and suspends my notes on kanbur.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

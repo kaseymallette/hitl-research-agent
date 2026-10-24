@@ -154,11 +154,13 @@ Return a corrected, complete analysis that fixes every issue above.
 
 ## Running the prompts in the ChatGPT app
 
-For Experiment 2 ([ADR-0015](adr/0015-phase-1-as-three-experiments.md)), the
-same prompts are run by hand in the app. Each call is a new chat with the
+For Experiment 2 ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)),
+the same prompts are run by hand in the app, in order: the primer, the close
+reading, and the argument evaluation. Each call is a new chat with the
 article's PDF attached and a single message holding what the API sends across
 its system and user messages: the source header, the input instructions, the
-system prompt, and — for call 2 — the close reading.
+system prompt, and — for the evaluation — the close reading. The primer is not
+pasted into either later call.
 
 The app cannot enforce a schema, so call 1's message ends with one addition,
 the only difference from the API's call 1:
@@ -192,5 +194,5 @@ Format: return only JSON, in exactly this shape:
 }
 ```
 
-Call 2 needs no addition: the API returns the evaluation as a single text
+Call 2 and the primer need no addition: the API returns each as a single text
 field, which the app's prose answer matches.

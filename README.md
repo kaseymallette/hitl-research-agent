@@ -233,19 +233,26 @@ fixes and, on the next article, lost every figure.
 
 **Experiment 2 — kanbur.** The PDF only, and a new question: does the API add
 anything over the ChatGPT app I already use, set up with my instructions for
-Sunny, the persona I work with? The same two prompts are run three ways, at
-two reasoning efforts, for six runs:
+Sunny, the persona I work with? The same prompts run on the same model, GPT-6.1
+Sol, through the API and through the app in work mode, at two reasoning
+efforts, for four runs
+([ADR-0017](docs/adr/0017-experiment-2-api-against-the-app-with-the-primer.md)):
 
-| | API, GPT-6.1 Sol | App, GPT-6.1 Sol, work mode | App, GPT-6, regular chat |
-| --- | --- | --- | --- |
-| **Medium effort** | 1 | 1 | 1 |
-| **High effort** | 1 | 1 | 1 |
+| | API, GPT-6.1 Sol | App, GPT-6.1 Sol, work mode |
+| --- | --- | --- |
+| **Medium effort** | 1 | 1 |
+| **High effort** | 1 | 1 |
 
-In the app, memory is off and my instructions for Sunny are on. The API and
-work mode run the same model, so their comparison shows whether the app with
-Sunny reads and judges the article as well as the API, or better. Work mode
-against regular chat shows whether the more playful regular chat does
-differently, though the two modes also run different models.
+Each run makes all three calls: the primer, the close reading, and the
+argument evaluation. In the app, memory is off and my instructions for Sunny
+are on. With the same model on both sides, a difference between the API and
+the app comes from the app itself.
+
+I started my notes on kanbur and stopped after three sections: the paper is
+written for specialists, and without background I was recording mostly what I
+did not understand. That reading is what showed the system needed the primer.
+So Experiment 2 is judged without a full set of my notes: the runs are compared
+with each other, against the article, and through the mechanical checks.
 
 The app runs are done by hand, with one addition the app needs: since it
 cannot enforce the output schema, call 1 asks for JSON in that shape. If the
@@ -348,7 +355,7 @@ simplifies, or removes.
 │   ├── PROMPTS.md                    the two analysis prompts, as the code sends them
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── adr/0001-0016.md              one record per architectural decision
+│   ├── adr/0001-0017.md              one record per architectural decision
 │   ├── phases/phase_1-6.md           one prompt log per phase
 │   └── prompt_log.md                 index of those logs, and the conventions
 ├── CLAUDE.md                         what Claude Code loads in every session
