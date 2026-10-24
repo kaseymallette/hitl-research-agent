@@ -30,11 +30,13 @@ Each entry carries:
 ## Phases
 
 - [Phase 1 — A/B Testing](phases/phase_1.md)
-- [Phase 2 — DeepEval](phases/phase_2.md)
-- [Phase 3 — Research Collection](phases/phase_3.md)
-- [Phase 4 — Synthesis Agent](phases/phase_4.md)
-- [Phase 5 — Literature Review Agent](phases/phase_5.md)
-- [Phase 6 — RAG](phases/phase_6.md)
+- [Phase 2 — Evaluation](phases/phase_2.md)
+- [Phase 3 — Synthesis](phases/phase_3.md)
+- [Phase 4 — Research Assistant](phases/phase_4.md)
+
+The plan had six phases after Phase 0 until
+[ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md) reduced them to
+four. The logs for the removed phases had no entries.
 
 The logs for the old nine-phase plan are not here: they live on the `v1` branch
 and at the `v1-final` tag, along with that version's experiment outputs — for

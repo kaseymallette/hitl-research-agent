@@ -1,8 +1,13 @@
 # Phase 1 — A/B Testing
 
-Four articles through four configurations — full PDF or extracted text plus
-crops, Sol medium or Astra low — producing 16 analyses with usage, cost,
-runtime, and preparation effort recorded.
+Two experiments, one per article: Barnett through three model configurations
+and two input methods, and kanbur through GPT-6.1 Sol in the API and in the
+ChatGPT app, with usage, cost, runtime, and preparation effort recorded. The
+plan began as four articles through four configurations and was revised as
+results came in ([ADR-0009](../adr/0009-phase-1-matrix-three-configurations-three-articles.md),
+[ADR-0015](../adr/0015-phase-1-as-three-experiments.md),
+[ADR-0017](../adr/0017-experiment-2-api-against-the-app-with-the-primer.md),
+[ADR-0019](../adr/0019-four-phases-head-to-head-evaluation.md)).
 
 See [Phase 1 in the build plan](../BUILD_PLAN.md#phase-1--ab-testing) for what
 this phase builds and what marks it done. Conventions for these entries are in
@@ -1373,3 +1378,121 @@ Run the two API cells on kanbur now?
 ## 65. Run Kanbur experiment
 
 **Prompt:** Yes, run the two API cells on kanbur under ADR-0017: the primer, close reading, and evaluation for Sol medium and Sol high, into adr_0017.
+
+**Response:** Both of kanbur's API runs are going in the background, each running the primer, then the close reading, then the argument evaluation. Medium goes first, then high. Kanbur is 18 pages of dense modeling, so expect about 20–30 minutes. When they finish, they go into `adr_0017/pdf__gpt-6.1-sol-medium/` and `adr_0017/pdf__gpt-6.1-sol-high/`, and I'll report steps, claims, primer and evaluation lengths, and cost.
+
+The app runs are yours to do in parallel whenever you like, using the steps in [docs/PROMPTS.md](docs/PROMPTS.md). The kanbur header lines are:
+
+```text
+Source title: Multi-criteria thermoeconomic and thermodynamic assessments of the desalination-integrated two-phase liquid-immersion data center cooling system
+Source type: peer_reviewed_paper
+Publisher: Wiley
+DOI: 10.1002/er.5677
+```
+
+The primer and evaluation use all four lines. The close reading uses only the first two.
+
+Both of kanbur's API runs finished on the first attempt for every call, and they're saved in `outputs/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling/adr_0017/`.
+
+| | Primer | Close reading | Evaluation | Total |
+| --- | --- | --- | --- | --- |
+| **Sol medium** | 1,502 words, $0.16 | 34 steps, 129 claims, $0.35 | 1,412 words, $0.20 | **$0.72** |
+| **Sol high** | 1,489 words, $0.17 | 37 steps, 173 claims, $0.40 | 1,383 words, $0.24 | **$0.82** |
+
+**The mechanical checks found nothing wrong:**
+- Every number in both close readings appears in the article.
+- All the verbatim claims are word for word: 2 in medium, 4 in high.
+- All 47 reference entries match kanbur's reference list.
+
+**Kanbur costs more to read than Barnett.** Each call takes about 70,000 input tokens for kanbur's PDF, against about 19,000 for Barnett's, because the API sends page images as well as text, and kanbur has 18 pages to Barnett's 7. That's why a run costs about twice as much here. It also suggests what to expect from lei at 60 pages, which bears directly on Experiment 3's PDF-or-text question.
+
+**The primers stay at about 1,500 words,** a little over the "page or two" the prompt asks for, but close. Each one opens by saying it's the model's background knowledge, not a reading of the article.
+
+The four app runs are next and yours to do, Sol medium and high in work mode, using the steps in [docs/PROMPTS.md](docs/PROMPTS.md). When you paste their outputs here, I'll save them as `app__gpt-6.1-sol-<effort>-work/` and run the same checks. None of the API results are committed yet.
+
+## 66. Re-do agent architecture
+
+**Prompt:** okay, so go with me for a second. So I think the primer was really interesting. I think it would be cool if we combined it to, like, when we had, like, an idea of, like, a background and guided questions. But here's what I'm kind of thinking I do want to make some changes to our architecture. So let's just go over them first. Is that I think that what I want to have of our multi-research agent is I still like our single source analysis, and we break it into the close reading and the evaluation. I think that should stay. Single source analysis, and then I feel like we do need the synthesis agent that can synthesize across sources, information from both the close reading and the argument evaluation. Then I think our third main agent that we could propose is actually a research assistant, and I think we could put that there where the research assistant can provide conceptual knowledge framework, you know, or kind of define it that way and provide guided questions. So this could be outside the two, so at least we could present the system as, like, single source analysis synthesis, and then we can be like, we also developed, you know, a research agent, a research assistant, and put that there, because this was for me. And so anyway, let's talk this through.
+
+**Response:** I like this structure. It separates what the system produces *about the sources* from what it produces *for you as a reader*. Here's how I understand it, followed by the questions that would shape it.
+
+### The architecture as I read it
+
+| Agent | Works on | Produces | For |
+| --- | --- | --- | --- |
+| **Single-source analysis** | one article | the close reading + the argument evaluation | the collection, and your review |
+| **Synthesis** | several accepted analyses, both parts | a comparison across sources | the collection, and your review |
+| **Research assistant** | an article (and maybe your research) | a conceptual framework (the primer) + guided questions | you, as a reader |
+
+The first two are the research pipeline. The research assistant is a companion, developed because of what you needed while reading. Presenting it as "we also built" fits how it came about.
+
+### Questions to settle
+
+**1. What happens to the literature review agent?** It's currently the third agent: it takes a research question and proposes articles. Three options:
+- **It folds into the research assistant,** which then does reading support *and* finding articles. Both serve you directly, so this keeps the "for you" agent in one place.
+- **It stays as a fourth agent.**
+- **It's dropped for now.**
+
+**2. What are the guided questions about?**
+- **About the article:** questions to read with, like "What is this result compared against?" or "What scale is the system tested at?" These stay question-independent, like the primer.
+- **About your research question:** "How does this paper bear on whether desalination reduces freshwater pressure?" These make the research assistant question-aware, the role the literature review agent holds now. Your design keeps that awareness out of analysis and synthesis, and the research assistant is the natural place for it.
+
+Either is fine; the answer decides whether the research assistant sees your research question.
+
+**3. Should the guided questions be informed by the analysis,** or come before it like the primer? Questions written from the close reading and evaluation could point you at the weak spots the critique found, such as "Is a 1.5 kW lab unit evidence about megawatt data centers?" They'd also hand you the critique's conclusions before you've formed your own. Questions from the article alone keep your reading more your own.
+
+**4. Synthesis using both parts** needs one rule carried over: across sources, what authors *claim* (from the close readings) has to stay separate from what the model *judged* (from the evaluations). A synthesis that blends "Barnett argues X" with "the evaluation found Barnett's X unsupported" into one sentence loses that distinction.
+
+### What it would change
+
+- **The README's three-agent table and DESIGN.md:** a new ADR, since this changes the system's architecture rather than an experiment.
+- **BUILD_PLAN's later phases:** synthesis stays Phase 4, and Phase 5 becomes the research assistant (with or without literature search, depending on question 1).
+- **The primer:** it moves from "a reading aid" to "the research assistant's first capability."
+
+Nothing in Experiment 2 or the current code needs to change. The app runs can go ahead while you think about this.
+
+## 67. Follow up questions for new architecture
+
+**Prompt:** to answer your questions. The research the literature review agent, the one that helps us find sources, we're actually I'm going to pilot consensus. It is designed to help you find articles, and so we can say that for this pilot study, I found the 16 articles, right? But I later plan to use consensus to try that to find articles. So I'm going to take that out of our focus. Then for the guided questions, they should just be about the article. They're not about the research question because I don't want any of this to touch the research question. And the synthesis should only be performed across the close reading because you're right, it should be about the author's claim. The evaluation is just a separate thing for us to evaluate the arguments. And then it would change, so yeah, the readme's reagent table, and the build plan we're going to get to because we're going to redo the build plan. And yes, the primer moves to the research assistant's first capability.
+
+**Response:** That gives a clear architecture:
+
+| Agent | Works on | Produces |
+| --- | --- | --- |
+| **Single-source analysis** | one article | the close reading + the argument evaluation |
+| **Synthesis** | several close readings | a comparison of what the authors claim, across sources |
+| **Research assistant** | one article | a conceptual framework (the primer) + guided questions about the article |
+
+Finding articles moves outside the system: you found the 16 yourself for the pilot, and you'll pilot Consensus for finding articles later.
+
+Three consequences ADR-0018 should state:
+
+1. **No part of the system sees the research question anymore.** The literature review agent was the only part that did. With it gone, all three agents are question-independent. The question lives with you, and with Consensus when you use it, which is a clean rule: "nothing in the system is shaped by what I'm looking for." It replaces the README's line about the literature review being "the only question-aware agent," and ADR-0006's rule now covers everything.
+2. **The evaluation is for judging arguments, not an input to anything.** Synthesis reads only close readings, so the critique's judgments never get blended into what "the sources say." It stays a separate document for you, and for Phase 2's evaluation of the model's reasoning.
+3. **The primer becomes the research assistant's first capability,** and guided questions are its second, planned but not built.
+
+On that last point, I'd **record guided questions as planned and build them after Experiment 2.** The API primers for kanbur have already run with the current prompt. Changing it now would leave the app runs with a different primer than the API runs, so the comparison wouldn't be fair. Once Experiment 2 is done, we draft the guided-questions prompt together, like the others.
+
+Should I write ADR-0018 with this and update the README's agent table, DESIGN.md and REPOSITORY? The BUILD_PLAN would wait for your redo.
+
+## 68. Propose Claude act as model as judge
+
+**Prompt:** Well, I have one more thing to change. I think that we were trying to do so much with deep eval, and I think what we could do is just have you be model as judge, because we ran this in ChatGPT, and so we could do kind of like a head-to-head for the other, like for experiments 1 and 2, and just have you look at how many claims, you know, send the article and like a head-to-head and how many claims it got, how detailed, and you could kind of just give your be model as judge, and you know, because I also kind of want to simplify some of the stuff. 
+
+**Response:** That's a reasonable simplification. DeepEval meant building rubrics, metrics and a judge pipeline before getting any answer. A head-to-head read gets you to a decision much faster.
+
+**How it could work:** for each experiment, I read the article and every run side by side, then write one judgment per article:
+- **Close readings:** how many of the article's claims and figures each run caught or missed, how faithfully they're recorded (qualifiers kept, nothing invented, checked against the article), and how detailed and readable each one is.
+- **Evaluations:** which reasoning holds up, what each one found that the others missed, and where each one is wrong.
+- **Primers (Experiment 2):** accuracy and usefulness for a newcomer.
+- **A ranking with reasons, beside each run's cost,** so the choice weighs quality against price.
+
+For Experiment 1 that's Barnett's six runs. For Experiment 2 it's kanbur's four, once the app runs are in. Judgments would be saved apart from the analyses, as your design requires, for example in `outputs/judgments/<slug>.md`.
+
+**Two things worth stating in the ADR, briefly:**
+- **I'm not a blind judge.** I've helped design these prompts and I've read your views on Barnett, so my judgment carries that context. On the other hand, I'm a different model from the one being judged, so I'm not grading my own work. Your README's rule still holds: "An evaluation I have not checked is not evidence." So you spot-check some of my judgments, for example one article's ranking against your own read.
+- **It's one judge, run once,** so it shows you which configuration to choose rather than proving it. That's appropriate for a three-article pilot.
+
+**On the ADRs:** your rules say one decision per record, and these are two separate decisions:
+- **ADR-0018, the architecture:** single-source analysis, synthesis over close readings only, the research assistant (primer, with guided questions planned), finding articles outside the system, and nothing seeing the research question.
+- **ADR-0019, Phase 2 simplified:** a head-to-head judgment by me instead of DeepEval, with your spot-check, and the README's evaluation-design section and Phase 2 roadmap row updated.

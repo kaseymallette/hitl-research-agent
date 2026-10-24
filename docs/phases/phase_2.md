@@ -1,12 +1,12 @@
-# Phase 2 — DeepEval
+# Phase 2 — Evaluation
 
-Metrics and rubrics for the named behavioral axes, applied to the 16 Phase 1
-analyses, with human spot checks of the judge; the model and input method are
-chosen here.
+A head-to-head judgment of both experiments by Claude, checked by me against
+my own reading, and the choice of how to analyze the collection: model,
+effort, input method, and API or app.
 
-See [Phase 2 in the build plan](../BUILD_PLAN.md#phase-2--deepeval) for what
-this phase builds and what marks it done. Conventions for these entries are in
-the [prompt log index](../prompt_log.md).
+See [ADR-0019](../adr/0019-four-phases-head-to-head-evaluation.md) for what
+this phase does; the [build plan](../BUILD_PLAN.md) is being rewritten around
+it. Conventions for these entries are in the [prompt log index](../prompt_log.md).
 
 Entries are numbered locally within this phase, in the order the prompts were
 given.

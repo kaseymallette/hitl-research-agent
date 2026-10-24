@@ -1,12 +1,11 @@
-# Phase 4 — Synthesis Agent
+# Phase 4 — Research Assistant
 
-Cross-source comparison for agreements, disagreements, methods, limitations,
-and open questions, preserving source attribution, with an evaluation designed
-for synthesis.
+The research assistant for me as a reader: the primer, already built, and
+guided questions about the article.
 
-See [Phase 4 in the build plan](../BUILD_PLAN.md#phase-4--synthesis-agent) for
-what this phase builds and what marks it done. Conventions for these entries
-are in the [prompt log index](../prompt_log.md).
+See [ADR-0019](../adr/0019-four-phases-head-to-head-evaluation.md) for what
+this phase does; the [build plan](../BUILD_PLAN.md) is being rewritten around
+it. Conventions for these entries are in the [prompt log index](../prompt_log.md).
 
 Entries are numbered locally within this phase, in the order the prompts were
 given.

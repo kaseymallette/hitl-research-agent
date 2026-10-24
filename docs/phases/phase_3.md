@@ -1,12 +1,12 @@
-# Phase 3 — Research Collection
+# Phase 3 — Synthesis
 
-All 16 research articles analyzed and evaluated in the chosen configuration,
-reusing suitable Phase 1 outputs, with analyses and evaluations stored
-separately.
+The rest of the collection analyzed in the chosen configuration and each
+analysis accepted or rejected; a claims store from the accepted close
+readings; synthesis across sources from it; and retrieval on the same store.
 
-See [Phase 3 in the build plan](../BUILD_PLAN.md#phase-3--research-collection)
-for what this phase builds and what marks it done. Conventions for these
-entries are in the [prompt log index](../prompt_log.md).
+See [ADR-0019](../adr/0019-four-phases-head-to-head-evaluation.md) for what
+this phase does; the [build plan](../BUILD_PLAN.md) is being rewritten around
+it. Conventions for these entries are in the [prompt log index](../prompt_log.md).
 
 Entries are numbered locally within this phase, in the order the prompts were
 given.
