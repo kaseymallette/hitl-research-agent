@@ -123,18 +123,19 @@ and cost together.
 
 ### Three experiments
 
-Phase 1 runs as three experiments, one per article, each designed around what
-the one before left open
-([ADR-0015](adr/0015-phase-1-as-three-experiments.md)).
+**Phase 1 is complete.** It ran as two experiments, one per article, the
+second designed around what the first left open
+([ADR-0015](adr/0015-phase-1-as-three-experiments.md),
+[ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)).
 
 | Experiment | Article | Design | Runs |
 | --- | --- | --- | --- |
 | 1 | Barnett | 3 model configurations × 2 input methods | 6, complete |
-| 2 | kanbur | PDF only: 2 efforts (medium, high) × 2 ways of running GPT-6.1 Sol (the API; the ChatGPT app in work mode, memory off, my instructions for Sunny on), each run making the primer, close reading, and evaluation calls ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)) | 4 |
-| 3 | lei | designed after Experiment 2; likely PDF against prepared text on two models | to be decided |
+| 2 | kanbur | PDF only: 2 efforts (medium, high) × 2 ways of running GPT-6.1 Sol (the API; the ChatGPT app in work mode, memory off, my instructions for Sunny on); the API runs also write the primer ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)) | 4, complete |
 
 Astra low is dropped after Experiment 1, and prepared text sits out
-Experiment 2 and returns in Experiment 3. The app runs are run by hand with the
+Experiment 2. There is no Experiment 3: lei is analyzed with the rest of the
+collection, and the input-method question is settled in Phase 2 from Barnett. The app runs are run by hand with the
 same prompts, as set out in [PROMPTS.md](PROMPTS.md#running-the-prompts-in-the-chatgpt-app),
 and saved with the API's runs in `outputs/ab_testing/<slug>/adr_0017/`: the API
 as `pdf__gpt-6.1-sol-<effort>/`, the app as `app__gpt-6.1-sol-<effort>-work/`,
@@ -257,7 +258,7 @@ Phase 0 left the code and the provenance ready for these; nothing here is
 cleanup, and nothing is blocked.
 
 1. Prepare each article with `prepare_sources.py`, timing it; record gaps and
-   crops. Barnett and kanbur are prepared; lei waits for Experiment 3's design.
+   crops. Barnett and kanbur are prepared.
 2. Run each experiment's API cells with `run_analysis.py`: it takes an
    article, an input method, and a model, and writes `analysis.json`,
    `argument_evaluation.json`, and `run_record.json` with usage, calculated
@@ -275,6 +276,20 @@ reasoning usage has not been measured, so no revised figure is given here.
 That is a projection from one article at one effort level, not a cap; the runner should take an explicit per-run confirmation and
 report actual cost as it goes.
 
+Actual: the ten runs that make up the two experiments cost $5.34 through the
+API — $3.81 for Barnett's six, Astra's two accounting for $2.47 of it, and
+$1.53 for kanbur's two API runs with their primers. Kanbur's PDF costs about
+70,000 input tokens per call against Barnett's 19,000. The app runs cost
+nothing beyond the subscription. Earlier runs under superseded prompts are not
+counted.
+
+Billed in all: $11.89 on the OpenAI account. The run records account for
+$10.61 of it — Barnett under ADR-0009 ($1.97), ADR-0010 ($1.77), ADR-0011
+($1.07), and ADR-0012 ($0.45), and the two experiments ($5.34) — so about half
+the API spend went into the prompt iterations that led to the final design.
+The remaining $1.28 is most likely a Barnett run stopped mid-call, which left
+no record, and the difference between `cost.py`'s rates and actual billing.
+
 ### Tests
 
 Phase 0 left 73 tests covering the call path, the input modes, the schema rules,
@@ -285,21 +300,28 @@ half-written directory, and that `summary.csv` reports what the run records hold
 
 ### Acceptance criteria
 
-- [ ] Every cell of each experiment has an `analysis.json`, indented and
+- [x] Every cell of each experiment has an `analysis.json`, indented and
       readable, the analysis the model returned, unmodified.
-- [ ] Every cell has its argument evaluation — `argument_evaluation.json` from
-      the API, `argument_evaluation.md` from the app — or a run record saying
-      why the API's evaluation failed.
-- [ ] Each API cell has a `run_record.json` with usage, calculated cost,
+- [x] Every cell has its argument evaluation — `argument_evaluation.json` from
+      the API, `argument_evaluation.md` from the app. Where an evaluation was
+      rerun on a saved close reading, after a connection error or a prompt
+      revision, the rerun has its own record.
+- [x] Each API cell has a `run_record.json` with usage, calculated cost,
       runtime, and per-attempt records for both calls; no fabricated values.
-- [ ] Preparation effort recorded for every article given the text arm.
-- [ ] Within an experiment, the prompts, schema, and correction policy are
-      identical across API cells, demonstrably from the records; app cells use
-      the same prompts with only the format instruction added.
-- [ ] My notes on each article are written before its outputs are read.
+- [x] Preparation effort recorded for every article given the text arm
+      (Barnett).
+- [x] Within an experiment, the prompts, schema, and correction policy are
+      identical across API cells, demonstrably from the records: every close
+      reading carries the same `SYSTEM_PROMPT` fingerprint, and every
+      evaluation in use the same `EVALUATION_PROMPT` fingerprint. App cells
+      use the same prompts with only the format instruction added.
+- [x] My notes on each article are written before its outputs are read —
+      for Barnett. Kanbur's were suspended after three steps
+      ([ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md)).
 - [ ] `summary.csv` lets Phase 2 pick up the comparison without rereading the
-      run records.
-- [ ] No quality check anywhere can prevent an analysis from being written.
+      run records. Not written: Phase 2's head-to-head reads the runs and their
+      records directly.
+- [x] No quality check anywhere can prevent an analysis from being written.
 
 ### What Phase 1 does not decide
 
