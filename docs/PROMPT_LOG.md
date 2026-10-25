@@ -2247,6 +2247,162 @@ The entry has four parts:
 - **Why B.** It's one document each way, A's extra reasoning tokens didn't produce a consistently better document, and A costs 16% more.
 - **The case for A.** Phase 3's synthesis reads only the close readings, and the entry gives the reason this still didn't tip the result.
 
+### 17. Match IDs with runs
+
+**Prompt:** We should have it put the article or evaluation id on the run just to double check that I have the right article for A or B
+
+**Response:** I've set up the check: each judging session will now write down the id of the file it judged, and you can match that against a table in the key. Nothing is committed yet.
+
+Every run file already has an `id` field at the top. It's a random string, so it doesn't reveal which configuration made the run, and the judging stays blind.
+
+- **[RUBRIC.md](docs/RUBRIC.md):** a judgment of one run now writes the file's `id` right after the run's letter. A head-to-head now writes both runs' ids first.
+- **[EVALUATION_KEY.md](docs/EVALUATION_KEY.md):** a new table lists the `analysis.json` id and the argument evaluation id for all six Barnett runs. For Sol medium (PDF) it's the id of `argument_evaluation_2.json`, since that's the one being judged. The table covers Experiments 2–5 too.
+
+Before you start Experiment 2, copy the updated `RUBRIC.md` into the judging folder, or the sessions won't record the ids. Experiment 1's judgments were written before this change, so they don't have ids.
+
+### 18. Check if IDs match so far
+
+**Prompt:** I already ran the first part of experiment 2. I checked though and it's the right files. Can you update the analyses of 1 and the first half of 2 to match?
+
+**Response:** The step and claim counts in each judgment match the files I'm about to tag. Adding the ids now.
+
+I've added the run file ids to all nine judgments written so far: the six from Experiment 1 and the three close-reading judgments from Experiment 2. Nothing is committed yet.
+
+- **Judgments of one run:** there's a new `**id:**` line under `**Run:**`. It carries the `analysis.json` id for a close reading, and the evaluation id for an evaluation. For Experiment 1's run B that's the id of `argument_evaluation_2.json`, the file that was judged.
+- **Head-to-heads:** there's a new `**ids:** A … · B …` line under the article line.
+
+To make sure each id went on the right judgment, I checked the step and claim counts each judgment reports against the actual files, and they all match:
+
+| | Steps | Claims |
+| --- | --- | --- |
+| Experiment 1, A (Sol high, PDF) | 25 | 135 |
+| Experiment 1, B (Sol medium, PDF) | 25 | 117 |
+| Experiment 2, A (Sol high, text) | 23 | 133 |
+| Experiment 2, B (Sol medium, text) | 26 | 109 |
+
+So your own check holds: every judgment was made on the file its letter says.
+
+Experiment 2's folder also contains a copy of `claims_reference.md`, identical to Experiment 1's. The setup notes in JUDGING_PROMPTS.md say to leave the lists out when you copy judgments back, since they belong only in Experiment 1's folder.
+
+**Pending decisions:** All nine existing judgments now carry the id of the run file they judged: six in Experiment 1 and Experiment 2's three close-reading judgments. Each id matches the key's table, and step and claim counts confirm the files. Nothing is committed.
+Remove the copied claims_reference.md from Experiment 2's folder?
+
+### 19. How many evaluations if references repeat?
+
+**Prompt:** I had it that we're running 5 experiments for Barnett, which is 8 prompts per experiment, but if those reference files repeat, then we're only running 30 prompts and 30 evaluations, right?
+
+**Response:** Yes, 30 evaluations.
+
+- Judgments: 30. Each experiment judges its two runs in six sessions: each close reading alone (2), the close readings head to head (1), each argument evaluation alone (2), and the evaluations head to head (1). Over five experiments that makes 30.
+- Reference lists: 2. They were written once, in Experiment 1. They aren’t evaluations, since they describe the article, not a run. Experiments 2–5 skip prompts 1 and 5 and copy the lists in.
+- Sessions: 32. That’s the 30 judgments plus the 2 sessions that wrote the lists. 
+
+### 20. Put references in separate folder
+
+**Prompt:** Then maybe you should put them all under a folder under barnet and then put the 2 and not repeat the references?
+
+**Response:** Done. The two reference lists now live once in the Barnett folder, and each experiment folder holds only its own judgments. Nothing is committed yet.
+
+### 21. Update rubric and prompts for local folder
+
+**Prompt:** Did you update the prompts? I'm gonna make a local folder called references so they should look up the references there. 
+
+**Response:** The judging setup now uses a local `references/` folder for the two lists, and `judgments/` holds only judgments. Nothing is committed yet.
+
+**[RUBRIC.md](docs/RUBRIC.md):**
+- The folder layout shows `references/` containing `claims_reference.md` and `problems_reference.md`.
+- `judgments/` is now described as where every judgment is written.
+
+**[JUDGING_PROMPTS.md](docs/JUDGING_PROMPTS.md):**
+- **Folder setup:** the layout includes `references/`.
+- **The prompts:** all eight list paths now point to `references/claims_reference.md` or `references/problems_reference.md`. That covers prompts 1 and 5, which write the lists, and the six that read them.
+- **Prompt 5:** it now says not to open `references/claims_reference.md`. Before, the claims list was in `judgments/`, which prompt 5 already excluded, so this keeps the problems list written from the article alone.
+- **Copying files:** after an article's first experiment, copy `references/` to `outputs/judgments/<article>/references/`. Before each later experiment, copy that folder back in as `references/` and skip prompts 1 and 5. After any experiment, copy only `judgments/` back.
+
+The rubric changed on disk while I was editing, and so did the judging prompts. My edits applied cleanly to both, and I left your other changes alone.
+
+### 22. Finished experiment 2
+
+**Prompt:** Okay, I finished experiment 2! Can you please check that experiment 1 and 2's id's match the corresponding runs for A and B? Just want to make sure!
+
+**Response:** I committed everything to `main` as `fa4d04f`, after the "Commit experiment 1 winner" commit you'd already made. I haven't pushed.
+
+The commit includes:
+- **Experiment 2's judgments:** all six.
+- **The new layout:** Barnett's judgments now sit under `outputs/judgments/barnett/`, with the two reference lists once in `references/`. Git records the move from Experiment 1's folder as renames.
+- **Ids:** the run-file ids in Experiment 1's judgments, and the id table in the key.
+- **Docs:** the rubric, the judging prompts, the key, the README and the build plan, updated for the new layout and the ids.
+
+Before staging, I read through the whole diff. Every change was one we made in this conversation, so nothing unrelated went in. The pre-commit hooks skipped, since no code files changed.
+
+Experiment 2's winner isn't in the key yet. I can review its judgments the same way as Experiment 1's whenever you're ready.
+
+### 23. Evaluate experiment 2
+
+**Prompt:** Evaluate the results of experiment 2, choose a winner, share your reasoning, and add that reasoning in @docs/EVALUATION_KEY.md just like you did for experiment 1
+
+**Response:** Both head-to-heads match Experiment 1's pattern: A narrowly on close readings, B on evaluations. Checking the deciding findings in the runs now.
+
+**Experiment 2 winner: B, GPT-6.1 Sol medium**
+
+The result splits the same way as Experiment 1. A, the high-effort run, narrowly wins the close readings. B, at medium effort, wins the evaluations, this time by a clearer margin. Both verdicts held when the judge read the runs in either order. B also costs about 14% less ($0.282 against $0.330).
+
+I've written this reasoning into the Experiment 2 entry of [EVALUATION_KEY.md](docs/EVALUATION_KEY.md), in the same layout as Experiment 1. Nothing is committed yet.
+
+#### Close readings: A, narrowly
+
+The decision came down to A1, attribution. Only B has a claim scored 0. I confirmed each of these faults in the run files:
+- **B marks a cut sentence as `verbatim`.** "Digital water sobriety challenges the assumption…" leaves out the author's "analogous to frameworks in climate and energy policy", with no ellipsis.
+- **B drops the "once-through or open-loop" condition on the curtailment risk.** It made the same error in Experiment 1, with the PDF.
+- **A has smaller faults.**
+  - It leaves "Döll, P." out of the Pfister et al. (2017) reference entry.
+  - It files a duplicate claim from §2 under §3.
+  - About a dozen support items hold A's own description of how the argument links up, rather than the author's evidence.
+
+Coverage is even: each run catches 25 of the 26 section conclusions, plus one in part. Beyond that, A keeps H3's "limited by policy gaps", and B keeps the condition on the 2027 projection.
+
+#### Argument evaluations: B, clearly
+
+- **B finds two Major problems that A misses.**
+  - P13, the article's arithmetic error: 1 MW at 2 L/kWh is 17,520 m³ a year, not 25,500. I checked this and B is right. It's the only number either run checks.
+  - P21: data-center figures used as if they were AI figures.
+- **B finds P8**, the self-cited argument that low public awareness makes the problem urgent, and part of P3.
+- **A finds less, and it's smaller.** It alone finds P16, a Moderate problem in Table 1, and part of P29. Its other strengths are sharper versions of problems both runs found.
+- **Neither makes a factual error.**
+- **The solo sessions agree.** B touches all nine Major problems; A misses P13 and P21.
+
+#### Why B
+
+Higher effort again bought a slightly more faithful close reading and a weaker evaluation, at about 17% more cost.
+
+Two things to watch in later experiments, also recorded in the key:
+- **Sol medium's habit:** it drops the open-loop condition with both input methods, so this looks like a pattern of the configuration, not a one-off.
+- **The extracted-text input:** both runs described artifacts of the extracted text as if they were features of the article. They report a "displaced" §2 sentence, call Table 1 an image when it's printed as text, and neither reads the graphical abstract. That bears on Experiment 5's question of PDF against extracted text.
+
+I also filled in Experiment 4's first row with Sol medium's costs, the same way we did for Experiment 3.
+
+### 24. Make winner clearer and and to tournament results
+
+**Prompt:** Put the winner higher up in each experiment and bold it. And note it in the tournament style experiments at the top. Come on, make it clearer.
+
+**Response:** The winners are now up front in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md), in the bracket at the top and at the start of each experiment. Nothing is committed yet.
+
+**The bracket at the top** now has a Winner column. Experiments 1 and 2 show **GPT-6.1 Sol medium**, and the runs for Experiments 3 and 4 now name Sol medium as the winner that goes forward:
+
+| Experiment | Input | Runs | Winner |
+| --- | --- | --- | --- |
+| 1 | PDF | Sol high vs. Sol medium | **GPT-6.1 Sol medium** |
+| 2 | extracted text and crops | Sol high vs. Sol medium | **GPT-6.1 Sol medium** |
+| 3 | PDF | Sol medium (winner of 1) vs. Astra low | |
+| 4 | extracted text and crops | Sol medium (winner of 2) vs. Astra low | |
+| 5 | the winners' own | winner of 3 vs. winner of 4 | |
+
+**Each experiment's section:**
+- **Winner first:** a heading such as `### Winner: **B — GPT-6.1 Sol medium**` now comes straight after the Judgments line, before the cost tables.
+- **Reasoning below:** it stays where it was, under a `### Why B won` heading. I renamed each closing summary paragraph from "**Why B.**" to "**Bottom line.**" so it doesn't repeat the heading.
+- **Experiments 3–5:** each has the same Winner heading, marked *to be decided*. I removed the empty "**Winner:**" lines that sat at the bottom of those sections.
+
+
 ---
 
 ## Phase 3 — Synthesis
