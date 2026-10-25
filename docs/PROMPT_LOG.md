@@ -2434,7 +2434,7 @@ Since the lists already exist, start with prompt 2 and skip prompts 1 and 5.
 
 Findings confirmed in the runs. Writing the Experiment 3 winner and reasoning into the key now.
 
-## Experiment 3 winner: A, GPT-6.1 Sol medium
+**Experiment 3 winner: A, GPT-6.1 Sol medium**
 
 Sol medium wins the close readings, and Astra low narrowly wins the evaluations. Both verdicts held when the judge read the runs in either order. Astra's edge on the evaluation is small, and it costs 4.3 times as much ($1.293 against $0.302), so Sol medium goes through.
 
@@ -2442,7 +2442,7 @@ Before reading the judgments I checked their ids. All six match the files: A is 
 
 A's files are the same ones judged as B in Experiment 1, so the faults found there show up again.
 
-### Close readings: Sol medium, by a modest margin
+#### Close readings: Sol medium, by a modest margin
 
 - **Sol medium's one real error.** It drops the "once-through or open-loop" condition on the curtailment risk again. Astra keeps it.
 - **Astra's three smaller slips, which I confirmed in the run:**
@@ -2452,7 +2452,7 @@ A's files are the same ones judged as B in Experiment 1, so the faults found the
 - **Coverage.** Astra condenses Table 1, one of the article's six stated contributions. It records the values but leaves out the example-facility and trade-off columns. It's also partial on §4.1's Nordic conclusion and on the abstract's list of four technologies. Sol medium reads all of these in full. Astra does catch H3's "limited by policy gaps", which Sol medium misses.
 - **Size and quotation.** Astra's reading is shorter: 93 claims against 117, and 5 verbatim quotes against 13. It also merges distinct claims more often, which the prompt asks the runs not to do.
 
-### Evaluations: Astra, narrowly
+#### Evaluations: Astra, narrowly
 
 - **Found only by Astra:**
   - P13, the 25,500 m³ arithmetic, worked out correctly. I checked it.
@@ -2462,7 +2462,7 @@ A's files are the same ones judged as B in Experiment 1, so the faults found the
 - **Aim of criticism (B2).** Sol medium again calls the framework "rationing", although the article rejects outright bans. Astra credits that qualifier, so it scores 2 on B2 and Sol medium scores 1.
 - **Neither makes a factual error.**
 
-### What I updated in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md)
+#### What I updated in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md)
 
 - **Bracket table:** Experiment 3's winner, and Experiment 5's first run named as Sol medium on the PDF.
 - **Experiment 3's section:**
@@ -2470,6 +2470,112 @@ A's files are the same ones judged as B in Experiment 1, so the faults found the
   - **Winner and sources:** the bolded winner heading, plus sources that now list both runs' files.
   - **Reasoning:** a "Why A won" section laid out like Experiments 1 and 2, with a note for later experiments. Sol medium's dropped open-loop condition is in both of its close readings, with the PDF and with the extracted text, so expect it again in Experiment 4.
 - **Experiment 5's first row:** Sol medium at $0.302.
+
+### 27. Check IDs for experiment 4
+
+**Prompt:** Can you check the IDs for experiment 4?
+
+**Response:** The ids are correct: A is the Experiment 2 winner, Sol medium, and B is Astra low, both on the extracted-text-and-crops input.
+
+| Folder | File | id | Run (from the key) |
+| --- | --- | --- | --- |
+| `runs/A/` | `analysis.json` | `182e2233…` | GPT-6.1 Sol medium, text and crops ✓ |
+| `runs/A/` | `argument_evaluation.json` | `77671eb8…` | Sol medium's evaluation ✓ |
+| `runs/B/` | `analysis.json` | `cb4cc7f2…` | GPT-6 Astra low, text and crops ✓ |
+| `runs/B/` | `argument_evaluation.json` | `52123ee9…` | Astra low's evaluation ✓ |
+
+Each evaluation's `analysis_id` points to the close reading in the same folder.
+
+The rest of the folder is ready:
+- `article.pdf` is byte-identical to Barnett in the repo.
+- `RUBRIC.md`, both prompts, and both reference lists match the repo.
+- `judgments/` is empty.
+
+Start with prompt 2, since the lists already exist. When you record the letters in the key, A is Sol medium and B is Astra low, the same order as Experiment 3.
+
+## 28. Evaluate results for experiment 4
+
+**Prompt:** Finished experiment 4! Can you check the results, determine the winner, and show your reasoning?
+
+**Response:** Ids all match (A = Sol medium, B = Astra low, text and crops). Reading the head-to-heads.
+
+**Experiment 4 winner: A, GPT-6.1 Sol medium**
+
+This is the same split as Experiment 3, now with the extracted-text input. Sol medium wins the close readings, and Astra low narrowly wins the evaluations. Both verdicts held when the judge read the runs in either order. Astra costs 4.2 times as much ($1.172 against $0.282), so Sol medium goes through.
+
+I checked the six judgments first. All six ids match, with A as Sol medium and B as Astra low, and the copies in the repository are identical to the ones in your judging folder.
+
+#### Close readings: Sol medium, by a modest margin
+
+- **Sol medium's faults are the ones already known.** These are the same files judged as B in Experiment 2.
+  - It drops the "once-through or open-loop" condition again, as predicted. Its support item restores the condition, but the claim itself doesn't.
+  - It marks the shortened "Digital water sobriety…" sentence as `verbatim`.
+  - It ties the Yañez-Barnuevo citation to the whole footprint, when the article ties it only to the wafer figure.
+- **Astra keeps the open-loop condition but loses how the article closes.** I confirmed both of these in the run:
+  - It has no claim for §6.3's "policy and siting choices, not technological necessity".
+  - It keeps only the last sentence of the Colón diagnosis.
+- **Astra's own changes:**
+  - It drops "Projections suggest" from the abstract's projection.
+  - It turns "raise… environmental justice dimensions" into "create environmental-justice failures". Astra made the same change with the PDF in Experiment 3.
+  - It merges distinct claims.
+- **Astra does catch two things Sol medium misses:** H3's "limited by policy gaps", and the fifth research priority.
+- **The solo sessions were closer than the head-to-head.** Both runs scored 93% at 2 on A1, and Astra scored higher on A3. The head-to-head decided on coverage of the article's closing conclusions.
+
+#### Evaluations: Astra, narrowly, and it's contested
+
+- **Found only by Astra:** P16, P18, P24, P12 and P29, plus fuller versions of P5, P27 and P31.
+- **Found only by Sol medium:** P21 and P3, both Major, plus P8 and half of P9.
+- **Shared:** both work out P13's arithmetic correctly, and neither makes a factual error.
+- **The judge's verdict is thin.** Astra finds more listed problems, while Sol medium finds more Major ones. The judge said that counting only Major problems would make the two even.
+- **The solo sessions lean the other way.** In its solo session Sol medium found or partly found all nine Major problems and scored 2 on B2. Astra missed P3 and scored 1 on B2.
+
+#### What I updated in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md)
+
+- **Bracket:** Experiment 4's winner, and Experiment 5 now named in full: Sol medium on the PDF against Sol medium on text and crops.
+- **Experiment 4's section:** the A and B labels, the bolded winner heading, sources for both runs, and a "Why A won" section with notes for later experiments.
+- **Experiment 5:** the second row now shows Sol medium on text and crops at $0.282.
+
+Nothing is committed yet.
+
+#### Before Experiment 5
+
+Both of Sol medium's readings drop the open-loop condition, so that error won't separate them. Two things from the extracted-text runs bear on the input question:
+- They describe artifacts of the extracted text as if they were the article's own: the split method passage in §2, and Table 1 described as an image.
+- Neither extracted-text run reads the graphical abstract at all.
+
+### 29. Create bracket for experiments
+
+**Prompt:** Okay, question for @docs/EVALUATION_KEY.md. Can we make it like a sports bracket? Like where we have two divisions: PDF division vs. Extract division. And the rankings are 1. GPT 6 Astra Low 2. GPT 6.1 Sol High 3. GPT 6.1 Sol Medium (same rankings for both). 2 played 3 in the first round (divisional), since 1 got the bye. Then winner of first round played 1 (semi-finals) and the winner of semi-finals plays finals, one from each division.
+
+**Response:** [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) now opens with the bracket, laid out the way you described. Nothing is committed yet.
+
+**The bracket section:**
+- **Seeds:** 1 Astra low, 2 Sol high, 3 Sol medium, the same in both divisions.
+- **The rules, briefly:** seed 1 gets a bye, the first round is 2 against 3, the semifinal is that winner against seed 1, and the final is the two division champions.
+- **A diagram:**
+
+```
+PDF DIVISION
+  (2) Sol high    --+
+                    +-- (3) Sol medium --+
+  (3) Sol medium  --+                    |
+                                         +-- (3) Sol medium --+
+  (1) Astra low   ------ bye ------------+                    |
+                                                              |
+                                                     FINAL: to be decided
+EXTRACT DIVISION                                              |
+  ...same as above...
+```
+
+- **A results table:** each experiment with its division, round, matchup and bolded winner. Experiment 5 is the final, still to be decided.
+
+**Experiment headings** now name the division and round, for example "Experiment 3 — PDF division, semifinal: (3) Sol medium vs. (1) Astra low". Experiment 5 is "Final: PDF champion vs. Extract champion".
+
+**Winner lines** show the seed and where it goes next. For example: **A — (3) GPT-6.1 Sol medium** — PDF division champion, advances to the final.
+
+The experiment numbers and judgment folder names haven't changed, so every path in the key still works. The setup notes under the old bracket table now have their own heading, "Shared setup".
+
+Seed 3 sweeping both divisions is the cheapest configuration beating both more expensive ones, every time.
 
 ---
 

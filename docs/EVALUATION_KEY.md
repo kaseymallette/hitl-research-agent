@@ -1,90 +1,54 @@
 # Evaluation Key
 
-What each lettered run is, and what it cost. It is never given to the judge:
-the judgment is blind, and its ranking is compared with cost and runtime here
-afterwards.
+Barnett's blind comparisons, results, and costs. This key is never given to
+the judge; model identities, cost, and runtime are considered afterwards.
 
-Costs are calculated from the usage each run reported, per million tokens:
-GPT-6.1 Sol at $2.00 input and $10.00 output, GPT-6 Astra at $10.00 input and
-$50.00 output. They aren't confirmed billing.
+## Tournament overview
 
-Barnett's experiments run as a bracket, each eliminating a run:
+The **PDF** and **Extract** (text and crops) divisions use the same seeds.
+In each, Sol high (2) plays Sol medium (3); the winner faces Astra low (1),
+which has a bye. The division champions meet in the final.
 
-| Experiment | Input | Runs | Winner |
+![Tournament bracket: Sol medium wins both divisions and advances to the undecided final.](assets/evaluation-bracket.svg)
+
+Sol medium advances from both divisions. Every completed matchup split the
+close-reading and argument-evaluation verdicts; the overall selections below
+also account for cost and the role of close readings in later synthesis.
+
+| Experiment | Close-reading winner | Evaluation winner | Overall selection |
 | --- | --- | --- | --- |
-| 1 | PDF | GPT-6.1 Sol high vs. GPT-6.1 Sol medium | **GPT-6.1 Sol medium** |
-| 2 | extracted text and crops | GPT-6.1 Sol high vs. GPT-6.1 Sol medium | **GPT-6.1 Sol medium** |
-| 3 | PDF | GPT-6.1 Sol medium (winner of 1) vs. GPT-6 Astra low | **GPT-6.1 Sol medium** |
-| 4 | extracted text and crops | GPT-6.1 Sol medium (winner of 2) vs. GPT-6 Astra low | |
-| 5 | the winners' own | GPT-6.1 Sol medium, PDF (winner of 3) vs. the winner of 4 | |
+| [1 · PDF first round](#experiment-1--pdf-first-round) | Sol high, narrowly | Sol medium, narrowly | **Sol medium** |
+| [2 · Extract first round](#experiment-2--extract-first-round) | Sol high, narrowly | Sol medium, clearly | **Sol medium** |
+| [3 · PDF semifinal](#experiment-3--pdf-semifinal) | Sol medium, modestly | Astra low, narrowly | **Sol medium** |
+| [4 · Extract semifinal](#experiment-4--extract-semifinal) | Sol medium, modestly | Astra low, narrowly | **Sol medium** |
+| [5 · Final](#experiment-5--final) | Pending | Pending | **To be decided** |
 
-Experiment 5 answers the input-method question: the PDF, or extracted text
-with crops.
+These are the head-to-head verdicts; disagreements with solo judgments are
+noted in the experiment details. Model names are shortened below: Sol is
+GPT-6.1 Sol and Astra is GPT-6 Astra. Costs are estimates from reported usage;
+[run records and pricing assumptions](#run-records) are at the end.
 
-Experiment 1 writes Barnett's reference lists, `claims_reference.md` and
-`problems_reference.md`, kept once in `outputs/judgments/barnett/references/`. Experiments
-2–5 copy them in and judge against the same lists. Each experiment's own folder
-under `barnett/` holds only its six judgments.
+## Experiment 1 — PDF first round
 
-All of Barnett's runs come from
-`outputs/ab_testing/barnett_itzhaki_2026_water_footprint_artificial_intelligence/adr_0013/`
-and used the same instructions.
+**Matchup:** (2) Sol high vs. (3) Sol medium.
 
-Each judgment records the `id` at the top of the file it judged. Check it
-against this table to confirm the right file went under each letter. The ids
-say nothing about how a run was made, so they stay blind.
+Winner: **B — (3) GPT-6.1 Sol medium** — advances to the PDF semifinal
 
-| Run folder | `analysis.json` id | Argument evaluation id |
-| --- | --- | --- |
-| `pdf__gpt-6.1-sol-high/` | `bee567c1-d264-4806-a1f7-40a5bb43e01c` | `5b3c4998-8652-4bb3-aeb1-e651b988dd16` |
-| `pdf__gpt-6.1-sol-medium/` | `b52aa04e-d9f7-4e11-8e78-fbab1dd1da59` | `b35af235-25d9-4f75-897a-3a2b33ac6625` (`argument_evaluation_2.json`) |
-| `pdf__gpt-6-astra-low/` | `58057f58-eb36-44ca-bdc6-f8a84ac4f6a6` | `5ec263ff-886b-4a8b-bf36-a2f967ffbdf3` |
-| `text_crops__gpt-6.1-sol-high/` | `56377890-9bfb-469c-8786-ece6a6ea5348` | `21ca21e5-73fa-4d0c-a75a-0d9f9171417f` |
-| `text_crops__gpt-6.1-sol-medium/` | `182e2233-37de-4fde-b637-d787f5cc0fef` | `77671eb8-5439-4e76-9125-78ebd96dba09` |
-| `text_crops__gpt-6-astra-low/` | `cb4cc7f2-e7a3-4b12-862c-4db104ab494a` | `52123ee9-3f08-4980-8a3d-7b5e9b27b204` |
+Sol high narrowly wins the close reading; Sol medium narrowly wins the
+evaluation. Both verdicts hold in both reading orders. Higher effort does
+not produce a consistently better result, and Sol high costs about 16% more.
+Phase 3 synthesizes only close readings, which could favor Sol high, but its
+edge is narrow and its missing “achievable” claims would enter the claims
+store too.
 
----
-
-## Experiment 1 — Barnett, PDF input
-
-Judgments: `outputs/judgments/barnett/exp1_barnett_pdf_sol_high_vs_medium/`
-
-### Winner: **B — GPT-6.1 Sol medium**
-
-The article was sent to the model as the complete PDF. Both runs used the same
-model and the same instructions, and differ only in reasoning effort.
+Both runs receive the complete PDF and differ only in reasoning effort.
 
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
 | **A** | GPT-6.1 Sol | high | $0.249 · 5 min 24 s | $0.102 · 1 min 16 s | $0.351 |
 | **B** | GPT-6.1 Sol | medium | $0.214 · 5 min 2 s | $0.088 · 1 min 3 s | $0.302 |
 
-| Run | Input tokens | Output tokens | Reasoning tokens |
-| --- | --- | --- | --- |
-| **A** close reading | 18,479 | 21,158 | 1,552 |
-| **A** evaluation | 36,665 | 2,892 | 1,034 |
-| **B** close reading | 18,479 | 17,678 | 249 |
-| **B** evaluation | 34,488 | 1,925 | 85 |
-
-**Question for the comparison:** does the higher effort show in the readings
-or the evaluations, and is any difference worth A's cost, about 16% more than
-B's?
-
-**Sources:**
-
-
-- A — `pdf__gpt-6.1-sol-high/`: `analysis.json` and
-  `argument_evaluation.json`, from the rerun recorded in
-  `argument_evaluation_rerun_record.json`.
-- B — `pdf__gpt-6.1-sol-medium/`: `analysis.json` and
-  `argument_evaluation_2.json`, copied as `argument_evaluation.json`. Its first
-  evaluation was written under an earlier prompt and isn't judged.
-
-### Why B won
-
-Each run narrowly won one document, and
-each verdict held in both reading orders. The higher effort didn't show
-consistently, so B's lower cost decides it.
+### Detailed findings
 
 **Close readings: A, narrowly.**
 
@@ -137,53 +101,26 @@ The two solo sessions graded at different strictness: A's counted 9 found and
 head-to-head calls partial. The solo counts overstate B's lead; the
 head-to-head, reading both in one session, still favors B.
 
-**Bottom line.** The results split one each way, on narrow margins. A's reasoning
-tokens (1,552 against 249 on the close reading) didn't buy a reliably better
-document, and A costs about 16% more. The case for A is that Phase 3's
-synthesis reads only close readings, so a close-reading edge could count for
-more; but A's edge is narrow, and its missing "achievable" claims would enter
-the claims store too.
+## Experiment 2 — Extract first round
 
----
+**Matchup:** (2) Sol high vs. (3) Sol medium.
 
-## Experiment 2 — Barnett, extracted text and crops
+Winner: **B — (3) GPT-6.1 Sol medium** — advances to the Extract semifinal
 
-Judgments: `outputs/judgments/barnett/exp2_barnett_text_crops_sol_high_vs_medium/`
+Sol high narrowly wins the close reading, but Sol medium clearly wins the
+evaluation, finding two Major problems Sol high misses—including the only
+number either run checks. Both verdicts hold in both reading orders, and
+Sol high costs about 17% more.
 
-### Winner: **B — GPT-6.1 Sol medium**
-
-The model was sent the article's extracted text, with crops of its figures and
-tables, instead of the PDF. Both runs used the same model and the same
-instructions, and differ only in reasoning effort.
+Both runs receive extracted text and figure/table crops and differ only in
+reasoning effort.
 
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
 | **A** | GPT-6.1 Sol | high | $0.239 · 5 min 23 s | $0.091 · 1 min 12 s | $0.330 |
 | **B** | GPT-6.1 Sol | medium | $0.206 · 4 min 36 s | $0.077 · 48 s | $0.282 |
 
-| Run | Input tokens | Output tokens | Reasoning tokens |
-| --- | --- | --- | --- |
-| **A** close reading | 12,992 | 21,659 | 2,031 |
-| **A** evaluation | 31,201 | 2,832 | 1,034 |
-| **B** close reading | 12,992 | 17,985 | 516 |
-| **B** evaluation | 29,042 | 1,850 | 79 |
-
-**Question for the comparison:** does the higher effort show in the readings
-or the evaluations, and is any difference worth A's cost, about 17% more than
-B's?
-
-**Sources:**
-
-- A — `text_crops__gpt-6.1-sol-high/`: `analysis.json` and
-  `argument_evaluation.json`.
-- B — `text_crops__gpt-6.1-sol-medium/`: `analysis.json` and
-  `argument_evaluation.json`.
-
-### Why B won
-
-The same split as Experiment 1: A narrowly
-won the close readings and B won the evaluations, each verdict holding in both
-reading orders. B's evaluation lead is wider here, and B costs less.
+### Detailed findings
 
 **Close readings: A, narrowly.**
 
@@ -236,11 +173,7 @@ The solo sessions agree: B touches all nine Major problems and misses none,
 while A misses P13 and P21. Solo totals are close (A 9 found and 7 partial, B
 10 and 7) because A's finds sit in Moderate and Minor problems.
 
-**Bottom line.** Higher effort again bought a slightly more faithful close reading
-and a weaker evaluation. B's evaluation finds two Major problems A misses,
-including the only number either run checks, and A costs about 17% more.
-
-**For later experiments.**
+**Implications for later comparisons.**
 
 - B's dropped open-loop condition appears with both input methods, so it
   looks like a habit of Sol medium rather than an accident of one run.
@@ -250,41 +183,27 @@ including the only number either run checks, and A costs about 17% more.
   in Experiment 1 at least described. This bears on Experiment 5's
   input-method question.
 
----
+## Experiment 3 — PDF semifinal
 
-## Experiment 3 — Barnett, PDF: the winner of 1 against GPT-6 Astra low
+**Matchup:** (3) Sol medium vs. (1) Astra low.
 
-Judgments: `outputs/judgments/barnett/exp3_barnett_pdf_winner_vs_astra_low/`
+Winner: **A — (3) GPT-6.1 Sol medium** — PDF division champion, advances to the final
 
-### Winner: **A — GPT-6.1 Sol medium**
+Sol medium wins the close reading by a modest margin; Astra low narrowly
+wins the evaluation. Both verdicts hold in both reading orders. Astra costs
+4.3 times as much ($1.293 vs. $0.302), and its evaluation edge is too small
+to justify that premium. Phase 3 synthesizes only close readings, where Sol
+medium leads; the judge says the evaluations could reasonably be seen as
+close to even.
+
+Sol medium reuses Experiment 1’s winning PDF run (B).
 
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
 | **A** | GPT-6.1 Sol (winner of Experiment 1) | medium | $0.214 · 5 min 2 s | $0.088 · 1 min 3 s | $0.302 |
 | **B** | GPT-6 Astra | low | $0.892 · 3 min 30 s | $0.401 · 38 s | $1.293 |
 
-GPT-6 Astra low's tokens: close reading 18,479 input, 14,145 output, 41
-reasoning; evaluation 31,163 input, 1,794 output, 17 reasoning.
-
-**Question for the comparison:** does GPT-6 Astra read or judge better, and is
-any difference worth its cost, about four times GPT-6.1 Sol's?
-
-**Sources:**
-
-- A — `pdf__gpt-6.1-sol-medium/`: `analysis.json` and
-  `argument_evaluation_2.json`, copied as `argument_evaluation.json`, the same
-  files as Experiment 1's B.
-- B — `pdf__gpt-6-astra-low/`: `analysis.json` and `argument_evaluation.json`.
-
-### Why A won
-
-The same split as Experiments 1 and 2, with the letters reversed: A, Sol
-medium, won the close readings and B, Astra, narrowly won the evaluations.
-Each verdict held in both reading orders. Astra's edge is too small to justify
-costing over four times as much.
-
-A's files are the ones judged as B in Experiment 1, so the faults found there
-show up again here.
+### Detailed findings
 
 **Close readings: A, by a modest margin.**
 
@@ -335,13 +254,7 @@ show up again here.
 The solo counts agree: B finds 6 of the 9 Major problems and partly finds 1;
 A finds 4 and partly finds 3.
 
-**Bottom line.** Astra low wrote a slightly better evaluation and a weaker
-close reading, at 4.3 times the cost ($1.293 against $0.302). Phase 3's
-synthesis reads only close readings, and on those Sol medium is ahead. The
-evaluation edge is narrow, and the judge says a reviewer could see the
-evaluations as close to even.
-
-**For later experiments.**
+**Implications for later comparisons.**
 
 - Sol medium's dropped open-loop condition is in both of its close readings,
   PDF and text, and every session that judged them found it. Expect it in
@@ -349,42 +262,204 @@ evaluations as close to even.
 - Sol medium's evaluation lost B2 points here for the "rationing" framing, the
   same drift noted in Experiment 1.
 
----
+## Experiment 4 — Extract semifinal
 
-## Experiment 4 — Barnett, extracted text and crops: the winner of 2 against GPT-6 Astra low
+**Matchup:** (3) Sol medium vs. (1) Astra low.
 
-Judgments: `outputs/judgments/barnett/exp4_barnett_text_crops_winner_vs_astra_low/`
+Winner: **A — (3) GPT-6.1 Sol medium** — Extract division champion, advances to the final
 
-### Winner: *to be decided*
+Sol medium wins the close reading by a modest margin; Astra low narrowly
+wins the evaluation. Both verdicts hold in both reading orders. Astra costs
+4.2 times as much ($1.172 vs. $0.282), and its thin evaluation edge is not
+supported by the solo judgments.
+
+Sol medium reuses Experiment 2’s winning Extract run (B).
 
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
-| **?** | GPT-6.1 Sol (winner of Experiment 2) | medium | $0.206 · 4 min 36 s | $0.077 · 48 s | $0.282 |
-| **?** | GPT-6 Astra | low | $0.823 · 3 min 28 s | $0.348 · 55 s | $1.172 |
+| **A** | GPT-6.1 Sol (winner of Experiment 2) | medium | $0.206 · 4 min 36 s | $0.077 · 48 s | $0.282 |
+| **B** | GPT-6 Astra | low | $0.823 · 3 min 28 s | $0.348 · 55 s | $1.172 |
 
-GPT-6 Astra low's tokens: close reading 12,992 input, 14,199 output, 92
-reasoning; evaluation 25,680 input, 1,826 output, 45 reasoning.
+### Detailed findings
 
-**Question for the comparison:** does GPT-6 Astra read or judge better, and is
-any difference worth its cost, three and a half to four times GPT-6.1
-Sol's?
+**Close readings: A, by a modest margin.**
 
-**Sources:** the winner's files as in Experiment 2, and
-`text_crops__gpt-6-astra-low/`: `analysis.json` and
-`argument_evaluation.json`.
+| | A (Sol medium) | B (Astra low) |
+| --- | --- | --- |
+| A1, solo (30 sampled claims) | 93% at 2, 7% at 1 | 93% at 2, 7% at 1 |
+| A2, section conclusions (26) | 26 caught | 24 caught, 2 in part |
+| A3, strength of language | 1 | 2 |
+| A4, verbatim · numbers · references | 16/17 · 101/101 · 64/64 | 7/7 · 91/91 · 53/53 |
+| Steps · claims | 26 · 109 | 20 · 84 |
 
----
+- **A repeats its two known faults.** It drops the "once-through or
+  open-loop" condition on the curtailment risk, though its support item
+  restores it, and it marks the cut "Digital water sobriety challenges…"
+  sentence `verbatim`. It also attaches the Yañez-Barnuevo citation to the
+  whole footprint where the article attaches it to the wafer figure.
+- **B keeps the open-loop condition but loses the article's close.** It has
+  no claim for §6.3's "policy and siting choices, not technological
+  necessity" (CO19), keeps only the last sentence of the Colón diagnosis
+  (CO20), and attaches the Luleå and subsea contrast to the Colón verdict
+  instead. Confirmed in the run.
+- **B's own alterations:** it drops "Projections suggest" from the abstract's
+  projection, and turns Colón's "raise… environmental justice dimensions"
+  into "create environmental-justice failures" (confirmed), the same
+  strengthening Astra made with the PDF in Experiment 3.
+- **B merges distinct claims,** including §3.1 and §3.2 into one step past the
+  prompt's pace. B catches H3's "limited by policy gaps" and the fifth
+  research priority, which A misses.
 
-## Experiment 5 — Barnett: the winner of 3 against the winner of 4
+The solo sessions are closer than the head-to-head: both readings score 93%
+at 2 on A1, and the solo session put Astra at 2 on A3 and Sol medium at 1.
+The head-to-head decided on coverage of the article's closing conclusions.
 
-Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
+**Argument evaluations: B, narrowly.** Against the 34-problem list:
 
-### Winner: *to be decided*
+- **Found only by B:** P16 (Table 1's values without a capacity
+  denominator), P18 (the dropped "or planned"), P24 (the Jain citation), P12,
+  and P29, plus fuller versions of P5, P27, and P31.
+- **Found only by A:** P21 (data-center figures used as AI figures) and P3
+  (policy assumed to be the barrier), both Major, plus P8 and the measurement
+  half of P9.
+- **Shared:** both work P13's arithmetic correctly (17,520 m³). No factual
+  errors in either. Both praise §3's scale comparison without seeing that it
+  sets U.S. consumption against global withdrawals.
+
+The judge calls the margin thin and resting on breadth more than severity:
+B finds more listed problems, A finds more Major ones, and weighing only Major
+problems would make them even. The solo sessions lean the other way: A's
+found all nine Major problems at least in part and scored 2 on B2, while
+B's missed P3 and scored 1 on B2.
+
+**Implications for later comparisons.**
+
+- Experiment 5 compares two runs whose faults are now well documented: Sol
+  medium's PDF reading (Experiments 1 and 3) and its text reading
+  (Experiments 2 and 4). Both drop the open-loop condition, so that error
+  won't separate them.
+- Both readings in this experiment again describe artifacts of the prepared
+  text as the article's: the split §2 method passage, and neither reads the
+  graphical abstract.
+
+## Experiment 5 — Final
+
+**Winner: to be decided.**
 
 | Run | Configuration | Input | Total |
 | --- | --- | --- | --- |
 | **?** | GPT-6.1 Sol medium (winner of Experiment 3) | PDF | $0.302 |
-| **?** | the winner of Experiment 4 | extracted text and crops | |
+| **?** | GPT-6.1 Sol medium (winner of Experiment 4) | extracted text and crops | $0.282 |
 
 **Question for the comparison:** which input method reads and judges the
 article better, at what difference in cost and preparation?
+
+## Run records
+
+### Pricing assumptions
+
+Costs are calculated from the usage each run reported, per million tokens:
+GPT-6.1 Sol at $2.00 input and $10.00 output, GPT-6 Astra at $10.00 input and
+$50.00 output. They aren't confirmed billing.
+
+### Shared setup and run IDs
+
+Experiment 1 writes Barnett's reference lists, `claims_reference.md` and
+`problems_reference.md`, kept once in `outputs/judgments/barnett/references/`. Experiments
+2–5 copy them in and judge against the same lists. Each experiment's own folder
+under `barnett/` holds only its six judgments.
+
+All of Barnett's runs come from
+`outputs/ab_testing/barnett_itzhaki_2026_water_footprint_artificial_intelligence/adr_0013/`
+and used the same instructions.
+
+Each judgment records the `id` at the top of the file it judged. Check it
+against this table to confirm the right file went under each letter. The ids
+say nothing about how a run was made, so they stay blind.
+
+| Run folder | `analysis.json` id | Argument evaluation id |
+| --- | --- | --- |
+| `pdf__gpt-6.1-sol-high/` | `bee567c1-d264-4806-a1f7-40a5bb43e01c` | `5b3c4998-8652-4bb3-aeb1-e651b988dd16` |
+| `pdf__gpt-6.1-sol-medium/` | `b52aa04e-d9f7-4e11-8e78-fbab1dd1da59` | `b35af235-25d9-4f75-897a-3a2b33ac6625` (`argument_evaluation_2.json`) |
+| `pdf__gpt-6-astra-low/` | `58057f58-eb36-44ca-bdc6-f8a84ac4f6a6` | `5ec263ff-886b-4a8b-bf36-a2f967ffbdf3` |
+| `text_crops__gpt-6.1-sol-high/` | `56377890-9bfb-469c-8786-ece6a6ea5348` | `21ca21e5-73fa-4d0c-a75a-0d9f9171417f` |
+| `text_crops__gpt-6.1-sol-medium/` | `182e2233-37de-4fde-b637-d787f5cc0fef` | `77671eb8-5439-4e76-9125-78ebd96dba09` |
+| `text_crops__gpt-6-astra-low/` | `cb4cc7f2-e7a3-4b12-862c-4db104ab494a` | `52123ee9-3f08-4980-8a3d-7b5e9b27b204` |
+
+### Experiment 1 records
+
+Judgments: `outputs/judgments/barnett/exp1_barnett_pdf_sol_high_vs_medium/`
+
+**Sources and letter assignments**
+
+- A — `pdf__gpt-6.1-sol-high/`: `analysis.json` and
+  `argument_evaluation.json`, from the rerun recorded in
+  `argument_evaluation_rerun_record.json`.
+- B — `pdf__gpt-6.1-sol-medium/`: `analysis.json` and
+  `argument_evaluation_2.json`, copied as `argument_evaluation.json`. Its first
+  evaluation was written under an earlier prompt and isn't judged.
+
+**Token usage**
+
+| Run | Input tokens | Output tokens | Reasoning tokens |
+| --- | --- | --- | --- |
+| **A** close reading | 18,479 | 21,158 | 1,552 |
+| **A** evaluation | 36,665 | 2,892 | 1,034 |
+| **B** close reading | 18,479 | 17,678 | 249 |
+| **B** evaluation | 34,488 | 1,925 | 85 |
+
+### Experiment 2 records
+
+Judgments: `outputs/judgments/barnett/exp2_barnett_text_crops_sol_high_vs_medium/`
+
+**Sources and letter assignments**
+
+- A — `text_crops__gpt-6.1-sol-high/`: `analysis.json` and
+  `argument_evaluation.json`.
+- B — `text_crops__gpt-6.1-sol-medium/`: `analysis.json` and
+  `argument_evaluation.json`.
+
+**Token usage**
+
+| Run | Input tokens | Output tokens | Reasoning tokens |
+| --- | --- | --- | --- |
+| **A** close reading | 12,992 | 21,659 | 2,031 |
+| **A** evaluation | 31,201 | 2,832 | 1,034 |
+| **B** close reading | 12,992 | 17,985 | 516 |
+| **B** evaluation | 29,042 | 1,850 | 79 |
+
+### Experiment 3 records
+
+Judgments: `outputs/judgments/barnett/exp3_barnett_pdf_winner_vs_astra_low/`
+
+**Sources and letter assignments**
+
+- A — `pdf__gpt-6.1-sol-medium/`: `analysis.json` and
+  `argument_evaluation_2.json`, copied as `argument_evaluation.json`, the same
+  files as Experiment 1's B.
+- B — `pdf__gpt-6-astra-low/`: `analysis.json` and `argument_evaluation.json`.
+
+**Token usage**
+
+GPT-6 Astra low's tokens: close reading 18,479 input, 14,145 output, 41
+reasoning; evaluation 31,163 input, 1,794 output, 17 reasoning.
+
+### Experiment 4 records
+
+Judgments: `outputs/judgments/barnett/exp4_barnett_text_crops_winner_vs_astra_low/`
+
+**Sources and letter assignments**
+
+- A — `text_crops__gpt-6.1-sol-medium/`: `analysis.json` and
+  `argument_evaluation.json`, the same files as Experiment 2's B.
+- B — `text_crops__gpt-6-astra-low/`: `analysis.json` and
+  `argument_evaluation.json`.
+
+**Token usage**
+
+GPT-6 Astra low's tokens: close reading 12,992 input, 14,199 output, 92
+reasoning; evaluation 25,680 input, 1,826 output, 45 reasoning.
+
+### Experiment 5 records
+
+Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
