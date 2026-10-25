@@ -2,6 +2,8 @@
 
 **Article:** Barnett-Itzhaki, "The water footprint of artificial intelligence: Emerging solutions and governance imperatives," *Water Research* 299 (2026) 125866.
 
+**ids:** A `bee567c1-d264-4806-a1f7-40a5bb43e01c` · B `b52aa04e-d9f7-4e11-8e78-fbab1dd1da59`
+
 **Read for this session:** `RUBRIC.md`, `prompts/close-reading.md`, `article.pdf` (text extracted with Ghostscript `txtwrite`; this extraction interleaves the two columns, so passages were located by reading, not by string search alone), `judgments/claims_reference.md`, `runs/A/analysis.json`, `runs/B/analysis.json`. I did not open any other judgment or either argument evaluation.
 
 **Scope used:** as the reference list sets it: highlights, graphical abstract, abstract, and main text through §6.3. Both runs also add a final step on the declarations and reference list, which lies outside that scope and isn't counted for or against either run.

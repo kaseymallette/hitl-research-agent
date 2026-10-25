@@ -1,6 +1,7 @@
 # Close reading judgment — Run B
 
 **Run:** B (`runs/B/analysis.json`)
+**id:** `b52aa04e-d9f7-4e11-8e78-fbab1dd1da59`
 **Seed:** 20261024 (Python `random.seed(20261024)`; `random.sample(range(117), 30)` over claims indexed in reading order)
 **Article:** Barnett-Itzhaki, "The water footprint of artificial intelligence: Emerging solutions and governance imperatives," *Water Research* 299 (2026) 125866.
 **Reference list:** `judgments/claims_reference.md`, used as written.

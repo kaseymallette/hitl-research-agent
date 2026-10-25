@@ -350,7 +350,8 @@ nothing of this project or of which run is which: each run's close reading and
 argument evaluation on its own, then each head to head, following
 [RUBRIC.md](RUBRIC.md) and [JUDGING_PROMPTS.md](JUDGING_PROMPTS.md). The
 judgments are saved apart from the analyses, in
-`outputs/judgments/<experiment>/`, and compared with each run's cost and
+`outputs/judgments/<article>/<experiment>/`, with the article's reference
+lists once in `outputs/judgments/<article>/references/`, and compared with each run's cost and
 runtime afterwards, from [EVALUATION_KEY.md](EVALUATION_KEY.md). They cover:
 
 - **Close readings:** how many of the article's claims and figures each run

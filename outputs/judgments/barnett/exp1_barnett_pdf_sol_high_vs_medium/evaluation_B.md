@@ -1,6 +1,7 @@
 # Argument evaluation judgment — Run B
 
 **Run:** B
+**id:** `b35af235-25d9-4f75-897a-3a2b33ac6625`
 **Read:** `RUBRIC.md`, `prompts/evaluate-argument.md`, `article.pdf` (read as page text and page images), `judgments/problems_reference.md` (used as written), `runs/B/argument_evaluation.json`. Nothing else was opened.
 **Article:** Barnett-Itzhaki (2026), "The water footprint of artificial intelligence: Emerging solutions and governance imperatives," *Water Research* 299, 125866 (Making Waves).
 **Evaluation length:** about 1,650 words, in seven headed sections. That is slightly over the prompt's 1,000–1,500 guide.

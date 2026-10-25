@@ -1,6 +1,7 @@
 # Argument evaluation judgment — Run A
 
 **Run:** A
+**id:** `5b3c4998-8652-4bb3-aeb1-e651b988dd16`
 **Article:** Barnett-Itzhaki (2026), "The water footprint of artificial intelligence: Emerging solutions and governance imperatives," *Water Research* 299, 125866.
 **Read:** `RUBRIC.md`, `prompts/evaluate-argument.md`, `article.pdf` (all seven pages, text and page images), `judgments/problems_reference.md` (used as written), `runs/A/argument_evaluation.json`.
 **What was judged:** the `content.evaluation` field, about 1,430 words of prose in seven sections. That is within the prompt's 1,000–1,500-word guide. The prompt asked for a Markdown file. The run's output is JSON wrapping Markdown, which doesn't affect the content.

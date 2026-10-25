@@ -22,19 +22,32 @@ Experiment 5 answers the input-method question: the PDF, or extracted text
 with crops.
 
 Experiment 1 writes Barnett's reference lists, `claims_reference.md` and
-`problems_reference.md`, and keeps them in
-`exp1_barnett_pdf_sol_high_vs_medium/`. Experiments 2–5 copy them in and judge
-against the same lists.
+`problems_reference.md`, kept once in `outputs/judgments/barnett/references/`. Experiments
+2–5 copy them in and judge against the same lists. Each experiment's own folder
+under `barnett/` holds only its six judgments.
 
 All of Barnett's runs come from
 `outputs/ab_testing/barnett_itzhaki_2026_water_footprint_artificial_intelligence/adr_0013/`
 and used the same instructions.
 
+Each judgment records the `id` at the top of the file it judged. Check it
+against this table to confirm the right file went under each letter. The ids
+say nothing about how a run was made, so they stay blind.
+
+| Run folder | `analysis.json` id | Argument evaluation id |
+| --- | --- | --- |
+| `pdf__gpt-6.1-sol-high/` | `bee567c1-d264-4806-a1f7-40a5bb43e01c` | `5b3c4998-8652-4bb3-aeb1-e651b988dd16` |
+| `pdf__gpt-6.1-sol-medium/` | `b52aa04e-d9f7-4e11-8e78-fbab1dd1da59` | `b35af235-25d9-4f75-897a-3a2b33ac6625` (`argument_evaluation_2.json`) |
+| `pdf__gpt-6-astra-low/` | `58057f58-eb36-44ca-bdc6-f8a84ac4f6a6` | `5ec263ff-886b-4a8b-bf36-a2f967ffbdf3` |
+| `text_crops__gpt-6.1-sol-high/` | `56377890-9bfb-469c-8786-ece6a6ea5348` | `21ca21e5-73fa-4d0c-a75a-0d9f9171417f` |
+| `text_crops__gpt-6.1-sol-medium/` | `182e2233-37de-4fde-b637-d787f5cc0fef` | `77671eb8-5439-4e76-9125-78ebd96dba09` |
+| `text_crops__gpt-6-astra-low/` | `cb4cc7f2-e7a3-4b12-862c-4db104ab494a` | `52123ee9-3f08-4980-8a3d-7b5e9b27b204` |
+
 ---
 
 ## Experiment 1 — Barnett, PDF input
 
-Judgments: `outputs/judgments/exp1_barnett_pdf_sol_high_vs_medium/`
+Judgments: `outputs/judgments/barnett/exp1_barnett_pdf_sol_high_vs_medium/`
 
 The article was sent to the model as the complete PDF. Both runs used the same
 model and the same instructions, and differ only in reasoning effort.
@@ -131,7 +144,7 @@ the claims store too.
 
 ## Experiment 2 — Barnett, extracted text and crops
 
-Judgments: `outputs/judgments/exp2_barnett_text_crops_sol_high_vs_medium/`
+Judgments: `outputs/judgments/barnett/exp2_barnett_text_crops_sol_high_vs_medium/`
 
 The model was sent the article's extracted text, with crops of its figures and
 tables, instead of the PDF. Both runs used the same model and the same
@@ -166,7 +179,7 @@ B's?
 
 ## Experiment 3 — Barnett, PDF: the winner of 1 against GPT-6 Astra low
 
-Judgments: `outputs/judgments/exp3_barnett_pdf_winner_vs_astra_low/`
+Judgments: `outputs/judgments/barnett/exp3_barnett_pdf_winner_vs_astra_low/`
 
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
@@ -188,7 +201,7 @@ any difference worth its cost, about four times GPT-6.1 Sol's?
 
 ## Experiment 4 — Barnett, extracted text and crops: the winner of 2 against GPT-6 Astra low
 
-Judgments: `outputs/judgments/exp4_barnett_text_crops_winner_vs_astra_low/`
+Judgments: `outputs/judgments/barnett/exp4_barnett_text_crops_winner_vs_astra_low/`
 
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
@@ -212,7 +225,7 @@ Sol's?
 
 ## Experiment 5 — Barnett: the winner of 3 against the winner of 4
 
-Judgments: `outputs/judgments/exp5_barnett_pdf_vs_text_crops/`
+Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
 
 | Run | Configuration | Input | Total |
 | --- | --- | --- | --- |

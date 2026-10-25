@@ -3,7 +3,8 @@
 The prompts that start each judging session, one new chat per prompt, in the
 order below. Each experiment compares two runs, A and B. Each session works in
 a folder set up as [RUBRIC.md](RUBRIC.md) describes, with the rubric copied
-in, and writes its judgment to `judgments/`.
+in. The reference lists are kept in `references/`, and each judgment is
+written to `judgments/`.
 
 ## Setting up the folder
 
@@ -20,6 +21,7 @@ runs/
   B/
     analysis.json
     argument_evaluation.json
+references/                      the two reference lists
 judgments/                       empty to start
 ```
 
@@ -48,8 +50,9 @@ Check each list against your own reading before going on: every later
 session uses it as written.
 
 When they're done, copy `judgments/` into
-`outputs/judgments/<experiment>/` in the repository, under the experiment's
-name in the key.
+`outputs/judgments/<article>/<experiment>/` in the repository, under the
+experiment's name in the key, and `references/` into
+`outputs/judgments/<article>/references/`.
 
 ### Later experiments on the same article
 
@@ -57,11 +60,9 @@ The reference lists are written once per article, in its first experiment,
 and every later experiment on that article uses the same two, so all of its
 runs are judged against the same lists.
 
-- Before starting, copy `claims_reference.md` and `problems_reference.md`
-  from the first experiment's folder in `outputs/judgments/` into the new
-  folder's `judgments/`, and skip prompts 1 and 5.
-- When copying `judgments/` back, leave out the two lists; they stay in the
-  first experiment's folder.
+- Before starting, copy `outputs/judgments/<article>/references/` into the
+  new folder as `references/`, and skip prompts 1 and 5.
+- Copy only `judgments/` back; the article's folder already has the lists.
 
 ---
 
@@ -73,7 +74,7 @@ article. Please start by reading RUBRIC.md, which explains the setup, and
 especially its section "The reference lists".
 
 This session reads article.pdf on its own and writes the article's own claims
-to judgments/claims_reference.md, as the rubric describes. Every later
+to references/claims_reference.md, as the rubric describes. Every later
 session judges the close readings against your list as written, so take care
 that it's complete: cover the conclusion of every section and subsection, not
 only the article's summary claims, along with every contribution, abstract
@@ -91,7 +92,7 @@ reading RUBRIC.md, which explains the setup and the criteria, and
 prompts/close-reading.md, which holds the instructions the readings followed.
 
 This session judges run A's close reading. Read article.pdf and
-judgments/claims_reference.md, the reference list an earlier session wrote
+references/claims_reference.md, the reference list an earlier session wrote
 from the article. Use it as written; don't change it.
 
 Then open runs/A/analysis.json and judge it against the article and the list
@@ -109,7 +110,7 @@ reading RUBRIC.md, which explains the setup and the criteria, and
 prompts/close-reading.md, which holds the instructions the readings followed.
 
 This session judges run B's close reading. Read article.pdf and
-judgments/claims_reference.md, the reference list an earlier session wrote
+references/claims_reference.md, the reference list an earlier session wrote
 from the article. Use it as written; don't change it.
 
 Then open runs/B/analysis.json and judge it against the article and the list
@@ -127,7 +128,7 @@ reading RUBRIC.md, which explains the setup and the criteria, and
 prompts/close-reading.md, which holds the instructions the readings followed.
 
 This session compares runs A and B's close readings head to head. Read
-article.pdf and judgments/claims_reference.md, then runs/A/analysis.json and
+article.pdf and references/claims_reference.md, then runs/A/analysis.json and
 runs/B/analysis.json.
 
 Compare them as the rubric's "Comparing head to head" describes, using A1–A5
@@ -146,13 +147,13 @@ article's argument. Please start by reading RUBRIC.md, which explains the
 setup, and especially its section "The reference lists".
 
 This session reads article.pdf on its own and writes the problems in its
-argument to judgments/problems_reference.md, as the rubric describes. Every
+argument to references/problems_reference.md, as the rubric describes. Every
 later session judges the evaluations against your list as written, so take
 care that it's complete: work through the whole article, checking its
 reasoning, its numbers, and whether its conclusions follow from its evidence.
 
 Please open only RUBRIC.md and article.pdf. Don't open anything in runs/,
-prompts/, or judgments/.
+prompts/, or judgments/, or references/claims_reference.md.
 ```
 
 ## 6. Evaluation, run A
@@ -164,7 +165,7 @@ prompts/evaluate-argument.md, which holds the instructions the evaluations
 followed.
 
 This session judges run A's argument evaluation. Read article.pdf and
-judgments/problems_reference.md, the reference list an earlier session wrote
+references/problems_reference.md, the reference list an earlier session wrote
 from the article. Use it as written; don't change it.
 
 Then open runs/A/argument_evaluation.json and judge it against the article
@@ -183,7 +184,7 @@ prompts/evaluate-argument.md, which holds the instructions the evaluations
 followed.
 
 This session judges run B's argument evaluation. Read article.pdf and
-judgments/problems_reference.md, the reference list an earlier session wrote
+references/problems_reference.md, the reference list an earlier session wrote
 from the article. Use it as written; don't change it.
 
 Then open runs/B/argument_evaluation.json and judge it against the article
@@ -202,7 +203,7 @@ prompts/evaluate-argument.md, which holds the instructions the evaluations
 followed.
 
 This session compares runs A and B's argument evaluations head to head. Read
-article.pdf and judgments/problems_reference.md, then
+article.pdf and references/problems_reference.md, then
 runs/A/argument_evaluation.json and runs/B/argument_evaluation.json.
 
 Compare them as the rubric's "Comparing head to head" describes, using B1–B6

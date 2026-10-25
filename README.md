@@ -391,7 +391,9 @@ outputs/                              created by the pipeline
 ├── preparation/<slug>/               prepared text, crops, prep_record.json
 ├── ab_testing/<slug>/<config>/       Phase 1: analysis, argument evaluation, run record
 ├── primers/<slug>/                   primer.md + primer_record.json, on request
-├── judgments/<experiment>/          Phase 2: the blind judgments of an experiment
+├── judgments/<article>/              Phase 2: one folder per article
+│   ├── references/                   its claims and problems reference lists
+│   └── <experiment>/                 the six blind judgments of an experiment
 ├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
 └── synthesis/                        Phase 3
 ```

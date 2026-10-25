@@ -34,7 +34,10 @@ runs/
   B/
     analysis.json
     argument_evaluation.json
-judgments/                     where every session writes
+references/                    the two reference lists
+  claims_reference.md
+  problems_reference.md
+judgments/                     where every judgment is written
 ```
 
 Open only the files your prompt names. Other sessions' judgments may already
@@ -128,7 +131,8 @@ For A1, sample 30 claims, drawn at random with a seed you record, or take
 every claim if the run has fewer. Score each sampled claim with its support
 items.
 
-Write, in this order: the run's letter, the seed (for a close reading), each
+Write, in this order: the run's letter, the `id` at the top of the file you
+judged, the seed (for a close reading), each
 criterion's score or counts with the evidence for it, and a short paragraph
 on the run's main strengths and weaknesses.
 
@@ -136,6 +140,7 @@ on the run's main strengths and weaknesses.
 
 With both runs in front of you, write:
 
+- **Each run's `id`,** from the top of each file you compared.
 - **What each caught that the other missed.** For close readings, against
   `claims_reference.md`. For evaluations, against `problems_reference.md`; a
   problem a run found that isn't on the list, and that you confirm against

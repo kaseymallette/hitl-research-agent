@@ -2,6 +2,8 @@
 
 **Article:** Barnett-Itzhaki, Z. (2026). "The water footprint of artificial intelligence: Emerging solutions and governance imperatives." *Water Research* 299, 125866.
 
+**ids:** A `5b3c4998-8652-4bb3-aeb1-e651b988dd16` · B `b35af235-25d9-4f75-897a-3a2b33ac6625`
+
 **Read for this session:** `RUBRIC.md`, `prompts/evaluate-argument.md`, `article.pdf` (all seven pages, read as page images plus their extracted text), `judgments/problems_reference.md`, `runs/A/argument_evaluation.json`, `runs/B/argument_evaluation.json`. No other judgment and no close reading was opened.
 
 **The two runs in brief.** They are strikingly similar in structure and in their overall judgment. Each has roughly 1,400–1,500 words and follows the same arc: it places the piece as a *Water Research* "Making Waves" piece, names the shift to the watershed as the strongest move, criticizes the accounting basis of the numbers, and narrows "digital water sobriety" to a legitimate question without a defensible ranking. Each ends with a section on its own bias, and each says it prefers measurable harm limits to official rankings of uses. Both conclude that transparency and cumulative watershed assessment are earned, and that the claim that the remaining obstacle is "political will" is not. Most of the comparison therefore turns on which problems each catches that the other misses, not on any difference in approach.
