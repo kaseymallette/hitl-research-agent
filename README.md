@@ -375,6 +375,7 @@ simplifies, or removes.
 │   ├── REPOSITORY.md                 every file, and why it exists
 │   ├── RUBRIC.md                     Phase 2: the criteria for the head-to-head judgment
 │   ├── adr/0001-0020.md              one record per architectural decision
+│   ├── assets/evaluation-bracket.svg Phase 2: Barnett's bracket, shown in the key
 │   └── PROMPT_LOG.md                 the prompt log, every phase in one file
 ├── CLAUDE.md                         what Claude Code loads in every session
 ├── pyproject.toml                    dependencies, Ruff, mypy, the src/ package

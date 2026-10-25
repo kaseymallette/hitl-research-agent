@@ -2577,6 +2577,136 @@ The experiment numbers and judgment folder names haven't changed, so every path 
 
 Seed 3 sweeping both divisions is the cheapest configuration beating both more expensive ones, every time.
 
+### 30. Chat fixed the bracket 
+
+**Prompt:** I had Chat fix it and I committed the results. Take a look so you know what changed. 
+
+**Response:** I've read through commit `f09ae9d`. Here's what changed, so I'll work from this version from now on.
+
+**The key's new shape** ([EVALUATION_KEY.md](docs/EVALUATION_KEY.md)):
+1. **Tournament overview** at the top:
+   - a short explanation of the seeds and the bye;
+   - the bracket as an SVG image, [docs/assets/evaluation-bracket.svg](docs/assets/evaluation-bracket.svg), in place of the text diagram;
+   - a table with columns for the close-reading winner, the evaluation winner and the overall selection for each experiment, each row linking to its section.
+2. **One section per experiment**, titled "Experiment N — PDF/Extract first round/semifinal" or "Final". Each one leads with:
+   - the matchup and the winner line;
+   - a short summary paragraph (the old "Bottom line", moved up);
+   - the cost table.
+
+   Then come the "Detailed findings". The "Why B won" headings and the "Question for the comparison" lines are gone from Experiments 1–4.
+3. **Run records** at the end, which now hold everything that was reference material:
+   - the pricing assumptions;
+   - the shared setup notes and the run id table;
+   - for each experiment, the judgments path, the sources and letter assignments, and the token usage.
+
+So the top is now for results, and the bottom is for checking. When I verify ids or fill in Experiment 5, I'll look under "Run records".
+
+**Also in the commit:** Experiment 4's six judgments, and Codex's prompt log entries.
+
+### 31. Check IDs for experiment 5
+
+**Prommpt:** Can you check the ID's for experiment 5?
+
+**Response:** The ids are correct. A is Sol medium on the PDF and B is Sol medium on the extracted text, which matches what the key now records.
+
+| Folder | File | id | Run (from the key) |
+| --- | --- | --- | --- |
+| `runs/A/` | `analysis.json` | `b52aa04e…` | GPT-6.1 Sol medium, PDF ✓ |
+| `runs/A/` | `argument_evaluation.json` | `b35af235…` | the PDF run's `argument_evaluation_2.json` ✓ |
+| `runs/B/` | `analysis.json` | `182e2233…` | GPT-6.1 Sol medium, text and crops ✓ |
+| `runs/B/` | `argument_evaluation.json` | `77671eb8…` | the text run's evaluation ✓ |
+
+A's evaluation is the `_2` file, the one that was judged in Experiments 1 and 3, not the earlier evaluation. Each evaluation's `analysis_id` points to the close reading in the same folder.
+
+The rest of the folder is ready:
+- `article.pdf` is byte-identical to Barnett in the repository.
+- `RUBRIC.md`, both files in `prompts/`, and both reference lists match the repository.
+- `judgments/` is empty.
+
+Start with prompt 2, since the reference lists already exist.
+
+### 32. Only need head to head for final round
+
+**Prompt:** But we've already analyzed them each individually. Do we need to do that again or just head to head?
+
+**Response:** You only need the two head-to-heads, prompt 4 for the close readings and prompt 8 for the evaluations.
+
+**Why the solo judgments carry over:** a solo session judges one run against the article and the reference lists, and never sees the other run. Experiment 5 uses the same files, the same reference lists and the same rubric criteria, so a new solo judgment would just repeat one you already have. Each finalist already has two:
+
+| Finalist | Solo close reading | Solo evaluation |
+| --- | --- | --- |
+| Sol medium, PDF | Experiment 1 (as B), Experiment 3 (as A) | Experiment 1 (as B), Experiment 3 (as A) |
+| Sol medium, text | Experiment 2 (as B), Experiment 4 (as A) | Experiment 2 (as B), Experiment 4 (as A) |
+
+**Why the head-to-heads are still needed:** these two runs have never been compared directly. In every experiment so far, the verdict came from the head-to-head, and the solo sessions gave supporting evidence.
+
+**One thing to expect:** the solo sessions graded at different levels of strictness. Experiment 1 showed that, and Experiment 4's solo evaluations leaned the opposite way from its head-to-head. Comparing the old solo scores across experiments will be rough, so the head-to-heads will carry the decision even more than before.
+
+Experiment 5's folder will hold two judgments, not six. When I write up the result, I'll note that and point to the earlier solo judgments.
+
+### 33. 26 evaluations for experiment 1
+
+**Prompt:** So it's only 26 evaluations?
+
+**Response:** Yes, 26 judgments in total.
+
+| Experiment | Judgments |
+| --- | --- |
+| 1–4 | 6 each (two solo close readings, two solo evaluations, two head-to-heads) = 24 |
+| 5 | 2 (the two head-to-heads) |
+| **Total** | **26** |
+
+- **Sessions: 28.** That's the 26 judgments plus the 2 reference-list sessions from Experiment 1, so 28. 
+- **Head-to-heads: 10.** Two per experiment. These decided each verdict.
+- **Solo judgments: 16.** Four per experiment in 1–4. Each finalist appears in four of them.
+
+### 34. Evaluate winner for experiment 5
+
+**Prompt:** Experiment 5 is done! Can you review the results and determine a winner?
+
+**Response:** Confirmed the text run's markers include extraction debris, the "gap T1"/"retained image" labels, and the "prepared text" note, with no mention of the graphical abstract—while the PDF run has none of that. Moving on to the key now.
+
+Now the bracket SVG's final.
+
+The bracket now shows the champion in the final box. Resetting the preview and wrapping up.
+
+**Experiment 5 winner: GPT-6.1 Sol medium with the PDF**
+
+The PDF narrowly wins the close reading, and the evaluation is a tie. The deciding evidence is in the runs themselves, so it doesn't depend on the judge's letter-biased verdict.
+
+Both judgments carry the right ids, with A as the PDF run and B as the text run. No close-reading head-to-head with the letters swapped was added, so I worked from the two judgments in the folder.
+
+#### Close readings: PDF, narrowly
+
+The judge read every claim in both runs rather than a sample. It chose A because B misquotes once and misdescribes a location, while A's faults are qualifiers shifted one way or the other.
+
+I confirmed these differences in the files, and each one comes from the input:
+- **Damaged citation markers.** The text run has three citation markers with debris from the text extraction, such as "(Holzle, ¨ 2022)" and "(Yanez-Barnuevo, 2025˜ )". The PDF run prints "Hölzle" correctly.
+- **Pipeline labels.** The text run's Table 1 support items say "gap T1" and "read from the retained image", but Table 1 is printed as text.
+- **A misdescribed layout.** The text run's reading plan describes an "interrupted methodological passage" that isn't in the PDF, and one §2 claim ends up in the wrong place because of it.
+- **The graphical abstract.** The text run never mentions it. The PDF run describes it.
+
+The text run is better on qualifiers. It keeps §4.2's "once-through or open-loop" condition and "raise ecological questions", where the PDF run drops or shifts them. Those are the PDF run's known faults from Experiments 1 and 3. The text run also repeats its known fault of marking the shortened "Digital water sobriety" sentence as `verbatim`.
+
+#### Evaluations: a tie
+
+All three sessions chose whichever run was B, so the verdict carries no information. The findings themselves are consistent across sessions:
+- **Found only by the text run:** P13 and P21, both Major.
+- **Found only by the PDF run:** the source and citation problems P16, P23, P24 and P29.
+
+#### Why the PDF wins
+
+The extracted text saves $0.02 a run (about 7%). In exchange, it needs a preparation step that took manual fixes in Phase 1, and it costs accuracy about the article itself. Phase 3 uses only the close readings, and on those the PDF is cleaner.
+
+#### What changed in the docs
+
+- **[EVALUATION_KEY.md](docs/EVALUATION_KEY.md):**
+  - **The overview** names the champion, and its final row reads "PDF, narrowly · Tie (followed the letter) · **Sol medium, PDF**".
+  - **A new paragraph, "The verdicts follow the letters",** explains the bias: 5 of 5 close-reading head-to-heads went to A, and 7 of 7 evaluation head-to-heads went to B. Every selection rests on cost and on findings checked in the runs, not on the verdicts alone.
+  - **Experiment 5's section** has the matchup, the winner, a summary, and detailed findings, including a table of all three evaluation runs. Only the first is kept in the folder.
+- **[evaluation-bracket.svg](docs/assets/evaluation-bracket.svg):** the final now says "CHAMPION: SOL MEDIUM · PDF". I opened it in the browser and it renders cleanly.
+
+
 ---
 
 ## Phase 3 — Synthesis

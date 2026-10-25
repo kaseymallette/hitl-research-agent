@@ -325,6 +325,14 @@ answers, and which output files were copied as each run. It is never given
 to the judge; the judgment's ranking is compared with cost and runtime
 afterwards.
 
+### `assets/evaluation-bracket.svg`
+
+Barnett's bracket as a picture: the PDF and Extract divisions, their seeds,
+each round's winner, and the final. `EVALUATION_KEY.md` shows it at the top
+so the results can be read at a glance before the details. Nothing generates
+it from the key, so it has to be edited when a result is added, such as
+Experiment 5's winner.
+
 ### `DESIGN.md` and `BUILD_PLAN.md`
 
 One document split in two. `DESIGN.md` is what the system is — the three

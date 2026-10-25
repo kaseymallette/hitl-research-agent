@@ -3,28 +3,47 @@
 Barnett's blind comparisons, results, and costs. This key is never given to
 the judge; model identities, cost, and runtime are considered afterwards.
 
+## Overall winner: GPT-6.1 Sol medium with PDF input
+
+Selected from the six Barnett configurations. The final favors PDF for its
+cleaner source representation and lack of an extraction/preparation step;
+the argument evaluations are treated as tied because the verdict followed
+the run letter. This is the overall selection for this experiment, with the
+judging limitations described below.
+
 ## Tournament overview
 
 The **PDF** and **Extract** (text and crops) divisions use the same seeds.
 In each, Sol high (2) plays Sol medium (3); the winner faces Astra low (1),
 which has a bye. The division champions meet in the final.
 
-![Tournament bracket: Sol medium wins both divisions and advances to the undecided final.](assets/evaluation-bracket.svg)
+![Tournament bracket: Sol medium wins both divisions, and Sol medium on the PDF wins the final.](assets/evaluation-bracket.svg)
 
-Sol medium advances from both divisions. Every completed matchup split the
-close-reading and argument-evaluation verdicts; the overall selections below
-also account for cost and the role of close readings in later synthesis.
+Sol medium won both divisions, then its PDF run won the final. The overall
+winners below account for the detailed findings, cost, preparation, and the
+role of close readings in later synthesis—not just the individual verdicts.
 
-| Experiment | Close-reading winner | Evaluation winner | Overall selection |
+| Experiment | Close-reading winner | Evaluation winner | Overall winner |
 | --- | --- | --- | --- |
 | [1 · PDF first round](#experiment-1--pdf-first-round) | Sol high, narrowly | Sol medium, narrowly | **Sol medium** |
 | [2 · Extract first round](#experiment-2--extract-first-round) | Sol high, narrowly | Sol medium, clearly | **Sol medium** |
 | [3 · PDF semifinal](#experiment-3--pdf-semifinal) | Sol medium, modestly | Astra low, narrowly | **Sol medium** |
 | [4 · Extract semifinal](#experiment-4--extract-semifinal) | Sol medium, modestly | Astra low, narrowly | **Sol medium** |
-| [5 · Final](#experiment-5--final) | Pending | Pending | **To be decided** |
+| [5 · Final](#experiment-5--final) | PDF, narrowly | Tie (followed the letter) | **Sol medium, PDF** |
 
 These are the head-to-head verdicts; disagreements with solo judgments are
-noted in the experiment details. Model names are shortened below: Sol is
+noted in the experiment details.
+
+**The verdicts follow the letters.** Every close-reading head-to-head chose
+run A, and every evaluation head-to-head chose run B, whichever configuration
+was under each letter. Experiment 5's evaluation was run three times, twice
+with the PDF as A and once with the letters swapped, and B won all three. The
+order check in each session can't catch this, because the judge knows the
+letters in both readings. So the verdicts alone don't show that one
+configuration is better; each selection rests on cost and on findings
+confirmed in the runs themselves, which don't depend on the judge.
+
+Model names are shortened below: Sol is
 GPT-6.1 Sol and Astra is GPT-6 Astra. Costs are estimates from reported usage;
 [run records and pricing assumptions](#run-records) are at the end.
 
@@ -32,7 +51,7 @@ GPT-6.1 Sol and Astra is GPT-6 Astra. Costs are estimates from reported usage;
 
 **Matchup:** (2) Sol high vs. (3) Sol medium.
 
-Winner: **B — (3) GPT-6.1 Sol medium** — advances to the PDF semifinal
+**Overall winner:** **B — (3) GPT-6.1 Sol medium** — advances to the PDF semifinal
 
 Sol high narrowly wins the close reading; Sol medium narrowly wins the
 evaluation. Both verdicts hold in both reading orders. Higher effort does
@@ -105,7 +124,7 @@ head-to-head, reading both in one session, still favors B.
 
 **Matchup:** (2) Sol high vs. (3) Sol medium.
 
-Winner: **B — (3) GPT-6.1 Sol medium** — advances to the Extract semifinal
+**Overall winner:** **B — (3) GPT-6.1 Sol medium** — advances to the Extract semifinal
 
 Sol high narrowly wins the close reading, but Sol medium clearly wins the
 evaluation, finding two Major problems Sol high misses—including the only
@@ -187,7 +206,7 @@ while A misses P13 and P21. Solo totals are close (A 9 found and 7 partial, B
 
 **Matchup:** (3) Sol medium vs. (1) Astra low.
 
-Winner: **A — (3) GPT-6.1 Sol medium** — PDF division champion, advances to the final
+**Overall winner:** **A — (3) GPT-6.1 Sol medium** — PDF division champion, advances to the final
 
 Sol medium wins the close reading by a modest margin; Astra low narrowly
 wins the evaluation. Both verdicts hold in both reading orders. Astra costs
@@ -266,7 +285,7 @@ A finds 4 and partly finds 3.
 
 **Matchup:** (3) Sol medium vs. (1) Astra low.
 
-Winner: **A — (3) GPT-6.1 Sol medium** — Extract division champion, advances to the final
+**Overall winner:** **A — (3) GPT-6.1 Sol medium** — Extract division champion, advances to the final
 
 Sol medium wins the close reading by a modest margin; Astra low narrowly
 wins the evaluation. Both verdicts hold in both reading orders. Astra costs
@@ -344,15 +363,89 @@ B's missed P3 and scored 1 on B2.
 
 ## Experiment 5 — Final
 
-**Winner: to be decided.**
+**Matchup:** PDF champion vs. Extract champion: Sol medium on the PDF vs. Sol
+medium on extracted text and crops.
+
+**Overall winner:** **A — GPT-6.1 Sol medium, PDF** — champion
+
+The PDF narrowly wins the close reading; the evaluation is a tie, since its
+verdict went to whichever run was B. The extracted text is 7% cheaper per run
+($0.282 vs. $0.302) but needs a preparation step, and it leaves artifacts of
+that preparation in the reading. The PDF reading has none of them, and close
+readings are what Phase 3's synthesis uses.
+
+Same model, same effort, same instructions: only the input differs. Both runs
+were judged alone in earlier experiments (the PDF run in Experiments 1 and 3,
+the text run in 2 and 4), so this experiment has only the two head-to-heads.
 
 | Run | Configuration | Input | Total |
 | --- | --- | --- | --- |
-| **?** | GPT-6.1 Sol medium (winner of Experiment 3) | PDF | $0.302 |
-| **?** | GPT-6.1 Sol medium (winner of Experiment 4) | extracted text and crops | $0.282 |
+| **A** | GPT-6.1 Sol medium (winner of Experiment 3) | PDF | $0.302 |
+| **B** | GPT-6.1 Sol medium (winner of Experiment 4) | extracted text and crops | $0.282 |
 
-**Question for the comparison:** which input method reads and judges the
-article better, at what difference in cost and preparation?
+### Detailed findings
+
+**Close readings: A (PDF), narrowly.** The judge read every claim in both
+runs, not a sample.
+
+| | A (PDF) | B (text) |
+| --- | --- | --- |
+| A1, every claim | no 0s, about four at 1 | one 0, about three at 1 |
+| A2, coverage | everything on the list; graphical abstract in `meaning` | everything but the graphical abstract; one research priority only in `meaning` |
+| A3, strength of language | 1 | 1, closer to 2 |
+| A4, verbatim · numbers · references | 13/13 · 97/97 · 64/64, clean | 16/17 · 101/101 · 64/64, damaged markers |
+| Steps · claims | 25 · 117 | 26 · 109 |
+
+- **B carries artifacts of its prepared input, all confirmed in the run.**
+  Three citation markers hold extraction debris ("(Holzle, ¨ 2022)",
+  "(Yanez-Barnuevo, 2025˜ )"), where A prints "Hölzle" correctly. Table 1's
+  support items say "gap T1" and "read from the retained image", though the
+  table is printed as text. Its reading plan describes an "interrupted
+  methodological passage" the PDF doesn't have, and that misplaces one §2
+  claim. And B never mentions the graphical abstract.
+- **B marks the cut "Digital water sobriety challenges…" sentence `verbatim`,**
+  the only 0 in either reading, the same fault found in Experiments 2 and 4.
+- **A softens or strengthens §4.2.** It drops the "once-through or open-loop"
+  condition from the curtailment claim, turns "raise ecological questions"
+  into "can coexist with", and drops "if widely scaled". B keeps all three,
+  and keeps the condition on the §1 projection. These are A's known faults
+  from Experiments 1 and 3.
+
+The judge chose A because B's faults include a misquotation and a misdescribed
+location, where A's are fixable shifts in qualifiers, and called the margin
+small enough that weighing A3 first could favor B. A was the letter every
+close-reading head-to-head chose, and this one wasn't rerun with the letters
+swapped. The input artifacts above don't depend on that verdict.
+
+**Argument evaluations: a tie.** The evaluation head-to-head was run three
+times; only the first is kept in the judgments folder.
+
+| Session | A | B | Verdict |
+| --- | --- | --- | --- |
+| 1 (kept) | PDF | text | **B**, modest margin |
+| 2 | PDF | text | **B**, narrowly |
+| 3 | text | PDF | **B**, narrowly |
+
+The three sessions agree on what each evaluation found and differ only on how
+much it counts:
+
+- **Found only by the text run:** P13 (the 25,500 m³ arithmetic) and P21
+  (data-center figures used as AI figures), both Major, plus P8 and P9.
+- **Found only by the PDF run:** P16 (Table 1's values without a capacity
+  denominator), P23 (the unreproducible method and source mix), P24 (two
+  misfitting citations), and P29, plus P5 tied to §4.5's own caveat.
+- **Relevance:** the PDF run again calls the framework "rationing", which the
+  article rejects; the text run engages its graduated form.
+- **Shared:** no factual errors in either.
+
+These are the same two evaluations judged in Experiments 1–4, and the same
+finds were credited to them there.
+
+**Bottom line.** With the evaluations tied and the close readings close, the
+input decides it on what the judge can't sway: the prepared text needs a
+preparation step that took manual fixes in Phase 1, it costs the reading
+accuracy about the article itself (its layout, its markers, its graphical
+abstract), and it saves $0.02 a run. The PDF wins.
 
 ## Run records
 
@@ -463,3 +556,12 @@ reasoning; evaluation 25,680 input, 1,826 output, 45 reasoning.
 ### Experiment 5 records
 
 Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
+
+**Sources and letter assignments**
+
+- A — `pdf__gpt-6.1-sol-medium/`: `analysis.json` and
+  `argument_evaluation_2.json`, copied as `argument_evaluation.json`, the same
+  files as Experiment 1's B and Experiment 3's A.
+- B — `text_crops__gpt-6.1-sol-medium/`: `analysis.json` and
+  `argument_evaluation.json`, the same files as Experiment 2's B and
+  Experiment 4's A.
