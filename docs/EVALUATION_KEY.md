@@ -10,13 +10,13 @@ $50.00 output. They aren't confirmed billing.
 
 Barnett's experiments run as a bracket, each eliminating a run:
 
-| Experiment | Input | Runs |
-| --- | --- | --- |
-| 1 | PDF | GPT-6.1 Sol high vs. GPT-6.1 Sol medium |
-| 2 | extracted text and crops | GPT-6.1 Sol high vs. GPT-6.1 Sol medium |
-| 3 | PDF | the winner of 1 vs. GPT-6 Astra low |
-| 4 | extracted text and crops | the winner of 2 vs. GPT-6 Astra low |
-| 5 | the winners' own | the winner of 3 vs. the winner of 4 |
+| Experiment | Input | Runs | Winner |
+| --- | --- | --- | --- |
+| 1 | PDF | GPT-6.1 Sol high vs. GPT-6.1 Sol medium | **GPT-6.1 Sol medium** |
+| 2 | extracted text and crops | GPT-6.1 Sol high vs. GPT-6.1 Sol medium | **GPT-6.1 Sol medium** |
+| 3 | PDF | GPT-6.1 Sol medium (winner of 1) vs. GPT-6 Astra low | |
+| 4 | extracted text and crops | GPT-6.1 Sol medium (winner of 2) vs. GPT-6 Astra low | |
+| 5 | the winners' own | the winner of 3 vs. the winner of 4 | |
 
 Experiment 5 answers the input-method question: the PDF, or extracted text
 with crops.
@@ -49,6 +49,8 @@ say nothing about how a run was made, so they stay blind.
 
 Judgments: `outputs/judgments/barnett/exp1_barnett_pdf_sol_high_vs_medium/`
 
+### Winner: **B — GPT-6.1 Sol medium**
+
 The article was sent to the model as the complete PDF. Both runs used the same
 model and the same instructions, and differ only in reasoning effort.
 
@@ -78,7 +80,9 @@ B's?
   `argument_evaluation_2.json`, copied as `argument_evaluation.json`. Its first
   evaluation was written under an earlier prompt and isn't judged.
 
-**Winner:** B, GPT-6.1 Sol medium. Each run narrowly won one document, and
+### Why B won
+
+Each run narrowly won one document, and
 each verdict held in both reading orders. The higher effort didn't show
 consistently, so B's lower cost decides it.
 
@@ -133,7 +137,7 @@ The two solo sessions graded at different strictness: A's counted 9 found and
 head-to-head calls partial. The solo counts overstate B's lead; the
 head-to-head, reading both in one session, still favors B.
 
-**Why B.** The results split one each way, on narrow margins. A's reasoning
+**Bottom line.** The results split one each way, on narrow margins. A's reasoning
 tokens (1,552 against 249 on the close reading) didn't buy a reliably better
 document, and A costs about 16% more. The case for A is that Phase 3's
 synthesis reads only close readings, so a close-reading edge could count for
@@ -145,6 +149,8 @@ the claims store too.
 ## Experiment 2 — Barnett, extracted text and crops
 
 Judgments: `outputs/judgments/barnett/exp2_barnett_text_crops_sol_high_vs_medium/`
+
+### Winner: **B — GPT-6.1 Sol medium**
 
 The model was sent the article's extracted text, with crops of its figures and
 tables, instead of the PDF. Both runs used the same model and the same
@@ -173,13 +179,84 @@ B's?
 - B — `text_crops__gpt-6.1-sol-medium/`: `analysis.json` and
   `argument_evaluation.json`.
 
-**Winner:**
+### Why B won
+
+The same split as Experiment 1: A narrowly
+won the close readings and B won the evaluations, each verdict holding in both
+reading orders. B's evaluation lead is wider here, and B costs less.
+
+**Close readings: A, narrowly.**
+
+| | A (high) | B (medium) |
+| --- | --- | --- |
+| A1, solo (30 sampled claims) | 90% at 2, 10% at 1 | 83% at 2, 17% at 1 |
+| A1, head to head (every item) | no 0s, 1 claim at 1 | 1 claim at 0, 3 at 1 |
+| A2, section conclusions (26) | 25 caught, 1 in part | 25 caught, 1 in part |
+| A3, strength of language | 2 (borderline 1) | 1 |
+| A4, verbatim · references | 11/11 · 65/66 | 16/17 · 64/64 |
+| Steps · claims | 23 · 133 | 26 · 109 |
+
+Each reading has faults the other doesn't, all confirmed in the runs:
+
+- **B marks a cut sentence `verbatim`.** "Digital water sobriety challenges the
+  assumption…" drops the author's "analogous to frameworks in climate and
+  energy policy" with no ellipsis, the only 0 in either reading. A records the
+  same sentence as paraphrased.
+- **B drops the scope condition on the curtailment risk again.** Its claim
+  applies the risk to all natural-water cooling; the article limits it to
+  "once-through or open-loop" systems. A keeps the condition. B made the same
+  error in Experiment 1.
+- **A drops an author from a reference entry.** Its Pfister et al. (2017) entry
+  leaves out "Döll, P."; B's includes him.
+- **A files a duplicated §2 claim under §3,** and fills about a dozen support
+  items with its own description of how the argument links up, once
+  strengthening the author ("decisive").
+
+A also keeps H3's "limited by policy gaps" and CO12's EIA analogy, which B
+misses; B keeps the condition on the 2027 projection ("If this increase in AI
+use continues"), which A drops, and follows the article's breaks more closely.
+The head-to-head decided on A1, where only B has a 0.
+
+**Argument evaluations: B, by a clear margin.** Against the 34-problem list:
+
+- **Found only by B:** P13, the article's one checkable arithmetic error (1 MW
+  at 2 L/kWh is 17,520 m³ a year, not 25,500; confirmed), and P21,
+  data-center figures used as AI figures. Both are Major. B also finds P8 (the
+  urgency argument from unfamiliarity with a term, which is self-cited) and
+  partly P3.
+- **Found only by A:** P16 (Table 1's per-MW values with no capacity
+  denominator) and partly P29, plus sharper versions of P6, P7, and P31
+  that both runs found.
+- **Shared:** no factual errors in either. A has two slight overreaches
+  (disclosure metrics, replenishment) that B doesn't. Both praise §3's scale
+  comparison without seeing that it sets U.S. consumption against global
+  withdrawals (P15).
+
+The solo sessions agree: B touches all nine Major problems and misses none,
+while A misses P13 and P21. Solo totals are close (A 9 found and 7 partial, B
+10 and 7) because A's finds sit in Moderate and Minor problems.
+
+**Bottom line.** Higher effort again bought a slightly more faithful close reading
+and a weaker evaluation. B's evaluation finds two Major problems A misses,
+including the only number either run checks, and A costs about 17% more.
+
+**For later experiments.**
+
+- B's dropped open-loop condition appears with both input methods, so it
+  looks like a habit of Sol medium rather than an accident of one run.
+- Both runs here describe artifacts of the prepared text as if they were the
+  article: a "displaced" §2 sentence, and Table 1 as an image when it is
+  printed as text. Neither reads the graphical abstract, which both PDF runs
+  in Experiment 1 at least described. This bears on Experiment 5's
+  input-method question.
 
 ---
 
 ## Experiment 3 — Barnett, PDF: the winner of 1 against GPT-6 Astra low
 
 Judgments: `outputs/judgments/barnett/exp3_barnett_pdf_winner_vs_astra_low/`
+
+### Winner: *to be decided*
 
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
@@ -195,17 +272,17 @@ any difference worth its cost, about four times GPT-6.1 Sol's?
 **Sources:** the winner's files as in Experiment 1, and
 `pdf__gpt-6-astra-low/`: `analysis.json` and `argument_evaluation.json`.
 
-**Winner:**
-
 ---
 
 ## Experiment 4 — Barnett, extracted text and crops: the winner of 2 against GPT-6 Astra low
 
 Judgments: `outputs/judgments/barnett/exp4_barnett_text_crops_winner_vs_astra_low/`
 
+### Winner: *to be decided*
+
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
-| **?** | the winner of Experiment 2 | | | | |
+| **?** | GPT-6.1 Sol (winner of Experiment 2) | medium | $0.206 · 4 min 36 s | $0.077 · 48 s | $0.282 |
 | **?** | GPT-6 Astra | low | $0.823 · 3 min 28 s | $0.348 · 55 s | $1.172 |
 
 GPT-6 Astra low's tokens: close reading 12,992 input, 14,199 output, 92
@@ -219,13 +296,13 @@ Sol's?
 `text_crops__gpt-6-astra-low/`: `analysis.json` and
 `argument_evaluation.json`.
 
-**Winner:**
-
 ---
 
 ## Experiment 5 — Barnett: the winner of 3 against the winner of 4
 
 Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
+
+### Winner: *to be decided*
 
 | Run | Configuration | Input | Total |
 | --- | --- | --- | --- |
@@ -234,5 +311,3 @@ Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
 
 **Question for the comparison:** which input method reads and judges the
 article better, at what difference in cost and preparation?
-
-**Winner:**
