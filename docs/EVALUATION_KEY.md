@@ -14,9 +14,9 @@ Barnett's experiments run as a bracket, each eliminating a run:
 | --- | --- | --- | --- |
 | 1 | PDF | GPT-6.1 Sol high vs. GPT-6.1 Sol medium | **GPT-6.1 Sol medium** |
 | 2 | extracted text and crops | GPT-6.1 Sol high vs. GPT-6.1 Sol medium | **GPT-6.1 Sol medium** |
-| 3 | PDF | GPT-6.1 Sol medium (winner of 1) vs. GPT-6 Astra low | |
+| 3 | PDF | GPT-6.1 Sol medium (winner of 1) vs. GPT-6 Astra low | **GPT-6.1 Sol medium** |
 | 4 | extracted text and crops | GPT-6.1 Sol medium (winner of 2) vs. GPT-6 Astra low | |
-| 5 | the winners' own | the winner of 3 vs. the winner of 4 | |
+| 5 | the winners' own | GPT-6.1 Sol medium, PDF (winner of 3) vs. the winner of 4 | |
 
 Experiment 5 answers the input-method question: the PDF, or extracted text
 with crops.
@@ -256,12 +256,12 @@ including the only number either run checks, and A costs about 17% more.
 
 Judgments: `outputs/judgments/barnett/exp3_barnett_pdf_winner_vs_astra_low/`
 
-### Winner: *to be decided*
+### Winner: **A — GPT-6.1 Sol medium**
 
 | Run | Model | Reasoning effort | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- | --- |
-| **?** | GPT-6.1 Sol (winner of Experiment 1) | medium | $0.214 · 5 min 2 s | $0.088 · 1 min 3 s | $0.302 |
-| **?** | GPT-6 Astra | low | $0.892 · 3 min 30 s | $0.401 · 38 s | $1.293 |
+| **A** | GPT-6.1 Sol (winner of Experiment 1) | medium | $0.214 · 5 min 2 s | $0.088 · 1 min 3 s | $0.302 |
+| **B** | GPT-6 Astra | low | $0.892 · 3 min 30 s | $0.401 · 38 s | $1.293 |
 
 GPT-6 Astra low's tokens: close reading 18,479 input, 14,145 output, 41
 reasoning; evaluation 31,163 input, 1,794 output, 17 reasoning.
@@ -269,8 +269,85 @@ reasoning; evaluation 31,163 input, 1,794 output, 17 reasoning.
 **Question for the comparison:** does GPT-6 Astra read or judge better, and is
 any difference worth its cost, about four times GPT-6.1 Sol's?
 
-**Sources:** the winner's files as in Experiment 1, and
-`pdf__gpt-6-astra-low/`: `analysis.json` and `argument_evaluation.json`.
+**Sources:**
+
+- A — `pdf__gpt-6.1-sol-medium/`: `analysis.json` and
+  `argument_evaluation_2.json`, copied as `argument_evaluation.json`, the same
+  files as Experiment 1's B.
+- B — `pdf__gpt-6-astra-low/`: `analysis.json` and `argument_evaluation.json`.
+
+### Why A won
+
+The same split as Experiments 1 and 2, with the letters reversed: A, Sol
+medium, won the close readings and B, Astra, narrowly won the evaluations.
+Each verdict held in both reading orders. Astra's edge is too small to justify
+costing over four times as much.
+
+A's files are the ones judged as B in Experiment 1, so the faults found there
+show up again here.
+
+**Close readings: A, by a modest margin.**
+
+| | A (Sol medium) | B (Astra low) |
+| --- | --- | --- |
+| A1, solo (30 sampled claims) | 90% at 2, 10% at 1 | 83% at 2, 17% at 1 |
+| A2, section conclusions (26) | 25 caught, 1 in part | 24 caught, 2 in part |
+| A3, strength of language | 1 | 1 |
+| A4, verbatim · numbers · references | 13/13 · 97/97 · 64/64 | 5/5 · 91/91 · 53/53 |
+| Steps · claims | 25 · 117 | 21 · 93 |
+
+- **A drops the scope condition on the curtailment risk,** the same error as
+  in Experiment 1: it applies the risk to all natural-water cooling, where the
+  article limits it to "once-through or open-loop" systems. B keeps the
+  condition. This is A's only substantive alteration.
+- **B has three smaller alterations, all confirmed in the runs.** It drops
+  "capacity for" from Hainan's 400–800 servers, so a capacity reads as a
+  deployed count. It turns Colón's "raise… environmental justice dimensions"
+  into an asserted injustice. And it files the uncited Lule River hydropower
+  figure under the Zhang (2024) citation.
+- **B compresses Table 1,** one of the article's six stated contributions. It
+  records the WUE and consumption values but leaves out the example-facility
+  and trade-off columns. It is also partial on §4.1's Nordic conclusion (CO22)
+  and the abstract's list of four technologies (AB5). A reads all of these in
+  full.
+- **B merges distinct claims more often,** against the prompt, and quotes
+  `verbatim` less (5 quotes against A's 13). B catches H3's "limited by policy
+  gaps", which A misses.
+
+**Argument evaluations: B, narrowly.** Against the 34-problem list:
+
+- **Found only by B:** P13, the 25,500 m³ arithmetic (Major, worked correctly;
+  confirmed), and P9, tying application-level governance to the article's own
+  §6.1 admission that the accounting doesn't exist. B also argues P1–P3 from
+  §4's own constraints, where A states the same verdict without the
+  derivation.
+- **Found only by A:** P5 (the §4.5 heat-recovery hedge dropped in §6.2), P15
+  in a concrete passage (Luleå's withdrawal figure reused as "suffices for
+  hyperscale"), and a second citation mismatch (the aquifer study of another
+  basin). A also partly touches P14 and P21, which B misses.
+- **Relevance:** A again describes the framework as "rationing" and
+  "officials classifying every application", where the article rejects
+  binary bans. B credits that qualifier and shows why its objection survives
+  it. B2: B at 2, A at 1.
+- **Shared:** no factual errors in either. Neither fully finds P21
+  (data-center figures used as AI figures).
+
+The solo counts agree: B finds 6 of the 9 Major problems and partly finds 1;
+A finds 4 and partly finds 3.
+
+**Bottom line.** Astra low wrote a slightly better evaluation and a weaker
+close reading, at 4.3 times the cost ($1.293 against $0.302). Phase 3's
+synthesis reads only close readings, and on those Sol medium is ahead. The
+evaluation edge is narrow, and the judge says a reviewer could see the
+evaluations as close to even.
+
+**For later experiments.**
+
+- Sol medium's dropped open-loop condition is in both of its close readings,
+  PDF and text, and every session that judged them found it. Expect it in
+  Experiment 4.
+- Sol medium's evaluation lost B2 points here for the "rationing" framing, the
+  same drift noted in Experiment 1.
 
 ---
 
@@ -306,7 +383,7 @@ Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
 
 | Run | Configuration | Input | Total |
 | --- | --- | --- | --- |
-| **?** | the winner of Experiment 3 | PDF | |
+| **?** | GPT-6.1 Sol medium (winner of Experiment 3) | PDF | $0.302 |
 | **?** | the winner of Experiment 4 | extracted text and crops | |
 
 **Question for the comparison:** which input method reads and judges the
