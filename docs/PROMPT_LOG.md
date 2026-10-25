@@ -2402,6 +2402,74 @@ I also filled in Experiment 4's first row with Sol medium's costs, the same way 
 - **Reasoning below:** it stays where it was, under a `### Why B won` heading. I renamed each closing summary paragraph from "**Why B.**" to "**Bottom line.**" so it doesn't repeat the heading.
 - **Experiments 3–5:** each has the same Winner heading, marked *to be decided*. I removed the empty "**Winner:**" lines that sat at the bottom of those sections.
 
+### 25. Check Experiment 3 IDs
+
+**Prompt:** Ready for experiment 3! Can you check that the IDs are correct for experiment 3?
+
+**Response:** The ids are correct: A is the Experiment 1 winner, Sol medium, and B is Astra low.
+
+| Folder | File | id | Run (from the key) |
+| --- | --- | --- | --- |
+| `runs/A/` | `analysis.json` | `b52aa04e…` | GPT-6.1 Sol medium, PDF ✓ |
+| `runs/A/` | `argument_evaluation.json` | `b35af235…` | Sol medium's `argument_evaluation_2.json` ✓ |
+| `runs/B/` | `analysis.json` | `58057f58…` | GPT-6 Astra low, PDF ✓ |
+| `runs/B/` | `argument_evaluation.json` | `5ec263ff…` | Astra low's evaluation ✓ |
+
+Each evaluation's `analysis_id` points to the close reading in the same folder, so the A and B files weren't mixed up.
+
+I also checked the rest of the folder, and it's ready to go:
+- **The article:** `article.pdf` is byte-identical to Barnett in the repository.
+- **The rubric and prompts:** `RUBRIC.md` and both files in `prompts/` match the repository. That means the rubric is the current version, which asks the judge to record each file's id.
+- **The reference lists:** both files in `references/` match the ones in `outputs/judgments/barnett/references/`.
+- **The judgments folder:** `judgments/` is empty.
+- **Blindness:** no file or folder name says which configuration made a run.
+
+Since the lists already exist, start with prompt 2 and skip prompts 1 and 5.
+
+### 26. Evaluate Experiment 3 Results
+
+**Prompt:** Experiment 3 is done. Can you evaluate and determine a winner and document your findings?
+
+**Response:** Already copied into the repo, and all ids match (A = Sol medium, B = Astra low). Reading the head-to-heads.
+
+Findings confirmed in the runs. Writing the Experiment 3 winner and reasoning into the key now.
+
+## Experiment 3 winner: A, GPT-6.1 Sol medium
+
+Sol medium wins the close readings, and Astra low narrowly wins the evaluations. Both verdicts held when the judge read the runs in either order. Astra's edge on the evaluation is small, and it costs 4.3 times as much ($1.293 against $0.302), so Sol medium goes through.
+
+Before reading the judgments I checked their ids. All six match the files: A is Sol medium on the PDF, and B is Astra low.
+
+A's files are the same ones judged as B in Experiment 1, so the faults found there show up again.
+
+### Close readings: Sol medium, by a modest margin
+
+- **Sol medium's one real error.** It drops the "once-through or open-loop" condition on the curtailment risk again. Astra keeps it.
+- **Astra's three smaller slips, which I confirmed in the run:**
+  - It drops "capacity for" from Hainan's 400–800 servers, so a capacity figure reads as a count of servers in use.
+  - It turns Colón's "raise… environmental justice dimensions" into a statement that there is an injustice.
+  - It puts the uncited Lule River hydropower figure under the Zhang (2024) citation.
+- **Coverage.** Astra condenses Table 1, one of the article's six stated contributions. It records the values but leaves out the example-facility and trade-off columns. It's also partial on §4.1's Nordic conclusion and on the abstract's list of four technologies. Sol medium reads all of these in full. Astra does catch H3's "limited by policy gaps", which Sol medium misses.
+- **Size and quotation.** Astra's reading is shorter: 93 claims against 117, and 5 verbatim quotes against 13. It also merges distinct claims more often, which the prompt asks the runs not to do.
+
+### Evaluations: Astra, narrowly
+
+- **Found only by Astra:**
+  - P13, the 25,500 m³ arithmetic, worked out correctly. I checked it.
+  - P9.
+  - It argues P1–P3 from the article's own §4 constraints, where Sol medium only states the same conclusion.
+- **Found only by Sol medium:** P5, a concrete instance of P15, and a second citation mismatch. It also partly touches P14 and P21.
+- **Aim of criticism (B2).** Sol medium again calls the framework "rationing", although the article rejects outright bans. Astra credits that qualifier, so it scores 2 on B2 and Sol medium scores 1.
+- **Neither makes a factual error.**
+
+### What I updated in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md)
+
+- **Bracket table:** Experiment 3's winner, and Experiment 5's first run named as Sol medium on the PDF.
+- **Experiment 3's section:**
+  - **Labels:** the A and B labels on the cost table, which were still "?".
+  - **Winner and sources:** the bolded winner heading, plus sources that now list both runs' files.
+  - **Reasoning:** a "Why A won" section laid out like Experiments 1 and 2, with a note for later experiments. Sol medium's dropped open-loop condition is in both of its close readings, with the PDF and with the extracted text, so expect it again in Experiment 4.
+- **Experiment 5's first row:** Sol medium at $0.302.
 
 ---
 
