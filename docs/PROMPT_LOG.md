@@ -2706,6 +2706,47 @@ The extracted text saves $0.02 a run (about 7%). In exchange, it needs a prepara
   - **Experiment 5's section** has the matchup, the winner, a summary, and detailed findings, including a table of all three evaluation runs. Only the first is kept in the folder.
 - **[evaluation-bracket.svg](docs/assets/evaluation-bracket.svg):** the final now says "CHAMPION: SOL MEDIUM · PDF". I opened it in the browser and it renders cleanly.
 
+### 35. Prepare bracket for Kanbur 
+
+**Prompt:** For the experiments with kanbur, I want to do something similar. Two divisions: Medium vs High. Brackets are the same in both divisions. 1: API 2. App 3. Codex. Can you get that ready?
+
+**Response:** The App and Codex files differ structurally from the API ones—missing id, no wrapper, and markdown evaluations—which would break the blind setup and id check. I’ll gather the costs and lay out the bracket first, then flag this issue.
+
+API costs are in hand. App reports nothing, and Codex reports only times and a share of its weekly limit. Writing kanbur’s bracket into the key and creating its folders now.
+
+The bracket is in the key and the folders exist. Two decisions block the judging setup, so I’ll ask them now.
+
+The App and Codex files have no id, and their evaluations are .md, while the API files are JSON with an id and a provenance block. Side by side, a judge could tell the API run apart, and couldn't record ids. How should the judging copies be made?
+Uniform copies (Recommended)
+
+### 36. Prepare files for evaluation 
+
+**Prompt:** Done. Kanbur is judged exactly the way Barnett was: six judgments in each of K1–K4 and the two head-to-heads in K5, 26 in all. 
+
+Kanbur’s bracket in EVALUATION_KEY.md
+
+It sits after Barnett’s run records, and the key’s opening now links to both articles.
+
+Divisions and seeds: Medium and High, each seeded 1 API, 2 App, 3 Codex.
+	Medium	High
+First round	K1: (2) App vs. (3) Codex	K2: (2) App vs. (3) Codex
+Semifinal	K3: winner of K1 vs. (1) API	K4: winner of K2 vs. (1) API
+Final	K5: Medium champion vs. High champion	
+Notes on judging: K1 writes the reference lists fresh, because kanbur has no full set of notes. The overview also notes that Barnett’s letter-bias caveat applies here too.
+Costs: the API medium run cost $0.551 and the API high run $0.643. The App reports nothing. For Codex there are only the README’s times and its share of the weekly limit. The primer isn’t judged, so it isn’t counted.
+Kanbur run records: API token usage, sources, the id table, and the five judgment folder paths.
+
+Uniform copies for judging, in outputs/judgments/kanbur/runs/
+
+The six runs came out in different shapes. The API’s files had ids and a provenance block. The App’s and Codex’s had no ids, and their evaluations were .md files. So I made copies of all six in one shape, an analysis.json and an argument_evaluation.json each with an id. The API copies keep their original ids. The App and Codex copies have ids I assigned, and those are recorded in the key.
+
+The content is unchanged, and the original outputs are untouched. Before writing the copies I checked that all six share the same structure and that none of them names its own configuration.
+
+Folders: outputs/judgments/kanbur/ has references/ and exp1–exp5, each with a .gitkeep.
+
+Setting up a judging folder: copy each run’s two files from runs/<configuration>/ into runs/A/ or runs/B/. Copy only the files, because the copy folders are named after their configurations. Never include Codex’s run_note.md, because it names its configuration.
+
+I also added runs/ to the README’s output layout.
 
 ---
 
