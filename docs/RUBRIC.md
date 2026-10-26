@@ -291,3 +291,84 @@ once both runs are read.
 Persuasiveness, effectiveness, clarity of prose, and tone. Agreement on these
 is poor even among trained annotators, so a score would be noise that gets
 quoted as if it meant something.
+
+---
+
+## Evaluation Rubric: Theoretical Foundations and Development
+
+### Overview
+
+This evaluation rubric was developed for a human-in-the-loop (HITL) research workflow comparing language model configurations across two distinct tasks: close reading of academic literature and critical evaluation of scholarly arguments.
+
+The framework draws on published research in source attribution, citation evaluation, argumentation theory, and comparative quality assessment. These foundations were adapted into project-specific criteria and evaluation procedures to assess both the fidelity of model-generated analyses to their source material and the quality of the models' independent reasoning.
+
+### A. Close Reading: Attribution and Fidelity
+
+The close-reading criteria are informed by the **Attributable to Identified Sources (AIS)** framework introduced by Rashkin et al. (2023), which evaluates whether generated statements are supported by identified source material.
+
+The **ALCE benchmark** developed by Gao et al. (2023) further informs the assessment of citation quality, particularly the distinction between whether generated claims are adequately supported and whether their cited evidence is relevant.
+
+These concepts were adapted to the structure of the research agent's close-reading outputs:
+
+- **A1, Attribution fidelity:** Distinguishes fully supported claims, supported but altered claims, and unsupported or misattributed claims.
+- **A2, Coverage:** Measures representation of the article's own stated claims and structural elements using independently constructed reference lists.
+- **A3, Strength of language:** Assesses whether the analysis preserves the author's qualifications, certainty, scope, and conditions.
+- **A4, Mechanical checks:** Verifies quotations, numerical references, and bibliographic entries against the source document.
+- **A5, Detail and readability:** Descriptively assesses the organization and usefulness of the resulting analysis without rewarding length as an independent measure of quality.
+
+The three-level attribution scale, article-specific coverage procedure, and mechanical verification rules are project-specific operational choices rather than direct reproductions of AIS or ALCE.
+
+### B. Argument Evaluation: Cogency and Critical Reasoning
+
+The argument-evaluation criteria draw primarily on the taxonomy of argumentation quality proposed by Wachsmuth et al. (2017), particularly the logical dimension of **cogency**, comprising premise acceptability, relevance, and sufficiency.
+
+The framework also draws on Toulmin's (1958) model of argumentation, which examines the relationships among claims, grounds, warrants, qualifiers, and rebuttals.
+
+These theoretical foundations inform the rubric's argument-evaluation criteria:
+
+- **B1, Premise acceptability:** Examines whether an evaluation critically assesses the credibility and adequacy of evidence supporting the author's conclusions.
+- **B2, Relevance of critique:** Assesses whether criticisms address the arguments actually presented rather than reconstructed or weakened alternatives.
+- **B3, Sufficiency:** Evaluates whether the analysis distinguishes evidence that supports a conclusion from evidence sufficient to establish it.
+- **B4, Unstated warrants and missing qualifiers:** Assesses whether the evaluation identifies consequential assumptions or qualifications missing from the author's reasoning.
+- **B5, Self-attribution:** Examines whether the model distinguishes its independent judgments and interpretive framing from the author's claims.
+- **B6, Correctness:** Records factual errors in the evaluation and its identification of problems in the article's argument.
+
+The rubric deliberately focuses on logical and evidential assessment rather than rhetorical effectiveness or persuasiveness. It also uses Toulmin's framework selectively, without requiring exhaustive reconstruction of every argument.
+
+### C. Evaluation Procedure and Comparative Assessment
+
+The evaluation procedure combines independent criterion-based judgments with head-to-head comparisons between model configurations.
+
+Toledo et al. (2019) provide methodological precedent for using both absolute and relative assessments of argument quality. Their findings support the viability of both approaches rather than establishing a universal preference for one.
+
+The project's evaluation procedure incorporates:
+
+- Independently constructed, article-specific reference lists.
+- Separate judging sessions for close-reading and argument-evaluation outputs.
+- Blinded model identities and configurations during judging.
+- Reproducible random sampling of claims for attribution assessment.
+- Criterion-level scoring, counts, and qualitative observations without composite scores or pass thresholds.
+- Head-to-head comparison of model outputs, in which the judge reasons through the comparison in both reading orders to identify order-sensitive judgments. In a final, each head-to-head also runs in two sessions with the letters swapped, so a verdict that follows the letter shows as a split.
+- Human review of findings before model configuration decisions are made.
+
+These procedures constitute the research project's operational design. They are informed by evaluation literature but are not presented as a previously validated protocol.
+
+### Methodological Scope
+
+The rubric operationalizes established concepts in source attribution and argumentation quality for a specific research workflow. It does not claim to reproduce or independently validate the published frameworks in their entirety.
+
+Its purpose is to provide a structured, evidence-grounded basis for comparing model configurations while preserving the distinction between faithful representation of an author's argument and independent critical assessment of that argument.
+
+The resulting judgments inform human decisions about model selection, including subsequent consideration of computational cost and runtime. They do not constitute absolute measures of model quality.
+
+### References
+
+1. Rashkin, H., Nikolaev, V., Lamm, M., Aroyo, L., Collins, M., Das, D., Petrov, S., Tomar, G. S., Turc, I., & Reitter, D. (2023). Measuring attribution in natural language generation models. *Computational Linguistics, 49*(4), 777–840. https://doi.org/10.1162/coli_a_00486
+
+2. Gao, T., Yen, H., Yu, J., & Chen, D. (2023). Enabling large language models to generate text with citations. *Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing*, 6465–6488. https://doi.org/10.18653/v1/2023.emnlp-main.398
+
+3. Wachsmuth, H., Naderi, N., Hou, Y., Bilu, Y., Prabhakaran, V., Thijm, T. A., Hirst, G., & Stein, B. (2017). Computational argumentation quality assessment in natural language. *Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics: Volume 1, Long Papers*. https://aclanthology.org/E17-1017/
+
+4. Toulmin, S. E. (1958). *The uses of argument*. Cambridge University Press. https://www.cambridge.org/core/books/the-uses-of-argument/26CF801BC12004587B66778297D5567C
+
+5. Toledo, A., Gretz, S., Cohen-Karlik, E., Friedman, R., Venezian, E., Lahav, D., Jacovi, M., Aharonov, R., & Slonim, N. (2019). Automatic argument quality assessment: New datasets and methods. *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing*. https://doi.org/10.18653/v1/D19-1564

@@ -30,7 +30,7 @@ efforts, **Medium** and **High**. In each division, App (2) plays Codex (3); the
 a bye. The division champions meet in the final, which answers the effort
 question for this article: medium or high.
 
-![Kanbur tournament bracket: App plays Codex in each effort division, then the winner faces API; all results are pending.](assets/kanbur-evaluation-bracket.svg)
+![Kanbur tournament bracket: Codex wins Experiment 1 and faces API in the Medium semifinal; Experiments 2–5 are pending.](assets/kanbur-evaluation-bracket.svg)
 
 **Overall winner:** To be decided.
 
@@ -50,13 +50,13 @@ role of close readings in later synthesis—not just the individual verdicts.
 
 ## Kanbur results
 
-| Experiment | Division | Round | Matchup | Winner |
-| --- | --- | --- | --- | --- |
-| [K1](#kanbur-experiment-1--medium-first-round) | Medium | First round | (2) App vs. (3) Codex | *to be decided* |
-| [K2](#kanbur-experiment-2--high-first-round) | High | First round | (2) App vs. (3) Codex | *to be decided* |
-| [K3](#kanbur-experiment-3--medium-semifinal) | Medium | Semifinal | winner of K1 vs. (1) API | *to be decided* |
-| [K4](#kanbur-experiment-4--high-semifinal) | High | Semifinal | winner of K2 vs. (1) API | *to be decided* |
-| [K5](#kanbur-experiment-5--final) | — | Final | Medium champion vs. High champion | *to be decided* |
+| Experiment | Close-reading winner | Evaluation winner | Overall winner |
+| --- | --- | --- | --- |
+| [1 · Medium first round](#kanbur-experiment-1--medium-first-round) | Codex, narrowly | Codex, narrowly | **Codex** |
+| [2 · High first round](#kanbur-experiment-2--high-first-round) | *to be decided* | *to be decided* | *to be decided* |
+| [3 · Medium semifinal](#kanbur-experiment-3--medium-semifinal) | *to be decided* | *to be decided* | *to be decided* |
+| [4 · High semifinal](#kanbur-experiment-4--high-semifinal) | *to be decided* | *to be decided* | *to be decided* |
+| [5 · Final](#kanbur-experiment-5--final) | *to be decided* | *to be decided* | *to be decided* |
 
 ## Barnett judging notes
 
@@ -605,27 +605,111 @@ All runs read the PDF. The question across the tournament, from
 anything over the App and Codex, which report no per-run cost.
 
 Kanbur has no full set of researcher notes, so its reference lists are written
-fresh in K1 (prompts 1 and 5) and reused in K2–K5. The judging follows Barnett's exactly:
-six judgments in each of K1–K4 and the two head-to-heads in K5, 26 in all.
-Barnett's head-to-head verdicts followed the letters, so the same caveat
-applies here.
+fresh in Experiment 1 (prompts 1 and 5) and reused in Experiments 2–5. The
+judging follows Barnett's in Experiments 1–4, six judgments each. Barnett's
+head-to-head verdicts followed the letters, so Experiment 5 runs each of its
+two head-to-heads twice, with the letters swapped the second time: 4
+judgments there, 28 in all.
 
 ## Kanbur experiment 1 — Medium first round
 
 **Matchup:** (2) App vs. (3) Codex, both at medium effort.
 
-Winner: *to be decided*
+**Overall winner:** **B — (3) Codex, medium** — advances to the Medium semifinal
+
+Codex narrowly wins both the close reading and the evaluation. Both
+head-to-head verdicts hold in both reading orders. Neither run reports a
+cost, so the findings decide it. Codex reads every figure, where the App
+names four without saying what they show. Its evaluation adds two problems
+the App's misses and makes no factual error, where the App's misreads
+Table 2's pump price. The App's advantages are narrower: it keeps the
+abstract's "for real applications" and finds P5, a Major problem Codex
+misses.
+
+Both runs read the complete PDF at medium effort and differ only in how
+they were run.
 
 | Run | Configuration | Close reading | Argument evaluation |
 | --- | --- | --- | --- |
-| **?** | App, work mode, medium | not reported | not reported |
-| **?** | Codex, medium | about 7–8 min | about 3 min |
+| **A** | App, work mode, medium | not reported | not reported |
+| **B** | Codex, medium | about 7–8 min | about 3 min |
+
+### Detailed findings
+
+**Close readings: B, narrowly.**
+
+| | A (App) | B (Codex) |
+| --- | --- | --- |
+| A1, solo (30 sampled claims) | 97% at 2, 3% at 1 | 97% at 2, 3% at 1 |
+| A2, contributions (4) | 3 caught, 1 in part | 4 caught, 1 reframed |
+| A2, abstract claims (12) | 11 caught | 9 caught, 1 in part, 2 missed |
+| A2, figures (10) | 7 read, 3 named only | 9 read, 1 named only |
+| A3, strength of language | solo 2, head to head 1 | 1 |
+| A4, verbatim · numbers · references | 2/2 · 311/311 · 47/47 | 0/0 · 318/318 · 47/47 |
+| Steps · claims | 46 · 147 | 36 · 151 |
+
+Each reading has faults the other doesn't, all confirmed in the runs:
+
+- **A changes Table 1's units.** Its support says the heat-flux columns are
+  "in W/m²"; the table prints "W/m²K". That's a silent correction the
+  prompt forbids. A also drops the literature gap's "as far as we know".
+- **A reads fewer figures.** For Figures 4 and 10 it gives only what they
+  plot, not what they show; the trends in its claims come from the prose.
+  B reads every figure but Figure 3, and its readings agree with the
+  reference list's by-eye checks, including Figure 8's slight rise with
+  area.
+- **B drops the abstract's scope.** "Economically feasible for real
+  applications" becomes "evidence of economic feasibility", so the shift
+  to the Conclusion's "for further real-scale demonstrations" is lost. A
+  keeps it. B also changes contribution (b): the article's "new alternative
+  to the data center cooling systems" becomes "a new clean-water-producing
+  alternative".
+- **B keeps more of what the article prints.** It records both halves of
+  the self-contradictory GOR/PR sentence, Table 3's printed "c3 = u3", and
+  "the PP is assumed constant". A smooths the GOR/PR sentence and misses the
+  other two.
+
+A also gives every Table 1 value, where B gives only the differences, and
+catches AB1 and AB6, which B misses. The head-to-head decided on figure
+readings and contributions, which are whole categories, against A's
+specific items. The solo sessions are closer: the same A1 score, and A at 2
+on A3 where B is at 1.
+
+**Argument evaluations: B, narrowly.** Against the 23-problem list:
+
+- **Found only by B:** P8 (chemical exergy dropped in a desalination
+  system) and P7 (SI read as evidence of sustainability). B also gives
+  fuller versions of P2 (the flat payback against a fifteenfold change in
+  water output) and P4: since flux doesn't depend on area, Eq. 24 would
+  rise with area, while Figure 5B falls. That rules out Eq. 24 as the
+  quantity computed.
+- **Found only by A:** P5 (the text puts the GOR and PR peaks at the
+  smallest area, against Eqs. 22–23), a Major problem. A also turns P1's
+  revenue gap into a payback of about 980 years.
+- **Errors:** A writes "Table 2 lists a pump price of SGD 950" for one
+  added pump; the row is "Feed and permeate pumps", one price for both. So
+  its 980 years is about twice too high. A hedges this, and its conclusion
+  stands either way. B has no errors.
+- **Shared:** P1, P3, P13 and P22, and P16 in part. Neither finds P10
+  (levelized costs far above the cost inputs), the other Major problem.
+
+The solo sessions agree on the shape: each run finds 5 of the 7 Major
+problems; A has 7 found and 3 partial, B 8 found and 3 partial.
+
+**Implications for later comparisons.**
+
+- Barnett's close-reading head-to-heads always chose A. This one chose B,
+  so that verdict isn't simply the letter. The evaluation verdict went to B,
+  as every Barnett evaluation did, so it rests on the findings above.
+- B's dropped "for real applications" is the same kind of fault as Sol
+  medium's dropped open-loop condition in Barnett: a scope condition lost
+  from a headline claim. Watch for it in Experiment 3.
 
 ## Kanbur experiment 2 — High first round
 
 **Matchup:** (2) App vs. (3) Codex, both at high effort.
 
-Winner: *to be decided*
+**Overall winner:** *to be decided*
 
 | Run | Configuration | Close reading | Argument evaluation |
 | --- | --- | --- | --- |
@@ -634,31 +718,43 @@ Winner: *to be decided*
 
 ## Kanbur experiment 3 — Medium semifinal
 
-**Matchup:** winner of K1 vs. (1) API, at medium effort.
+**Matchup:** winner of Experiment 1 vs. (1) API, at medium effort.
 
-Winner: *to be decided*
+**Overall winner:** *to be decided*
 
 | Run | Configuration | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- |
-| **?** | winner of K1 | | | |
+| **?** | Codex, medium (winner of Experiment 1) | about 7–8 min | about 3 min | not reported |
 | **?** | API, medium | $0.349 · 3 min 31 s | $0.202 · 52 s | $0.551 |
 
 ## Kanbur experiment 4 — High semifinal
 
-**Matchup:** winner of K2 vs. (1) API, at high effort.
+**Matchup:** winner of Experiment 2 vs. (1) API, at high effort.
 
-Winner: *to be decided*
+**Overall winner:** *to be decided*
 
 | Run | Configuration | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- |
-| **?** | winner of K2 | | | |
+| **?** | winner of Experiment 2 | | | |
 | **?** | API, high | $0.400 · 6 min 2 s | $0.243 · 2 min 28 s | $0.643 |
 
 ## Kanbur experiment 5 — Final
 
 **Matchup:** Medium champion vs. High champion.
 
-Winner: *to be decided*
+**Overall winner:** *to be decided*
+
+Both runs were judged alone in Experiments 3 and 4, so this experiment has
+only the head-to-heads, each run in two sessions with the letters swapped.
+
+| Session | A | B | Close reading | Evaluation |
+| --- | --- | --- | --- | --- |
+| 1 | Medium champion | High champion | | |
+| 2 | High champion | Medium champion | | |
+
+A configuration wins a head-to-head only if it wins both sessions. If the
+sessions split, each verdict followed its letter, and the head-to-head is a
+tie, decided on the findings both sessions confirm in the runs.
 
 ## Kanbur run records
 
@@ -713,21 +809,24 @@ content is unchanged, and the originals are untouched.
    say which configuration they are.
 3. Never copy Codex's `run_note.md`. It says how Codex read the PDF and names
    its configuration.
-4. **K1:** start with an empty `references/` and run all eight prompts; prompts
-   1 and 5 write kanbur's reference lists. Copy `references/` back to
-   `outputs/judgments/kanbur/references/`.
-5. **K2–K4:** copy `outputs/judgments/kanbur/references/` in as `references/`,
-   skip prompts 1 and 5, and run the other six.
-6. **K5:** both runs were judged alone in K3 and K4, so run only prompts 4
-   and 8, the two head-to-heads.
+4. **Experiment 1:** start with an empty `references/` and run all eight
+   prompts; prompts 1 and 5 write kanbur's reference lists. Copy
+   `references/` back to `outputs/judgments/kanbur/references/`.
+5. **Experiments 2–4:** copy `outputs/judgments/kanbur/references/` in as
+   `references/`, skip prompts 1 and 5, and run the other six.
+6. **Experiment 5:** both runs were judged alone in Experiments 3 and 4, so
+   run only prompts 4 and 8, the two head-to-heads, in two sessions. Session
+   1 puts the Medium champion under A; session 2 swaps the letters. Name each
+   judgment by its session: `close_reading_head_to_head_1.md` and `_2.md`,
+   `evaluation_head_to_head_1.md` and `_2.md`.
 7. Record the letters in this key, and check the ids each judgment records
    against the table above.
 8. Copy only `judgments/` back, into the experiment's folder below.
 
 | Experiment | Judgments folder |
 | --- | --- |
-| K1 | `outputs/judgments/kanbur/exp1_kanbur_medium_app_vs_codex/` |
-| K2 | `outputs/judgments/kanbur/exp2_kanbur_high_app_vs_codex/` |
-| K3 | `outputs/judgments/kanbur/exp3_kanbur_medium_winner_vs_api/` |
-| K4 | `outputs/judgments/kanbur/exp4_kanbur_high_winner_vs_api/` |
-| K5 | `outputs/judgments/kanbur/exp5_kanbur_medium_vs_high/` |
+| 1 | `outputs/judgments/kanbur/exp1_kanbur_medium_app_vs_codex/` |
+| 2 | `outputs/judgments/kanbur/exp2_kanbur_high_app_vs_codex/` |
+| 3 | `outputs/judgments/kanbur/exp3_kanbur_medium_winner_vs_api/` |
+| 4 | `outputs/judgments/kanbur/exp4_kanbur_high_winner_vs_api/` |
+| 5 | `outputs/judgments/kanbur/exp5_kanbur_medium_vs_high/` |
