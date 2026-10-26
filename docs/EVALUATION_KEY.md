@@ -1,9 +1,14 @@
 # Evaluation Key
 
-Barnett's blind comparisons, results, and costs. This key is never given to
-the judge; model identities, cost, and runtime are considered afterwards.
+The blind comparisons, results, and costs for Phase 2's two articles:
+[**Barnett**](#barnett-tournament-overview) and
+[**Kanbur**](#kanbur-tournament-overview).
+This key is never given to the judge; model identities, cost, and runtime are
+considered afterwards.
 
-## Overall winner: GPT-6.1 Sol medium with PDF input
+## Barnett tournament overview
+
+**Overall winner: GPT-6.1 Sol medium with PDF input.**
 
 Selected from the six Barnett configurations. The final favors PDF for its
 cleaner source representation and lack of an extraction/preparation step;
@@ -11,13 +16,25 @@ the argument evaluations are treated as tied because the verdict followed
 the run letter. This is the overall selection for this experiment, with the
 judging limitations described below.
 
-## Tournament overview
-
 The **PDF** and **Extract** (text and crops) divisions use the same seeds.
 In each, Sol high (2) plays Sol medium (3); the winner faces Astra low (1),
 which has a bye. The division champions meet in the final.
 
 ![Tournament bracket: Sol medium wins both divisions, and Sol medium on the PDF wins the final.](assets/evaluation-bracket.svg)
+
+## Kanbur tournament overview
+
+Kanbur runs the same model, GPT-6.1 Sol, three ways: through the **API**, the
+ChatGPT **App** in work mode, and **Codex**. The two divisions are reasoning
+efforts, **Medium** and **High**. In each division, App (2) plays Codex (3); the winner faces API (1), which has
+a bye. The division champions meet in the final, which answers the effort
+question for this article: medium or high.
+
+![Kanbur tournament bracket: App plays Codex in each effort division, then the winner faces API; all results are pending.](assets/kanbur-evaluation-bracket.svg)
+
+**Overall winner:** To be decided.
+
+## Barnett results
 
 Sol medium won both divisions, then its PDF run won the final. The overall
 winners below account for the detailed findings, cost, preparation, and the
@@ -30,6 +47,18 @@ role of close readings in later synthesis—not just the individual verdicts.
 | [3 · PDF semifinal](#experiment-3--pdf-semifinal) | Sol medium, modestly | Astra low, narrowly | **Sol medium** |
 | [4 · Extract semifinal](#experiment-4--extract-semifinal) | Sol medium, modestly | Astra low, narrowly | **Sol medium** |
 | [5 · Final](#experiment-5--final) | PDF, narrowly | Tie (followed the letter) | **Sol medium, PDF** |
+
+## Kanbur results
+
+| Experiment | Division | Round | Matchup | Winner |
+| --- | --- | --- | --- | --- |
+| [K1](#kanbur-experiment-1--medium-first-round) | Medium | First round | (2) App vs. (3) Codex | *to be decided* |
+| [K2](#kanbur-experiment-2--high-first-round) | High | First round | (2) App vs. (3) Codex | *to be decided* |
+| [K3](#kanbur-experiment-3--medium-semifinal) | Medium | Semifinal | winner of K1 vs. (1) API | *to be decided* |
+| [K4](#kanbur-experiment-4--high-semifinal) | High | Semifinal | winner of K2 vs. (1) API | *to be decided* |
+| [K5](#kanbur-experiment-5--final) | — | Final | Medium champion vs. High champion | *to be decided* |
+
+## Barnett judging notes
 
 These are the head-to-head verdicts; disagreements with solo judgments are
 noted in the experiment details.
@@ -45,7 +74,7 @@ confirmed in the runs themselves, which don't depend on the judge.
 
 Model names are shortened below: Sol is
 GPT-6.1 Sol and Astra is GPT-6 Astra. Costs are estimates from reported usage;
-[run records and pricing assumptions](#run-records) are at the end.
+[Barnett run records and pricing assumptions](#barnett-run-records) follow Experiment 5.
 
 ## Experiment 1 — PDF first round
 
@@ -447,7 +476,7 @@ preparation step that took manual fixes in Phase 1, it costs the reading
 accuracy about the article itself (its layout, its markers, its graphical
 abstract), and it saves $0.02 a run. The PDF wins.
 
-## Run records
+## Barnett run records
 
 ### Pricing assumptions
 
@@ -565,3 +594,140 @@ Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
 - B — `text_crops__gpt-6.1-sol-medium/`: `analysis.json` and
   `argument_evaluation.json`, the same files as Experiment 2's B and
   Experiment 4's A.
+
+---
+
+## Kanbur judging setup
+
+All runs read the PDF. The question across the tournament, from
+[ADR-0017](adr/0017-experiment-2-api-against-the-app-with-the-primer.md) and
+[ADR-0020](adr/0020-codex-joins-experiment-2.md), is whether the API adds
+anything over the App and Codex, which report no per-run cost.
+
+Kanbur has no full set of researcher notes, so its reference lists are written
+fresh in K1 (prompts 1 and 5) and reused in K2–K5. The judging follows Barnett's exactly:
+six judgments in each of K1–K4 and the two head-to-heads in K5, 26 in all.
+Barnett's head-to-head verdicts followed the letters, so the same caveat
+applies here.
+
+## Kanbur experiment 1 — Medium first round
+
+**Matchup:** (2) App vs. (3) Codex, both at medium effort.
+
+Winner: *to be decided*
+
+| Run | Configuration | Close reading | Argument evaluation |
+| --- | --- | --- | --- |
+| **?** | App, work mode, medium | not reported | not reported |
+| **?** | Codex, medium | about 7–8 min | about 3 min |
+
+## Kanbur experiment 2 — High first round
+
+**Matchup:** (2) App vs. (3) Codex, both at high effort.
+
+Winner: *to be decided*
+
+| Run | Configuration | Close reading | Argument evaluation |
+| --- | --- | --- | --- |
+| **?** | App, work mode, high | not reported | not reported |
+| **?** | Codex, high | about 7–8 min | about 3 min |
+
+## Kanbur experiment 3 — Medium semifinal
+
+**Matchup:** winner of K1 vs. (1) API, at medium effort.
+
+Winner: *to be decided*
+
+| Run | Configuration | Close reading | Argument evaluation | Total |
+| --- | --- | --- | --- | --- |
+| **?** | winner of K1 | | | |
+| **?** | API, medium | $0.349 · 3 min 31 s | $0.202 · 52 s | $0.551 |
+
+## Kanbur experiment 4 — High semifinal
+
+**Matchup:** winner of K2 vs. (1) API, at high effort.
+
+Winner: *to be decided*
+
+| Run | Configuration | Close reading | Argument evaluation | Total |
+| --- | --- | --- | --- | --- |
+| **?** | winner of K2 | | | |
+| **?** | API, high | $0.400 · 6 min 2 s | $0.243 · 2 min 28 s | $0.643 |
+
+## Kanbur experiment 5 — Final
+
+**Matchup:** Medium champion vs. High champion.
+
+Winner: *to be decided*
+
+## Kanbur run records
+
+### Cost and usage
+
+Only the API reports usage. Its costs use the same GPT-6.1 Sol rates as
+Barnett's. The App reports nothing. Codex, on the ChatGPT Pro plan, reports no
+tokens: its four sessions took the times above and used about 1% of the weekly
+limit. The API runs also wrote a primer, which isn't judged and isn't in these
+costs.
+
+| API run | Input tokens | Output tokens | Reasoning tokens |
+| --- | --- | --- | --- |
+| Medium close reading | 72,234 | 20,466 | 283 |
+| Medium evaluation | 90,992 | 2,012 | 120 |
+| High close reading | 72,234 | 25,545 | 1,988 |
+| High evaluation | 94,366 | 5,449 | 3,624 |
+
+### Shared setup and run sources
+
+The article is `data/research/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf`.
+All runs are in
+`outputs/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling/`.
+Judgments go in `outputs/judgments/kanbur/`, with the reference lists in
+`references/` and each experiment's judgments in its own folder.
+
+The runs came out in different shapes. The API's files are JSON with an id and
+a provenance block, while the App's and Codex's are a bare `analysis.json` with
+no id and an `argument_evaluation.md`. Side by side, a judge could tell the API
+run apart and couldn't record an id for the others. So the judging folders use
+uniform copies in `outputs/judgments/kanbur/runs/<configuration>/`: each run
+as `analysis.json` (`id` and `content`) and `argument_evaluation.json` (`id`,
+`analysis_id`, and `content.evaluation`), with no provenance. The API copies
+keep their original ids; the App and Codex copies have ids assigned here. The
+content is unchanged, and the originals are untouched.
+
+| Copy | Original | `analysis.json` id | Argument evaluation id |
+| --- | --- | --- | --- |
+| `runs/api_medium/` | `adr_0017/pdf__gpt-6.1-sol-medium/` | `7f044bce-0cae-4472-a887-d01646c0092e` | `9d417ada-ee4c-4172-9a85-9dd108361e4f` |
+| `runs/api_high/` | `adr_0017/pdf__gpt-6.1-sol-high/` | `2a82aff3-14e1-4c82-a830-1c9118ce5847` | `e5f3697e-2fdd-4056-9060-e9bb430465d0` |
+| `runs/app_medium/` | `adr_0017/app__gpt-6.1-sol-medium-work/` | `5698e6b9-8d5f-4379-84d8-875a9247895c` | `279c062d-f752-4114-bf60-dcc9e9d058f0` |
+| `runs/app_high/` | `adr_0017/app__gpt-6.1-sol-high-work/` | `b050b54f-75ac-4a51-be4e-eceacaea58e8` | `354aac17-6f8d-4355-8ab3-74e9ca6841da` |
+| `runs/codex_medium/` | `adr_0020/codex__gpt-6.1-sol-medium/` | `3686ad7a-7dc2-4c56-a379-39e00b79c243` | `8dd71213-5808-4dd1-adf8-9191fe4640c0` |
+| `runs/codex_high/` | `adr_0020/codex__gpt-6.1-sol-high/` | `fa401e5e-ea12-498b-9ccb-24aa8aa410fa` | `dd922c0a-e4a0-40f2-a411-13b0a541f3fe` |
+
+### Setting up a kanbur judging folder
+
+1. Copy in `RUBRIC.md`, `prompts/`, and the article as `article.pdf`.
+2. For each letter, copy the run's two files, `analysis.json` and
+   `argument_evaluation.json`, from `outputs/judgments/kanbur/runs/<configuration>/`
+   into `runs/A/` or `runs/B/`. Copy only the files: the copies' folder names
+   say which configuration they are.
+3. Never copy Codex's `run_note.md`. It says how Codex read the PDF and names
+   its configuration.
+4. **K1:** start with an empty `references/` and run all eight prompts; prompts
+   1 and 5 write kanbur's reference lists. Copy `references/` back to
+   `outputs/judgments/kanbur/references/`.
+5. **K2–K4:** copy `outputs/judgments/kanbur/references/` in as `references/`,
+   skip prompts 1 and 5, and run the other six.
+6. **K5:** both runs were judged alone in K3 and K4, so run only prompts 4
+   and 8, the two head-to-heads.
+7. Record the letters in this key, and check the ids each judgment records
+   against the table above.
+8. Copy only `judgments/` back, into the experiment's folder below.
+
+| Experiment | Judgments folder |
+| --- | --- |
+| K1 | `outputs/judgments/kanbur/exp1_kanbur_medium_app_vs_codex/` |
+| K2 | `outputs/judgments/kanbur/exp2_kanbur_high_app_vs_codex/` |
+| K3 | `outputs/judgments/kanbur/exp3_kanbur_medium_winner_vs_api/` |
+| K4 | `outputs/judgments/kanbur/exp4_kanbur_high_winner_vs_api/` |
+| K5 | `outputs/judgments/kanbur/exp5_kanbur_medium_vs_high/` |

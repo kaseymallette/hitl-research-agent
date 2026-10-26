@@ -375,7 +375,9 @@ simplifies, or removes.
 │   ├── REPOSITORY.md                 every file, and why it exists
 │   ├── RUBRIC.md                     Phase 2: the criteria for the head-to-head judgment
 │   ├── adr/0001-0020.md              one record per architectural decision
-│   ├── assets/evaluation-bracket.svg Phase 2: Barnett's bracket, shown in the key
+│   ├── assets/                       Phase 2: the tournament brackets shown in the key
+│   │   ├── evaluation-bracket.svg    Barnett's
+│   │   └── kanbur-evaluation-bracket.svg  kanbur's
 │   └── PROMPT_LOG.md                 the prompt log, every phase in one file
 ├── CLAUDE.md                         what Claude Code loads in every session
 ├── pyproject.toml                    dependencies, Ruff, mypy, the src/ package
@@ -394,6 +396,7 @@ outputs/                              created by the pipeline
 ├── primers/<slug>/                   primer.md + primer_record.json, on request
 ├── judgments/<article>/              Phase 2: one folder per article
 │   ├── references/                   its claims and problems reference lists
+│   ├── runs/                         kanbur: the runs in one shape, ready to judge
 │   └── <experiment>/                 the six blind judgments of an experiment
 ├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
 └── synthesis/                        Phase 3
