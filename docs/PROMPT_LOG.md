@@ -3111,7 +3111,45 @@ Skip prompts 1 and 5, and run the other six.
 
 ### 49. Evaluate results for Kanbur, experiment 3
 
-**Prompt:** 
+**Prompt:** Experiment 3 is done! Can you look at the results, determine a winner, and explain your reasoning?
+
+**Response:** The ids match in all six judgments. Next I'm reading them.
+
+Confirmed differences across runs: Codex keeps all four contributions but upgrades three "can" recommendations to "should," while API keeps "for real applications" and "seems sufficient," drops contribution (a), and is the only run to find P23. Now I'll write this up.
+
+**Winner: A, Codex medium, narrowly.** It's the Medium division champion and goes on to the final.
+
+All six judgments record the right ids: Codex medium's under A and API medium's under B.
+
+**The verdicts split, and both are close to a tie.** The close-reading head-to-head chose A (Codex) and the evaluation head-to-head chose B (API), both narrowly and in both reading orders. Each judge says its margin could reasonably be called a tie. It's also the split by letter again: close reading to A, evaluation to B.
+
+**Close readings: Codex, narrowly.**
+- **Codex covers more.** It records:
+  - the thermoeconomic section's conclusion (S4g.4), which the reference list marks as one to catch
+  - contribution (a): "neither this hybrid design nor… has previously been investigated"
+  - Table 3 with its printed "c3 = u3"
+  - what Figures 7 and 10 show
+
+  The API names Table 3 and those figures without reading them, and it has no claim for "not investigated before".
+- **The API keeps more of the author's strength.** It keeps "economically feasible for real applications" and "seems sufficient". Codex drops both, and turns the Conclusion's "can be experimentally tested" into "should be experimentally tested".
+- **The API has its own shifts.** It drops "may be" from the authors' reason for the flat payback, and presumes water "can offset the additional expenditure".
+- **Solos:** both score 1 on A3, and the API is one sampled claim better on A1 (29 of 30 at 2, against 28).
+
+**Evaluations: API, narrowly.**
+- **Found only by the API:** P23 in full, the first Kanbur run to find it. It writes that Eq. 13 "cannot independently predict flux when those outlet flows are themselves unknown". It also partly finds P14 and states P13's cost-rate point.
+- **Found only by Codex:** the reason the reported ε can't come from Eq. 24, and more of P7.
+- **Errors:** neither run makes one.
+- **Solos:** Codex finds 11 of the 23 at least in part and the API 13, with 5 of the 7 Majors each.
+
+**Why Codex:** with each run winning one side by about one finding, the tournament's own question decides it. [ADR-0020](docs/adr/0020-codex-joins-experiment-2.md) brought in Codex because, if it reads as well as the API, "it could analyze the collection without the API's per-call cost". Here it does:
+- the API's evaluation edge is one Minor problem
+- Codex's close reading covers more of the article, which is what Phase 3 synthesizes
+- the API costs $0.551 a run, while Codex runs within the subscription
+
+So the result answers ADR-0020's question for medium effort: Codex reads as well as the API.
+
+In [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) I added Experiment 3's write-up and its row in the results table. Its Detailed findings note that Codex medium has now lost "for real applications" in two head-to-heads.
+
 
 ---
 
