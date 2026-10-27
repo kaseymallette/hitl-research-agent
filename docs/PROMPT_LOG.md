@@ -3005,6 +3005,82 @@ Neither run makes a factual error. The judge also says the margin is close to a 
 - **Overview and results row 5:** the close reading won "both orders".
 - **Experiment 5 records:** each run's letter in both sessions, and the `_AB` and `_BA` file names.
 
+### 46. Check IDs for Kanbur, experiment 2
+
+**Prompt:** Okay, I'm ready for experiment 2 for Kanbur. A: App High, B: Codex High. Please check that the IDs match, and that the article and references match as well. 
+
+**Response:** The ids match. Experiment 2's folder is ready.
+
+| Letter | File | id | Key's run |
+| --- | --- | --- | --- |
+| **A** | `analysis.json` | `b050b54f-…` | App high ✓ |
+| **A** | `argument_evaluation.json` | `354aac17-…`, analysis_id `b050b54f-…` | App high ✓ |
+| **B** | `analysis.json` | `fa401e5e-…` | Codex high ✓ |
+| **B** | `argument_evaluation.json` | `dd922c0a-…`, analysis_id `fa401e5e-…` | Codex high ✓ |
+
+All four files are byte-identical to `outputs/judgments/kanbur/runs/app_high/` and `codex_high/`.
+
+The rest of the folder matches too:
+- **Article:** `article.pdf` is identical to the repo's Kanbur PDF, and the repo copy is still in place.
+- **References:** both lists match `outputs/judgments/kanbur/references/`, including P22 and P23.
+- **Rubric:** `RUBRIC.md` is the repo's version without the framework section.
+- **Prompts:** they match the repo.
+- **Judgments:** `judgments/` is empty.
+- **Blinding:** no file or folder name says which run is which, and there's no `run_note.md`.
+
+Both reference lists already exist, so skip prompts 1 and 5 and run the other six.
+
+### 47. Evaluate results for Kanbur, experiment 2
+
+**Prompt:** Results are in for experiment 2! Evaluate the results, determine a winner, and show your reasoning.
+
+**Response:** All the ids are correct. Next I'm reading the judgments, starting with the two head-to-heads.
+
+The judges' verdicts hold up against the runs, and the same faults from Experiment 1 recur—App's close reading still smooths the "14 times" sentence and misreads Table 2's pump price as a single pump. I'll write this up now.
+
+**Winner: B, Codex high, narrowly.** It plays API high in Experiment 4.
+
+All six judgments record the right ids: App high's under A and Codex high's under B.
+
+**The verdicts split along Barnett's letter pattern.** The close-reading head-to-head went to A, the App, by a modest margin. The evaluation head-to-head went to B, Codex, narrowly. Both held in both reading orders. But this is the same split every Barnett round showed before its final: close reading to A, evaluation to B. So I didn't count either verdict on its own, and leaned on the solos and on findings I confirmed in the runs.
+
+**Close readings: App in the head-to-head, but the solos favor Codex.** Each run has one fault that matters:
+
+| | App (A) | Codex (B) |
+| --- | --- | --- |
+| A1, solo | 87% at 2, four claims at 1 | 97% at 2, one claim at 1 |
+| A3, strength of language | 1 | 2 |
+| Contributions | all 4 | 2, plus 2 thinned (the novelty claims) |
+| Main fault | rewrites "nearly 14 times higher than… the minimum membrane area" as "the other end of the area comparison", hiding the article's contradiction | calls the contributions restatements of the Summary, so "first time" and "not investigated before" never become claims |
+
+- **The App's other strengths:** it reads Tables 1 and 3 in full.
+- **Codex's other faults:** it gives Table 1's column groups labels the table doesn't print.
+- **Codex's other strengths:** it keeps all twelve abstract claims separate, and quotes `verbatim` correctly.
+
+The head-to-head decided on the contributions. The solos show Codex more faithful claim by claim. I'd call it close to even.
+
+**Evaluations: Codex, narrowly.**
+- **Found only by Codex:**
+  - P2 as the list states it
+  - P13's cost-rate mechanism: "Hourly water cost is not cost per unit of net water produced"
+  - part of P14
+  - P21 stated as a missing comparison
+- **Found only by the App:** it takes P22 into the economics. Only pump electricity is costed, so a chiller's energy and cost would belong in the assessment.
+- **The App's errors:**
+  - "Table 2 lists a pump price of SGD950. If that applies to the additional permeate pump…" The row actually prices both pumps together. It's the same misreading App medium made in Experiment 1.
+  - It says the article's "results" give ε and GOR different area trends. The text gives them the same; only the figures differ.
+- **Codex's errors:** none.
+- **Shared:** both find P1, P3, P4 and P8, and both miss P5 and P10.
+
+**Why Codex:** neither configuration reports a cost. With the close reading near even, Codex's cleaner evaluation decides it. The result is narrow.
+
+In [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) I filled in:
+- Experiment 2's write-up
+- its row in the results table: "App, narrowly (solos favor Codex)", "Codex, narrowly", **Codex**
+- Codex high as the winner of Experiment 2 in Experiment 4's run table
+
+The write-up also flags faults that repeat across runs. Both App runs smooth the GOR/PR sentence and misread the pump price. Both Codex close readings lose part of the contributions.
+
 ---
 
 ## Phase 3 — Synthesis
