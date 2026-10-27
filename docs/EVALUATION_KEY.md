@@ -833,8 +833,8 @@ The head-to-head counts B about 1½ problems ahead.
 
 | Run | Configuration | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- |
-| **?** | Codex, medium (winner of Experiment 1) | about 7–8 min | about 3 min | not reported |
-| **?** | API, medium | $0.349 · 3 min 31 s | $0.202 · 52 s | $0.551 |
+| **A** | Codex, medium (winner of Experiment 1) | about 7–8 min | about 3 min | not reported |
+| **B** | API, medium | $0.349 · 3 min 31 s | $0.202 · 52 s | $0.551 |
 
 ## Kanbur experiment 4 — High semifinal
 

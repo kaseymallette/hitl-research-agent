@@ -3081,6 +3081,38 @@ In [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) I filled in:
 
 The write-up also flags faults that repeat across runs. Both App runs smooth the GOR/PR sentence and misread the pump price. Both Codex close readings lose part of the contributions.
 
+### 48. Check IDs for Kanbur, experiment 3
+
+**Prompt:** Ready for experiment 3! A: Codex Medium. B: API Medium. Can you check the IDs to see if they match?
+
+**Response:** The ids match. One thing to check: a word search for configuration names found a hit in A's close reading.
+
+The ids match. Experiment 3's folder is ready.
+
+| Letter | File | id | Key's run |
+| --- | --- | --- | --- |
+| **A** | `analysis.json` | `3686ad7a-…` | Codex medium ✓ |
+| **A** | `argument_evaluation.json` | `8dd71213-…`, analysis_id `3686ad7a-…` | Codex medium ✓ |
+| **B** | `analysis.json` | `7f044bce-…` | API medium ✓ |
+| **B** | `argument_evaluation.json` | `9d417ada-…`, analysis_id `7f044bce-…` | API medium ✓ |
+
+A is the same pair of files as Experiment 1's B, and all four files are identical to the repo's copies. Both runs have the same shape: `id` and `content`, with no provenance block. That means a judge can't spot the API run by its file structure.
+
+The rest of the folder matches too:
+- `article.pdf` is the Kanbur PDF.
+- Both reference lists match the repo's.
+- `RUBRIC.md` is the version without the framework section.
+- `prompts/` matches the repo.
+- `judgments/` is empty.
+
+My search for configuration names in the runs found one hit: "provenance disclosures" in A's close reading, which describes the article's own back matter. It doesn't name a run.
+
+Skip prompts 1 and 5, and run the other six.
+
+### 49. Evaluate results for Kanbur, experiment 3
+
+**Prompt:** 
+
 ---
 
 ## Phase 3 — Synthesis
