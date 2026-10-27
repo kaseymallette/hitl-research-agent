@@ -53,7 +53,7 @@ role of close readings in later synthesis—not just the individual verdicts.
 | Experiment | Close-reading winner | Evaluation winner | Overall winner |
 | --- | --- | --- | --- |
 | [1 · Medium first round](#kanbur-experiment-1--medium-first-round) | Codex, narrowly | Codex, narrowly | **Codex** |
-| [2 · High first round](#kanbur-experiment-2--high-first-round) | *to be decided* | *to be decided* | *to be decided* |
+| [2 · High first round](#kanbur-experiment-2--high-first-round) | App, narrowly (solos favor Codex) | Codex, narrowly | **Codex** |
 | [3 · Medium semifinal](#kanbur-experiment-3--medium-semifinal) | *to be decided* | *to be decided* | *to be decided* |
 | [4 · High semifinal](#kanbur-experiment-4--high-semifinal) | *to be decided* | *to be decided* | *to be decided* |
 | [5 · Final](#kanbur-experiment-5--final) | *to be decided* | *to be decided* | *to be decided* |
@@ -737,12 +737,93 @@ problems; A has 7 found and 3 partial, B 8 found and 3 partial.
 
 **Matchup:** (2) App vs. (3) Codex, both at high effort.
 
-**Overall winner:** *to be decided*
+**Overall winner:** **B — (3) Codex, high** — advances to the High semifinal
+
+The App narrowly wins the close-reading head-to-head and Codex narrowly wins
+the evaluation; both verdicts hold in both reading orders. That is the same
+split by letter as every Barnett round before the final, so neither verdict
+counts on its own. The solo sessions lean the other way on the close
+reading: Codex scores higher on attribution and strength of language. Neither
+run reports a cost. Codex's evaluation makes no factual error and covers
+more of the list; the App's misreads Table 2's pump price again, as in
+Experiment 1. That decides it for Codex, narrowly.
+
+Both runs read the complete PDF at high effort and differ only in how they
+were run.
 
 | Run | Configuration | Close reading | Argument evaluation |
 | --- | --- | --- | --- |
-| **?** | App, work mode, high | not reported | not reported |
-| **?** | Codex, high | about 7–8 min | about 3 min |
+| **A** | App, work mode, high | not reported | not reported |
+| **B** | Codex, high | about 7–8 min | about 3 min |
+
+### Detailed findings
+
+**Close readings: A, narrowly, in the head-to-head; the solos favor B.**
+
+| | A (App) | B (Codex) |
+| --- | --- | --- |
+| A1, solo (30 sampled claims) | 87% at 2, 13% at 1 | 97% at 2, 3% at 1 |
+| A2, contributions (4) | 4 caught | 2 caught, 2 thinned (C-a, C-b) |
+| A2, abstract claims (12) | 11 caught | 12 caught |
+| A2, figures (10) | 8 read, 2 thinned | 9 read, 1 thin (F10) |
+| A3, strength of language | 1 | 2 |
+| A4, verbatim · numbers · references | 0/0 · 349/349 · 68/68 | 2/2 · 317/317 · 74/74 |
+| Steps · claims | 42 · 167 | 37 · 158 |
+
+Each reading has one fault that matters, both confirmed in the runs:
+
+- **A rewrites the self-contradictory GOR/PR sentence.** The article says GOR
+  and PR are highest at the minimum area, then that the maximum values are
+  "nearly 14 times higher than the GOR and PR values of the minimum membrane
+  area." A gives the second half as "nearly fourteen times the values at the
+  other end of the area comparison", which removes the contradiction. The
+  App medium run smoothed the same sentence in Experiment 1. B records both
+  halves as printed.
+- **B writes off the contributions as restatements.** Its step 4 says "the
+  four contributions restate the novelty and methods already announced in
+  the Summary." The Summary doesn't make them, so the article's "not
+  investigated before" and "first time" claims never appear as claims. A
+  records all four.
+
+A also reads Tables 1 and 3 in full, including Table 3's printed "c₃ = u₃".
+B labels Table 1's column groups "total heat flux" and "vapor heat flux",
+though both are printed "q^T (W/m²K)". B keeps all twelve abstract claims
+separate, where A merges four into two, and it quotes `verbatim` where A
+never does. A's solo session found four sampled claims at 1 (a hedge lost
+on "leakage potential", "clearly" dropped, "can" turned into "should", and the
+GOR/PR sentence) against B's one. The head-to-head decided on the
+contributions.
+
+**Argument evaluations: B, narrowly.** Against the 23-problem list:
+
+- **Found only by B:** P2 as the list states it (a flat payback against
+  water output that varies with load and area), the cost-rate mechanism in
+  P13 ("Hourly water cost is not cost per unit of net water produced"),
+  part of P14 (the optimum area's false precision), and P21 stated as a
+  missing comparison. It also anchors P4 to Figures 5B and 6A.
+- **Found only by A:** P22 taken into the economics: only pump electricity
+  is costed, so a chiller's energy and cost would belong in the assessment.
+- **Errors in A:** it applies Table 2's 950 SGD to "the additional permeate
+  pump", though the row prices the feed and permeate pumps together, and
+  builds an O&M check on that reading. It also says "the results" give ε and
+  GOR different area behaviour, when the text gives them the same and only
+  the figures differ. B has no errors.
+- **Shared:** P1, P3, P4, P8 and much of P13. Both miss P5 and P10, the two
+  numerical Majors.
+
+The solo sessions put the two closer: A 6 found and 5 partial, B 4 found, 3
+found in part and 5 partial, with each touching 5 of the 7 Major problems.
+The head-to-head counts B about 1½ problems ahead.
+
+**Implications for later comparisons.**
+
+- The App's runs share two faults across efforts: both smooth the GOR/PR
+  sentence, and both evaluations read Table 2's pump price as one pump.
+- Codex's two close readings each lose part of the contributions: medium
+  reframed contribution (b), and high drops (a) and (b) as claims.
+- Both head-to-heads here chose the letters Barnett's did, close reading A
+  and evaluation B, so Experiment 4 should lean on confirmed findings and the
+  solos as well.
 
 ## Kanbur experiment 3 — Medium semifinal
 
@@ -763,7 +844,7 @@ problems; A has 7 found and 3 partial, B 8 found and 3 partial.
 
 | Run | Configuration | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- |
-| **?** | winner of Experiment 2 | | | |
+| **?** | Codex, high (winner of Experiment 2) | about 7–8 min | about 3 min | not reported |
 | **?** | API, high | $0.400 · 6 min 2 s | $0.243 · 2 min 28 s | $0.643 |
 
 ## Kanbur experiment 5 — Final
