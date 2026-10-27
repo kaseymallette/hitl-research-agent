@@ -2493,7 +2493,7 @@ The rest of the folder is ready:
 
 Start with prompt 2, since the lists already exist. When you record the letters in the key, A is Sol medium and B is Astra low, the same order as Experiment 3.
 
-## 28. Evaluate results for experiment 4
+### 28. Evaluate results for experiment 4
 
 **Prompt:** Finished experiment 4! Can you check the results, determine the winner, and show your reasoning?
 
@@ -2747,6 +2747,263 @@ Folders: outputs/judgments/kanbur/ has references/ and exp1–exp5, each with a 
 Setting up a judging folder: copy each run’s two files from runs/<configuration>/ into runs/A/ or runs/B/. Copy only the files, because the copy folders are named after their configurations. Never include Codex’s run_note.md, because it names its configuration.
 
 I also added runs/ to the README’s output layout.
+
+### 37. Check claims reference for Kanbur
+
+**Prompt:** Check the references for kanbur. Don't use my notes, let's just see if there's anything we need to add. You can refer to the outputs because the evaluations will be blindly run outside of this repo.
+
+**Response:** The claims list checks out against the article—numbers, quotes, and flags all match. Next I'll eyeball the figure readings and cross-check the six runs for anything the list might have missed.
+
+The figures check out—Figure 6's surfaces rise toward the large-area corner, and Figure 8's bars span roughly 3.7212 to 3.7262 years. Next I'll check what the runs recorded that the list is missing.
+
+Only Table 1's full values show up in two or more runs but not in the list, and the list gives just example values on purpose. Checking numbers a single run recorded:
+
+All single-run numbers are accounted for in the equation coefficients or Table 1, so nothing's missing from the claims list. Now I'll check for any discrepancies the runs flagged that aren't marked with ⚠ in the list.
+
+Kanbur's claims list doesn't need anything added. Only the claims list exists so far: `references/` has no `problems_reference.md` yet, because prompt 5 hasn't been run. So there was no problems list to check.
+
+**Against the article.** I read the article's full text, Summary through the Conclusion, and rendered the pages with Figures 6–8.
+- **Text:** every number, quotation and hedge I checked in the list matches the article. That includes Tables 1–3, the economic constants (2.74, 0.2552, 1.092%, 15%, 8000 h, 1.7%, 20 years) and all the Section 4 percentages.
+- **Coverage:** every section and subsection has its conclusion on the list, along with the four contributions (a)–(d), the eight conclusion bullets, all ten figures and all three tables.
+- **Figure readings:** the readings made by eye hold up. Figure 6's surfaces do rise toward the large-area corner, which conflicts with the prose. Figure 8's bars do run from about 3.7212 to 3.7262 years.
+
+**Against the six runs** (from the uniform copies):
+- **Numbers the list doesn't hold:** these are all equation coefficients (Eqs 1–17 and Appendices A–C) or the full set of Table 1 values. The list gives only example values from Table 1, but the mechanical check compares runs against the article, not the list, so that's fine. No claim is missing.
+- **Discrepancies the runs noticed:** every one is already flagged with ⚠ on the list. These are Eq 24 printed the same as GOR, the duplicated "q^T" header in Table 1, "c3 = u3" in Table 3, "2.74 m³/h", 5.12 against 5.13 cm², Figure 6's direction against the prose, and the conclusion's COP and water ratios.
+
+The list was written with a lot of care. Its ⚠ flags should stop a judge from marking a run wrong for faithfully reporting one of the article's own inconsistencies. I didn't change any files.
+
+When prompt 5 has written the problems list, I can check it against the article and the six evaluations the same way.
+
+### 38. Check problems list for Kanbur
+
+**Prompt:** Can you check on the problems list for Kanbur? I just added it.
+
+**Response:** The article checks I've done so far match: quotes, values, Table 1's U×ΔT pattern and the cost matrix rows. Now I'm comparing the list against the six runs' evaluations.
+
+Everything I checked in the list matches the article. The six runs raise three problems the list doesn't cover, and one of them comes up in all six. I'm writing up the findings now.
+
+The problems list matches the article, but it's missing problems the runs found, one raised by all six runs and one by five. The list is the same in the repo and in `/Users/kaseymallette/evaluations/references/`.
+
+**Against the article:**
+- **Quotes:** every one I checked against the article text is right. That includes "PP is assumed constant", "roundly 3.72 years", "highest values at the minimum membrane area… nearly 14 times higher", the chemical-exergy line, and "high replacement cost values".
+- **Values:** all the numbers match the article: 6.13 and 0.14 kg/day, 93.3%, 27.3% and 53.7%, SI of 2.16 and 1.38, 2.15× against 1.5×, 5.12, 5.13 and 5.19 cm², 2.74 "m³/h", the Table 2 prices, 1.092%, 0.2552, 8000 h, and 1.7% over 20 years.
+- **Arithmetic:** I reran the list's calculations and they hold. Annual water value comes to about 6 SGD (P1). SI = 1/(1 − ε) fits both ends of the range (P4). PR comes out at most about 0.5% (P6). The total cost inputs are about 0.06–0.25 SGD/h (P10). Table 1's first q^T column is U × ΔT, for example 524.75 × 20 = 10,495 (P16). η comes out about 73% (P20).
+- **Wrong equation numbers:** the article's text does say "Equation (31)/(32)/(33)" where it means Eqs. 28–30, as P18 says.
+- **Cost matrix:** row 4 of Eq. 34 reads as P11 describes.
+
+**Against the runs**, most of what they raise is already on the list:
+- the payback arithmetic
+- Eq. 24 being the same as GOR
+- chemical exergy
+- the cost-rate objectives
+- Q̇_DC as a design variable
+- 5.13 against 5.19 cm²
+- the circular validation
+- fouling and corrosion
+- no comparison with other uses of the heat
+
+**What the list is missing:**
+
+1. **The 20 °C permeate supply (all six runs).** Stream 5 enters at 293.15 K, while the seawater comes in at 302.75 K. Nothing says where this colder water comes from, or what it costs in energy and money to keep it cold. Yet the whole process depends on that temperature difference. The list mentions stream 5 only in P11, and only for its exergy cost. A run that raises this gets no credit for it now. I'd add it as **Moderate**.
+
+2. **SI read as sustainability evidence (five runs).** The runs point out that the "sustainability index" is only an exergy ratio. It says nothing about discharge, materials or environmental impact. P7 covers SI being an identity, but not this mislabel. It could go into P7 as one sentence.
+
+3. **Flux is defined from outlet flows (Eq. 13, one run, api_medium).** J is defined as (ṁ₃ − ṁ₄)/A_m. The article picks this over permeability-based methods because those need measured membrane characteristics. But for a system that hasn't been built, the outlet flows are unknowns. The article never says how J was actually computed, so its numbers can't be reproduced. I'd add it as **Minor**.
+
+The runs raise two other things that I'd leave off. The funding and SDG framing aren't problems in the argument. Codex medium also notes that the annual-cost equations leave the time conversions unstated, which is close enough to P18.
+
+If you add entries, both copies need the same change. I haven't edited either one.
+
+### 39. Add to the problems list for Kanbur
+
+**Prompt:** Add the cold-side permeate entry, the SI sustainability point in P7, and the Eq. 13 flux entry to both copies of problems_reference.md.
+
+**Response:** I've added all three to the problems list. Both copies are the same again: the repo's [problems_reference.md](outputs/judgments/kanbur/references/problems_reference.md) and the one in `/Users/kaseymallette/evaluations/references/`.
+
+- **P7:** a new bullet. Despite its name, SI is only a ratio of exergy supplied to exergy destroyed, so it says nothing about brine discharge, materials or environmental impact. It isn't evidence that the system is sustainable.
+- **P22 [Moderate]:** the 20 °C permeate supply. The permeate enters at 293.15 K, almost 10 K colder than the seawater, and the paper never says where that water comes from. Keeping it cold would take either a steady cold supply or a chiller. Neither its energy nor its cost appears in the economic model or the exergy balance. The entry links to P1, P3 and P10.
+- **P23 [Minor]:** Eq. 13 defines the flux from outlet flows, which are unknown for a system that hasn't been built. The paper never gives the relation that actually predicts the flux. The entry says this is a gap in the reporting, not proof that the computed flux is wrong.
+
+To keep P1–P21 numbered as they were, I put the two new entries in a new last section, "I. System boundary and model closure." I added both to the summary table and updated P7's row. The page references come from the article text. 
+
+### 40. Naming conventions of experiments
+
+**Prompt:** Also, you were labeling the experiments K1-K5, where I changed it back to experiments 1-5 for Kanbur. Can you check the chart in @docs/EVALUATION_KEY.md and make sure it matches the barnett format?
+
+**Response:** The bracket SVG already says Experiments 1–5. The K labels are only in the key, and in your PROMPT_LOG, which I'll leave alone. I'm updating the key now.
+
+The Kanbur chart in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) now follows the Barnett format. The key also no longer uses K1–K5 anywhere.
+
+**Results table:** it now has Barnett's four columns: Experiment, Close-reading winner, Evaluation winner and Overall winner. The rows are labelled the same way, "1 · Medium first round" through "5 · Final", and each links to its section. All three winner columns read *to be decided* for now. The old Division, Round and Matchup columns are gone. That information is still in each experiment's **Matchup:** line and in the bracket.
+
+**Other K labels changed:**
+- the paragraph in Kanbur judging setup
+- "winner of Experiment 1/2" in the matchups and cost tables of Experiments 3 and 4
+- setup steps 4–6
+- the judgments-folder table, which now uses 1–5 like the other columns
+
+**Winner lines:** each Kanbur experiment's "Winner:" line now reads **Overall winner:**, the same as Barnett's.
+
+The bracket SVG already said Experiments 1–5, so it needed nothing. I left PROMPT_LOG.md as it is, even though it still says K1–K5, because it's your log. Every link in the key works, and nothing is committed.
+
+### 41. Check IDs for Kanbur, Experiment 1
+
+**Prompt:** Thanks! Ready for experiment 1! A is App Medium and B is Codex Medium. Can you check the IDs to make sure they match?
+
+**Response:** The ids match.
+
+| Letter | File | id | Key's run |
+| --- | --- | --- | --- |
+| **A** | `analysis.json` | `5698e6b9-…` | App medium ✓ |
+| **A** | `argument_evaluation.json` | `279c062d-…`, analysis_id `5698e6b9-…` | App medium ✓ |
+| **B** | `analysis.json` | `3686ad7a-…` | Codex medium ✓ |
+| **B** | `argument_evaluation.json` | `8dd71213-…`, analysis_id `3686ad7a-…` | Codex medium ✓ |
+
+Each evaluation's `analysis_id` points to the close reading under the same letter. All four files are identical to the copies in `outputs/judgments/kanbur/runs/app_medium/` and `codex_medium/`.
+
+The rest of the folder is set up correctly:
+- `RUBRIC.md` and `prompts/` match the repo.
+- `article.pdf` is the Kanbur PDF.
+- `references/` has both lists, the latest versions with P22 and P23.
+- `judgments/` is empty.
+- `run_note.md` isn't in the folder, and no file or folder name says which run is which.
+
+Both reference lists are already written, so skip prompts 1 and 5 and run the other six.
+
+### 42. Determine winner of Kanbur, experiment 1
+
+**Prompt:** Results for experiment 1 are in! Can you evaluate the results and determine a winner and note your reasoning?
+
+**Response:** All 14 recorded ids match the key. Next I'm reading the six judgments.
+
+Confirmed in the runs: App's Table 1 unit change, and its unread Figures 4 and 10. Also Codex's dropped "for real applications" and its "c3 = u3". Next I'm writing up Experiment 1 in the key.
+
+**Winner: B, Codex medium, narrowly.** It goes on to play API medium in Experiment 3.
+
+I checked the ids first. All six judgments record the right ones: App medium's under A and Codex medium's under B, including the `analysis_id` values in the evaluations.
+
+**Close readings: Codex, narrowly.** The head-to-head chose B in both reading orders. I confirmed the deciding faults in the runs:
+- **Figures:** Codex reads what every figure shows except Figure 3. The App names Figures 4 and 10 without saying what they show, so its trends come from the prose instead.
+- **Table 1:** the App changes the units, saying the heat-flux columns are "in W/m²" when the table prints W/m²K. The prompt forbids that kind of silent correction.
+- **What's printed:** Codex keeps more of it as printed. It records both halves of the contradictory GOR/PR sentence, Table 3's "c3 = u3", and "the PP is assumed constant".
+- **Where the App is better:** it keeps the abstract's "economically feasible for real applications", which Codex reduces to "evidence of economic feasibility". It also gives the full Table 1 values and catches two abstract claims Codex misses.
+
+The solos are closer than the head-to-head. Both runs score 97% at 2 on A1, and the App's solo judge put its strength of language (A3) at 2, against Codex's 1. So "narrowly" is the right word.
+
+**Evaluations: Codex, narrowly.**
+- **Found only by Codex:** P8 (chemical exergy dropped in a desalination system) and P7 (SI read as evidence of sustainability). It also has the stronger argument on P4: flux doesn't depend on area, so Eq. 24 would rise with area, yet Figure 5B falls.
+- **Found only by the App:** P5, a Major problem Codex misses. The App also states the payback gap as about 980 years.
+- **The App's error:** it says Table 2 gives SGD 950 for one pump, but that row prices the feed and permeate pumps together. Its 980 years is about twice too high, though its conclusion holds either way. Codex makes no errors.
+- **Major problems:** each run finds 5 of the 7.
+
+**Why this decides it:** neither configuration reports a cost, so the findings decide. On letter bias, every Barnett close-reading head-to-head chose A. This one chose B, so the close-reading verdict doesn't look like simple letter bias. The evaluation verdict went to B, as every Barnett evaluation did. That's why I based it on the findings I confirmed in the runs rather than on the verdict alone.
+
+In [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) I filled in:
+- Experiment 1's write-up, in the same format as Barnett's
+- its row in the Kanbur results table
+- Codex medium as the winner of Experiment 1 in Experiment 3's run table
+
+One thing to watch in Experiment 3: Codex dropping "for real applications" is the same kind of fault as Sol medium's lost open-loop condition in Barnett, a scope condition dropped from a headline claim.
+
+### 43. Change experiment 5 
+
+**Prompt:** I want to change how we do experiments 5. I was thinking since we are only doing head to heads, and we want to consider letter bias, we should do A-B, B-A, and then compare both results to determine the winner. 
+
+**Response:** That's cleaner. A-B then B-A is balanced: each champion sits under each letter once, so neither gets the extra letter that A-B, B-A, A-B gives one of them.
+
+How the result reads:
+
+- **The same configuration wins both sessions:** it wins that head-to-head, and the result doesn't depend on the letters.
+- **The sessions split:** each session chose the same letter, so the verdict followed the letter. Treat it as a tie, as in Barnett's final, and decide on the findings confirmed in the runs. That fits what both sessions agree each run found or missed.
+
+The count becomes 28: 24 in Experiments 1–4, plus 2 close-reading and 2 evaluation head-to-heads in Experiment 5.
+
+To set it up, number the files by session, `close_reading_head_to_head_1.md` and `_2.md` and the same for the evaluations, so the second session doesn't overwrite the first. For session 2, swap which champion's files go in `runs/A/` and `runs/B/`. The ids in each judgment show which run was under each letter.
+
+If you want this, I'd update three places:
+- **The key:** the judging setup (28 judgments, two sessions in Experiment 5 and how a split is read), setup step 6, and a session table in Experiment 5.
+- **JUDGING_PROMPTS.md:** a note on Experiment 5's two sessions and the numbered file names.
+- **The rubric's new section:** the order-check line, reworded to say the final swaps the letters between two sessions.
+
+### 44. Run Experiment 5, B-A for Barnett 
+
+**Prompt:** Okay, let's run experiment 5 of Barnett for BA. I renamed the outputs in Barnett 5 to say AB at the end. Can you check that the IDs are correct to run the inverse, BA? Also check that the article is correct and the references are correct. I put the new Rubric too. 
+
+**Response:** The runs, references, rubric and prompts all check out. One concern: the repo's Barnett PDF shows as deleted, so I'm checking whether it was moved into the folder as `article.pdf`.
+
+The folder is set up correctly for the BA session, with the letters swapped from session AB.
+
+**Runs**
+
+| Letter | File | id | Run |
+| --- | --- | --- | --- |
+| **A** | `analysis.json` | `182e2233-…` | text_crops Sol medium ✓ |
+| **A** | `argument_evaluation.json` | `77671eb8-…`, analysis_id `182e2233-…` | text_crops Sol medium ✓ |
+| **B** | `analysis.json` | `b52aa04e-…` | PDF Sol medium ✓ |
+| **B** | `argument_evaluation.json` | `b35af235-…`, analysis_id `b52aa04e-…` | PDF Sol medium's `argument_evaluation_2.json` ✓ |
+
+All four files are byte-identical to the originals in `adr_0013/`. B's evaluation is `argument_evaluation_2.json`, the one judged in every earlier Barnett experiment.
+
+**The rest of the folder**
+- **Article:** `article.pdf` is identical to the committed Barnett PDF.
+- **References:** both lists match `outputs/judgments/barnett/references/`.
+- **Rubric:** it's the repo's `RUBRIC.md` up to the new framework section, with nothing else changed.
+- **Prompts:** they match the repo.
+- **Judgments:** `judgments/` is empty.
+
+**The renamed outputs:** `exp5_barnett_pdf_vs_text_crops/` now has `close_reading_head_to_head_AB.md` and `evaluation_head_to_head_AB.md`. Git sees these as deletions of the old names plus new files, and committing them records the renames. For this session, run only prompt 4 and rename the result `close_reading_head_to_head_BA.md` to match.
+
+### 45. Evaluate results of A-B, B-A for Barnett, experiment 5
+
+**Prompt:** Check the results for Barnett, experiment 5. Compare A-B to B-A, and re-determine the winner. Add your reasoning.
+
+**Response:** The ids are right in both new judgments: text is under A and PDF under B. You also reran the evaluation BA, so I'm reading both new files.
+
+The close reading favored the PDF in both runs while the evaluation favored letter B both times, so the verdict tracked position rather than content—a tie. I'll verify the run details before updating the key.
+
+I've confirmed the PDF correctly describes the graphical abstract and reporting dimension, while the text version preserves both halves of footnote b and restores the open-loop condition to its proper support. Now updating the key.
+
+**The winner is still GPT-6.1 Sol medium on the PDF, and the case for it is now stronger.**
+
+Both new judgments record the right ids: the text run under A and the PDF run under B.
+
+**Close readings: the PDF won both sessions.**
+
+| Session | A | B | Verdict |
+| --- | --- | --- | --- |
+| AB | PDF | text | **A** (PDF), narrowly |
+| BA | text | PDF | **B** (PDF), narrowly |
+
+The PDF won as A and as B, so this verdict didn't follow the letter. Every other Barnett head-to-head did. The two judges found the same faults on each side, and I confirmed the new specifics in the runs:
+- **The text run:**
+  - extraction debris in the citation markers and entries
+  - the cut "Digital water sobriety…" sentence marked `verbatim`
+  - "gap T1" and "retained image" labels in Table 1's support items
+  - a "split" §2 passage that the PDF doesn't have
+  - no mention of the graphical abstract
+- **The PDF run:** it drops the "once-through or open-loop" condition on the curtailment risk again. In the text run, the claim text broadens that risk too, but its support puts the condition back.
+- **New in BA:**
+  - the PDF run records all five research priorities and §5.1's "mandatory facility-level WUE" reporting dimension as claims
+  - the text run keeps both halves of Table 1's footnote b and the prose's 25,500 m³ figure
+
+**Evaluations: still a tie.** All four sessions chose B, two in each order: the text run when it was B, the PDF run when it was B. The new BA session credits the same finds as before:
+- **The text run:** P13, P21, P8 and P9.
+- **The PDF run:** P16, P23, P24, P29, P5, and P18 in part.
+
+Neither run makes a factual error. The judge also says the margin is close to a tie for anyone who weights numerical checks heavily.
+
+**Why the PDF wins:** with the evaluations tied, the close reading decides it, and it's the one verdict that held with the letters swapped. The input points the same way: the text needs a preparation step and leaves artifacts in the reading, all to save $0.02 a run.
+
+**What I changed in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md):**
+- **Experiment 5:**
+  - the winner line no longer names a letter, and the run table shows each run's letter in both sessions
+  - the close-reading session table and the faults confirmed in both sessions
+  - the evaluation table now lists all four sessions and marks the two kept files
+  - a new bottom line
+- **Barnett judging notes:** the verdicts now *mostly* follow the letters. The final's close reading is the exception.
+- **Overview and results row 5:** the close reading won "both orders".
+- **Experiment 5 records:** each run's letter in both sessions, and the `_AB` and `_BA` file names.
 
 ---
 
