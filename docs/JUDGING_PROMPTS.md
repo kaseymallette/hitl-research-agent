@@ -66,11 +66,11 @@ runs are judged against the same lists.
 
 ### A final with two sessions
 
-From Kanbur's final on, a final runs only prompts 4 and 8, each in two
-sessions with the letters swapped: session 1 with one champion under A,
-session 2 with the other. Before each session, empty `judgments/` or move the
+A final runs only prompts 4 and 8, each in two
+sessions with the letters swapped: session AB with one champion under A,
+session BA with the other. Before each session, empty `judgments/` or move the
 earlier file out, and afterwards rename the judgment by its session, such as
-`close_reading_head_to_head_1.md` and `_2.md`. A configuration wins a
+`close_reading_head_to_head_AB.md` and `_BA.md`. A configuration wins a
 head-to-head only if it wins both sessions; a split is a tie.
 
 ---

@@ -12,8 +12,8 @@ considered afterwards.
 
 Selected from the six Barnett configurations. The final favors PDF for its
 cleaner source representation and lack of an extraction/preparation step;
-the argument evaluations are treated as tied because the verdict followed
-the run letter. This is the overall selection for this experiment, with the
+its close reading won with the letters both ways, and the argument
+evaluations are treated as tied because their verdict followed the letter. This is the overall selection for this experiment, with the
 judging limitations described below.
 
 The **PDF** and **Extract** (text and crops) divisions use the same seeds.
@@ -46,7 +46,7 @@ role of close readings in later synthesis—not just the individual verdicts.
 | [2 · Extract first round](#experiment-2--extract-first-round) | Sol high, narrowly | Sol medium, clearly | **Sol medium** |
 | [3 · PDF semifinal](#experiment-3--pdf-semifinal) | Sol medium, modestly | Astra low, narrowly | **Sol medium** |
 | [4 · Extract semifinal](#experiment-4--extract-semifinal) | Sol medium, modestly | Astra low, narrowly | **Sol medium** |
-| [5 · Final](#experiment-5--final) | PDF, narrowly | Tie (followed the letter) | **Sol medium, PDF** |
+| [5 · Final](#experiment-5--final) | PDF, narrowly, both orders | Tie (followed the letter) | **Sol medium, PDF** |
 
 ## Kanbur results
 
@@ -63,12 +63,14 @@ role of close readings in later synthesis—not just the individual verdicts.
 These are the head-to-head verdicts; disagreements with solo judgments are
 noted in the experiment details.
 
-**The verdicts follow the letters.** Every close-reading head-to-head chose
-run A, and every evaluation head-to-head chose run B, whichever configuration
-was under each letter. Experiment 5's evaluation was run three times, twice
-with the PDF as A and once with the letters swapped, and B won all three. The
-order check in each session can't catch this, because the judge knows the
-letters in both readings. So the verdicts alone don't show that one
+**The verdicts mostly follow the letters.** In Experiments 1–4, every
+close-reading head-to-head chose run A and every evaluation head-to-head chose
+run B, whichever configuration was under each letter. Experiment 5 ran each
+head-to-head with the letters both ways. Its evaluation went to B in all four
+sessions, two in each order. Its close reading went to the PDF both times, as
+A and as B, the only Barnett verdict that held with the letters swapped. The
+order check in each session can't catch letter bias, because the judge knows
+the letters in both readings. So the verdicts alone don't show that one
 configuration is better; each selection rests on cost and on findings
 confirmed in the runs themselves, which don't depend on the judge.
 
@@ -395,29 +397,38 @@ B's missed P3 and scored 1 on B2.
 **Matchup:** PDF champion vs. Extract champion: Sol medium on the PDF vs. Sol
 medium on extracted text and crops.
 
-**Overall winner:** **A — GPT-6.1 Sol medium, PDF** — champion
+**Overall winner:** **GPT-6.1 Sol medium, PDF** — champion
 
-The PDF narrowly wins the close reading; the evaluation is a tie, since its
-verdict went to whichever run was B. The extracted text is 7% cheaper per run
-($0.282 vs. $0.302) but needs a preparation step, and it leaves artifacts of
-that preparation in the reading. The PDF reading has none of them, and close
-readings are what Phase 3's synthesis uses.
+The PDF narrowly wins the close reading in both letter positions: as A in
+session AB and as B in session BA. The evaluation is a tie, since its verdict
+went to whichever run was B in every session. The extracted text is 7%
+cheaper per run ($0.282 vs. $0.302) but needs a preparation step, and it
+leaves artifacts of that preparation in the reading. The PDF reading has none
+of them, and close readings are what Phase 3's synthesis uses.
 
 Same model, same effort, same instructions: only the input differs. Both runs
 were judged alone in earlier experiments (the PDF run in Experiments 1 and 3,
-the text run in 2 and 4), so this experiment has only the two head-to-heads.
+the text run in 2 and 4), so this experiment has only the head-to-heads, each
+run twice with the letters swapped.
 
-| Run | Configuration | Input | Total |
-| --- | --- | --- | --- |
-| **A** | GPT-6.1 Sol medium (winner of Experiment 3) | PDF | $0.302 |
-| **B** | GPT-6.1 Sol medium (winner of Experiment 4) | extracted text and crops | $0.282 |
+| Run | Session AB | Session BA | Input | Total |
+| --- | --- | --- | --- | --- |
+| GPT-6.1 Sol medium (winner of Experiment 3) | **A** | **B** | PDF | $0.302 |
+| GPT-6.1 Sol medium (winner of Experiment 4) | **B** | **A** | extracted text and crops | $0.282 |
 
 ### Detailed findings
 
-**Close readings: A (PDF), narrowly.** The judge read every claim in both
-runs, not a sample.
+**Close readings: PDF, narrowly, in both sessions.**
 
-| | A (PDF) | B (text) |
+| Session | A | B | Verdict |
+| --- | --- | --- | --- |
+| AB | PDF | text | **A** (PDF), narrowly |
+| BA | text | PDF | **B** (PDF), narrowly |
+
+Both judges read every claim in both runs, not a sample. The scores below are
+session AB's; session BA's counts agree.
+
+| | PDF | text |
 | --- | --- | --- |
 | A1, every claim | no 0s, about four at 1 | one 0, about three at 1 |
 | A2, coverage | everything on the list; graphical abstract in `meaning` | everything but the graphical abstract; one research priority only in `meaning` |
@@ -425,56 +436,69 @@ runs, not a sample.
 | A4, verbatim · numbers · references | 13/13 · 97/97 · 64/64, clean | 16/17 · 101/101 · 64/64, damaged markers |
 | Steps · claims | 25 · 117 | 26 · 109 |
 
-- **B carries artifacts of its prepared input, all confirmed in the run.**
-  Three citation markers hold extraction debris ("(Holzle, ¨ 2022)",
-  "(Yanez-Barnuevo, 2025˜ )"), where A prints "Hölzle" correctly. Table 1's
-  support items say "gap T1" and "read from the retained image", though the
-  table is printed as text. Its reading plan describes an "interrupted
-  methodological passage" the PDF doesn't have, and that misplaces one §2
-  claim. And B never mentions the graphical abstract.
-- **B marks the cut "Digital water sobriety challenges…" sentence `verbatim`,**
-  the only 0 in either reading, the same fault found in Experiments 2 and 4.
-- **A softens or strengthens §4.2.** It drops the "once-through or open-loop"
-  condition from the curtailment claim, turns "raise ecological questions"
-  into "can coexist with", and drops "if widely scaled". B keeps all three,
-  and keeps the condition on the §1 projection. These are A's known faults
-  from Experiments 1 and 3.
+Both sessions found the same faults, all confirmed in the runs:
 
-The judge chose A because B's faults include a misquotation and a misdescribed
-location, where A's are fixable shifts in qualifiers, and called the margin
-small enough that weighing A3 first could favor B. A was the letter every
-close-reading head-to-head chose, and this one wasn't rerun with the letters
-swapped. The input artifacts above don't depend on that verdict.
+- **The text run carries artifacts of its prepared input.** Citation markers
+  and entries hold extraction debris ("(Holzle, ¨ 2022)",
+  "(Yanez-Barnuevo, 2025˜ )"), where the PDF run prints "Hölzle" correctly.
+  Table 1's support items say "gap T1" and "read from the retained image",
+  though the table is printed as text. Its reading plan describes an
+  "interrupted methodological passage" the PDF doesn't have, and that
+  misplaces one §2 claim. And it never mentions the graphical abstract.
+- **The text run marks the cut "Digital water sobriety challenges…" sentence
+  `verbatim`,** the only 0 in either reading, the same fault found in
+  Experiments 2 and 4.
+- **The PDF run softens or strengthens §4.2.** It drops the "once-through or
+  open-loop" condition from the curtailment claim, turns "raise ecological
+  questions" into "can coexist with", and drops "if widely scaled". The text
+  run's claim text broadens the curtailment risk too, but its support puts
+  the condition back. These are the PDF run's known faults from Experiments
+  1 and 3.
+- **Each records something the other leaves in `meaning`.** The PDF run
+  records all five §6.1 research priorities and §5.1's reporting dimension
+  ("mandatory facility-level WUE") as claims. The text run keeps both halves
+  of Table 1's footnote b and records the §3 prose's 25,500 m³ figure.
 
-**Argument evaluations: a tie.** The evaluation head-to-head was run three
-times; only the first is kept in the judgments folder.
+Both judges weighed the text run's misquotation and the false statements
+about the article's layout as heavier than the PDF run's qualifier shifts.
+Both called the margin small. Because the PDF won as A and as B, this verdict
+doesn't follow the letter. It is the only head-to-head in Barnett that won in
+both positions.
+
+**Argument evaluations: a tie.** The evaluation head-to-head was run four
+times. The first session with each letter order is kept in the judgments
+folder.
 
 | Session | A | B | Verdict |
 | --- | --- | --- | --- |
-| 1 (kept) | PDF | text | **B**, modest margin |
-| 2 | PDF | text | **B**, narrowly |
-| 3 | text | PDF | **B**, narrowly |
+| AB, 1 (kept) | PDF | text | **B** (text), modest margin |
+| AB, 2 | PDF | text | **B** (text), narrowly |
+| BA, 1 | text | PDF | **B** (PDF), narrowly |
+| BA, 2 (kept) | text | PDF | **B** (PDF), narrowly |
 
-The three sessions agree on what each evaluation found and differ only on how
-much it counts:
+The sessions agree on what each evaluation found and differ only on how much
+it counts:
 
 - **Found only by the text run:** P13 (the 25,500 m³ arithmetic) and P21
   (data-center figures used as AI figures), both Major, plus P8 and P9.
 - **Found only by the PDF run:** P16 (Table 1's values without a capacity
   denominator), P23 (the unreproducible method and source mix), P24 (two
-  misfitting citations), and P29, plus P5 tied to §4.5's own caveat.
+  misfitting citations), P29, and P18 in part, plus P5 tied to §4.5's own
+  caveat.
 - **Relevance:** the PDF run again calls the framework "rationing", which the
   article rejects; the text run engages its graduated form.
 - **Shared:** no factual errors in either.
 
 These are the same two evaluations judged in Experiments 1–4, and the same
-finds were credited to them there.
+finds were credited to them there. The kept BA session calls the margin close
+to a tie for a researcher who weights numerical checks heavily.
 
-**Bottom line.** With the evaluations tied and the close readings close, the
-input decides it on what the judge can't sway: the prepared text needs a
-preparation step that took manual fixes in Phase 1, it costs the reading
-accuracy about the article itself (its layout, its markers, its graphical
-abstract), and it saves $0.02 a run. The PDF wins.
+**Bottom line.** With the evaluations tied, the close reading decides it, and
+it is the one verdict that held with the letters swapped. The input points the
+same way on what the judge can't sway: the prepared text needs a preparation
+step that took manual fixes in Phase 1, it costs the reading accuracy about
+the article itself (its layout, its markers, its graphical abstract), and it
+saves $0.02 a run. The PDF wins.
 
 ## Barnett run records
 
@@ -588,12 +612,16 @@ Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
 
 **Sources and letter assignments**
 
-- A — `pdf__gpt-6.1-sol-medium/`: `analysis.json` and
+- `pdf__gpt-6.1-sol-medium/`: `analysis.json` and
   `argument_evaluation_2.json`, copied as `argument_evaluation.json`, the same
-  files as Experiment 1's B and Experiment 3's A.
-- B — `text_crops__gpt-6.1-sol-medium/`: `analysis.json` and
+  files as Experiment 1's B and Experiment 3's A. A in session AB, B in
+  session BA.
+- `text_crops__gpt-6.1-sol-medium/`: `analysis.json` and
   `argument_evaluation.json`, the same files as Experiment 2's B and
-  Experiment 4's A.
+  Experiment 4's A. B in session AB, A in session BA.
+
+Each judgment is named by its session: `close_reading_head_to_head_AB.md`
+and `_BA.md`, `evaluation_head_to_head_AB.md` and `_BA.md`.
 
 ---
 
@@ -749,8 +777,8 @@ only the head-to-heads, each run in two sessions with the letters swapped.
 
 | Session | A | B | Close reading | Evaluation |
 | --- | --- | --- | --- | --- |
-| 1 | Medium champion | High champion | | |
-| 2 | High champion | Medium champion | | |
+| AB | Medium champion | High champion | | |
+| BA | High champion | Medium champion | | |
 
 A configuration wins a head-to-head only if it wins both sessions. If the
 sessions split, each verdict followed its letter, and the head-to-head is a
@@ -816,9 +844,9 @@ content is unchanged, and the originals are untouched.
    `references/`, skip prompts 1 and 5, and run the other six.
 6. **Experiment 5:** both runs were judged alone in Experiments 3 and 4, so
    run only prompts 4 and 8, the two head-to-heads, in two sessions. Session
-   1 puts the Medium champion under A; session 2 swaps the letters. Name each
-   judgment by its session: `close_reading_head_to_head_1.md` and `_2.md`,
-   `evaluation_head_to_head_1.md` and `_2.md`.
+   AB puts the Medium champion under A; session BA swaps the letters. Name
+   each judgment by its session: `close_reading_head_to_head_AB.md` and
+   `_BA.md`, `evaluation_head_to_head_AB.md` and `_BA.md`.
 7. Record the letters in this key, and check the ids each judgment records
    against the table above.
 8. Copy only `judgments/` back, into the experiment's folder below.
