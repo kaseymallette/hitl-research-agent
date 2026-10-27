@@ -54,7 +54,7 @@ role of close readings in later synthesis—not just the individual verdicts.
 | --- | --- | --- | --- |
 | [1 · Medium first round](#kanbur-experiment-1--medium-first-round) | Codex, narrowly | Codex, narrowly | **Codex** |
 | [2 · High first round](#kanbur-experiment-2--high-first-round) | App, narrowly (solos favor Codex) | Codex, narrowly | **Codex** |
-| [3 · Medium semifinal](#kanbur-experiment-3--medium-semifinal) | *to be decided* | *to be decided* | *to be decided* |
+| [3 · Medium semifinal](#kanbur-experiment-3--medium-semifinal) | Codex, narrowly | API, narrowly | **Codex** |
 | [4 · High semifinal](#kanbur-experiment-4--high-semifinal) | *to be decided* | *to be decided* | *to be decided* |
 | [5 · Final](#kanbur-experiment-5--final) | *to be decided* | *to be decided* | *to be decided* |
 
@@ -829,12 +829,92 @@ The head-to-head counts B about 1½ problems ahead.
 
 **Matchup:** winner of Experiment 1 vs. (1) API, at medium effort.
 
-**Overall winner:** *to be decided*
+**Overall winner:** **A — (3) Codex, medium** — Medium division champion, advances to the final
+
+Codex narrowly wins the close reading and the API narrowly wins the
+evaluation; both verdicts hold in both reading orders, and both judges call
+their margin close to a tie. It is Barnett's split by letter again, close
+reading to A and evaluation to B. With the two this close, the experiment's
+own question decides it. [ADR-0020](adr/0020-codex-joins-experiment-2.md)
+asks whether Codex reads as well as the API, since it "could analyze the
+collection without the API's per-call cost". Here it does: the API's edge in
+the evaluation is one Minor problem, and Codex's close reading covers more of
+the article, which is what Phase 3 synthesizes. The API costs $0.551 a run;
+Codex runs within the subscription.
+
+Codex reuses Experiment 1's winning run (B).
 
 | Run | Configuration | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- |
 | **A** | Codex, medium (winner of Experiment 1) | about 7–8 min | about 3 min | not reported |
 | **B** | API, medium | $0.349 · 3 min 31 s | $0.202 · 52 s | $0.551 |
+
+### Detailed findings
+
+**Close readings: A, narrowly.**
+
+| | A (Codex) | B (API) |
+| --- | --- | --- |
+| A1, solo (30 sampled claims) | 93% at 2, 7% at 1 | 97% at 2, 3% at 1 |
+| A2, contributions (4) | 4 caught | 3 caught, C-a thinned |
+| A2, abstract claims (12) | 10 caught, 1 thinned, 1 missed | 10 caught, 1 thinned, 1 missed |
+| A2, tables (3) | 3 read | 2 read, T3 named only |
+| A3, strength of language | 1 | 1 |
+| A4, verbatim · numbers · references | 0/0 · 123/123 · 47/47 | 2/2 · 124/124 · 47/47 |
+| Steps · claims | 36 · 151 | 34 · 129 |
+
+The two readings take the same path and catch the same inconsistencies in
+the article. The differences, confirmed in the runs:
+
+- **A covers more.** It records S4g.4, the thermoeconomic section's
+  conclusion that levelized costs rise with the load and depend on the
+  exergetic costs, which the reference list marks as one to catch. It
+  records contribution (a), "neither this hybrid design nor the use of
+  two-phase immersion cooling waste heat for desalination has previously been
+  investigated". It reads Table 3, including its printed "c3 = u3", and says
+  what Figures 7 and 10 show. B names Table 3 and those two figures without
+  reading them, and has no claim for contribution (a)'s "not investigated
+  before".
+- **B keeps more of the author's strength.** It keeps the abstract's
+  "economically feasible for real applications" and "seems sufficient". A
+  drops both, the first as in Experiment 1, and turns the Conclusion's future
+  work from "can be investigated" and "can be experimentally tested" into
+  "should".
+- **B has shifts of its own.** It drops "may be" from the authors' reason for
+  the flat payback, and writes that water "provides an economic benefit that
+  can offset the additional expenditure", where the article says water's
+  value "can be used to understand whether" the hybrid is feasible.
+
+Both judges score A3 at 1. The solo sessions put B ahead on A1 by one claim
+in 30. The head-to-head decided on coverage of displayed elements and
+section conclusions, and says a researcher weighing strength of language
+first could call it a tie.
+
+**Argument evaluations: B, narrowly.** Against the 23-problem list:
+
+- **Found only by B:** P23 in full, the only run in Kanbur to find it so far:
+  Eq. 13 "cannot independently predict flux when those outlet flows are
+  themselves unknown". B also partly finds P14 and states P13's cost-rate
+  point: "Minimizing SGD/hour is not equivalent to minimizing cost per cubic
+  metre".
+- **Found only by A:** the reason the reported ε can't come from Eq. 24, since
+  flux doesn't depend on area, and more of P7 (substituting SI for ε needs a
+  relationship shown beyond these trends).
+- **Shared:** P1, P2, P3, P4, P8 and P22, and much of P13. Both miss P5 and
+  P10, the two numerical Majors, as both Experiment 2 runs did.
+- **Errors:** none in either. B prices "the additional permeate pump" at the
+  950 SGD that covers both pumps, but hedges it.
+
+The solos agree it is close: A finds 11 of the 23 at least in part, B 13,
+each with 5 of the 7 Majors.
+
+**Implications for later comparisons.**
+
+- Codex medium's lost "for real applications" now shows in two
+  head-to-heads. Its "can" → "should" habit is new here.
+- Experiments 2 and 3 both split by letter the way Barnett did. Experiment
+  5's two sessions with the letters swapped should show whether that's the
+  judge or the runs.
 
 ## Kanbur experiment 4 — High semifinal
 
