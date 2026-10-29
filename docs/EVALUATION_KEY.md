@@ -32,7 +32,13 @@ question for this article: medium or high.
 
 ![Kanbur tournament bracket: Codex wins Experiments 1–4; Codex medium faces Codex high in the final, with Experiment 5 pending.](assets/kanbur-evaluation-bracket.svg)
 
-**Overall winner:** To be decided.
+**Overall winner: GPT-6.1 Sol medium through Codex.**
+
+Codex won every round. The API didn't win either semifinal; both were close,
+and Codex runs within the subscription where the API costs $0.55–0.64 a run.
+In the final, Codex medium beat Codex high on both the close reading and the
+evaluation with the letters both ways, the first Kanbur verdicts that held
+whichever run was A.
 
 ## Barnett results
 
@@ -56,7 +62,7 @@ role of close readings in later synthesis—not just the individual verdicts.
 | [2 · High first round](#kanbur-experiment-2--high-first-round) | App, narrowly (solos favor Codex) | Codex, narrowly | **Codex** |
 | [3 · Medium semifinal](#kanbur-experiment-3--medium-semifinal) | Codex, narrowly | API, narrowly | **Codex** |
 | [4 · High semifinal](#kanbur-experiment-4--high-semifinal) | Codex, narrowly (solos favor API) | Tie | **Codex** |
-| [5 · Final](#kanbur-experiment-5--final) | *to be decided* | *to be decided* | *to be decided* |
+| [5 · Final](#kanbur-experiment-5--final) | Codex medium, narrowly, both orders | Codex medium, narrowly, both orders | **Codex medium** |
 
 ## Barnett judging notes
 
@@ -1017,19 +1023,81 @@ partial, each with 4 of the 7 Majors found and P2 in part.
 **Matchup:** Medium champion vs. High champion: Codex medium (winner of
 Experiment 3) vs. Codex high (winner of Experiment 4).
 
-**Overall winner:** *to be decided*
+**Overall winner:** **GPT-6.1 Sol medium through Codex** — champion
+
+Codex medium wins both head-to-heads in both sessions: as A in session AB
+and as B in session BA. Every margin is narrow, but none of the four verdicts
+followed the letter. Higher effort doesn't buy a better reading or
+evaluation of this article, and the two take about the same time.
 
 Both runs were judged alone in Experiments 3 and 4, so this experiment has
 only the head-to-heads, each run in two sessions with the letters swapped.
 
 | Session | A | B | Close reading | Evaluation |
 | --- | --- | --- | --- | --- |
-| AB | Medium champion | High champion | | |
-| BA | High champion | Medium champion | | |
+| AB | Medium champion | High champion | **A** (medium), narrowly | **A** (medium), narrowly |
+| BA | High champion | Medium champion | **B** (medium), narrowly | **B** (medium), narrowly |
 
 A configuration wins a head-to-head only if it wins both sessions. If the
 sessions split, each verdict followed its letter, and the head-to-head is a
 tie, decided on the findings both sessions confirm in the runs.
+
+| Run | Session AB | Session BA | Close reading | Argument evaluation |
+| --- | --- | --- | --- | --- |
+| Codex, medium (winner of Experiment 3) | **A** | **B** | about 7–8 min | about 3 min |
+| Codex, high (winner of Experiment 4) | **B** | **A** | about 7–8 min | about 3 min |
+
+### Detailed findings
+
+**Close readings: medium, narrowly, in both sessions.** Both judges decided
+on the same difference, and both called the margin small enough that a
+researcher could call it a tie.
+
+- **Medium records the article's novelty claims; high doesn't.** Medium has
+  all four contributions, including "neither this hybrid design nor the use
+  of two-phase immersion cooling waste heat for desalination has previously
+  been investigated", and the Conclusion's "first time" and "for further
+  real-scale demonstrations". High's step 4 calls the contributions a
+  restatement of the Summary, which doesn't contain them, so they never
+  become claims. Found in Experiments 2 and 4 too.
+- **High adds Table 1 labels the table doesn't print** ("total" and "vapor"
+  heat flux, where both columns are headed "q^T (W/m²K)"). Medium records the
+  duplicate header and Table 3's "c3 = u3" as printed.
+- **High has the abstract's side.** It records AB1, AB6 and "economically
+  feasible for real applications", which medium drops, as it did in
+  Experiments 1 and 3. Each run keeps one half of the abstract-to-Conclusion
+  scope shift; neither sets the two side by side.
+- **Medium misframes contribution (b)** as DCMD being "a new
+  clean-water-producing alternative", where the article says "a new
+  alternative to the data center cooling systems". Found in Experiments 1
+  and 3.
+- **Both keep the GOR/PR contradiction and read Figure 6 rising with area**,
+  the thing the App's runs and API high hid.
+
+**Argument evaluations: medium, narrowly, in both sessions.** Against the
+23-problem list:
+
+- **Found only by medium:** the validation's circularity (P16): the DCMD
+  check "uses the same reference that supplies important module
+  characteristics", where high calls Table 1 "meaningful support". Medium's
+  P4 rests on the model itself: flux doesn't depend on area, so Eq. 24 must
+  rise with area while Figure 5B falls. High's rests on Figure 6A, which the
+  article's text contradicts (P5). Medium also challenges the advice to use
+  SI in place of ε (P7) and notes the cost equations' missing time
+  conversions.
+- **Found only by high:** the explicit bound for P1 (3.72 years of the
+  water's value repays only about 22.8 SGD), the cost-rate mechanism behind
+  the small-area optimum (P13), and the optimum's false precision (part of
+  P14).
+- **Shared:** P1–P4, P8, P13 and P22; both miss P5 and P10.
+- **Errors:** none in medium. Session AB found one small imprecision in
+  high: it sets Table 2's 950 SGD, which covers both pumps, against the added
+  pumping equipment. Session BA found none.
+
+**Bottom line.** For the second article in a row, Sol medium is the
+configuration selected, and here the verdicts back it with the letters both
+ways. Its known faults are the scope conditions it drops from headline
+claims: "for real applications" here, the open-loop condition in Barnett.
 
 ## Kanbur run records
 
