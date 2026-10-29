@@ -3221,6 +3221,125 @@ In [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) I added:
 - Experiment 4's write-up and its row in the results table: "Codex, narrowly (solos favor API)", "Tie", **Codex**
 - the two finalists named in Experiment 5's matchup line
 
+| Letter | File | id | Key's run |
+| --- | --- | --- | --- |
+| **A** | `analysis.json` | `21011001-…` | Codex medium ✓ |
+| **A** | `argument_evaluation.json` | `11111111-…`, analysis_id `21011001-…` | Codex medium ✓ |
+| **B** | `analysis.json` | `33333333-…` | Codex high ✓ |
+| **B** | `argument_evaluation.json` | `44444444-…`, analysis_id `33333333-…` | Codex high ✓ |
+
+A is the same pair of files as Experiment 2's B. All four files are byte-identical to the repo's copies, and both runs have the same shape: `id` and `content`, with no provenance block.
+
+The rest of the folder matches too:
+- `article.pdf` is the Kanbur PDF.
+- Both reference lists match the repo's.
+- `RUBRIC.md` is the version without the framework section.
+- `prompts/` matches the repo.
+- `judgments/` is empty.
+
+A search of both runs for "GPT-6", "API", "Codex" and "ChatGPT" found nothing.
+
+Skip prompts 1 and 5, and run the other six.
+
+### 52. Check IDs for Kanbur, experiment 5
+
+**Prompt:** Can you check the IDs for experiment 5? A: Codex medium B: Codex high
+
+**Response:** The ids match, so session AB of the final is ready.
+
+| Letter | File | id | Key's run |
+| --- | --- | --- | --- |
+| **A** | `analysis.json` | `3686ad7a-…` | Codex medium ✓ |
+| **A** | `argument_evaluation.json` | `8dd71213-…`, analysis_id `3686ad7a-…` | Codex medium ✓ |
+| **B** | `analysis.json` | `fa401e5e-…` | Codex high ✓ |
+| **B** | `argument_evaluation.json` | `dd922c0a-…`, analysis_id `fa401e5e-…` | Codex high ✓ |
+
+All four files are byte-identical to the repo's copies. These are the runs that won Experiments 3 and 4.
+
+The rest of the folder matches too:
+- `article.pdf` is the Kanbur PDF.
+- Both reference lists match the repo's.
+- `RUBRIC.md` is the version without the framework section.
+- `prompts/` matches the repo.
+- `judgments/` is empty.
+
+This matches session AB in the key's table, with the Medium champion under A, so there are no letters to record.
+
+For the final:
+1. **Session AB:** run only prompts 4 and 8. Rename the results `close_reading_head_to_head_AB.md` and `evaluation_head_to_head_AB.md`.
+2. **Before session BA:** clear `judgments/`, then swap the runs: Codex high under `runs/A/`, Codex medium under `runs/B/`.
+3. **Session BA:** run prompts 4 and 8 again, and name the results `_BA.md`.
+
+I can check the ids again once you've swapped the runs.
+
+### 53. Check IDs for BA
+
+**Prompt:** I'm ready to run BA. Can you check the IDs again?
+
+**Response:** The runs are swapped correctly. But `judgments/` still holds two files, so I'm checking whether they're the AB judgments already saved in the repo.
+
+The ids match for session BA, but clear out `judgments/` before you start it.
+
+| Letter | File | id | Run |
+| --- | --- | --- | --- |
+| **A** | `analysis.json` | `fa401e5e-…` | Codex high ✓ |
+| **A** | `argument_evaluation.json` | `dd922c0a-…`, analysis_id `fa401e5e-…` | Codex high ✓ |
+| **B** | `analysis.json` | `3686ad7a-…` | Codex medium ✓ |
+| **B** | `argument_evaluation.json` | `8dd71213-…`, analysis_id `3686ad7a-…` | Codex medium ✓ |
+
+The letters are swapped from session AB, and all four files are byte-identical to the repo's copies. The article, both reference lists, the rubric and the prompts all still match.
+
+**Clear `judgments/` before you start.** It still holds `close_reading_head_to_head.md` and `evaluation_head_to_head.md` from session AB. If they stay:
+- the BA sessions would overwrite them
+- the judge would see the AB verdicts sitting in the folder
+
+They're identical to the `_AB.md` copies in `outputs/judgments/kanbur/exp5_kanbur_medium_vs_high/`, so removing them loses nothing. The AB copies there also record the right ids.
+
+### 54. Determine winner of experiment 5
+
+**Prompt:** Experiment 5 is done! Can you evaluate the results and determine a winner?
+
+**Response:** All four judgments record the right ids: medium is A in AB, and high is A in BA. Next I'm reading them.
+
+The close reading went to Codex medium in both sessions: as A in AB and as B in BA. So that verdict doesn't follow the letter. Next I'm reading the two evaluation sessions.
+
+Codex medium wins both head-to-head comparisons regardless of letter assignment, consistent with findings already confirmed in Experiments 1–4. Now I'll write this up.
+
+**Winner: GPT-6.1 Sol medium through Codex.** That's Kanbur's champion, and Codex won every round of the tournament.
+
+All four judgments record the right ids: medium under A in session AB, high under A in session BA.
+
+**Codex medium won all four sessions.**
+
+| Session | A | B | Close reading | Evaluation |
+| --- | --- | --- | --- | --- |
+| AB | medium | high | **A** (medium), narrowly | **A** (medium), narrowly |
+| BA | high | medium | **B** (medium), narrowly | **B** (medium), narrowly |
+
+Medium won as A and as B on both tasks, so none of these verdicts followed the letter. Every margin was narrow, but this is the first Kanbur result checked with the letters swapped, and it held.
+
+**Close readings: medium, narrowly.** Both sessions decided on the same difference. The deciding faults on each side are ones I already confirmed in the runs in Experiments 1–4.
+- **Medium records the article's novelty claims.** It has all four contributions, plus the Conclusion's "first time" and "for further real-scale demonstrations". High writes the contributions off as a restatement of the Summary, so none of them become claims.
+- **High's other fault:** it gives Table 1's columns labels the table doesn't print. Medium records the duplicate header and Table 3's "c3 = u3" as printed.
+- **High's advantage:** it keeps the abstract's side, including "economically feasible for real applications", which medium drops again.
+- **Medium's other fault:** it misframes contribution (b) again.
+- **Both** keep the GOR/PR contradiction visible. The App's runs and API high hid it.
+
+**Evaluations: medium, narrowly.**
+- **Found only by medium:** the validation's circularity (P16), where high calls Table 1 "meaningful support". Its P4 argument rests on the model's own structure instead of on Figure 6A, which the text contradicts. It also challenges the advice to use SI in place of ε.
+- **Found only by high:** the explicit payback bound (about 22.8 SGD), the cost-rate mechanism behind the small-area optimum, and part of P14. These sharpen problems medium also found.
+- **Errors:** medium makes none. Session AB found one small imprecision in high, on Table 2's combined pump price.
+
+**What the tournament shows:**
+- **On how to run the prompts:** the API won neither semifinal. Codex read as well as it, without the API's $0.55–0.64 a run or the App's manual pasting.
+- **On effort:** high effort didn't buy a better result on this article. Both efforts took about the same time.
+- **Across both articles:** Sol medium is the selected configuration for Barnett and Kanbur alike. Its known weakness is the same in both: it drops scope conditions from headline claims, "for real applications" here and the open-loop condition in Barnett.
+
+In [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) I filled in:
+- **Kanbur tournament overview:** the overall winner, with a short summary.
+- **Results table, row 5:** "Codex medium, narrowly, both orders" for both tasks.
+- **The final's section:** the winner line, the session results, the run table and the detailed findings.
+
 ---
 
 ## Phase 3 — Synthesis

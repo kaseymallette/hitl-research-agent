@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1240" height="520" viewBox="0 0 1240 520" role="img" aria-labelledby="title desc">
 <title id="title">Kanbur evaluation tournament bracket</title>
-<desc id="desc">Kanbur compares GPT-6.1 Sol through API, App, and Codex in Medium and High effort divisions. In each division, seed 2 App plays seed 3 Codex; the winner faces seed 1 API, which has a bye. The division champions meet in Experiment 5. Codex wins Experiments 1–4 and advances from both divisions. The final compares Codex medium against Codex high in Experiment 5, which is to be decided.</desc>
+<desc id="desc">Kanbur compares GPT-6.1 Sol through API, App, and Codex in Medium and High effort divisions. In each division, seed 2 App plays seed 3 Codex; the winner faces seed 1 API, which has a bye. The division champions meet in Experiment 5. Codex wins Experiments 1–4 and advances from both divisions. Codex medium defeats Codex high in Experiment 5 to become the tournament champion.</desc>
 <rect width="1240" height="520" rx="16" fill="#f8fafc"/>
 <style>text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; } .label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; } .name { font-size: 15px; } .note { font-size: 12px; }</style>
 <text x="32" y="35" fill="#64748b" class="label" text-anchor="start" font-weight="400">KANBUR / GPT-6.1 SOL</text>
@@ -69,16 +69,16 @@
 <text x="893" y="359" fill="#0f766e" class="note" text-anchor="middle" font-weight="600">Codex advances</text>
 <rect x="494" y="182" width="252" height="203" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
 <text x="620" y="210" fill="#0f172a" class="label" text-anchor="middle" font-weight="400">FINAL · EXPERIMENT 5</text>
-<rect x="506" y="222" width="228" height="51" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+<rect x="506" y="222" width="228" height="51" rx="6" fill="#eff6ff" stroke="#2563eb"/>
 <text x="620" y="242" fill="#2563eb" class="label" text-anchor="middle" font-weight="400">MEDIUM CHAMPION</text>
-<text x="620" y="264" fill="#0f172a" class="name" text-anchor="middle" font-weight="400">(3) Codex</text>
+<text x="620" y="264" fill="#0f172a" class="name" text-anchor="middle" font-weight="600">(3) Codex</text>
 <text x="620" y="287" fill="#94a3b8" class="note" text-anchor="middle" font-weight="400">vs.</text>
 <rect x="506" y="290" width="228" height="51" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
 <text x="620" y="310" fill="#0f766e" class="label" text-anchor="middle" font-weight="400">HIGH CHAMPION</text>
 <text x="620" y="332" fill="#0f172a" class="name" text-anchor="middle" font-weight="400">(3) Codex</text>
-<text x="620" y="365" fill="#2563eb" class="label" text-anchor="middle" font-weight="700">TO BE DECIDED</text>
+<text x="620" y="365" fill="#2563eb" class="label" text-anchor="middle" font-weight="700">CHAMPION: CODEX MEDIUM</text>
 <path d="M 32 449 H 1208" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-linejoin="round"/>
 <text x="32" y="477" fill="#64748b" class="label" text-anchor="start" font-weight="400">SEEDS</text>
 <text x="100" y="477" fill="#475569" class="note" text-anchor="start" font-weight="400">1  API     2  App (work mode)     3  Codex</text>
-<text x="1208" y="477" fill="#475569" class="note" text-anchor="end" font-weight="400">Tinted cards = winners · Experiment 5 pending</text>
+<text x="1208" y="477" fill="#475569" class="note" text-anchor="end" font-weight="400">Tinted cards = match winners</text>
 </svg>
