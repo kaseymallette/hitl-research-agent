@@ -55,7 +55,7 @@ role of close readings in later synthesis—not just the individual verdicts.
 | [1 · Medium first round](#kanbur-experiment-1--medium-first-round) | Codex, narrowly | Codex, narrowly | **Codex** |
 | [2 · High first round](#kanbur-experiment-2--high-first-round) | App, narrowly (solos favor Codex) | Codex, narrowly | **Codex** |
 | [3 · Medium semifinal](#kanbur-experiment-3--medium-semifinal) | Codex, narrowly | API, narrowly | **Codex** |
-| [4 · High semifinal](#kanbur-experiment-4--high-semifinal) | *to be decided* | *to be decided* | *to be decided* |
+| [4 · High semifinal](#kanbur-experiment-4--high-semifinal) | Codex, narrowly (solos favor API) | Tie | **Codex** |
 | [5 · Final](#kanbur-experiment-5--final) | *to be decided* | *to be decided* | *to be decided* |
 
 ## Barnett judging notes
@@ -920,16 +920,102 @@ each with 5 of the 7 Majors.
 
 **Matchup:** winner of Experiment 2 vs. (1) API, at high effort.
 
-**Overall winner:** *to be decided*
+**Overall winner:** **A — (3) Codex, high** — High division champion, advances to the final
+
+Codex narrowly wins the close reading, and the evaluation is a tie: the judge
+leaned to the API in one reading order but not the other, which the rubric
+records as a tie. The close-reading solos lean the other way, toward the API
+on attribution, strength of language and contributions, so the close reading
+is near even too. As in Experiment 3,
+[ADR-0020](adr/0020-codex-joins-experiment-2.md)'s question decides it:
+Codex reads as well as the API at high effort, and the API costs $0.643 a run
+where Codex runs within the subscription. Codex's close reading also keeps the
+article's GOR/PR contradiction, which the API's hides.
+
+Codex reuses Experiment 2's winning run (B).
 
 | Run | Configuration | Close reading | Argument evaluation | Total |
 | --- | --- | --- | --- | --- |
-| **?** | Codex, high (winner of Experiment 2) | about 7–8 min | about 3 min | not reported |
-| **?** | API, high | $0.400 · 6 min 2 s | $0.243 · 2 min 28 s | $0.643 |
+| **A** | Codex, high (winner of Experiment 2) | about 7–8 min | about 3 min | not reported |
+| **B** | API, high | $0.400 · 6 min 2 s | $0.243 · 2 min 28 s | $0.643 |
+
+### Detailed findings
+
+**Close readings: A, narrowly, in the head-to-head; the solos favor B.** The
+judge read every claim in both runs, not a sample.
+
+| | A (Codex) | B (API) |
+| --- | --- | --- |
+| A1, solo (30 sampled claims) | 90% at 2, 10% at 1 | 97% at 2, 3% at 1 |
+| A2, contributions (4) | 2 caught, 2 thinned (C-a, C-b) | 4 caught |
+| A2, figures (10) | 9 read, 1 thin (F10) | 8 read, 2 thin (F6, F10) |
+| A3, strength of language | 1 | 2 |
+| A4, verbatim · numbers · references | 2/2 · 343/343 · 47/47 | 4/4 · 316/316 · 47/47 |
+| Steps · claims | 37 · 158 | 37 · 173 |
+
+The two readings take nearly the same path and flag the same four
+inconsistencies in the article. The differences, confirmed in the runs:
+
+- **B hides the GOR/PR contradiction.** It gives the article's "nearly 14
+  times higher than the GOR and PR values of the minimum membrane area" as
+  "a nearly fourteenfold difference … between the membrane-area extremes",
+  and declines to read Figure 6, keeping the prose's "membrane-area
+  preference … as stated". The App smoothed the same sentence in both of its
+  runs. A records both halves and says "they point in different directions",
+  then reads Figure 6's surfaces rising with area.
+- **A reads more of the figures.** It says what Figures 4, 5, 6, 8 and 9 show
+  where B names them, including Figure 5B's colour scale starting at 27.20
+  against the prose's 27.3%.
+- **A loses the contributions and invents Table 1's labels,** the same faults
+  found in Experiment 2: "not investigated before" and "first time" stay in
+  `moves`, and the column groups are called "total" and "vapor" heat flux
+  though both are printed "qT (W/m²K)".
+- **B keeps more of the article's own claims and strength words:** all four
+  contributions, every Table 1 value, Table 3's "c3 = u3", "pivotal role",
+  "critical importance", "dramatically", and S5.1's "can be efficiently
+  operated" quoted `verbatim`. A drops "pivotal role" and "critical
+  importance" and softens "dramatically".
+
+The head-to-head weighed B's GOR/PR rewording as the more consequential
+fault, since it removes the article's main internal inconsistency, and said a
+researcher weighting contributions and strength of language first could
+prefer B.
+
+**Argument evaluations: a tie.** Against the 23-problem list:
+
+- **Found only by B:** the validation's circularity (P16): matching
+  Reference 31 after taking the membrane inputs from it "is primarily
+  evidence that the borrowed submodel has been implemented consistently". A
+  instead treats Table 1 as the paper's strongest evidence. B also gives the
+  fuller P4 argument (Eq. 24's A_m multiplier against ε falling with area)
+  and develops the cold permeate supply (P22) further.
+- **Found only by A:** the missing comparison with other uses of the heat
+  (P21): the choice of desalination "rests largely on precedents and a
+  research gap", and "No comparative assessment resolves that question".
+- **Shared:** P1, P4, P8, P13 and P22 in full; P2, P3, P7, P14 and P18 in
+  part. The payback arithmetic is nearly identical (3.72 years of water
+  revenue repays about 23 SGD). Both miss P5 and P10.
+- **Errors:** none in A. B says "The authors acknowledge that distinction"
+  about a broader point than the one the authors concede, a loose sentence
+  rather than a misstatement.
+
+The solos lean slightly to A: A has 8 found and 4 partial, B 6 found and 5
+partial, each with 4 of the 7 Majors found and P2 in part.
+
+**Implications for later comparisons.**
+
+- Codex's two runs keep the GOR/PR contradiction visible; the App's two runs
+  and API high hide it. Codex medium and high also both lose part of the
+  contributions, and both drop or soften strength words.
+- This evaluation head-to-head is the first in Kanbur that didn't choose B,
+  and its close reading is the third in a row to choose A.
+- The final is Codex medium against Codex high, so it answers the effort
+  question for Codex.
 
 ## Kanbur experiment 5 — Final
 
-**Matchup:** Medium champion vs. High champion.
+**Matchup:** Medium champion vs. High champion: Codex medium (winner of
+Experiment 3) vs. Codex high (winner of Experiment 4).
 
 **Overall winner:** *to be decided*
 
