@@ -3150,6 +3150,76 @@ So the result answers ADR-0020's question for medium effort: Codex reads as well
 
 In [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) I added Experiment 3's write-up and its row in the results table. Its Detailed findings note that Codex medium has now lost "for real applications" in two head-to-heads.
 
+### 50. Check IDs for Kanbur, experiment 4
+
+**Prompt:** Ready for experiment 4! Can you check the IDs? A: Codex High, B: API High
+
+**Response:** The ids match, and Experiment 4's folder is ready.
+
+| Letter | File | id | Key's run |
+| --- | --- | --- | --- |
+| **A** | `analysis.json` | `fa401e5e-…` | Codex high ✓ |
+| **A** | `argument_evaluation.json` | `dd922c0a-…`, analysis_id `fa401e5e-…` | Codex high ✓ |
+| **B** | `analysis.json` | `2a82aff3-…` | API high ✓ |
+| **B** | `argument_evaluation.json` | `e5f3697e-…`, analysis_id `2a82aff3-…` | API high ✓ |
+
+A is the same pair of files as Experiment 2's B. All four files are byte-identical to the repo's copies, and both runs have the same shape: `id` and `content`, with no provenance block.
+
+The rest of the folder matches too:
+- `article.pdf` is the Kanbur PDF.
+- Both reference lists match the repo's.
+- `RUBRIC.md` is the version without the framework section.
+- `prompts/` matches the repo.
+- `judgments/` is empty.
+
+A search of both runs for "GPT-6", "API", "Codex" and "ChatGPT" found nothing.
+
+Skip prompts 1 and 5, and run the other six.
+
+### 51. Evaluate results for Kanbur, experiment 4
+
+**Prompt:** Experiment 4 is complete! Can you review the results and determine the winner and provide your reasoning?
+
+**Response:** The ids match in all six judgments. Next I'm reading them.
+
+Confirmed across the runs: API high paraphrases the 14-times claim as a "nearly fourteenfold difference" and skips Figure 6, while Codex high captures both halves and notes they point in different directions. Writing this up next.
+
+**Winner: A, Codex high, narrowly.** It's the High division champion, so the final is Codex medium against Codex high.
+
+All six judgments record the right ids: Codex high's under A and API high's under B.
+
+**Close readings: Codex in the head-to-head, the API in the solos.** The head-to-head chose A narrowly, in both reading orders. The judge read every claim in both runs.
+
+| | Codex (A) | API (B) |
+| --- | --- | --- |
+| A1, solo | 90% at 2 | 97% at 2 |
+| A3, strength of language | 1 | 2 |
+| Contributions | 2, plus 2 thinned | all 4 |
+| Figures read | 9 | 8 |
+| GOR/PR sentence | both halves kept, "they point in different directions", and Figure 6 read | flattened to "a nearly fourteenfold difference… between the membrane-area extremes", and Figure 6 not read |
+
+Both of the faults that decided it are confirmed in the runs:
+- **API's GOR/PR rewording hides the article's main internal inconsistency.** The App did the same in both of its runs.
+- **Codex repeats its two Experiment 2 faults,** since this is the same reading. It leaves the novelty contributions out of its claims, and it gives Table 1's column groups labels the table doesn't print.
+
+The API keeps more of the article's strength words, so the solos lean toward it. I'd call the close reading close to even.
+
+**Evaluations: a tie.** The judge leaned toward the API in one reading order but not the other, and the rubric counts that as a tie.
+- **Found only by the API:** the validation's circularity (P16), plus fuller versions of P4 and P22.
+- **Found only by Codex:** the missing comparison with other uses of the heat (P21).
+- **Shared:** both run nearly identical payback arithmetic, and both miss P5 and P10.
+- **Errors:** Codex makes none. The API has one loose sentence, "The authors acknowledge that distinction", about more than the authors actually concede.
+- **Solos:** they lean slightly toward Codex, with 8 found and 4 partial against 6 and 5.
+
+**Why Codex:** it's the same situation as Experiment 3. Codex reads as well as the API, and the API costs $0.643 a run where Codex runs within the subscription. Codex's close reading also keeps the contradiction the API's hides.
+
+So the API didn't win either semifinal. At both medium and high effort, the answer to ADR-0020's question is that Codex reads as well as the API.
+
+**Letter pattern:** this is the first Kanbur evaluation head-to-head that didn't choose B. The close-reading head-to-heads have now chosen A three times in a row. The final's two lettered sessions should show whether that comes from the judge.
+
+In [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) I added:
+- Experiment 4's write-up and its row in the results table: "Codex, narrowly (solos favor API)", "Tie", **Codex**
+- the two finalists named in Experiment 5's matchup line
 
 ---
 

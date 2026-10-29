@@ -30,7 +30,7 @@ efforts, **Medium** and **High**. In each division, App (2) plays Codex (3); the
 a bye. The division champions meet in the final, which answers the effort
 question for this article: medium or high.
 
-![Kanbur tournament bracket: Codex wins Experiments 1–3 and advances to the final as Medium division champion; Experiments 4–5 are pending.](assets/kanbur-evaluation-bracket.svg)
+![Kanbur tournament bracket: Codex wins Experiments 1–4; Codex medium faces Codex high in the final, with Experiment 5 pending.](assets/kanbur-evaluation-bracket.svg)
 
 **Overall winner:** To be decided.
 
