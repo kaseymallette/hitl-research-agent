@@ -1,0 +1,1633 @@
+{
+  "reading_plan": "Source title: Making AI Less 'Thirsty': Uncovering and addressing the secret water footprint of AI models. Source type: other. First look: an eight-page Communications of the ACM sustainability feature (printed pp. 54–61), with a full-page conceptual illustration, a cooling-system diagram, a dense numerical table, a three-panel figure, inline equations, and a 33-entry reference list. The writing alternates accessible explanatory and advocacy prose with technical accounting and assumption-heavy estimates. I will follow the article in order at natural paragraph and subsection boundaries, usually roughly 200–500 source words per step, taking shorter steps where definitions, equations, the numerical table, or qualifications require closer attention. Page-top visual elements and continuous cross-page paragraphs are read together with their local discussion; figure, table, and equation readings are paraphrases. The reading records the authors’ claims and support without testing their ultimate validity or importing a research question.",
+  "reading_path": [
+    {
+      "location": "p. 54 (PDF p. 1), title, subtitle, and opening paragraph",
+      "moves": "Frames the topic as uncovering a hidden resource cost; concedes AI’s benefits before introducing a sustainability problem. Contrasts attention to carbon with relative neglect of water.",
+      "claims": [
+        {
+          "text": "AI has enabled remarkable breakthroughs, including work on climate change.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Large generative AI models such as GPT-4 run on energy-hungry servers in warehouse-scale datacenters, accelerating datacenter energy consumption at an unprecedented rate.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The opening invokes the U.S. datacenter energy report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Scrutiny of AI’s carbon footprint has driven progress in carbon efficiency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite work on Green AI and energy and policy considerations for deep learning.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "24,31",
+                  "reference_entry": "Schwartz, R., Dodge, J., Smith, N.A., and Etzioni, O. Green AI. Commun. ACM 63, 12 (Nov. 2020), 54–63; 10.1145/3381831"
+                },
+                {
+                  "citation_text": "24,31",
+                  "reference_entry": "Strubell, E., Ganesh, A., and McCallum, A. Energy and policy considerations for deep learning in NLP. In Proceedings of the 57th Ann. Meeting of the Assoc. for Computational Linguistics (2019), 3645–3650; 10.18653/v1/P19-1355"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "AI’s water footprint involves millions of liters of freshwater consumed for server cooling and electricity generation, remains largely under the radar, and keeps escalating.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "If inadequately addressed, AI’s water footprint can become a major sustainability roadblock and create social conflicts because usable freshwater is extremely limited and unevenly distributed.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The opening establishes a benefit-and-cost perspective rather than rejecting AI. Water scarcity and distribution make the hidden footprint a social concern as well as an engineering quantity."
+    },
+    {
+      "location": "p. 54 (PDF p. 1), right column, corporate water use and 2028 projection",
+      "moves": "Introduces institutional reports and quantitative examples as evidence of rapid growth; makes the scale tangible through a beverage-company comparison.",
+      "claims": [
+        {
+          "text": "Expansion of AI products and services is a key driver of rapidly increasing datacenter water consumption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Google’s sustainability report and the recent U.S. datacenter energy report acknowledge this driver.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                }
+              ]
+            },
+            {
+              "text": "The U.S. report is also cited for the growth attribution.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "One technology company’s self-owned datacenters withdrew 29 billion liters and consumed more than 23 billion liters of freshwater for onsite cooling in 2023, nearly 80% potable, even excluding leased third-party colocation facilities.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The corporate water quantities come from Google’s 2024 Environmental Report. Footnote a defers the withdrawal/consumption distinction to Background.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "That annual water consumption rivals that of a major household-name beverage company.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The comparison cites PepsiCo’s water reporting.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "21",
+                  "reference_entry": "PepsiCo. ESG - Water (2023); https://tinyurl.com/2d5qfzuk."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The first company’s datacenter consumption grew approximately 20% from 2021 to 2022 and 17% from 2022 to 2023; another’s grew approximately 34% and 22% over the same periods.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The first pair of growth rates cites Google.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                }
+              ]
+            },
+            {
+              "text": "The second pair cites Microsoft.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "18",
+                  "reference_entry": "Microsoft. Environmental Sustainability Report (2024); https://tinyurl.com/2eum2dhg."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "U.S. datacenters’ annual onsite consumption in 2028 could double or quadruple the 2023 level to approximately 150–280 billion liters, further stressing water infrastructure.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This is a projection attributed to the U.S. datacenter energy report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The general warning acquires reported magnitudes and a forward projection. The corporate figures concern datacenters as a whole; the authors identify AI as a driver rather than labeling every liter as AI-only consumption."
+    },
+    {
+      "location": "pp. 54–56 (PDF pp. 1–3), AI electricity projections, full-page illustration, and opening of p. 56",
+      "moves": "Narrows from datacenter growth to AI workloads and extrapolates water demand from electricity forecasts. Uses national comparisons and an illustration to convey scale; qualifies forecasts by their underlying scenario.",
+      "claims": [
+        {
+          "text": "AI represents the fastest-expanding datacenter workloads.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite Google and the U.S. datacenter energy report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9,25",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                },
+                {
+                  "citation_text": "9,25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A study projects global AI electricity consumption of 85–134 TWh in 2027.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This lower electricity projection is attributed to de Vries.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "6",
+                  "reference_entry": "de Vries, A. The growing energy footprint of artificial intelligence. Joule (Oct. 2023); https://tinyurl.com/2cmwv5m3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A more aggressive projection puts U.S. AI servers alone above 150–300 TWh in 2028.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This forecast comes from the U.S. datacenter energy report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Even under the lower estimate, global AI’s combined scope-1 and scope-2 water withdrawal is projected at 4.2–6.6 billion cubic meters in 2027, exceeding four to six Denmarks’ total annual withdrawal or half the U.K.’s; consumption is projected at 0.38–0.60 billion cubic meters.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "U.S. AI alone in 2028 would exceed those global 2027 water estimates if the Shehabi et al. projection materializes.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The conditional comparison refers to the U.S. report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Scope-2 accounting throughout the article is location-based; renewable purchasing and similar sustainability programs can produce lower market-based carbon and water footprints.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote b aligns water scopes with carbon scopes and cites guidance on purchased electricity.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23",
+                  "reference_entry": "Reig, P., Luo, T., Christensen, E., and Sinistore, J. Guidance for calculating water use embedded in purchased electricity. World Resources Institute (2020)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The article scales up from company examples to conditional AI-wide estimates. PDF p. 2 is an illustrative landscape of servers surrounded by flowing water, not a measured diagram or additional quantitative evidence. The location-based accounting footnote fixes the boundary of the projections."
+    },
+    {
+      "location": "p. 56 (PDF p. 3), middle column, attention gap and urgency; right column opening",
+      "moves": "Diagnoses a reporting gap, argues that carbon and water are complementary measures, and makes a normative case for acting now.",
+      "claims": [
+        {
+          "text": "AI’s growing water footprint has received disproportionately little attention from the AI community and general public.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "AI model cards routinely report scope-2 carbon emissions but omit even scope-1 direct water withdrawal or consumption, let alone scope-2 water usage; this may impede innovation toward water sustainability.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water and carbon footprints are complementary and cannot substitute for one another; optimizing carbon efficiency may fail to improve, or even worsen, water efficiency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors attribute the distinct behavior of water efficiency to electricity fuel mixes and outside weather and cite prior research and the U.S. report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "10,25",
+                  "reference_entry": "Islam, M.A. et al. Exploiting spatio-temporal diversity for water saving in geo-distributed data centers. IEEE Transactions on Cloud Computing 6, 3 (2018), 734-746;https://tinyurl.com/2c43smrv"
+                },
+                {
+                  "citation_text": "10,25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "It is a critical time to uncover and address AI’s hidden water footprint so that growth does not worsen water stresses or outweigh AI’s environmental benefits, amid freshwater scarcity, extended droughts, and aging public infrastructure.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Industry commitments and standard-setting partly reflect this urgency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Google’s and Microsoft’s Water Positive by 2030 commitments are cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                }
+              ]
+            },
+            {
+              "text": "Microsoft’s commitment is separately cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "18",
+                  "reference_entry": "Microsoft. Environmental Sustainability Report (2024); https://tinyurl.com/2eum2dhg."
+                }
+              ]
+            },
+            {
+              "text": "The authors cite inclusion of water footprint in an ISO/IEC sustainable-AI standard described as forthcoming.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "19",
+                  "reference_entry": "Naden, C. AI for sustainability. Intern. Electrotechnical Commission e-tech (2023); https://tinyurl.com/2bj6m6dz."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The growth figures now support a call for attention. The argument shifts from quantities to the adequacy of environmental metrics and explicitly values sustainable growth and the protection of scarce shared resources."
+    },
+    {
+      "location": "p. 56 (PDF p. 3), right column, article roadmap before Background",
+      "moves": "States the authors’ program and previews their own estimates and recommendations. Introduces embodied water and water usage effectiveness as topics to be developed.",
+      "claims": [
+        {
+          "text": "Sustainable AI requires a holistic approach that addresses water alongside carbon.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The proposed methodology estimates total water footprint, including operational and embodied water.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Training the 175-billion-parameter GPT-3 in Microsoft’s U.S. datacenters can consume 5.4 million liters, including 700,000 liters of scope-1 onsite consumption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "GPT-3’s model identity and size are tied to Brown et al.; the water result is the authors’ announced case-study estimate.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "4",
+                  "reference_entry": "Brown, T. et al. Language models are few-shot learners. In Advances in Neural Information Processing Systems 33, LarochelleH. Curran Associates, Inc. (2020), 1877-1901; https://tinyurl.com/yqlf8fzk"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "GPT-3 can consume a 500 ml bottle of water for roughly 10–50 medium-length responses, depending on deployment time and location.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Spatial and temporal variation in WUE means that judicious training time and location choices can significantly reduce the footprint.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Greater operational transparency, information about runtime water efficiency, and joint treatment of water and carbon are necessary for truly sustainable AI.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This is a roadmap, not yet a derivation of the headline estimates. It names what the forthcoming definitions and case study must make intelligible; the closing insistence that water cannot remain hidden repeats the opening framing."
+    },
+    {
+      "location": "pp. 56–57 (PDF pp. 3–4), Background: Water withdrawal versus water consumption",
+      "moves": "Defines two quantities and explains their different implications; establishes a default convention for the rest of the article.",
+      "claims": [
+        {
+          "text": "Water withdrawal is freshwater taken temporarily or permanently from ground- or surface-water sources for agricultural, industrial, or municipal uses, normally excluding hydroelectricity generation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The definition and exclusion cite Reig.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "22",
+                  "reference_entry": "Reig, P. What's the difference between water use and water consumption? World Resources Institute Commentary (2013); https://tinyurl.com/2n9uqrtz."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Because water is a finite shared resource, withdrawal indicates intersectoral competition and dependence on water resources.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water consumption is withdrawal minus discharge and covers water evaporated, transpired, incorporated into products or crops, or otherwise removed from the immediate water environment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The definition cites Macknick et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "13",
+                  "reference_entry": "Macknick, J., Newmark, R., Heath, G., and Hallett, K.C. A review of operational water consumption and withdrawal factors for electricity generating technologies. NREL Tech. Report: NREL/TP-6A20-50900 (2011)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Consumption reflects effects on downstream water availability and is crucial for watershed-level scarcity assessment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite the withdrawal/consumption commentary.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "22",
+                  "reference_entry": "Reig, P. What's the difference between water use and water consumption? World Resources Institute Commentary (2013); https://tinyurl.com/2n9uqrtz."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Withdrawal and consumption correspond to distinct water footprints; the article uses water footprint to mean water consumption footprint unless specified otherwise.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Water withdrawal footprint is linked to Cohen and Ramaswami and purchased-electricity guidance.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "5,23",
+                  "reference_entry": "Cohen, E. and Ramaswami, A. The water withdrawal footprint of energy supply to cities. J. of Industrial Ecology 18, 1 (2014), 26-39; https://tinyurl.com/24ffjzox"
+                },
+                {
+                  "citation_text": "5,23",
+                  "reference_entry": "Reig, P., Luo, T., Christensen, E., and Sinistore, J. Guidance for calculating water use embedded in purchased electricity. World Resources Institute (2020)."
+                }
+              ]
+            },
+            {
+              "text": "Water consumption footprint is linked to Siddik et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "27",
+                  "reference_entry": "Siddik, Md. A.B., Shehabi, A., and Marston, L. The environmental footprint of data centers in the United States. Environmental Research Letters 16, 6 (2021), 064017."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The previously deferred distinction is now supplied. The two measures answer different resource questions, and the default consumption convention prevents the large withdrawal projections from being read as evaporative losses."
+    },
+    {
+      "location": "p. 57 (PDF p. 4), How does AI use water? and Scope-1 water usage through facility-level cooling",
+      "moves": "Classifies water use into scopes and explains the physical chain from server heat to facility heat rejection. Distinguishes liquid circulation from evaporation.",
+      "claims": [
+        {
+          "text": "AI uses onsite water for datacenter cooling (scope 1), offsite water for electricity generation (scope 2), and supply-chain water for server manufacturing (scope 3).",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Nearly all server energy becomes heat that must be removed to avoid overheating, through server-level cooling followed by facility-level cooling.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Server-level air or liquid cooling transfers heat to facility air or a heat exchanger without evaporating or consuming water; newer AI-training datacenters often use liquid cooling because server power densities are high.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Facility-level cooling rejects heat outdoors; cooling towers and water-evaporation-assisted air cooling are two common water-intensive approaches.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The prevalence statement cites Google and the U.S. report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9,25",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                },
+                {
+                  "citation_text": "9,25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Figure 1 depicts a scope-1 cooling-tower/heat-exchanger system and a separate scope-2 power-plant cooling-water pathway supplying electricity to the server rack; its AI-model icons are illustrative.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This is a reading of Figure 1 and its caption, not a quotation from the diagram.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The scope taxonomy converts an abstract footprint into distinct physical pathways. The key distinction is where heat ultimately goes: water moving through server cooling is not itself evidence of consumption."
+    },
+    {
+      "location": "p. 57 (PDF p. 4), Cooling tower",
+      "moves": "Explains the evaporative mechanism and replenishment requirement, then supplies operating ranges and examples.",
+      "claims": [
+        {
+          "text": "Cooling towers evaporate some water to dissipate heat while the remaining water circulates through an open loop to absorb more heat at the exchanger.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Non-evaporated water can typically be reused only 3–10 cycles, depending on quality, before discharge, so clean freshwater must continuously replace both evaporation and discharged water to avoid mineral/salt buildup, clogs, and bacterial growth.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors note that the needed clean freshwater is potable in many cases and cite Google.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "For cooling towers, withdrawal is all added water, including replacement for evaporation and discharge, whereas consumption is only the evaporated portion.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "With good water quality, roughly 80% of withdrawn water is evaporated and counted as consumption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The proportion is attributed to Google.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Datacenters can evaporate approximately 1–9 liters per kWh of server energy on average, depending on weather and operating settings.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The lower example is Google’s annualized global onsite efficiency of 1 L/kWh.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                }
+              ]
+            },
+            {
+              "text": "The upper example is 9 L/kWh for a large commercial Arizona datacenter during summer.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "11",
+                  "reference_entry": "Karimi, Leila et al. Water-energy tradeoffs in data centers: A case study in hot-arid climates. Resources, Conservation and Recycling 181 (2022), 106194;https://tinyurl.com/289qqpu3"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The earlier definitions become operational: fresh make-up water includes both consumed and discharged fractions. The range links consumption to conditions rather than treating it as a fixed property of computation."
+    },
+    {
+      "location": "pp. 57–58 (PDF pp. 4–5), Air cooling with water evaporation assistance and dry coolers",
+      "moves": "Compares cooling alternatives and qualifies apparent water savings by location, climate, and energy tradeoffs.",
+      "claims": [
+        {
+          "text": "When climate permits, datacenters can reject heat directly using outside air, but evaporation is still needed when outside air is too hot, for example above 85°F, and for humidity control when it is too dry.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Humidity control and assisted cooling are linked to Meta’s water information.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "14",
+                  "reference_entry": "Meta. Sustainability: Water (2023); https://tinyurl.com/2c65p7u3."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "About 70% of water added in this outside-air arrangement is consumed.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This proportion is based on Meta’s report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "15",
+                  "reference_entry": "Meta. Sustainability Report (2024); https://tinyurl.com/2yagb6vk."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Outside-air cooling is generally more water-efficient than cooling towers, but hot weather raises evaporative demand and peak water consumption, potentially stressing local supplies during already high demand.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Outside-air cooling may be difficult in hot regions and in many colocation facilities located in business districts.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Dry coolers consume no onsite water year-round.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The dry-cooler option cites Solomon’s account of next-generation datacenters.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "29",
+                  "reference_entry": "Solomon, S. Sustainable by design: Next-generation datacenters Consume zero water for cooling (2024); https://tinyurl.com/2xmxxxnz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Dry cooling typically uses more cooling energy than water-based methods and can therefore increase scope-2 consumption and potentially worsen overall water stress.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The first explicit design tradeoff emerges: eliminating onsite water use may increase offsite use through electricity. The account moves beyond a simple ranking of cooling systems."
+    },
+    {
+      "location": "p. 58 (PDF p. 5), Scope-2 water usage",
+      "moves": "Extends responsibility to electricity generation and supplies per-energy comparisons. Clarifies a hydropower accounting convention.",
+      "claims": [
+        {
+          "text": "Thermoelectric power is among the largest water-withdrawing and water-consuming sectors in many countries.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite guidance on water embedded in purchased electricity.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23",
+                  "reference_entry": "Reig, P., Luo, T., Christensen, E., and Sinistore, J. Guidance for calculating water use embedded in purchased electricity. World Resources Institute (2020)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Datacenters are accountable for electricity-related offsite water usage as part of their true water cost, analogously to scope-2 carbon emissions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The U.S. datacenter energy report is invoked for the true-water-cost framing.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Water used per kWh differs across plants with their cooling techniques; hydropower withdrawal is typically excluded, while additional evaporation attributable to hydropower is included as consumption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The hydropower convention cites the U.S. report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "U.S. average electricity-generation water withdrawal and consumption are estimated at about 43.8 L/kWh and 3.1 L/kWh, respectively.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The withdrawal estimate cites U.S. EIA Open Data.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "32",
+                  "reference_entry": "U.S. Energy Information Administration. Open Data; https://tinyurl.com/2c5qq6wk."
+                }
+              ]
+            },
+            {
+              "text": "The consumption estimate cites Reig et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23",
+                  "reference_entry": "Reig, P., Luo, T., Christensen, E., and Sinistore, J. Guidance for calculating water use embedded in purchased electricity. World Resources Institute (2020)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Meta reports 2023 global-fleet scope-2 consumption of 3.7 L/kWh, calculated from 55,475 megaliters and 14,975,435 MWh.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The example cites Meta’s 2024 Sustainability Report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "15",
+                  "reference_entry": "Meta. Sustainability Report (2024); https://tinyurl.com/2yagb6vk."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The earlier dry-cooling qualification now has its own accounting framework and magnitudes. Withdrawal and consumption remain separate even when both are expressed per kWh."
+    },
+    {
+      "location": "p. 58 (PDF p. 5), Scope-3 water usage and blue/green-water comparison",
+      "moves": "Adds supply-chain processes, notes contamination and limited recycling, and distinguishes the kind of water AI uses from agriculture’s predominant water category.",
+      "claims": [
+        {
+          "text": "AI chip and server manufacturing uses a huge amount of water.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite semiconductor-industry research and Singapore’s sectoral benchmark.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "7,28",
+                  "reference_entry": "Frost, K. and Hua, I. Quantifying spatiotemporal impacts of the interaction of water scarcity and water use by the global semiconductor manufacturing industry. Water Resources and Industry 22 (2019); https://tinyurl.com/247zadpz"
+                },
+                {
+                  "citation_text": "7,28",
+                  "reference_entry": "Singapore Public Utilities Board. Sectoral Water Efficiency Benchmark; https://tinyurl.com/2935uhn8"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Wafer fabrication needs ultrapure water, semiconductor plants need cooling water, and discharged water may contain toxic chemicals or hazardous waste.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Recycling can effectively reduce semiconductor-plant withdrawal, but rates often remain low.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Average recycling rates in Singapore are given as 45% for wafer plants and 27% for semiconductor plants.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "28",
+                  "reference_entry": "Singapore Public Utilities Board. Sectoral Water Efficiency Benchmark; https://tinyurl.com/2935uhn8"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Scope-3 water usage is largely obscure but likely significant.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Semiconductor water-scarcity research is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "7",
+                  "reference_entry": "Frost, K. and Hua, I. Quantifying spatiotemporal impacts of the interaction of water scarcity and water use by the global semiconductor manufacturing industry. Water Resources and Industry 22 (2019); https://tinyurl.com/247zadpz"
+                }
+              ]
+            },
+            {
+              "text": "Apple reports that its supply chain accounts for 99% of its total water footprint.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "2",
+                  "reference_entry": "Apple. Environmental Responsibility Report. 2024; https://tinyurl.com/jwg93lu."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Unlike agriculture’s mostly green water stored in soil and used by plants, most of AI’s footprint is blue water extracted from rivers, lakes, or groundwater, directly available for human use but often more limited in availability.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The footprint expands beyond operating servers. The Apple example illustrates supply-chain significance rather than supplying an AI-specific manufacturing coefficient; the blue-water distinction explains why generic volume comparisons can miss resource differences."
+    },
+    {
+      "location": "p. 58 (PDF p. 5), Estimating AI’s Water Footprint: operational definitions",
+      "moves": "Turns from background to a measurement method. Defines time-dependent onsite and offsite efficiency variables and explains why they vary.",
+      "claims": [
+        {
+          "text": "The methodology estimates water consumption footprint; replacing WUE by water withdrawal efficiency gives withdrawal footprint.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Operational water combines onsite scope-1 and offsite scope-2 water.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Onsite WUE at time t is onsite water consumption divided by server energy consumption and varies with outside temperature.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Islam et al. is offered as an example for cooling-tower WUE.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "10",
+                  "reference_entry": "Islam, M.A. et al. Exploiting spatio-temporal diversity for water saving in geo-distributed data centers. IEEE Transactions on Cloud Computing 6, 3 (2018), 734-746;https://tinyurl.com/2c43smrv"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Cooling-tower onsite WUE increases significantly with outside wet-bulb temperature; outside-air-cooling WUE increases when dry-bulb temperature is too high or humidity too low.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Offsite WUE is offsite water consumption per kWh of electricity, also called the electricity water intensity factor (EWIF).",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The physical pathways now become measurable ratios. Onsite efficiency is normalized to server energy, while offsite efficiency is normalized to electricity supplied, a distinction carried into the combined formula."
+    },
+    {
+      "location": "pp. 58–59 (PDF pp. 5–6), offsite weighted-average equation and operational-water equation",
+      "moves": "Formalizes fuel-mix averaging and sums operational water across time, explicitly accounting for non-IT energy overhead.",
+      "claims": [
+        {
+          "text": "The offsite-WUE equation on p. 58 computes the electricity-weighted average of fuel-specific EWIF values: sum over fuel types of generated electricity times that fuel’s EWIF, divided by total generated electricity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This paraphrases the displayed/inline equation and its variable definitions; b(k,t) is electricity generated from fuel k at time t on the serving grid. The cited precedents are Ahmed et al. and Gao et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "1,8",
+                  "reference_entry": "Ahmed, K., Islam, M.A., Ren, S., and Quan, G. Exploiting temporal diversity of water efficiency to make data center less “thirsty”. In Proceedings of the 11th Intern. Conf of Autonomic Computing (2014)."
+                },
+                {
+                  "citation_text": "1,8",
+                  "reference_entry": "Gao, P.X., Curtis, A.R., Wong, B., and Keshav, S. It’s not easy being green. SIGCOMM Comput. Commun. Rev. (2012)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Changing generation fuel mixes cause offsite WUE to vary over time, and different regional mixes produce spatial differences.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The regional-variation claim cites Reig et al. and the U.S. report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23,25",
+                  "reference_entry": "Reig, P., Luo, T., Christensen, E., and Sinistore, J. Guidance for calculating water use embedded in purchased electricity. World Resources Institute (2020)."
+                },
+                {
+                  "citation_text": "23,25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The time-slot model permits assessment at a chosen frequency; model energy in each slot can be measured with power meters or server tools, and PUE accounts for non-IT energy overhead.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The operational-water equation on p. 59 sums e(t) multiplied by [onsite WUE(t) + PUE(t) times offsite WUE(t)] across t = 1 through T.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This is a paraphrase of the equation as rendered on the page. It applies PUE to the offsite electricity term.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The model connects the earlier climate and fuel-mix mechanisms to a time-sensitive sum. It preserves the distinction between direct server-normalized cooling water and electricity water for the whole facility."
+    },
+    {
+      "location": "p. 59 (PDF p. 6), Embodied water footprint and total footprint",
+      "moves": "Introduces lifetime amortization by analogy with embodied carbon, then combines operational and manufacturing components and offers a rough-estimation shortcut.",
+      "claims": [
+        {
+          "text": "The total manufacturing-related scope-3 water footprint is amortized over server lifespan, analogously to embodied carbon.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The carbon-accounting analogy cites Luccioni et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "12",
+                  "reference_entry": "Luccioni, A.S., Viguier, S., and Ligozat, A-L. Estimating the carbon footprint of BLOOM, a 176B parameter language model. J. Mach. Learn. Res. 24, 1, Article 253 (Mar. 2024), 15."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The embodied-water equation on p. 59 allocates T times W divided by T0 to a period T, where W is total AI-server manufacturing water and T0 is expected operating life.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This paraphrases the rendered WaterEmbodied equation and surrounding variable definitions.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The total-water equation on p. 59 adds this amortized embodied term to the operational-water sum.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This paraphrases the rendered WaterTotal equation.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Annual-average WUE and estimated AI-server energy consumption can be used to obtain a rough practical estimate.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The general accounting method now includes all three scopes. Proportional allocation across server life is the stated modeling choice; the annual-average shortcut trades temporal detail for a rough estimate."
+    },
+    {
+      "location": "p. 59 (PDF p. 6), Case Study opening and Training",
+      "moves": "Introduces GPT-3 as a worked operational example, sets exclusions, and explains parameter and location choices. Distinguishes an estimate from knowledge of the actual training site.",
+      "claims": [
+        {
+          "text": "The authors describe ChatGPT as based on subsequent GPT-3 versions and estimate operational water consumption for the full 175-billion-parameter GPT-3.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The GPT-3 specification cites Brown et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "4",
+                  "reference_entry": "Brown, T. et al. Language models are few-shot learners. In Advances in Neural Information Processing Systems 33, LarochelleH. Curran Associates, Inc. (2020), 1877-1901; https://tinyurl.com/yqlf8fzk"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Embodied water is excluded from this case study because public scope-3 data are lacking.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "GPT-3 is chosen because Microsoft publishes location-specific WUE and PUE.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The availability of location-specific information cites two Microsoft sources.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "16,17",
+                  "reference_entry": "Microsoft. Microsoft in Your Community; https://tinyurl.com/257z85pr."
+                },
+                {
+                  "citation_text": "16,17",
+                  "reference_entry": "Microsoft. Microsoft's Sustainability Targets (2023); https://tinyurl.com/2cgo3aff."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "GPT-3 was trained and deployed in Microsoft datacenters, with estimated training energy of 1,287 MWh.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The training-energy estimate cites Patterson et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "20",
+                  "reference_entry": "Patterson, D. et al. Carbon Emissions and Large Neural Network Training (2021); arXiv:2104.10350 [cs.LG]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Training calculations use Microsoft’s most recent annualized onsite WUE and PUE for each location.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite Microsoft’s community and sustainability-target sources.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "16,17",
+                  "reference_entry": "Microsoft. Microsoft in Your Community; https://tinyurl.com/257z85pr."
+                },
+                {
+                  "citation_text": "16,17",
+                  "reference_entry": "Microsoft. Microsoft's Sustainability Targets (2023); https://tinyurl.com/2cgo3aff."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "For consistency across regions, the case uses Reig et al.’s EWIF rather than mixing estimates from different references.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Reig et al. uses the same methodology across regions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23",
+                  "reference_entry": "Reig, P., Luo, T., Christensen, E., and Sinistore, J. Guidance for calculating water use embedded in purchased electricity. World Resources Institute (2020)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The U.S. average EWIF used is 3.14 L/kWh, below a recent estimate of 4.35 L/kWh; GPT-3’s actual training location is not public, so multiple Microsoft locations are considered, excluding Singapore and Taiwan because the selected source lacks their EWIF data.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The chosen values/data coverage cite Reig et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23",
+                  "reference_entry": "Reig, P., Luo, T., Christensen, E., and Sinistore, J. Guidance for calculating water use embedded in purchased electricity. World Resources Institute (2020)."
+                }
+              ]
+            },
+            {
+              "text": "The 4.35 L/kWh comparison cites the U.S. report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The general method becomes a scenario calculation with disclosed inputs. The absence of the actual training site and the exclusion of embodied water define what the table can represent."
+    },
+    {
+      "location": "p. 59 (PDF p. 6), Table 1, read alongside the case-study inputs",
+      "moves": "Reports the worked estimates across locations, separating onsite and offsite contributions, training and inference, and observed versus projected facility parameters.",
+      "claims": [
+        {
+          "text": "Table 1 gives the U.S.-average scenario PUE 1.170, onsite WUE 0.550 L/kWh, and offsite EWIF 3.142 L/kWh; training consumption is 0.708 million liters onsite plus 4.731 million offsite, totaling 5.439 million liters. Each request uses 2.200 ml onsite plus 14.704 ml offsite, totaling 16.904 ml, or 29.6 requests per 500 ml.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "These are readings of the U.S. Average row of Table 1, not quotations.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Table 1 reports the following training totals (million liters), per-request totals (ml), and requests per 500 ml for the other U.S. rows: Arizona 9.629 / 29.926 / 16.7; Georgia* 3.406 / 10.585 / 47.2; Illinois 4.833 / 15.020 / 33.3; Iowa 4.814 / 14.963 / 33.4; Texas 2.442 / 7.590 / 65.9; Virginia 3.679 / 11.435 / 43.7; Washington 15.285 / 47.506 / 10.5; Wyoming 3.845 / 11.949 / 41.8.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "These values are read from Table 1. The asterisk marks a facility under construction as of July 2023 with Microsoft-projected PUE and WUE.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Table 1 reports corresponding training totals (million liters), per-request totals (ml), and requests per 500 ml outside the U.S.: Australia* 6.154 / 19.126 / 26.1; Denmark* 4.760 / 14.794 / 33.8; Finland* 6.561 / 20.390 / 24.5; India* 6.340 / 19.704 / 25.4; Indonesia* 6.304 / 19.592 / 25.5; Ireland 2.287 / 7.107 / 70.4; Mexico* 7.711 / 23.966 / 20.9; Netherlands 5.131 / 15.948 / 31.4; Sweden 9.101 / 28.287 / 17.7.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "These values are read from Table 1; starred rows use projected facility parameters, not fully operating-facility observations.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Table 1 separates zero onsite water from nonzero total water: India* has onsite WUE 0.000 and no onsite consumption, but offsite EWIF 3.445 L/kWh, PUE 1.430, 6.340 million liters offsite for training, and 19.704 ml offsite per request.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This is a reading of the India* row of Table 1.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The table supplies the detailed quantitative counterpart to the headline estimates. Its complete location range is wider than the introduction’s roughly 10–50-response illustration. The onsite/offsite split also makes visible the earlier point that zero onsite use need not eliminate the overall operational footprint."
+    },
+    {
+      "location": "pp. 59–60 (PDF pp. 6–7), Inference, through shared PUE/WUE/EWIF assumptions",
+      "moves": "Defines a representative request, cites an energy estimate, interprets its likely coverage, and makes an explicit per-request assumption for the calculation.",
+      "claims": [
+        {
+          "text": "A representative LLM conversation has a CPU-intensive prompt phase processing input and a memory-intensive token phase producing output.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The phase characterization cites DynamoLLM.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "30",
+                  "reference_entry": "Stojkovic, J. et al. DynamoLLM: Designing LLM inference clusters for performance and energy efficiency. In Proceedings of the IEEE Intern. Symp. on High-Performance Computer Architecture (2025)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The modeled medium-sized request has approximately no more than 800 input words and 150–300 output words.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The request specification cites DynamoLLM.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "30",
+                  "reference_entry": "Stojkovic, J. et al. DynamoLLM: Designing LLM inference clusters for performance and energy efficiency. In Proceedings of the IEEE Intern. Symp. on High-Performance Computer Architecture (2025)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "An official estimate puts GPT-3 electricity use at about 0.4 kWh for 100 pages generated, or roughly 0.004 kWh per page.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The source cited for this estimate is Brown et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "4",
+                  "reference_entry": "Brown, T. et al. Language models are few-shot learners. In Advances in Neural Information Processing Systems 33, LarochelleH. Curran Associates, Inc. (2020), 1877-1901; https://tinyurl.com/yqlf8fzk"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Although details are absent, the authors judge that estimate likely covers only GPU energy during token generation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "To account for the prompt phase and non-GPU server energy, the authors assume 0.004 kWh server energy per conversational request and use the same PUE, WUE, and EWIF as in the training estimate.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The inference numbers now have a concrete task size and an explicit energy assumption. The authors distinguish their interpretation of an incompletely described official estimate from the assumption used in their own calculation."
+    },
+    {
+      "location": "p. 60 (PDF p. 7), Figure 2 and caption at the top of the page",
+      "moves": "Presents spatial and temporal comparisons of electricity-related water and carbon intensity, then shows the associated fuel mixes. Supplies evidence for treating the two footprints separately.",
+      "claims": [
+        {
+          "text": "Figure 2a plots U.S. eGRID-region scope-2 water-consumption intensity against carbon-emission rate; the dashed regression line and dispersed points show that the efficiencies are not aligned.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This paraphrases the chart and caption. The caption cites purchased-electricity water guidance and EPA eGRID.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23,33",
+                  "reference_entry": "Reig, P., Luo, T., Christensen, E., and Sinistore, J. Guidance for calculating water use embedded in purchased electricity. World Resources Institute (2020)."
+                },
+                {
+                  "citation_text": "23,33",
+                  "reference_entry": "U.S. EPA. eGRID Data Explorer; https://tinyurl.com/yn72page."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Figure 2b compares hourly carbon-emission rate and water-consumption intensity in Virginia over five days beginning April 4, 2022; the caption reports a weak Pearson correlation of 0.06.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This is a paraphrase of Figure 2b and its caption, which says the values are calculated from fuel mixes and fuel-specific carbon/water intensities.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23,32,33",
+                  "reference_entry": "Reig, P., Luo, T., Christensen, E., and Sinistore, J. Guidance for calculating water use embedded in purchased electricity. World Resources Institute (2020)."
+                },
+                {
+                  "citation_text": "23,32,33",
+                  "reference_entry": "U.S. Energy Information Administration. Open Data; https://tinyurl.com/2c5qq6wk."
+                },
+                {
+                  "citation_text": "23,32,33",
+                  "reference_entry": "U.S. EPA. eGRID Data Explorer; https://tinyurl.com/yn72page."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Figure 2c displays the corresponding five-day Virginia fuel-mix series for coal, natural gas, nuclear, oil, wind, solar, hydro, and other sources.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This is a reading of Figure 2c and its legend; the caption cites EIA Open Data.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "32",
+                  "reference_entry": "U.S. Energy Information Administration. Open Data; https://tinyurl.com/2c5qq6wk."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The page-top figure supplies a separate visual comparison after the case-study table and before the later scheduling discussion. It makes the distinct behavior of water and carbon visible at regional and hourly scales. The 0.06 value comes from the caption; no unprinted point values are estimated from plotted curves."
+    },
+    {
+      "location": "p. 60 (PDF p. 7), conservative-estimate discussion",
+      "moves": "Qualifies the inference estimate upward using other model measurements and facility/grid comparisons, preserving the difference between comparisons and direct GPT-3 observations.",
+      "claims": [
+        {
+          "text": "The GPT-3 inference estimate is conservative, and actual water consumption could be several times higher.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Under response-time SLOs on enterprise Nvidia DGX H100 systems, a state-of-the-art inference solution with non-GPU overhead already uses about 0.010 kWh per medium request for the much smaller Llama-3-70B.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "30",
+                  "reference_entry": "Stojkovic, J. et al. DynamoLLM: Designing LLM inference clusters for performance and energy efficiency. In Proceedings of the IEEE Intern. Symp. on High-Performance Computer Architecture (2025)."
+                }
+              ]
+            },
+            {
+              "text": "Falcon-180B, comparable in size to GPT-3-175B, reaches about 0.016 kWh per medium request.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "30",
+                  "reference_entry": "Stojkovic, J. et al. DynamoLLM: Designing LLM inference clusters for performance and energy efficiency. In Proceedings of the IEEE Intern. Symp. on High-Performance Computer Architecture (2025)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Microsoft datacenters already have some of the industry’s lowest onsite WUE; deploying the same model in a third-party colocation datacenter could produce several times the direct scope-1 consumption.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The selected U.S. EWIF of 3.14 L/kWh is conservative relative to the recently reported 4.35 L/kWh.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The more recent comparator is the U.S. datacenter energy report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The paper adds reasons the worked example may understate consumption without presenting the comparator models as measurements of GPT-3. The EWIF comparison restates an input limitation and now uses it to support the conservative-estimate claim."
+    },
+    {
+      "location": "p. 60 (PDF p. 7), subsequent models and future demand",
+      "moves": "Extends the discussion cautiously to later models and distinguishes possible per-request efficiency gains from expected aggregate growth.",
+      "claims": [
+        {
+          "text": "Some subsequent models such as GPT-4 could consume substantially more energy and water for the same request, especially in reasoning mode, although official resource-consumption information is unavailable.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The printed citation is to EcoLogits Calculator and the African datacenter water-efficiency dataset; the record preserves those references without replacing them.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "3,26",
+                  "reference_entry": "Banse, A., Rince, S., and Defour, V. EcoLogits Calculator (2024); https://tinyurl.com/2au2xaml."
+                },
+                {
+                  "citation_text": "3,26",
+                  "reference_entry": "Shumba, N. et al. A water efficiency dataset for African data centers. In Proceedings of NeurIPS Workshop on Tackling Climate Change with Machine Learning (2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Continued reductions in computational demand and improvements in water efficiency may reduce future consumption per request.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Total water consumption is nevertheless likely to keep rising because demand for AI services and the scale of applications are growing.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The aggregate-growth expectation cites the U.S. report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The authors move beyond the case study with explicit uncertainty. Efficiency per request and total use are kept distinct, so lower unit consumption is not treated as sufficient evidence of a falling aggregate footprint."
+    },
+    {
+      "location": "pp. 60–61 (PDF pp. 7–8), Our Recommendations: More transparency and comprehensive reporting",
+      "moves": "Turns from estimation to policy recommendations, restates the reporting gap as motivation, and extends disclosure across operational and embodied scopes.",
+      "claims": [
+        {
+          "text": "AI water consumption should be tracked and reported in model cards and/or cloud dashboards to raise users’ awareness.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors’ stated rationale is the already-described absence of water data in model cards and the possibility that opacity obstructs water-sustainability innovation.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Understanding and reporting of scope-2 consumption remain limited; climate-conscious cooling changes mostly target scope 1 and overlook offsite impacts.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The discussion cites Google, Meta’s water information, and Solomon on next-generation cooling.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9,14,29",
+                  "reference_entry": "Google. Environmental Report. 2024; https://sustainability.google/reports/."
+                },
+                {
+                  "citation_text": "9,14,29",
+                  "reference_entry": "Meta. Sustainability: Water (2023); https://tinyurl.com/2c65p7u3."
+                },
+                {
+                  "citation_text": "9,14,29",
+                  "reference_entry": "Solomon, S. Sustainable by design: Next-generation datacenters Consume zero water for cooling (2024); https://tinyurl.com/2xmxxxnz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Addressing scope-2 water consumption is as crucial for reducing AI’s true water cost as addressing scope-2 carbon emissions is for climate mitigation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors invoke the U.S. report’s true-water-cost framing.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Scope-2 water-consumption reporting should become standard practice; visibility for developers and end users can create demand-side flexibility opportunities and ease overall strain.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Meta is offered as a company that has begun including scope-2 consumption in its sustainability reporting.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "15",
+                  "reference_entry": "Meta. Sustainability Report (2024); https://tinyurl.com/2yagb6vk."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Further scope-3 water-consumption research is needed for a comprehensive footprint and corporate water stewardship, because chip-manufacturing embodied-water data remain limited despite the enormous supply-chain footprint.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The supply-chain magnitude invokes Apple’s environmental report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "2",
+                  "reference_entry": "Apple. Environmental Responsibility Report. 2024; https://tinyurl.com/jwg93lu."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The attention-gap diagnosis becomes concrete disclosure and research recommendations. The scope-3 omission in the worked example is carried forward as a reason to improve data rather than as a reason to exclude manufacturing from the general footprint."
+    },
+    {
+      "location": "p. 61 (PDF p. 8), When and where matter",
+      "moves": "Deduces a scheduling opportunity from spatial and temporal variation and illustrates both operator and user choices. Makes an explicitly conditional demand-flexibility proposal.",
+      "claims": [
+        {
+          "text": "Judicious choices of training time and location can significantly affect the footprint, and dynamic scheduling of training and inference can reduce it.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors connect onsite efficiency to outside weather and offsite efficiency to changing grid fuel mixes, invoking Figure 2 as visual support.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Training could be scheduled at midnight and/or in a datacenter with better water efficiency.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "If given real-time water-efficiency information, some water-conscious users may choose more water-efficient hours or datacenters for inference, reducing consumption through demand-side flexibility.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This recommendation follows from the time-dependent and location-dependent model rather than introducing a new mechanism. Midnight is an example of a potential scheduling choice, and user participation is conditional on information and willingness."
+    },
+    {
+      "location": "p. 61 (PDF p. 8), Follow the Sun or Unfollow the Sun",
+      "moves": "Compares carbon-oriented and water-oriented scheduling, identifies a potential conflict, and recommends joint optimization instead of a single-metric rule.",
+      "claims": [
+        {
+          "text": "Following the sun when solar energy is more abundant is preferable for cutting carbon footprint.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Unfollowing the sun may be more appealing for cutting water footprint by avoiding high-temperature hours with high WUE.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Minimizing one footprint might increase the other.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors point to Figure 2a and 2b, where regional and temporal water-consumption intensity and carbon-emission rates are misaligned; this is a paraphrase of their figure-based argument.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The observation corroborates the earlier finding that water and carbon environmental impacts cannot substitute for each other.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The prior finding is attributed to Islam et al. and the U.S. datacenter report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "10,25",
+                  "reference_entry": "Islam, M.A. et al. Exploiting spatio-temporal diversity for water saving in geo-distributed data centers. IEEE Transactions on Cloud Computing 6, 3 (2018), 734-746;https://tinyurl.com/2c43smrv"
+                },
+                {
+                  "citation_text": "10,25",
+                  "reference_entry": "Shehabi, A., et al. 2024 United States Data Center Energy Usage Report. Lawrence Berkeley National Laboratory LBNL-2001637 (Dec. 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Potential water–carbon conflicts need to be reconciled through holistic approaches that are both carbon-efficient and water-wise.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The scheduling proposal is qualified by the same tradeoff that appeared in the cooling comparison. The authors do not present a universal follow/unfollow rule; the need to balance the two footprints becomes the recommendation."
+    },
+    {
+      "location": "p. 61 (PDF p. 8), Conclusion",
+      "moves": "Recapitulates the method, worked estimate, efficiency variation, and reporting recommendations, then closes with a normative priority claim. These are restatements, not new empirical findings.",
+      "claims": [
+        {
+          "text": "AI’s water footprint must be addressed as a priority within collective efforts to combat global water challenges.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The conclusion brings the journey back to the opening visibility problem and the stated aim of socially responsible, environmentally sustainable AI. The earlier accounting and scheduling discussion now serve that call for priority; the recap adds no new measurements."
+    },
+    {
+      "location": "p. 61 (PDF p. 8), Acknowledgment, References, author biographies, and license",
+      "moves": "Discloses funding, supplies bibliographic provenance, identifies the authors’ institutional positions, and states publication rights. Ends the source’s apparatus without extending its substantive argument.",
+      "claims": [
+        {
+          "text": "Pengfei Li and Shaolei Ren’s work was supported in part by NSF CCF-2324916; Mohammad A. Islam’s work was supported in part by NSF ECCS-2152357 and CCF-2324915.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The reference list contains 33 entries, including academic research, company reports, government data, and water-accounting guidance.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The biographies identify Li as a University of California, Riverside Ph.D. candidate; Islam as a University of Texas, Arlington assistant professor; Yang as a University of Houston assistant professor; and Ren as a University of California, Riverside associate professor.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The work is licensed under Creative Commons Attribution-NoDerivs International 4.0, with 2025 copyright held by the owner/authors.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The closing apparatus identifies the funding and source trail available within this document. References recorded with the claims above reproduce this paper’s entries, with line wrapping normalized; no external works have been checked or bibliographic gaps completed."
+    }
+  ]
+}

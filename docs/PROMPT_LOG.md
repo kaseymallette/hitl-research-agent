@@ -3446,6 +3446,38 @@ Two things to know:
 - **Lei is 60 pages**, so its close reading will take noticeably longer than kanbur's 7–8 minutes.
 - **Kanbur's existing run** is still under `outputs/ab_testing/…/adr_0020/codex__gpt-6.1-sol-medium/`. I can copy it into `outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/` so all 7 sit in one place for synthesis. Want me to do that?
 
+### 4. Evaluation Prompts
+
+**Prompt:** Now, I've run the first four and I'm on Lei. If we evaluate these after using model as judge and the rubric, do I have to ask the model as judge to come up with its own claims first or can I just send it the pdf, the close reading, the rubric, and ask it to grade the analysis?
+
+**Response:** Keep the reference lists. You can skip them, but you'd lose the main thing the rubric measures.
+
+**Why the reference lists matter.** The rubric scores coverage (A2) by counting the run against `claims_reference.md`: the article's own claims, written by a session that has seen only the PDF. The evaluation criteria (B1–B6) are scored the same way against `problems_reference.md`. If you hand the judge the close reading first, it anchors on what the run found. Faithfulness checks still work that way: is each recorded claim really in the article, are qualifiers kept, are the quotes right. But the judge is bad at noticing what's missing, and an omitted claim or a dropped qualification is one of the failures this project exists to catch. Writing the list from the PDF alone, before seeing any run, is what makes "what was missed" answerable.
+
+**It's not much extra work:**
+- **Barnett and kanbur already have both lists** in `outputs/judgments/<article>/references/`, so you only need them for the other five: alissa, alston, katakam, lei and li.
+- **Each new article needs two short sessions** before judging: [JUDGING_PROMPTS.md](docs/JUDGING_PROMPTS.md) prompt 1 for the claims list and prompt 5 for the problems list.
+- **Each article has one run now, not two**, so there's no head-to-head. Use only the solo prompts: 2 to judge the close reading and 6 to judge the evaluation, with the run in the "A" slot.
+
+So it's four sessions per new article and two for Barnett and kanbur, which is 24 in total.
+
+**If you want to cut it further,** keep the claims list and drop the problems list. Coverage of the close reading matters most for synthesis, because synthesis only reads close readings. The argument evaluations aren't used there, so judging them is a nice-to-have.
+
+### 5. Model as Judge
+
+**Prompt:** But I'm saying, if model as judge comes up with its own claims, isn't it just judging how well it did to the model as judge not how well it did with the article?
+
+**Response:** You're right, and it's the reason ADR-0019 says the judge's verdicts aren't evidence until you check them. Coverage against a reference list means "did the run catch what the judge caught", not "did it catch what the article says". How much that matters depends on which list.
+
+**The claims list is mostly safe.** The rubric doesn't ask the judge what it thinks matters. It asks for an inventory of things the article itself marks: every claim in the abstract, every listed contribution, the conclusion of each section, and every figure and table. Two careful readers would produce nearly the same list, and you can check it against the PDF in a few minutes without rereading the whole analysis. So a run's misses are mostly real misses. Also, the judge isn't grading the run against the list alone: it has the PDF open and checks each recorded claim against the article, not against its own list.
+
+**The problems list is where your worry really applies.** "Where the reasoning fails" is the judge's opinion. Scoring an evaluation against it measures agreement with the judge, and two models agreeing isn't evidence either one is right. This is also the part synthesis doesn't use.
+
+**What I'd do:**
+- **Keep the claims list.** Without it, the judge only sees what the run recorded, and nothing measures what was left out. Skim each list against the PDF before you trust it, which is a much smaller job than reading the analysis.
+- **Drop the problems list.** Judge each evaluation directly against the PDF, with no reference list, and read it as one model's opinion of another's.
+- **Barnett is the only article with an independent reference:** your own notes. That's still the one place where the judge's list can be checked against a human reading.
+
 ---
 
 ## Phase 4 — Research Assistant

@@ -1,0 +1,2031 @@
+{
+  "reading_plan": "Source title: The water use of data center workloads: A review and assessment of key determinants. Source type: peer_reviewed_paper. The repository cover precedes a line-numbered, peer-reviewed journal manuscript and a separately paginated technical supplement. The prose alternates between relatively open framing and dense equations, scenario definitions, multi-panel plots, and tables. I take short steps at changes of model, denominator, or figure, and longer steps through the discussion and supporting inventories. Locations use printed manuscript or SI pages, with PDF pages given to resolve the two numbering sequences.",
+  "reading_path": [
+    {
+      "location": "PDF pp. 1–2; manuscript p. 1, cover and abstract",
+      "moves": "Identify the publication, frame a problem, state the comparison unit, and preview the findings.",
+      "claims": [
+        {
+          "text": "Digitalization and AI make data center water use increasingly important globally; the study examines liters consumed per workload to guide conservation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Workload-level consumption varies by more than 10,000-fold, reflecting more than 1,000-fold variation in water consumed per kWh of server electricity and roughly tenfold variation in server workload efficiency.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "In descending importance the determinants are server efficiency, grid water consumption factor, server utilization, cooling system type, infrastructure efficiency, climate zone, inactive server percentage, and refresh cycle.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Notably, there is no single recipe for minimizing water use; instead, optimal outcomes depend on tailored combinations of these factors.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The cover establishes provenance; the abstract lays out the scale and purpose of the comparison before offering methods or evidence."
+    },
+    {
+      "location": "Manuscript p. 2 (PDF p. 3), §1 opening",
+      "moves": "Motivate the topic with a service premise, contrast research attention, and distinguish direct and indirect consumption using examples.",
+      "claims": [
+        {
+          "text": "Data centers supply processing, communication, and storage as demand for digital services increases; running them requires substantial electricity and water.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Prior studies document data center services and resource requirements.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Shehabi et al., 2024, 2016)",
+                  "reference_entry": "Shehabi, A., Smith, S.J., Hubbard, A., Newkirk, A., Nuoa, L., Siddik, M.A.B., Jonathan, K., Eric, M., Dale, S., 2024. 2024 United States Data Center Energy Usage Report. Berkeley Lab."
+                },
+                {
+                  "citation_text": "(Shehabi et al., 2024, 2016)",
+                  "reference_entry": "Shehabi, A., Smith, S.J., Sartor, D.A., Brown, R.E., Herrlin, M., Koomey, J.G., Masanet, E.R., Horner, N., Azevedo, I.L., Lintner, W., 2016. United States Data Center Energy Usage Report. Berkeley Lab 65."
+                }
+              ]
+            },
+            {
+              "text": "The paper cites energy and water research together for the operating requirements.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Masanet et al., 2020; Mytton, 2021)",
+                  "reference_entry": "Masanet, E., Shehabi, A., Lei, N., Smith, S., Koomey, J., 2020. Recalibrating global data center energy-use estimates. Science 367, 984–986. https://doi.org/10.1126/science.aba3758"
+                },
+                {
+                  "citation_text": "(Masanet et al., 2020; Mytton, 2021)",
+                  "reference_entry": "Mytton, D., 2021. Data centre water consumption. Npj Clean Water 2021 41 4, 1–6. https://doi.org/10.1038/s41545-021-00101-w"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Water consumption has received less investigation than electricity and is increasingly consequential for freshwater conservation, particularly locally.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The introduction contrasts the electricity literature with water studies.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Andrae and Edler, 2015; Belkhir and Elmeligi, 2018; Jones, 2018; Lei and Masanet, 2021; Masanet et al., 2020)",
+                  "reference_entry": "Andrae, A.S.G., Edler, T., 2015. On Global Electricity Usage of Communication Technology: Trends to 2030. Chall. 2015 Vol 6 Pages 117-157 6, 117–157. https://doi.org/10.3390/CHALLE6010117"
+                },
+                {
+                  "citation_text": "(Andrae and Edler, 2015; Belkhir and Elmeligi, 2018; Jones, 2018; Lei and Masanet, 2021; Masanet et al., 2020)",
+                  "reference_entry": "Belkhir, L., Elmeligi, A., 2018. Assessing ICT global emissions footprint: Trends to 2040 & recommendations. J. Clean. Prod. 177, 448–463. https://doi.org/10.1016/J.JCLEPRO.2017.12.239"
+                },
+                {
+                  "citation_text": "(Andrae and Edler, 2015; Belkhir and Elmeligi, 2018; Jones, 2018; Lei and Masanet, 2021; Masanet et al., 2020)",
+                  "reference_entry": "Jones, N., 2018. How to stop data centres from gobbling up the world’s electricity. Nature 561, 163–166. https://doi.org/10.1038/D41586-018-06610-Y"
+                },
+                {
+                  "citation_text": "(Andrae and Edler, 2015; Belkhir and Elmeligi, 2018; Jones, 2018; Lei and Masanet, 2021; Masanet et al., 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2021. Global Data Center Energy Demand and Strategies to Conserve Energy, in: Data Center Handbook, 2nd Edition. WILEY, Palo Alto, CA. https://doi.org/10.1002/9781119597537.ch2"
+                },
+                {
+                  "citation_text": "(Andrae and Edler, 2015; Belkhir and Elmeligi, 2018; Jones, 2018; Lei and Masanet, 2021; Masanet et al., 2020)",
+                  "reference_entry": "Masanet, E., Shehabi, A., Lei, N., Smith, S., Koomey, J., 2020. Recalibrating global data center energy-use estimates. Science 367, 984–986. https://doi.org/10.1126/science.aba3758"
+                }
+              ]
+            },
+            {
+              "text": "The water literature situates the issue in scarcity and conservation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei and Masanet, 2022; Mytton, 2021; Siddik et al., 2021)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                },
+                {
+                  "citation_text": "(Lei and Masanet, 2022; Mytton, 2021; Siddik et al., 2021)",
+                  "reference_entry": "Mytton, D., 2021. Data centre water consumption. Npj Clean Water 2021 41 4, 1–6. https://doi.org/10.1038/s41545-021-00101-w"
+                },
+                {
+                  "citation_text": "(Lei and Masanet, 2022; Mytton, 2021; Siddik et al., 2021)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Marston, L.T., 2021. The environmental footprint of data centers in the United States. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/abfba1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Cooling and space conditioning can consume substantial water directly.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Cooling water is documented in prior modeling.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei and Masanet, 2022)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                }
+              ]
+            },
+            {
+              "text": "Google data centers in The Dalles consumed 355 million gallons in 2021, 29% of city consumption, raising concerns given recent drought.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Oregon Tech, 2022)",
+                  "reference_entry": "Oregon Tech, 2022. Google’s water use is soaring in The Dalles, records show, with two more data centers to come [WWW Document]. oregonlive. URL https://www.oregonlive.com/silicon-forest/2022/12/googles-water-use-is-soaring-in-the-dalles-records-show-with-two-more-data-centers-to-come.html (accessed 12.27.22)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Electricity generation can impose significant indirect consumption locally or nationally, depending on generation technology, mix, and facility electricity demand.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite studies that account for indirect water.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Mytton, 2021; Shehabi et al., 2016; Siddik et al., 2024, 2021)",
+                  "reference_entry": "Mytton, D., 2021. Data centre water consumption. Npj Clean Water 2021 41 4, 1–6. https://doi.org/10.1038/s41545-021-00101-w"
+                },
+                {
+                  "citation_text": "(Mytton, 2021; Shehabi et al., 2016; Siddik et al., 2024, 2021)",
+                  "reference_entry": "Shehabi, A., Smith, S.J., Sartor, D.A., Brown, R.E., Herrlin, M., Koomey, J.G., Masanet, E.R., Horner, N., Azevedo, I.L., Lintner, W., 2016. United States Data Center Energy Usage Report. Berkeley Lab 65."
+                },
+                {
+                  "citation_text": "(Mytton, 2021; Shehabi et al., 2016; Siddik et al., 2024, 2021)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Rao, P., Marston, L.T., 2024. Spatially and Temporally Detailed Water and Carbon Footprints of U.S. Electricity Generation and Use. Water Resour. Res. 60, e2024WR038350. https://doi.org/10.1029/2024WR038350"
+                },
+                {
+                  "citation_text": "(Mytton, 2021; Shehabi et al., 2016; Siddik et al., 2024, 2021)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Marston, L.T., 2021. The environmental footprint of data centers in the United States. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/abfba1"
+                }
+              ]
+            },
+            {
+              "text": "Some facilities have capacities in the hundreds of MW; the cited generation ranges are 0.18–2.0 L/kWh for thermoelectricity and 0.67–1194 L/kWh for hydropower.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lee et al., 2018)",
+                  "reference_entry": "Lee, U., Han, J., Elgowainy, A., Wang, M., 2018. Regional water consumption for hydro and thermal electricity generation in the United States. Appl. Energy 210, 661–672. https://doi.org/10.1016/j.apenergy.2017.05.025"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The opening moves from the internet's dependence on facilities to the possibility that their water consequences are felt well beyond the facility itself."
+    },
+    {
+      "location": "Manuscript pp. 2–3 (PDF pp. 3–4), §1, WUE and reporting",
+      "moves": "Define standard metrics, explain adoption, and establish a limit of comparison before surveying reporting.",
+      "claims": [
+        {
+          "text": "Operators are beginning to track, manage, and report WUE-site and WUE-source; simplicity makes these metrics increasingly common.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper gives operator examples.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Facebook, 2014; Scaleway, 2021)",
+                  "reference_entry": "Facebook, 2014. Open sourcing PUE/WUE dashboards [WWW Document]. Facebook Eng. URL https://engineering.fb.com/2014/03/14/data-center-engineering/open-sourcing-pue-wue-dashboards/ (accessed 7.13.21)."
+                },
+                {
+                  "citation_text": "(Facebook, 2014; Scaleway, 2021)",
+                  "reference_entry": "Scaleway, 2021. Environmental leadership [WWW Document]. URL https://www.scaleway.com/en/environmental-leadership/ (accessed 7.17.21)."
+                }
+              ]
+            },
+            {
+              "text": "Meta provides a reporting example.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Meta Sustainability, 2023)",
+                  "reference_entry": "Meta Sustainability, 2023. Sustainability Report [WWW Document]. URL https://sustainability.fb.com/2023-sustainability-report/ (accessed 4.22.24)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "WUE-site divides onsite water by IT electricity; WUE-source divides combined onsite and offsite water by IT electricity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Green Grid supplies the metric definitions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(The Green Grid, 2011a)",
+                  "reference_entry": "The Green Grid, 2011a. Water usage effectiveness (WUE): a Green Grid data center sustainability metric. White Pap. 35."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Like PUE, both WUE metrics omit hardware efficiency and computing performance and therefore cannot compare water use between centers with different workload quantities and efficiencies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper draws an analogy to PUE and invokes the computing performance critique.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Masanet et al., 2013)",
+                  "reference_entry": "Masanet, E., Shehabi, A., Koomey, J., 2013. Characteristics of low-carbon data centres. Nat. Clim. Change 3, 627–630. https://doi.org/10.1038/nclimate1786"
+                }
+              ]
+            },
+            {
+              "text": "Prior analysis discusses limits of PUE as an efficiency metric.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Horner and Azevedo, 2016)",
+                  "reference_entry": "Horner, N., Azevedo, I., 2016. Power usage effectiveness in data centers: overloaded and underachieving. Electr. J. 29, 61–69. https://doi.org/10.1016/J.TEJ.2016.04.011"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Limited reporting and determinant research hinder decisions; cloud providers dominate disclosure and vary in scope, quality, and granularity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Prior work characterizes reporting variation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Masanet et al., 2024)",
+                  "reference_entry": "Masanet, E., Lei, N., Koomey, J., 2024. To better understand AI’s growing energy use, analysts need a data revolution. Joule 8, 2427–2436. https://doi.org/10.1016/j.joule.2024.07.018"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Even the exemplary reports from Google, Meta, Microsoft, and Scaleway lack determinant detail needed for effective conservation strategies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The named reports exemplify relatively strong disclosure.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Google, 2024; Meta Sustainability, 2023; Microsoft, 2024; Scaleway, 2021)",
+                  "reference_entry": "Google, 2024. Environmental Report - Google Sustainability [WWW Document]. Sustainability. URL https://sustainability.google/reports/google-2024-environmental-report/ (accessed 1.20.25)."
+                },
+                {
+                  "citation_text": "(Google, 2024; Meta Sustainability, 2023; Microsoft, 2024; Scaleway, 2021)",
+                  "reference_entry": "Meta Sustainability, 2023. Sustainability Report [WWW Document]. URL https://sustainability.fb.com/2023-sustainability-report/ (accessed 4.22.24)."
+                },
+                {
+                  "citation_text": "(Google, 2024; Meta Sustainability, 2023; Microsoft, 2024; Scaleway, 2021)",
+                  "reference_entry": "Microsoft, 2024. Environmental Sustainability Report Data Fact Sheet [WWW Document]."
+                },
+                {
+                  "citation_text": "(Google, 2024; Meta Sustainability, 2023; Microsoft, 2024; Scaleway, 2021)",
+                  "reference_entry": "Scaleway, 2021. Environmental leadership [WWW Document]. URL https://www.scaleway.com/en/environmental-leadership/ (accessed 7.17.21)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The distinction between water per unit of electricity and water per unit of work gives the literature review its criterion for what is missing."
+    },
+    {
+      "location": "Manuscript pp. 3–4 (PDF pp. 4–5), §1, remaining research gaps",
+      "moves": "Contrast study scopes and identify an omitted variable.",
+      "claims": [
+        {
+          "text": "Few quantitative studies examine cooling and economizers for WUE-site; the most comprehensive one covers climate, operating efficiency, and joint effects on PUE and WUE-site, while omitting indirect electricity water.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The studies identified in this line of work are cited together.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Gozcu et al., 2017; Lei and Masanet, 2022; Sharma et al., 2009, 2008)",
+                  "reference_entry": "Gozcu, O., Ozada, B., Carfi, M.U., Erden, H.S., 2017. Worldwide energy analysis of major free cooling methods for data centers, in: Proceedings of the 16th InterSociety Conference on Thermal and Thermomechanical Phenomena in Electronic Systems, ITherm 2017. https://doi.org/10.1109/ITHERM.2017.7992592"
+                },
+                {
+                  "citation_text": "(Gozcu et al., 2017; Lei and Masanet, 2022; Sharma et al., 2009, 2008)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                },
+                {
+                  "citation_text": "(Gozcu et al., 2017; Lei and Masanet, 2022; Sharma et al., 2009, 2008)",
+                  "reference_entry": "Sharma, R., Shah, A., Bash, C., Christian, T., Patel, C., 2009. Water efficiency management in datacenters: Metrics and methodology, in: 2009 IEEE International Symposium on Sustainable Systems and Technology, ISSST ’09 in Cooperation with 2009 IEEE International Symposium on Technology and Society, ISTAS. https://doi.org/10.1109/ISSST.2009.5156773"
+                },
+                {
+                  "citation_text": "(Gozcu et al., 2017; Lei and Masanet, 2022; Sharma et al., 2009, 2008)",
+                  "reference_entry": "Sharma, R., Shah, A.J., Bash, C., Christian, T., Patel, C., 2008. Water Efficiency Management in Datacenters (Part I): Introducing a water usage metric based on available energy consumption. TR HP Labs."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Siddik includes indirect consumption, but using size-based summary PUE limits identification of determinants and targeted savings strategies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The cited footprint analysis uses PUE statistics derived from earlier estimates.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Siddik et al., 2021)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Marston, L.T., 2021. The environmental footprint of data centers in the United States. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/abfba1"
+                }
+              ]
+            },
+            {
+              "text": "The paper identifies the PUE data source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Masanet et al., 2020)",
+                  "reference_entry": "Masanet, E., Shehabi, A., Lei, N., Smith, S., Koomey, J., 2020. Recalibrating global data center energy-use estimates. Science 367, 984–986. https://doi.org/10.1126/science.aba3758"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Regional LBNL estimates put direct U.S. consumption at about 21.2 billion liters in 2014 and 66 billion in 2023; breakdowns by space type do not give enough determinant detail to tailor strategies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The two reports underpin the regional estimates.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Shehabi et al., 2024, 2016)",
+                  "reference_entry": "Shehabi, A., Smith, S.J., Hubbard, A., Newkirk, A., Nuoa, L., Siddik, M.A.B., Jonathan, K., Eric, M., Dale, S., 2024. 2024 United States Data Center Energy Usage Report. Berkeley Lab."
+                },
+                {
+                  "citation_text": "(Shehabi et al., 2024, 2016)",
+                  "reference_entry": "Shehabi, A., Smith, S.J., Sartor, D.A., Brown, R.E., Herrlin, M., Koomey, J.G., Masanet, E.R., Horner, N., Azevedo, I.L., Lintner, W., 2016. United States Data Center Energy Usage Report. Berkeley Lab 65."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Practitioners often overlook server workload efficiency; its determinants must be considered alongside those of WUE-site and WUE-source for a comprehensive comparison.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Utilization, power efficiency, refresh rates, and inactivity affect workload efficiency.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Masanet et al., 2020; Shehabi et al., 2016)",
+                  "reference_entry": "Masanet, E., Shehabi, A., Lei, N., Smith, S., Koomey, J., 2020. Recalibrating global data center energy-use estimates. Science 367, 984–986. https://doi.org/10.1126/science.aba3758"
+                },
+                {
+                  "citation_text": "(Masanet et al., 2020; Shehabi et al., 2016)",
+                  "reference_entry": "Shehabi, A., Smith, S.J., Sartor, D.A., Brown, R.E., Herrlin, M., Koomey, J.G., Masanet, E.R., Horner, N., Azevedo, I.L., Lintner, W., 2016. United States Data Center Energy Usage Report. Berkeley Lab 65."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Each study can answer a narrower question; the authors specify what would have to be joined to explain water per service."
+    },
+    {
+      "location": "Manuscript pp. 4–5 (PDF pp. 5–6), §1 close and Fig. 1",
+      "moves": "Propose a denominator, outline the decomposition, and qualify portability.",
+      "claims": [
+        {
+          "text": "Benchmark throughput in ssj_ops supplies the workload denominator for a metric in liters per workload intended to make comparisons fairer.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The throughput score comes from SPECpower_ssj 2008.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Standard Performance Evaluation Corporation, 2022)",
+                  "reference_entry": "Standard Performance Evaluation Corporation, 2022. SPECpower_ssj® 2008 [WWW Document]. URL https://www.spec.org/power_ssj2008/ (accessed 6.22.22)."
+                }
+              ]
+            },
+            {
+              "text": "The paper connects the new basis to limitations of conventional metrics.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Horner and Azevedo, 2016)",
+                  "reference_entry": "Horner, N., Azevedo, I., 2016. Power usage effectiveness in data centers: overloaded and underachieving. Electr. J. 29, 61–69. https://doi.org/10.1016/J.TEJ.2016.04.011"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The analysis starts at server electricity per workload, adds the joint facility effects of cooling, climate and infrastructure, and then adds source water and its interaction with workload efficiency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 1 shows determinant groups feeding server, facility, and electricity supply variables, then intermediate calculations converging on overall water per workload.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The framework can extend to other workload tests when enough data exist, including AI benchmarks.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "MLPerf is offered as the example.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(MLCommons, 2024)",
+                  "reference_entry": "MLCommons, 2024. Benchmark MLPerf Inference: Datacenter [WWW Document]. URL https://mlcommons.org/benchmarks/inference-datacenter/ (accessed 4.22.24)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The proposed metric answers the stated comparison problem; the schematic makes the three layers a calculation sequence."
+    },
+    {
+      "location": "Manuscript pp. 6–7 (PDF pp. 7–8), §2.1 and Eqs. (1)–(4)",
+      "moves": "Set accounting boundaries, define factors, and derive an identity.",
+      "claims": [
+        {
+          "text": "Direct consumption covers humidification, direct adiabatic air cooling, and tower evaporation, windage and draw-off.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Indirect consumption covers upstream fuel supply and renewable equipment manufacturing, plus generation-stage uses such as cooling towers, pond or reservoir evaporation and solar panel cleaning.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Overall water per workload adds onsite water per workload to facility electricity per workload multiplied by the grid WCF.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Equation (1) shows the addition; WCF is liters of freshwater consumed per kWh generated.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lee et al., 2018)",
+                  "reference_entry": "Lee, U., Han, J., Elgowainy, A., Wang, M., 2018. Regional water consumption for hydro and thermal electricity generation in the United States. Appl. Energy 210, 661–672. https://doi.org/10.1016/j.apenergy.2017.05.025"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The same server electricity intensity scales WUE-site to onsite water per workload and PUE to facility electricity per workload.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Equations (2) and (3) show the two products; PUE is total facility electricity divided by IT electricity.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(The Green Grid, 2011b)",
+                  "reference_entry": "The Green Grid, 2011b. PUE: The Green Grid metric for evaluating the energy efficiency in DC (Data Center). Measurement method using the power demand. INTELEC Int. Telecommun. Energy Conf. Proc. https://doi.org/10.1109/INTLEC.2011.6099718"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Substitution expresses overall water per workload as WUE-source multiplied by server electricity per workload.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Equation (4) shows WUE-source as WUE-site plus PUE times WCF.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(The Green Grid, 2011a)",
+                  "reference_entry": "The Green Grid, 2011a. Water usage effectiveness (WUE): a Green Grid data center sustainability metric. White Pap. 35."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The identity explains precisely why a source metric alone does not express water per workload."
+    },
+    {
+      "location": "Manuscript pp. 7–8 (PDF pp. 8–9), §2.2 and Eqs. (5)–(8)",
+      "moves": "Narrow the IT boundary and construct the fleet-level power-to-throughput model.",
+      "claims": [
+        {
+          "text": "Servers are the focus because they host workloads; AI training or inference and storage capacity are possible alternative service measures.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The cited AI discussion motivates separate performance measures.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Masanet et al., 2024)",
+                  "reference_entry": "Masanet, E., Lei, N., Koomey, J., 2024. To better understand AI’s growing energy use, analysts need a data revolution. Joule 8, 2427–2436. https://doi.org/10.1016/j.joule.2024.07.018"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Modeled server electricity per workload depends on utilization, vintage distribution, power efficiency and the inactive fraction, including comatose and idle redundant servers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The model draws on earlier server stock and energy work.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei, 2022; Lei and Masanet, 2021; Shehabi et al., 2016)",
+                  "reference_entry": "Lei, N., 2022. A Hybrid Physics-Based and Data-Driven Modeling Framework for Energy and Water Use Analysis of Data Centers with Spatio-Temporal Resolution. Northwestern University, Evanston, IL, USA."
+                },
+                {
+                  "citation_text": "(Lei, 2022; Lei and Masanet, 2021; Shehabi et al., 2016)",
+                  "reference_entry": "Lei, N., Masanet, E., 2021. Global Data Center Energy Demand and Strategies to Conserve Energy, in: Data Center Handbook, 2nd Edition. WILEY, Palo Alto, CA. https://doi.org/10.1002/9781119597537.ch2"
+                },
+                {
+                  "citation_text": "(Lei, 2022; Lei and Masanet, 2021; Shehabi et al., 2016)",
+                  "reference_entry": "Shehabi, A., Smith, S.J., Sartor, D.A., Brown, R.E., Herrlin, M., Koomey, J.G., Masanet, E.R., Horner, N., Azevedo, I.L., Lintner, W., 2016. United States Data Center Energy Usage Report. Berkeley Lab 65."
+                }
+              ]
+            },
+            {
+              "text": "Equation (5) shows 3.6 times average power divided by average throughput: the numerator weights idle and active draws; the denominator multiplies active share, active power and average power-performance. Equations (6)–(8) weight idle power at zero utilization, active power at modeled utilization, and power-performance by installation-year shares.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Local linear kernel regression fits server power and power-performance against utilization and installation year, with separate efficiency quantiles because hardware varies within a year.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "SPEC benchmark records supply the observations.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Standard Performance Evaluation Corporation, 2022)",
+                  "reference_entry": "Standard Performance Evaluation Corporation, 2022. SPECpower_ssj® 2008 [WWW Document]. URL https://www.spec.org/power_ssj2008/ (accessed 6.22.22)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The workload denominator now has a mechanism: inactive equipment draws power while throughput comes from the active fleet."
+    },
+    {
+      "location": "Manuscript pp. 8–9 (PDF pp. 9–10), §2.3",
+      "moves": "Motivate paired simulation, define model coverage and lay out the scenario space.",
+      "claims": [
+        {
+          "text": "PUE and WUE-site are accepted metrics, jointly affected by cooling technology, climate, and operational practices, yet sporadically reported and poorly understood by sustainability analysts.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The metrics come from Green Grid guidance.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(The Green Grid, 2011b, 2011a)",
+                  "reference_entry": "The Green Grid, 2011b. PUE: The Green Grid metric for evaluating the energy efficiency in DC (Data Center). Measurement method using the power demand. INTELEC Int. Telecommun. Energy Conf. Proc. https://doi.org/10.1109/INTLEC.2011.6099718"
+                },
+                {
+                  "citation_text": "(The Green Grid, 2011b, 2011a)",
+                  "reference_entry": "The Green Grid, 2011a. Water usage effectiveness (WUE): a Green Grid data center sustainability metric. White Pap. 35."
+                }
+              ]
+            },
+            {
+              "text": "The simultaneous dependencies are drawn from earlier studies.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                },
+                {
+                  "citation_text": "(Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2020. Statistical analysis for predicting location-specific data center PUE and its improvement potential. Energy 201, 117556. https://doi.org/10.1016/j.energy.2020.117556"
+                }
+              ]
+            },
+            {
+              "text": "The paper cites a review for the reporting and understanding gap.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Mytton, 2021)",
+                  "reference_entry": "Mytton, D., 2021. Data centre water consumption. Npj Clean Water 2021 41 4, 1–6. https://doi.org/10.1038/s41545-021-00101-w"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The PUE simulations include IT, lighting, fans, pumps and power distribution losses; WUE-site includes direct adiabatic cooling, humidification, and applicable cooling tower losses.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Earlier models establish the electricity accounting.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei and Masanet, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2020. Statistical analysis for predicting location-specific data center PUE and its improvement potential. Energy 201, 117556. https://doi.org/10.1016/j.energy.2020.117556"
+                }
+              ]
+            },
+            {
+              "text": "The WUE model includes evaporative heat removal, windage and blowdown to control minerals.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei and Masanet, 2022)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                }
+              ]
+            },
+            {
+              "text": "The text invokes greywater in discussing the functional role of tower water.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Aldaya et al., 2012)",
+                  "reference_entry": "Aldaya, M.M., Chapagain, A.K., Hoekstra, A.Y., Mekonnen, M.M., 2012. The Water Footprint Assessment Manual, 0 ed. Routledge. https://doi.org/10.4324/9781849775526"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Ten cooling archetypes cover stand-alone air- and water-cooled chillers, direct expansion, airside economizers with either chiller backup with or without direct adiabatic cooling, waterside economizers with water-cooled backup, and two liquid-cooled IT designs: waterside economizer with water-cooled backup and adiabatically assisted dry cooler with air-cooled backup.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The archetypes and operating conditions draw on prior cooling literature.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Evans, 2004; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Evans, T., 2004. The different types of air conditioning equipment for IT environments. APC White Pap. 24."
+                },
+                {
+                  "citation_text": "(Evans, 2004; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                },
+                {
+                  "citation_text": "(Evans, 2004; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2020. Statistical analysis for predicting location-specific data center PUE and its improvement potential. Energy 201, 117556. https://doi.org/10.1016/j.energy.2020.117556"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Supplemental cooling activates when the primary method cannot meet setpoints, typically in extreme weather.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Nineteen climate zones span extremely hot humid and dry (0A–0B), very hot humid and dry (1A–1B), hot humid and dry (2A–2B), warm and mixed humid, dry and marine (3A–3C and 4A–4C), cool humid, dry and marine (5A–5C), 6A and 6B (labeled cool humid and cold dry), very cold (7) and subarctic/arctic (8). The authors present their combinations with cooling technologies as comprehensive global coverage.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Climate zones are based on ASHRAE.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(ASHRAE, 2013)",
+                  "reference_entry": "ASHRAE, 2013. Climatic data for building design standards. ASHRAE Stand."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Operating efficiency is represented by quantiles of simulated PUE and WUE-site within each cooling technology and climate.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Earlier literature documents the practices represented.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei and Masanet, 2022, 2021, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                },
+                {
+                  "citation_text": "(Lei and Masanet, 2022, 2021, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2021. Global Data Center Energy Demand and Strategies to Conserve Energy, in: Data Center Handbook, 2nd Edition. WILEY, Palo Alto, CA. https://doi.org/10.1002/9781119597537.ch2"
+                },
+                {
+                  "citation_text": "(Lei and Masanet, 2022, 2021, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2020. Statistical analysis for predicting location-specific data center PUE and its improvement potential. Energy 201, 117556. https://doi.org/10.1016/j.energy.2020.117556"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "PUE and WUE-site are generated together because infrastructure and climate can move them together or trade one against the other."
+    },
+    {
+      "location": "Manuscript p. 10 (PDF p. 11), §2.4",
+      "moves": "Add the power supply factor and qualify geographic applicability.",
+      "claims": [
+        {
+          "text": "WCFs cover geothermal, hydro, biomass, oil, coal, natural gas, solar PV and wind, counting upstream and generation-stage consumption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The two cited inventories support the life-cycle boundary.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Peer et al., 2019; Siddik et al., 2021)",
+                  "reference_entry": "Peer, R.A.M., Grubert, E., Sanders, K.T., 2019. A regional assessment of the water embedded in the US electricity system. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/ab2daa"
+                },
+                {
+                  "citation_text": "(Peer et al., 2019; Siddik et al., 2021)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Marston, L.T., 2021. The environmental footprint of data centers in the United States. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/abfba1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The factors are U.S. generation-weighted averages; region, plant cooling, prime mover, and allocation method can significantly affect them and warrant analysis outside the U.S.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite sources documenting WCF variation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Grubert and Sanders, 2018; Lee et al., 2018)",
+                  "reference_entry": "Grubert, E., Sanders, K.T., 2018. Water Use in the United States Energy System: A National Assessment and Unit Process Inventory of Water Consumption and Withdrawals. Environ. Sci. Technol. https://doi.org/10.1021/acs.est.8b00139"
+                },
+                {
+                  "citation_text": "(Grubert and Sanders, 2018; Lee et al., 2018)",
+                  "reference_entry": "Lee, U., Han, J., Elgowainy, A., Wang, M., 2018. Regional water consumption for hydro and thermal electricity generation in the United States. Appl. Energy 210, 661–672. https://doi.org/10.1016/j.apenergy.2017.05.025"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The cooling and climate scenarios have global reach, but the electricity factors have a stated U.S. basis."
+    },
+    {
+      "location": "Manuscript pp. 10–12 (PDF pp. 11–13), §3.1 and Fig. 2",
+      "moves": "Report the factorial comparison, show substitution among factors and explain mechanisms and diminishing returns.",
+      "claims": [
+        {
+          "text": "With 2023 as the newest purchase year, low server electricity per workload generally accompanies efficient hardware, high utilization, fast refresh and few inactive machines; no single factor usually suffices.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 2 shows similar color for an efficient pool with low utilization and more inactivity and a less efficient pool with high utilization and less inactivity. The prose assigns these cases A and B respectively, but the figure puts B in the 95th-percentile, 30%-inactive panel at 20% utilization and a six-year refresh, and A in the 5th-percentile, 5%-inactive panel at 80% utilization and a three-year refresh.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Server efficiency is the main influence on server electricity per workload; efficient servers draw less at idle and typically have wider dynamic ranges and better power proportionality.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite work on energy proportionality.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Barroso and Hölzle, 2007; Ryckbosch et al., 2011)",
+                  "reference_entry": "Barroso, L.A., Hölzle, U., 2007. The case for energy-proportional computing. Computer 40, 33–37. https://doi.org/10.1109/MC.2007.443"
+                },
+                {
+                  "citation_text": "(Barroso and Hölzle, 2007; Ryckbosch et al., 2011)",
+                  "reference_entry": "Ryckbosch, F., Polfliet, S., Eeckhout, L., 2011. Trends in server energy proportionality. Computer 44, 69–72. https://doi.org/10.1109/MC.2011.130"
+                }
+              ]
+            },
+            {
+              "text": "Figure S5.1 compares the low- and high-efficiency groups.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Raising utilization reduces energy per workload with diminishing benefits above about 40%.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S5.2 shows a steep early decline and then a flatter trend.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Refresh optimization reduces energy per workload across utilization levels as newer generations improve.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S5.3 compares refresh lengths at different utilization levels.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Removing inactive servers reduces wasted draw per workload, but newer generations' much lower idle power diminishes this effect over time.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S5.4 contrasts low and high inactive shares; the authors explain that idle servers draw power without doing computing work.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The first result makes the joint-determinant argument concrete before water or facility electricity enters the calculation."
+    },
+    {
+      "location": "Manuscript pp. 12–13 (PDF pp. 13–14), §3.2 and Fig. 3",
+      "moves": "Read the slope of the facility-water identity and give a counterexample to single-metric assessment.",
+      "claims": [
+        {
+          "text": "At fixed server electricity per workload, facility water per workload rises with WUE-site; server electricity intensity sets the rate of increase.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 3 varies server electricity per workload across values sampled uniformly between the extremes in Figure 2.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Low facility water per workload does not necessarily require low WUE-site; both site WUE and server workload efficiency must be considered.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 3 shows A and B at equal facility water per workload with A combining low WUE-site and higher server electricity, and B combining much higher WUE-site and lower server electricity.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The move follows directly from multiplying site WUE by server electricity per workload."
+    },
+    {
+      "location": "Manuscript pp. 13–15 (PDF pp. 14–16), §3.3 and Fig. 4",
+      "moves": "Compare cooling clusters, explain mechanisms, and demonstrate that the metrics can vary independently.",
+      "claims": [
+        {
+          "text": "Water-cooled chillers generally have higher WUE-site from tower consumption, especially evaporation; direct expansion and air-cooled chillers generally use less water but have higher PUE owing to lower chiller COP.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 4 shows year-average PUE and WUE-site grouped by cooling technology, on a logarithmic WUE-site axis; Figure S6.2 re-plots it linearly.",
+              "form": "paraphrased",
+              "citations": []
+            },
+            {
+              "text": "The authors cite prior climate and technology modeling for the chiller explanation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei and Masanet, 2022)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Liquid cooling coupled with dry coolers, economizers or adiabatic cooling can reduce both metrics; the authors identify airside economizers with direct adiabatic cooling as giving the greatest savings.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "IT liquid cooling can further lower both metrics through better heat transfer, higher coolant or facility water temperature setpoints, and reduced or eliminated fan and chiller power.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Supporting sources discuss liquid cooling and chiller-free design.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(ASHRAE, 2014; Iyengar et al., 2012)",
+                  "reference_entry": "ASHRAE, 2014. Liquid Cooling Guidelines for Datacom Equipment Centers, 2nd Edition, ASHRAE Datacom Series. Atlanta."
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014; Iyengar et al., 2012)",
+                  "reference_entry": "Iyengar, M., David, M., Parida, P., Kamath, V., Kochuparambil, B., Graybill, D., Schultz, M., Gaynes, M., Simons, R., Schmidt, R., Chainer, T., 2012. Server liquid cooling with chiller-less data center design to enable significant energy savings. Annu. IEEE Semicond. Therm. Meas. Manag. Symp. 212–223. https://doi.org/10.1109/STHERM.2012.6188851"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Within an archetype, PUE and WUE-site relate positively and nonlinearly: favorable climates and efficient operations tend to yield low values of both, while hot or humid climates and low efficiency yield higher values.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S6.1 illustrates how climate and efficiency points define one technology region.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Overlapping clusters show that different configurations can reach similar metrics, making system-wide optimization necessary.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 4 uses A and B to hold WUE-site constant and C and D to hold PUE constant. The prose reports differences of 2.0 in PUE and 2.6 in WUE-site, respectively, without explicitly calling them factors in this passage.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The focus shifts from how WUE-site scales into water per workload to how the facility metrics are jointly produced."
+    },
+    {
+      "location": "Manuscript pp. 15–17 (PDF pp. 16–18), §3.4 and Fig. 5",
+      "moves": "Combine facility metrics with server workload efficiency and compare tradeoffs in workload units.",
+      "claims": [
+        {
+          "text": "Combining the server and facility determinants yields broad regions of possible electricity and water performance per workload, varying with climate, operations and server efficiency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 5 shows separate regions by cooling archetype using equations (2) and (3).",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The lowest site electricity and water per workload are generally associated with the highest server workload efficiency, but attainable minima differ markedly by cooling system.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S7.1 isolates the scaling effect for airside economization and adiabatic cooling with water-cooled backup.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Air-cooled chillers and direct expansion generally trade lower site water for higher electricity per workload; water-cooled chillers trade the other way.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Economizers, dry coolers, liquid cooling and adiabatic cooling can reduce both intensities; adiabatic cooling can substantially reduce electricity per workload.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Different determinant combinations can attain the same electricity or water intensity; a single determinant cannot support comparisons and there are multiple paths to improvement.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 5 shows points A with common site water per workload and points B with common facility electricity per workload.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The plots preserve the technology tradeoff while exposing how widely outcomes can vary within one technology."
+    },
+    {
+      "location": "Manuscript pp. 17–20 (PDF pp. 18–21), §3.5 and Fig. 6",
+      "moves": "Introduce source WUE as a proxy, vary grid factors and cooling, and derive two levers.",
+      "claims": [
+        {
+          "text": "WUE-source is often used as a proxy for overall water efficiency in liters per kWh.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors connect this use to a footprint study and the metric definition.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Siddik et al., 2021; The Green Grid, 2011a)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Marston, L.T., 2021. The environmental footprint of data centers in the United States. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/abfba1"
+                },
+                {
+                  "citation_text": "(Siddik et al., 2021; The Green Grid, 2011a)",
+                  "reference_entry": "The Green Grid, 2011a. Water usage effectiveness (WUE): a Green Grid data center sustainability metric. White Pap. 35."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "WUE-site determines the horizontal range; the airside economizer with adiabatic cooling and water-cooled backup spans more than direct expansion, while PUE times WCF sets the indirect uplift at a given site WUE.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 6(a) shows wind and geothermal bounding the regions for the two cooling systems; Figure 6(b) labels the WCFs in L/kWh as wind 0.011, solar PV 0.034, natural gas 1.170, coal 2.200, oil 2.900, biomass 4.280, hydro 6.800 and geothermal 11.090. Equation (4) gives the linear terms in WUE-site and WCF at fixed PUE.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "WCF strongly influences WUE-source: high site WUE can coexist with low source WUE on wind or solar, and low site WUE can coexist with high source WUE on fossil, hydro, or geothermal generation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 6(c) shows different region shapes across cooling types; the prose reports a factor of 34 in source WUE at equal site WUE for A and B, and 4.5 in site WUE at equal source WUE for C and D.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Operating improvements can lower PUE and WUE-site but are bounded by cooling implementation and climate; using low-WCF power is less dependent on cooling technology but bounded by available grid options.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Low onsite intensity no longer guarantees low source intensity once the electricity term enters."
+    },
+    {
+      "location": "Manuscript pp. 20–23 (PDF pp. 21–24), §3.6 and Fig. 7",
+      "moves": "Recombine all factors, compare high- and low-WCF regimes, and qualify each strategy.",
+      "claims": [
+        {
+          "text": "For the airside economizer with air-cooled backup, the upper boundary is low server workload efficiency and the lower is high efficiency. Their separation is greater on geothermal than on wind, making server efficiency particularly consequential when high-WCF power is unavoidable.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 7(a) shows the contrast using extreme server electricity intensities from Figure 2, facility metrics from Figure 4, and WCFs from Figure 6(b).",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "On wind, narrower separation emphasizes onsite water reductions; across cooling systems, lower WCF usually reduces overall water substantially unless site consumption is significant, as with water-cooled chillers or waterside economizers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 7(b) shows facility and overall water intensities across technologies; the two become more positively correlated as WCF falls.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "When low-WCF power is already available, the authors prioritize facility water savings through cooling choice, PUE or WUE-site reduction, or server optimization. WUE-source, WCF or WUE-site alone cannot support comparisons.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 7(b) marks the minimum for geothermal and maximum for wind with dashed lines; overlapping outcomes between the thresholds illustrate different routes to similar overall consumption.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The change in which lever matters is the point of moving from source WUE to water per delivered workload."
+    },
+    {
+      "location": "Manuscript pp. 23–24 (PDF pp. 24–25), §3.7 and Fig. 8",
+      "moves": "Switch from individual examples to variance decomposition and translate rank into interventions.",
+      "claims": [
+        {
+          "text": "Sobol total-effect indices rank server efficiency first, WCF second, utilization third, cooling system fourth, infrastructure efficiency fifth, climate sixth, inactivity seventh and refresh eighth.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Variance decomposition uses Sobol's total-effect index.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Sobol, 2001)",
+                  "reference_entry": "Sobol, I.M., 2001. Global sensitivity indices for nonlinear mathematical models and their Monte Carlo estimates. Math. Comput. Simul. 55, 271–280. https://doi.org/10.1016/S0378-4754(00)00270-6"
+                }
+              ]
+            },
+            {
+              "text": "Figure 8 shows the ranking and 95% confidence intervals, with visibly overlapping intervals for the top three estimates. Exact index values are not labeled.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Efficient equipment such as Energy Star servers, consolidation or virtualization, and wind or solar PV are suggested by the leading sources of variation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Cooling type, operating efficiency and climate matter through PUE and WUE-site; inactive share and refresh still matter through server workload efficiency, supporting needless equipment removal and refurbishment.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The ranking summarizes variation across the modeled inputs; it does not replace the preceding conditional comparisons."
+    },
+    {
+      "location": "Manuscript pp. 24–25 (PDF pp. 25–26), §4 conclusion",
+      "moves": "Recapitulate the three stages and claim reporting and strategy contributions.",
+      "claims": [
+        {
+          "text": "A workload-based metric integrating PUE, WUE-site, WCF and server workload efficiency offers a path toward standardized reporting across different sites.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Joint accounting for site cooling and both upstream and generation-stage water lays the groundwork for integrated conservation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The parametric design is presented as yielding actionable site-specific strategies; incorporation of server workload efficiency is claimed as a distinctive contribution and a framework for different digital services.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The conclusion shifts the established decomposition into a proposal for comparing and reporting digital services."
+    },
+    {
+      "location": "Manuscript p. 26 (PDF p. 27), §5, policy and comparative example",
+      "moves": "Recommend broad measures, qualify them by constraints, and illustrate a misleading comparison.",
+      "claims": [
+        {
+          "text": "Promoting wind or solar PV, efficient servers and utilization through virtualization can reduce national water use while maximizing service output.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "If grid or climate is geographically constrained, raising average server workload efficiency is the most effective strategy; choosing cooling well at design time can reduce facility use and local water competition.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Workload-based indicators enable impartial comparisons and bring IT computing efficiency into decisions historically focused on PUE and WUE.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "A cloud facility with airside economization, adiabatic cooling and water-cooled backup may use more onsite water per kWh than a conventional direct-expansion site. Calling the latter more water-efficient ignores how many services each can deliver for the same onsite and offsite water.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The general levers and case-by-case advice coexist because the paper distinguishes what can be changed nationally from what a given site can change."
+    },
+    {
+      "location": "Manuscript pp. 27–28 (PDF pp. 28–29), §5, co-benefits and limits",
+      "moves": "Extend the argument to other benefits, then concede data, IT, geography and water-boundary limits.",
+      "claims": [
+        {
+          "text": "Virtualization can reduce required IT capacity and upfront investment with proper capacity planning.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equipment and infrastructure efficiency can lower electricity and water per service and their bills; energy efficiency and wind or solar can also reduce carbon emissions. The authors take these co-benefits as strong evidence for incentives and operational measures.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "SPECpower may not represent the distribution of installed server efficiency over time; even its least efficient servers could outperform typical market volume servers, understating upper bounds on water use.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Future work could include GPU, storage and network loads; the current generation-weighted U.S. factors omit regional and technology variation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite variation in generation water intensity.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lee et al., 2018)",
+                  "reference_entry": "Lee, U., Han, J., Elgowainy, A., Wang, M., 2018. Regional water consumption for hydro and thermal electricity generation in the United States. Appl. Energy 210, 661–672. https://doi.org/10.1016/j.apenergy.2017.05.025"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Consumption-only results omit withdrawals, which also matter locally; decision makers should consider electric power withdrawal factors together with consumption factors in future total site water assessments.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The proposed incentives rest on potential co-benefits; the limitations identify what would have to be measured to generalize the comparison."
+    },
+    {
+      "location": "Manuscript pp. 28–31 (PDF pp. 29–32), §5 close, acknowledgements, supporting information and references",
+      "moves": "Qualify terminology, call for standardization, and close with provenance and reproducibility pointers.",
+      "claims": [
+        {
+          "text": "Some data center studies call workload water use a water footprint.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors give examples of the terminology.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei et al., 2023; Ristic et al., 2015; Siddik et al., 2021)",
+                  "reference_entry": "Lei, N., Lu, J., Cheng, Z., Cao, Z., Shehabi, A., Masanet, E., 2023. Geospatial assessment of water footprints for hyperscale data centers in the United States. J. Phys. Conf. Ser. 2600, 172003. https://doi.org/10.1088/1742-6596/2600/17/172003"
+                },
+                {
+                  "citation_text": "(Lei et al., 2023; Ristic et al., 2015; Siddik et al., 2021)",
+                  "reference_entry": "Ristic, B., Madani, K., Makuch, Z., 2015. The water footprint of data centers. Sustain. Switz. 7. https://doi.org/10.3390/su70811260"
+                },
+                {
+                  "citation_text": "(Lei et al., 2023; Ristic et al., 2015; Siddik et al., 2021)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Marston, L.T., 2021. The environmental footprint of data centers in the United States. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/abfba1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A precise standardized definition tailored to data centers is essential for research and policy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The cited works emphasize definitional precision to avoid confusion.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Aldaya et al., 2012; Ansorge and Stejskalová, 2025)",
+                  "reference_entry": "Aldaya, M.M., Chapagain, A.K., Hoekstra, A.Y., Mekonnen, M.M., 2012. The Water Footprint Assessment Manual, 0 ed. Routledge. https://doi.org/10.4324/9781849775526"
+                },
+                {
+                  "citation_text": "(Aldaya et al., 2012; Ansorge and Stejskalová, 2025)",
+                  "reference_entry": "Ansorge, L., Stejskalová, L., 2025. Water footprint which is not the water footprint: Critical review of the article by Müller et al. (2024). J. Environ. Manage. 374, 124038. https://doi.org/10.1016/j.jenvman.2025.124038"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The acknowledgements identify McQuown and Mellichamp support and DOE support for portions at LBNL under Contract No. DE-AC02–05CH11231; the authors disclaim that their views necessarily reflect the government or University of California Regents.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The manuscript points to online supporting information and a GitHub repository for data and code, then lists cited works.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The manuscript ends by distinguishing the specific measured quantity from a broader and potentially ambiguous footprint label."
+    },
+    {
+      "location": "SI pp. 1–2 (PDF pp. 33–34), title and S1, Table S.1",
+      "moves": "Restart pagination and operationalize the refresh-cycle assumption.",
+      "claims": [
+        {
+          "text": "The factorial design models one- to eight-year refresh cycles to span traditional through hyperscale practices.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite two sources on industry practice.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Horizon Editorial, 2023; Supermicro, 2019)",
+                  "reference_entry": "Horizon Editorial, 2023. Navigating Hardware Refresh Cycles In The Data Center [WWW Document]. URL https://horizontechnology.com/news/data-center-hardware-refresh-cycles/ (accessed 4.22.24)."
+                },
+                {
+                  "citation_text": "(Horizon Editorial, 2023; Supermicro, 2019)",
+                  "reference_entry": "Supermicro, 2019. Data Centers & The Environment: 2019 Report on the State of the Green Data Center."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The vintage assumptions divide the fleet equally across the latest years included in each refresh cycle, through 2023.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table S.1 lists 100% for 2023 at one year, then 50.0%, 33.3%, 25.0%, 20.0%, 16.7%, 14.3% and 12.5% per included year for cycles of two through eight years; earlier years receive zero.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "Refresh length becomes a reproducible change in the fleet's age mix."
+    },
+    {
+      "location": "SI pp. 3–4 (PDF pp. 35–36), S2, benchmark and regression",
+      "moves": "Describe the observations, justify a flexible fit, and specify the estimator.",
+      "claims": [
+        {
+          "text": "SPECpower_ssj 2008 is a standardized volume-server benchmark with comparable records since 2007; vendor and organization submissions are updated quarterly.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The benchmark database supplies power and performance observations.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Standard Performance Evaluation Corporation, 2022)",
+                  "reference_entry": "Standard Performance Evaluation Corporation, 2022. SPECpower_ssj® 2008 [WWW Document]. URL https://www.spec.org/power_ssj2008/ (accessed 6.22.22)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The local linear kernel model is chosen because it can fit unexpected nonlinear relationships; utilization and installation year predict power and power-performance.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Equations (S1)–(S3) show a local linear approximation with a random error, the normalized kernel-weighted local constant estimator, and the Gaussian kernel.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Kafadar et al., 1999)",
+                  "reference_entry": "Kafadar, K., Bowman, A.W., Azzalini, A., 1999. Applied Smoothing Techniques for Data Analysis: The Kernel Approach with S-PLUS Illustrations. J. Am. Stat. Assoc. https://doi.org/10.2307/2670015"
+                }
+              ]
+            },
+            {
+              "text": "The bandwidth governing smoothing is estimated with the Akaike Information Criterion.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Hurvich et al., 1998)",
+                  "reference_entry": "Hurvich, C.M., Simonoff, J.S., Tsai, C.L., 1998. Smoothing parameter selection in nonparametric regression using an improved Akaike information criterion. J. R. Stat. Soc. Ser. B Stat. Methodol. 60, 271–293. https://doi.org/10.1111/1467-9868.00125"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Response surfaces are fitted at annual 5th and 95th overall efficiency quantiles, using R's sm.regression.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Quantile groups come from the benchmark.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Standard Performance Evaluation Corporation, 2022)",
+                  "reference_entry": "Standard Performance Evaluation Corporation, 2022. SPECpower_ssj® 2008 [WWW Document]. URL https://www.spec.org/power_ssj2008/ (accessed 6.22.22)."
+                }
+              ]
+            },
+            {
+              "text": "The sm package implements the model.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Bowman, 2018)",
+                  "reference_entry": "Bowman, A.A.A., 2018. Package “sm.”"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The benchmark and fitting choices explain what the server efficiency quantiles measure."
+    },
+    {
+      "location": "SI pp. 4–5 (PDF pp. 36–37), S2 response surfaces",
+      "moves": "Read the fitted surfaces and use the observed nonlinearities to justify the method.",
+      "claims": [
+        {
+          "text": "Server power usually rises with utilization; efficient servers tend to draw less at idle.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Power-performance is zero at idle and rises with utilization and installation year; the gap between least and most efficient widens over time.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S2.1 shows nonlinear power and throughput-per-watt contours for the two efficiency groups, supporting the choice of a nonparametric model.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The plot distinguishes power draw from throughput per watt, so rising draw and improving workload efficiency are compatible."
+    },
+    {
+      "location": "SI pp. 5–8 (PDF pp. 37–40), S3 opening and Table S3.1, air-cooled IT",
+      "moves": "Extend prior simulation and describe the physical cooling alternatives.",
+      "claims": [
+        {
+          "text": "Prior PUE and WUE-site simulation work is reviewed and supplemented; the ten cases are intended to cover typical air- and liquid-cooled IT.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper identifies its model antecedents.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Lu, J., Cheng, Z., Cao, Z., Shehabi, A., Masanet, E., 2023. Geospatial assessment of water footprints for hyperscale data centers in the United States. J. Phys. Conf. Ser. 2600, 172003. https://doi.org/10.1088/1742-6596/2600/17/172003"
+                },
+                {
+                  "citation_text": "(Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                },
+                {
+                  "citation_text": "(Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2020. Statistical analysis for predicting location-specific data center PUE and its improvement potential. Energy 201, 117556. https://doi.org/10.1016/j.energy.2020.117556"
+                }
+              ]
+            },
+            {
+              "text": "The cooling inventory draws on an equipment survey.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Evans, 2004)",
+                  "reference_entry": "Evans, T., 2004. The different types of air conditioning equipment for IT environments. APC White Pap. 24."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Direct expansion is common for simplicity and cost; air-cooled chillers suit water conservation and limited tower space; water-cooled chillers handle large loads efficiently but evaporate tower water.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table S3.1 describes direct refrigerant cooling of indoor air, air-cooled condenser heat rejection, and water-cooled condenser heat rejection via towers, with chillers typically paired with room air handlers.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Economizers cut reliance on mechanical refrigeration by using outdoor air or cool water when conditions allow; direct adiabatic evaporation can avoid mechanical cooling altogether in some zones.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table S3.1 distinguishes waterside sources (natural bodies or cooling towers), airside systems with either type of backup, and adiabatic variants that cool air by evaporation; tower use can still be substantial in waterside designs.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The inventory gives a physical explanation for the differences treated as technology clusters in the main text."
+    },
+    {
+      "location": "SI pp. 8–10 (PDF pp. 40–42), S3 Table S3.1, liquid-cooled IT and backup",
+      "moves": "Distinguish liquid IT heat collection from ultimate heat rejection and qualify backup operation.",
+      "claims": [
+        {
+          "text": "Higher liquid-cooling temperatures extend the period when waterside economizers or dry coolers can meet load; evaporative towers can still use substantial water.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table S3.1 pairs liquid-cooled IT plus waterside economizer with water-cooled backup; it pairs dry coolers with optional adiabatic assist and air-cooled backup. Dry mode rejects heat to ambient air; wet mode precools air with water upstream of coils, saving water relative to tower cooling while adapting to weather.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Backup in the archetype name is conditional; non-liquid labels indicate air-cooled IT.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Table S3.1 note says backup can go unused in favorable climates and illustrates this with the airside economizer plus air-cooled chiller.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The presence of liquid at the equipment does not establish whether or when water is evaporated outside it."
+    },
+    {
+      "location": "SI pp. 10–12 (PDF pp. 42–44), S3 scenario generation and Tables S3.1–S3.2",
+      "moves": "Specify sampling, weather inputs and efficiency thresholds.",
+      "claims": [
+        {
+          "text": "Fifty scenarios per cooling system and zone combine uncertain facility variables and a representative city's typical meteorological year.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S3.1 diagrams the combination of cooling type, sampled facility variables and climate/weather inputs to generate paired results by system and zone.",
+              "form": "paraphrased",
+              "citations": []
+            },
+            {
+              "text": "Table S3.2 identifies the physical model and Latin Hypercube sampling of facility system variables.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Lu, J., Cheng, Z., Cao, Z., Shehabi, A., Masanet, E., 2023. Geospatial assessment of water footprints for hyperscale data centers in the United States. J. Phys. Conf. Ser. 2600, 172003. https://doi.org/10.1088/1742-6596/2600/17/172003"
+                },
+                {
+                  "citation_text": "(Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                },
+                {
+                  "citation_text": "(Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2020. Statistical analysis for predicting location-specific data center PUE and its improvement potential. Energy 201, 117556. https://doi.org/10.1016/j.energy.2020.117556"
+                }
+              ]
+            },
+            {
+              "text": "Table S3.2 identifies the representative-city basis for weather.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Woldekidan et al., 2020)",
+                  "reference_entry": "Woldekidan, K.F., Torcellini, P.A., Langner, M., Pflaum, N., 2020. Moving Zero Energy Office Buildings to the Mainstream: Establishing Design Guidelines and Energy Targets: Preprint."
+                }
+              ]
+            },
+            {
+              "text": "Table S3.2 names the weather data source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(EnergyPlus, 2016)",
+                  "reference_entry": "EnergyPlus, 2016. Weather Data – EnergyPlus [WWW Document]. US Deparment Energy. URL https://energyplus.net/weather"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The 5th PUE and WUE-site quantiles represent efficient operation, and the 95th represent inefficient operation, within a given cooling system and zone.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The efficiency label is relative to like technology and climate and is constructed from the simulation."
+    },
+    {
+      "location": "SI pp. 12–13 (PDF pp. 44–45), S4 and Table S4.1",
+      "moves": "Explain the electricity-water boundary and report values with their provenance.",
+      "claims": [
+        {
+          "text": "Upstream activities include fuel production, processing, and transport; point-of-generation uses include cooling, scrubbers, human use and fire suppression.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Geothermal and hydro have the highest reported totals; wind and solar PV the lowest.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table S4.1 lists upstream WCFs for geothermal, hydro, biomass, oil, coal, natural gas, solar PV and wind, respectively: 9.5, 6.8, 1.2, 1.4, 0.4, 0.21, 0.011, 0.011 L/kWh.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Peer et al., 2019)",
+                  "reference_entry": "Peer, R.A.M., Grubert, E., Sanders, K.T., 2019. A regional assessment of the water embedded in the US electricity system. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/ab2daa"
+                }
+              ]
+            },
+            {
+              "text": "Table S4.1 lists point-of-generation WCFs in that order: 1.59, N/A, 3.0763, 1.5, 1.8, 0.96, 0.0227, 0.0038 L/kWh.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Siddik et al., 2021)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Marston, L.T., 2021. The environmental footprint of data centers in the United States. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/abfba1"
+                }
+              ]
+            },
+            {
+              "text": "Table S4.1 reports totals in the same order of 11.09, 6.8, 4.2763, 2.9, 2.2, 1.17, 0.034 and 0.0148 L/kWh; the hydro total is the listed upstream value. The wind total is higher than the 0.011 shown in Figure 6(b), which equals the table’s upstream wind value.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The two stages account for different contributions and the table marks one unavailable value explicitly."
+    },
+    {
+      "location": "SI pp. 13–15 (PDF pp. 45–47), S5 design, Figs. S5.1–S5.2",
+      "moves": "State factor levels and quantify the hardware contrast before revisiting utilization.",
+      "claims": [
+        {
+          "text": "The full factorial design applies Eqs. (5)–(8) to utilization of 0.1–0.8, one- to eight-year refresh, 5% or 30% inactive servers as better or poorer management, and 5th- and 95th-quantile hardware efficiency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Earlier estimates inform the utilization range.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Shehabi et al., 2016)",
+                  "reference_entry": "Shehabi, A., Smith, S.J., Sartor, D.A., Brown, R.E., Herrlin, M., Koomey, J.G., Masanet, E.R., Horner, N., Azevedo, I.L., Lintner, W., 2016. United States Data Center Energy Usage Report. Berkeley Lab 65."
+                }
+              ]
+            },
+            {
+              "text": "Industry sources inform refresh scenarios.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Horizon Editorial, 2023; Supermicro, 2019)",
+                  "reference_entry": "Horizon Editorial, 2023. Navigating Hardware Refresh Cycles In The Data Center [WWW Document]. URL https://horizontechnology.com/news/data-center-hardware-refresh-cycles/ (accessed 4.22.24)."
+                },
+                {
+                  "citation_text": "(Horizon Editorial, 2023; Supermicro, 2019)",
+                  "reference_entry": "Supermicro, 2019. Data Centers & The Environment: 2019 Report on the State of the Green Data Center."
+                }
+              ]
+            },
+            {
+              "text": "The inactive-server comparison represents the removal or retention of needless hardware.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Koomey and Taylor, 2017)",
+                  "reference_entry": "Koomey, J., Taylor, J., 2017. ZOMBIE/COMATOSE SERVERS REDUX."
+                }
+              ]
+            },
+            {
+              "text": "Benchmark data supply the hardware efficiency quantiles.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Standard Performance Evaluation Corporation, 2022)",
+                  "reference_entry": "Standard Performance Evaluation Corporation, 2022. SPECpower_ssj® 2008 [WWW Document]. URL https://www.spec.org/power_ssj2008/ (accessed 6.22.22)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The paired test for low- versus high-efficiency servers reports a 95% interval of 0.121–0.156 mW per ssj_ops for the mean difference.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S5.1 shows the lower intensity distribution for the 95th quantile; the prose points to supporting code Test 1.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Figure S5.2 revisits the utilization decline with a solid expected-value curve, a gray 95% confidence band, and individual factorial combinations as scatter.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The appendix adds the modeled ranges and uncertainty behind the earlier qualitative claims."
+    },
+    {
+      "location": "SI pp. 15–17 (PDF pp. 47–49), S5, Figs. S5.3–S5.4",
+      "moves": "Rank refresh savings against other changes and quantify the inactive-server contrast.",
+      "claims": [
+        {
+          "text": "Shorter refresh generally lowers energy intensity across utilization levels, but has less savings potential than raising utilization or installing efficient hardware, especially at low utilization.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S5.3 shows refresh cycles across utilization levels of 0.2, 0.4, 0.6 and 0.8 in separate 5% and 30% inactivity panels, with 5th- and 95th-quantile hardware bounding the bands.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The paired test for low versus high inactive fractions gives a 95% confidence interval of 0.019–0.031 mW per ssj_ops for the mean difference.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S5.4 compares the distributions; the text points to supporting code Test 2 and reiterates the benefit of removing comatose equipment.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The appendix puts relative and statistical detail behind two lower-ranked levers."
+    },
+    {
+      "location": "SI pp. 17–20 (PDF pp. 49–52), S6, Figs. S6.1–S6.2",
+      "moves": "Show the construction of one region, then group cooling technologies by water use and explain the grouping.",
+      "claims": [
+        {
+          "text": "Climate and operating practices can produce large differences within one cooling archetype, even within the same climate.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S6.1 shows 5th- and 95th-quantile facilities across climates for airside economization with direct adiabatic cooling and water-cooled backup.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The lower-WUE cluster comprises direct expansion, stand-alone air-cooled chillers and the airside economizer variants with air-cooled backup, including direct adiabatic cooling. Its limited consumption often reflects occasional humidification or sporadic adiabatic cooling; the authors attribute the latter pattern to major internet operators' advanced practices.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S6.2 shows this group toward the low end of a linear WUE-site axis.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The higher-WUE cluster contains the five configurations with water-cooled chillers and the liquid IT dry cooler with adiabatic assist and air-cooled backup. Towers or wet-mode dry cooling account for its higher consumption.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The liquid IT dry-cooler configuration has the lowest WUE-site within this higher group because warmer facility water permits dry operation much of the year, restricting wet mode to a small share of hours.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The linear-scale view clarifies how actual heat rejection, including the frequency of wet operation, separates the groups."
+    },
+    {
+      "location": "SI pp. 20–23 (PDF pp. 52–55), S6, Table S6.1 and Fig. S6.3",
+      "moves": "Compare equipment-level liquid cooling choices within two heat rejection designs, explain weak separation and recommend further metrics.",
+      "claims": [
+        {
+          "text": "The two heat rejection cases are adiabatically assisted dry coolers with air-cooled backup and waterside economization with water-cooled backup. Both are evaluated with rear-door exchangers, direct-to-chip cold plates, and immersion.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors ground the cases in cooling literature.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(ASHRAE, 2014; Evans, 2004)",
+                  "reference_entry": "ASHRAE, 2014. Liquid Cooling Guidelines for Datacom Equipment Centers, 2nd Edition, ASHRAE Datacom Series. Atlanta."
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014; Evans, 2004)",
+                  "reference_entry": "Evans, T., 2004. The different types of air conditioning equipment for IT environments. APC White Pap. 24."
+                }
+              ]
+            },
+            {
+              "text": "The equipment scenarios draw on liquid cooling guidance.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(ASHRAE, 2014)",
+                  "reference_entry": "ASHRAE, 2014. Liquid Cooling Guidelines for Datacom Equipment Centers, 2nd Edition, ASHRAE Datacom Series. Atlanta."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Differences in annual PUE and WUE-site are small; the authors describe rear-door as highest, immersion lowest, and cold plates intermediate, while cautioning that this ordering is hard to distinguish in the plots.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table S6.1 lists overlapping facility water supply ranges of 2–32 °C, 2–40 °C and 2–45 °C respectively.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(ASHRAE, 2014; ASHRAE Technical Committee 9.9, 2011)",
+                  "reference_entry": "ASHRAE, 2014. Liquid Cooling Guidelines for Datacom Equipment Centers, 2nd Edition, ASHRAE Datacom Series. Atlanta."
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014; ASHRAE Technical Committee 9.9, 2011)",
+                  "reference_entry": "ASHRAE Technical Committee 9.9, 2011. Thermal Guidelines for Data Processing Environments, American Society of Heating, Refrigerating, and Air-Conditioning Engineers Inc."
+                }
+              ]
+            },
+            {
+              "text": "Figure S6.3 shows overlapping distributions by equipment and different axis scales across heat rejection designs; it does not label exact estimates for the small differences.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Overlapping temperature allowances let free or adiabatic cooling suffice most of the year, even in warmer or humid zones, with nearly identical metrics at similar UPS and pump efficiencies. Low baseline PUE and the dominant role of heat rejection in WUE-site make further improvements a system-wide task and motivate new infrastructure efficiency metrics.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Differences across IT cooling variants are smaller than across facility archetypes; optimizing the whole system remains the authors' prescription."
+    },
+    {
+      "location": "SI pp. 23–25 (PDF pp. 55–57), S7–S8, Figs. S7.1 and S8.1",
+      "moves": "Revisit two main-text relationships in worked examples.",
+      "claims": [
+        {
+          "text": "For airside economization with adiabatic cooling and water-cooled backup, the horizontal span is set by WUE-site times server electricity per workload and the vertical span by PUE times that same server factor.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S7.1 shows high efficiency along the lower boundary, consistent with the prose associating the highest efficiency with the lowest site intensities. Its caption lists low and high efficiency against minimum and maximum server electricity in the opposite order.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The source WUE relationship is linear in WCF at fixed PUE and in PUE at fixed WCF; geothermal and wind give the highest and lowest source WUE in the worked examples.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S8.1 shows direct expansion and airside economization with adiabatic cooling and water-cooled backup. The highest plotted series is labeled hydro in the legend despite the prose naming geothermal as the upper extreme; the legend also includes nuclear, which is absent from Table S4.1. The solar PV and wind lines are very close on this scale. The SI prose points to Figure 5(b) for WCFs, while the main manuscript labels the WCF chart Figure 6(b).",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The figures isolate first the workload multiplier and then the electricity supply term."
+    },
+    {
+      "location": "SI pp. 25–26 (PDF pp. 57–58), S9 and Fig. S9.1",
+      "moves": "Extend the endpoint comparison to intermediate power sources and show an exception.",
+      "claims": [
+        {
+          "text": "Hydro, biomass, oil, coal, natural gas and solar PV fill out the comparison; low WCF usually helps but high PUE, high WUE-site and low server efficiency can still lead to high overall intensity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure S9.1 shows the technology regions for those six sources, with the upper right of the solar panel illustrating the qualification.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The added solar example reiterates why a favorable electricity supply is not enough by itself."
+    },
+    {
+      "location": "SI pp. 26–28 (PDF pp. 58–60), S10, Table S10 and references",
+      "moves": "End with an input provenance index and its bibliography.",
+      "claims": [
+        {
+          "text": "Table S10 maps the server branch to utilization, vintage, efficiency and inactivity data.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table S10 lists the utilization source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Shehabi et al., 2016)",
+                  "reference_entry": "Shehabi, A., Smith, S.J., Sartor, D.A., Brown, R.E., Herrlin, M., Koomey, J.G., Masanet, E.R., Horner, N., Azevedo, I.L., Lintner, W., 2016. United States Data Center Energy Usage Report. Berkeley Lab 65."
+                }
+              ]
+            },
+            {
+              "text": "Table S10 lists vintage sources.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Horizon Editorial, 2023; Supermicro, 2019)",
+                  "reference_entry": "Horizon Editorial, 2023. Navigating Hardware Refresh Cycles In The Data Center [WWW Document]. URL https://horizontechnology.com/news/data-center-hardware-refresh-cycles/ (accessed 4.22.24)."
+                },
+                {
+                  "citation_text": "(Horizon Editorial, 2023; Supermicro, 2019)",
+                  "reference_entry": "Supermicro, 2019. Data Centers & The Environment: 2019 Report on the State of the Green Data Center."
+                }
+              ]
+            },
+            {
+              "text": "Table S10 lists the benchmark for efficiency.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Standard Performance Evaluation Corporation, 2022)",
+                  "reference_entry": "Standard Performance Evaluation Corporation, 2022. SPECpower_ssj® 2008 [WWW Document]. URL https://www.spec.org/power_ssj2008/ (accessed 6.22.22)."
+                }
+              ]
+            },
+            {
+              "text": "Table S10 lists the inactivity source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Koomey and Taylor, 2017)",
+                  "reference_entry": "Koomey, J., Taylor, J., 2017. ZOMBIE/COMATOSE SERVERS REDUX."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Table S10 maps the facility branch to the same set of PUE and WUE-site sources and separates the upstream and generation WCF sources.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table S10 lists climate and liquid cooling guidance, weather data and earlier facility models.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(ASHRAE, 2014, 2013; ASHRAE Technical Committee 9.9, 2011; EnergyPlus, 2016; Lei, 2022; Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "ASHRAE, 2014. Liquid Cooling Guidelines for Datacom Equipment Centers, 2nd Edition, ASHRAE Datacom Series. Atlanta."
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014, 2013; ASHRAE Technical Committee 9.9, 2011; EnergyPlus, 2016; Lei, 2022; Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "ASHRAE, 2013. Climatic data for building design standards. ASHRAE Stand."
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014, 2013; ASHRAE Technical Committee 9.9, 2011; EnergyPlus, 2016; Lei, 2022; Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "ASHRAE Technical Committee 9.9, 2011. Thermal Guidelines for Data Processing Environments, American Society of Heating, Refrigerating, and Air-Conditioning Engineers Inc."
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014, 2013; ASHRAE Technical Committee 9.9, 2011; EnergyPlus, 2016; Lei, 2022; Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "EnergyPlus, 2016. Weather Data – EnergyPlus [WWW Document]. US Deparment Energy. URL https://energyplus.net/weather"
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014, 2013; ASHRAE Technical Committee 9.9, 2011; EnergyPlus, 2016; Lei, 2022; Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., 2022. A Hybrid Physics-Based and Data-Driven Modeling Framework for Energy and Water Use Analysis of Data Centers with Spatio-Temporal Resolution. Northwestern University, Evanston, IL, USA."
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014, 2013; ASHRAE Technical Committee 9.9, 2011; EnergyPlus, 2016; Lei, 2022; Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Lu, J., Cheng, Z., Cao, Z., Shehabi, A., Masanet, E., 2023. Geospatial assessment of water footprints for hyperscale data centers in the United States. J. Phys. Conf. Ser. 2600, 172003. https://doi.org/10.1088/1742-6596/2600/17/172003"
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014, 2013; ASHRAE Technical Committee 9.9, 2011; EnergyPlus, 2016; Lei, 2022; Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2022. Climate- and technology-specific PUE and WUE estimations for U.S. data centers using a hybrid statistical and thermodynamics-based approach. Resour. Conserv. Recycl. 182, 106323. https://doi.org/10.1016/J.RESCONREC.2022.106323"
+                },
+                {
+                  "citation_text": "(ASHRAE, 2014, 2013; ASHRAE Technical Committee 9.9, 2011; EnergyPlus, 2016; Lei, 2022; Lei et al., 2023; Lei and Masanet, 2022, 2020)",
+                  "reference_entry": "Lei, N., Masanet, E., 2020. Statistical analysis for predicting location-specific data center PUE and its improvement potential. Energy 201, 117556. https://doi.org/10.1016/j.energy.2020.117556"
+                }
+              ]
+            },
+            {
+              "text": "Table S10 identifies the upstream source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Peer et al., 2019)",
+                  "reference_entry": "Peer, R.A.M., Grubert, E., Sanders, K.T., 2019. A regional assessment of the water embedded in the US electricity system. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/ab2daa"
+                }
+              ]
+            },
+            {
+              "text": "Table S10 identifies the generation source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Siddik et al., 2021)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Marston, L.T., 2021. The environmental footprint of data centers in the United States. Environ. Res. Lett. https://doi.org/10.1088/1748-9326/abfba1"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The closing apparatus reconnects each branch of the decomposition to the data behind it."
+    }
+  ]
+}
