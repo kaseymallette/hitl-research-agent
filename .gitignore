@@ -26,3 +26,8 @@ htmlcov/
 .idea/
 .DS_Store
 
+
+# Proposal rework: remove this line when it is ready to share
+proposal/
+# Original submission and reviews: always ignored
+proposal/submitted/
