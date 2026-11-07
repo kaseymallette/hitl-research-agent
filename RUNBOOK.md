@@ -171,7 +171,25 @@ uv run python scripts/workspace.py save
 git add outputs && git commit -m "Add results for california_2025_ab1454" && git push
 ```
 
-### 2.
+### 2. Arkansas Act 1063 (Right to Read Act, 2017)
 
-To add the next run, copy run 1 and change the slug in the load and commit
-commands.
+Notes:
+
+```bash
+git pull
+```
+
+```bash
+uv run python scripts/workspace.py load arkansas_2017_act1063_right_to_read
+```
+
+Prompts 1–5: the same as run 1. Before starting, check the model picker in
+Codex so this run uses the same model as California.
+
+```bash
+uv run python scripts/workspace.py save
+```
+
+```bash
+git add outputs && git commit -m "Add results for arkansas_2017_act1063_right_to_read" && git push
+```
