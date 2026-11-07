@@ -273,7 +273,8 @@ The rest went with the code they covered.
 
 ## `data/research/`
 
-16 source PDFs, two of them in `ab_testing/` as the experiment set, plus
+`synthesis/` holds the 7 articles synthesis uses, and `ab_testing/` the two
+experiment articles, Barnett and kanbur, which are also among the 7. Plus
 `sources.yaml`.
 
 `ab_testing/notes/` holds the researcher's own reading of each experiment
@@ -284,11 +285,8 @@ is an independent reference to compare analyses against, and to check the
 Phase 2 judge against. It is not model output, so it stays with the sources
 rather than under `outputs/`.
 
-`sources.yaml` currently holds **one** entry, for
-`li_et_al_2025_making_ai_less_thirsty` — a collection article, not one of the
-four. All four A/B articles need owner-confirmed entries before
-`prepare_sources.py` can run on them. That is Phase 1's first task and the only
-thing blocking it.
+`sources.yaml` holds one provenance entry for each of the 7, its `pdf:` path
+pointing into `synthesis/`.
 
 ---
 

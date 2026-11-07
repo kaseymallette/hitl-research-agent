@@ -394,12 +394,12 @@ Synthesis receives no research question
 
 ### Analyze the collection
 
-Sixteen articles: the fourteen in `data/research/`, lei among them, and the
-two in `data/research/ab_testing/`.
+Seven articles, in `data/research/synthesis/`, each with an entry in
+`data/research/sources.yaml`.
 
 - **Kanbur** reuses its Codex medium run,
   `outputs/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling/adr_0020/codex__gpt-6.1-sol-medium/`.
-- **The other fifteen**, Barnett included, run in Codex: one session for the
+- **The other six**, Barnett included, run in Codex: one session for the
   close reading from `prompts/close-reading.md`, then a new session for the
   argument evaluation from `prompts/evaluate-argument.md`, each given the PDF
   path and the output folder `outputs/analyses/<slug>/`.

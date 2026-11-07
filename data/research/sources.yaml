@@ -1,8 +1,8 @@
 # Provenance manifest for the research sources, confirmed by the project owner.
-# Unknown fields stay unset. Only sources prepared so far are listed here.
+# Unknown fields stay unset. These are the seven sources in data/research/synthesis/.
 sources:
   - slug: li_et_al_2025_making_ai_less_thirsty
-    pdf: data/research/li_et_al_2025_making_ai_less_thirsty.pdf
+    pdf: data/research/synthesis/li_et_al_2025_making_ai_less_thirsty.pdf
     source_title: "Making AI Less 'Thirsty': Uncovering and addressing the secret water footprint of AI models"
     source_authors: [Pengfei Li, Jianyi Yang, Mohammad A. Islam, Shaolei Ren]
     publication_date: null
@@ -23,7 +23,7 @@ sources:
       retrieved_at: "macOS/Chrome download timestamp (com.apple.quarantine) of the PDF file, 2026-10-13 06:19:34 UTC; matches the file creation time"
 
   - slug: barnett_itzhaki_2026_water_footprint_artificial_intelligence
-    pdf: data/research/ab_testing/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf
+    pdf: data/research/synthesis/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf
     source_title: "The water footprint of artificial intelligence: Emerging solutions and governance imperatives"
     source_authors: [Zohar Barnett-Itzhaki]
     publication_date: "2026-04-02"
@@ -44,7 +44,7 @@ sources:
       retrieved_at: "macOS quarantine timestamp on the PDF file"
 
   - slug: kanbur_et_al_2020_desalination_integrated_data_center_cooling
-    pdf: data/research/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
+    pdf: data/research/synthesis/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
     source_title: "Multi-criteria thermoeconomic and thermodynamic assessments of the desalination-integrated two-phase liquid-immersion data center cooling system"
     source_authors: [Baris Burak Kanbur, Chenlong Wu, Fei Duan]
     publication_date: "2020-07-23"
@@ -65,7 +65,7 @@ sources:
       retrieved_at: "macOS quarantine timestamp on the PDF file"
 
   - slug: katakam_et_al_2027_desalination_systems_data_center_water_needs
-    pdf: data/research/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf
+    pdf: data/research/synthesis/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf
     source_title: "System-scale design and analysis of desalination systems for meeting water needs of data centers"
     source_authors: [Vishnu Sree Shanthanu Katakam, Mariam Arzumanyan, Ning Lin, Vaibhav Bahadur]
     publication_date: "2026-08-17"
@@ -86,7 +86,7 @@ sources:
       retrieved_at: "macOS quarantine timestamp on the PDF file"
 
   - slug: lei_et_al_2025_water_use_data_center_workloads
-    pdf: data/research/lei_et_al_2025_water_use_data_center_workloads.pdf
+    pdf: data/research/synthesis/lei_et_al_2025_water_use_data_center_workloads.pdf
     source_title: "The water use of data center workloads: A review and assessment of key determinants"
     source_authors: [Nuoa Lei, Jun Lu, Arman Shehabi, Eric Masanet]
     publication_date: "2025-06-01"
@@ -106,3 +106,45 @@ sources:
       url: "the eScholarship permalink printed on the cover sheet, which is where this copy comes from. The publication of record is https://doi.org/10.1016/j.resconrec.2025.108310, recorded in doi above. The file arrived as a Gmail attachment; that origin is not recorded here"
       retrieved_at: "macOS quarantine timestamp on the PDF file"
       version: "the University of California repository copy under CC BY 4.0: a cover sheet followed by the complete line-numbered manuscript, not the typeset publisher version. It is the whole article, so is_excerpt is false"
+
+  - slug: alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds
+    pdf: data/research/synthesis/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds.pdf
+    source_title: "Using life cycle assessment to drive innovation for sustainable cool clouds"
+    source_authors: [Husam Alissa, Teresa Nick, Ashish Raniwala, Alberto Arribas Herranz, Kali Frost, Ioannis Manousakis, Kari Lio, Brijesh Warrier, Vaidehi Oruganti, T. J. DiCaprio, Kathryn Oseen-Senda, Bharath Ramakrishnan, Naval Gupta, Ricardo Bianchini, Jim Kleewein, Christian Belady, Marcus Fontoura, Julie Sinistore, Mukunth Natarajan, Lauren Johnson, VeeAnder Mealing, Praneet Arshi, Madeline Frieze]
+    publication_date: "2025-04-30"
+    source_type: peer_reviewed_paper
+    doi: 10.1038/s41586-025-08832-3
+    publisher: Springer Nature
+    url: "https://doi.org/10.1038/s41586-025-08832-3"
+    retrieved_at: "2026-10-13T07:25:27+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: "first page and PDF metadata; confirmed against Crossref"
+      source_authors: "first-page byline, 23 authors; Crossref lists the same 23"
+      publication_date: "'Published online: 30 April 2025' in the article; Crossref published-online 2025-04-30, in print 2025-05-08"
+      source_type: "'peer_reviewed_paper': a Nature 'Analysis' article printing 'Received: 12 May 2023' and 'Accepted: 24 February 2025'"
+      doi: "printed in the article and in PDF metadata; resolves in Crossref"
+      publisher: "Springer Science and Business Media LLC per Crossref; Nature 641, 331-338 (2025)"
+      url: "publication URL via DOI. The file carries no download origin"
+      retrieved_at: "no quarantine timestamp survives on this copy; this is when the PDF was first committed to the repository (9c89760), so it was retrieved no later than this"
+
+  - slug: alston_et_al_2026_cooling_choices_water_impacts_grid
+    pdf: data/research/synthesis/alston_et_al_2026_cooling_choices_water_impacts_grid.pdf
+    source_title: "Data Center Cooling Choices Shift Water Impacts Across the Grid: An Integrated Water-Energy Model for Sustainable Data Center Development"
+    source_authors: [Garrett Alston, Nancy Love, Rabab Haider]
+    publication_date: "2026-09-21"
+    source_type: preprint
+    doi: null
+    publisher: arXiv
+    url: "https://arxiv.org/abs/2609.25437v1"
+    retrieved_at: "2026-10-13T07:25:27+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: "first page and PDF metadata"
+      source_authors: "first-page byline, University of Michigan; PDF metadata lists the same three"
+      publication_date: "the arXiv stamp on the first page, 'arXiv:2609.25437v1 [eess.SY] 21 Sep 2026'"
+      source_type: "'preprint': an arXiv v1, with no journal publication printed in the PDF"
+      doi: "unset: none printed in the PDF"
+      publisher: "arXiv, from the first-page stamp and the PDF's 'arXiv GenPDF' creator"
+      url: "the arXiv abstract page for the version stamped on the PDF; not checked against arXiv"
+      retrieved_at: "no quarantine timestamp survives on this copy; this is when the PDF was first committed to the repository (9c89760), so it was retrieved no later than this"

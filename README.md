@@ -36,11 +36,12 @@ matter for relevance: a source about process-grade cooling water is not
 evidence about drinking water, and treating them as the same thing is the first
 way a judgment about relevance goes wrong.
 
-The source collection is 16 articles in [`data/research/`](data/research), two
-of which are the experiment set in
+Synthesis uses 7 articles, in
+[`data/research/synthesis/`](data/research/synthesis). Two of them, Barnett
+and kanbur, are also the experiment set in
 [`data/research/ab_testing/`](data/research/ab_testing).
 
-I collected the 16 articles for this pilot study myself, using the research question to identify relevant sources. For finding articles later, I plan to pilot Consensus, a tool built for that work. Nothing in this system receives the research question, so its outputs can support other research questions as the collection grows.
+I collected the articles for this pilot study myself, using the research question to identify relevant sources. For finding articles later, I plan to pilot Consensus, a tool built for that work. Nothing in this system receives the research question, so its outputs can support other research questions as the collection grows.
 
 
 ## Design
@@ -340,8 +341,8 @@ simplifies, or removes.
 
 ```
 .
-├── data/research/                    the 16 source articles
-│   ├── <14 collection PDFs>
+├── data/research/                    the source articles
+│   ├── synthesis/                    the 7 articles synthesis uses
 │   ├── ab_testing/                   the 2 A/B experiment articles
 │   │   └── notes/                    my own reading of each, by slug
 │   └── sources.yaml                  provenance manifest, owner-confirmed
