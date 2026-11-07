@@ -4,8 +4,7 @@ My mom is a professor of literacy education at Binghamton University. We are
 doing a collaborative study combining her scholarship and content knowledge in
 literacy education with my technical expertise in AI/ML engineering. The
 purpose of this study is to examine how the science of reading is defined and
-enacted across three corpora (i.e., scholarly publications, legislation, and
-popular press).
+enacted across three corpora (i.e., scholarly publications, popular press, and legislation).
 
 ## Research goals
 
