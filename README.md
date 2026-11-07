@@ -354,6 +354,7 @@ simplifies, or removes.
 │   ├── cost.py                       per-model rates; cost from reported usage
 │   └── config.py                     Settings: key, model, effort, limits
 ├── prompts/                          close-reading and evaluation instructions for an agent run
+├── evaluations/                      Phase 3: the judging workspace, with its Codex prompts
 ├── scripts/
 │   ├── run_analysis.py               one A/B cell -> analysis, argument evaluation, run record
 │   ├── write_primer.py               an article -> a primer on its field, to read first

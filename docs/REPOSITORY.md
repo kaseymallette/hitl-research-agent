@@ -153,6 +153,21 @@ identical to `prompts.py`.
 
 ---
 
+## `evaluations/`
+
+The workspace for judging one article's close reading, in the layout each
+Codex session expects: `RUBRIC.md`, `prompts/`, a `source.yaml` for the
+article's details, a `scores.md` the judge fills in, and empty `run/`, `references/` and `judgments/` for the
+article's run, claims list and judgment. Its `README.md` holds the three Codex
+prompts in order — the close reading, the claims reference, and the judgment
+of the close reading — written so they are the same for every article: only
+`article.pdf` and `source.yaml` change. The folder is kept outside the
+repository so a session can't see other runs, which is why it carries its own
+copies of `docs/RUBRIC.md` and `prompts/`; `tests/test_prompt_files.py` keeps
+the copies identical.
+
+---
+
 ## `scripts/`
 
 Not installed, not shipped, not type-checked (`mypy src` covers `src/` only).
@@ -237,7 +252,7 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 94 tests
+## `tests/` — 95 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
@@ -247,7 +262,7 @@ keeping. If it loses, most of these 793 lines go.
 | `test_models.py` | 14 | Application-owned fields rejected from model content, a required verbatim/paraphrased form, an asserted claim standing without support, no attribution labels on the close reading, the evaluation schema holding only the model's judgment, a reading step with no claim, the reading plan first and required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
 | `test_run_analysis.py` | 15 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun, both documents written, a failed evaluation keeping the close reading |
-| `test_prompt_files.py` | 1 | The agent files in `prompts/` carry the prompt text the code sends |
+| `test_prompt_files.py` | 2 | The agent files in `prompts/` carry the prompt text the code sends, and `evaluations/` copies them and the rubric unchanged |
 | `test_write_primer.py` | 2 | The primer script, offline: a labelled primer with its cost, and a failure that leaves a record and no primer |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file

@@ -1,0 +1,93 @@
+# Evaluations
+
+The workspace for running and judging one article's close reading. Keep it as
+a separate folder on your computer, outside the repository, so no session can
+see other runs or judgments. The prompts below are the same for every article:
+only `article.pdf` and `source.yaml` change.
+
+```
+evaluations/
+├── README.md                this file: the Codex prompts
+├── RUBRIC.md                copy of docs/RUBRIC.md: the criteria
+├── source.yaml              the article's details, from data/research/sources.yaml
+├── scores.md                the scores, filled in by prompt 3
+├── prompts/                 copies of prompts/: the instructions for the run
+│   ├── close-reading.md
+│   └── evaluate-argument.md
+├── article.pdf              add: the article
+├── run/                     analysis.json and run_note.md, from prompt 1
+├── references/              claims_reference.md, from prompt 2
+└── judgments/               close_reading.md, from prompt 3
+```
+
+`RUBRIC.md` and `prompts/` are copies; `tests/test_prompt_files.py` keeps them
+identical to `docs/RUBRIC.md` and `prompts/`.
+
+## For each article
+
+1. Put the article in as `article.pdf`, and fill `source.yaml` from the
+   article's entry in `data/research/sources.yaml`.
+2. Run prompts 1–3, each in a new Codex session, on GPT-6.1 Sol at medium
+   effort. Skim the claims list against the article before prompt 3: the
+   judge uses it as written.
+3. Copy the results into the repository: `run/` into
+   `outputs/analyses/<article>/`, and `references/` and `judgments/` into
+   `outputs/judgments/<article>/`, with `scores.md` beside them. Add the
+   **Accepted:** line once you decide.
+4. Empty `run/`, `references/` and `judgments/`, and reset `scores.md`, for
+   the next article.
+
+If the analysis is revised, put the revision in `run/` as `analysis.json`, run
+prompt 3 again with the judgment's file name changed to
+`close_reading_revised.md`, then `_2.md` and so on. Keep `scores.md` as it is:
+the judge adds a column for the revision.
+
+---
+
+## 1. Close reading
+
+```
+Follow prompts/close-reading.md. The article is article.pdf, and its source
+details are in source.yaml. Write analysis.json and run_note.md to run/.
+```
+
+## 2. Claims reference
+
+```
+Hi! You're writing a reference list for judging a close reading of an
+academic article. Please start by reading RUBRIC.md, which explains the
+setup, and especially its section "The claims reference list".
+
+This session reads article.pdf on its own and writes the article's own claims
+to references/claims_reference.md, as the rubric describes. A later session
+judges the close reading against your list as written, so take care that it's
+complete: cover the conclusion of every section and subsection, not only the
+article's summary claims, along with every contribution, abstract claim,
+figure, and table.
+
+Please open only RUBRIC.md and article.pdf. Don't open anything in run/,
+prompts/, or judgments/.
+```
+
+## 3. Evaluate close reading
+
+```
+Hi! You're judging a close reading of an academic article. Please start by
+reading RUBRIC.md, which explains the setup and the criteria, and
+prompts/close-reading.md, which holds the instructions the reading followed.
+
+Read article.pdf and references/claims_reference.md, the reference list an
+earlier session wrote from the article. Use it as written; don't change it.
+
+Then open run/analysis.json and judge it against the article and the list on
+A1–A5. Write the judgment to judgments/close_reading.md.
+
+Then add your scores to scores.md. If its Original column is empty, fill it
+in; otherwise this is a revision, so add the next column (Revised 1, Revised
+2, and so on). Give A1 as percentages, A3 as x/2, and A2 and A4 as counts. In
+the second table, name your judgment file and the version judged, with its
+number of claims and of verbatim claims. Leave the Accepted line for me.
+
+Please open only these files and scores.md. Don't read
+run/argument_evaluation.md or anything in judgments/.
+```
