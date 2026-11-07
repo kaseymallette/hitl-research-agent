@@ -17,6 +17,27 @@ reaches legislation, it is often reduced to simplified directives such as
 enacted in other unexpected ways. Our goal is to trace that pathway and
 understand where things are lost in translation.
 
+## The study
+
+Working title: *Science by Other Means: Reading Research, Legislative
+Mandates, and the Spaces Between*
+
+The study examines how the science of reading is constructed, simplified, and
+contested as it travels from peer-reviewed research, through the popular
+press, into state legislation. It does not evaluate whether any approach to
+reading instruction is effective. It analyzes the discourse through which
+claims about the science of reading are authorized, legitimated, and
+institutionalized, and what is reduced at each step.
+
+It draws on:
+
+- **Critical policy analysis** (Bacchi, 2009; Ball, 1993): policy as a text
+  that produces the problem it claims to solve.
+- **Translation theory** (Latour, 1987; Callon, 1986; Coburn, 2006; Honig,
+  2006): research changes meaning as it moves into new institutional contexts.
+- **Critical discourse analysis** (Fairclough, 2003; Rogers, 2011): the
+  analytic method, applied across all three corpora.
+
 ## This branch
 
 A workspace branch of `hitl-research-agent` for running single-source
