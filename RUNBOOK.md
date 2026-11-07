@@ -193,3 +193,95 @@ uv run python scripts/workspace.py save
 ```bash
 git add outputs && git commit -m "Add results for arkansas_2017_act1063_right_to_read" && git push
 ```
+
+### 3. Arkansas Code § 6-17-429 (Right to Read Act, 2025)
+
+Notes:
+
+```bash
+git pull
+```
+
+```bash
+uv run python scripts/workspace.py load arkansas_2025_code6_17_429_right_to_read
+```
+
+Prompts 1–5: the same as run 1. Before starting, check the model picker in
+Codex so this run uses the same model as California.
+
+```bash
+uv run python scripts/workspace.py save
+```
+
+```bash
+git add outputs && git commit -m "Add results for arkansas_2025_code6_17_429_right_to_read" && git push
+```
+
+### 4. Ohio Revised Code 3313.6028 (Literacy curriculum)
+
+Notes:
+
+```bash
+git pull
+```
+
+```bash
+uv run python scripts/workspace.py load ohio_2026_orc3313_6028_literacy_curriculum
+```
+
+Prompts 1–5: the same as run 1. Before starting, check the model picker in
+Codex so this run uses the same model as California.
+
+```bash
+uv run python scripts/workspace.py save
+```
+
+```bash
+git add outputs && git commit -m "Add results for ohio_2026_orc3313_6028_literacy_curriculum" && git push
+```
+
+### 5. Georgia HB 1193 (Georgia Early Literacy Act of 2026)
+
+Notes:
+
+```bash
+git pull
+```
+
+```bash
+uv run python scripts/workspace.py load georgia_2026_hb1193_early_literacy_act
+```
+
+Prompts 1–5: the same as run 1. Before starting, check the model picker in
+Codex so this run uses the same model as California.
+
+```bash
+uv run python scripts/workspace.py save
+```
+
+```bash
+git add outputs && git commit -m "Add results for georgia_2026_hb1193_early_literacy_act" && git push
+```
+
+### 6. Minnesota Statutes 120B.12 (Read Act)
+
+Notes:
+
+```bash
+git pull
+```
+
+```bash
+uv run python scripts/workspace.py load minnesota_2026_120b12_read_act
+```
+
+Prompts 1–5: the same as run 1. Before starting, check the model picker in
+Codex so this run uses the same model as California.
+
+```bash
+uv run python scripts/workspace.py save
+```
+
+```bash
+git add outputs && git commit -m "Add results for minnesota_2026_120b12_read_act" && git push
+```

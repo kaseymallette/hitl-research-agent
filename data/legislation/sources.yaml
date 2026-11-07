@@ -39,6 +39,27 @@ sources:
       url: "unset: received as a file"
       retrieved_at: "modification time of the PDF file"
 
+  - slug: arkansas_2025_code6_17_429_right_to_read
+    pdf: data/legislation/arkansas_2025_code6_17_429_right_to_read.pdf
+    source_title: "Arkansas Code § 6-17-429 (2025): Right to Read Act — Definitions"
+    source_authors: []
+    publication_date: null
+    source_type: government_policy
+    doi: null
+    publisher: "Justia (2025 Arkansas Code)"
+    url: null
+    retrieved_at: "2026-11-07T23:31:33+00:00"
+    selection:
+      how: "added 2026-11-07"
+      why: null
+    provenance_basis:
+      source_title: "first page: '2025 Arkansas Code', '§ 6-17-429. Right to Read Act — Definitions'"
+      publication_date: "unset: the 2025 edition prints no date; the history ends with 2025, No. 195, §§ 1-6"
+      publisher: "page title of the PDF (a Justia web page printed to PDF); Justia's disclaimer says to check official sources"
+      source_authors: "unset: a code section has no authors"
+      url: "unset: the printed page shows no address"
+      retrieved_at: "print timestamp of the PDF"
+
   - slug: california_2025_ab1454
     pdf: data/legislation/California-2025-AB1454-Chaptered.pdf
     source_title: "Assembly Bill No. 1454, Chapter 471: Pupil literacy: credential program standards and professional development: instructional materials"
@@ -58,3 +79,66 @@ sources:
       source_authors: "unset: the digest names the author as Rivas"
       url: page footer of the PDF (a LegiScan page printed to PDF)
       retrieved_at: download timestamp of the PDF file
+
+  - slug: ohio_2026_orc3313_6028_literacy_curriculum
+    pdf: data/legislation/ohio_2026_orc3313_6028_literacy_curriculum.pdf
+    source_title: "Ohio Revised Code Section 3313.6028: Literacy curriculum"
+    source_authors: []
+    publication_date: "2026-10-09"
+    source_type: government_policy
+    doi: null
+    publisher: "Ohio Legislative Service Commission"
+    url: null
+    retrieved_at: "2026-11-07T23:20:52+00:00"
+    selection:
+      how: "added 2026-11-07"
+      why: null
+    provenance_basis:
+      source_title: "first page: 'Ohio Revised Code', 'Section 3313.6028 Literacy curriculum.'"
+      publication_date: "'Effective: October 09, 2026' on the first page; the section as amended by House Bill 455 and Senate Bill 19, 136th General Assembly"
+      publisher: "last page: 'The Legislative Service Commission presents the text of this section as a composite'"
+      source_authors: "unset: a code section has no authors"
+      url: "unset: received as a file"
+      retrieved_at: "modification time of the PDF file"
+
+  - slug: georgia_2026_hb1193_early_literacy_act
+    pdf: data/legislation/georgia_2026_hb1193_early_literacy_act.pdf
+    source_title: "House Bill 1193 (As Passed House and Senate): Georgia Early Literacy Act of 2026"
+    source_authors: []
+    publication_date: null
+    source_type: government_policy
+    doi: null
+    publisher: "Georgia General Assembly"
+    url: null
+    retrieved_at: "2026-11-07T23:20:52+00:00"
+    selection:
+      how: "added 2026-11-07"
+      why: null
+    provenance_basis:
+      source_title: "first page: 'House Bill 1193 (AS PASSED HOUSE AND SENATE)'; Section 1-1: 'Georgia Early Literacy Act of 2026'"
+      publication_date: "unset: the passed version prints no approval date (Section 4-1: effective on the Governor's approval)"
+      publisher: "unset in the PDF; the bill amends the Official Code of Georgia Annotated"
+      source_authors: "unset: the bill lists its sponsors (Representatives Erwin, Burns, Hatchett, Dubnik, Jones, and others), not authors"
+      url: "unset: received as a file"
+      retrieved_at: "modification time of the PDF file"
+
+  - slug: minnesota_2026_120b12_read_act
+    pdf: data/legislation/minnesota_2026_120b12_read_act.pdf
+    source_title: "Minnesota Statutes 2026, Section 120B.12: Read Act Goal and Interventions"
+    source_authors: []
+    publication_date: null
+    source_type: government_policy
+    doi: null
+    publisher: "Minnesota Office of the Revisor of Statutes"
+    url: "https://www.revisor.mn.gov/statutes/cite/120B.12"
+    retrieved_at: "2026-11-07T22:13:22+00:00"
+    selection:
+      how: "added 2026-11-07"
+      why: null
+    provenance_basis:
+      source_title: "first page: '2026 Minnesota Statutes', '120B.12 READ ACT GOAL AND INTERVENTIONS.'"
+      publication_date: "unset: the 2026 edition prints no date; the history line ends with 2026 c 125 art 1 s 4-6"
+      publisher: "page header and footer: 'Office of the Revisor of Statutes', 'Official Publication of the State of Minnesota'"
+      source_authors: "unset: a statute section has no authors"
+      url: page footer of the PDF (a web page printed to PDF)
+      retrieved_at: "print timestamp of the PDF (11/7/26, 5:13 PM)"
