@@ -27,8 +27,8 @@ edits to the rubric or prompts, are carried over by hand.
 ```
 ├── data/
 │   ├── scholarly/        scholarly publications, with their source details
-│   ├── legislation/      legislation
-│   └── popular-press/    popular press
+│   ├── popular-press/    popular press
+│   └── legislation/      legislation
 ├── evaluations/          the workspace for one article's run; see evaluations/README.md
 ├── outputs/              results copied out of evaluations/, per article
 ├── scripts/              this branch's own code, such as loading an article into evaluations/
