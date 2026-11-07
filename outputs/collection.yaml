@@ -99,3 +99,25 @@ articles:
       b6_confirmed: 13
       b6_partly_confirmed: 0
       b6_errors: 0
+
+  - slug: katakam_et_al_2027_desalination_systems_data_center_water_needs
+    analysis: analysis_revised.json
+    argument_evaluation: argument_evaluation.md
+    close_reading_scores:
+      judgment: close_reading_revised_2.md
+      a1_claims_pct: 93
+      a1_support_pct: 91
+      a2_missed_or_partial: 0
+      a3_strength_of_language: 1
+      a4_failures: 0
+    evaluation_scores:
+      judgment: evaluation.md
+      b1_premise_acceptability: 2
+      b2_relevance_of_critique: 2
+      b3_sufficiency: 2
+      b4_warrants_and_qualifiers: 2
+      b5_self_attribution: 2
+      b6_problems_raised: 11
+      b6_confirmed: 11
+      b6_partly_confirmed: 0
+      b6_errors: 0
