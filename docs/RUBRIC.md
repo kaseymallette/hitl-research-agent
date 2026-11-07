@@ -1,21 +1,20 @@
 # Rubric
 
-You're judging two analyses of one article, runs A and B. Both came from the
-same instructions, run with a different model configuration or input method.
-Your judgment helps choose which configuration to use for a larger collection
-of articles. It guides that choice; it doesn't prove it, and a researcher
-checks it against their own reading.
+You're judging one analysis of one academic article: a close reading and an
+argument evaluation, both written by a language model. A researcher will read
+your judgment while deciding whether to accept the analysis into a research
+collection, where its close reading feeds a comparison across sources. Your
+judgment informs that decision; it doesn't make it, and the researcher checks
+it against their own reading.
 
-The judging is split into separate sessions, and you're doing one of them.
-The prompt that started this session says which: one of the two reference
-lists, one run's close reading, one run's argument evaluation, or both runs'
-close readings or evaluations head to head. Judging each run alone first, in its own
-session, keeps its scores tied to the article rather than to the other run.
-Read the whole rubric, then use the sections your session needs.
+The judging is split into three sessions, and you're doing one of them. The
+prompt that started this session says which: the claims reference list, the
+close reading, or the argument evaluation. Read the whole rubric, then use the
+sections your session needs.
 
 This rubric reports; it never withholds. There are no thresholds and no pass
-mark. A run that does badly is still judged in full, and the judgment says
-what is wrong with it.
+mark. An analysis that does badly is still judged in full, and the judgment
+says what is wrong with it.
 
 ---
 
@@ -24,40 +23,30 @@ what is wrong with it.
 ```
 RUBRIC.md                      this file
 article.pdf                    the article
-prompts/                       the instructions the runs followed
+prompts/                       the instructions the analysis followed
   close-reading.md
   evaluate-argument.md
-runs/
-  A/
-    analysis.json              the close reading
-    argument_evaluation.json   the argument evaluation
-  B/
-    analysis.json
-    argument_evaluation.json
-references/                    the two reference lists
-  claims_reference.md
-  problems_reference.md
+run/
+  analysis.json                the close reading
+  argument_evaluation.md       the argument evaluation
+references/
+  claims_reference.md          the article's own claims
 judgments/                     where every judgment is written
 ```
 
-Open only the files your prompt names. Other sessions' judgments may already
-be in `judgments/`; leave them unread unless your prompt gives them to you, so
-each judgment stays independent.
-
-The runs are labelled by letter, and you aren't told which configuration
-made each one or what it cost, so you judge only what each wrote. Cost and
-runtime are weighed against your judgment afterwards, outside it.
+Open only the files your prompt names. Another session's judgment may already
+be in `judgments/`; leave it unread, so each judgment stays independent.
 
 Work from the article. Don't look up the works it cites or check its findings
-against outside sources; the runs weren't asked to either.
+against outside sources; the analysis wasn't asked to either.
 
-### The two documents in a run
+### The two documents in the run
 
 **The close reading** (`analysis.json`) is a reading of the article from start
 to finish, recording what the author says without judging it:
 
-- `reading_plan` — the run's first look: what kind of document it is, how
-  densely it reads, and the pace it chose.
+- `reading_plan` — the first look: what kind of document it is, how densely it
+  reads, and the pace it chose.
 - `reading_path` — a list of steps, in the article's order. Each step has:
   - `location` — where in the article the step is.
   - `moves` — what the author is doing there: stating a premise, giving
@@ -67,25 +56,27 @@ to finish, recording what the author says without judging it:
     the author offers, each with its own `text`, `form`, and `citations`
     (`citation_text` as printed, and `reference_entry` from the article's own
     reference list, or null).
-  - `meaning` — the run's reflection on where the step leaves the argument.
+  - `meaning` — the reading's reflection on where the step leaves the
+    argument.
 
-Claims and support are the author's. Moves and meaning are the run's reading.
-That separation is by position: a claim field holding the run's own inference
-is a misattribution.
+Claims and support are the author's. Moves and meaning are the model's
+reading. That separation is by position: a claim field holding the model's own
+inference is a misattribution.
 
 The close reading was asked to keep the author's strength of language — not
 softened, not strengthened — to mark `verbatim` only exact wording, to record
 a reading of a figure or an equation printed as an image as `paraphrased`,
 naming the element, and never to invent or complete a reference.
 
-**The argument evaluation** is the run's own judgment of whether the
-article's argument holds: what it rests on, whether the conclusions follow,
-and what bias shapes the author's framing and the run's own reading. It was
-asked to be selective rather than exhaustive, and to point to the article
-when it makes a judgment.
+**The argument evaluation** (`argument_evaluation.md`) is the model's own
+judgment of whether the article's argument holds: what it rests on, whether
+the conclusions follow, and what bias shapes the author's framing and the
+model's own reading. It was written from the article and the close reading,
+asked to be selective rather than exhaustive, and to point to the article when
+it makes a judgment.
 
-`prompts/` holds the exact instructions the runs followed. Read the file for
-what you're judging before you open a run.
+`prompts/` holds the exact instructions the analysis followed. Read the file
+for what you're judging before you open the run.
 
 ---
 
@@ -93,67 +84,43 @@ what you're judging before you open a run.
 
 | Session | Reads | Scores | Writes |
 | --- | --- | --- | --- |
-| Claims reference list | the article alone | — | `claims_reference.md` |
-| Close reading, run A | the article, `claims_reference.md`, run A's `analysis.json` | A1–A5 | `close_reading_A.md` |
-| Close reading, run B | the article, `claims_reference.md`, run B's `analysis.json` | A1–A5 | `close_reading_B.md` |
-| Close readings, head to head | the article, `claims_reference.md`, both runs' `analysis.json` | comparison and verdict | `close_reading_head_to_head.md` |
-| Problems reference list | the article alone | — | `problems_reference.md` |
-| Evaluation, run A | the article, `problems_reference.md`, run A's argument evaluation | B1–B6 | `evaluation_A.md` |
-| Evaluation, run B | the article, `problems_reference.md`, run B's argument evaluation | B1–B6 | `evaluation_B.md` |
-| Evaluations, head to head | the article, `problems_reference.md`, both runs' argument evaluations | comparison and verdict | `evaluation_head_to_head.md` |
+| 1. Claims reference list | the article alone | — | `references/claims_reference.md` |
+| 2. Close reading | the article, `claims_reference.md`, `analysis.json` | A1–A5 | `judgments/close_reading.md` |
+| 3. Argument evaluation | the article, `argument_evaluation.md` | B1–B6 | `judgments/evaluation.md` |
 
-The close-reading sessions never read an argument evaluation, and the
-evaluation sessions never read a close reading. Each is judged against the
-article alone.
+The close-reading session never reads the argument evaluation, and the
+evaluation session never reads the close reading or the reference list. The
+evaluation is judged against the article alone.
 
-## The reference lists
+## The claims reference list
 
-Each list is written once per article, in a session of its own, from the
-article alone, so no run shapes it. Every later session on that article, in any comparison, uses it as
-written and doesn't change it.
+Written once per article, in a session of its own, from the article alone, so
+the analysis doesn't shape it. The close-reading session uses it as written
+and doesn't change it.
 
-- **`claims_reference.md` — the article's own claims.** Every enumerated
-  contribution, every claim in the abstract, the conclusion of every section
-  and subsection as well as the article's overall conclusions, and every
-  figure and table, each with what it shows and where it is. Say where the
-  article ends for this purpose: the main text, or the appendices too.
-- **`problems_reference.md` — problems in the argument.** Where the article's
-  reasoning fails, contradicts itself, or doesn't add up, each with the
-  passage.
+It lists the article's own claims: every enumerated contribution, every claim
+in the abstract, the conclusion of every section and subsection as well as the
+article's overall conclusions, and every figure and table, each with what it
+shows and where it is. Say where the article ends for this purpose: the main
+text, or the appendices too.
 
-## Judging one run
+The list is an inventory of what the article marks as its claims, not a
+judgment of what matters most. Where the list and the article disagree, the
+article decides.
 
-Score the run against the article and the reference list, on the criteria
-for what you're judging: A1–A5 for a close reading, B1–B6 for an argument
-evaluation.
+## Judging the run
+
+Score the run against the article on the criteria for what you're judging:
+A1–A5 for the close reading, B1–B6 for the argument evaluation.
 
 For A1, sample 30 claims, drawn at random with a seed you record, or take
 every claim if the run has fewer. Score each sampled claim with its support
 items.
 
-Write, in this order: the run's letter, the `id` at the top of the file you
-judged, the seed (for a close reading), each
-criterion's score or counts with the evidence for it, and a short paragraph
-on the run's main strengths and weaknesses.
-
-## Comparing head to head
-
-With both runs in front of you, write:
-
-- **Each run's `id`,** from the top of each file you compared.
-- **What each caught that the other missed.** For close readings, against
-  `claims_reference.md`. For evaluations, against `problems_reference.md`; a
-  problem a run found that isn't on the list, and that you confirm against
-  the article, is recorded here as found by that run, and the list itself
-  stays as it is.
-- **Where each is wrong** that the other isn't.
-- **A verdict:** which run is better, with reasons drawn from the criteria.
-- **An order check.** Make the comparison twice, once reading A first and
-  once reading B first, and record whether the verdict held. A verdict that
-  flips with the order is a tie.
-
-You don't need to rescore every criterion; use them as the grounds for the
-comparison.
+Write, in this order: the article's file name, the seed (for the close
+reading), each criterion's score or counts with the evidence for it, and a
+short paragraph on the analysis's main strengths and weaknesses, written for
+the researcher deciding whether to accept it.
 
 ---
 
@@ -170,7 +137,7 @@ rather than scoring 0.
 - **1** — supported but altered: a scope condition softened, a number detached
   from its unit or context, a hedge dropped or added.
 - **0** — the passage doesn't support it, a `verbatim` text isn't the author's
-  wording, or the run's own inference is recorded as the author's claim.
+  wording, or the model's own inference is recorded as the author's claim.
 
 Report the share of claims at each score, never a mean. A 1 and a 0 stay
 apart on purpose: a softened claim is a fixable reading and an invented one
@@ -178,11 +145,15 @@ isn't.
 
 ### A2. Coverage
 
-Counted against the reference list of the article's own claims, not scored.
-For each type — contributions, abstract claims, conclusions, figures, tables —
-report how many were caught, caught without what they show (a figure named
-but not read), and missed. Name what was missed. Say where the reading stops
-if it stops before the article does.
+Counted against `claims_reference.md`, not scored. For each type —
+contributions, abstract claims, conclusions, figures, tables — report how many
+were caught, caught without what they show (a figure named but not read), and
+missed. Name what was missed. Say where the reading stops if it stops before
+the article does.
+
+Where the reading records one of the article's claims that the list left out,
+and you confirm it in the article, note it as found beyond the list. The list
+itself stays as it is.
 
 ### A3. Strength of language
 
@@ -273,16 +244,18 @@ names.
 
 ### B6. Correctness
 
-Counted, not scored:
+Counted, not scored, with no reference list: check each against the article.
 
-- **Problems found:** which problems on your list the evaluation found, and
-  which it missed.
+- **Problems raised:** each problem the evaluation finds in the article's
+  argument, and whether the article bears it out — confirmed, not confirmed,
+  or wrong. Name the passage either way.
 - **Errors:** every statement it makes about the article that the article
   doesn't bear out — a number misread, a claim the author didn't make, a
   passage misdescribed. Name each.
 
-What a run found that no other did is recorded in the head-to-head session,
-once both runs are read.
+You may note a problem you see in the article that the evaluation doesn't
+raise, but say that it is your own reading, not a fault the evaluation is
+scored on.
 
 ---
 
@@ -294,81 +267,16 @@ quoted as if it meant something.
 
 ---
 
-## Evaluation Rubric: Theoretical Foundations and Development
+## Theoretical foundations
 
-### Overview
+The criteria are the ones used to choose the analysis configuration, where
+they compared runs head to head; their sources and how they were adapted are
+in [AB_TESTING_RUBRIC.md](AB_TESTING_RUBRIC.md#evaluation-rubric-theoretical-foundations-and-development).
+Here they are applied to one analysis at a time, as absolute judgments rather
+than comparisons.
 
-This evaluation rubric was developed for a human-in-the-loop (HITL) research workflow comparing language model configurations across two distinct tasks: close reading of academic literature and critical evaluation of scholarly arguments.
-
-The framework draws on published research in source attribution, citation evaluation, argumentation theory, and comparative quality assessment. These foundations were adapted into project-specific criteria and evaluation procedures to assess both the fidelity of model-generated analyses to their source material and the quality of the models' independent reasoning.
-
-### A. Close Reading: Attribution and Fidelity
-
-The close-reading criteria are informed by the **Attributable to Identified Sources (AIS)** framework introduced by Rashkin et al. (2023), which evaluates whether generated statements are supported by identified source material.
-
-The **ALCE benchmark** developed by Gao et al. (2023) further informs the assessment of citation quality, particularly the distinction between whether generated claims are adequately supported and whether their cited evidence is relevant.
-
-These concepts were adapted to the structure of the research agent's close-reading outputs:
-
-- **A1, Attribution fidelity:** Distinguishes fully supported claims, supported but altered claims, and unsupported or misattributed claims.
-- **A2, Coverage:** Measures representation of the article's own stated claims and structural elements using independently constructed reference lists.
-- **A3, Strength of language:** Assesses whether the analysis preserves the author's qualifications, certainty, scope, and conditions.
-- **A4, Mechanical checks:** Verifies quotations, numerical references, and bibliographic entries against the source document.
-- **A5, Detail and readability:** Descriptively assesses the organization and usefulness of the resulting analysis without rewarding length as an independent measure of quality.
-
-The three-level attribution scale, article-specific coverage procedure, and mechanical verification rules are project-specific operational choices rather than direct reproductions of AIS or ALCE.
-
-### B. Argument Evaluation: Cogency and Critical Reasoning
-
-The argument-evaluation criteria draw primarily on the taxonomy of argumentation quality proposed by Wachsmuth et al. (2017), particularly the logical dimension of **cogency**, comprising premise acceptability, relevance, and sufficiency.
-
-The framework also draws on Toulmin's (1958) model of argumentation, which examines the relationships among claims, grounds, warrants, qualifiers, and rebuttals.
-
-These theoretical foundations inform the rubric's argument-evaluation criteria:
-
-- **B1, Premise acceptability:** Examines whether an evaluation critically assesses the credibility and adequacy of evidence supporting the author's conclusions.
-- **B2, Relevance of critique:** Assesses whether criticisms address the arguments actually presented rather than reconstructed or weakened alternatives.
-- **B3, Sufficiency:** Evaluates whether the analysis distinguishes evidence that supports a conclusion from evidence sufficient to establish it.
-- **B4, Unstated warrants and missing qualifiers:** Assesses whether the evaluation identifies consequential assumptions or qualifications missing from the author's reasoning.
-- **B5, Self-attribution:** Examines whether the model distinguishes its independent judgments and interpretive framing from the author's claims.
-- **B6, Correctness:** Records factual errors in the evaluation and its identification of problems in the article's argument.
-
-The rubric deliberately focuses on logical and evidential assessment rather than rhetorical effectiveness or persuasiveness. It also uses Toulmin's framework selectively, without requiring exhaustive reconstruction of every argument.
-
-### C. Evaluation Procedure and Comparative Assessment
-
-The evaluation procedure combines independent criterion-based judgments with head-to-head comparisons between model configurations.
-
-Toledo et al. (2019) provide methodological precedent for using both absolute and relative assessments of argument quality. Their findings support the viability of both approaches rather than establishing a universal preference for one.
-
-The project's evaluation procedure incorporates:
-
-- Independently constructed, article-specific reference lists.
-- Separate judging sessions for close-reading and argument-evaluation outputs.
-- Blinded model identities and configurations during judging.
-- Reproducible random sampling of claims for attribution assessment.
-- Criterion-level scoring, counts, and qualitative observations without composite scores or pass thresholds.
-- Head-to-head comparison of model outputs, in which the judge reasons through the comparison in both reading orders to identify order-sensitive judgments. In a final, each head-to-head also runs in two sessions with the letters swapped, so a verdict that follows the letter shows as a split.
-- Human review of findings before model configuration decisions are made.
-
-These procedures constitute the research project's operational design. They are informed by evaluation literature but are not presented as a previously validated protocol.
-
-### Methodological Scope
-
-The rubric operationalizes established concepts in source attribution and argumentation quality for a specific research workflow. It does not claim to reproduce or independently validate the published frameworks in their entirety.
-
-Its purpose is to provide a structured, evidence-grounded basis for comparing model configurations while preserving the distinction between faithful representation of an author's argument and independent critical assessment of that argument.
-
-The resulting judgments inform human decisions about model selection, including subsequent consideration of computational cost and runtime. They do not constitute absolute measures of model quality.
-
-### References
-
-1. Rashkin, H., Nikolaev, V., Lamm, M., Aroyo, L., Collins, M., Das, D., Petrov, S., Tomar, G. S., Turc, I., & Reitter, D. (2023). Measuring attribution in natural language generation models. *Computational Linguistics, 49*(4), 777–840. https://doi.org/10.1162/coli_a_00486
-
-2. Gao, T., Yen, H., Yu, J., & Chen, D. (2023). Enabling large language models to generate text with citations. *Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing*, 6465–6488. https://doi.org/10.18653/v1/2023.emnlp-main.398
-
-3. Wachsmuth, H., Naderi, N., Hou, Y., Bilu, Y., Prabhakaran, V., Thijm, T. A., Hirst, G., & Stein, B. (2017). Computational argumentation quality assessment in natural language. *Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics: Volume 1, Long Papers*. https://aclanthology.org/E17-1017/
-
-4. Toulmin, S. E. (1958). *The uses of argument*. Cambridge University Press. https://www.cambridge.org/core/books/the-uses-of-argument/26CF801BC12004587B66778297D5567C
-
-5. Toledo, A., Gretz, S., Cohen-Karlik, E., Friedman, R., Venezian, E., Lahav, D., Jacovi, M., Aharonov, R., & Slonim, N. (2019). Automatic argument quality assessment: New datasets and methods. *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing*. https://doi.org/10.18653/v1/D19-1564
+Two things change. Only the close reading has a reference list, since it is
+an inventory of what the article marks as its claims. The argument evaluation
+is checked against the article directly, because a list of problems in the
+argument would be the judge's own opinion, and scoring against it would
+measure agreement with the judge rather than correctness.

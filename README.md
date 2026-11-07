@@ -368,13 +368,15 @@ simplifies, or removes.
 │   ├── test_write_primer.py          the primer script, offline
 │   └── preparation/                  PDF extraction behavior, with fixtures
 ├── docs/
+│   ├── AB_TESTING_JUDGING_PROMPTS.md Phase 2: the prompts that started each A/B judging session
+│   ├── AB_TESTING_RUBRIC.md          Phase 2: the criteria for the head-to-head judgment
 │   ├── BUILD_PLAN.md                 the phases in engineering detail
 │   ├── DESIGN.md                     the system, and the rules it holds to
 │   ├── EVALUATION_KEY.md             Phase 2: what each blind run is, kept from the judge
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
-│   ├── JUDGING_PROMPTS.md            Phase 2: the prompts that start each judging session
+│   ├── JUDGING_PROMPTS.md            Phase 3: the prompts for judging each analysis
 │   ├── REPOSITORY.md                 every file, and why it exists
-│   ├── RUBRIC.md                     Phase 2: the criteria for the head-to-head judgment
+│   ├── RUBRIC.md                     Phase 3: the criteria for judging each analysis
 │   ├── adr/0001-0021.md              one record per architectural decision
 │   ├── assets/                       Phase 2: the tournament brackets shown in the key
 │   │   ├── evaluation-bracket.svg    Barnett's
@@ -398,7 +400,8 @@ outputs/                              created by the pipeline
 ├── judgments/<article>/              Phase 2: one folder per article
 │   ├── references/                   its claims and problems reference lists
 │   ├── runs/                         kanbur: the runs in one shape, ready to judge
-│   └── <experiment>/                 the six blind judgments of an experiment
+│   ├── <experiment>/                 the six blind judgments of an experiment
+│   └── analyses/<slug>/              Phase 3: claims list and judgments of each analysis
 ├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
 └── synthesis/                        Phase 3
 ```
@@ -442,6 +445,8 @@ uv run mypy src
   where the code is heavier than it needs to be
 - [Decision Records](docs/adr/) — one dated record per architectural decision,
   with the alternatives and what each one cost
-- [Rubric](docs/RUBRIC.md) — the criteria for Phase 2's head-to-head judgment
+- [Rubric](docs/RUBRIC.md) — the criteria for judging each analysis in the
+  collection; [the A/B version](docs/AB_TESTING_RUBRIC.md) was Phase 2's
+  head-to-head
 - [Prompt Log](docs/PROMPT_LOG.md) — one log for every phase, recording the prompts
   given to Claude Code and Codex while building this and what came back

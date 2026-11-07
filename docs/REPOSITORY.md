@@ -293,9 +293,19 @@ pointing into `synthesis/`.
 ## `docs/`
 
 `DESIGN.md` and `BUILD_PLAN.md` (below), this file, `PROMPT_LOG.md`, `RUBRIC.md`,
-`JUDGING_PROMPTS.md`, `EVALUATION_KEY.md`, and:
+`JUDGING_PROMPTS.md`, their A/B versions, `EVALUATION_KEY.md`, and:
 
-### `RUBRIC.md`
+### `RUBRIC.md` and `JUDGING_PROMPTS.md`
+
+The criteria and session prompts for judging each analysis in the collection,
+from Phase 3 on: three sessions per article — a claims reference list from the
+article alone, the close reading against it on A1–A5, and the argument
+evaluation against the article on B1–B6, with no problems list. They report
+and never withhold. They exist so every analysis is judged the same way, by
+pasting the same prompts into new chats, before the researcher accepts or
+rejects it.
+
+### `AB_TESTING_RUBRIC.md`
 
 The criteria Phase 2's head-to-head judgment applies to each experiment: the
 close readings (attribution, coverage, strength of language, the mechanical
@@ -307,11 +317,12 @@ for a judge in a fresh session with no other context: it describes the run
 folder, with runs labelled by letter and nothing about their configuration or
 cost, and the separate sessions — each run's close reading and evaluation on
 its own, then each head to head. It exists so every judgment is made against
-the same criteria, written down before the runs are read.
+the same criteria, written down before the runs are read. Kept as written
+for Phase 2; `RUBRIC.md` adapts it for one analysis at a time.
 
-### `JUDGING_PROMPTS.md`
+### `AB_TESTING_JUDGING_PROMPTS.md`
 
-The prompts that start each judging session, in order, and how to set up the
+Phase 2's prompts that start each judging session, in order, and how to set up the
 folder they work in. It exists so each experiment is judged the same way, by
 pasting the same prompts into new chats.
 

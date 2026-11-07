@@ -1145,7 +1145,7 @@ content is unchanged, and the originals are untouched.
 
 ### Setting up a kanbur judging folder
 
-1. Copy in `RUBRIC.md`, `prompts/`, and the article as `article.pdf`.
+1. Copy in `AB_TESTING_RUBRIC.md` as `RUBRIC.md`, `prompts/`, and the article as `article.pdf`.
 2. For each letter, copy the run's two files, `analysis.json` and
    `argument_evaluation.json`, from `outputs/judgments/kanbur/runs/<configuration>/`
    into `runs/A/` or `runs/B/`. Copy only the files: the copies' folder names

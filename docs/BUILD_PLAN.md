@@ -350,8 +350,8 @@ together ([ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)).
 ### What was done
 
 For each experiment, Claude judged the runs blind, in new sessions that knew
-nothing of which run was which, following [RUBRIC.md](RUBRIC.md) and
-[JUDGING_PROMPTS.md](JUDGING_PROMPTS.md): each run's close reading and
+nothing of which run was which, following [AB_TESTING_RUBRIC.md](AB_TESTING_RUBRIC.md) and
+[AB_TESTING_JUDGING_PROMPTS.md](AB_TESTING_JUDGING_PROMPTS.md): each run's close reading and
 argument evaluation alone, then head to head, as a five-match bracket per
 article. The judgments are in `outputs/judgments/<article>/<experiment>/`, the
 article's reference lists in `outputs/judgments/<article>/references/`, and the
@@ -409,9 +409,19 @@ Each folder holds `analysis.json`, `argument_evaluation.md`, and
 rerun the session. Anything else is a result
 ([ADR-0005](adr/0005-no-hard-quality-gates.md)).
 
+### Judge each analysis
+
+Three sessions per article, following [RUBRIC.md](RUBRIC.md) and
+[JUDGING_PROMPTS.md](JUDGING_PROMPTS.md): a claims reference list written from
+the article alone, the close reading judged against it, and the argument
+evaluation judged against the article directly. Barnett and kanbur reuse the
+claims lists from their A/B judging. There is no problems reference list:
+it would be the judge's own opinion, and scoring against it would measure
+agreement with the judge. Judgments go to `outputs/judgments/analyses/<slug>/`.
+
 ### Accept or reject
 
-I review each article's two readings and decide: accept, reject, revise, or
+I review each article's two readings, with their judgments, and decide: accept, reject, revise, or
 rerun. Only accepted close readings go to synthesis.
 
 ### Claims store, synthesis, and retrieval
