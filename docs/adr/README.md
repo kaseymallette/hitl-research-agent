@@ -80,7 +80,7 @@ without a record.
 | [0003](0003-application-owned-fields-stay-out-of-the-model-schema.md) | Identifier, provenance, and timestamp stay out of the schema sent to the model | 2026-09-25 | Accepted |
 | [0004](0004-pin-pymupdf4llm-exactly.md) | `pymupdf4llm` is pinned to an exact version | 2026-10-13 | Accepted |
 | [0005](0005-no-hard-quality-gates.md) | Only a technical failure stops a run; analysis quality never does | 2026-10-15 | Accepted |
-| [0008](0008-compare-pdf-against-prepared-text.md) | Compare sending the full PDF against prepared text plus crops | 2026-10-15 | **Provisional** |
+| [0008](0008-compare-pdf-against-prepared-text.md) | Compare sending the full PDF against prepared text plus crops | 2026-10-15 | Superseded by 0021 |
 | [0006](0006-analysis-and-synthesis-never-receive-the-question.md) | Single-source analysis and synthesis never receive the research question | 2026-10-15 | Accepted |
 | [0007](0007-one-analysis-error-with-a-kind.md) | One `AnalysisError` carrying a `kind`, not an exception hierarchy | 2026-10-15 | Accepted |
 | [0009](0009-phase-1-matrix-three-configurations-three-articles.md) | Phase 1 runs three model configurations over three articles | 2026-10-17 | Accepted for Barnett; superseded in part by 0014 and 0015 |
@@ -95,5 +95,6 @@ without a record.
 | [0018](0018-three-agents-analysis-synthesis-research-assistant.md) | Three agents: single-source analysis, synthesis, and a research assistant | 2026-10-24 | Accepted |
 | [0019](0019-four-phases-head-to-head-evaluation.md) | Four phases, two experiment articles, and a head-to-head evaluation | 2026-10-24 | Accepted |
 | [0020](0020-codex-joins-experiment-2.md) | Codex joins Experiment 2 as a third way of running the prompts | 2026-10-24 | Accepted |
+| [0021](0021-codex-sol-medium-on-the-pdf-for-the-collection.md) | The collection is analyzed by Codex, on GPT-6.1 Sol at medium effort, from the PDF | 2026-11-06 | Accepted |
 
 New records start from [template.md](template.md).

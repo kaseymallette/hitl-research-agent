@@ -348,9 +348,9 @@ reach the current phase, and until it became unclear which document a change
 to a rule belonged in. The split answers that: a rule that holds whatever
 phase you are in is design, and anything with a phase number is the plan.
 
-### `adr/` — 22 files
+### `adr/` — 23 files
 
-One architectural decision per record: `0001`–`0020`, plus `template.md` for
+One architectural decision per record: `0001`–`0021`, plus `template.md` for
 new ones and `README.md`, which indexes them and states the conventions.
 
 All eight were back-filled on 2026-10-17 from decisions already made — the
@@ -417,6 +417,9 @@ and retrieval, and the research assistant — and moves lei to the collection.
 
 `0020` adds Codex to Experiment 2 as a third way of running the prompts,
 from the instruction files in `prompts/`, recording how it read the PDF.
+
+`0021` chooses the configuration for the collection: Codex, on GPT-6.1 Sol at
+medium effort, from the PDF, which supersedes ADR-0008.
 
 **Why, given that this file already explains most of them.** The two documents
 answer different questions and are kept apart on purpose. This file describes

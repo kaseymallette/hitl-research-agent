@@ -1,6 +1,6 @@
 # ADR-0008 — Compare sending the full PDF against prepared text plus crops
 
-- **Status:** Provisional — Phase 1 decides, and the record that states the outcome supersedes this one
+- **Status:** Superseded by ADR-0021
 - **Date:** 2026-10-15
 - **Landed in:** `f36a056`
 
@@ -115,3 +115,6 @@ a new record, and this one is then marked superseded rather than edited.
 The experiment design is in [README.md](../../README.md#the-ab-experiment) and
 the procedure in [BUILD_PLAN.md](../BUILD_PLAN.md); this record is the decision
 to run it instead of choosing.
+
+Superseded by [ADR-0021](0021-codex-sol-medium-on-the-pdf-for-the-collection.md):
+Phase 2 settled it for the PDF.

@@ -1,12 +1,16 @@
 # Build Plan
 
-> **Being rewritten.** [ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)
-> replaces this plan's seven phases with four after Phase 0: A/B testing on two
-> articles, a head-to-head evaluation, synthesis with the collection and
-> retrieval, and the research assistant
-> ([ADR-0018](adr/0018-three-agents-analysis-synthesis-research-assistant.md)).
-> Until this document is rewritten around them, the phases below describe the
-> earlier plan.
+| Phase | What it does | Status |
+| --- | --- | --- |
+| 0 | Review and redesign | complete |
+| 1 | A/B testing: Barnett and kanbur | complete |
+| 2 | Evaluation: the head-to-head judgment and the choice of configuration | chosen ([ADR-0021](adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md)); my check of the judge open |
+| 3 | Synthesis: analyze and accept the collection, the claims store, synthesis, retrieval | next |
+| 4 | Research assistant: the primer (built) and guided questions | |
+
+The four phases are set by
+[ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md), replacing the
+earlier seven.
 
 This document turns the phases in [README.md](../README.md) into an engineering
 plan. It is developed one phase at a time: the current phase is specified in
@@ -343,133 +347,102 @@ Judge both experiments head to head, and choose how the collection is
 analyzed: model, effort, input method, and API or app, on quality and cost
 together ([ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)).
 
-### The head-to-head judgment
+### What was done
 
-For each experiment, Claude judges the runs blind, in new sessions that know
-nothing of this project or of which run is which: each run's close reading and
-argument evaluation on its own, then each head to head, following
-[RUBRIC.md](RUBRIC.md) and [JUDGING_PROMPTS.md](JUDGING_PROMPTS.md). The
-judgments are saved apart from the analyses, in
-`outputs/judgments/<article>/<experiment>/`, with the article's reference
-lists once in `outputs/judgments/<article>/references/`, and compared with each run's cost and
-runtime afterwards, from [EVALUATION_KEY.md](EVALUATION_KEY.md). They cover:
+For each experiment, Claude judged the runs blind, in new sessions that knew
+nothing of which run was which, following [RUBRIC.md](RUBRIC.md) and
+[JUDGING_PROMPTS.md](JUDGING_PROMPTS.md): each run's close reading and
+argument evaluation alone, then head to head, as a five-match bracket per
+article. The judgments are in `outputs/judgments/<article>/<experiment>/`, the
+article's reference lists in `outputs/judgments/<article>/references/`, and the
+results, with each run's cost and runtime, in
+[EVALUATION_KEY.md](EVALUATION_KEY.md).
 
-- **Close readings:** how many of the article's claims and figures each run
-  caught or missed; how faithfully each is recorded against the article —
-  qualifiers and strength of language kept, nothing invented, citations as
-  printed; and how detailed and readable each is.
-- **Argument evaluations:** whose reasoning holds up, what each found that the
-  others did not, and where each is wrong.
-- **Primers** (kanbur's API runs): accuracy and usefulness for a reader new to
-  the field.
-- **A ranking with reasons.**
+| Article | Winner | How it held |
+| --- | --- | --- |
+| Barnett | GPT-6.1 Sol medium, PDF, API | Most verdicts followed the letter; the selection rests on cost and on findings confirmed in the runs. The PDF's close-reading win held with the letters swapped. |
+| Kanbur | GPT-6.1 Sol medium, Codex | Codex won every round, narrowly; the final held with the letters both ways. |
 
-The failure modes in the README's evaluation design are what it looks for. The
-mechanical checks already run — verbatim text, numbers, and reference entries
-against each article — feed into it.
+### The choice
 
-### Decisions this phase makes
-
-- **The configuration for the collection:** GPT-6.1 Sol at medium or high
-  effort, and the API or the app, weighing quality against the cost each run
-  recorded.
-- **The input method:** the PDF or prepared text with crops, from Barnett,
-  where both ran. This settles
-  [ADR-0008](adr/0008-compare-pdf-against-prepared-text.md); if the PDF wins,
-  `prepare_sources.py` can go.
-
-### Checking the judge
-
-The judging sessions start fresh, so they carry none of this project's design
-discussion or my views on the articles, and the runs reach them by letter
-only. Claude is a different model from the one judged, so it is not grading
-its own work. I check its judgment against my own reading, at least
-for Barnett, where I have full notes. Where we disagree, that is a case to look
-into, not a verdict either way.
+**Codex, on GPT-6.1 Sol at medium effort, from the PDF**
+([ADR-0021](adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md)).
+High effort did not beat medium on either article, and the PDF beat prepared
+text on Barnett, which settles
+[ADR-0008](adr/0008-compare-pdf-against-prepared-text.md).
 
 ### Done when
 
-- [ ] A judgment for each experiment, saved in `outputs/judgments/`.
+- [x] A judgment for each experiment, saved in `outputs/judgments/`.
 - [ ] My check of at least one, with any disagreement noted.
-- [ ] The configuration for the collection chosen and recorded in an ADR,
+- [x] The configuration for the collection chosen and recorded in an ADR,
       with the input-method question settled.
 
 ---
 
-## Phase 3 — Research Collection
+## Phase 3 — Synthesis
 
 ### Goal
 
-Analyze and evaluate all 16 articles in `data/research/` using the Phase 2
-configuration, reusing the Phase 1 outputs that already used it.
+Analyze the whole collection in the Phase 2 configuration, accept or reject
+each analysis, and compare the accepted close readings across sources —
+agreements, disagreements, methodological differences, limitations, and open
+questions — with each position still attributed to its source
+([ADR-0018](adr/0018-three-agents-analysis-synthesis-research-assistant.md)).
+Synthesis receives no research question
+([ADR-0006](adr/0006-analysis-and-synthesis-never-receive-the-question.md)).
 
-Three of the 16 are the A/B articles, and three of their 18 cells already hold
-an analysis in the chosen configuration — those are reused rather than rerun, if
-their records show the same prompt, schema, and settings. Analyses go to
-`outputs/analyses/<slug>/` and evaluations to `outputs/evaluations/<slug>/`, so
-an analysis is never conflated with the judgment of it, and either can be
-regenerated without the other.
+### Analyze the collection
 
-This phase also establishes what a *collection* needs that a single analysis
-does not: provenance for all 16 articles, a record of which configuration
-produced each analysis, and enough consistency for Phase 4 to compare them.
+Sixteen articles: the fourteen in `data/research/`, lei among them, and the
+two in `data/research/ab_testing/`.
+
+- **Kanbur** reuses its Codex medium run,
+  `outputs/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling/adr_0020/codex__gpt-6.1-sol-medium/`.
+- **The other fifteen**, Barnett included, run in Codex: one session for the
+  close reading from `prompts/close-reading.md`, then a new session for the
+  argument evaluation from `prompts/evaluate-argument.md`, each given the PDF
+  path and the output folder `outputs/analyses/<slug>/`.
+
+Each folder holds `analysis.json`, `argument_evaluation.md`, and
+`run_note.md`. An `analysis.json` that will not parse is a technical failure:
+rerun the session. Anything else is a result
+([ADR-0005](adr/0005-no-hard-quality-gates.md)).
+
+### Accept or reject
+
+I review each article's two readings and decide: accept, reject, revise, or
+rerun. Only accepted close readings go to synthesis.
+
+### Claims store, synthesis, and retrieval
+
+Decisions this part has to make, once the collection is analyzed:
+
+- **The claims store:** how the accepted close readings' claims and support
+  are collected, keeping each one's source and step, and its `verbatim` or
+  `paraphrased` mark.
+- **Synthesis:** one call over the store or the readings, while the
+  collection fits in one; the prompt and its output.
+- **Retrieval:** on the same store, when the collection outgrows a single call
+  or I want to ask it questions. It returns what kind of thing it found and
+  which source it came from, and never returns the model's reading as
+  something a source said.
+
+The failure synthesis adds is an agreement or disagreement manufactured
+between sources that do not address the same point. A disagreement names both
+sides. Relevance depends on distinctions the research question draws —
+freshwater, drinking-quality water, and water suitable for a particular
+process are not interchangeable — so retrieval is checked on those cases
+explicitly.
 
 ---
 
-## Phase 4 — Synthesis Agent
+## Phase 4 — Research Assistant
 
 ### Goal
 
-Compare accepted analyses for agreements, disagreements, methodological
-differences, limitations, and open questions, preserving which source said
-what, and evaluate the result.
-
-Synthesis receives no research question. Source attribution is the hard
-requirement: a synthesis that blends two sources into one unattributed claim has
-destroyed the thing it was built to preserve, and a disagreement must name both
-sides. The evaluation has to be designed for synthesis rather than borrowed from
-Phase 2 — faithfulness here means faithfulness to the analyses and the
-attribution, which is a different question from faithfulness to one source, and
-the new failure mode is a manufactured agreement or disagreement between sources
-that do not actually address the same point.
-
----
-
-## Phase 5 — Literature Review Agent
-
-### Goal
-
-Given an explicit research question, find candidate articles, explain why each
-is relevant, and let the researcher select which to add to the collection.
-
-This is the only question-aware agent. It proposes and explains; it does not
-add. A selected article enters the Phase 3 path — provenance, analysis,
-evaluation — and the explanation of relevance is recorded with it, since it is
-the agent's reasoning about a question and not a property of the source.
-
----
-
-## Phase 6 — RAG
-
-### Goal
-
-Connect retrieval to all three agents so the researcher can navigate source
-material, analyses, evaluations, and syntheses using explicit questions,
-including literature-review questions.
-
-Four kinds of thing are retrievable and they are not interchangeable: a passage
-from a source, a claim from an analysis, a judgment from an evaluation, and a
-comparison from a synthesis. Retrieval has to preserve which kind it returned
-and which source it came from, and it must not let an analysis's
-`model_inferred` content come back as something a source said. Retrieval quality
-is evaluated separately from the quality of what the model generates from what
-it retrieved.
-
-Relevance judgments here depend on the distinctions the research question draws
-— freshwater, drinking-quality water, and water suitable for a particular
-process are not interchangeable, and desalination is a supply candidate under
-investigation rather than the answer. A retrieval step that treats those as
-synonyms will return confidently wrong material, so they belong in the
-retrieval evaluation as explicit cases rather than being left to the embedding. Single-source analysis stays question-independent: retrieval
-serves the researcher and the question-aware agents, and never feeds the
-research question back into the analysis step.
+Help me read an unfamiliar article. The primer is built
+([ADR-0016](adr/0016-a-primer-before-the-reading.md)): the concepts, terms,
+and comparison points an article relies on, written on request by
+`scripts/write_primer.py`, never given to either reading. What remains is
+guided questions about the article, to be designed when Phase 3 is done.

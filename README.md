@@ -318,14 +318,14 @@ What has been difficult about working this way:
 | | |
 | --- | --- |
 | **Working now** | single source analysis as two calls — the close reading and the argument evaluation — running end to end with run records, the primer, and PDF preparation into cleaned text and crops |
-| **Designed, not yet built** | the head-to-head evaluation, synthesis with its claims store and retrieval, and the research assistant's guided questions |
-| **Next** | Phase 2's head-to-head evaluation, which decides how the collection is analyzed |
+| **Designed, not yet built** | synthesis with its claims store and retrieval, and the research assistant's guided questions |
+| **Next** | Phase 3: analyzing the collection in Codex, on GPT-6.1 Sol at medium effort, from the PDF ([ADR-0021](docs/adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md)) |
 
 | Phase | What it does |
 | --- | --- |
 | 0 | **Review and redesign**: audit the earlier code and restructure the repository and documentation around these phases *(complete)* |
 | 1 | **A/B testing**: two experiments — Barnett comparing models and input methods, kanbur comparing the API against the ChatGPT app and Codex *(complete)* |
-| 2 | **Evaluation**: a head-to-head judgment of both experiments by Claude, checked by me, and the choice of model, effort, input method, and API or app |
+| 2 | **Evaluation**: a head-to-head judgment of both experiments by Claude, checked by me, and the choice of model, effort, input method, and API or app *(configuration chosen: Codex, Sol medium, PDF)* |
 | 3 | **Synthesis**: analyze the rest of the collection and accept each analysis; a claims store from the close readings; synthesis across sources; and retrieval on the same store |
 | 4 | **Research assistant**: the primer and guided questions about the article |
 
@@ -374,7 +374,7 @@ simplifies, or removes.
 │   ├── JUDGING_PROMPTS.md            Phase 2: the prompts that start each judging session
 │   ├── REPOSITORY.md                 every file, and why it exists
 │   ├── RUBRIC.md                     Phase 2: the criteria for the head-to-head judgment
-│   ├── adr/0001-0020.md              one record per architectural decision
+│   ├── adr/0001-0021.md              one record per architectural decision
 │   ├── assets/                       Phase 2: the tournament brackets shown in the key
 │   │   ├── evaluation-bracket.svg    Barnett's
 │   │   └── kanbur-evaluation-bracket.svg  kanbur's
