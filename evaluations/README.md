@@ -1,6 +1,7 @@
 # Evaluations
 
-The workspace for running and judging one article's close reading. Keep it as
+The workspace for running and judging one article's close reading and
+argument evaluation. Keep it as
 a separate folder on your computer, outside the repository, so no session can
 see other runs or judgments. The prompts below are the same for every article:
 only `article.pdf` and `source.yaml` change.
@@ -10,14 +11,14 @@ evaluations/
 ├── README.md                this file: the Codex prompts
 ├── RUBRIC.md                copy of docs/RUBRIC.md: the criteria
 ├── source.yaml              the article's details, from data/research/sources.yaml
-├── scores.md                the scores, filled in by prompt 3
+├── scores.md                the scores, filled in by prompts 3 and 5
 ├── prompts/                 copies of prompts/: the instructions for the run
 │   ├── close-reading.md
 │   └── evaluate-argument.md
 ├── article.pdf              add: the article
-├── run/                     analysis.json and run_note.md, from prompt 1
+├── run/                     analysis.json and run_note.md (prompt 1), argument_evaluation.md (prompt 4)
 ├── references/              claims_reference.md, from prompt 2
-└── judgments/               close_reading.md, from prompt 3
+└── judgments/               close_reading.md (prompt 3), evaluation.md (prompt 5)
 ```
 
 `RUBRIC.md` and `prompts/` are copies; `tests/test_prompt_files.py` keeps them
@@ -27,9 +28,9 @@ identical to `docs/RUBRIC.md` and `prompts/`.
 
 1. Put the article in as `article.pdf`, and fill `source.yaml` from the
    article's entry in `data/research/sources.yaml`.
-2. Run prompts 1–3, each in a new Codex session, on GPT-6.1 Sol at medium
-   effort. Skim the claims list against the article before prompt 3: the
-   judge uses it as written.
+2. Run prompts 1–5 in order, each in a new Codex session, on GPT-6.1 Sol at
+   medium effort. Skim the claims list against the article before prompt 3:
+   the judge uses it as written.
 3. Copy the results into the repository: `run/` into
    `outputs/analyses/<article>/`, and `references/` and `judgments/` into
    `outputs/judgments/<article>/`, with `scores.md` beside them. Add the
@@ -40,7 +41,8 @@ identical to `docs/RUBRIC.md` and `prompts/`.
 If the analysis is revised, put the revision in `run/` as `analysis.json`, run
 prompt 3 again with the judgment's file name changed to
 `close_reading_revised.md`, then `_2.md` and so on. Keep `scores.md` as it is:
-the judge adds a column for the revision.
+the judge adds a column for the revision. A revised argument evaluation works
+the same way with prompt 5 and `evaluation_revised.md`.
 
 ---
 
@@ -90,4 +92,36 @@ number of claims and of verbatim claims. Leave the Accepted line for me.
 
 Please open only these files and scores.md. Don't read
 run/argument_evaluation.md or anything in judgments/.
+```
+
+## 4. Argument evaluation
+
+```
+Follow prompts/evaluate-argument.md. The article is article.pdf, its source
+details are in source.yaml, and the close reading is run/analysis.json. Write
+argument_evaluation.md to run/ and add your section to run/run_note.md.
+```
+
+## 5. Evaluate argument evaluation
+
+```
+Hi! You're judging an evaluation of an academic article's argument. Please
+start by reading RUBRIC.md, which explains the setup and the criteria, and
+prompts/evaluate-argument.md, which holds the instructions the evaluation
+followed.
+
+Read article.pdf, then open run/argument_evaluation.md and judge it against
+the article on B1–B6. There is no reference list for this session: check each
+problem the evaluation raises against the article itself. Write the judgment
+to judgments/evaluation.md.
+
+Then add your scores to scores.md, in the argument evaluation tables. If its
+Original column is empty, fill it in; otherwise this is a revision, so add the
+next column (Revised 1, Revised 2, and so on). Give B1–B5 as x/2, B6 as the
+problems confirmed out of those raised, and the errors as a count. In the
+second table, name your judgment file and the version judged. Leave the
+Accepted line for me.
+
+Please open only these files and scores.md. Don't read run/analysis.json,
+references/claims_reference.md, or anything in judgments/.
 ```

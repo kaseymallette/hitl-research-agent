@@ -155,16 +155,17 @@ identical to `prompts.py`.
 
 ## `evaluations/`
 
-The workspace for judging one article's close reading, in the layout each
-Codex session expects: `RUBRIC.md`, `prompts/`, a `source.yaml` for the
-article's details, a `scores.md` the judge fills in, and empty `run/`, `references/` and `judgments/` for the
-article's run, claims list and judgment. Its `README.md` holds the three Codex
-prompts in order — the close reading, the claims reference, and the judgment
-of the close reading — written so they are the same for every article: only
-`article.pdf` and `source.yaml` change. The folder is kept outside the
-repository so a session can't see other runs, which is why it carries its own
-copies of `docs/RUBRIC.md` and `prompts/`; `tests/test_prompt_files.py` keeps
-the copies identical.
+The workspace for running and judging one article's close reading and
+argument evaluation, in the layout each Codex session expects: `RUBRIC.md`,
+`prompts/`, a `source.yaml` for the article's details, a `scores.md` the
+judges fill in, and empty `run/`, `references/` and `judgments/` for the
+article's runs, claims list and judgments. Its `README.md` holds the five
+Codex prompts in order — the close reading, the claims reference, the judgment
+of the close reading, the argument evaluation, and its judgment — written so
+they are the same for every article: only `article.pdf` and `source.yaml`
+change. The folder is kept outside the repository so a session can't see
+other runs, which is why it carries its own copies of `docs/RUBRIC.md` and
+`prompts/`; `tests/test_prompt_files.py` keeps the copies identical.
 
 ---
 
