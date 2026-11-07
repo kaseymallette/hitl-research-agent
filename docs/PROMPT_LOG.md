@@ -3568,6 +3568,38 @@ I also updated [JUDGING_PROMPTS.md](docs/JUDGING_PROMPTS.md), the build plan and
 
 Barnett and kanbur already have their `references/`. Their `analysis/` folder doesn't exist yet, so create it when you copy their judgments in. Nothing is committed.
 
+### 10. Update close reading after evaluation 
+
+**Prompt:** Now, after we ran this evaluation, should we update the close reading file to fix the problems? Like what's the process?
+
+**Response:** Git already keeps the original model output, so we can fix analysis.json in place.
+
+The process:
+
+Judge it (done for Alissa).
+Fix what the judgment found, directly in analysis.json.
+Commit with a message saying it was corrected from the judgment. The model’s original stays in git history.
+Accept it into the store.
+
+For Alissa the fixes are:
+
+Add the missed conclusions, in the article’s exact words.
+Correct the three claims scored 1: C1, C43 and C71.
+Move the four observations that sit in author support fields into meaning.
+
+I’ll check every change against the PDF. Want me to fix Alissa now?
+
+### 11. Fix Alissa after evaluation
+
+**Prompt:** Yes, fix it. And could you name it analysis_revised and we can submit that and keep analysis as is?
+
+**Response:** Done. Alissa's folder now has both versions:
+
+- **`analysis.json`:** the model's original, restored and identical to the version that was judged.
+- **`analysis_revised.json`:** the fixed version to submit, with all the changes from before.
+
+The new file isn't committed yet.
+
 ---
 
 ## Phase 4 — Research Assistant

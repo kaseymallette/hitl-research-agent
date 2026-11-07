@@ -1,0 +1,1788 @@
+{
+  "reading_plan": "Using life cycle assessment to drive innovation for sustainable cool clouds (peer_reviewed_paper) is a Nature Analysis article. Its compact two-column prose alternates between explanatory passages, technical definitions, quantitative tables, figures and detailed Methods. I take short steps around changes in the comparison, dense model assumptions and visual evidence, and longer steps through the framing and recommendations. I follow the body in reading order, taking figures and tables with the passages that invoke them, then continue through Methods and the extended data in PDF order.",
+  "reading_path": [
+    {
+      "location": "p. 331, opening summary",
+      "moves": "Frames climate action as urgent, introduces LCA as a design tool, and previews the study scope and numerical result.",
+      "claims": [
+        {
+          "text": "Addressing climate change requires faster development of sustainable alternatives for rapidly growing, energy- and water-intensive infrastructure such as cloud and data centres.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The opening points to data centre and server energy context from the US Department of Energy.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "1",
+                  "reference_entry": "Data centers and servers. US Department of Energy https://www.energy.gov/eere/buildings/data-centers-and-servers (2022)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Life cycle assessment is important for early-stage design decisions, enhancing sustainability outcomes alongside feasibility and cost analysis.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The authors cite the ISO principles and framework for LCA.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "2",
+                  "reference_entry": "ISO. ISO 14040:2006 Environmental Management — Life Cycle Assessment — Principles and Framework (ISO, 2006)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors assess cooling across a cloud ecosystem that spans virtual machines, chips, servers, buildings and grid electricity to develop adoption guidance.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Life cycle assessment quantifies the benefits of advanced cooling methods, such as cold plates and immersion cooling, in reducing greenhouse gas emissions (15–21%), energy demand (15–20%) and blue water consumption (31–52%) in data centres.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The authors see this approach as having transformative potential for innovation in other resource-intensive technologies.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The paper opens from the perspective of designers deciding how to change a growing infrastructure system. The summary gives the proposed role of LCA before the body establishes how the comparison works."
+    },
+    {
+      "location": "p. 331, introduction: internet growth through the ICT target",
+      "moves": "Establishes scale, concedes efficiency gains, and moves from sector statistics to a normative target.",
+      "claims": [
+        {
+          "text": "Global internet traffic has risen more than fifteenfold since 2010, with the sharpest increase in the past few years as described in the article.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Demand for cloud apps, machine learning, augmented reality, autonomous vehicles and AI is accelerating the movement of computing into data centres.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The article attaches three sources to its discussion of growing demand for computing applications.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "3–5",
+                  "reference_entry": "Data centers and data transmission networks. IEA https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks (2021)."
+                },
+                {
+                  "citation_text": "3–5",
+                  "reference_entry": "Bitcoin Energy Consumption Index. Digiconomist https://digiconomist.net/bitcoin-energy-consumption (2022)."
+                },
+                {
+                  "citation_text": "3–5",
+                  "reference_entry": "Gallersdörfer, U., Klaaßen, L. & Stoll, C. Energy consumption of cryptocurrencies beyond Bitcoin. Joule 4, 1843–1846 (2020)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The shift has been described as a fourth industrial revolution and is presented as only beginning.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The cited work invokes a fourth industrial revolution.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "6",
+                  "reference_entry": "Maynard, K. & Ross, P. Towards a 4th industrial revolution. Intell. Build. Int. 13, 159–161 (2021). no. 3."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Data centres generally use 10–50 times more energy per square foot than typical commercial offices.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The article cites the US Department of Energy description of data centres and servers.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "1",
+                  "reference_entry": "Data centers and servers. US Department of Energy https://www.energy.gov/eere/buildings/data-centers-and-servers (2022)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Across providers, data centres represented about 1.5%, or approximately 300 TWh, of global electricity demand in 2020, and the share is expected to increase.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite global data centre energy-use estimates.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "7",
+                  "reference_entry": "Masanet, E., Shehabi, A., Lei, N., Smith, S. & Koomey, J. Recalibrating global data center energy-use estimates. Science 367, 984–986 (2020)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Efficiency gains slowed electricity growth relative to growth in facilities and equipment; energy per compute instance fell 20% annually since 2010.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The same estimates are cited for the change in intensity.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "ref. 7",
+                  "reference_entry": "Masanet, E., Shehabi, A., Lei, N., Smith, S. & Koomey, J. Recalibrating global data center energy-use estimates. Science 367, 984–986 (2020)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors say ICT must reduce sector GHG emissions 42% by 2030 from a 2015 baseline to reach net zero and limit warming to 1.5 °C, and should prioritize designs that reduce water, energy and emissions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "They attribute the target to SBTi and connect the temperature goal to the cited IPCC special report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "8",
+                  "reference_entry": "IPCC Special Report on Global Warming of 1.5 °C (eds Masson-Delmotte, V. et al.) (Cambridge Univ. Press, 2018)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The concession distinguishes growth in total demand from improvement per compute instance; it does not remove the stated need to reduce sector impacts."
+    },
+    {
+      "location": "pp. 331–332, introduction: Microsoft commitments, scope and novelty",
+      "moves": "Gives a corporate motivation, identifies cooling as a sizeable load, and defines the comparison and its claimed novelty.",
+      "claims": [
+        {
+          "text": "Strong action is necessary.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Without an understanding of overall technology impacts, organizations struggle to chart a path to reduction targets.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Microsoft uses LCA to design for lower impacts as part of its commitment to be carbon negative and water positive by 2030.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Microsoft’s sustainability report documents the commitment.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "ref. 9",
+                  "reference_entry": "2022 Environmental Sustainability Report. Microsoft https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW13Fpq (2023)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Conventional cooling can account for up to 40% of a data centre’s total energy demand.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite a screening LCA of data centres.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "10",
+                  "reference_entry": "Whitehead, B. et al. The environmental burden of data centres - a screening LCA methodology. In CIBSE ASHRAE Technical Symposium (2012)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Microsoft reports PUE as low as 1.12 after reducing cooling and power conditioning overhead; further gains require understanding cooling alternatives.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Azure innovations presentation is cited for the achieved PUE.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "ref. 11",
+                  "reference_entry": "Inside Azure Innovations with Mark Russinovich. Microsoft. https://www.youtube.com/watch?v=PO5ijv6WDv0 (2023)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "LCA can benefit a system at any development stage, but the greatest benefit comes from early use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite ISO principles and requirements for LCA.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "2,12",
+                  "reference_entry": "ISO. ISO 14040:2006 Environmental Management — Life Cycle Assessment — Principles and Framework (ISO, 2006)."
+                },
+                {
+                  "citation_text": "2,12",
+                  "reference_entry": "ISO. ISO 14044:2006. ISO, Environmental Management — Life Cycle Assessment — Requirements and Guidelines (ISO, 2006)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The analysis covers efficiency and computing performance for cold plate, one-phase immersion and two-phase immersion, including raw materials, production, transportation, use and end of life.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "To the authors’ knowledge, this is the first public hyperscale-provider LCA to compare air, cold plate and immersion on the three metrics; the approach can transfer to other resource-intensive applications.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Prior reviews are acknowledged as covering equipment and use cases for cooling.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "13,14",
+                  "reference_entry": "Khalaj, A. H. & Halgamuge, S. K. A review on efficient thermal management of air- and liquid-cooled data centers: from chip to the cooling system. Appl. Energy 205, 1165–1188 (2017)."
+                },
+                {
+                  "citation_text": "13,14",
+                  "reference_entry": "Xu, S., Zhang, H. & Wang, Z. Thermal management and energy consumption in air, liquid, and free cooling systems for data centers: a review. Energies 16, 1279 (2023)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The sector challenge becomes a design problem for a specific hyperscale operator. The novelty claim is qualified by the authors’ knowledge and by the type of comparison."
+    },
+    {
+      "location": "p. 332, The challenges of data centre cooling",
+      "moves": "Defines the prior scaling mechanisms and explains why heat becomes a constraint as they slow.",
+      "claims": [
+        {
+          "text": "Rising demand requires increasing data centre capacity and heat mitigation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Moore’s law and Dennard scaling formerly improved performance through more transistors and higher density without the same penalty in dissipation; their slowdown means better chip performance now requires more power and produces more heat.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The cited study discusses the impact of Moore’s law and the loss of Dennard scaling.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "15",
+                  "reference_entry": "Johnsson, L. & Netzer, G. The impact of Moore’s law and loss of Dennard scaling: are DSP SoCs an energy efficient alternative to x86 SoCs? J. Phys. Conf. Ser. 762, 012022 (2016)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Increasing GPU and CPU power and heat flux will probably push thermal loads beyond current air cooling capacity, while hotter components can leak power and lose efficiency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite experiments and analyses of overclocking under different cooling technologies.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "16,17",
+                  "reference_entry": "Jalili, M. et al. Cost-efficient overclocking in immersion-cooled datacenters. In 2021 ACM/IEEE 48th Annual International Symposium on Computer Architecture (ISCA) 623–636 (IEEE, 2021)."
+                },
+                {
+                  "citation_text": "16,17",
+                  "reference_entry": "Ramakrishnan, B. et al. CPU overclocking: a performance assessment of air, cold plates, and two-phase immersion cooling. IEEE Trans. Compon. Packaging Manuf. Technol. 11, 1703–1715 (2021)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Exceeding thermal limits can increase emissions, reduce clock frequency and degrade performance; excess heat also limits server packing density.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper cites hyperscale two-phase immersion work for effects of exceeding thermal limits.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "18",
+                  "reference_entry": "Raniwala, A. Bringing 2-phase immersion cooling to hyperscale cloud. In Optical Fiber Communication Conference (OFC) Technical Digest Series (Optica, 2022)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This gives the comparison a performance rationale: heat affects the workload hardware can deliver and how densely it can be installed."
+    },
+    {
+      "location": "p. 332, The cooling technology contenders and Fig. 1",
+      "moves": "Introduces proposed efficiency gains, defines direct cooling and both immersion mechanisms, and diagrams how they reject heat.",
+      "claims": [
+        {
+          "text": "Cold plate and immersion can reduce energy use while raising compute efficiency and capacity, lowering emissions and water consumption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The article cites a report about the sustainability and energy efficiency of liquid cooling.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "19",
+                  "reference_entry": "CoolIT liquid cooling solutions contribute towards sustainability and energy efficiency in data centers. Bloomberg Business (20 January 2023)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Liquid cooling allows processors to run faster than intended and can fit more virtual machines and servers into a smaller footprint.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite a Nature article on data centre electricity use.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "20",
+                  "reference_entry": "Jones, N. How to stop data centres from gobbling up the world’s electricity. Nature https://doi.org/10.1038/d41586-018-06610-y (12 September 2018)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Cold plates use microchannels over high-power components and carry heat out through a coolant loop; their liquid-to-air heat-transfer ratio ranges from 50% to 80% or more.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Fig. 1a shows coolant circulating through server racks and a distribution unit linked to facility water; its caption gives a 25% polyethylene glycol and 75% water example.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23,24",
+                  "reference_entry": "Alissa, H. & Rubenstein, B. OCPSummit19 - EW: Advanced Cooling - Liquid Cooling Trends and Requirements for Racks and Servers. Open Compute Project Global Summit. https://www.youtube.com/watch?v=108r5nOcElw (2019)."
+                },
+                {
+                  "citation_text": "23,24",
+                  "reference_entry": "Alissa, H. & Rubenstein, B. Liquid Cooling Trends (Open Community, 2019)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Full immersion captures 100% of server heat in a dielectric fluid; improved heat transfer helps chip power and performance, and removing fans reduces power overhead and equipment degradation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite experimental two-phase performance work for the chip benefit.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "21",
+                  "reference_entry": "Kanbur, B. B., Wu, C., Fan, S., Tong, W. & Duan, F. “Two-phase liquid-immersion data center cooling system: Experimental performance and thermoeconomic analysis. Int. J. Refrig. 118, 290–301 (2020)."
+                }
+              ]
+            },
+            {
+              "text": "A server conversion study is cited for the fan-related benefit.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "22",
+                  "reference_entry": "Avalos, J., del Rio, O. & Farias, O. Air cooling server conversion to two phase immersion cooling and thermal performance results. In 2022 38th Semiconductor Thermal Measurement, Modeling and Management Symposium (SEMI-THERM) 55–61 (IEEE, 2022)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "One-phase immersion transfers heat by natural and/or forced convection, using pumps and usually hydrocarbon fluid, sometimes fluorinated.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Fig. 1b shows whole servers submerged in fluid with a separate distribution unit; the caption gives mineral oil as an example.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": "Chiaroni, D., Amalfi, R., George, J. & Riegel, M. Towards greener digital infrastructures for ICT and vertical markets. Ann. Telecommun. 2023, 255–275 (2023)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Two-phase immersion uses latent heat: fluid, usually fluorinated, boils at 30–50 °C, rises as vapour and condenses back to liquid.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Fig. 1c shows vapour above the immersed servers and a condenser connected to facility water.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23",
+                  "reference_entry": "Alissa, H. & Rubenstein, B. OCPSummit19 - EW: Advanced Cooling - Liquid Cooling Trends and Requirements for Racks and Servers. Open Compute Project Global Summit. https://www.youtube.com/watch?v=108r5nOcElw (2019)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Cooling methods now differ by the heat they capture, the hardware they contact and the way they transfer heat. This gives the later model distinct designs to compare."
+    },
+    {
+      "location": "pp. 332–334, The cooling technology contenders (end), Table 1 and Fig. 2",
+      "moves": "Compares deployment and engineering tradeoffs, adds the PFAS constraint and gives retrofit and pilot examples before restating the purpose and headline results.",
+      "claims": [
+        {
+          "text": "Cold plate is less disruptive to deploy in existing air-cooled data centres, but installation can be complex and residual air cooling may be needed.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 1 presents cold plate as quick to market and effective at heat transfer, with potentially complex layouts and no coolant regulation challenge identified there.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23–25",
+                  "reference_entry": "Alissa, H. & Rubenstein, B. OCPSummit19 - EW: Advanced Cooling - Liquid Cooling Trends and Requirements for Racks and Servers. Open Compute Project Global Summit. https://www.youtube.com/watch?v=108r5nOcElw (2019)."
+                },
+                {
+                  "citation_text": "23–25",
+                  "reference_entry": "Alissa, H. & Rubenstein, B. Liquid Cooling Trends (Open Community, 2019)."
+                },
+                {
+                  "citation_text": "23–25",
+                  "reference_entry": "Chiaroni, D., Amalfi, R., George, J. & Riegel, M. Towards greener digital infrastructures for ICT and vertical markets. Ann. Telecommun. 2023, 255–275 (2023)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "One-phase immersion uses cheaper fluids and simpler tanks than two-phase but removes heat less effectively at the chip.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 1 presents a simpler server form factor and intermediate, improvable heat transfer, with a longer development cycle and no coolant regulation challenge identified there.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Two-phase immersion can support tank power densities above 500 kW but requires complex tanks and uses PFAS subject to regulatory scrutiny.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 1 pairs high heat transfer and a simpler server form factor with longer development and strict proposed fluid regulation even at low global warming and ozone depletion potentials.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The proposed February 2023 EU restriction covered more than 10,000 substances and would affect immersion as well as products such as chips, chillers, plastics and fire suppressants.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper cites the European Chemicals Agency restriction proposal.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "26",
+                  "reference_entry": "European Chemicals Agency. Annex XV Restriction Report - Per- and Polyfluoroalkyl Substances (PFAS): Proposal for a restriction (European Chemicals Agency, 2023)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Both forms of immersion shield servers from airborne corrosive agents such as humidity, lowering failures and thereby reducing ownership costs and embodied carbon.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Immersion is not limited by scale or space, and air-cooled installations can be retrofitted.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Intel’s server conversion demonstration is the example.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "22",
+                  "reference_entry": "Avalos, J., del Rio, O. & Farias, O. Air cooling server conversion to two phase immersion cooling and thermal performance results. In 2022 38th Semiconductor Thermal Measurement, Modeling and Management Symposium (SEMI-THERM) 55–61 (IEEE, 2022)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Microsoft, Alibaba, Bitfury (LiquidStack), Riot and others have pioneered immersion deployments and dealt with operational and maintenance complexities.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The article cites immersion and overclocking studies in this account.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "16,17",
+                  "reference_entry": "Jalili, M. et al. Cost-efficient overclocking in immersion-cooled datacenters. In 2021 ACM/IEEE 48th Annual International Symposium on Computer Architecture (ISCA) 623–636 (IEEE, 2021)."
+                },
+                {
+                  "citation_text": "16,17",
+                  "reference_entry": "Ramakrishnan, B. et al. CPU overclocking: a performance assessment of air, cold plates, and two-phase immersion cooling. IEEE Trans. Compon. Packaging Manuf. Technol. 11, 1703–1715 (2021)."
+                }
+              ]
+            },
+            {
+              "text": "Fig. 2 shows Microsoft pilot hardware: air and cold-plate configurations of general-purpose and GPU servers, a one-phase tank and partially submerged server, and a two-phase tank with surface disturbance the caption attributes to boiling.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "For some time, the prevailing sentiment has been that the benefits of cold plate, one-phase and two-phase immersion could ultimately outweigh their drawbacks.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Our findings highlight that using LCA enables informed decision-making, optimizing the sustainability of advanced cooling technologies in data centres by quantifying their environmental benefits.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The argument shifts from how the designs work to whether operators can adopt them. The examples are evidence of implementation experience, and the authors turn to the LCA for a quantitative environmental comparison."
+    },
+    {
+      "location": "p. 333, LCA for data centre cooling: Why LCA?; Fig. 3 on p. 334",
+      "moves": "Restates the end-to-end comparison, defines impact categories and sets the system boundary.",
+      "claims": [
+        {
+          "text": "LCAs drive effective design and maximize the environmental performance of a product or system.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "This LCA for advanced cloud cooling technologies is the first public end-to-end (software–server–data centre impacts) LCA that compares the GHG emissions, primary energy demand and blue water consumption of ACDs, cold-plate cooled data centres and ICDs.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A complete picture of environmental impact is needed to understand the potential of cold-plate and immersion servers even though they reduce energy use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper invokes the ISO LCA framework and guidelines to support the role of LCA in design.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "2,12",
+                  "reference_entry": "ISO. ISO 14040:2006 Environmental Management — Life Cycle Assessment — Principles and Framework (ISO, 2006)."
+                },
+                {
+                  "citation_text": "2,12",
+                  "reference_entry": "ISO. ISO 14044:2006. ISO, Environmental Management — Life Cycle Assessment — Requirements and Guidelines (ISO, 2006)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "GHG impacts use the IPCC AR5 100-year method excluding biogenic carbon, in kg CO₂e.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Primary energy is measured in MJ using the low heating value of nonrenewable resources.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Blue water consumption is withdrawals less water returned in a form the ecosystem can use.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The cradle-to-grave scope includes building core and shell, workload, servers, racks and tanks, support equipment, grid electricity, cooling water, fluids, cold plates, coolant distribution units (CDUs) and material end of life.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Fig. 3 separates material production and its resource inputs, operation with infrastructure differences and replacements, and waste treatment by routes such as recycling, landfill and incineration.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The stated rationale now becomes a measurement contract: the assessment counts impacts beyond operational electricity and defines which kinds of energy, emissions and water enter the comparison."
+    },
+    {
+      "location": "pp. 333–334, Data sources and functional unit; Table 2 on p. 335",
+      "moves": "Explains the evidence hierarchy, selects a shared functional unit, inventories included infrastructure and introduces the grid and renewable scenarios.",
+      "claims": [
+        {
+          "text": "The inventory distinguishes bills of materials and equipment among all four designs.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper cites a semiconductor LCA in the discussion of equipment lists and bills of materials for server rack elements.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "27",
+                  "reference_entry": "Boyd, S. B. Life Cycle Assessment of Semiconductors (Springer, 2012)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Material impacts come from LCA for Experts (LCA FE), ecoinvent 3.6 and environmental product declarations (EPDs), and the support equipment was primarily modelled with EPDs.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite documentation for their background datasets.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "refs. 28,29",
+                  "reference_entry": "Wernet, G. et al. The ecoinvent database version 3 (part I): overview and methodology. Int. J. Life Cycle Assess. 21, 1218–1230 (2016)."
+                },
+                {
+                  "citation_text": "refs. 28,29",
+                  "reference_entry": "Sphera. Dataset Documentation. https://lcadatabase.sphera.com/dataset-documentation-download/ (2023)."
+                }
+              ]
+            },
+            {
+              "text": "They cite equipment studies or declarations for generators, rack PDUs, transformers, air handlers and a fusible plug-in unit.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "30–34",
+                  "reference_entry": "ABB Oy, Machines. Environmental Product Declaration: AC Generator Type AMG 0900, 5152 kVA Power. (ABB, 2000)."
+                },
+                {
+                  "citation_text": "30–34",
+                  "reference_entry": "Schneider Electric. Product Environmental Profile: Metered Rack Power Distribution (PDU) (APC, 2012)."
+                },
+                {
+                  "citation_text": "30–34",
+                  "reference_entry": "ABB T&D S.p.A. Environmental Product Declaration: Large Distribution Transformer 16/20 MVA (ONAN/ONAF) (EPD, 2003)."
+                },
+                {
+                  "citation_text": "30–34",
+                  "reference_entry": "Simonson, C. J. & Nyman, M. Life Cycle Assessment (LCA) of Air-Handling Units with and without Air-to-Air Energy Exchangers (AIVC, 2004)."
+                },
+                {
+                  "citation_text": "30–34",
+                  "reference_entry": "Schneider Electric. Product Environmental Profile: I-Line I & II Fusible Plug-in Unit (Schneider Electric, 2020)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Annualized virtual cores (Vcores), the smallest operational set for a given memory and processing capacity, were found to be an ideal comparison unit for LCAs of general-purpose cloud infrastructure.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Missing or outdated inventories for equipment and semiconductors require proxies and the best available data.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper directs readers to its Supplementary Information for data sourcing and calculation details.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Table 2 lists inventory collected per MW of IT capacity: site pads, core and shell; air handlers, adiabatic cooler and e-house; generators, UPS and batteries, PDUs, cables, bus plugs and ducts and transformers; compute servers excluding their power supply units, storage servers with JBODs and head nodes, networking servers and racks or tanks.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The table cites a modular-design article to define the e-house as an environmentally controlled skid housing electrical equipment.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "47",
+                  "reference_entry": "Kleyman, B. From modernization to modular: new design considerations. Data Center Frontier (19 November 2021); https://datacenterfrontier.com/modernization-demands-new-modular-datacenter-design-considerations/."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The operating baseline uses the 2021 US average grid, with 22% coal and 38% gas, identified as the main contributors to GHG and primary energy in the mix.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The grid shares are attributed to the US Energy Information Administration.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "ref. 35",
+                  "reference_entry": "US Energy Information Administration. Electricity Explained: Electricity in the United States (EIA, 2022)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Thermoelectric generation was reported as the largest water consumer at 41% in 2015.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The statistic is attributed to a US water supply factsheet.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "ref. 36",
+                  "reference_entry": "Center for Sustainable Systems, University of Michigan. U.S. Water Supply and Distribution Factsheet (Center for Sustainable Systems, 2021)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Component-specific end-of-life impacts use recycling and remarketing information; Microsoft supplies primary data, EPDs secondary data when possible and LCA FE or ecoinvent fills remaining gaps.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The model includes a 100% renewable power scenario because of Microsoft’s stated commitment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The article cites Microsoft’s sustainability report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9",
+                  "reference_entry": "2022 Environmental Sustainability Report. Microsoft https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW13Fpq (2023)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The model must make unlike facilities comparable. It collects inputs per unit of IT capacity but compares impacts per unit of cloud service, making the denominator a substantive design choice."
+    },
+    {
+      "location": "p. 334, fluid inventory and LCA model; Table 3 on p. 335",
+      "moves": "Specifies different fluid inventories, fixes lifetimes and normalization, and states relative design parameters.",
+      "claims": [
+        {
+          "text": "Cold-plate coolant in the model is PG25, a 75:25 water–propylene glycol mix treated as spent glycol at end of life.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "One-phase hydrocarbon fluid production is proxied by natural gas production, liquefaction and fractionation. Re-refining, reuse or repurposing is assumed to add no impacts, and final disposal is incineration.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The manufacturer supplies production and end-of-life impacts for the two-phase fluid while keeping fluid specifics confidential.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Lifetime impacts are aggregated across 15 years, with six-year compute, networking and storage servers and equipment lifetimes drawn from EPDs or LCAs where available. Results are annualized and divided by total Vcores.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table 3 lists, for cold plate, one-phase and two-phase relative to air cooling, IT capacity gains of 3%, 6%, 6%; overclocking gains of 20%, 10%, 20%; PUE and compute server power each 3%, 6%, 6% lower; and Vcores 28%, 25%, 36% higher.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table 3 holds compute, storage and networking shares constant. Compute server counts are 6%, 13%, 13% higher; JBOD, head node and networking server counts are each 10%, 13%, 13% higher in the same order.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This turns the scope into a working comparison. The inputs encode differences in capacity and performance as well as cooling hardware, which matters to any per-Vcore result. The model’s propylene glycol specification differs from the polyethylene glycol example in the Fig. 1a caption."
+    },
+    {
+      "location": "pp. 334–335, Cooling technology sustainability comparison; Table 4 on p. 336",
+      "moves": "Reports the grid comparison and explains the impact hierarchy and the performance denominator.",
+      "claims": [
+        {
+          "text": "Here we present this LCA approach, challenges, successes and the lessons learnt to help other industries and sectors achieve their own sustainability goals.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Under grid electricity all three liquid designs save at least 15% GHG, 15% energy and 31% blue water against air cooling.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 4 lists GHG savings of 15%, 16%, 21%; energy savings of 15%, 15%, 20%; and water savings of 31%, 45%, 48%, for cold plate, one-phase and two-phase respectively.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The authors identify use-phase energy savings and expanded server life as the main impact reduction drivers in the design comparison.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "In the grid case, operation is the largest impact source for all cooling designs because server electricity drives all three categories; fossil generation emits GHG and thermal plants use water to make steam.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Fig. 4 shows operation as the largest stack segment for each grid-powered design.",
+              "form": "paraphrased",
+              "citations": []
+            },
+            {
+              "text": "The authors cite a US data centre footprint study as consistent with use-phase dominance.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "37",
+                  "reference_entry": "Siddik, M. A. B., Shehabi, A. & Marston, L. The environmental footprint of data centers in the United States. Environ. Res. Lett. 16, 064017 (2021)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Server manufacturing is the second largest source. Per-server impacts are similar across designs, but liquid systems accommodate more servers and deliver more Vcores.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Cold plate has lower server embodied carbon per Vcore than one-phase because better chip cooling allows more Vcores.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The comparison is of modelled designs per annual Vcore. A design can have more hardware but a smaller impact per unit of service if its computing capacity grows enough. The abstract instead gives an upper water saving of 52%, which is not the maximum grid reduction in Table 4. Table 3 gives 28% more Vcores for cold plate versus 25% more for one-phase, despite the larger increase in compute server count for one-phase."
+    },
+    {
+      "location": "p. 335, Cooling technology sustainability comparison (end)",
+      "moves": "Separates small contributors from the main drivers, qualifies the fluid estimates and moves from numerical comparison to context-dependent selection.",
+      "claims": [
+        {
+          "text": "Reducing building size does not markedly reduce the modelled impacts of liquid cooling.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Cold-plate coolant impacts are below those for two-phase fluid because cold plates need less fluid per rack; both immersion designs must fill tanks enough to submerge servers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Cooling fluid embodied carbon is low relative to other components in all three designs.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Fig. 4 shows fluid as a small part of the stacks; separate numerical segment values are not labelled.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Better one-phase data are needed because the proxy is only the closest match to available data; PG25 modelling omits corrosion inhibitors and biofilm control additives for lack of data.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Further optimization could bring cold plate and one-phase on par with two-phase. The appropriate choice depends on regulation, costs, environmental goals and deployment complexity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors give the example of immersion’s lower water dependence mattering particularly in water-stressed regions.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "Small modelled fluid carbon is reported alongside the limits of the fluid inventories. The authors use the comparison to identify choices and conditions rather than to settle on one technology."
+    },
+    {
+      "location": "pp. 335–336, Impact of using 100% renewable energy; Table 4 and Fig. 4",
+      "moves": "Motivates a counterfactual electricity supply, compares cooling within that supply, then changes the comparison to the effect of switching supply.",
+      "claims": [
+        {
+          "text": "Renewables’ share of global electricity generation rose from 20% in 2010 to 29% in 2020.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors attribute these shares to the IEA.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "ref. 38",
+                  "reference_entry": "IEA. Renewable Electricity www.iea.org/reports/renewables-2022/renewable-electricity (IEA, 2022)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Further grid decarbonization is necessary to keep warming below 1.5 °C.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The article cites a review of coordinating resources at the edge of the electricity grid.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "ref. 39",
+                  "reference_entry": "Charbonnier, F., Morstyn, T. M. & McCulloch, M. D. Coordination of resources at the edge of the electricity grid: Systematic review and taxonomy. Appl. Energy 318, 119188 (2022)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Microsoft committed to annual matching with 100% additional new renewable generation by 2025 and to carbon-free resources for 100% of supply at all times by 2030.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper cites Microsoft’s 2021 sustainability report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "40",
+                  "reference_entry": "Microsoft. 2021 Environmental Sustainability Report (Microsoft, 2022)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "With renewable operation, all three liquid alternatives save at least 13% GHG, 15% energy and 50% blue water compared with renewable air cooling.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 4 lists renewable GHG reductions of 16%, 13%, 20%; energy reductions of 15%, 15%, 20%; and blue water reductions of 50%, 80%, 82%, in cold plate, one-phase, two-phase order.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "On grid power, one-phase immersion has slightly higher GHG savings than cold plate, although overclocking is higher for cold plate, because its lower server power and PUE allow more servers. On renewable power cold plate has the higher GHG savings, because overclocking becomes more dominant: it increases the core count with reduced energy and GHG overhead.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors attribute greater water savings to the lower water consumption of renewable electricity.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors report a shift from grid to renewable electricity reducing GHG by 85–90%, energy demand by 6–7% and blue water by 55–85%, depending on the cooling design.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Fig. 4 labels grid/renewable totals on a common grid-air index of 100. In air, cold plate, one-phase, two-phase order the rounded pairs are GHG 100/11, 85/9, 84/9, 79/9; energy 100/93, 85/79, 85/79, 80/74; water 100/45, 69/22, 55/9, 52/8.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "There are two different comparisons: alternatives versus air cooling on the same supply, and a change of supply within a design. Fig. 4 uses grid-powered air cooling as the common index for both supplies. The two-phase water bar at 52 is a remaining impact on this index, while Table 4 gives 48% as the grid saving."
+    },
+    {
+      "location": "p. 336, Impact of using 100% renewable energy (end) and Table 4 notes",
+      "moves": "Traces the changed burden to server manufacturing, comments on embodied water and qualifies precision and rankings.",
+      "claims": [
+        {
+          "text": "Server manufacturing carbon becomes relatively more important on renewables, making better server component data necessary for further decarbonization.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Fig. 4 shows a larger server share of the much shorter renewable GHG bars.",
+              "form": "paraphrased",
+              "citations": []
+            },
+            {
+              "text": "The authors cite an industry open letter on adopting EPDs.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "41",
+                  "reference_entry": "Open letter on EPD adoption. The iMasons Climate Accord (16 July 2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Building water impacts vary little across cooling designs because construction metals dominate embodied building water; metal recycling has a favourable end-of-life water effect.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors report embodied water impacts for air, cold plate and immersion within 1–15% of one another.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Standard deviations are not readily available, so quantitative uncertainty analysis would be incomplete; the pedigree matrix instead indicates where data availability could reduce uncertainty.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paper directs readers to the supplementary LCA Tool Excel for the matrix.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The authors are not suggesting any of the liquid technologies is superior to the others, but showing that they all have sustainability benefits compared with air cooling and can be optimized further; the results are sensitive to design criteria and assumptions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 4 notes comparable chip cooling for conventional PG25 cold plate and two-phase, potential gains from jet impingement or phase-change cold plates and optimized one-phase heat sinks, and dependence of two-phase performance on its boiling enhancement coating.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "Changing power supply changes which inventory deserves attention. The authors distinguish the data quality screen from a quantitative estimate of uncertainty and leave room for design changes to alter the results."
+    },
+    {
+      "location": "p. 336, LCAs to inform engineering design: opening and comparative examples",
+      "moves": "Turns the findings into an engineering recommendation and illustrates cross-level tradeoffs.",
+      "claims": [
+        {
+          "text": "Our LCA has shown that reducing data centre energy use through advanced liquid-cooling technologies will lead to marked reductions in data centre environmental impacts. This is valuable and actionable information.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The ICT industry must assess environmental performance on the same footing as cost and performance.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Comparative LCA helps target the largest impacts and engage stakeholders inside and outside the organization, and LCAs ensure a harmonized approach to advancing potentially sustainable technologies and facilitating decision-making.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Cold plate can transfer heat better at the chip than one-phase immersion but may have worse PUE.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The design example contrasts chip-level heat transfer and facility-level power overhead.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Two-phase immersion can combine high chip heat transfer with low PUE, while a more complex tank and fluid production may add embodied carbon.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors use tank construction and fluid manufacture as the counterweight to the operational benefit.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "LCA ensures that all these engineering design decisions and trade-offs can be considered within holistic sustainability perspectives.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Continuing with air cooling avoids retrofits and their new embodied carbon, but air cooling uses by far the most electricity.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Cold plate requires less fluid per rack but requires replacement of server-side copper cooling components in each IT cycle.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "One-phase can use several dielectrics, most commonly hydrocarbon mineral oils; these fluids have low global warming potential and the technology is relatively inexpensive.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The low global warming potential statement cites LiquidStack’s comparison of immersion approaches.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "42",
+                  "reference_entry": "LiquidStack. Understanding different approaches to immersion cooling. LiquidStack https://liquidstack.com/blog/understanding-different-approaches-to-immersion-cooling#:~:text=The%20benefits%20of%20one-phase%20immersion%20cooling%20include%3A%20Better,About%2010X%20heat%20rejection%20capacity%20vs.%20air%20cooling (2021)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Most two-phase fluids are fluorinated dielectrics, with heat rejection capacity several times that of conventional air cooling.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite a LiquidStack white paper comparing immersion fluids.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "43",
+                  "reference_entry": "LiquidStack. White paper: Two-phase vs single phase immersion cooling fluids: deconstructing myths with science. LiquidStack https://liquidstack.com/white-papers/fluorinated-cooling-fluids-101 (2022)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The paper moves from reporting a model to arguing how designers and stakeholders should use it. Chip cooling, facility efficiency and embodied impacts can favour different options."
+    },
+    {
+      "location": "pp. 336–337, LCAs to inform engineering design: fluid hazards and selection criteria",
+      "moves": "Adds safety and maintenance drawbacks, proposes safeguards and specifies how to screen fluids.",
+      "claims": [
+        {
+          "text": "One-phase hydrocarbon oils have useful dielectric properties, low toxicity and low loss, but are flammable and viscous, complicating pumping.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Oil blooms can spread around tanks and hamper maintenance.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite a LiquidStack white paper in their description of the maintenance problem.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "43",
+                  "reference_entry": "LiquidStack. White paper: Two-phase vs single phase immersion cooling fluids: deconstructing myths with science. LiquidStack https://liquidstack.com/white-papers/fluorinated-cooling-fluids-101 (2022)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Oil spills can pose aspiration, bioaccumulation and groundwater risks. Existing mitigation includes triple containment and, for a total loss to ground, replacement of contaminated soil.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each cooling technology assessed in this study has drawbacks, which could include pending regulations, additional necessary cooling infrastructure and new service and operational models.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Environmental, health and safety analysis should come first and cover short- and long-term human effects.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Fluid selection should use full-system LCA across software and hardware, plus chip-level cooling capacity for more functional units per resource.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Decisions should consider regulations and community and business effects from the fluid factory through disposal.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Only fluids with low to zero ozone depletion and global warming potential should be considered; persistence, toxicity and bioaccumulation should be minimal, alongside spill prevention.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Higher viscosity can impair heat transfer, a high or absent flash point is favourable, and volatility can make service cleaner while increasing fluid loss.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "As shown in this LCA, all immersion cooling and cold-plate cooling technologies offer efficient cooling and heat rejection. But all available immersion fluid options have their challenges, including regulatory ones.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "LCA should inform regulatory design by making tradeoffs visible; emerging EU and US PFAS regulations will restrict PFAS use for two-phase immersion cooling.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The selection problem widens beyond the three quantified metrics. The authors link facility engineering to risks from production through disposal and treat policy as another application of the comparison."
+    },
+    {
+      "location": "p. 337, Conclusions",
+      "moves": "Restates the grid-case minimum improvements and the conditional comparison, then works a scaling example to show the functional unit’s use.",
+      "claims": [
+        {
+          "text": "Our results demonstrate the importance of using LCA in early-stage design decisions to improve sustainability outcomes and show how cold-plate and immersion cooling have excellent potential for reducing environmental impacts such as GHG emissions (at least 15% reduction), energy consumption (at least 15% reduction) and water consumption (at least 31% reduction) per Vcore per year.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The authors cite research on quantifying early sustainable design decisions through machine learning.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "44",
+                  "reference_entry": "Wisthoff, A., Ferrero, V., Huynh, T. & DuPont, B. Quantifying the impact of sustainable product design decisions in the early design phase through machine learning. In International Design Engineering Technical Conferences and Computers and Information in Engineering Conference (2016)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Our analysis has provided quantitative evidence of the sustainability aspects of relevant cooling technologies so they can be properly evaluated in decision-making: highly optimized cold-plate or one-phase immersion cooling technologies can perform on par with two-phase immersion (which has challenges because of emerging regulatory constraints on PFAS), making all three liquid-cooling technologies desirable options.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Additional considerations for decision-making on cooling technologies are time-to-market, regulatory and supply chain landscapes, technology complexities and implementation costs.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The effectiveness of the virtual core concept was a key result of the study: a new functional unit that can simplify and improve LCA analysis and comparison for complex cloud ecosystems.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "In the hypothetical example a 10 GW IT facility delivers one billion Vcores. Air cooling at 1 kg CO₂e, 1 MJ and 1 litre per Vcore totals one billion of each unit. At the same assumed capacity, the minimum stated reductions give 0.85 billion kg CO₂e, 0.85 billion MJ and 0.69 billion litres.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The numerical example translates intensity into a whole-facility total for equal compute service. It is presented as an illustration of the unit rather than as an observed 10 GW site."
+    },
+    {
+      "location": "pp. 337–338, Perspective on future work; Online content and main references",
+      "moves": "Describes Microsoft’s use of the results, advocates better data and invites further adaptation, then directs readers to the supporting record.",
+      "claims": [
+        {
+          "text": "Microsoft is using the results and integrating LCA into its cooling and data centre design decisions; identifying equipment impacts and the effects of operating energy and renewables can help operators work with suppliers on equipment footprints.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Limited data on fluid manufacture, data centre equipment and electronics life cycles constrain LCA; more comprehensive databases should be built.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The study is intended as guidance for other organizations and as a living tool that changes with cooling technology, usage patterns such as AI training and new waste-heat reuse.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors point to their published cloud LCA guidelines for others to build on.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "45",
+                  "reference_entry": "Alissa, H., Sinistore, J. & Lio, K. (eds) Guidelines: Life Cycle Assessment, LCA Guidelines for Cloud Providers (Open Compute Project, 2022)."
+                }
+              ]
+            },
+            {
+              "text": "They cite a Danish example of using data centre waste heat to warm homes.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "46",
+                  "reference_entry": "Judge, P. Microsoft to warm homes with waste heat from Danish data center. Data Center Dynamics (5 March 2024)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The main text closes from the operator’s perspective. Its proposed next steps follow from the importance of operating energy and the gaps in embodied inventories, while the bibliography and online notice point to the evidence and methods."
+    },
+    {
+      "location": "PDF p. 9, Methods: Methodology and background, through annualization",
+      "moves": "Revisits boundaries, metrics and inventory sources, then specifies how the cloud-service unit relates to hardware.",
+      "claims": [
+        {
+          "text": "Excluding biogenic carbon under the AR5 method isolates fossil-derived emissions: biogenic emissions are part of a natural cycle, while fossil carbon releases otherwise sequestered carbon.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Cloud services such as Microsoft 365, online storage and web environments require memory and processing. One Vcore is the smallest relevant operational set, which the authors use to compare delivery across the four designs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A physical core can independently perform processor functions and may correspond to more than one logical core; logical core count is physical cores times threads per core. Packing density concerns devices or circuits per chip area.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Vcore equation in Methods equates one physical core to two logical cores and to twice the number of Vcores multiplied by a packing factor a, with 0 < a < 1.5.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The six-year server life is based on Microsoft expert opinion. Support equipment drawn from LCA FE or ecoinvent without separate equipment lifetime data is assigned the 15-year facility life.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "After the main text and references, the Methods reopen the earlier comparison at implementation detail. The distinction among physical, logical and virtual cores explains why equipment counts are not the functional unit."
+    },
+    {
+      "location": "PDF pp. 9–10, Methods: Building production and EOL; Server production and EOL",
+      "moves": "Decomposes the facility and server inventories and discloses system exclusions, proxies and disposal assumptions.",
+      "claims": [
+        {
+          "text": "The shell model uses Microsoft and Tally bills of materials; Tally supplies shell GHG and energy, and LCA FE models blue water from building materials.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Pathway and floor slab concrete is included, at an assumed 5,000 psi and eight inches average depth; interior nonstructural partitions, ceilings and equipment are excluded from the building model.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The building end-of-life discussion names Tally and specifies that water end of life is modelled in LCA FE with EPA recycling and landfill rates for metals; other materials are assumed landfilled.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Compute, networking and storage are 70%, 10% and 20% of IT capacity respectively. The compute server model uses Microsoft’s bill of materials, storage includes JBODs and compute-equivalent head nodes, and a network server is assumed to have 1.3 times compute-server embodied impacts based on internal expertise.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Servers are modelled alike except for cooling hardware: cold plate adds copper plates, tubing, manifolds and CDUs; immersion removes fans, heat sinks and baffles. The air-cooled rack scales with server count.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Electronic proxies scale by package and die area; non-electronic parts use material and mass. More recent electronics inventories are crucial because the underpinning LCA FE research is two decades old.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Methods cite Boyd for the semiconductor research behind the electronics data.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "48",
+                  "reference_entry": "Boyd, S. B. Life-Cycle Assessment of Semiconductors (Springer, 2012)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Memory uses an ecoinvent dataset because the datasheet was unavailable. SSDs are conservatively represented as a 16-layer PCB, silicon wafer and DRAM, with wafer and DRAM allocated one-third and two-thirds of the board area respectively.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Server end of life assumes 100% recycling after six years: precious-metal recovery for electronics and material recycling for other components, modelled by weight.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "These are the assumptions behind embodied burdens previously discussed in aggregate. The authors distinguish quantities taken from Microsoft bills of materials from approximations made when data were missing."
+    },
+    {
+      "location": "PDF p. 10, Methods: Rack and tank production and EOL; Support equipment production and EOL",
+      "moves": "Explains equivalent housing functions, differentiates the ancillary infrastructure, and describes how incomplete inventory and disposal data were handled.",
+      "claims": [
+        {
+          "text": "Racks for air and cold plate and fluid-filled tanks for immersion have 15-year lives. Modelled production uses supplier material and weight data plus Microsoft assembly and testing energy.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Rack and tank models exclude rack-level power and management distribution units for lack of immersion data, and assume all input metals are recycled.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Air and cold plate include AHUs, generators, UPSs, transformers, PDUs, bus ducts and plugs and e-houses; immersion includes AHUs, generators, UPSs, transformers, PDUs and adiabatic coolers. Support equipment is scaled to the relevant capacity.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Support equipment uses EPDs or LCAs first, then LCA FE or the closest proxy. The adiabatic cooler is represented by a chiller and radiator, the e-house by estimated steel mass, and the bus ducts by copper.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Where declarations or studies report water use rather than consumption, water use is substituted; missing water data are proxied from LCA FE.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Support equipment end of life uses declarations or LCAs or, when absent, material weight with EPA metal disposal rates. Transformer oil is hazardous waste, and other residual wood or inert waste is landfilled.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The model applies common lifetime assumptions where possible while retaining design-specific equipment. It also makes explicit when the water inputs depart from the ideal consumption metric."
+    },
+    {
+      "location": "PDF p. 10, Methods: Use phase",
+      "moves": "Defines the annual electricity calculation, sets water boundaries and lays out temperature-dependent wet and dry operation.",
+      "claims": [
+        {
+          "text": "The Methods use-phase equation multiplies IT capacity in MW by load factor, PUE and 8,760 hours per year to obtain annual electricity in MWh.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "PUE is total facility energy divided by energy delivered to IT. Load factor is the share of IT capacity in use; a conservative utilization assumption is used in design capacity and equipment planning.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Restrooms, cafés and irrigation are excluded on the assumption that staffing and non-cooling water are similar across designs. Two locations with dry and humid climates illustrate how cooling water needs change when temperatures cross a threshold.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "All three cooling families use evaporative AHUs for server rooms. Cold plate adds copper tubing and CDUs, while immersion uses fluid coolers that can run dry in most climates and turn to adiabatic operation when more capacity is required.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Adiabatic cooling uses more water but can be more efficient than dry operation, especially in warm dry climates.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite accounts of evaporative precooling above a set outdoor temperature.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "20,49",
+                  "reference_entry": "Jones, N. How to stop data centres from gobbling up the world’s electricity. Nature https://doi.org/10.1038/d41586-018-06610-y (12 September 2018)."
+                },
+                {
+                  "citation_text": "20,49",
+                  "reference_entry": "EVAPCO. Adiabatic Cooling 101. EVAPCO. https://www.evapco.com/adiabatic-cooling-101 (2022)."
+                }
+              ]
+            },
+            {
+              "text": "A trade publication is cited for the efficiency advantage.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "50",
+                  "reference_entry": "Frye, D. J. & Guntner The benefits of using adiabatic cooling. Process Cooling Equipment (2021); https://www.proquest.com/docview/2766091709/1283ABB8CE674451PQ/4?sourcetype=Trade%20Journals."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The model activates adiabatic fluid cooling above 35 °C outdoor dry-bulb temperature; fewer air handlers and adiabatic coolers mean less cooling water for immersion.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors link a dry-, wet-bulb and dew-point explainer for the ambient dry-bulb definition.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "https://www.engineeringtoolbox.com/dry-wet-bulb-dew-point-air-d_682.html",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors describe concentration of dissolved solids as evaporation proceeds and blow-down as the means of flushing accumulated solids. They state that higher cycles of concentration require more fresh make-up water and thus greater overall water use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Methods link to a technical page on cooling tower cycles of concentration and efficiency.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "https://aquaclearllc.com/technical-info/cooling-tower-cycles-of-concentration-and-efficiency/",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The operational driver in the main results becomes a set of capacity, utilization, overhead and climate assumptions. Some water uses are deliberately treated as common across designs and left outside the comparison."
+    },
+    {
+      "location": "PDF pp. 10–11, Methods: Design assumptions for cooling technologies",
+      "moves": "Turns comparative engineering judgments into input rules and revisits fluid assumptions.",
+      "claims": [
+        {
+          "text": "Cold plate is treated as a hybrid: chip cooling resembles two-phase immersion, but the facility may have higher PUE because it still needs air cooling.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Cold-plate rack power matches two-phase tank power, while cold-plate server power and PUE average the air and two-phase values. Rack embodied impacts are scaled to include plates, tubing, manifolds and CDUs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The two immersion designs share tank power, server power and count, facility architecture and footprint, PUE and fluid quantity.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "One-phase has a best-case overclocking cap of 10% because its heat removal is less efficient. Its simpler tank is assigned the same embodied impacts as a two-phase tank because it uses more CDUs.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "These rules explain why the model gives some designs the same facility variables but different service output. The section also identifies which distinctions were held fixed rather than independently estimated."
+    },
+    {
+      "location": "PDF p. 11, Methods: Data quality assessment",
+      "moves": "Substitutes a qualitative scoring method for unavailable uncertainty inputs, defines dimensions of fit and infers overall confidence.",
+      "claims": [
+        {
+          "text": "Most LCA FE datasets lack standard deviations, so the authors cannot conduct quantitative uncertainty assessment across all inputs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The pedigree matrix scores reliability, completeness, and temporal, geographical and technological fit from 1 (high representativeness) to 5 (low), with averages across life stages.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite EPA guidance on inventory data quality.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "51",
+                  "reference_entry": "Edelen, A. & Ingwersen, W. Guidance on Data Quality Assessment for Life Cycle Inventory Data (EPA, 2016)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Geographic resolution runs through global, continental, sub-region, national, province/state/region, county/city and site-specific levels; scores depend on how the needed and available resolutions compare.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The geographical scale is attributed to the EPA guidance.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "51",
+                  "reference_entry": "Edelen, A. & Ingwersen, W. Guidance on Data Quality Assessment for Life Cycle Inventory Data (EPA, 2016)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Technological match is assessed across process design, operating conditions, feedstock material quality and scale of output.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Model inputs score 2–3 across categories and 3 overall; the authors judge variability manageable and overall uncertainty low because the influential use phase consistently has high-quality, low-uncertainty data.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Methods refer to the full assessment in the Supplementary Information.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "This section spells out the earlier caveat. The judgment about low overall uncertainty rests on the importance and assessed quality of use-phase data rather than a quantitative uncertainty interval."
+    },
+    {
+      "location": "PDF p. 11, Methods: PFAS: LCAs to inform sustainability regulations",
+      "moves": "Restates the policy concern, distinguishes broad restrictions from a hazard-informed approach and recommends layered controls.",
+      "claims": [
+        {
+          "text": "As shown in this LCA, immersion cooling offers the most efficient cooling and heat rejection; however, all available fluid options have their challenges, including regulatory ones.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Fluids important to two-phase immersion fall within PFAS, described here as including more than 4,000 synthetic chemicals across products; emerging EU and US rules may impede two-phase adoption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The article dates the cited ECHA restriction proposal to 7 February 2023 and also describes efforts in several US states.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "26",
+                  "reference_entry": "European Chemicals Agency. Annex XV Restriction Report - Per- and Polyfluoroalkyl Substances (PFAS): Proposal for a restriction (European Chemicals Agency, 2023)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A broad ban on more than 10,000 substances might be impractical, while science-based rules using life cycle assessment, persistence, bioaccumulation and toxicity may be effective.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "LCA can estimate leakage impacts and inform measures such as sealed tanks and multiple levels of containment.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For end users, LCAs are powerful tools in reducing GHG emissions, water consumption and energy demand.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Prefer fluids with lower solubility and water reactivity that do not partition into groundwater.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Manufacturers should comply with environmental, health and safety protocols and consider surrounding communities; transport should be tracked and routes shortened.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Use primary and secondary transport containers; locate facilities in drier areas away from surface or subsurface water and with low disaster risk; use asphalt and concrete barriers to promote evaporation if containment fails.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Limit fluid volume and loss at servers and tanks, provide primary and secondary spill containment, monitor vapour loss, use mechanical and chemical exhaust traps and provide adequate ventilation.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The Methods end by returning to the regulatory tradeoff introduced with the cooling designs. The authors propose evaluating leakage, containment and local exposure alongside the operational benefits."
+    },
+    {
+      "location": "PDF pp. 11–12, Data availability, additional references, acknowledgements, roles and disclosures",
+      "moves": "Provides data access and credits, identifies author roles and competing interests, and points to supplementary and review material.",
+      "claims": [
+        {
+          "text": "The paper provides source data and makes the generated or analysed datasets and tools available through Zenodo.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The cited record is the authors’ cloud cooling LCA tools deposit.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "52",
+                  "reference_entry": "Alissa, H., Nick, T. & Sinistore, J. Life cycle assessment (LCA) tools used for “Using life cycle assessment to drive innovation for a sustainable and cool cloud” by Alissa et al. Zenodo https://doi.org/10.5281/zenodo.14268168 (2024)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Alissa designed the study; Alissa, Nick and Sinistore wrote it. The contributions statement distinguishes LCA expertise and detailed analysis from data centre expertise and information.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors are/were employees of Microsoft or WSP.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The paper closes its main record by indicating where the model tools can be obtained and by making the operator and consultancy roles explicit."
+    },
+    {
+      "location": "PDF p. 13, Extended Data Table 1: Data quality indicators",
+      "moves": "Turns the five indicators into operational scoring rules and identifies the guidance it adapts.",
+      "claims": [
+        {
+          "text": "Extended Data Table 1 ranks reliability from measured Microsoft primary data at 1, through internal estimates and literature proxies, to nonmatching online data with limited documentation at 5.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The table attributes its adapted criteria to the EPA guidance.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "ref. 51",
+                  "reference_entry": "Edelen, A. & Ingwersen, W. Guidance on Data Quality Assessment for Life Cycle Inventory Data (EPA, 2016)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Extended Data Table 1 rates completeness using market coverage and duration. The top score requires more than 80% coverage over an adequate period; scores 2, 3 and 4 allow respectively 60–79%, 40–59% or less than 40% coverage over an adequate period, or respectively more than 80%, 60–79% or 60–79% over a shorter period as printed; 5 is unknown coverage or few sites over shorter periods.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Extended Data Table 1 gives temporal difference cutoffs of less than 3, 6, 10 and 15 years for scores 1–4, with 5 for unknown age or more than 15 years.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Extended Data Table 1 rates geography from same resolution and area, through related areas within one, within two, or outside two levels of resolution, to a different or unknown area.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Extended Data Table 1 rates technological fit by how many of the four categories are equivalent, from all four at 1 to none at 5.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The last page supplies the criteria for assigning individual pedigree scores; the summary assessment earlier in Methods is a separate report of how the inputs scored."
+    }
+  ]
+}
