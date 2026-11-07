@@ -4,9 +4,7 @@
 cross-state counts, rankings, and statements of completed coding procedures
 have not been established by this project's pilot. Do not use them as an
 answer key or report them as verified findings. The original material below
-is preserved for review. Use the [pilot rules](../outputs/pilots/legislation-2026-11-07/pilot_rules.md)
-for the first coding exercise; its [report](../outputs/pilots/legislation-2026-11-07/report.md)
-separates model observations from pending researcher judgments.
+is preserved for review.
 
 Science of Reading Cross-Domain Discourse Analysis
 
