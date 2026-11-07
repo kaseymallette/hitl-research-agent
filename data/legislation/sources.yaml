@@ -1,0 +1,20 @@
+# Legislation corpus: one entry per source, PDFs in this folder.
+# Fields follow the Provenance model in src/hitl_research_agent/models.py.
+# Unknown fields stay null. provenance_basis says where each value came from.
+#
+#  - slug: author_year_short_title          # stable id; also the PDF's file name
+#    pdf: data/legislation/author_year_short_title.pdf
+#    source_title: "..."
+#    source_authors: [First Last, First Last]
+#    publication_date: "YYYY-MM-DD"          # or null
+#    source_type: government_policy
+#    doi: null
+#    publisher: null
+#    url: null
+#    retrieved_at: "YYYY-MM-DDTHH:MM:SS+00:00"
+#    selection:                            # how and why it is in the corpus
+#      how: "e.g. listed in a cross-state policy tracker"
+#      why: "the criterion it meets, e.g. enacted statute that defines SoR"
+#    provenance_basis:
+#      source_title: where the title was taken from
+sources: []
