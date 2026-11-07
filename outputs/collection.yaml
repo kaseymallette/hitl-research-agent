@@ -77,3 +77,25 @@ articles:
       b6_confirmed: 11
       b6_partly_confirmed: 2
       b6_errors: 0
+
+  - slug: kanbur_et_al_2020_desalination_integrated_data_center_cooling
+    analysis: analysis_revised.json
+    argument_evaluation: argument_evaluation_revised.md
+    close_reading_scores:
+      judgment: close_reading_revised.md
+      a1_claims_pct: 100
+      a1_support_pct: 100
+      a2_missed_or_partial: 0
+      a3_strength_of_language: 2
+      a4_failures: 0
+    evaluation_scores:
+      judgment: evaluation_revised.md
+      b1_premise_acceptability: 2
+      b2_relevance_of_critique: 1
+      b3_sufficiency: 2
+      b4_warrants_and_qualifiers: 2
+      b5_self_attribution: 2
+      b6_problems_raised: 13
+      b6_confirmed: 13
+      b6_partly_confirmed: 0
+      b6_errors: 0
