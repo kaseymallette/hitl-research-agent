@@ -46,16 +46,22 @@ with `main` and is not merged back. Changes worth keeping on `main`, such as
 edits to the rubric or prompts, are carried over by hand.
 
 ```
+├── RUNBOOK.md            copy-paste commands for running a document, and a run log
 ├── data/
 │   ├── scholarly/        scholarly publications, with their source details
 │   ├── popular-press/    popular press
 │   └── legislation/      legislation
-├── evaluations/          the workspace for one article's run; see evaluations/README.md
-├── outputs/              results copied out of evaluations/, per article
-├── scripts/              this branch's own code, such as loading an article into evaluations/
+├── evaluations/          the workspace template and Codex prompts; see evaluations/README.md
+├── outputs/              saved results, per corpus and article: outputs/<corpus>/<slug>/
+├── scripts/
+│   └── workspace.py      loads an article into the workspace and saves its results to outputs/
 ├── src/                  the hitl_research_agent package from main, unchanged
 ├── prompts/              the prompt originals; evaluations/prompts/ must match them
-├── docs/RUBRIC.md        the rubric original; evaluations/RUBRIC.md must match it
+│   └── legislation/      draft legislation workspace: close reading, five-dimension discourse analysis, guide, scores
+├── docs/
+│   ├── CODEBOOK.md       the CDA codebook for the legislation corpus: codes and coded excerpts
+│   ├── RUBRIC.md         the rubric original; evaluations/RUBRIC.md must match it
+│   └── RUBRIC_LEGISLATION.md   draft rubric for legislative texts
 └── tests/                tests for src/ and the prompt and rubric copies
 ```
 

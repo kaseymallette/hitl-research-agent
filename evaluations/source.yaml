@@ -1,5 +1,5 @@
-# The article in this workspace. Paste its four fields from the article's
-# entry in data/research/sources.yaml; the prompts read them from here.
+# The article in this workspace. scripts/workspace.py load fills these four
+# fields from data/<corpus>/sources.yaml; the prompts read them from here.
 source_title:
 source_type:
 publisher:

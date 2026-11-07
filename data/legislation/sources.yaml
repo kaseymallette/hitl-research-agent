@@ -17,4 +17,44 @@
 #      why: "the criterion it meets, e.g. enacted statute that defines SoR"
 #    provenance_basis:
 #      source_title: where the title was taken from
-sources: []
+sources:
+  - slug: arkansas_2023_sb294_learns_act
+    pdf: data/legislation/AK_SB-294.pdf
+    source_title: "Senate Bill 294: An Act to Create the LEARNS Act; to Amend Various Provisions of the Arkansas Code as They Relate to Early Childhood Through Grade Twelve (12) Education in the State of Arkansas; to Declare an Emergency; and for Other Purposes"
+    source_authors: []
+    publication_date: "2023-02-27"
+    source_type: government_policy
+    doi: null
+    publisher: "Arkansas General Assembly, 94th General Assembly, Regular Session 2023"
+    url: null
+    retrieved_at: "2026-11-07T21:44:10+00:00"
+    selection:
+      how: "pilot document, sent by email 2026-11-07"
+      why: null
+    provenance_basis:
+      source_title: "first page: 'SENATE BILL 294' and 'For An Act To Be Entitled'"
+      publication_date: "version 'As Engrossed: H2/27/23' printed on every page; this is the engrossed bill, not the final Act"
+      publisher: first-page header
+      source_authors: "unset: the bill lists sponsors (lead: Senator B. Davis), not authors"
+      url: "unset: downloaded from an email attachment"
+      retrieved_at: download timestamp of the PDF file
+
+  - slug: california_2025_ab1454
+    pdf: data/legislation/California-2025-AB1454-Chaptered.pdf
+    source_title: "Assembly Bill No. 1454, Chapter 471: Pupil literacy: credential program standards and professional development: instructional materials"
+    source_authors: []
+    publication_date: "2025-10-09"
+    source_type: government_policy
+    doi: null
+    publisher: "California State Legislature"
+    url: "https://legiscan.com/CA/text/AB1454/id/3272740/California-2025-AB1454-Chaptered.html"
+    retrieved_at: "2026-11-07T21:44:11+00:00"
+    selection:
+      how: "pilot document, sent by email 2026-11-07"
+      why: null
+    provenance_basis:
+      source_title: "first page: 'Assembly Bill No. 1454', 'CHAPTER 471', and the Legislative Counsel's Digest title"
+      publication_date: "'Approved by Governor October 09, 2025'; chaptered version"
+      source_authors: "unset: the digest names the author as Rivas"
+      url: page footer of the PDF (a LegiScan page printed to PDF)
+      retrieved_at: download timestamp of the PDF file

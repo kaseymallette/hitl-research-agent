@@ -1,21 +1,21 @@
 # Evaluations
 
 The workspace for running and judging one article's close reading and
-argument evaluation. Keep it as
-a separate folder on your computer, outside the repository, so no session can
-see other runs or judgments. The prompts below are the same for every article:
-only `article.pdf` and `source.yaml` change.
+argument evaluation. This folder is the template: `scripts/workspace.py load`
+copies it to a folder outside the repository (`~/sor-workspace` by default), so
+no session can see other runs or judgments. The prompts below are the same for
+every article: only `article.pdf` and `source.yaml` change.
 
 ```
 evaluations/
 ├── README.md                this file: the Codex prompts
 ├── RUBRIC.md                copy of docs/RUBRIC.md: the criteria
-├── source.yaml              the article's details, from data/research/sources.yaml
+├── source.yaml              the article's details, written by load from data/<corpus>/sources.yaml
 ├── scores.md                the scores, filled in by prompts 3 and 5
 ├── prompts/                 copies of prompts/: the instructions for the run
 │   ├── close-reading.md
 │   └── evaluate-argument.md
-├── article.pdf              add: the article
+├── article.pdf              the article, copied in by load
 ├── run/                     analysis.json and run_note.md (prompt 1), argument_evaluation.md (prompt 4)
 ├── references/              claims_reference.md, from prompt 2
 └── judgments/               close_reading.md (prompt 3), evaluation.md (prompt 5)
@@ -26,17 +26,18 @@ identical to `docs/RUBRIC.md` and `prompts/`.
 
 ## For each article
 
-1. Put the article in as `article.pdf`, and fill `source.yaml` from the
-   article's entry in `data/research/sources.yaml`.
-2. Run prompts 1–5 in order, each in a new Codex session, on GPT-6.1 Sol at
-   medium effort. Skim the claims list against the article before prompt 3:
-   the judge uses it as written.
-3. Copy the results into the repository: `run/` into
-   `outputs/analyses/<article>/`, and `references/` and `judgments/` into
-   `outputs/judgments/<article>/`, with `scores.md` beside them. Add the
-   **Accepted:** line once you decide.
-4. Empty `run/`, `references/` and `judgments/`, and reset `scores.md`, for
-   the next article.
+1. Load the article by its slug in `data/<corpus>/sources.yaml`:
+   `uv run python scripts/workspace.py load <slug>`. This builds the
+   workspace with the article as `article.pdf` and its details in
+   `source.yaml`.
+2. Run prompts 1–5 in order in the workspace, each in a new Codex session, on
+   GPT-6.1 Sol at medium effort. Skim the claims list against the article
+   before prompt 3: the judge uses it as written.
+3. Add the **Accepted:** lines to `scores.md` once you decide.
+4. Save: `uv run python scripts/workspace.py save`. This copies `run/`,
+   `references/`, `judgments/` and `scores.md` to
+   `outputs/<corpus>/<slug>/` and removes the workspace, ready for the next
+   article.
 
 If the analysis is revised, put the revision in `run/` as `analysis.json`, run
 prompt 3 again with the judgment's file name changed to

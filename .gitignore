@@ -31,3 +31,6 @@ htmlcov/
 proposal/
 # Original submission and reviews: always ignored
 proposal/submitted/
+
+# Source PDFs stay local; only data/<corpus>/sources.yaml is tracked
+data/**/*.pdf
