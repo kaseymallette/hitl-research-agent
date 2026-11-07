@@ -3348,6 +3348,104 @@ Analyze the rest of the collection with the configuration Phase 2 chooses,
 build a claims store from the accepted close readings, and synthesize across
 sources from it ([ADR-0019](adr/0019-four-phases-head-to-head-evaluation.md)).
 
+### 1. Start Phase 3
+
+**Prompt:** Hey, can you read the @README.md and @CLAUDE.md and the @docs/ folder to get up to speed? I just finished the evaluations. What do I have to do next?
+
+**Response:** You've run every judging session for both brackets. Barnett went to Sol medium on the PDF and kanbur to Sol medium through Codex. Going by the "Done when" list in [BUILD_PLAN.md](docs/BUILD_PLAN.md), Phase 2 still has two things open before Phase 3:
+
+#### 1. Check the judge against your own reading
+This is what ADR-0019 says makes the evaluation usable ("an evaluation I have not checked is not evidence"). I found no record of it in the repo yet.
+
+- **Do it on Barnett.** That's where you have full notes ([notes/barnett…md](data/research/ab_testing/notes/barnett_itzhaki_2026_water_footprint_artificial_intelligence.md)). Your kanbur notes stop after three sections.
+- **It matters more than usual here.** The key's own judging notes say that in Barnett Experiments 1–4, every close-reading head-to-head chose A and every evaluation head-to-head chose B. So most of Barnett's verdicts are letter bias, and the selection rests on cost and on findings confirmed in the runs. Your check is the only independent evidence on quality.
+- **Concrete things to check:**
+  - Do you agree that Sol medium drops the "once-through or open-loop" condition?
+  - Is P13 (the 1 MW arithmetic error) real?
+  - Does the PDF close reading actually beat the text close reading on layout, markers and the graphical abstract?
+- **Record any disagreement.** It's a case to look into, not a verdict, so it can sit next to the judging notes in [EVALUATION_KEY.md](docs/EVALUATION_KEY.md).
+
+#### 2. Write the ADR that chooses the configuration
+This one decision covers effort, input method, and how the prompts are run. Some of it is settled; one part is yours to decide:
+
+- **Effort: medium.** Both brackets point that way, and kanbur's final held with the letters both ways.
+- **Input method: PDF.** This closes [ADR-0008](docs/adr/0008-compare-pdf-against-prepared-text.md). Per ADR-0019, `prepare_sources.py` (and its tests and the `text_crops` paths) can then be removed as a follow-up.
+- **API, app, or Codex: your call.** Codex beat the API in kanbur, but narrowly, and Barnett never ran Codex, so that comparison rests on one article. The README names what Codex gives up:
+  - no enforced output schema
+  - no exact usage or cost records
+  - not the same settings guaranteed every time
+  - `run_note.md` filled in by hand
+
+  The API costs about $0.55–0.64 per kanbur run, and the collection is 16 articles. Whichever way you go, the ADR should say which of those trade-offs you're accepting.
+
+#### Smaller housekeeping that comes with it
+- **Rewrite [BUILD_PLAN.md](docs/BUILD_PLAN.md).** It still has the "Being rewritten" banner and describes Phases 3–6 from the old seven-phase plan. ADR-0019 says to rewrite it around the four phases.
+- **Update ADRs 0017–0019.** They say "Landed in: not yet committed", but they're committed now.
+- **Update the README's status table.** It still shows Phase 2 as "Next".
+- **`AGENTS.md` is untracked.** It's a Codex copy of CLAUDE.md; commit it or leave it out on purpose.
+
+After that, Phase 3 starts: analyze the other 14 articles (lei included) with the chosen setup, accept or reject each one, then build the claims store and synthesis.
+
+### 2. Reduce articles to 7 for synthesis
+
+**Prompt:** Fix the buildplan to select Codex for GPT 6.1 Sol Medium. Also, new plan: I am only going to use 7 sources for synthesis and I just created a new folder in @data/ I need you to update sources to only include those 7. 
+
+**Response:** I'm writing provenance entries for alissa and alston, the two articles that aren't in the manifest yet, from their PDFs and Crossref.
+
+[`sources.yaml`](data/research/sources.yaml) now lists exactly the 7 articles in your new `data/research/synthesis/` folder, and every `pdf:` path points there.
+
+- **Five were already in the manifest:** li, barnett, kanbur, katakam and lei. I only changed their paths. The barnett and kanbur PDFs in `synthesis/` are byte-identical to the copies in `ab_testing/`, so the A/B records still match.
+- **Two are new:** alissa and alston. I took their details from the PDFs.
+  - **Alissa** is a Nature paper, peer reviewed, published 30 April 2025. I confirmed its 23 authors and DOI against Crossref.
+  - **Alston** is an arXiv preprint (v1, 21 September 2026) with no DOI. The arXiv lookup came back empty, so its link is built from the arXiv number printed on the PDF and isn't confirmed.
+- **Please confirm one guess:** the manifest requires a retrieval date, and neither file still had its download timestamp. I used 13 October 2026, the day the PDFs were first committed, and the entries say it means "retrieved no later than this".
+
+All 7 entries load as valid provenance, and the 94 tests pass. I also updated the README, [REPOSITORY.md](docs/REPOSITORY.md) and Phase 3 of the [build plan](docs/BUILD_PLAN.md) to say 7 articles, with 6 left to run in Codex since kanbur is reused. ADR-0021 still says fifteen articles; I left it as is, since ADRs aren't edited after they're accepted.
+
+The working tree also holds your own changes: the 14 PDFs deleted from `data/research/` and the new `synthesis/` folder. I didn't touch those.
+
+### 3. Prompts to run single source analysis
+
+**Prompt:** Now, to run the close reading and the evaluations on the 7 articles, do we have the prompts ready in @prompts/ ?
+
+**Response:** Yes, they're ready. Both files in `prompts/` are generic: each reads the PDF path and output folder from your request and finds the article's details in `sources.yaml` by file name. All 7 articles have entries there now, so nothing needs changing.
+
+For each of the 6 articles, open a **new Codex session** on GPT-6.1 Sol at medium effort and paste the close-reading line. Then open **another new session** for its evaluation line, after the close reading has finished. Kanbur is skipped because its Codex medium run is reused.
+
+**Close readings**
+```text
+Follow prompts/close-reading.md. PDF: data/research/synthesis/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds.pdf. Output folder: outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/
+
+Follow prompts/close-reading.md. PDF: data/research/synthesis/alston_et_al_2026_cooling_choices_water_impacts_grid.pdf. Output folder: outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/
+
+Follow prompts/close-reading.md. PDF: data/research/synthesis/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf. Output folder: outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/
+
+Follow prompts/close-reading.md. PDF: data/research/synthesis/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf. Output folder: outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/
+
+Follow prompts/close-reading.md. PDF: data/research/synthesis/lei_et_al_2025_water_use_data_center_workloads.pdf. Output folder: outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/
+
+Follow prompts/close-reading.md. PDF: data/research/synthesis/li_et_al_2025_making_ai_less_thirsty.pdf. Output folder: outputs/analyses/li_et_al_2025_making_ai_less_thirsty/
+```
+
+**Evaluations**
+```text
+Follow prompts/evaluate-argument.md. PDF: data/research/synthesis/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds.pdf. Output folder: outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/
+
+Follow prompts/evaluate-argument.md. PDF: data/research/synthesis/alston_et_al_2026_cooling_choices_water_impacts_grid.pdf. Output folder: outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/
+
+Follow prompts/evaluate-argument.md. PDF: data/research/synthesis/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf. Output folder: outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/
+
+Follow prompts/evaluate-argument.md. PDF: data/research/synthesis/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf. Output folder: outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/
+
+Follow prompts/evaluate-argument.md. PDF: data/research/synthesis/lei_et_al_2025_water_use_data_center_workloads.pdf. Output folder: outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/
+
+Follow prompts/evaluate-argument.md. PDF: data/research/synthesis/li_et_al_2025_making_ai_less_thirsty.pdf. Output folder: outputs/analyses/li_et_al_2025_making_ai_less_thirsty/
+```
+
+Two things to know:
+- **Lei is 60 pages**, so its close reading will take noticeably longer than kanbur's 7–8 minutes.
+- **Kanbur's existing run** is still under `outputs/ab_testing/…/adr_0020/codex__gpt-6.1-sol-medium/`. I can copy it into `outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/` so all 7 sit in one place for synthesis. Want me to do that?
+
 ---
 
 ## Phase 4 — Research Assistant
