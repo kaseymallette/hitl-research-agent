@@ -3478,6 +3478,56 @@ So it's four sessions per new article and two for Barnett and kanbur, which is 2
 - **Drop the problems list.** Judge each evaluation directly against the PDF, with no reference list, and read it as one model's opinion of another's.
 - **Barnett is the only article with an independent reference:** your own notes. That's still the one place where the judge's list can be checked against a human reading.
 
+### 6. Check results for articles in analysis
+
+**Prompt:** Sounds good, let's do that. Keep the claims list. Drop the problems list. Evaluate using claims list and then evaluate argument, so three evaluations per article. Now, I've finished running the analysis on all six. Can you check the outputs for those six and make a folder for kanbur in @outputs/analyses/?
+
+**Response:** All six runs came through cleanly, and kanbur now has its folder too.
+
+| Article | Steps | Claims | Support items | Reading ends at |
+| --- | --- | --- | --- | --- |
+| alissa | 26 | 152 | 76 | p. 13, Extended Data Table 1 |
+| alston | 26 | 110 | 77 | p. 12, Appendix A tables |
+| barnett | 20 | 100 | 62 | pp. 6–7, references |
+| katakam | 25 | 107 | 90 | pp. 18–20, references |
+| lei | 34 | 111 | 114 | PDF pp. 58–60, supplement S10 |
+| li | 25 | 114 | 80 | PDF p. 8, end matter |
+
+- **Every `analysis.json` loads and fits the schema,** so none needs rerunning. Every folder has `argument_evaluation.md` and a `run_note.md` with both sections.
+- **Every close reading reaches the end of its article.** That includes lei's 60 pages, supplement and all.
+- **Every run read the PDF both ways:** it extracted the text and also looked at the rendered pages. So all six saw the figures and tables as printed, like kanbur's run did.
+- **Check one thing in Codex:** every run note says it ran on "GPT-6", not GPT-6.1 Sol, and that the effort setting wasn't visible to it. Kanbur's run couldn't confirm its model either, so this may just be how Codex describes itself. Still, it's worth checking that the model picker shows Sol and medium for these sessions.
+
+Kanbur's Codex medium run is copied into `outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/`, identical to the original. Your six folders were already committed, so kanbur's is the only new one.
+
+Next is the judging. [JUDGING_PROMPTS.md](docs/JUDGING_PROMPTS.md) and [RUBRIC.md](docs/RUBRIC.md) are still written for the A/B head-to-heads, with the problems list and runs A and B. I can rewrite them for the new setup: three sessions per article, which are the claims list, judging the close reading against it, then judging the argument evaluation against the PDF alone.
+
+### 7. Create new Rubric and Judging Prompts
+
+**Prompt:** Please create new files for the judging prompts and rubric for three session setup. You can rename the old files as ab_testing if you want, because these new files will be used from here on out. Those were just the training files, but I don't want to write over them.
+
+**Response:** The new rubric and prompts are written. Now I'm repointing links in the other docs.
+
+Next I'm adding the two renamed files to the README tree, then running the tests.
+
+The new judging files are written, and the old ones are kept under new names. Nothing is committed yet.
+
+**Renamed, not rewritten:** the old files are now [AB_TESTING_RUBRIC.md](docs/AB_TESTING_RUBRIC.md) and [AB_TESTING_JUDGING_PROMPTS.md](docs/AB_TESTING_JUDGING_PROMPTS.md). Their content is unchanged except one link, which now points to the renamed rubric.
+
+**New [RUBRIC.md](docs/RUBRIC.md):** it judges one analysis at a time, with no letters, no head-to-head and no comparison of runs. It keeps the same A1–A5 and B1–B6 criteria and makes three changes:
+- **Claims list:** described as an inventory of what the article marks as its claims, and where the list and the article disagree, the article decides.
+- **Coverage (A2):** when the close reading catches a claim the list left out, the judge confirms it in the article and notes it as found beyond the list. That way the reading isn't penalised for the judge's own misses.
+- **Correctness (B6):** there's no problems list. The judge checks each problem the evaluation raises against the article and marks it confirmed, not confirmed, or wrong. Any problem the judge finds on its own is labelled as its own reading and not scored.
+
+**New [JUDGING_PROMPTS.md](docs/JUDGING_PROMPTS.md):** it explains how to set up the judging folder and has the three prompts:
+1. **Claims list,** from the article alone. Barnett and kanbur skip this and copy in their existing lists.
+2. **Close reading,** judged against the claims list.
+3. **Argument evaluation,** judged against the article only. It doesn't use the list, so it can run at any time.
+
+When an article's sessions are done, its judgments go in `outputs/judgments/analyses/<slug>/`.
+
+I also updated the [build plan](docs/BUILD_PLAN.md) with a "Judge each analysis" step before accept or reject, and updated the README, [REPOSITORY.md](docs/REPOSITORY.md) and [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) to point at the right versions. The 94 tests pass. Your edit to `PROMPT_LOG.md` is still unstaged, and I'll leave it out of the commit.
+
 ---
 
 ## Phase 4 — Research Assistant
