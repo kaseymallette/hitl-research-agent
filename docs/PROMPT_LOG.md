@@ -3528,6 +3528,46 @@ When an article's sessions are done, its judgments go in `outputs/judgments/anal
 
 I also updated the [build plan](docs/BUILD_PLAN.md) with a "Judge each analysis" step before accept or reject, and updated the README, [REPOSITORY.md](docs/REPOSITORY.md) and [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) to point at the right versions. The 94 tests pass. Your edit to `PROMPT_LOG.md` is still unstaged, and I'll leave it out of the commit.
 
+### 8. Check setup for evaluations for Alissa et al
+
+**Prompt:** I'm starting with Alissa et al. Please check the evaluations folder to make sure everything is ready to go.
+
+**Response:** You're ready to start Alissa. Every file in the folder is identical to its source in the repo:
+
+- **`RUBRIC.md`** matches the new `docs/RUBRIC.md`.
+- **`article.pdf`** is the alissa PDF from `data/research/synthesis/`.
+- **`prompts/`** has both instruction files, unchanged.
+- **`run/`** has alissa's `analysis.json` and `argument_evaluation.md`, with `run_note.md` correctly left out.
+- **`references/` and `judgments/`** are empty, as they should be for a new article.
+
+Start with prompt 1, the claims list, in a new chat. Skim the list against the article, then run prompts 2 and 3, each in its own chat. Before you set up the next article, copy `references/` and `judgments/` into `outputs/judgments/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/` and empty both folders here.
+
+### 9. Make folders for evaluations
+
+**Prompt:** I need you to make folders in @outputs/judgments/ for the other five articles
+
+**Response:** Now I'm updating the docs, which still name the old `analyses/<slug>/` path.
+
+I made folders for the five articles that don't have one yet, following the `barnett` and `kanbur` layout:
+
+```
+outputs/judgments/
+├── alissa/   references/  analysis/
+├── alston/   references/  analysis/
+├── katakam/  references/  analysis/
+├── lei/      references/  analysis/
+└── li/       references/  analysis/
+```
+
+- **`references/`** is for the claims list from session 1.
+- **`analysis/`** is for the two judgments from sessions 2 and 3. I didn't call it `judgments/` because the path would read `judgments/alissa/judgments/`.
+
+Each subfolder has a `.gitkeep`, so the empty folders can be committed.
+
+I also updated [JUDGING_PROMPTS.md](docs/JUDGING_PROMPTS.md), the build plan and the README to use this layout instead of the `analyses/<slug>/` path I'd written earlier. For alissa, when the sessions are done, copy `references/claims_reference.md` into `outputs/judgments/alissa/references/` and the contents of `judgments/` into `outputs/judgments/alissa/analysis/`.
+
+Barnett and kanbur already have their `references/`. Their `analysis/` folder doesn't exist yet, so create it when you copy their judgments in. Nothing is committed.
+
 ---
 
 ## Phase 4 — Research Assistant

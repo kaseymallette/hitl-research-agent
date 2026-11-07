@@ -39,8 +39,11 @@ writes the list before the close reading is judged against it. Skim it against
 the article before going on: session 2 uses it as written. Session 3 doesn't
 use the list, so it can run at any point.
 
-When they're done, copy `references/` and `judgments/` into
-`outputs/judgments/analyses/<slug>/` in the repository.
+When they're done, copy them into the article's folder in the repository,
+`outputs/judgments/<article>/` (`alissa`, `alston`, `barnett`, `kanbur`,
+`katakam`, `lei`, or `li`): the claims list into `references/`, and the
+contents of `judgments/` into `analysis/`. Barnett and kanbur already have
+their lists in `references/`, so copy only the judgments.
 
 ---
 
