@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-07",
+  "coder": "Codex assistant in this chat; no independent model judge",
+  "model_identifier": "Not exposed in this run",
+  "reasoning_effort": "Not recorded",
+  "status": "Model pilot complete; independent human coding and adjudication pending",
+  "source_capture": "Official pages inspected through web tools. Full-source download declined; no source-byte snapshots or hashes claimed.",
+  "selection": "Purposive boundary-testing sample: two sources and ten passages; not random, representative, or held out.",
+  "exposure": "Assistant previously read the draft codebook including its examples; this is not a blinded model validation.",
+  "codebook_sha256": "39d997a48cdf1fc4da8616343885b5e260dbd00e39f364020257c014be1ec352",
+  "sources": [
+    {
+      "id": "AZ",
+      "jurisdiction": "Arizona",
+      "title": "2022 Chapter 120, House Bill 2026",
+      "url": "https://www.azleg.gov/legtext/55leg/2R/laws/0120.htm",
+      "version": "2022 enacted session law, Chapter 120; not the current consolidated statutes",
+      "version_basis": "Official page identifies CHAPTER 120, HOUSE BILL 2026, Fifty-fifth Legislature, Second Regular Session 2022.",
+      "scope": "Selected passages in sections 1 and 2; section 3 and other provisions are outside the coded sample.",
+      "selection": "Official historical text with literacy requirements, state support, and a teacher endorsement exemption; selected to test code boundaries, not represent Arizona policy overall.",
+      "enactment_date": null
+    },
+    {
+      "id": "MN",
+      "jurisdiction": "Minnesota",
+      "title": "2023 Minnesota Statutes, section 120B.12, READ Act Goal and Interventions",
+      "url": "https://www.revisor.mn.gov/statutes/2023/cite/120B.12",
+      "version": "2023 historical consolidated statutory section; not the current version or the whole READ Act",
+      "version_basis": "Official page identifies 2023 Minnesota Statutes and explicitly marks the chapter historical; history lists 2023 c 55 art 3 s 3.",
+      "scope": "Selected passages in subdivisions 1 and 2; surrounding subdivisions inspected for context, not exhaustively coded.",
+      "selection": "Official historical section overlapping the draft's Minnesota examples, with explicit multilingual provisions and professional requirements; selected to test counterexamples and ambiguity.",
+      "enactment_date": null
+    }
+  ]
+}

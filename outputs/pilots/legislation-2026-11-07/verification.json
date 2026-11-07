@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-07",
+  "quote_check": "All ten selected excerpts compared against official web text at their cited locations; whitespace normalized. Human source review pending.",
+  "source_urls": [
+    "https://www.azleg.gov/legtext/55leg/2R/laws/0120.htm",
+    "https://www.revisor.mn.gov/statutes/2023/cite/120B.12"
+  ],
+  "structural_checks": [
+    "10 unique units",
+    "2 source references resolve",
+    "all 5 dimensions considered per unit",
+    "only declared decision statuses",
+    "researcher worksheet contains no model code assignments",
+    "codebook hash matches saved version",
+    "no downloaded source snapshots claimed",
+    "Markdown links and final newlines checked"
+  ],
+  "limitations": [
+    "No automated full-text quote match: no source snapshots retained.",
+    "No human adjudication or reliability measurement.",
+    "Amendment typography requires source review before final legal-text extraction."
+  ]
+}
