@@ -16,6 +16,8 @@ evaluations/
 │   ├── close-reading.md
 │   └── evaluate-argument.md
 ├── article.pdf              the article, copied in by load
+├── article.txt              its text, marked by page, written by load
+├── pages/                   an image of each page, written by load
 ├── run/                     analysis.json and run_note.md (prompt 1), argument_evaluation.md (prompt 4)
 ├── references/              claims_reference.md, from prompt 2
 └── judgments/               close_reading.md (prompt 3), evaluation.md (prompt 5)

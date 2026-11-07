@@ -9,6 +9,7 @@ from pathlib import Path
 from types import ModuleType
 from typing import Any
 
+import pymupdf
 import pytest
 import yaml
 
@@ -55,11 +56,15 @@ def repo(tmp_path: Path) -> Path:
     return root
 
 
-def write_sources(repo: Path, corpus: str, entries: list[dict[str, Any]]) -> None:
+def write_sources(repo: Path, corpus: str, entries: list[dict[str, Any]], pages: int = 1) -> None:
+    """Write sources.yaml and, for each entry, a PDF whose page N reads '<slug> page N'."""
     text = yaml.safe_dump({"sources": entries}, sort_keys=False)
     (repo / "data" / corpus / "sources.yaml").write_text(text, encoding="utf-8")
     for item in entries:
-        (repo / item["pdf"]).write_bytes(b"%PDF-1.4 " + item["slug"].encode())
+        with pymupdf.open() as doc:
+            for number in range(1, pages + 1):
+                doc.new_page().insert_text((72, 72), f"{item['slug']} page {number}")
+            doc.save(repo / item["pdf"])
 
 
 def test_load_puts_the_source_and_its_details_in_a_fresh_workspace(
@@ -70,7 +75,8 @@ def test_load_puts_the_source_and_its_details_in_a_fresh_workspace(
 
     ws.load(repo, workspace, "hanford_2022")
 
-    assert (workspace / "article.pdf").read_bytes() == b"%PDF-1.4 hanford_2022"
+    source_pdf = repo / "data" / "popular-press" / "hanford_2022.pdf"
+    assert (workspace / "article.pdf").read_bytes() == source_pdf.read_bytes()
     assert yaml.safe_load((workspace / "source.yaml").read_text()) == {
         "source_title": "Title of hanford_2022",
         "source_type": "peer_reviewed_paper",
@@ -81,6 +87,34 @@ def test_load_puts_the_source_and_its_details_in_a_fresh_workspace(
     assert (workspace / "RUBRIC.md").is_file()
     loaded = yaml.safe_load((workspace / ws.LOADED).read_text())
     assert loaded == {"corpus": "popular-press", "slug": "hanford_2022"}
+
+
+def test_load_writes_the_text_and_an_image_of_each_page_in_order(
+    repo: Path, tmp_path: Path
+) -> None:
+    write_sources(repo, "legislation", [entry("long", "legislation")], pages=10)
+    workspace = tmp_path / "workspace"
+
+    ws.load(repo, workspace, "long")
+
+    text = (workspace / "article.txt").read_text()
+    assert text.index("--- page 1 ---") < text.index("long page 1") < text.index("--- page 2 ---")
+    assert "long page 10" in text
+    images = sorted(p.name for p in (workspace / "pages").iterdir())
+    assert images == [f"page-{n:02d}.png" for n in range(1, 11)]
+    with pymupdf.open(workspace / "pages" / "page-01.png") as image:
+        assert image.page_count == 1
+
+
+def test_load_refuses_a_file_that_is_not_a_pdf_and_creates_nothing(
+    repo: Path, tmp_path: Path
+) -> None:
+    write_sources(repo, "scholarly", [entry("bad", "scholarly")])
+    (repo / "data" / "scholarly" / "bad.pdf").write_bytes(b"not a pdf")
+    workspace = tmp_path / "workspace"
+    with pytest.raises(ws.WorkspaceError, match="could not be read as a PDF"):
+        ws.load(repo, workspace, "bad")
+    assert not workspace.exists()
 
 
 def test_load_gives_legislation_its_own_prompts_rubric_and_codebook(
@@ -138,7 +172,8 @@ def test_load_leaves_an_existing_workspace_untouched(repo: Path, tmp_path: Path)
     ws.load(repo, workspace, "a")
     with pytest.raises(ws.WorkspaceError, match="already exists"):
         ws.load(repo, workspace, "b")
-    assert (workspace / "article.pdf").read_bytes() == b"%PDF-1.4 a"
+    source_pdf = repo / "data" / "scholarly" / "a.pdf"
+    assert (workspace / "article.pdf").read_bytes() == source_pdf.read_bytes()
 
 
 def test_save_copies_the_results_and_removes_the_workspace(repo: Path, tmp_path: Path) -> None:

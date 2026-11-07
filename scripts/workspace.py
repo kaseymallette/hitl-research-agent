@@ -2,6 +2,8 @@
 
 The workspace is built from evaluations/ in a folder outside the repository,
 so a Codex session working there cannot read other sources' runs or judgments.
+Beside article.pdf, load writes the PDF's text (article.txt) and an image of
+each page (pages/), so a session needs no PDF tools of its own.
 
     uv run python scripts/workspace.py load <slug>
     uv run python scripts/workspace.py save
@@ -13,6 +15,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import pymupdf
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +41,9 @@ OVERLAYS: dict[str, dict[str, str | None]] = {
         "prompts/evaluate-argument.md": None,
     },
 }
+# Resolution of the page images: enough to read small print and see
+# underlining and strikethrough.
+PAGE_DPI = 150
 
 
 class WorkspaceError(Exception):
@@ -70,14 +76,20 @@ def load(repo: Path, workspace: Path, slug: str) -> None:
     pdf = repo / entry["pdf"]
     if not pdf.is_file():
         raise WorkspaceError(f"{entry['pdf']} not found")
+    try:
+        document = pymupdf.open(pdf)
+    except pymupdf.FileDataError as error:
+        raise WorkspaceError(f"{entry['pdf']} could not be read as a PDF: {error}") from error
 
-    shutil.copytree(repo / "evaluations", workspace)
-    for target, source in OVERLAYS.get(corpus, {}).items():
-        if source is None:
-            (workspace / target).unlink()
-        else:
-            shutil.copyfile(repo / source, workspace / target)
-    shutil.copyfile(pdf, workspace / "article.pdf")
+    with document:
+        shutil.copytree(repo / "evaluations", workspace)
+        for target, source in OVERLAYS.get(corpus, {}).items():
+            if source is None:
+                (workspace / target).unlink()
+            else:
+                shutil.copyfile(repo / source, workspace / target)
+        shutil.copyfile(pdf, workspace / "article.pdf")
+        write_text_and_pages(document, workspace)
     fields = {name: entry[name] for name in PROMPT_FIELDS}
     (workspace / "source.yaml").write_text(
         f"# The source in this workspace, from data/{corpus}/sources.yaml; the prompts read it.\n"
@@ -87,6 +99,21 @@ def load(repo: Path, workspace: Path, slug: str) -> None:
     (workspace / LOADED).write_text(
         yaml.safe_dump({"corpus": corpus, "slug": slug}, sort_keys=False), encoding="utf-8"
     )
+
+
+def write_text_and_pages(document: pymupdf.Document, workspace: Path) -> None:
+    """article.txt with each page's text under a page marker, and pages/page-N.png.
+
+    Page numbers are zero-padded to the page count's width so the images sort in order.
+    """
+    width = len(str(document.page_count))
+    pages_dir = workspace / "pages"
+    pages_dir.mkdir()
+    text = []
+    for number, page in enumerate(document, start=1):
+        text.append(f"--- page {number} ---\n{page.get_text()}")
+        page.get_pixmap(dpi=PAGE_DPI).save(pages_dir / f"page-{number:0{width}d}.png")
+    (workspace / "article.txt").write_text("\n".join(text), encoding="utf-8")
 
 
 def save(repo: Path, workspace: Path) -> Path:

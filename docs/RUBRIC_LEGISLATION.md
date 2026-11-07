@@ -29,6 +29,8 @@ not part of the judgment.
 RUBRIC.md                      this file
 CODEBOOK.md                    the five CDA dimensions and their codes
 article.pdf                    the legislative text
+article.txt                    its text, marked by page
+pages/                         an image of each page
 prompts/                       the instructions the analysis followed
   close-reading.md
   discourse-analysis.md
@@ -195,7 +197,8 @@ Pass and fail counts, not a score:
 - citations matching the document as printed: other laws and named
   organizations or reports
 
-Check these against the document's extracted text, with a tool where you can.
+Check these against `article.txt`, the document's extracted text, with a tool
+where you can.
 Report readings of tables or other elements printed as images separately: a
 value read off an image is correctly `paraphrased` and won't appear in the
 extracted text, so check it against the image by eye and don't count it as a

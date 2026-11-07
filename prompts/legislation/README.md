@@ -15,6 +15,8 @@ prompts/
   close-reading.md
   discourse-analysis.md
 article.pdf                  the legislative text
+article.txt                  its text, marked by page
+pages/                       an image of each page
 run/                         analysis.json (prompt 1), discourse_analysis.md (prompt 4), run_note.md
 references/                  claims_reference.md, from prompt 2
 judgments/                   close_reading.md (prompt 3), discourse_analysis.md (prompt 5)
@@ -47,12 +49,12 @@ Hi! You're writing a reference list for judging a close reading of a
 legislative text. Please start by reading RUBRIC.md, which explains the
 setup, and especially its section "The provisions reference list".
 
-This session reads article.pdf on its own and writes the document's
+This session reads the document (article.pdf, with its text in article.txt and an image of each page in pages/) on its own and writes the document's
 provisions to references/claims_reference.md, as the rubric describes. A
 later session judges the close reading against your list as written, so take
 care that it's complete.
 
-Please open only RUBRIC.md and article.pdf. Don't open anything in run/,
+Please open only RUBRIC.md, article.pdf, article.txt, and pages/. Don't open anything in run/,
 prompts/, or judgments/.
 ```
 
@@ -63,7 +65,7 @@ Hi! You're judging a close reading of a legislative text. Please start by
 reading RUBRIC.md, which explains the setup and the criteria, and
 prompts/close-reading.md, which holds the instructions the reading followed.
 
-Read article.pdf and references/claims_reference.md, the reference list an
+Read the document (article.pdf, with its text in article.txt and an image of each page in pages/) and references/claims_reference.md, the reference list an
 earlier session wrote from the document. Use it as written; don't change it.
 
 Then open run/analysis.json and judge it against the document and the list
@@ -93,7 +95,7 @@ by reading RUBRIC.md, which explains the setup and the criteria,
 prompts/discourse-analysis.md, which holds the instructions the analysis
 followed, and CODEBOOK.md.
 
-Read article.pdf, then open run/discourse_analysis.md and judge it against
+Read the document (article.pdf, with its text in article.txt and an image of each page in pages/), then open run/discourse_analysis.md and judge it against
 the document on B1–B5. Write the judgment to judgments/discourse_analysis.md.
 
 Then add your scores to scores.md in the discourse analysis table. Leave the

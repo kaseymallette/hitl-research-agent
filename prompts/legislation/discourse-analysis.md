@@ -6,7 +6,10 @@ reading being written.
 
 ## What you're given
 
-- **The text:** `article.pdf` in the workspace.
+- **The text:** `article.pdf` in the workspace, with its extracted text in
+  `article.txt` (marked by page) and an image of each page in `pages/`. The
+  extracted text doesn't show underlining or strikethrough, so check the page
+  images wherever the document marks amended text.
 - **Its source details:** `source.yaml` in the workspace.
 - **The close reading:** `run/analysis.json`, a faithful record of what the
   document says, section by section. Use it to find your way; quote from the
@@ -23,8 +26,8 @@ reading being written.
    saying in a few sentences how you read the PDF and the model and reasoning
    effort you ran at, if you know them.
 
-Open only `article.pdf`, `source.yaml`, `run/analysis.json`, and
-`CODEBOOK.md`.
+Open only `article.pdf`, `article.txt`, `pages/`, `source.yaml`,
+`run/analysis.json`, and `CODEBOOK.md`.
 
 ## The prompt
 

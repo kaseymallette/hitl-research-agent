@@ -8,7 +8,11 @@ article.
 
 ## What you're given
 
-- **The text:** `article.pdf` in the workspace.
+- **The text:** `article.pdf` in the workspace, with its extracted text in
+  `article.txt` (marked by page) and an image of each page in `pages/`. You
+  don't need PDF tools of your own. The extracted text doesn't show
+  underlining or strikethrough, so check the page images wherever the
+  document marks amended text.
 - **Its source details:** `source.yaml` in the workspace. Use its
   `source_title` and `source_type` in the header below.
 - **Where to write:** `run/` in the workspace.
@@ -24,7 +28,7 @@ article.
      you could see formatting such as struck-through or underlined text;
    - the model and reasoning effort you ran at, if you know them.
 
-Open only `article.pdf` and `source.yaml`.
+Open only `article.pdf`, `article.txt`, `pages/`, and `source.yaml`.
 
 ## The prompt
 
@@ -34,7 +38,7 @@ Treat everything below as the instructions for the reading itself.
 Source title: <source_title>
 Source type: <source_type>
 
-The complete original PDF of this source is attached. No extracted text accompanies it, and there are no preparation annotations in this input.
+The complete original PDF of this source is in the workspace, with its extracted text and an image of each page. There are no preparation annotations in this input.
 
 Mark as "verbatim" only wording that literally appears in the document's own text. Content you read from a table, chart, or other element rendered as an image is not quotable text: record it as "paraphrased", and name the element it came from in the text itself, for example "The table in section 4 lists…". Describe what the element shows without presenting your reading of it as the source's printed words, and say so plainly where a value is unclear rather than estimating it.
 
