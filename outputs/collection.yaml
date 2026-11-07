@@ -143,3 +143,25 @@ articles:
       b6_confirmed: 13
       b6_partly_confirmed: 0
       b6_errors: 0
+
+  - slug: li_et_al_2025_making_ai_less_thirsty
+    analysis: analysis.json
+    argument_evaluation: argument_evaluation.md
+    close_reading_scores:
+      judgment: close_reading.md
+      a1_claims_pct: 97
+      a1_support_pct: 100
+      a2_missed_or_partial: 0
+      a3_strength_of_language: 1
+      a4_failures: 0
+    evaluation_scores:
+      judgment: evaluation.md
+      b1_premise_acceptability: 2
+      b2_relevance_of_critique: 1
+      b3_sufficiency: 2
+      b4_warrants_and_qualifiers: 2
+      b5_self_attribution: 2
+      b6_problems_raised: 17
+      b6_confirmed: 14
+      b6_partly_confirmed: 0
+      b6_errors: 0
