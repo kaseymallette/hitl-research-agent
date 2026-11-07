@@ -403,6 +403,7 @@ outputs/                              created by the pipeline
 │   ├── <experiment>/                 the six blind judgments of an experiment
 │   └── judgments/                    Phase 3: the judgments of the collection's analysis
 ├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
+├── collection.yaml                   Phase 3: the accepted analysis and evaluation per article
 └── synthesis/                        Phase 3
 ```
 

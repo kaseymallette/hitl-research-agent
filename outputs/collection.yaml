@@ -1,0 +1,79 @@
+# The research collection: the accepted analysis and argument evaluation for
+# each article. Files are in outputs/analyses/<slug>/; the judgments are in
+# outputs/judgments/<article>/judgments/, and every revision's scores in
+# outputs/judgments/<article>/scores.md. An article is added here once both are
+# accepted, and the claims store is built only from this list.
+#
+# Scores are those of the accepted version, as judged in the named judgment
+# (docs/RUBRIC.md). A1 is the share of 30 sampled claims, and of their support
+# items, scored 2; A2 counts list items missed or only partly caught; A3 and
+# B1-B5 are out of 2; A4 counts mechanical failures. B6 counts the problems the
+# evaluation raised, how many the judge confirmed in full or in part, and its
+# errors about the article.
+
+articles:
+  - slug: alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds
+    analysis: analysis_revised.json
+    argument_evaluation: argument_evaluation.md
+    close_reading_scores:
+      judgment: close_reading_revised_3.md
+      a1_claims_pct: 100
+      a1_support_pct: 100
+      a2_missed_or_partial: 0
+      a3_strength_of_language: 2
+      a4_failures: 0
+    evaluation_scores:
+      judgment: evaluation.md
+      b1_premise_acceptability: 2
+      b2_relevance_of_critique: 2
+      b3_sufficiency: 2
+      b4_warrants_and_qualifiers: 2
+      b5_self_attribution: 2
+      b6_problems_raised: 8
+      b6_confirmed: 8
+      b6_partly_confirmed: 0
+      b6_errors: 0
+
+  - slug: alston_et_al_2026_cooling_choices_water_impacts_grid
+    analysis: analysis_revised.json
+    argument_evaluation: argument_evaluation_revised.md
+    close_reading_scores:
+      judgment: close_reading_revised_2.md
+      a1_claims_pct: 97
+      a1_support_pct: 100
+      a2_missed_or_partial: 0
+      a3_strength_of_language: 2
+      a4_failures: 0
+    evaluation_scores:
+      judgment: evaluation_revised.md
+      b1_premise_acceptability: 2
+      b2_relevance_of_critique: 2
+      b3_sufficiency: 2
+      b4_warrants_and_qualifiers: 2
+      b5_self_attribution: 2
+      b6_problems_raised: 13
+      b6_confirmed: 13
+      b6_partly_confirmed: 0
+      b6_errors: 0
+
+  - slug: barnett_itzhaki_2026_water_footprint_artificial_intelligence
+    analysis: analysis_revised.json
+    argument_evaluation: argument_evaluation.md
+    close_reading_scores:
+      judgment: close_reading_revised.md
+      a1_claims_pct: 97
+      a1_support_pct: 100
+      a2_missed_or_partial: 0
+      a3_strength_of_language: 2
+      a4_failures: 0
+    evaluation_scores:
+      judgment: evaluation.md
+      b1_premise_acceptability: 2
+      b2_relevance_of_critique: 1
+      b3_sufficiency: 2
+      b4_warrants_and_qualifiers: 2
+      b5_self_attribution: 2
+      b6_problems_raised: 13
+      b6_confirmed: 11
+      b6_partly_confirmed: 2
+      b6_errors: 0
