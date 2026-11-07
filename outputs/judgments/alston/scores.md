@@ -1,4 +1,6 @@
-# Alston: close-reading scores by revision
+# Alston: scores
+
+## Close reading by revision
 
 Each column is one judgment of the close reading, in `judgments/`, against the
 same `references/claims_reference.md`.
@@ -21,3 +23,29 @@ All three samples use seed 20261107, over 110, 128 and 129 claims. Revised 1 and
 2 share 28 of their 30 claims; the original's sample is a different set.
 
 **Accepted:** `analysis_revised.json`, as judged in `close_reading_revised_2.md`.
+
+## Argument evaluation by revision
+
+Each column is one judgment of the argument evaluation, in `judgments/`, against
+the article alone.
+
+| | Original | Revised 1 |
+| --- | --- | --- |
+| B1 premise acceptability | 2/2 | 2/2 |
+| B2 relevance of critique | 1/2 | 2/2 |
+| B3 sufficiency | 2/2 | 2/2 |
+| B4 unstated warrants and missing qualifiers | 2/2 | 2/2 |
+| B5 self-attribution | 2/2 | 2/2 |
+| B6 problems raised, confirmed | 12/12 | 13/13 |
+| B6 errors | 0 | 0 |
+
+| Column | Judgment | Version judged |
+| --- | --- | --- |
+| Original | `evaluation.md` | `argument_evaluation.md`, the model's original |
+| Revised 1 | `evaluation_revised.md` | `argument_evaluation_revised.md`: the "exactly which places" thesis hedged with the authors' §5.2 concession, the four-bus limit credited to the authors, and Recommendation 3 credited in the siting critique |
+
+The original's B2 of 1 was for two criticisms that went past what the authors
+claim. The revised judgment counts the authors' concession as its own problem
+raised, hence 13.
+
+**Accepted:** `argument_evaluation_revised.md`, as judged in `evaluation_revised.md`.

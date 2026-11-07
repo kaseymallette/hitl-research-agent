@@ -1,4 +1,6 @@
-# Alissa: close-reading scores by revision
+# Alissa: scores
+
+## Close reading by revision
 
 Each column is one judgment of the close reading, in `judgments/`, against the
 same `references/claims_reference.md`.
@@ -24,3 +26,18 @@ Between revised 1 and 2 the file changed only in one citation, so their differen
 in A1 and A3 is the judge's own variation.
 
 **Accepted:** `analysis_revised.json`, as judged in `close_reading_revised_3.md`.
+
+## Argument evaluation
+
+One judgment, `judgments/evaluation.md`, of `argument_evaluation.md` against the
+article alone.
+
+| | Score |
+| --- | --- |
+| B1 premise acceptability | 2/2 |
+| B2 relevance of critique | 2/2 |
+| B3 sufficiency | 2/2 |
+| B4 unstated warrants and missing qualifiers | 2/2 |
+| B5 self-attribution | 2/2 |
+| B6 problems raised, confirmed | 8/8 |
+| B6 errors | 0 |
