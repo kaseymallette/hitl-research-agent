@@ -417,7 +417,7 @@ the article alone, the close reading judged against it, and the argument
 evaluation judged against the article directly. Barnett and kanbur reuse the
 claims lists from their A/B judging. There is no problems reference list:
 it would be the judge's own opinion, and scoring against it would measure
-agreement with the judge. Judgments go to `outputs/judgments/<article>/analysis/`, beside the
+agreement with the judge. Judgments go to `outputs/judgments/<article>/judgments/`, beside the
 article's `references/`.
 
 ### Accept or reject

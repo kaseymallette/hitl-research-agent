@@ -401,7 +401,7 @@ outputs/                              created by the pipeline
 │   ├── references/                   its claims and problems reference lists
 │   ├── runs/                         kanbur: the runs in one shape, ready to judge
 │   ├── <experiment>/                 the six blind judgments of an experiment
-│   └── analysis/                     Phase 3: the judgments of the collection's analysis
+│   └── judgments/                    Phase 3: the judgments of the collection's analysis
 ├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
 └── synthesis/                        Phase 3
 ```

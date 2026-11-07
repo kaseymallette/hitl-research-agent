@@ -18,7 +18,7 @@ quality, the PFAS discussion) and they carry claims of their own.
 Left out: the reference list, Acknowledgements, Author contributions,
 Competing interests, Peer review information, and the Online content /
 Data availability boilerplate. The one exception is Data availability, listed
-as a claim (M-9) because it states what the authors release. The
+as a claim (C-9) because it states what the authors release. The
 Supplementary Information (including the "LCA Tool Excel" pedigree matrix) is
 not in the PDF and is not covered.
 
@@ -314,7 +314,9 @@ plate 15% GHG savings. Under renewables it gives cold plate 16% and one-phase
   groundwater). Engineering controls such as triple containment can help, and
   established clean-up procedures exist. Two-phase fluids are PFAS facing
   legislative restrictions.
-- S-7f. "Each cooling technology assessed in this study has drawbacks." When
+- S-7f. "Each cooling technology assessed in this study has drawbacks, which
+  could include pending regulations, additional necessary cooling
+  infrastructure and new service and operational models." When
   selecting a cooling fluid, designers should consider (bulleted list): EHS
   analysis as "the first step"; end-to-end LCA impacts; high chip-level cooling
   capability; socioeconomic and business impacts including regulation; ODP and
@@ -503,7 +505,7 @@ cooling and heat rejection". Note on M-5b vs S-3d: "more than 4,000" PFAS
 chemicals in use (Methods) vs restrictions on "more than 10,000 substances" /
 "more than 10,000 chemicals".
 
-### M-9. "Data availability", p.11
+### "Data availability", p.11
 
 - See C-9.
 

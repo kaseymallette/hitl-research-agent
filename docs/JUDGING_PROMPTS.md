@@ -42,7 +42,7 @@ use the list, so it can run at any point.
 When they're done, copy them into the article's folder in the repository,
 `outputs/judgments/<article>/` (`alissa`, `alston`, `barnett`, `kanbur`,
 `katakam`, `lei`, or `li`): the claims list into `references/`, and the
-contents of `judgments/` into `analysis/`. Barnett and kanbur already have
+contents of `judgments/` into `judgments/`. Barnett and kanbur already have
 their lists in `references/`, so copy only the judgments.
 
 ---
