@@ -45,6 +45,10 @@ When they're done, copy them into the article's folder in the repository,
 contents of `judgments/` into `judgments/`. Barnett and kanbur already have
 their lists in `references/`, so copy only the judgments.
 
+If the analysis is revised and judged again, save each new close-reading
+judgment as `close_reading_revised.md`, `_2.md` and so on, and add a column for
+it to the article's `scores.md`, as in `outputs/judgments/alissa/scores.md`.
+
 ---
 
 ## 1. Claims reference list

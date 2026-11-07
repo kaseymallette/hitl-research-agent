@@ -3600,6 +3600,37 @@ I’ll check every change against the PDF. Want me to fix Alissa now?
 
 The new file isn't committed yet.
 
+### 12. Analyze-Evaluate-Judge Process
+
+**Prompt:** So the process is: run the analysis, evaluate it, revise it if needed, and then accept it, right?
+
+**Response:** Yes, that's a good process:
+
+1. **Run** the close reading and argument evaluation in Codex.
+2. **Judge** them: claims list, close reading, argument evaluation.
+3. **Revise** if the judgment finds anything worth fixing, as `analysis_revised.json`.
+4. **Accept,** and synthesis uses `analysis_revised.json` where there is one, `analysis.json` otherwise.
+
+One habit to keep: give each revision a quick skim before you accept it. The verbatim additions are checked against the PDF automatically, but the rewritten paraphrases, like C71's, only have my reading behind them.
+
+### 13. Re-run the evaluation after revisions 
+
+**Prompt:** We should re-evaluate it, just to see. 
+
+**Response:** For Alissa I'd do it once, as a check that the revise step works. After that I wouldn't re-judge every article.
+
+**Why it's worth doing once:**
+- **Coverage:** session 2 would recount coverage against the same claims list, which directly tests whether the 12 added conclusions closed the gaps.
+- **The rewrites:** a fresh A1 sample might catch a problem in a rewritten paraphrase like C71, which only has my reading behind it.
+
+**Why not every time:**
+- **It's already checked:** the verbatim additions are confirmed against the PDF mechanically, so re-judging mostly re-confirms them.
+- **It's open-ended:** each new session tends to find a few new small things, so it could become a loop of judge, revise, judge again.
+
+**How to run it:** use only prompt 2, in a new chat, with `analysis_revised.json` copied into `run/` as `analysis.json`. Use the same claims list. Save the result as `close_reading_revised.md`, so it doesn't overwrite the original judgment. Skip the argument evaluation, because it wasn't changed.
+
+If the re-judgment shows the gaps closed and nothing new, that's good evidence the process works, and you can skip this step for the other six.
+
 ---
 
 ## Phase 4 — Research Assistant

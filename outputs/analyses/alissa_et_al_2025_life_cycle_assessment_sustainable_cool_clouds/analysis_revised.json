@@ -6,7 +6,7 @@
       "moves": "Frames climate action as urgent, introduces LCA as a design tool, and previews the study scope and numerical result.",
       "claims": [
         {
-          "text": "Addressing climate change requires faster development of sustainable alternatives for rapidly growing, energy- and water-intensive infrastructure such as cloud and data centres.",
+          "text": "Addressing climate change requires accelerating the development of sustainable alternatives to energy- and water-intensive technologies, particularly for rapidly growing infrastructure such as cloud and data centres.",
           "form": "paraphrased",
           "support": [
             {
@@ -48,8 +48,8 @@
           "support": []
         },
         {
-          "text": "The authors see this approach as having transformative potential for innovation in other resource-intensive technologies.",
-          "form": "paraphrased",
+          "text": "This comprehensive approach demonstrates the transformative potential of life cycle assessment in driving sustainable innovation across resource-intensive technologies.",
+          "form": "verbatim",
           "support": []
         }
       ],
@@ -218,7 +218,7 @@
           ]
         },
         {
-          "text": "Microsoft reports PUE as low as 1.12 after reducing cooling and power conditioning overhead; further gains require understanding cooling alternatives.",
+          "text": "Microsoft reports PUE as low as 1.12 after reducing cooling and power conditioning overhead; doing more requires a better understanding of the impacts of different cooling technologies, which LCA can provide.",
           "form": "paraphrased",
           "support": [
             {
@@ -594,16 +594,6 @@
         {
           "text": "LCAs drive effective design and maximize the environmental performance of a product or system.",
           "form": "verbatim",
-          "support": []
-        },
-        {
-          "text": "This LCA for advanced cloud cooling technologies is the first public end-to-end (software–server–data centre impacts) LCA that compares the GHG emissions, primary energy demand and blue water consumption of ACDs, cold-plate cooled data centres and ICDs.",
-          "form": "verbatim",
-          "support": []
-        },
-        {
-          "text": "A complete picture of environmental impact is needed to understand the potential of cold-plate and immersion servers even though they reduce energy use.",
-          "form": "paraphrased",
           "support": [
             {
               "text": "The paper invokes the ISO LCA framework and guidelines to support the role of LCA in design.",
@@ -620,6 +610,16 @@
               ]
             }
           ]
+        },
+        {
+          "text": "This LCA for advanced cloud cooling technologies is the first public end-to-end (software–server–data centre impacts) LCA that compares the GHG emissions, primary energy demand and blue water consumption of ACDs, cold-plate cooled data centres and ICDs.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A complete picture of environmental impact is needed to understand the potential of cold-plate and immersion servers even though they reduce energy use.",
+          "form": "paraphrased",
+          "support": []
         },
         {
           "text": "GHG impacts use the IPCC AR5 100-year method excluding biogenic carbon, in kg CO₂e.",
@@ -867,7 +867,7 @@
           "support": []
         },
         {
-          "text": "In the grid case, operation is the largest impact source for all cooling designs because server electricity drives all three categories; fossil generation emits GHG and thermal plants use water to make steam.",
+          "text": "Operation is the largest impact source for all cooling technologies because server electricity drives all three categories; fossil generation emits GHG and thermal plants use water to make steam.",
           "form": "paraphrased",
           "support": [
             {
@@ -1082,7 +1082,7 @@
           "form": "paraphrased",
           "support": [
             {
-              "text": "Table 4 notes comparable chip cooling for conventional PG25 cold plate and two-phase, potential gains from jet impingement or phase-change cold plates and optimized one-phase heat sinks, and dependence of two-phase performance on its boiling enhancement coating.",
+              "text": "Table 4 notes that traditional PG25 cold plate tends to have the same cooling capability at the chip as two-phase immersion, that jet-impingement or phase-change cold plates and optimized one-phase heat sinks could raise chip cooling, and that two-phase chip cooling will mostly depend on the boiling enhancement coating.",
               "form": "paraphrased",
               "citations": []
             }
@@ -1122,7 +1122,7 @@
           ]
         },
         {
-          "text": "Two-phase immersion can combine high chip heat transfer with low PUE, while a more complex tank and fluid production may add embodied carbon.",
+          "text": "Two-phase immersion could have high chip heat transfer and lower PUE, but might involve more complex components with a higher embodied carbon toll, such as a more intricate tank and fluid manufacturing.",
           "form": "paraphrased",
           "support": [
             {
@@ -1420,7 +1420,7 @@
           ]
         },
         {
-          "text": "Memory uses an ecoinvent dataset because the datasheet was unavailable. SSDs are conservatively represented as a 16-layer PCB, silicon wafer and DRAM, with wafer and DRAM allocated one-third and two-thirds of the board area respectively.",
+          "text": "Memory uses an ecoinvent dataset because a datasheet for the memory was not publicly available. SSDs are conservatively represented as a 16-layer PCB, silicon wafer and DRAM, with wafer and DRAM allocated one-third and two-thirds of the board area respectively.",
           "form": "paraphrased",
           "support": []
         },
@@ -1590,7 +1590,7 @@
       "moves": "Substitutes a qualitative scoring method for unavailable uncertainty inputs, defines dimensions of fit and infers overall confidence.",
       "claims": [
         {
-          "text": "Most LCA FE datasets lack standard deviations, so the authors cannot conduct quantitative uncertainty assessment across all inputs.",
+          "text": "A quantitative uncertainty assessment is not possible across all inputs, in part because most LCA FE datasets lack standard deviations.",
           "form": "paraphrased",
           "support": []
         },
