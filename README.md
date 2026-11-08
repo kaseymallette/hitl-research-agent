@@ -64,6 +64,34 @@ Five states, with Arkansas at two points in time. Details for each are in
 | 5 | Georgia HB 1193 (2026) | [analysis.json](outputs/legislation/georgia_2026_hb1193_early_literacy_act/run/analysis.json) | [discourse_analysis.md](outputs/legislation/georgia_2026_hb1193_early_literacy_act/run/discourse_analysis.md) |
 | 6 | Minnesota Read Act, 120B.118–120B.124 | [analysis.json](outputs/legislation/minnesota_2026_120b118_124_read_act/run/analysis.json) | [discourse_analysis.md](outputs/legislation/minnesota_2026_120b118_124_read_act/run/discourse_analysis.md) |
 
+### Codebook
+
+The [codebook](docs/CODEBOOK.md) sets out the codes for the five CDA
+dimensions: LEX (lexical choices and definitional framing), PRE
+(presuppositions), FOS (foregrounding and silencing), SUB (subject
+positioning), and INT (intertextuality).
+
+It began as a preliminary framework, compiled in February 2026 from initial
+research on state science of reading legislation: 33 codes across the five
+dimensions, each illustrated with excerpts from state laws. The trial runs
+were then used to revise it:
+
+- **Coded with the codebook.** Each of the six texts was coded on the five
+  dimensions, and a separate session checked every observation against the
+  law and judged whether its code fit.
+- **Examples from the trial.** The codebook's examples are now the trial's
+  113 coded passages, each quoted from the law and checked against its text.
+  The preliminary examples, and other material whose sources couldn't be
+  traced, were removed.
+- **Codes kept as written.** The 33 codes and their definitions are
+  unchanged.
+- **Proposed changes, in draft.** Seven new codes are proposed for the 21
+  observations no existing code fit, and five clarifications for the code
+  assignments the judges found didn't fit. Both await review.
+
+The [trial run matrix](docs/CODEBOOK.md#trial-run-matrix) shows which codes
+each text received.
+
 ## This branch
 
 A workspace branch of `hitl-research-agent` for running single-source
