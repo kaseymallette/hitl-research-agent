@@ -53,13 +53,16 @@ Five states, with Arkansas at two points in time. Details for each are in
 | 5 | Georgia HB 1193 (Georgia Early Literacy Act of 2026) | bill as passed | 42 | signed May 5, 2026 |
 | 6 | Minnesota Statutes 120B.118–120B.124 (Read Act) | code sections, official state statutes | 17 | 2026 edition |
 
-### Results so far
+### Results
 
 | Run | Source | Close reading | Discourse analysis |
 | --- | --- | --- | --- |
 | 1 | California AB 1454 | [analysis.json](outputs/legislation/california_2025_ab1454/run/analysis.json) | [discourse_analysis.md](outputs/legislation/california_2025_ab1454/run/discourse_analysis.md) |
 | 2 | Arkansas Act 1063 (2017) | [analysis.json](outputs/legislation/arkansas_2017_act1063_right_to_read/run/analysis.json) | [discourse_analysis.md](outputs/legislation/arkansas_2017_act1063_right_to_read/run/discourse_analysis.md) |
 | 3 | Arkansas Code § 6-17-429 (2025) | [analysis.json](outputs/legislation/arkansas_2025_code6_17_429_right_to_read/run/analysis.json) | [discourse_analysis.md](outputs/legislation/arkansas_2025_code6_17_429_right_to_read/run/discourse_analysis.md) |
+| 4 | Ohio Revised Code 3313.6028, 3313.608, 3319.2310 | [analysis.json](outputs/legislation/ohio_2026_literacy_code/run/analysis.json) | [discourse_analysis.md](outputs/legislation/ohio_2026_literacy_code/run/discourse_analysis.md) |
+| 5 | Georgia HB 1193 (2026) | [analysis.json](outputs/legislation/georgia_2026_hb1193_early_literacy_act/run/analysis.json) | [discourse_analysis.md](outputs/legislation/georgia_2026_hb1193_early_literacy_act/run/discourse_analysis.md) |
+| 6 | Minnesota Read Act, 120B.118–120B.124 | [analysis.json](outputs/legislation/minnesota_2026_120b118_124_read_act/run/analysis.json) | [discourse_analysis.md](outputs/legislation/minnesota_2026_120b118_124_read_act/run/discourse_analysis.md) |
 
 ## This branch
 
