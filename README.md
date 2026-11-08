@@ -53,6 +53,14 @@ Five states, with Arkansas at two points in time. Details for each are in
 | 5 | Georgia HB 1193 (Georgia Early Literacy Act of 2026) | bill as passed | 42 | signed May 5, 2026 |
 | 6 | Minnesota Statutes 120B.118–120B.124 (Read Act) | code sections, official state statutes | 17 | 2026 edition |
 
+### Results so far
+
+| Run | Source | Close reading | Discourse analysis |
+| --- | --- | --- | --- |
+| 1 | California AB 1454 | [analysis.json](outputs/legislation/california_2025_ab1454/run/analysis.json) | [discourse_analysis.md](outputs/legislation/california_2025_ab1454/run/discourse_analysis.md) |
+| 2 | Arkansas Act 1063 (2017) | [analysis.json](outputs/legislation/arkansas_2017_act1063_right_to_read/run/analysis.json) | [discourse_analysis.md](outputs/legislation/arkansas_2017_act1063_right_to_read/run/discourse_analysis.md) |
+| 3 | Arkansas Code § 6-17-429 (2025) | [analysis.json](outputs/legislation/arkansas_2025_code6_17_429_right_to_read/run/analysis.json) | [discourse_analysis.md](outputs/legislation/arkansas_2025_code6_17_429_right_to_read/run/discourse_analysis.md) |
+
 ## This branch
 
 A workspace branch of `hitl-research-agent` for running single-source
