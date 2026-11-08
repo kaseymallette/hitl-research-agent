@@ -38,6 +38,21 @@ It draws on:
 - **Critical discourse analysis** (Fairclough, 2003; Rogers, 2011): the
   analytic method, applied across all three corpora.
 
+## Legislation: trial run
+
+Five states, with Arkansas at two points in time. Details for each are in
+`data/legislation/sources.yaml`, and the commands for each run are in
+`RUNBOOK.md`.
+
+| Run | Source | Form | Pages | Date |
+| --- | --- | --- | --- | --- |
+| 1 | California AB 1454 | bill as signed into law (chaptered) | 4 | Oct 9, 2025 |
+| 2 | Arkansas Act 1063 (Right to Read Act) | original act | 3 | Apr 6, 2017 |
+| 3 | Arkansas Code § 6-17-429 (Right to Read Act) | code section, from Justia | 18 | 2025 edition |
+| 4 | Ohio Revised Code 3313.6028, 3313.608, 3319.2310 | three code sections, printed from the state site | 19 | Oct 9, 2026 |
+| 5 | Georgia HB 1193 (Georgia Early Literacy Act of 2026) | bill as passed | 42 | signed May 5, 2026 |
+| 6 | Minnesota Statutes 120B.118–120B.124 (Read Act) | code sections, official state statutes | 17 | 2026 edition |
+
 ## This branch
 
 A workspace branch of `hitl-research-agent` for running single-source
