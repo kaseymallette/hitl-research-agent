@@ -217,7 +217,7 @@ uv run python scripts/workspace.py save
 git add outputs && git commit -m "Add results for arkansas_2025_code6_17_429_right_to_read" && git push
 ```
 
-### 4. Ohio Revised Code 3313.6028 (Literacy curriculum)
+### 4. Ohio Revised Code 3313.6028, 3313.608, 3319.2310 (literacy sections)
 
 Notes:
 
@@ -226,7 +226,7 @@ git pull
 ```
 
 ```bash
-uv run python scripts/workspace.py load ohio_2026_orc3313_6028_literacy_curriculum
+uv run python scripts/workspace.py load ohio_2026_literacy_code
 ```
 
 Prompts 1–5: the same as run 1. Before starting, check the model picker in
@@ -237,7 +237,7 @@ uv run python scripts/workspace.py save
 ```
 
 ```bash
-git add outputs && git commit -m "Add results for ohio_2026_orc3313_6028_literacy_curriculum" && git push
+git add outputs && git commit -m "Add results for ohio_2026_literacy_code" && git push
 ```
 
 ### 5. Georgia HB 1193 (Georgia Early Literacy Act of 2026)
@@ -263,7 +263,7 @@ uv run python scripts/workspace.py save
 git add outputs && git commit -m "Add results for georgia_2026_hb1193_early_literacy_act" && git push
 ```
 
-### 6. Minnesota Statutes 120B.12 (Read Act)
+### 6. Minnesota Statutes 120B.118–120B.124 (Read Act)
 
 Notes:
 
@@ -272,7 +272,7 @@ git pull
 ```
 
 ```bash
-uv run python scripts/workspace.py load minnesota_2026_120b12_read_act
+uv run python scripts/workspace.py load minnesota_2026_120b118_124_read_act
 ```
 
 Prompts 1–5: the same as run 1. Before starting, check the model picker in
@@ -283,5 +283,5 @@ uv run python scripts/workspace.py save
 ```
 
 ```bash
-git add outputs && git commit -m "Add results for minnesota_2026_120b12_read_act" && git push
+git add outputs && git commit -m "Add results for minnesota_2026_120b118_124_read_act" && git push
 ```

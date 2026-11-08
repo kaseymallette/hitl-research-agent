@@ -105,13 +105,14 @@ def write_text_and_pages(document: pymupdf.Document, workspace: Path) -> None:
     """article.txt with each page's text under a page marker, and pages/page-N.png.
 
     Page numbers are zero-padded to the page count's width so the images sort in order.
+    Zero-width spaces are removed, so a search for a quoted passage finds it.
     """
     width = len(str(document.page_count))
     pages_dir = workspace / "pages"
     pages_dir.mkdir()
     text = []
     for number, page in enumerate(document, start=1):
-        text.append(f"--- page {number} ---\n{page.get_text()}")
+        text.append(f"--- page {number} ---\n{page.get_text().replace(chr(0x200B), '')}")
         page.get_pixmap(dpi=PAGE_DPI).save(pages_dir / f"page-{number:0{width}d}.png")
     (workspace / "article.txt").write_text("\n".join(text), encoding="utf-8")
 

@@ -106,6 +106,20 @@ def test_load_writes_the_text_and_an_image_of_each_page_in_order(
         assert image.page_count == 1
 
 
+def test_load_removes_zero_width_spaces_from_the_text(repo: Path, tmp_path: Path) -> None:
+    write_sources(repo, "legislation", [entry("mn", "legislation")])
+    with pymupdf.open() as doc:
+        doc.new_page().insert_text((72, 72), "Read​ Act", fontname="china-s")
+        doc.save(repo / "data" / "legislation" / "mn.pdf")
+    workspace = tmp_path / "workspace"
+
+    ws.load(repo, workspace, "mn")
+
+    text = (workspace / "article.txt").read_text()
+    assert "Read Act" in text
+    assert "​" not in text
+
+
 def test_load_refuses_a_file_that_is_not_a_pdf_and_creates_nothing(
     repo: Path, tmp_path: Path
 ) -> None:

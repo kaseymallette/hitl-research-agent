@@ -18,6 +18,26 @@
 #    provenance_basis:
 #      source_title: where the title was taken from
 sources:
+  - slug: california_2025_ab1454
+    pdf: data/legislation/California-2025-AB1454-Chaptered.pdf
+    source_title: "Assembly Bill No. 1454, Chapter 471: Pupil literacy: credential program standards and professional development: instructional materials"
+    source_authors: []
+    publication_date: "2025-10-09"
+    source_type: government_policy
+    doi: null
+    publisher: "California State Legislature"
+    url: "https://legiscan.com/CA/text/AB1454/id/3272740/California-2025-AB1454-Chaptered.html"
+    retrieved_at: "2026-11-07T21:44:11+00:00"
+    selection:
+      how: "pilot document, sent by email 2026-11-07"
+      why: null
+    provenance_basis:
+      source_title: "first page: 'Assembly Bill No. 1454', 'CHAPTER 471', and the Legislative Counsel's Digest title"
+      publication_date: "'Approved by Governor October 09, 2025'; chaptered version"
+      source_authors: "unset: the digest names the author as Rivas"
+      url: page footer of the PDF (a LegiScan page printed to PDF)
+      retrieved_at: download timestamp of the PDF file
+
   - slug: arkansas_2017_act1063_right_to_read
     pdf: data/legislation/arkansas_2017_act1063_right_to_read.pdf
     source_title: "Act 1063 (Senate Bill 502): An Act to Create the Right to Read Act; to Require Licensed Teachers at the Elementary Level to Be Proficient in Scientific Reading Instruction; to Require All Other Licensed Teachers to Have a Cursory Knowledge of Scientific Reading Instruction; and for Other Purposes"
@@ -60,52 +80,32 @@ sources:
       url: "unset: the printed page shows no address"
       retrieved_at: "print timestamp of the PDF"
 
-  - slug: california_2025_ab1454
-    pdf: data/legislation/California-2025-AB1454-Chaptered.pdf
-    source_title: "Assembly Bill No. 1454, Chapter 471: Pupil literacy: credential program standards and professional development: instructional materials"
-    source_authors: []
-    publication_date: "2025-10-09"
-    source_type: government_policy
-    doi: null
-    publisher: "California State Legislature"
-    url: "https://legiscan.com/CA/text/AB1454/id/3272740/California-2025-AB1454-Chaptered.html"
-    retrieved_at: "2026-11-07T21:44:11+00:00"
-    selection:
-      how: "pilot document, sent by email 2026-11-07"
-      why: null
-    provenance_basis:
-      source_title: "first page: 'Assembly Bill No. 1454', 'CHAPTER 471', and the Legislative Counsel's Digest title"
-      publication_date: "'Approved by Governor October 09, 2025'; chaptered version"
-      source_authors: "unset: the digest names the author as Rivas"
-      url: page footer of the PDF (a LegiScan page printed to PDF)
-      retrieved_at: download timestamp of the PDF file
-
-  - slug: ohio_2026_orc3313_6028_literacy_curriculum
-    pdf: data/legislation/ohio_2026_orc3313_6028_literacy_curriculum.pdf
-    source_title: "Ohio Revised Code Section 3313.6028: Literacy curriculum"
+  - slug: ohio_2026_literacy_code
+    pdf: data/legislation/ohio_2026_literacy_code.pdf
+    source_title: "Ohio Revised Code Sections 3313.6028 (Literacy curriculum), 3313.608 (Third-grade reading guarantee), and 3319.2310 (Science of reading training for licensed educators)"
     source_authors: []
     publication_date: "2026-10-09"
     source_type: government_policy
     doi: null
     publisher: "Ohio Legislative Service Commission"
-    url: null
-    retrieved_at: "2026-11-07T23:20:52+00:00"
+    url: "https://codes.ohio.gov/ohio-revised-code/section-3313.6028/10-9-2026"
+    retrieved_at: "2026-11-08T00:21:57+00:00"
     selection:
-      how: "added 2026-11-07"
+      how: "added 2026-11-07, replacing section 3313.6028 alone with the three literacy sections"
       why: null
     provenance_basis:
-      source_title: "first page: 'Ohio Revised Code', 'Section 3313.6028 Literacy curriculum.'"
-      publication_date: "'Effective: October 09, 2026' on the first page; the section as amended by House Bill 455 and Senate Bill 19, 136th General Assembly"
-      publisher: "last page: 'The Legislative Service Commission presents the text of this section as a composite'"
-      source_authors: "unset: a code section has no authors"
-      url: "unset: received as a file"
+      source_title: "the section headings in the PDF"
+      publication_date: "'Effective: October 9, 2026' on 3313.6028 and 3319.2310 (House Bill 455 and Senate Bill 19, 136th General Assembly); 3313.608 is effective September 30, 2025 (House Bill 96)"
+      publisher: "each section's note: 'The Legislative Service Commission presents the text of this section'"
+      source_authors: "unset: code sections have no authors"
+      url: "codes.ohio.gov page for 3313.6028 (3313.608 and 3319.2310 are at section-3313.608 and section-3319.2310 on the same site), printed to PDF. Each page's 'Available Versions of this Section' list is printed into the text, on pages 3, 15, and 18, sometimes in the middle of a section. The 3313.6028 text otherwise matches the state's authenticated PDF word for word"
       retrieved_at: "modification time of the PDF file"
 
   - slug: georgia_2026_hb1193_early_literacy_act
     pdf: data/legislation/georgia_2026_hb1193_early_literacy_act.pdf
     source_title: "House Bill 1193 (As Passed House and Senate): Georgia Early Literacy Act of 2026"
     source_authors: []
-    publication_date: null
+    publication_date: "2026-05-05"
     source_type: government_policy
     doi: null
     publisher: "Georgia General Assembly"
@@ -116,29 +116,29 @@ sources:
       why: null
     provenance_basis:
       source_title: "first page: 'House Bill 1193 (AS PASSED HOUSE AND SENATE)'; Section 1-1: 'Georgia Early Literacy Act of 2026'"
-      publication_date: "unset: the passed version prints no approval date (Section 4-1: effective on the Governor's approval)"
+      publication_date: "signed by the Governor on May 5, 2026, per the Governor's press release (gov.georgia.gov, 2026-05-05); the PDF prints no approval date, and Section 4-1 makes it effective on approval"
       publisher: "unset in the PDF; the bill amends the Official Code of Georgia Annotated"
       source_authors: "unset: the bill lists its sponsors (Representatives Erwin, Burns, Hatchett, Dubnik, Jones, and others), not authors"
       url: "unset: received as a file"
       retrieved_at: "modification time of the PDF file"
 
-  - slug: minnesota_2026_120b12_read_act
-    pdf: data/legislation/minnesota_2026_120b12_read_act.pdf
-    source_title: "Minnesota Statutes 2026, Section 120B.12: Read Act Goal and Interventions"
+  - slug: minnesota_2026_120b118_124_read_act
+    pdf: data/legislation/minnesota_2026_120b118_124_read_act.pdf
+    source_title: "Minnesota Statutes 2026, Sections 120B.118 to 120B.124: Reading to Ensure Academic Development Act (Read Act)"
     source_authors: []
     publication_date: null
     source_type: government_policy
     doi: null
     publisher: "Minnesota Office of the Revisor of Statutes"
-    url: "https://www.revisor.mn.gov/statutes/cite/120B.12"
-    retrieved_at: "2026-11-07T22:13:22+00:00"
+    url: "https://www.revisor.mn.gov/statutes/cite/120B/full"
+    retrieved_at: "2026-11-08T00:00:43+00:00"
     selection:
-      how: "added 2026-11-07"
+      how: "added 2026-11-07, replacing section 120B.12 alone with the whole Read Act"
       why: null
     provenance_basis:
-      source_title: "first page: '2026 Minnesota Statutes', '120B.12 READ ACT GOAL AND INTERVENTIONS.'"
-      publication_date: "unset: the 2026 edition prints no date; the history line ends with 2026 c 125 art 1 s 4-6"
-      publisher: "page header and footer: 'Office of the Revisor of Statutes', 'Official Publication of the State of Minnesota'"
-      source_authors: "unset: a statute section has no authors"
-      url: page footer of the PDF (a web page printed to PDF)
-      retrieved_at: "print timestamp of the PDF (11/7/26, 5:13 PM)"
+      source_title: "120B.118, subd. 1: 'Sections 120B.118 to 120B.124 may be cited as the \"Reading to Ensure Academic Development Act\" or the \"Read Act.\"'"
+      publication_date: "unset: the 2026 edition prints no date (the PDF was produced 2026-10-20); the histories end with 2026 c 125"
+      publisher: "PDF metadata and page footer: 'Office of the Revisor of Statutes', 'Official Publication of the State of Minnesota'"
+      source_authors: "unset: statute sections have no authors"
+      url: "PDF title 'Minnesota Statutes 2026, Chapter 120B'; pages 18-34 of the chapter. The first page opens with the end of 120B.117 and the last page closes with the start of 120B.125, which are not part of the Read Act"
+      retrieved_at: "modification time of the PDF file"
