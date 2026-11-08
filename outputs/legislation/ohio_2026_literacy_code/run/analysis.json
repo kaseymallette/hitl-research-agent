@@ -1,0 +1,1387 @@
+{
+  "reading_plan": "Source title: Ohio Revised Code Sections 3313.6028 (Literacy curriculum), 3313.608 (Third-grade reading guarantee), and 3319.2310 (Science of reading training for licensed educators). Source type: government_policy. The first look shows a 19-page compilation of three enacted, codified Ohio statutes, not a pending bill or guidance document: 3313.6028 (A)-(F), effective October 9, 2026; 3313.608 (A)-(K), effective September 30, 2025; and 3319.2310 (A)-(D), effective October 9, 2026. The first section includes an LSC composite-amendment note; all three have available-version lists. The provisions are densely nested, especially the guarantee's exceptions and teacher qualifications, though the pages are generously spaced. I will proceed in printed order, usually by subsection and no more than about a page per substantive step, splitting long lists while preserving their governing conditions. I will distinguish operative text from editorial metadata and retain historical dates as printed. The supplied page images show clean code text with blue underlined cross-reference links, not amendment strikeouts or insertion markup. Claims use paraphrase unless exact wording is confidently reproduced. Support records stated purposes or incorporated legal criteria and cross-references, not invented empirical evidence; an empty support array means no separate basis is given. External citations are transcribed as printed, with line-wrap whitespace normalized and no completed bibliographic entries.",
+  "reading_path": [
+    {
+      "location": "Section 3313.6028, heading (PDF p. 1)",
+      "moves": "Identifies a codified statute, its effective date, and the latest amending legislation. This is an amended code presentation, not a bill showing proposed insertions and deletions.",
+      "claims": [
+        {
+          "text": "The displayed literacy-curriculum section is effective October 9, 2026; its latest legislation is Senate Bill 19 (GA 136), House Bill 455 (GA 136).",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Senate Bill 19 (GA 136), House Bill 455 (GA 136)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The reading begins with an enacted code section whose stated version date is distinct from the implementation dates inside it."
+    },
+    {
+      "location": "Section 3313.6028(A)(1)(a)-(d), (A)(2) (PDF p. 1)",
+      "moves": "Defines science of reading across Title XXXIII and three-cueing for this section. The definition takes an affirmative instructional position and expressly excludes a family of models.",
+      "claims": [
+        {
+          "text": "For Title XXXIII of the Revised Code, science of reading means an interdisciplinary body of scientific evidence with all four listed characteristics.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (A)(1)(a), that evidence informs how students learn to read and write proficiently.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (A)(1)(b), that evidence explains why some students have difficulty with reading and writing.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (A)(1)(c), that evidence indicates that all students benefit from explicit and systematic instruction in phonemic awareness, phonics, vocabulary, fluency, comprehension, and writing to become effective readers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (A)(1)(d), that evidence does not rely on any model of teaching students to read based on meaning, structure and syntax, and visual cues, including a three-cueing approach.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For this section, three-cueing approach means any model of teaching students to read based on meaning, structure and syntax, and visual cues.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Before assigning duties, the section sets both the scope of its preferred evidence and the instructional approach it excludes. It names no particular research study for these definitional statements."
+    },
+    {
+      "location": "Section 3313.6028(B) (PDF pp. 1-2)",
+      "moves": "Assigns list-making, evaluation, publication, and disclosure duties to the department of education and workforce.",
+      "claims": [
+        {
+          "text": "The department shall establish a list of high-quality English language arts core curriculum and instructional materials and a list of evidence-based reading intervention programs, aligned with the science of reading and strategies for effective literacy instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department shall establish a rubric and scoring system evaluating whether or to what extent English language arts core curricula facilitate a student's skill building and sequential advancement through mastery.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department shall post the rubric and scoring system on its publicly accessible website.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Upon request, the department shall provide a scored rubric to the entity that submitted a curriculum for scoring and to any Ohio general assembly member.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The definition now becomes an administrative selection and evaluation framework; public access to the scoring method is broader than the expressly specified access to scored rubrics."
+    },
+    {
+      "location": "Section 3313.6028(C) (PDF p. 2)",
+      "moves": "Requires use of listed materials by specified school types and grades and prohibits three-cueing subject to the following division.",
+      "claims": [
+        {
+          "text": "Beginning no later than the 2024-2025 school year, every school district, community school established under Chapter 3314, and STEM school established under Chapter 3326 shall use English language arts core curriculum and instructional materials in every grade pre-kindergarten through five only from the division (B) lists.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Chapter 3314. of the Revised Code",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Chapter 3326. of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The same schools shall use evidence-based reading intervention programs in every grade pre-kindergarten through twelve only from the division (B) lists, beginning no later than the 2024-2025 school year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Except under division (D), no such district or school shall use core curriculum, instructional materials, or intervention programs in grades pre-kindergarten through five that use three-cueing to teach students to read.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The lists constrain school selection. The intervention-list requirement reaches grade twelve, while the express three-cueing prohibition here reaches grade five."
+    },
+    {
+      "location": "Section 3313.6028(D)(1)-(2) and concluding paragraph (PDF p. 2)",
+      "moves": "Permits individual-student waiver applications, bars one category, exempts another from needing a waiver, and directs waiver review.",
+      "claims": [
+        {
+          "text": "A district or school may apply to the department for an individual-student waiver to use curriculum, materials, or an intervention program using three-cueing in grades pre-kindergarten through five, subject to (D)(1)-(2).",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A student with a reading improvement and monitoring plan developed under division (C) of section 3313.608 shall not be eligible for a waiver.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "division (C) of section 3313.608 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A student whose individualized education program explicitly indicates that three-cueing is appropriate for the student's learning needs shall not be required to have a waiver.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "In deciding whether to approve a waiver, the department shall consider the student's district or school performance on the state report card, including its early literacy component.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3302.03 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The prohibition is qualified through distinct mechanisms: permission to seek a waiver, ineligibility for plan recipients, and no waiver requirement for the specified IEP provision. The text does not state a numerical report-card threshold."
+    },
+    {
+      "location": "Section 3313.6028(E)(1)-(3) (PDF p. 3)",
+      "moves": "Connects approved materials with professional development and mandatory licensure-renewal credit.",
+      "claims": [
+        {
+          "text": "The department shall identify vendors providing educators professional development on using the division (B) listed core curriculum, materials, and interventions; educators expressly include pre-service teachers and educator-preparation faculty.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A professional development committee established under section 3319.22 shall count any completed coursework from a vendor described in (E)(1) toward teacher licensure-renewal coursework requirements.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3319.22 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A professional development committee shall permit a teacher to apply hours earned above the minimum renewal-coursework requirement under (E)(2) to the next renewal period for that license.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Implementation now includes preparing educators to use the selected resources, with required recognition and carryover of qualifying coursework."
+    },
+    {
+      "location": "Section 3313.6028(F) and LSC composite note (PDF p. 3)",
+      "moves": "Requires annual implementation reporting. A separate editorial note explains harmonization of amendments; it is not a school duty.",
+      "claims": [
+        {
+          "text": "By June 30 each year, the department shall prepare and issue a report on implementation of this section, including implementation by districts and schools.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department shall provide the report to the governor and, in accordance with section 101.68, to the general assembly.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 101.68 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The Legislative Service Commission says it presents a composite of the section as amended by multiple acts, recognizing that amendments are to be harmonized if reasonably capable of simultaneous operation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "R.C. 1.52(B)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The section closes its operative provisions with state-level oversight, then explains why this displayed text combines amendments."
+    },
+    {
+      "location": "Section 3313.6028, Available Versions (PDF pp. 3-4)",
+      "moves": "Lists enactment and amendment history rather than further operative requirements. No additions or deletions are marked in the body; blue underlining is used for links.",
+      "claims": [
+        {
+          "text": "The version list records enactment on October 3, 2023, and amendments on September 30, 2025; March 20, 2026; and October 9, 2026.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "House Bill 33 - 135th General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 96 - 136th General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 184 - 136th General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Senate Bill 19 (GA 136), House Bill 455 (GA 136)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This history locates the displayed section over time without identifying which individual sentences each act changed."
+    },
+    {
+      "location": "Section 3313.608, heading and (A)(1)(a)-(c) (PDF p. 5)",
+      "moves": "Starts the third-grade reading guarantee, dated effective September 30, 2025, with a historically bounded promotion regime. The heading identifies House Bill 96 - 136th General Assembly as latest legislation.",
+      "claims": [
+        {
+          "text": "For students entering third grade in the school year starting July 1, 2009, and until June 30, 2013, districts shall choose one of (A)(1)(a)-(c) for students below the specified third-grade English language arts assessment achievement level, unless excused from the assessment; the choice shall accord with the district promotion policy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "division (C) of section 3301.0711 of the Revised Code",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "division (A)(3) of section 3301.0710 of the Revised Code",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "section 3313.609 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Under (A)(1)(a), one option is promotion to fourth grade if the principal and reading teacher agree that other reading evaluations demonstrate academic readiness for promotion.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (A)(1)(b), another option is promotion to fourth grade with intensive intervention services in fourth grade.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (A)(1)(c), the remaining option is retention in third grade.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This new section begins with an earlier regime still printed in the code; its date limit prevents treating its three-way choice as the rule for every subsequent cohort."
+    },
+    {
+      "location": "Section 3313.608(A)(2), opening (PDF p. 5)",
+      "moves": "Replaces the earlier general choice with a prohibition on promotion below the assessment threshold, subject to enumerated exceptions.",
+      "claims": [
+        {
+          "text": "Beginning with students entering third grade in 2013-2014, no district shall promote to fourth grade a student below the specified third-grade English language arts assessment achievement level unless an (A)(2) exception applies; students excused under the cited assessment provision are outside this prohibition.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "division (C) of section 3301.0711 of the Revised Code",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "division (A)(3) of section 3301.0710 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The consequence is stated first; the next provisions determine its reach through exceptions rather than abandoning it."
+    },
+    {
+      "location": "Section 3313.608(A)(2)(a)-(c) (PDF p. 6)",
+      "moves": "Sets three separate exceptions to the promotion prohibition.",
+      "claims": [
+        {
+          "text": "Exception (a) applies to an English learner enrolled in United States schools for less than three full school years who also has had less than three years of English-as-a-second-language instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Exception (b) applies to a child with a disability entitled to special education and related services under Chapter 3323 whose IEP exempts the child from retention under this division.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Chapter 3323. of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Exception (c) applies when the student demonstrates an acceptable performance level on an alternative standardized reading assessment as determined by the department of education and workforce.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Language-learning history, an IEP exemption, and alternative assessment performance provide different routes around the general promotion restriction."
+    },
+    {
+      "location": "Section 3313.608(A)(2)(d)(i)-(iv) (PDF p. 6)",
+      "moves": "Creates a further exception with four cumulative conditions, not four alternative qualifications.",
+      "claims": [
+        {
+          "text": "For exception (d), the student must be a child with a disability entitled to Chapter 3323 special education and related services.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Chapter 3323. of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The student must also have taken the third-grade English language arts achievement assessment prescribed under section 3301.0710.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3301.0710 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The IEP or section 504 plan must show two school years of intensive reading remediation with a continuing reading deficiency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 504 of the \"Rehabilitation Act of 1973,\" 87 Stat. 355, 29 U.S.C. 794, as amended",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The student must also previously have been retained in any of grades kindergarten through three.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This route ties disability status to assessment participation, documented remediation, and prior retention; every condition must be present."
+    },
+    {
+      "location": "Section 3313.608(A)(2)(e)(i)-(ii) (PDF pp. 6-7)",
+      "moves": "Allows another exception based on prior remediation and retention, then attaches continuing fourth-grade services.",
+      "claims": [
+        {
+          "text": "Exception (e)(i) applies to a student who received intensive reading remediation for two school years but still has a reading deficiency and previously was retained in any of grades kindergarten through three.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A student promoted under (e)(i) shall continue to receive intensive reading instruction in grade four.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "That instruction shall include an altered instructional day with specialized diagnostic information and specific research-based reading strategies for the student that have succeeded in improving reading among low-performing readers.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Unlike (d), this exception does not expressly require disability status. Promotion carries a defined instructional consequence."
+    },
+    {
+      "location": "Section 3313.608(A)(2)(f) and following paragraph (PDF p. 7)",
+      "moves": "Adds a parent-request exception with consultation and an ongoing service obligation.",
+      "claims": [
+        {
+          "text": "Exception (f) applies when a parent or guardian, in consultation with the reading teacher and building principal, requests fourth-grade promotion regardless of whether the student reads at grade level.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A student promoted under (f) shall continue receiving intensive reading instruction in the same manner as a retained student until able to read at grade level.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The exception gives a parent or guardian a route to promotion while preserving the instructional obligation beyond promotion."
+    },
+    {
+      "location": "Section 3313.608(B)(1) (PDF p. 7)",
+      "moves": "Moves from promotion consequences to early identification, prescribing annual assessments, a deadline, teacher involvement, and an optional administration method.",
+      "claims": [
+        {
+          "text": "Beginning in 2012-2013, each district board shall adopt policies and procedures to assess every kindergarten-through-third-grade student annually and identify below-grade-level readers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The stated purpose is to assist students in meeting the third grade guarantee established by this section.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The reading skills assessment shall be completed by September 30.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each district shall use a diagnostic assessment adopted or approved for the appropriate grade level under section 3301.079.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3301.079 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The policies and procedures shall require classroom teachers' involvement in assessment and identification of below-grade-level readers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The assessment may be administered electronically through live, two-way video and audio connections, with the administering teacher in a separate location from the student.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The guarantee now reaches earlier grades through a recurring identification process rather than waiting for the end-of-third-grade assessment."
+    },
+    {
+      "location": "Section 3313.608(B)(2)(a)(i)-(v) (PDF pp. 7-8)",
+      "moves": "Requires written parent or guardian communication for every student the diagnostic identifies below grade level; the list specifies all required contents.",
+      "claims": [
+        {
+          "text": "The district shall notify the parent or guardian in writing that the student has been identified with a substantial reading deficiency.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The written communication shall describe current services provided to the student.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall describe proposed supplemental instructional services and supports designed to remediate the identified reading deficiencies.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall notify the parent or guardian that a student scoring in the range designated under (A)(3) of section 3301.0710 on the third-grade English language arts assessment shall be retained unless exempt under division (A).",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "division (A)(3) of section 3301.0710 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The notice shall specify that the assessment is not the sole determinant of promotion and that additional evaluations and assessments are available to help parents and the district know when the student reads at or above grade level and is ready for promotion.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3301.0710 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The communication shall include a statement connecting the child's reading proficiency level to long-term outcomes of success related to reading proficiency.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Identification triggers a prescribed account to the family of the deficiency, services, promotion consequences, alternative evaluations, and longer-term stakes. The statute requires a connection to long-term outcomes without naming a study here."
+    },
+    {
+      "location": "Section 3313.608(B)(2)(b) (PDF p. 8)",
+      "moves": "Requires immediate services before the formal plan is developed and specifies their instructional alignment.",
+      "claims": [
+        {
+          "text": "Immediately after identification of a reading deficiency and until development of the division (C) plan, the district shall provide intensive reading instruction and regular diagnostic assessments.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "These services shall align with the statutory science-of-reading definition, include research-based strategies shown successful with low-performing readers, and target the student's identified reading deficiencies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3313.6028 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The waiting period for a plan is itself covered by mandatory services, explicitly linking this guarantee to the curriculum section read earlier."
+    },
+    {
+      "location": "Section 3313.608(B)(3)(a)(i)-(vii) (PDF p. 9)",
+      "moves": "Attaches remediation to retention, distinguishes a mandatory daily minimum from optional service forms, and leaves the intervention category open.",
+      "claims": [
+        {
+          "text": "For every student retained under division (A), the district shall provide intense remediation until the student can read at grade level.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Remediation shall include intensive interventions addressing identified deficiencies, including, but not limited to, at least ninety minutes of reading instruction daily.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (a)(i), services may include small group instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (a)(ii), services may include reduced teacher-student ratios.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (a)(iii), services may include more frequent progress monitoring.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (a)(iv), services may include tutoring or mentoring.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (a)(v), services may include transition classes containing third- and fourth-grade students.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (a)(vi), services may include an extended school day, week, or year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (a)(vii), services may include summer reading camps.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Retention brings required instructional intensity and duration, while the listed delivery arrangements remain permissions rather than a checklist every district must use."
+    },
+    {
+      "location": "Section 3313.608(B)(3)(b)-(c) and concluding paragraphs (PDF pp. 9-10)",
+      "moves": "Requires promotion procedures, qualified teachers, an outside-provider option, provider screening, and promotion upon specified proficiency.",
+      "claims": [
+        {
+          "text": "The district shall establish a mid-year promotion policy for retained students demonstrating reading at or above grade level.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district shall provide every retained student a teacher satisfying one or more division (H) criteria.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district shall offer the option of applicable services from one or more providers other than the district.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Such providers shall be screened and approved by the district or the department.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "If the student participates in remediation and demonstrates reading proficiency under department standards before fourth grade starts, the district shall promote the student to fourth grade.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The retained student has routes to subsequent promotion and services outside the district, with screening and proficiency standards still governing those routes."
+    },
+    {
+      "location": "Section 3313.608(B)(4) (PDF p. 10)",
+      "moves": "Requires instruction matched to demonstrated ability in another specified field and imports a definition.",
+      "claims": [
+        {
+          "text": "For a retained student demonstrating proficiency in a specific academic ability field, the district shall provide instruction commensurate with the student achievement level in that field.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For this division, specific academic ability field has the same meaning as in section 3324.01.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3324.01 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Retention for reading does not determine the level of instruction in every academic field; the statute requires differentiated treatment of demonstrated proficiency."
+    },
+    {
+      "location": "Section 3313.608(C), opening and (1)-(4) (PDF p. 10)",
+      "moves": "Requires an individual reading improvement and monitoring plan, fixes its development deadline and participants, and begins its mandatory contents.",
+      "claims": [
+        {
+          "text": "For every student required to receive intervention under this section, the district shall develop a reading improvement and monitoring plan within sixty days after receiving the division (B)(1) diagnostic results.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district shall involve the parent or guardian and classroom teacher in developing the plan.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (C)(1), the plan shall identify the student's specific reading deficiencies.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (C)(2), it shall describe the additional instructional services and support to remediate those deficiencies.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (C)(3), it shall include opportunities for parent or guardian involvement in those instructional services and support.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (C)(4), it shall include a process monitoring the extent to which the student receives those instructional services and support.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The immediate services described earlier become a documented, participatory plan that tracks delivery as well as identifying needs."
+    },
+    {
+      "location": "Section 3313.608(C)(5)(a)-(c), (6) (PDF pp. 10-11)",
+      "moves": "Specifies the plan curriculum and requires a statement about possible retention; the latter uses may.",
+      "claims": [
+        {
+          "text": "The plan shall include a reading curriculum during regular school hours that assists students to read at grade level.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "That curriculum shall provide scientifically based and reliable assessment.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "That curriculum shall provide initial and ongoing analysis of each student's reading progress.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The plan shall state that a student who does not reach the specified achievement level on the end-of-third-grade English language arts assessment may be retained in third grade.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "division (A)(3) of section 3301.0710 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The plan combines instruction and continuing assessment with a required consequence statement. Its may-be-retained wording differs from the shall-be-retained wording required in the earlier notice."
+    },
+    {
+      "location": "Section 3313.608(C)(7) (PDF p. 11)",
+      "moves": "Adds mandatory high-dosage tutoring, alternative approved routes, minimum time criteria, and a classroom-integration permission.",
+      "claims": [
+        {
+          "text": "The plan shall provide high-dosage tutoring aligned with classroom instruction through either a state-approved vendor on the section 3301.136 list or a locally approved program aligned with department-identified high-dosage tutoring best practices.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3301.136 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "High-dosage tutoring shall include instruction at least three days per week, or at least fifty hours over thirty-six weeks.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "High-dosage tutoring may be incorporated into the student's regular classroom instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The plan now includes a specified service with alternative provider routes and an or between the two time thresholds; integration into regular instruction is allowed, not required."
+    },
+    {
+      "location": "Section 3313.608(C), concluding paragraphs (PDF p. 11)",
+      "moves": "Sets the plan endpoint, extends the qualified-teacher requirement to plan recipients, and assigns reporting duties. The teacher criterion repeats the division (H) standard used for retained students, now for a different covered group.",
+      "claims": [
+        {
+          "text": "The district shall continue providing the plan until the student reaches the required reading skill level for the student's current grade.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each student with a plan who enters third grade after July 1, 2013, shall be assigned a teacher satisfying one or more division (H) criteria.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district shall report any department-requested information about these plans in the manner the department requires.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The plan persists until current-grade proficiency, rather than ending automatically at promotion or the end of a school year; its recipients also enter the teacher-qualification framework."
+    },
+    {
+      "location": "Section 3313.608(D) (PDF pp. 11-12)",
+      "moves": "Requires annual district compliance reporting and statewide reporting by the director, with specified contents and a qualification on efficacy evaluation.",
+      "claims": [
+        {
+          "text": "Each district shall report annually to the department on implementation and compliance using department-prescribed guidelines.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The director shall report annually to the governor and general assembly the number and percentage of kindergarten-through-fourth-grade students reading below grade level, using division (B) diagnostics and the cited English language arts achievement assessments, aggregated by district and building.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "divisions (A)(1)(a) and (b) of section 3301.0710 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The director report shall include types of intervention services provided and, if available, an evaluation of their efficacy.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Individual identification and services feed an administrative reporting system. The efficacy evaluation is expressly conditional on availability."
+    },
+    {
+      "location": "Section 3313.608(E)(1)-(3) (PDF p. 12)",
+      "moves": "Conditions state-funded summer remediation; it does not itself appropriate funds.",
+      "claims": [
+        {
+          "text": "Summer remediation offered by districts under this section and funded wholly or partly by the state shall use methods based on reliable educational research.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For such services, districts shall assess students before and after participation to facilitate monitoring of remediation results.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Parents of participating students shall be involved in programming decisions.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The optional summer-camp form mentioned earlier receives mandatory conditions when offered under the specified state-funding circumstances."
+    },
+    {
+      "location": "Section 3313.608(F)-(G) (PDF p. 12)",
+      "moves": "Sets a general instructional requirement and limits the legal rights created by this section.",
+      "claims": [
+        {
+          "text": "Any intervention or remediation services required by this section shall include intensive, explicit, and systematic instruction.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "This section does not create a new cause of action or a substantive legal right for any person.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "A common instructional requirement spans the preceding services. The next sentence limits the section's creation of rights without withdrawing its stated administrative duties."
+    },
+    {
+      "location": "Section 3313.608(H)(1), opening and (a)-(c) (PDF pp. 12-13)",
+      "moves": "Develops the teacher standard cross-referenced earlier: experience plus at least one listed qualification, subject to (H)(2)-(4).",
+      "claims": [
+        {
+          "text": "Except under (H)(2)-(4), a student described in (B)(3) or (C) entering third grade for the first time on or after July 1, 2013, shall have a teacher with at least one year of teaching experience and one or more (H)(1)(a)-(f) qualifications.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criterion (a) is a reading endorsement on the teacher license and a passing score on its corresponding assessment, as applicable.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criterion (b) is completion of a master's degree program with a major in reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criterion (c) is a most-effective rating in reading instruction for the two most recent consecutive years based on vendor-developed student-growth assessments on the department-approved list.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "division (B) (2) of section 3319.112 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The earlier teacher-assignment requirements now gain substantive criteria. Experience is ordinarily required in addition to one listed qualification; the qualifications are alternatives."
+    },
+    {
+      "location": "Section 3313.608(H)(1)(d)-(f) (PDF p. 13)",
+      "moves": "Completes the alternative qualification list.",
+      "claims": [
+        {
+          "text": "Criterion (d) is an above-expected-value-added reading-instruction rating under department criteria for the two most recent consecutive years.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criterion (e) is passing a department-approved rigorous test of principles of scientifically research-based reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criterion (f) is holding an educator license for teaching pre-kindergarten through three or four through nine issued on or after July 1, 2017.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The qualification routes include measured performance, a test, and a license defined by grade span and issue date, as well as the credentials in the prior step."
+    },
+    {
+      "location": "Section 3313.608(H)(2)-(3) (PDF p. 13)",
+      "moves": "Qualifies the general teacher rule with a mentoring route and a historically limited alternative-credential/training route.",
+      "claims": [
+        {
+          "text": "A covered student first entering third grade on or after July 1, 2013, may have a teacher with less than one year of experience if that teacher meets one or more (H)(1)(a)-(f) criteria and is assigned a mentor meeting (H)(1).",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A covered student first entering third grade on or after July 1, 2013, but before July 1, 2016, may have a teacher holding a department-approved alternative credential or having successfully completed department-approved training based on scientifically research-based reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The alternative credentials and training under (H)(3) shall align with department-adopted reading competencies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3301.077 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "These are permissions with conditions, not repeal of the general standard. The second route is expressly confined to earlier entry cohorts."
+    },
+    {
+      "location": "Section 3313.608(H)(4)-(5) (PDF pp. 13-14)",
+      "moves": "Permits services by a credentialed speech-language pathologist or another qualified teacher, adds agreement and documentation conditions, and defines teacher of record.",
+      "claims": [
+        {
+          "text": "A covered student first entering third grade on or after July 1, 2013, may receive reading intervention or remediation from an employed speech-language pathologist licensed by the state speech and hearing professionals board under Chapter 4753 and registered under section 3319.221.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Chapter 4753. of the Revised Code",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "section 3319.221 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A teacher other than the teacher of record may provide any required services if that teacher meets division (H) requirements and both the teacher of record and school principal agree to the assignment.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "That assignment shall be documented in the student reading improvement and monitoring plan.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For (H)(5), teacher of record means the classroom teacher to whom a student is assigned.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The service provider need not always be the assigned classroom teacher, but the alternative routes retain credentials and, for another teacher, explicit agreement and documentation."
+    },
+    {
+      "location": "Section 3313.608(I) (PDF p. 14)",
+      "moves": "Creates a student-specific alternative teacher route notwithstanding division (H), with an alignment requirement.",
+      "claims": [
+        {
+          "text": "Notwithstanding (H), a teacher may teach reading to an English language learner who has been in the United States for three years or less, or to a student with an IEP developed under Chapter 3323, if the teacher holds a department-approved alternative credential or successfully completed department-approved scientifically research-based reading-instruction training.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Chapter 3323. of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The alternative credentials and training under (I) shall align with department-adopted reading competencies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3301.077 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This route uses three years or less in the United States, a different boundary and condition from the less-than-three-full-school-years and ESL-instruction requirements of promotion exception (A)(2)(a). Alignment repeats the earlier competency requirement for this distinct route."
+    },
+    {
+      "location": "Section 3313.608(J), opening (PDF pp. 14-15)",
+      "moves": "Addresses a dated staffing shortfall through a required plan, content requirements, and publication.",
+      "claims": [
+        {
+          "text": "If, on or after June 4, 2013, a district or community school cannot supply enough division (H)-qualified teachers for 2013-2014, it shall develop and submit a staffing plan by June 30, 2013.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The plan shall include criteria for assigning (B)(3) or (C) students to teachers, credentials or training of current teachers, and how the district or community school will meet section requirements.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district or community school shall post its staffing plan on its website for the applicable school year.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The text retains a transition mechanism keyed to the original implementation period; its printed dates are part of the provision rather than new deadlines inferred from this version's effective date."
+    },
+    {
+      "location": "Section 3313.608(J), reporting and extensions (PDF p. 15)",
+      "moves": "Requires progress reports and permits limited extensions with an application deadline.",
+      "claims": [
+        {
+          "text": "A district or community school that submitted a staffing plan shall submit a detailed progress report to the department no later than March 1, 2014, and on March 1 each year thereafter.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A district or community school may request a staffing-plan extension beyond 2013-2014.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "An extension request must reach the department by April 30 before the applicable school year begins.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department may grant extensions valid through the 2015-2016 school year.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The staffing flexibility is bounded by a stated final school year, while the reporting sentence itself says each year thereafter. The reading preserves both formulations without supplying an unprinted resolution."
+    },
+    {
+      "location": "Section 3313.608(K) and version list (PDF pp. 15-16)",
+      "moves": "Requires departmental implementation assistance, then supplies editorial update and legislative-history information rather than additional school duties.",
+      "claims": [
+        {
+          "text": "The department shall designate one or more staff to guide and assist districts and community schools in implementing the third grade guarantee, including its implementing standards or requirements, and provide reading-instruction and achievement information and support.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The available-version list spans June 4, 2013, through September 30, 2025, with intermediate entries on March 23, 2015; September 29, 2015; January 21, 2018; October 17, 2019; September 30, 2021; October 3, 2023; and April 30, 2024.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Senate Bill 21 - 130th General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 367 - 130th General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 64 - 131st General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 49 - 132nd General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 166 - 133rd General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 110 - 134th General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 33 - 135th General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 101 - 135th General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 96 - 136th General Assembly",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The guarantee ends with assistance as well as compliance machinery. Its version history explains the layered dates without displaying a redline of individual amendments."
+    },
+    {
+      "location": "Section 3319.2310, heading and (A) (PDF p. 17)",
+      "moves": "Begins a separate educator-training statute, effective October 9, 2026, with a definition incorporated from another section. The heading names House Bill 455 - 136th General Assembly as latest legislation.",
+      "claims": [
+        {
+          "text": "In this section, other public school has the same meaning as in section 3301.0711.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3301.0711 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The focus shifts from materials and pupil services to workforce training; the covered school category is incorporated rather than fully defined here."
+    },
+    {
+      "location": "Section 3319.2310(B)(1)-(3) (PDF p. 17)",
+      "moves": "Assigns three course-development or maintenance duties to the department and permits a more rigorous substitute.",
+      "claims": [
+        {
+          "text": "The department shall maintain an introductory science-of-reading training course for licensed educators.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department shall develop a competency-based course updating and reinforcing licensed educators' science-of-reading knowledge and skills.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department shall develop a list of approved courses more rigorous than the (B)(2) course.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "An individual may choose a course from the (B)(3) list in place of the (B)(2) course.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The training system distinguishes an introduction from recurring reinforcement and allows approved higher-rigor alternatives for the latter."
+    },
+    {
+      "location": "Section 3319.2310(C), opening and (C)(1) (PDF p. 17)",
+      "moves": "Requires training for four employee categories and begins differentiated schedules based on role and hire date.",
+      "claims": [
+        {
+          "text": "Every individual employed by a district or other public school as a teacher, administrator, school psychologist, or speech-language pathologist shall complete science-of-reading training in accordance with (C).",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Teachers and administrators hired before July 1, 2025, shall complete the (B)(2) course or a (B)(3) listed course by June 30, 2030, and every five years thereafter.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "A broad duty is implemented through separate schedules. The first schedule requires the reinforcement course or an approved more rigorous course, without adding an introductory-course duty in (C)(1)."
+    },
+    {
+      "location": "Section 3319.2310(C)(2)(a)-(b) (PDF p. 18)",
+      "moves": "Sets the newer-hire schedule, exempts verified recent preparation from the introduction, and assigns verification and similarity determinations.",
+      "claims": [
+        {
+          "text": "Teachers and administrators hired on or after July 1, 2025, shall complete the (B)(1) introduction within one year of hire.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall complete the (B)(2) course or a (B)(3) listed course every five years thereafter.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The introduction shall not be required if the district superintendent or other public school head administrator verifies that within five years before hire the individual completed that training or similar training as determined by the department.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The introduction also shall not be required upon that verification of appropriate science-of-reading coursework completed within five years before hire as part of an educator or licensure preparation program.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Recent qualifying preparation removes the introductory requirement, while the text leaves the recurring-course requirement in place. The exception is tied to verification and a five-year lookback."
+    },
+    {
+      "location": "Section 3319.2310(C)(3) (PDF p. 18)",
+      "moves": "Sets a role-specific schedule for school psychologists and speech-language pathologists, without a hire-date split.",
+      "claims": [
+        {
+          "text": "School psychologists and speech-language pathologists employed by districts or other public schools shall complete the (B)(1) introduction by June 30, 2027.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall complete the (B)(2) course or a (B)(3) listed course every five years thereafter.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The same course structure applies to these specialists, but their initial deadline is fixed rather than calculated from hiring."
+    },
+    {
+      "location": "Section 3319.2310(D) and Available Versions (PDF pp. 18-19)",
+      "moves": "Requires licensure credit and carryover for division (B) training. This echoes 3313.6028(E) but applies to these courses and individuals. The ending lists enactment and amendment history.",
+      "claims": [
+        {
+          "text": "A professional development committee established under section 3319.22 shall count division (B) training toward educator licensure-renewal professional development requirements.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 3319.22 of the Revised Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The committee shall permit an individual to apply hours earned above the minimum renewal-coursework requirement to the next renewal period for that license.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The available-version list records enactment on September 30, 2025, by House Bill 96 and amendment on October 9, 2026, by House Bill 455, both in the 136th General Assembly.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This provision incorporates or cross-references the following law; the document does not reproduce the external provisions in full.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "House Bill 96 - 136th General Assembly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "House Bill 455 - 136th General Assembly",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The final operative provision connects required training with license renewal and excess-hour recognition. The closing history identifies the displayed code version without showing deleted or added language."
+    }
+  ]
+}
