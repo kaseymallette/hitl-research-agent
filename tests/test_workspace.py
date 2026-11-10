@@ -131,15 +131,16 @@ def test_load_refuses_a_file_that_is_not_a_pdf_and_creates_nothing(
     assert not workspace.exists()
 
 
-def test_load_gives_legislation_its_own_prompts_rubric_and_codebook(
-    repo: Path, tmp_path: Path
+@pytest.mark.parametrize("corpus", ["legislation", "scholarly"])
+def test_load_gives_a_corpus_its_own_prompts_rubric_and_codebook(
+    repo: Path, tmp_path: Path, corpus: str
 ) -> None:
-    write_sources(repo, "legislation", [entry("ca_2025", "legislation")])
+    write_sources(repo, corpus, [entry("doc", corpus)])
     workspace = tmp_path / "workspace"
 
-    ws.load(repo, workspace, "ca_2025")
+    ws.load(repo, workspace, "doc")
 
-    for target, source in ws.OVERLAYS["legislation"].items():
+    for target, source in ws.OVERLAYS[corpus].items():
         if source is None:
             assert not (workspace / target).exists()
         else:
@@ -147,7 +148,7 @@ def test_load_gives_legislation_its_own_prompts_rubric_and_codebook(
 
 
 def test_load_leaves_other_corpora_on_the_article_template(repo: Path, tmp_path: Path) -> None:
-    write_sources(repo, "scholarly", [entry("a", "scholarly")])
+    write_sources(repo, "popular-press", [entry("a", "popular-press")])
     workspace = tmp_path / "workspace"
 
     ws.load(repo, workspace, "a")

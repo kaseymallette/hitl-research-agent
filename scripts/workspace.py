@@ -31,6 +31,15 @@ LOADED = "loaded.yaml"
 # template (None removes the template's file). Corpora not listed use the
 # template as it is.
 OVERLAYS: dict[str, dict[str, str | None]] = {
+    "scholarly": {
+        "README.md": "prompts/scholarly/README.md",
+        "RUBRIC.md": "docs/RUBRIC_SCHOLARLY.md",
+        "CODEBOOK.md": "docs/CODEBOOK_SCHOLARLY.md",
+        "scores.md": "prompts/scholarly/scores.md",
+        "prompts/close-reading.md": "prompts/scholarly/close-reading.md",
+        "prompts/discourse-analysis.md": "prompts/scholarly/discourse-analysis.md",
+        "prompts/evaluate-argument.md": None,
+    },
     "legislation": {
         "README.md": "prompts/legislation/README.md",
         "RUBRIC.md": "docs/RUBRIC_LEGISLATION.md",

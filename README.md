@@ -111,11 +111,14 @@ edits to the rubric or prompts, are carried over by hand.
 │   └── workspace.py      loads an article into the workspace and saves its results to outputs/
 ├── src/                  the hitl_research_agent package from main, unchanged
 ├── prompts/              the prompt originals; evaluations/prompts/ must match them
+│   ├── scholarly/        draft scholarly workspace: close reading, five-dimension discourse analysis, guide, scores
 │   └── legislation/      draft legislation workspace: close reading, five-dimension discourse analysis, guide, scores
 ├── docs/
 │   ├── CODEBOOK.md       the CDA codebook for the legislation corpus: codes and coded excerpts
+│   ├── CODEBOOK_SCHOLARLY.md   the same codes for the scholarly corpus, without examples until the pilot
 │   ├── RUBRIC.md         the rubric original; evaluations/RUBRIC.md must match it
-│   └── RUBRIC_LEGISLATION.md   draft rubric for legislative texts
+│   ├── RUBRIC_LEGISLATION.md   draft rubric for legislative texts
+│   └── RUBRIC_SCHOLARLY.md     draft rubric for scholarly articles
 └── tests/                tests for src/ and the prompt and rubric copies
 ```
 
