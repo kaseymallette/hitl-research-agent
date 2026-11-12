@@ -55,7 +55,7 @@ I collected the articles for this pilot study myself, using the research questio
 | Agent | Given | Produces | Status |
 | --- | --- | --- | --- |
 | **Single source analysis** | one article | a close reading and an argument evaluation, each with a judgment | working |
-| **Synthesis** | the accepted close readings | a comparison of what the authors claim, with each position attributed to its source | planned |
+| **Synthesis** | a store of the accepted articles' close readings, claims references, and argument evaluations, searched as it works | a comparison of what the authors claim, with each position attributed to its source | planned |
 | **Research assistant** | one article | background on the article's field, and guided questions about it | planned |
 
 No agent is given a research question, so its output isn't shaped to one
@@ -379,7 +379,7 @@ What has been difficult about working this way:
 | **Working now** | single source analysis in Codex: five calls run by one script — the close reading, a claims reference, its judgment, the argument evaluation, and its judgment. Also the API path with run records, the primer, and PDF preparation |
 | **Done** | the ten articles analyzed, judged, and accepted into [`outputs/collection.yaml`](outputs/collection.yaml) |
 | **Designed, not yet built** | synthesis with its claims store and retrieval, and the research assistant's guided questions |
-| **Next** | Phase 3: the claims store and synthesis across the ten accepted close readings |
+| **Next** | Phase 3: the store, retrieval, and synthesis across the ten accepted articles ([ADR-0023](docs/adr/0023-synthesis-retrieves-from-a-store-of-the-accepted-articles.md)) |
 
 | Phase | What it does |
 | --- | --- |

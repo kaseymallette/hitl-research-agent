@@ -4,8 +4,8 @@
 | --- | --- | --- |
 | 0 | Review and redesign | complete |
 | 1 | A/B testing: Barnett and kanbur | complete |
-| 2 | Evaluation: the head-to-head judgment and the choice of configuration | chosen ([ADR-0021](adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md)); my check of the judge open |
-| 3 | Synthesis: analyze and accept the collection, the claims store, synthesis, retrieval | next |
+| 2 | Evaluation: the head-to-head judgment and the choice of configuration | complete ([ADR-0021](adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md)) |
+| 3 | Synthesis: analyze and accept the collection, the claims store, synthesis, retrieval | in progress: the collection is analyzed and accepted |
 | 4 | Research assistant: the primer (built) and guided questions | |
 
 The four phases are set by
@@ -375,7 +375,7 @@ text on Barnett, which settles
 ### Done when
 
 - [x] A judgment for each experiment, saved in `outputs/ab_testing/judgments/`.
-- [ ] My check of at least one, with any disagreement noted.
+- [x] My check of at least one, with any disagreement noted.
 - [x] The configuration for the collection chosen and recorded in an ADR,
       with the input-method question settled.
 
@@ -386,18 +386,22 @@ text on Barnett, which settles
 ### Goal
 
 Analyze the whole collection in the Phase 2 configuration, accept or reject
-each analysis, and compare the accepted close readings across sources —
+each analysis, and compare the accepted articles across sources —
 agreements, disagreements, methodological differences, limitations, and open
 questions — with each position still attributed to its source
 ([ADR-0018](adr/0018-three-agents-analysis-synthesis-research-assistant.md)).
+Synthesis retrieves what it compares from a store of the accepted articles
+([ADR-0023](adr/0023-synthesis-retrieves-from-a-store-of-the-accepted-articles.md)).
 Synthesis receives no research question
 ([ADR-0006](adr/0006-analysis-and-synthesis-never-receive-the-question.md)).
 
 ### Analyze the collection
 
-Seven articles, in `data/research/synthesis/`, each with an entry in
-`data/research/sources.yaml`, all analyzed and judged by hand in the Codex
-app, then moved into the five-file layout below with their accepted versions.
+Ten articles, in `data/research/synthesis/`, each with an entry in
+`data/research/sources.yaml`. The first seven were analyzed and judged by hand
+in the Codex app, then moved into the five-file layout below with their
+accepted versions; Ceres, CRS, and Herrera ran through the script. All ten
+are accepted into `outputs/collection.yaml`.
 
 From here on an article runs through `scripts/run_single_source.py`
 ([ADR-0022](adr/0022-five-calls-five-files-one-folder.md)): five Codex
@@ -420,21 +424,36 @@ else is a result ([ADR-0005](adr/0005-no-hard-quality-gates.md)).
 
 I review each article's two readings, with their judgments, and decide: accept, reject, revise, or
 rerun. A revision edits 01 or 04 in place from its judgment (`--revise`), and
-the judgment is run again (`--only 03` or `--only 05`). Only accepted close readings go to synthesis.
+the judgment is run again (`--only 03` or `--only 05`). Only accepted articles enter the store.
 
-### Claims store, synthesis, and retrieval
+### The store, retrieval, and synthesis
 
-Decisions this part has to make, once the collection is analyzed:
+Decided in [ADR-0023](adr/0023-synthesis-retrieves-from-a-store-of-the-accepted-articles.md):
 
-- **The claims store:** how the accepted close readings' claims and support
-  are collected, keeping each one's source and step, and its `verbatim` or
-  `paraphrased` mark.
-- **Synthesis:** one call over the store or the readings, while the
-  collection fits in one; the prompt and its output.
-- **Retrieval:** on the same store, when the collection outgrows a single call
-  or I want to ask it questions. It returns what kind of thing it found and
-  which source it came from, and never returns the model's reading as
-  something a source said.
+- **The store:** a SQLite database with full-text search, built by a script
+  from the articles in `outputs/collection.yaml`: each one's close reading,
+  claims reference, and argument evaluation, with its provenance from
+  `sources.yaml`. Rebuilt, never edited, and not committed. It stops only on a
+  technical failure.
+- **What it holds:** every item labeled by kind and source — `claim` (with
+  support and citations), `reading` (a step's moves and meaning),
+  `reference_section`, and `evaluation_section`. Close-reading items keep
+  their step, order, and location; the two Markdown documents are split at
+  their headings.
+- **Retrieval:** a query script that searches text, lists an article's items
+  in document order, and returns one item with its support, citations, and
+  location. Every result names its kind and source.
+- **Synthesis:** a Codex session given the store and the query script. It
+  cites the IDs each position rests on, never reports a `reading` or
+  `evaluation_section` as what a source says, and records the store build it
+  read.
+
+Still to decide when it is built:
+
+- **The synthesis prompt and its output:** what a comparison looks like and
+  how it cites.
+- **Judging a synthesis:** its criteria in [RUBRIC.md](RUBRIC.md), and a
+  judge given the same query script to check every cited ID.
 
 The failure synthesis adds is an agreement or disagreement manufactured
 between sources that do not address the same point. A disagreement names both

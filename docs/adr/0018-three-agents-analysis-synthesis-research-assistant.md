@@ -1,6 +1,6 @@
 # ADR-0018 — Three agents: single-source analysis, synthesis, and a research assistant
 
-- **Status:** Accepted
+- **Status:** Accepted; what synthesis reads amended by ADR-0023
 - **Date:** 2026-10-24
 - **Landed in:** not yet committed
 
@@ -79,3 +79,5 @@ phases follow ([ADR-0019](0019-four-phases-head-to-head-evaluation.md)).
 ## Notes
 
 Recorded after Experiment 2's API runs and before its app runs.
+
+2026-11-12: amended by [ADR-0023](0023-synthesis-retrieves-from-a-store-of-the-accepted-articles.md): synthesis retrieves from a store of each accepted article's close reading, claims reference, and argument evaluation, each labeled by kind.

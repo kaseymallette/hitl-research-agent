@@ -92,10 +92,11 @@ without a record.
 | [0015](0015-phase-1-as-three-experiments.md) | Phase 1 runs as three experiments, one per article | 2026-10-20 | Accepted for Experiment 1; superseded in part by 0017 and 0019 |
 | [0016](0016-a-primer-before-the-reading.md) | A primer on the article's field, for me to read first | 2026-10-24 | Accepted |
 | [0017](0017-experiment-2-api-against-the-app-with-the-primer.md) | Experiment 2: the API against the app on GPT-6.1 Sol, with the primer | 2026-10-24 | Accepted |
-| [0018](0018-three-agents-analysis-synthesis-research-assistant.md) | Three agents: single-source analysis, synthesis, and a research assistant | 2026-10-24 | Accepted |
+| [0018](0018-three-agents-analysis-synthesis-research-assistant.md) | Three agents: single-source analysis, synthesis, and a research assistant | 2026-10-24 | Accepted; what synthesis reads amended by 0023 |
 | [0019](0019-four-phases-head-to-head-evaluation.md) | Four phases, two experiment articles, and a head-to-head evaluation | 2026-10-24 | Accepted |
 | [0020](0020-codex-joins-experiment-2.md) | Codex joins Experiment 2 as a third way of running the prompts | 2026-10-24 | Accepted |
 | [0021](0021-codex-sol-medium-on-the-pdf-for-the-collection.md) | The collection is analyzed by Codex, on GPT-6.1 Sol at medium effort, from the PDF | 2026-11-06 | Accepted; output layout superseded by 0022 |
 | [0022](0022-five-calls-five-files-one-folder.md) | An article's single-source analysis is five Codex calls writing five files to one folder | 2026-11-11 | Accepted |
+| [0023](0023-synthesis-retrieves-from-a-store-of-the-accepted-articles.md) | Synthesis retrieves from a store of each accepted article's close reading, claims reference, and argument evaluation | 2026-11-12 | Accepted |
 
 New records start from [template.md](template.md).

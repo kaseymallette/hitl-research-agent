@@ -16,7 +16,7 @@ A change to this document contradicts a decision record or needs a new one.
 | Agent | Input | Output |
 | --- | --- | --- |
 | **Single-source analysis** | one article | a close reading as structured JSON, and the model's own evaluation of the argument |
-| **Synthesis** | the accepted close readings | a comparison of what the authors claim, across sources |
+| **Synthesis** | a store of the accepted articles' close readings, claims references, and argument evaluations | a comparison of what the authors claim, across sources |
 | **Research assistant** | one article | a primer on the article's field, and, planned, guided questions about the article, for the researcher |
 
 No agent receives the research question
@@ -24,8 +24,11 @@ No agent receives the research question
 Single-source analysis stays question-independent so that an analysis produced
 today remains usable for a question asked later, and so that no analysis is
 shaped toward a conclusion the researcher is looking for. Synthesis compares
-what the authors claim to each other, not to a question, and reads only close
-readings, never the evaluations. The research assistant explains an article's
+what the authors claim to each other, not to a question. It retrieves from a
+store of each accepted article's close reading, claims reference, and argument
+evaluation, where every item is labeled by kind, so the model's reading and
+judgment are never reported as what a source says
+([ADR-0023](adr/0023-synthesis-retrieves-from-a-store-of-the-accepted-articles.md)). The research assistant explains an article's
 field to the researcher and is never given to the analysis. Finding articles
 is outside the system: the researcher selects them.
 
