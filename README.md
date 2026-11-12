@@ -242,9 +242,8 @@ spent reviewing and correcting its output.
 ## Results
 
 The collection is ten articles, each analyzed and judged with the same five
-calls. Seven are accepted into
-[`outputs/collection.yaml`](outputs/collection.yaml); three are new, and their
-links work once their runs are committed.
+calls, and all ten are accepted into
+[`outputs/collection.yaml`](outputs/collection.yaml).
 
 ### The five files
 
@@ -253,9 +252,9 @@ links work once their runs are committed.
 | Alissa et al. 2025 | [close reading](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/01_close_reading.json) | [claims reference](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/02_claims_reference.md) | [judgment](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/04_argument_evaluation.md) | [judgment](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/05_argument_judgment.md) |
 | Alston et al. 2026 | [close reading](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/01_close_reading.json) | [claims reference](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/02_claims_reference.md) | [judgment](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/04_argument_evaluation.md) | [judgment](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/05_argument_judgment.md) |
 | Barnett-Itzhaki 2026 | [close reading](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/01_close_reading.json) | [claims reference](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/02_claims_reference.md) | [judgment](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/04_argument_evaluation.md) | [judgment](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/05_argument_judgment.md) |
-| Ceres 2026 *(new)* | [close reading](outputs/analyses/ceres_2026_water_behind_the_watts/01_close_reading.json) | [claims reference](outputs/analyses/ceres_2026_water_behind_the_watts/02_claims_reference.md) | [judgment](outputs/analyses/ceres_2026_water_behind_the_watts/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/ceres_2026_water_behind_the_watts/04_argument_evaluation.md) | [judgment](outputs/analyses/ceres_2026_water_behind_the_watts/05_argument_judgment.md) |
-| CRS 2026 *(new)* | [close reading](outputs/analyses/crs_2026_data_centers_and_water_faq/01_close_reading.json) | [claims reference](outputs/analyses/crs_2026_data_centers_and_water_faq/02_claims_reference.md) | [judgment](outputs/analyses/crs_2026_data_centers_and_water_faq/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/crs_2026_data_centers_and_water_faq/04_argument_evaluation.md) | [judgment](outputs/analyses/crs_2026_data_centers_and_water_faq/05_argument_judgment.md) |
-| Herrera et al. 2025 *(new)* | [close reading](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/01_close_reading.json) | [claims reference](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/02_claims_reference.md) | [judgment](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/04_argument_evaluation.md) | [judgment](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/05_argument_judgment.md) |
+| Ceres 2026 | [close reading](outputs/analyses/ceres_2026_water_behind_the_watts/01_close_reading.json) | [claims reference](outputs/analyses/ceres_2026_water_behind_the_watts/02_claims_reference.md) | [judgment](outputs/analyses/ceres_2026_water_behind_the_watts/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/ceres_2026_water_behind_the_watts/04_argument_evaluation.md) | [judgment](outputs/analyses/ceres_2026_water_behind_the_watts/05_argument_judgment.md) |
+| CRS 2026 | [close reading](outputs/analyses/crs_2026_data_centers_and_water_faq/01_close_reading.json) | [claims reference](outputs/analyses/crs_2026_data_centers_and_water_faq/02_claims_reference.md) | [judgment](outputs/analyses/crs_2026_data_centers_and_water_faq/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/crs_2026_data_centers_and_water_faq/04_argument_evaluation.md) | [judgment](outputs/analyses/crs_2026_data_centers_and_water_faq/05_argument_judgment.md) |
+| Herrera et al. 2025 | [close reading](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/01_close_reading.json) | [claims reference](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/02_claims_reference.md) | [judgment](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/04_argument_evaluation.md) | [judgment](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/05_argument_judgment.md) |
 | Kanbur et al. 2020 | [close reading](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/01_close_reading.json) | [claims reference](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/02_claims_reference.md) | [judgment](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/04_argument_evaluation.md) | [judgment](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/05_argument_judgment.md) |
 | Katakam et al. 2027 | [close reading](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/01_close_reading.json) | [claims reference](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/02_claims_reference.md) | [judgment](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/04_argument_evaluation.md) | [judgment](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/05_argument_judgment.md) |
 | Lei et al. 2025 | [close reading](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/01_close_reading.json) | [claims reference](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/02_claims_reference.md) | [judgment](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/04_argument_evaluation.md) | [judgment](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/05_argument_judgment.md) |
@@ -274,9 +273,9 @@ evaluation raised that the judge confirmed, and its factual errors.
 | Alissa et al. 2025 | 100% | 100% | 0 | 2 | 0 | 2 | 2 | 2 | 2 | 2 | 8/8 | 0 |
 | Alston et al. 2026 | 97% | 100% | 0 | 2 | 0 | 2 | 2 | 2 | 2 | 2 | 13/13 | 0 |
 | Barnett-Itzhaki 2026 | 97% | 100% | 0 | 2 | 0 | 2 | 1 | 2 | 2 | 2 | 11/13 | 0 |
-| Ceres 2026 *(new)* | 93% | 100% | 0 | 1 | 0 | 2 | 1 | 2 | 2 | 2 | 10/12 | 0 |
-| CRS 2026 *(new)* | | | | | | | | | | | | |
-| Herrera et al. 2025 *(new)* | | | | | | | | | | | | |
+| Ceres 2026 | 93% | 100% | 0 | 1 | 0 | 2 | 1 | 2 | 2 | 2 | 10/12 | 0 |
+| CRS 2026 | 97% | 100% | 0 | 1 | 0 | 2 | 2 | 2 | 1 | 2 | 16/16 | 0 |
+| Herrera et al. 2025 | 93% | 100% | 0 | 1 | 6 | 2 | 1 | 2 | 2 | 2 | 15/17 | 0 |
 | Kanbur et al. 2020 | 100% | 100% | 0 | 2 | 0 | 2 | 1 | 2 | 2 | 2 | 13/13 | 0 |
 | Katakam et al. 2027 | 93% | 91% | 0 | 1 | 0 | 2 | 2 | 2 | 2 | 2 | 11/11 | 0 |
 | Lei et al. 2025 | 97% | 100% | 1 | 1 | 0 | 2 | 1 | 2 | 2 | 2 | 13/16 | 0 |
@@ -378,9 +377,9 @@ What has been difficult about working this way:
 | | |
 | --- | --- |
 | **Working now** | single source analysis in Codex: five calls run by one script — the close reading, a claims reference, its judgment, the argument evaluation, and its judgment. Also the API path with run records, the primer, and PDF preparation |
-| **Done** | the seven articles analyzed, judged, and accepted into [`outputs/collection.yaml`](outputs/collection.yaml) |
+| **Done** | the ten articles analyzed, judged, and accepted into [`outputs/collection.yaml`](outputs/collection.yaml) |
 | **Designed, not yet built** | synthesis with its claims store and retrieval, and the research assistant's guided questions |
-| **Next** | Phase 3: the claims store and synthesis across the seven accepted close readings |
+| **Next** | Phase 3: the claims store and synthesis across the ten accepted close readings |
 
 | Phase | What it does |
 | --- | --- |
@@ -402,7 +401,7 @@ simplifies, or removes.
 ```
 .
 ├── data/research/                    the source articles
-│   ├── synthesis/                    the 7 articles synthesis uses
+│   ├── synthesis/                    the 10 articles synthesis uses
 │   ├── ab_testing/                   the 2 A/B experiment articles
 │   │   └── notes/                    my own reading of each, by slug
 │   └── sources.yaml                  provenance manifest, owner-confirmed

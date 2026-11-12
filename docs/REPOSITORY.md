@@ -308,8 +308,8 @@ The rest went with the code they covered.
 
 ## `data/research/`
 
-`synthesis/` holds the 7 articles synthesis uses, and `ab_testing/` the two
-experiment articles, Barnett and kanbur, which are also among the 7. Plus
+`synthesis/` holds the 10 articles synthesis uses, and `ab_testing/` the two
+experiment articles, Barnett and kanbur, which are also among the 10. Plus
 `sources.yaml`.
 
 `ab_testing/notes/` holds the researcher's own reading of each experiment

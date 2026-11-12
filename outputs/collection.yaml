@@ -80,6 +80,72 @@ articles:
       b6_partly_confirmed: 2
       b6_errors: 0
 
+  - slug: ceres_2026_water_behind_the_watts
+    analysis: 01_close_reading.json
+    argument_evaluation: 04_argument_evaluation.md
+    close_reading_scores:
+      judgment: 03_close_reading_judgment.md
+      a1_claims_pct: 93
+      a1_support_pct: 100
+      a2_missed_or_partial: 0
+      a3_strength_of_language: 1
+      a4_failures: 0
+    evaluation_scores:
+      judgment: 05_argument_judgment.md
+      b1_premise_acceptability: 2
+      b2_relevance_of_critique: 1
+      b3_sufficiency: 2
+      b4_warrants_and_qualifiers: 2
+      b5_self_attribution: 2
+      b6_problems_raised: 12
+      b6_confirmed: 10
+      b6_partly_confirmed: 0
+      b6_errors: 0
+
+  - slug: crs_2026_data_centers_and_water_faq
+    analysis: 01_close_reading.json
+    argument_evaluation: 04_argument_evaluation.md
+    close_reading_scores:
+      judgment: 03_close_reading_judgment.md
+      a1_claims_pct: 97
+      a1_support_pct: 100
+      a2_missed_or_partial: 0
+      a3_strength_of_language: 1
+      a4_failures: 0
+    evaluation_scores:
+      judgment: 05_argument_judgment.md
+      b1_premise_acceptability: 2
+      b2_relevance_of_critique: 2
+      b3_sufficiency: 2
+      b4_warrants_and_qualifiers: 1
+      b5_self_attribution: 2
+      b6_problems_raised: 16
+      b6_confirmed: 16
+      b6_partly_confirmed: 0
+      b6_errors: 0
+
+  - slug: herrera_et_al_2025_sustainable_ai_infrastructure
+    analysis: 01_close_reading.json
+    argument_evaluation: 04_argument_evaluation.md
+    close_reading_scores:
+      judgment: 03_close_reading_judgment.md
+      a1_claims_pct: 93
+      a1_support_pct: 100
+      a2_missed_or_partial: 0
+      a3_strength_of_language: 1
+      a4_failures: 6
+    evaluation_scores:
+      judgment: 05_argument_judgment.md
+      b1_premise_acceptability: 2
+      b2_relevance_of_critique: 1
+      b3_sufficiency: 2
+      b4_warrants_and_qualifiers: 2
+      b5_self_attribution: 2
+      b6_problems_raised: 17
+      b6_confirmed: 15
+      b6_partly_confirmed: 0
+      b6_errors: 0
+
   - slug: kanbur_et_al_2020_desalination_integrated_data_center_cooling
     analysis: 01_close_reading.json
     argument_evaluation: 04_argument_evaluation.md
