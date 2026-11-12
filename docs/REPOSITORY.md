@@ -383,6 +383,14 @@ and Codex. Each shows the seeds, each round's winner, and the final.
 be read at a glance before the details. Nothing generates them from the key,
 so each has to be edited when a result is added, such as a kanbur winner.
 
+### `assets/single-source-flow.svg`
+
+The five calls for one article as a picture, in the brackets' style: the close
+reading and the claims reference feeding the close reading judgment, the
+argument evaluation feeding the argument judgment, and both judgments coming
+to me. The README shows it under "Single source analysis". It is drawn by hand, so it
+has to be edited if the calls change.
+
 ### `DESIGN.md` and `BUILD_PLAN.md`
 
 One document split in two. `DESIGN.md` is what the system is — the three

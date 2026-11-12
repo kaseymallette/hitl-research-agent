@@ -2,7 +2,7 @@
 
 A human-in-the-loop multi-agent research framework for building and examining a collection of evidence across articles. Three AI agents handle these tasks: single source analysis, synthesis, and a research assistant, giving researchers a way to examine individual arguments, understand how they relate across a research collection, and get their bearings in an unfamiliar field.
 
-The analyses connect authors’ claims to their evidence, methods, assumptions, and limitations, while making the model’s own interpretations explicit. A separate evaluation step will check whether those analyses faithfully represent the sources and whether their assessments of the authors’ arguments are justified. Researchers will review the results before adding them to their collection and use that collection to investigate disagreements, gaps, and new questions.
+The analyses connect authors’ claims to their evidence, methods, assumptions, and limitations, while making the model’s own interpretations explicit. A separate evaluation step checks whether those analyses faithfully represent the sources and whether their assessments of the authors’ arguments are justified. Researchers review the results before adding them to their collection, and use that collection to investigate disagreements, gaps, and new questions.
 
 ## Purpose
 
@@ -46,250 +46,201 @@ I collected the articles for this pilot study myself, using the research questio
 
 ## Design
 
-### How the system supports the researcher
+### Three agents
 
-Three agents do the preparatory work.
+| Agent | Given | Produces | Status |
+| --- | --- | --- | --- |
+| **Single source analysis** | one article | a close reading and an argument evaluation, each with a judgment | working |
+| **Synthesis** | the accepted close readings | a comparison of what the authors claim, with each position attributed to its source | planned |
+| **Research assistant** | one article | a primer on the article's field, and later guided questions about it | primer working |
 
-| Agent | Given | Produces |
-| --- | --- | --- |
-| **Single source analysis** | one article | two readings of it: a close reading, which follows the article step by step and records the author's claims and what each step is doing, and an argument evaluation, the model's own judgment of the argument |
-| **Synthesis** | the accepted close readings | a cross-source comparison of what the authors claim — agreements, disagreements, methodological differences, limitations, and open questions — with each position still attributed to its source |
-| **Research assistant** | one article | a conceptual framework for reading it — the primer — and, planned, guided questions about the article |
+No agent is given a research question, so its output isn't shaped to one
+question and can be reused for others
+([ADR-0006](docs/adr/0006-analysis-and-synthesis-never-receive-the-question.md),
+[ADR-0018](docs/adr/0018-three-agents-analysis-synthesis-research-assistant.md)).
+Synthesis will read only the close readings: the argument evaluation is the
+model's opinion, and it stays out of what the sources are said to claim.
 
-No agent receives a research question, so their output stays useful for
-questions I have not asked yet
-([ADR-0018](docs/adr/0018-three-agents-analysis-synthesis-research-assistant.md)). Synthesis compares what the authors claim to each
-other, not to a question, and reads only close readings: the argument
-evaluation is the model's judgment, kept as its own document rather than
-blended into what the sources say. The research assistant serves me as a
-reader, alongside the pipeline.
+I make the decisions. I accept, revise, rerun, or reject each analysis, and
+only accepted ones enter the collection.
 
-```
-article → close reading → argument evaluation → evaluation of both → accept · reject · revise · rerun
-```
+### Two readings
 
-The planned review workflow will present both readings, the citations
-supporting them, the evaluation scores, and the evaluation's explanation of
-those scores. Evaluation will inform my review rather than replacing it, and it
-will not act as a gate. A paraphrase, a claim with no support, or a thin reading
-gets reported rather than withheld, because I want to see the analysis and
-judge it myself. Only a technical failure stops a run: an API error, an
-unreadable response, or output that will not parse.
-
-The decision stays with me. I accept, reject, revise, or rerun, and only
-accepted analyses enter the research collection. The agents interpret sources
-and assess arguments. I review those assessments, decide which conclusions
-are justified, and choose what to pursue next.
-
-### Single source analysis: two readings
-
-Reading an argument well asks for two different things, and in one prompt each
-got in the way of the other. Recording what an author says takes restraint:
-report it faithfully, and keep your own view out of it. Judging the argument
-takes the opposite: reason independently, question whether the conclusions
-follow, and say what you think. So single source analysis is two calls, with
-two prompts, producing two documents
+Recording what an author says and judging whether the argument holds pull in
+opposite directions: one asks the model to keep its view out, the other asks
+for its view. When Barnett's early runs asked for both in one prompt, the
+evaluation crowded out the claims, so they are two calls with two prompts
 ([ADR-0012](docs/adr/0012-close-reading-and-argument-evaluation-are-two-calls.md)).
 
-**The close reading** follows the article the way a careful reader meets it for
-the first time, from the opening to the last page. It first takes a look at the
-kind of writing it is and how densely it is written, and lets that set the
-pace: each step takes in roughly 200 to 500 words of the article. At each step
-it records where we are, the move the author is making — a premise, evidence, a
-definition, an inference, a qualification, a conclusion — the claims made
-there with the support the author offers, and what the step means given what
-came before. It knows only what it has read so far, and it does not judge
-whether the argument holds.
+**The close reading** is asked to follow the article from start to finish in
+steps of roughly 200 to 500 words, recording at each step the move the author
+is making, the claims made there with the support the author gives, and how
+the step fits what came before. It is asked not to judge the argument.
 
-**The argument evaluation** is given the article and the close reading and asks
-for the model's own judgment of the argument as a whole: where the paper was
-published and for whom, what it rests on, how it spends its attention, whether
-its conclusions are required by the evidence or only permitted by it, and what
-bias shapes the author's framing and the model's own reading. It is written in
-the model's voice and read as its interpretation, not as a report of what the
-author said.
+**The argument evaluation** is given the article and the close reading and
+asked for the model's own judgment of the argument: what it rests on, whether
+the conclusions follow from the evidence, and what bias shapes the author's
+framing and its own.
 
-Both prompts are in [prompts/](prompts/), and in the code in
-`src/hitl_research_agent/prompts.py`.
+The prompts are in [`prompts/`](prompts/).
 
 ### Whose words are whose
 
-All of an analysis is produced by the model, including the parts that report
-what the author said. That is the part most easily misread.
-
-The close reading keeps the author's words and the model's reading apart by
-where they sit
-([ADR-0013](docs/adr/0013-lean-close-reading.md)):
+Every word of an analysis is written by the model, including the parts that
+report what the author said. The close reading keeps the two apart by where
+they sit ([ADR-0013](docs/adr/0013-lean-close-reading.md)):
 
 | Where | Whose | What it means |
 | --- | --- | --- |
-| a step's claims and their support | the author's | the model asserts the article says this, in the author's words where it can; not that anyone has checked |
-| a step's moves and meaning | the model's | its reading of what the author is doing and how the step fits the path |
+| a step's claims and their support | the author's | the model says the article states this; no one has checked it yet |
+| a step's moves and meaning | the model's | its reading of what the author is doing |
 | the argument evaluation | the model's | its judgment of the argument |
 
-Each claim and each piece of support is marked `verbatim`, the author's exact
-wording, or `paraphrased`. A faithful paraphrase is not a lesser answer than a
-quotation the model was unsure of. Either way, a claim recorded as the author's
-is the model's assertion about the article, and it can be wrong in either
-direction: an interpretation presented as something the author said, or
-something the author did say left out or softened. Checking that is what the
-rest of the design is for.
+Each claim and piece of support is marked `verbatim`, the author's exact
+words, or `paraphrased`. Either can be wrong: the model's interpretation
+recorded as the author's claim, or a claim softened or left out.
 
-### What can be checked, and how
+### Checking the readings
 
-Some of it can be checked mechanically against the article:
+Each reading is checked by a judge in a separate session
+([RUBRIC.md](docs/RUBRIC.md)). The close reading is judged against the article
+and a list of the article's own claims, written separately from the article
+alone. Part of that judgment is mechanical: whether `verbatim` text, numbers,
+and reference entries can be found in the article. A miss marks a passage to
+look at, not proof of an error, since PDF extraction can break exact
+matching. The argument evaluation is judged against the article itself.
 
-- **Verbatim text.** A text search can look for a `verbatim` claim in the
-  article, and a match is good evidence the wording is real. A miss is weaker
-  evidence than it looks: PDF extraction, hyphenation, and accented characters
-  all break exact matching on text the article genuinely contains, so a miss
-  marks a passage to look at, not a fabrication.
-- **Numbers.** Every figure in a claim or its support can be searched for in
-  the article, which catches a number that is not there.
-- **Citations.** A recorded reference entry can be matched against the
-  article's own reference list, which catches an invented or garbled entry.
+The judgments are reported, never used as a gate. A thin reading or a claim
+with no support is shown to me rather than withheld; only a technical failure
+stops a run ([ADR-0005](docs/adr/0005-no-hard-quality-gates.md)).
 
-None of that can tell a paraphrase that keeps the author's meaning from one that
-drops a qualification, a number attached to the wrong thing, or a judgment that
-is badly reasoned. Those are checked by reading: by my own notes, and later by
-the Phase 2 evaluation, which is itself checked against my scoring.
-
-Neither reading retrieves the works an article cites or verifies their
-findings. Both work from what the article provides.
-
-### My notes as the independent reference
-
-For each article I write my own reading before I look at any model output:
-what the article says, its key figures with their context, and my judgment of
-its argument. Those notes are the reference both readings are compared
-against, so they have to be independent of them. For longer articles, the text
-is split mechanically into steps of the same 200 to 500 words, so I can write
-notes against each step without deciding how to organize them; nothing in the
-split names a move or says what a step means. The notes are in
-[`data/research/ab_testing/notes/`](data/research/ab_testing/notes).
+The judge is a model too, and I haven't yet checked its verdicts against my
+own reading, so they are a guide to where to look, not evidence that an
+analysis is good. Neither the readings nor the judges look up the works an
+article cites; everything is checked against the article alone.
 
 ### A primer before the reading
 
-Some articles are written for specialists and explain nothing their field
-takes for granted. Reading kanbur, I could record its numbers but not tell
-whether they were good, bad, or ordinary. So on request the system writes a
-primer: the concepts and terms an article relies on, what its numbers are
-measured against, and where it sits in its field, for me to read before the
-article ([ADR-0016](docs/adr/0016-a-primer-before-the-reading.md)).
+Some articles are written for specialists. Reading kanbur, I could record its
+numbers but not tell whether they were good, bad, or ordinary. So on request
+the system writes a primer: the concepts an article relies on, what its
+numbers are measured against, and where it sits in its field
+([ADR-0016](docs/adr/0016-a-primer-before-the-reading.md)). It comes from the
+model's general knowledge, not the article, so I read it as a briefing, not
+as evidence. It is never given to the analysis. It runs through the API
+(`scripts/write_primer.py`), so each primer is billed.
 
-The primer is the model's general knowledge rather than a reading of the
-article, so it can be wrong in ways a check against the article will not catch.
-I treat it as a colleague's briefing, not as evidence. It is separate from the
-analysis and never given to either reading. For an article in an experiment, I
-read it after writing my notes, so the notes stay independent.
+## Single source analysis: five calls per article
+
+Every article goes through the same five calls. Two write the readings, one
+writes a reference list, and two judge the readings. Each call is its own
+Codex session on GPT-6.1 Sol at medium effort, reading the PDF, and each
+session sees only the files it needs, so the judges work independently
+([ADR-0021](docs/adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md),
+[ADR-0022](docs/adr/0022-five-calls-five-files-one-folder.md)).
+
+![Single source analysis: the close reading and the claims reference feed the close reading judgment; the argument evaluation feeds the argument judgment; both judgments come to me to accept, revise, rerun, or reject.](docs/assets/single-source-flow.svg)
+
+| Call | What it does | File |
+| --- | --- | --- |
+| **01** Close reading | records what the author says, step by step | `01_close_reading.json` |
+| **02** Claims reference | lists the article's own claims, from the article alone | `02_claims_reference.md` |
+| **03** Close reading judgment | checks 01 against the article and 02 | `03_close_reading_judgment.md` |
+| **04** Argument evaluation | the model's own judgment of the argument | `04_argument_evaluation.md` |
+| **05** Argument judgment | checks 04 against the article | `05_argument_judgment.md` |
+
+All five files go to `outputs/analyses/<slug>/`.
+
+### Run it
+
+```bash
+uv run python scripts/run_single_source.py <slug>
+```
+
+`<slug>` is the article's entry in
+[`data/research/sources.yaml`](data/research/sources.yaml). It costs nothing
+beyond the ChatGPT Pro plan: no API key is used.
+
+### Review and revise
+
+Before trusting 03, skim 02 against the article: the judge uses it as
+written. Then read the judgments and decide. To revise, commit first, then
+edit the reading from its judgment and judge it again:
+
+```bash
+uv run python scripts/run_single_source.py <slug> --revise 01
+uv run python scripts/run_single_source.py <slug> --only 03
+```
+
+`--revise 04` and `--only 05` do the same for the argument evaluation.
 
 ## Evaluation design
 
-Each axis targets a specific failure, so a rubric can be written against
-something concrete rather than a general impression of quality.
+Each criterion in the [rubric](docs/RUBRIC.md) targets a specific failure, so
+a judgment is made against something concrete rather than a general
+impression of quality.
 
-| Failure mode | What it looks like | Axis |
+| Failure mode | What it looks like | Rubric |
 | --- | --- | --- |
-| Invented attribution | a claim recorded as the author's that the article does not make | source faithfulness |
-| Omitted qualification | hedges, conditions, sample, or scope stripped from a claim the source stated carefully | source faithfulness, limitation discipline |
-| Unsupported inference | reasoning past what the article supports, or the model's reading presented as the author's claim | inference control, assumption discipline |
-| Mismatched evidence | support attached to a claim it does not support | evidence mapping |
-| Inaccurate citation extraction | a misquoted marker, an invented reference entry, a citation attached to the wrong passage | citation faithfulness |
-| Missing central argument | an argument the source’s case rests on, absent from the analysis | argument reconstruction |
-| Faulty argument assessment | the model accepts an unsupported conclusion or criticizes an argument without adequate justification | argument assessment |
-| Unusable output | faithful, complete, and still no help to me | research usefulness |
+| Invented attribution | a claim recorded as the author's that the article does not make, or the model's own inference recorded as a claim | A1 attribution fidelity |
+| Omitted qualification | hedges, conditions, sample, or scope stripped from a claim the author stated carefully | A1 attribution fidelity, A3 strength of language |
+| Mismatched evidence | support attached to a claim it does not support | A1 attribution fidelity |
+| Missing claims | a contribution, conclusion, figure, or table the article marks as a claim, absent from the reading | A2 coverage |
+| Inaccurate extraction | `verbatim` text, a number, or a reference entry that is not in the article | A4 mechanical checks |
+| Hard to follow | a reading that repeats itself or covers the article unevenly | A5 detail and readability |
+| Unexamined evidence | evidence taken at face value | B1 premise acceptability |
+| Straw man | criticism of a claim the author did not make | B2 relevance of critique |
+| Overreach | evidence that only permits a conclusion treated as if it required it | B3 sufficiency |
+| Missed assumptions | conclusions that rest on unstated warrants or lack a needed qualifier | B4 unstated warrants and missing qualifiers |
+| Blurred voice | the model's judgment presented as the author's position | B5 self-attribution |
+| Errors about the article | a misread number, a misdescribed passage, a problem the article does not bear out | B6 correctness |
 
-In Phase 2, these failure modes are what a head-to-head judgment looks for.
-Claude, which helped build the system, reads each experiment's article and
-every run side by side and judges which runs caught the most, recorded it
-most faithfully, and reasoned best about the argument, beside what each cost
-([ADR-0019](docs/adr/0019-four-phases-head-to-head-evaluation.md)). The judge
-needs checking as well, since it is a model making claims about another
-model's claims, and it is not blind: it knows the prompts and my views. So I
-check a sample of its judgments against my own reading. Where we disagree,
-that marks a case worth investigating rather than a verdict. An evaluation I
-have not checked is not evidence that an analysis is good.
+The close reading is scored on A1–A5 and the argument evaluation on B1–B6. In
+Phase 2, Claude used the same failure modes to compare runs head to head
+([AB_TESTING_RUBRIC.md](docs/AB_TESTING_RUBRIC.md),
+[ADR-0019](docs/adr/0019-four-phases-head-to-head-evaluation.md)).
 
 ### The A/B experiments
 
 The coding assistants suggested extracting text from the PDFs and preparing
-image crops for content such as figures and tables. After that approach was
-underway, I asked: **Why not just send the PDF?** We had built a preparation
-pipeline without first testing whether it improved the analysis. Phase 1 tests
-that, along with which model to use and, now, whether the API is needed at all.
-
-Phase 1 runs as two experiments, one per article, the second designed around
-what the first left open
+image crops for figures and tables. After that was underway, I asked: **Why
+not just send the PDF?** We had built a preparation pipeline without testing
+whether it helped. So Phase 1 ran two experiments, one article each, with the
+same prompts throughout
 ([ADR-0015](docs/adr/0015-phase-1-as-three-experiments.md),
-[ADR-0019](docs/adr/0019-four-phases-head-to-head-evaluation.md)). The prompts
-stay the same throughout; what changes is how they are run.
+[ADR-0019](docs/adr/0019-four-phases-head-to-head-evaluation.md)):
 
-**Experiment 1 — Barnett (complete).** Three model configurations, each with
-both input methods, for six runs:
+- **Barnett** compared three model configurations, each given the PDF and
+  given extracted text with crops.
+- **Kanbur** gave only the PDF and compared three ways of running GPT-6.1 Sol
+  — the API, the ChatGPT app, and Codex — at medium and high effort
+  ([ADR-0017](docs/adr/0017-experiment-2-api-against-the-app-with-the-primer.md),
+  [ADR-0020](docs/adr/0020-codex-joins-experiment-2.md)).
 
-| | GPT-6.1 Sol, medium effort | GPT-6.1 Sol, high effort | GPT-6 Astra, low effort |
-| --- | --- | --- | --- |
-| **Full PDF** | 1 | 1 | 1 |
-| **Extracted text + crops** | 1 | 1 | 1 |
+Phase 2 judged each experiment as a blind tournament. Runs met head to head, the
+judge read the article and both runs without knowing which was which, and the
+winner went on. [EVALUATION_KEY.md](docs/EVALUATION_KEY.md) has every verdict
+and what each run cost.
 
-Astra cost about four times as much as Sol and recorded fewer claims, without
-reading the article better that I could see. The two input methods produced
-readings of about the same quality, while the prepared text needed manual
-fixes and, on the next article, lost every figure.
+**Barnett: GPT-6.1 Sol medium, from the PDF.** Sol high was no better, and
+Astra low cost about four times as much without reading better. The PDF beat
+the prepared text in the final, and the prepared text had needed manual fixes.
 
-**Experiment 2 — kanbur (complete).** The PDF only, and a new question: does the API add
-anything over the ChatGPT app I already use, set up with my instructions for
-Sunny, the persona I work with — or over Codex, the coding agent I build this
-project with? The same prompts run on the same model, GPT-6.1 Sol, three ways,
-at two reasoning efforts, for six runs
-([ADR-0017](docs/adr/0017-experiment-2-api-against-the-app-with-the-primer.md),
-[ADR-0020](docs/adr/0020-codex-joins-experiment-2.md)):
+![Barnett tournament bracket: Sol medium wins both divisions, and Sol medium on the PDF wins the final.](docs/assets/evaluation-bracket.svg)
 
-| | API | App, work mode | Codex |
-| --- | --- | --- | --- |
-| **Medium effort** | 1 | 1 | 1 |
-| **High effort** | 1 | 1 | 1 |
+**Kanbur: GPT-6.1 Sol medium, through Codex.** Codex won every round,
+narrowly, and medium beat high in the final. The API cost $0.55–0.64 a run;
+Codex ran within the ChatGPT plan.
 
-Each run makes the close reading and the argument evaluation, and the API runs
-also write the primer. In the app, memory is off and my instructions for Sunny
-are on. With the same model throughout, a difference between them comes from
-how the prompts are run. Codex reads its instructions from
-[`prompts/`](prompts) and writes its own output, and says how it read the PDF.
-A coding agent might have extracted the text alone, which would have made its
-runs closer to the prepared-text method; instead, in every session it
-extracted the text and also viewed the pages as images, so it saw the figures,
-tables, and equations as printed, as the API and the app do.
+![Kanbur tournament bracket: Codex wins both divisions, and Codex medium beats Codex high in the final.](docs/assets/kanbur-evaluation-bracket.svg)
 
-I started my notes on kanbur and stopped after three sections: the paper is
-written for specialists, and without background I was recording mostly what I
-did not understand. That reading is what showed the system needed the primer.
-So Experiment 2 is judged without a full set of my notes: the runs are compared
-with each other, against the article, and through the mechanical checks.
-
-The app runs are done by hand, with one addition the app needs: since it
-cannot enforce the output schema, call 1 asks for JSON in that shape. If the
-app reads as well, the API's value is what surrounds the model: enforced
-structure, run records with exact usage and cost, the same settings every
-time, and analyzing a collection without pasting it article by article.
-
-There is no third experiment
-([ADR-0019](docs/adr/0019-four-phases-head-to-head-evaluation.md)). Lei, the third article, is analyzed with the rest of
-the collection, and the question of the PDF against prepared text is settled
-in Phase 2 from Barnett, where both ran.
-
-For every run I record what the API reports: token usage, calculated cost, and
-runtime. The app reports none of these. Codex, on my ChatGPT Pro plan, reports
-no tokens either, only a weekly limit: its four sessions took about 7 to 8
-minutes per close reading and 3 per evaluation, and used about 1% of the week.
-Phase 2 compares the runs head to head
-for faithful representation of the article and the quality of their
-judgments about its argument.
-
-The results will help me choose how to analyze the full 16-article collection.
-Three articles provide an initial comparison, not a conclusion about which
-approach works best across all research topics. The broader question remains
-whether the system improves my research enough to justify the time spent
-preparing, reviewing, and correcting its output.
+So the collection runs in Codex, on Sol medium, from the PDF
+([ADR-0021](docs/adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md)).
+It is the choice for now, not a finding: Barnett never ran in Codex, and every
+kanbur margin was narrow. And two articles are a first comparison, not a
+conclusion about what works across research topics. The broader question
+remains whether the system improves my research enough to justify the time
+spent reviewing and correcting its output.
 
 ## Development approach and lessons
 
@@ -318,16 +269,17 @@ What has been difficult about working this way:
 
 | | |
 | --- | --- |
-| **Working now** | single source analysis as two calls — the close reading and the argument evaluation — running end to end with run records, the primer, and PDF preparation into cleaned text and crops |
+| **Working now** | single source analysis in Codex: five calls run by one script — the close reading, a claims reference, its judgment, the argument evaluation, and its judgment. Also the API path with run records, the primer, and PDF preparation |
+| **Done** | the seven articles analyzed, judged, and accepted into [`outputs/collection.yaml`](outputs/collection.yaml) |
 | **Designed, not yet built** | synthesis with its claims store and retrieval, and the research assistant's guided questions |
-| **Next** | Phase 3: analyzing the collection in Codex, on GPT-6.1 Sol at medium effort, from the PDF ([ADR-0021](docs/adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md)) |
+| **Next** | Phase 3: the claims store and synthesis across the seven accepted close readings |
 
 | Phase | What it does |
 | --- | --- |
 | 0 | **Review and redesign**: audit the earlier code and restructure the repository and documentation around these phases *(complete)* |
 | 1 | **A/B testing**: two experiments — Barnett comparing models and input methods, kanbur comparing the API against the ChatGPT app and Codex *(complete)* |
-| 2 | **Evaluation**: a head-to-head judgment of both experiments by Claude, checked by me, and the choice of model, effort, input method, and API or app *(configuration chosen: Codex, Sol medium, PDF)* |
-| 3 | **Synthesis**: analyze the rest of the collection and accept each analysis; a claims store from the close readings; synthesis across sources; and retrieval on the same store |
+| 2 | **Evaluation**: a head-to-head judgment of both experiments by Claude, checked by me, and the choice of model, effort, input method, and API or app *(complete: Codex, Sol medium, PDF)* |
+| 3 | **Synthesis**: analyze the rest of the collection and accept each analysis *(done)*; a claims store from the close readings; synthesis across sources; and retrieval on the same store |
 | 4 | **Research assistant**: the primer and guided questions about the article |
 
 The phases were simplified from seven to four
@@ -379,7 +331,8 @@ simplifies, or removes.
 │   ├── REPOSITORY.md                 every file, and why it exists
 │   ├── RUBRIC.md                     Phase 3: the criteria for judging each analysis
 │   ├── adr/0001-0022.md              one record per architectural decision
-│   ├── assets/                       Phase 2: the tournament brackets shown in the key
+│   ├── assets/                       the README's diagrams
+│   │   ├── single-source-flow.svg    the five calls for one article
 │   │   ├── evaluation-bracket.svg    Barnett's
 │   │   └── kanbur-evaluation-bracket.svg  kanbur's
 │   └── PROMPT_LOG.md                 the prompt log, every phase in one file
@@ -395,24 +348,22 @@ simplifies, or removes.
 ### Output layout
 ```
 outputs/                              created by the pipeline
-├── preparation/<slug>/               prepared text, crops, prep_record.json
-├── ab_testing/<slug>/<config>/       Phase 1: analysis, argument evaluation, run record
-├── primers/<slug>/                   primer.md + primer_record.json, on request
-├── judgments/<article>/              Phase 2: one folder per article
-│   ├── references/                   its claims and problems reference lists
-│   ├── runs/                         kanbur: the runs in one shape, ready to judge
-│   ├── <experiment>/                 the six blind judgments of an experiment
-│   └── judgments/                    Phase 3: the judgments of the collection's analysis
-├── analyses/<slug>/                  Phase 3: 01_close_reading.json to 05_argument_judgment.md
+├── analyses/<slug>/                  Phase 3: one article's five files, 01 to 05
 ├── collection.yaml                   Phase 3: the accepted analysis and evaluation per article
-└── synthesis/                        Phase 3
+├── synthesis/                        Phase 3
+├── primers/<slug>/                   primer.md + primer_record.json, on request
+├── ab_testing/<slug>/<config>/       Phase 1: analysis, argument evaluation, run record
+├── judgments/<article>/              Phase 2: the blind judgments of each experiment
+└── preparation/<slug>/               prepared text, crops, prep_record.json
 ```
 
-Analyses and evaluations are stored separately so neither is confused with the
-other and either can be regenerated alone. Data folders are named by role
-rather than by phase number, so renumbering a phase never moves source
-material. The only files the pipeline writes are JSON, plus the `.txt` and
-`.png` that preparation produces.
+An article's analysis and its judgments live together in one folder, numbered
+in the order the calls run, so the whole of it can be read top to bottom. The
+seven articles analyzed before the script keep their earlier layout: runs in
+`outputs/analyses/<slug>/` under their old names, and the claims lists,
+judgments, and scores in `outputs/judgments/<article>/`. Data folders are named
+by role rather than by phase number, so renumbering a phase never moves source
+material.
 
 ## Stack, setup, and documentation
 
@@ -421,7 +372,9 @@ embeddings and retrieval *(Phase 3)* · uv · Ruff · mypy ·
 pre-commit · GitHub Actions
 
 **Prerequisites:** [uv](https://docs.astral.sh/uv/) (manages Python 3.12
-itself) and git 2.31+.
+itself) and git 2.31+. Single source analysis also needs the Codex CLI signed
+in with ChatGPT: the ChatGPT desktop app includes it, and the script finds it
+there if `codex` is not on your `PATH`.
 
 ```bash
 brew install uv
@@ -429,7 +382,8 @@ uv sync
 uv run pre-commit install
 ```
 
-Set `OPENAI_API_KEY` in `.env` (see [`.env.example`](.env.example)).
+The API path (`run_analysis.py`, `write_primer.py`) needs `OPENAI_API_KEY` in
+`.env` (see [`.env.example`](.env.example)); the Codex script does not use it.
 
 ```bash
 uv run pytest
@@ -450,5 +404,7 @@ uv run mypy src
 - [Rubric](docs/RUBRIC.md) — the criteria for judging each analysis in the
   collection; [the A/B version](docs/AB_TESTING_RUBRIC.md) was Phase 2's
   head-to-head
+- [Evaluation Key](docs/EVALUATION_KEY.md) — Phase 2's tournaments, every
+  verdict, and what each run cost
 - [Prompt Log](docs/PROMPT_LOG.md) — one log for every phase, recording the prompts
   given to Claude Code and Codex while building this and what came back

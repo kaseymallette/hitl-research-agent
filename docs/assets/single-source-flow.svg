@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="350" viewBox="0 0 1000 350" role="img" aria-labelledby="title desc">
+<title id="title">Single source analysis: five calls for one article</title>
+<desc id="desc">The close reading (01) and the claims reference (02) both feed the close reading judgment (03). The argument evaluation (04), which reads the close reading, feeds the argument judgment (05). Both judgments go to the researcher, who accepts, revises, reruns, or rejects.</desc>
+<defs><marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1000" height="350" rx="16" fill="#f8fafc"/>
+<style>text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; } .label { font-size: 11px; letter-spacing: 1.2px; } .name { font-size: 15px; } .note { font-size: 12px; }</style>
+<text x="32" y="35" fill="#64748b" class="label">SINGLE SOURCE ANALYSIS / ONE ARTICLE</text>
+<text x="968" y="35" fill="#64748b" class="label" text-anchor="end">5 CODEX SESSIONS  ·  5 FILES</text>
+
+<text x="48" y="82" fill="#2563eb" class="label">CLOSE READING</text>
+<path d="M 268 121 H 292 V 150 H 314" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round" marker-end="url(#head)"/>
+<path d="M 268 179 H 292 V 150" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"/>
+<rect x="48" y="100" width="220" height="42" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+<rect x="58" y="110" width="26" height="22" rx="4" fill="#e2e8f0"/>
+<text x="71" y="125" fill="#475569" class="note" text-anchor="middle" font-weight="700">01</text>
+<text x="94" y="126" fill="#0f172a" class="name">Close reading</text>
+<rect x="48" y="158" width="220" height="42" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+<rect x="58" y="168" width="26" height="22" rx="4" fill="#e2e8f0"/>
+<text x="71" y="183" fill="#475569" class="note" text-anchor="middle" font-weight="700">02</text>
+<text x="94" y="184" fill="#0f172a" class="name">Claims reference</text>
+<rect x="318" y="129" width="250" height="42" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+<rect x="328" y="139" width="26" height="22" rx="4" fill="#2563eb"/>
+<text x="341" y="154" fill="#ffffff" class="note" text-anchor="middle" font-weight="700">03</text>
+<text x="364" y="155" fill="#0f172a" class="name" font-weight="600">Close reading judgment</text>
+<text x="443" y="192" fill="#2563eb" class="note" text-anchor="middle">scored A1–A5</text>
+
+<text x="48" y="246" fill="#0f766e" class="label">ARGUMENT EVALUATION</text>
+<path d="M 48 121 H 32 V 285 H 44" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" stroke-linejoin="round" marker-end="url(#head)"/>
+<path d="M 268 285 H 314" fill="none" stroke="#0f766e" stroke-width="2" marker-end="url(#head)"/>
+<rect x="48" y="264" width="220" height="42" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+<rect x="58" y="274" width="26" height="22" rx="4" fill="#e2e8f0"/>
+<text x="71" y="289" fill="#475569" class="note" text-anchor="middle" font-weight="700">04</text>
+<text x="94" y="290" fill="#0f172a" class="name">Argument evaluation</text>
+<text x="158" y="324" fill="#94a3b8" class="note" text-anchor="middle">reads the close reading</text>
+<rect x="318" y="264" width="250" height="42" rx="6" fill="#f0fdfa" stroke="#0f766e"/>
+<rect x="328" y="274" width="26" height="22" rx="4" fill="#0f766e"/>
+<text x="341" y="289" fill="#ffffff" class="note" text-anchor="middle" font-weight="700">05</text>
+<text x="364" y="290" fill="#0f172a" class="name" font-weight="600">Argument judgment</text>
+<text x="443" y="324" fill="#0f766e" class="note" text-anchor="middle">scored B1–B6</text>
+
+<path d="M 568 150 H 612 V 218 H 648" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#head)"/>
+<path d="M 568 285 H 612 V 218" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round"/>
+<rect x="652" y="188" width="316" height="60" rx="8" fill="#0f172a"/>
+<text x="810" y="213" fill="#ffffff" class="name" text-anchor="middle" font-weight="600">I review and decide</text>
+<text x="810" y="234" fill="#cbd5e1" class="note" text-anchor="middle">accept · revise · rerun · reject</text>
+<text x="810" y="272" fill="#64748b" class="note" text-anchor="middle">a revision edits 01 or 04, then its judgment reruns</text>
+</svg>
