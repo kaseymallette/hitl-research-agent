@@ -36,7 +36,7 @@ matter for relevance: a source about process-grade cooling water is not
 evidence about drinking water, and treating them as the same thing is the first
 way a judgment about relevance goes wrong.
 
-Synthesis uses 7 articles, in
+The collection has 10 articles, in
 [`data/research/synthesis/`](data/research/synthesis). Two of them, Barnett
 and kanbur, are also the experiment set in
 [`data/research/ab_testing/`](data/research/ab_testing).
@@ -52,7 +52,7 @@ I collected the articles for this pilot study myself, using the research questio
 | --- | --- | --- | --- |
 | **Single source analysis** | one article | a close reading and an argument evaluation, each with a judgment | working |
 | **Synthesis** | the accepted close readings | a comparison of what the authors claim, with each position attributed to its source | planned |
-| **Research assistant** | one article | a primer on the article's field, and later guided questions about it | primer working |
+| **Research assistant** | one article | background on the article's field, and guided questions about it | planned |
 
 No agent is given a research question, so its output isn't shaped to one
 question and can be reused for others
@@ -119,23 +119,13 @@ own reading, so they are a guide to where to look, not evidence that an
 analysis is good. Neither the readings nor the judges look up the works an
 article cites; everything is checked against the article alone.
 
-### A primer before the reading
-
-Some articles are written for specialists. Reading kanbur, I could record its
-numbers but not tell whether they were good, bad, or ordinary. So on request
-the system writes a primer: the concepts an article relies on, what its
-numbers are measured against, and where it sits in its field
-([ADR-0016](docs/adr/0016-a-primer-before-the-reading.md)). It comes from the
-model's general knowledge, not the article, so I read it as a briefing, not
-as evidence. It is never given to the analysis. It runs through the API
-(`scripts/write_primer.py`), so each primer is billed.
-
 ## Single source analysis: five calls per article
 
 Every article goes through the same five calls. Two write the readings, one
 writes a reference list, and two judge the readings. Each call is its own
-Codex session on GPT-6.1 Sol at medium effort, reading the PDF, and each
-session sees only the files it needs, so the judges work independently
+Codex session on GPT-6.1 Sol at medium effort, reading the PDF, a setup
+chosen by [the A/B experiments](#the-ab-experiments) below. Each session sees
+only the files it needs, so the judges work independently
 ([ADR-0021](docs/adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md),
 [ADR-0022](docs/adr/0022-five-calls-five-files-one-folder.md)).
 
@@ -244,6 +234,117 @@ kanbur margin was narrow. And two articles are a first comparison, not a
 conclusion about what works across research topics. The broader question
 remains whether the system improves my research enough to justify the time
 spent reviewing and correcting its output.
+
+## Results
+
+The collection is ten articles, each analyzed and judged with the same five
+calls. Seven are accepted into
+[`outputs/collection.yaml`](outputs/collection.yaml); three are new, and their
+links work once their runs are committed.
+
+### The five files
+
+| Article | 01 | 02 | 03 | 04 | 05 |
+| --- | --- | --- | --- | --- | --- |
+| Alissa et al. 2025 | [close reading](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/01_close_reading.json) | [claims reference](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/02_claims_reference.md) | [judgment](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/04_argument_evaluation.md) | [judgment](outputs/analyses/alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds/05_argument_judgment.md) |
+| Alston et al. 2026 | [close reading](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/01_close_reading.json) | [claims reference](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/02_claims_reference.md) | [judgment](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/04_argument_evaluation.md) | [judgment](outputs/analyses/alston_et_al_2026_cooling_choices_water_impacts_grid/05_argument_judgment.md) |
+| Barnett-Itzhaki 2026 | [close reading](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/01_close_reading.json) | [claims reference](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/02_claims_reference.md) | [judgment](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/04_argument_evaluation.md) | [judgment](outputs/analyses/barnett_itzhaki_2026_water_footprint_artificial_intelligence/05_argument_judgment.md) |
+| Ceres 2026 *(new)* | [close reading](outputs/analyses/ceres_2026_water_behind_the_watts/01_close_reading.json) | [claims reference](outputs/analyses/ceres_2026_water_behind_the_watts/02_claims_reference.md) | [judgment](outputs/analyses/ceres_2026_water_behind_the_watts/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/ceres_2026_water_behind_the_watts/04_argument_evaluation.md) | [judgment](outputs/analyses/ceres_2026_water_behind_the_watts/05_argument_judgment.md) |
+| CRS 2026 *(new)* | [close reading](outputs/analyses/crs_2026_data_centers_and_water_faq/01_close_reading.json) | [claims reference](outputs/analyses/crs_2026_data_centers_and_water_faq/02_claims_reference.md) | [judgment](outputs/analyses/crs_2026_data_centers_and_water_faq/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/crs_2026_data_centers_and_water_faq/04_argument_evaluation.md) | [judgment](outputs/analyses/crs_2026_data_centers_and_water_faq/05_argument_judgment.md) |
+| Herrera et al. 2025 *(new)* | [close reading](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/01_close_reading.json) | [claims reference](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/02_claims_reference.md) | [judgment](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/04_argument_evaluation.md) | [judgment](outputs/analyses/herrera_et_al_2025_sustainable_ai_infrastructure/05_argument_judgment.md) |
+| Kanbur et al. 2020 | [close reading](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/01_close_reading.json) | [claims reference](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/02_claims_reference.md) | [judgment](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/04_argument_evaluation.md) | [judgment](outputs/analyses/kanbur_et_al_2020_desalination_integrated_data_center_cooling/05_argument_judgment.md) |
+| Katakam et al. 2027 | [close reading](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/01_close_reading.json) | [claims reference](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/02_claims_reference.md) | [judgment](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/04_argument_evaluation.md) | [judgment](outputs/analyses/katakam_et_al_2027_desalination_systems_data_center_water_needs/05_argument_judgment.md) |
+| Lei et al. 2025 | [close reading](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/01_close_reading.json) | [claims reference](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/02_claims_reference.md) | [judgment](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/04_argument_evaluation.md) | [judgment](outputs/analyses/lei_et_al_2025_water_use_data_center_workloads/05_argument_judgment.md) |
+| Li et al. 2025 | [close reading](outputs/analyses/li_et_al_2025_making_ai_less_thirsty/01_close_reading.json) | [claims reference](outputs/analyses/li_et_al_2025_making_ai_less_thirsty/02_claims_reference.md) | [judgment](outputs/analyses/li_et_al_2025_making_ai_less_thirsty/03_close_reading_judgment.md) | [argument evaluation](outputs/analyses/li_et_al_2025_making_ai_less_thirsty/04_argument_evaluation.md) | [judgment](outputs/analyses/li_et_al_2025_making_ai_less_thirsty/05_argument_judgment.md) |
+
+### Scores
+
+The scores of the accepted version, from 03 and 05, on the
+[rubric](docs/RUBRIC.md). A1 is the share of sampled claims, and of their
+support items, scored 2. A2 counts reference items missed or partial, and A4
+mechanical failures. A3 and B1–B5 are out of 2. B6 gives the problems the
+evaluation raised that the judge confirmed, and its factual errors.
+
+| Article | A1 claims | A1 support | A2 missed | A3 | A4 failures | B1 | B2 | B3 | B4 | B5 | B6 confirmed | B6 errors |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Alissa et al. 2025 | 100% | 100% | 0 | 2 | 0 | 2 | 2 | 2 | 2 | 2 | 8/8 | 0 |
+| Alston et al. 2026 | 97% | 100% | 0 | 2 | 0 | 2 | 2 | 2 | 2 | 2 | 13/13 | 0 |
+| Barnett-Itzhaki 2026 | 97% | 100% | 0 | 2 | 0 | 2 | 1 | 2 | 2 | 2 | 11/13 | 0 |
+| Ceres 2026 *(new)* | 93% | 100% | 0 | 1 | 0 | 2 | 1 | 2 | 2 | 2 | 10/12 | 0 |
+| CRS 2026 *(new)* | | | | | | | | | | | | |
+| Herrera et al. 2025 *(new)* | | | | | | | | | | | | |
+| Kanbur et al. 2020 | 100% | 100% | 0 | 2 | 0 | 2 | 1 | 2 | 2 | 2 | 13/13 | 0 |
+| Katakam et al. 2027 | 93% | 91% | 0 | 1 | 0 | 2 | 2 | 2 | 2 | 2 | 11/11 | 0 |
+| Lei et al. 2025 | 97% | 100% | 1 | 1 | 0 | 2 | 1 | 2 | 2 | 2 | 13/16 | 0 |
+| Li et al. 2025 | 97% | 100% | 0 | 1 | 0 | 2 | 1 | 2 | 2 | 2 | 14/17 | 0 |
+
+### Commands
+
+The command for each article:
+
+**Alissa et al. 2025**
+
+```bash
+uv run python scripts/run_single_source.py alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds
+```
+
+**Alston et al. 2026**
+
+```bash
+uv run python scripts/run_single_source.py alston_et_al_2026_cooling_choices_water_impacts_grid
+```
+
+**Barnett-Itzhaki 2026**
+
+```bash
+uv run python scripts/run_single_source.py barnett_itzhaki_2026_water_footprint_artificial_intelligence
+```
+
+**Ceres 2026**
+
+```bash
+uv run python scripts/run_single_source.py ceres_2026_water_behind_the_watts
+```
+
+**CRS 2026**
+
+```bash
+uv run python scripts/run_single_source.py crs_2026_data_centers_and_water_faq
+```
+
+**Herrera et al. 2025**
+
+```bash
+uv run python scripts/run_single_source.py herrera_et_al_2025_sustainable_ai_infrastructure
+```
+
+**Kanbur et al. 2020**
+
+```bash
+uv run python scripts/run_single_source.py kanbur_et_al_2020_desalination_integrated_data_center_cooling
+```
+
+**Katakam et al. 2027**
+
+```bash
+uv run python scripts/run_single_source.py katakam_et_al_2027_desalination_systems_data_center_water_needs
+```
+
+**Lei et al. 2025**
+
+```bash
+uv run python scripts/run_single_source.py lei_et_al_2025_water_use_data_center_workloads
+```
+
+**Li et al. 2025**
+
+```bash
+uv run python scripts/run_single_source.py li_et_al_2025_making_ai_less_thirsty
+```
+
+Each article's five files are in `outputs/analyses/<slug>/`. The command runs
+only the calls whose file is missing, so for an accepted article it does
+nothing; add `--only 03`, or any call's number, to rerun one call.
 
 ## Development approach and lessons
 
