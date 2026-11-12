@@ -403,10 +403,10 @@ From here on an article runs through `scripts/run_single_source.py`
 ([ADR-0022](adr/0022-five-calls-five-files-one-folder.md)): five Codex
 sessions, each writing one file to `outputs/analyses/<slug>/`.
 
-1. `01_close_reading.json`, from `prompts/close-reading.md`.
+1. `01_close_reading.json`, from `prompts/01_close_reading.md`.
 2. `02_claims_reference.md`, from the article alone.
 3. `03_close_reading_judgment.md`, 01 against the article and 02 on A1–A5.
-4. `04_argument_evaluation.md`, from `prompts/evaluate-argument.md` and 01.
+4. `04_argument_evaluation.md`, from `prompts/04_argument_evaluation.md` and 01.
 5. `05_argument_judgment.md`, 04 against the article alone on B1–B6. There
    is no problems reference list: it would be the judge's own opinion, and
    scoring against it would measure agreement with the judge.

@@ -142,14 +142,21 @@ a change to two of these fields, which is why they are configuration.
 
 ## `prompts/`
 
-`close-reading.md` and `evaluate-argument.md`: the two analysis calls as
-instruction files for an agent such as Codex, which reads the article and
-writes its own output ([ADR-0020](adr/0020-codex-joins-experiment-2.md)).
-Each holds the prompt the API sends, word for word, with the source header to
-fill from `source.yaml`, the close reading's JSON format, the file to write,
-and a request to say in the final message how the PDF was read. They name the
-files `run_single_source.py` stages; `tests/test_prompt_files.py` keeps their
-prompt text identical to `prompts.py`.
+One file per call of single-source analysis, numbered like the files the
+calls write: `01_close_reading.md`, `02_claims_reference.md`,
+`03_close_reading_judgment.md`, `04_argument_evaluation.md`,
+`05_argument_judgment.md`, and the two revisions, `01_close_reading_revise.md`
+and `04_argument_evaluation_revise.md`. Each file is exactly what the session
+is sent: `run_single_source.py` reads it from here, and the same file can be
+pasted into a Codex session to run the call by hand. Each names the files its
+session reads and writes.
+
+`01` and `04` hold the prompts the API sends, word for word, with the source
+header to fill from `source.yaml` and the close reading's JSON format
+([ADR-0020](adr/0020-codex-joins-experiment-2.md));
+`tests/test_prompt_files.py` keeps their prompt text identical to
+`prompts.py`, and `tests/test_run_single_source.py` checks that every file
+here is a call's request.
 
 ---
 
@@ -264,7 +271,7 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 105 tests
+## `tests/` — 106 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
@@ -275,7 +282,7 @@ keeping. If it loses, most of these 793 lines go.
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
 | `test_run_analysis.py` | 15 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun, both documents written, a failed evaluation keeping the close reading |
 | `test_prompt_files.py` | 1 | The agent files in `prompts/` carry the prompt text the code sends |
-| `test_run_single_source.py` | 11 | The Codex harness, against a fake Codex CLI: five files in order, each session sees only its call's files, no API key passed, resume, `--only`, missing inputs, revision in place, technical failures write nothing |
+| `test_run_single_source.py` | 12 | The Codex harness, against a fake Codex CLI: each request read from its file in `prompts/`, five files in order, each session sees only its call's files, no API key passed, resume, `--only`, missing inputs, revision in place, technical failures write nothing |
 | `test_write_primer.py` | 2 | The primer script, offline: a labelled primer with its cost, and a failure that leaves a record and no primer |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file

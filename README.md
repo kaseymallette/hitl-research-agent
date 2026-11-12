@@ -149,7 +149,10 @@ session sees only the files it needs, so the judges work independently
 | **04** Argument evaluation | the model's own judgment of the argument | `04_argument_evaluation.md` |
 | **05** Argument judgment | checks 04 against the article | `05_argument_judgment.md` |
 
-All five files go to `outputs/analyses/<slug>/`.
+All five files go to `outputs/analyses/<slug>/`. Each call's prompt is the
+file of the same number in [`prompts/`](prompts/), exactly as the session is
+sent it, so any call can also be run by hand: paste its prompt into a new
+Codex session in a folder holding the files it names.
 
 ### Run it
 
@@ -305,7 +308,7 @@ simplifies, or removes.
 │   ├── inputs.py                     attachment loading and validation; annotations
 │   ├── cost.py                       per-model rates; cost from reported usage
 │   └── config.py                     Settings: key, model, effort, limits
-├── prompts/                          close-reading and evaluation instructions for an agent run
+├── prompts/                          one prompt per call, 01 to 05, plus the two revisions
 ├── scripts/
 │   ├── run_single_source.py          Phase 3: an article's five Codex calls -> its five files
 │   ├── run_analysis.py               one A/B cell -> analysis, argument evaluation, run record
@@ -395,8 +398,8 @@ uv run mypy src
   model, and the rules that hold across every phase
 - [Build Plan](docs/BUILD_PLAN.md) — the phases in engineering detail, with
   rubrics and procedures
-- [Prompts](prompts/) — the close-reading and argument-evaluation prompts in
-  full, as instruction files for an agent run
+- [Prompts](prompts/) — the prompt for each of the five calls, and the two
+  revisions, exactly as each session is sent it
 - [Repository Inventory](docs/REPOSITORY.md) — every file, what it is for, and
   where the code is heavier than it needs to be
 - [Decision Records](docs/adr/) — one dated record per architectural decision,

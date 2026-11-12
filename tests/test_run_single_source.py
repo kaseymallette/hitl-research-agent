@@ -121,13 +121,13 @@ def test_each_session_sees_only_what_its_call_reads(
         "02_claims_reference.md",
         "RUBRIC.md",
         "article.pdf",
-        "prompts/close-reading.md",
+        "prompts/01_close_reading.md",
     ]
     assert seen["05"] == [
         "04_argument_evaluation.md",
         "RUBRIC.md",
         "article.pdf",
-        "prompts/evaluate-argument.md",
+        "prompts/04_argument_evaluation.md",
     ]
 
 
@@ -205,3 +205,15 @@ def test_a_failed_revision_leaves_the_close_reading_as_it_was(
     plan = {"01_revise": {"write": ["01_close_reading.json", "broken {"]}}
     assert run(harness, tmp_path, monkeypatch, plan, "--revise", "01") == 1
     assert (article_dir(tmp_path) / "01_close_reading.json").read_text() == original
+
+
+def test_every_call_reads_its_request_from_its_prompt_file() -> None:
+    """prompts/ holds exactly what each session is sent, so a call can be run
+    by hand by pasting the same file."""
+    harness = load_harness()
+    calls = [*harness.CALLS.values(), *harness.REVISIONS.values()]
+    assert sorted(call.prompt for call in calls) == sorted(
+        p.name for p in (REPO_ROOT / "prompts").glob("*.md")
+    )
+    for call in calls:
+        assert call.request == (REPO_ROOT / "prompts" / call.prompt).read_text(encoding="utf-8")

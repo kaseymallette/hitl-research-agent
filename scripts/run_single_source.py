@@ -22,11 +22,14 @@ picks up where it left off. `--only` reruns one call and overwrites its file.
 `--revise 04` the argument evaluation from 05's; commit first if you want the
 earlier version, then rerun the judgment with `--only`.
 
-Each session runs in a temporary folder holding only the files that call reads,
-so no session can see another's judgment. Only a technical failure stops a run:
-Codex exiting with an error or timing out, the call's file not written, or a
-close reading that does not parse as JSON (ADR-0005). Codex's event log and
-final message for each call go to `.codex_runs/<slug>/`, which git ignores.
+Each call's request is its file in `prompts/` (01_close_reading.md to
+05_argument_judgment.md, and the two _revise files), so a call can be run by
+hand by pasting the same file. Each session runs in a temporary folder holding
+only the files that call reads, so no session can see another's judgment.
+Only a technical failure stops a run: Codex exiting with an error or timing
+out, the call's file not written, or a close reading that does not parse as
+JSON (ADR-0005). Codex's event log and final message for each call go to
+`.codex_runs/<slug>/`, which git ignores.
 """
 
 from __future__ import annotations
@@ -55,11 +58,15 @@ MODEL = "gpt-6.1-sol"
 EFFORT = "medium"
 TIMEOUT_SECONDS = 60 * 60
 
+PROMPTS = REPO_ROOT / "prompts"
+CLOSE_READING_PROMPT = "prompts/01_close_reading.md"
+ARGUMENT_EVALUATION_PROMPT = "prompts/04_argument_evaluation.md"
+
 # Repository files a session may be given, under the name it sees them by.
 REPO_FILES = {
     "RUBRIC.md": REPO_ROOT / "docs" / "RUBRIC.md",
-    "prompts/close-reading.md": REPO_ROOT / "prompts" / "close-reading.md",
-    "prompts/evaluate-argument.md": REPO_ROOT / "prompts" / "evaluate-argument.md",
+    CLOSE_READING_PROMPT: REPO_ROOT / CLOSE_READING_PROMPT,
+    ARGUMENT_EVALUATION_PROMPT: REPO_ROOT / ARGUMENT_EVALUATION_PROMPT,
 }
 SOURCE_FIELDS = ("source_title", "source_type", "publisher", "doi")
 
@@ -75,79 +82,33 @@ class Call:
     label: str
     output: str
     reads: tuple[str, ...]
-    request: str
+    prompt: str  # file in prompts/ whose text is the session's request
+
+    @property
+    def request(self) -> str:
+        return (PROMPTS / self.prompt).read_text(encoding="utf-8")
 
 
 CALLS = {
-    "01": Call(
-        "01",
-        CLOSE_READING,
-        ("article.pdf", "source.yaml", "prompts/close-reading.md"),
-        "Follow prompts/close-reading.md. The files it names are in this folder.",
-    ),
-    "02": Call(
-        "02",
-        CLAIMS_REFERENCE,
-        ("article.pdf", "RUBRIC.md"),
-        """\
-Hi! You're writing a reference list for judging a close reading of an
-academic article. Please start by reading RUBRIC.md, which explains the
-setup, and especially its section "The claims reference list".
-
-This session reads article.pdf on its own and writes the article's own claims
-to 02_claims_reference.md, as the rubric describes. A later session judges the
-close reading against your list as written, so take care that it's complete:
-cover the conclusion of every section and subsection, not only the article's
-summary claims, along with every contribution, abstract claim, figure, and
-table.
-
-Please open only RUBRIC.md and article.pdf.""",
-    ),
+    "01": Call("01", CLOSE_READING, ("article.pdf", "source.yaml"), "01_close_reading.md"),
+    "02": Call("02", CLAIMS_REFERENCE, ("article.pdf", "RUBRIC.md"), "02_claims_reference.md"),
     "03": Call(
         "03",
         CLOSE_READING_JUDGMENT,
-        (
-            "article.pdf",
-            "RUBRIC.md",
-            "prompts/close-reading.md",
-            CLAIMS_REFERENCE,
-            CLOSE_READING,
-        ),
-        """\
-Hi! You're judging a close reading of an academic article. Please start by
-reading RUBRIC.md, which explains the setup and the criteria, and
-prompts/close-reading.md, which holds the instructions the reading followed.
-
-Read article.pdf and 02_claims_reference.md, the reference list an earlier
-session wrote from the article. Use it as written; don't change it.
-
-Then open 01_close_reading.json and judge it against the article and the list
-on A1-A5. Write the judgment to 03_close_reading_judgment.md.
-
-Please open only these files.""",
+        ("article.pdf", "RUBRIC.md", CLOSE_READING_PROMPT, CLAIMS_REFERENCE, CLOSE_READING),
+        "03_close_reading_judgment.md",
     ),
     "04": Call(
         "04",
         ARGUMENT_EVALUATION,
-        ("article.pdf", "source.yaml", "prompts/evaluate-argument.md", CLOSE_READING),
-        "Follow prompts/evaluate-argument.md. The files it names are in this folder.",
+        ("article.pdf", "source.yaml", CLOSE_READING),
+        "04_argument_evaluation.md",
     ),
     "05": Call(
         "05",
         ARGUMENT_JUDGMENT,
-        ("article.pdf", "RUBRIC.md", "prompts/evaluate-argument.md", ARGUMENT_EVALUATION),
-        """\
-Hi! You're judging an evaluation of an academic article's argument. Please
-start by reading RUBRIC.md, which explains the setup and the criteria, and
-prompts/evaluate-argument.md, which holds the instructions the evaluation
-followed.
-
-Read article.pdf, then open 04_argument_evaluation.md and judge it against
-the article on B1-B6. There is no reference list for this session: check each
-problem the evaluation raises against the article itself. Write the judgment
-to 05_argument_judgment.md.
-
-Please open only these files.""",
+        ("article.pdf", "RUBRIC.md", ARGUMENT_EVALUATION_PROMPT, ARGUMENT_EVALUATION),
+        "05_argument_judgment.md",
     ),
 }
 
@@ -159,27 +120,12 @@ REVISIONS = {
             "article.pdf",
             "source.yaml",
             "RUBRIC.md",
-            "prompts/close-reading.md",
+            CLOSE_READING_PROMPT,
             CLAIMS_REFERENCE,
             CLOSE_READING,
             CLOSE_READING_JUDGMENT,
         ),
-        """\
-Hi! You're revising a close reading of an academic article. Please start by
-reading prompts/close-reading.md, which holds the instructions the reading
-followed, and RUBRIC.md, which holds the criteria it was judged on.
-
-03_close_reading_judgment.md judges 01_close_reading.json against article.pdf
-and 02_claims_reference.md. Check each problem the judgment raises against the
-article itself. Where the article bears it out, fix it in
-01_close_reading.json; where it doesn't, leave that part as it is. Change
-nothing the judgment didn't raise, and keep the JSON in the same shape. Edit
-01_close_reading.json in place.
-
-In your final message, list what you changed, and each point of the judgment
-you left alone and why.
-
-Please open only these files.""",
+        "01_close_reading_revise.md",
     ),
     "04": Call(
         "04_revise",
@@ -188,28 +134,12 @@ Please open only these files.""",
             "article.pdf",
             "source.yaml",
             "RUBRIC.md",
-            "prompts/evaluate-argument.md",
+            ARGUMENT_EVALUATION_PROMPT,
             CLOSE_READING,
             ARGUMENT_EVALUATION,
             ARGUMENT_JUDGMENT,
         ),
-        """\
-Hi! You're revising an evaluation of an academic article's argument. Please
-start by reading prompts/evaluate-argument.md, which holds the instructions
-the evaluation followed, and RUBRIC.md, which holds the criteria it was
-judged on.
-
-05_argument_judgment.md judges 04_argument_evaluation.md against article.pdf.
-Check each problem the judgment raises against the article itself. Where the
-article bears it out, fix it in 04_argument_evaluation.md; where it doesn't,
-leave that part as it is. Change nothing the judgment didn't raise. The
-evaluation stays your own judgment of the argument, in prose. Edit
-04_argument_evaluation.md in place.
-
-In your final message, list what you changed, and each point of the judgment
-you left alone and why.
-
-Please open only these files.""",
+        "04_argument_evaluation_revise.md",
     ),
 }
 

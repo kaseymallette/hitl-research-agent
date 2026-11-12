@@ -98,3 +98,8 @@ well, with their accepted versions renamed 01–05 and `outputs/collection.yaml`
 pointed at them. Their earlier versions, run notes, and score tables are in
 git history. Barnett's and kanbur's Phase 2 tournaments, and the prepared
 text they were tested on, moved under `outputs/ab_testing/`.
+
+2026-11-11: the session requests moved out of the script into `prompts/`, one
+file per call numbered like its output (`01_close_reading.md` to
+`05_argument_judgment.md`, plus `01_close_reading_revise.md` and
+`04_argument_evaluation_revise.md`), so each call can also be run by hand.
