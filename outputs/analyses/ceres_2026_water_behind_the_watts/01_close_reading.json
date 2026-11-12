@@ -1,0 +1,1464 @@
+{
+  "reading_plan": "Source title: Water Behind the Watts: The Hidden Risk of Powering Data Centers. Source type: other. This is an August 2026 Ceres research and advocacy report, with 21 PDF pages: a cover, executive summary, findings overview, plant map, two-column explanatory prose, quantitative charts, case studies, stakeholder recommendations, a methodological appendix, and acknowledgments. The prose is moderately dense and becomes technical in the methods and exposure definitions. I will follow its visible page order in stretches usually corresponding to a subsection or roughly 200–500 words, slowing for methods, technology comparisons, and charts, and allowing shorter steps at natural visual or argumentative breaks. PDF page numbers identify physical order; printed page numbers are also given where useful because the map has an anomalous footer. I read extracted text alongside rendered pages, using the visible layout to resolve hidden duplicate text. Visual readings are paraphrased and identify the element. The document has inline hyperlinks and figure-source labels but no formal reference list; citation labels are retained as printed and reference_entry is null.",
+  "reading_path": [
+    {
+      "location": "PDF page 1, cover",
+      "moves": "Introduces the subject through the title and subtitle, dates the report August 2026, and frames the subject as a hidden risk. The photograph places power-generation infrastructure before the reader.",
+      "claims": [],
+      "meaning": "We begin with an invitation to look behind electricity use to a less apparent dependency. The cover establishes a risk perspective without yet explaining its basis."
+    },
+    {
+      "location": "PDF page 2, Executive Summary, opening through seven-state scope box",
+      "moves": "States the growth premise, introduces a normative standard for development, and narrows the report to indirect water use. Distinguishes attention to facility cooling from water dependence in electricity production.",
+      "claims": [
+        {
+          "text": "AI data center expansion in the U.S. is rapidly raising the stakes for water, energy, and land.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Community pushback makes it necessary to power new data centers with clean energy, improve water efficiency, and develop them fairly and affordably while protecting communities and natural resources.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water used in power generation has an even greater impact than the water used to cool technology within data centers. Ceres presents energy production as the largest and least visible share of their overall water use.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The report covers Virginia, Texas, California, Illinois, Georgia, Ohio, and Arizona, which account for about 50% of U.S. data centers. Much of their electricity is water-intensive, and many plants face water stress or drought.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The opening joins resource protection to responsible development. Its focus is a dependency that lies outside facility boundaries; the seven-state scope makes that focus concrete, although the summary has not yet shown the analysis behind it."
+    },
+    {
+      "location": "PDF page 2, Executive Summary, risk discussion and methodological note",
+      "moves": "Draws out business and community consequences, recommends policy attention, and presents risk management as an opportunity. Qualifies the basis and metric of the analysis.",
+      "claims": [
+        {
+          "text": "Water shortages, drought restrictions, and competing demands can affect generation, raise costs, complicate infrastructure development, and strain supplies for residents, farmers, and businesses.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water used to generate data center electricity should be part of the policy conversation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Companies and power producers that address these risks and other buildout impacts have a major opportunity to advance responsible AI; sustainable solutions and policies can support financial returns, business continuity, and national competitiveness.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The analysis uses 2024 plant-level EIA data across seven states, fills missing reported water-use data with modeled estimates, and measures indirect water use through withdrawals rather than consumption, including hydropower.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The summary makes its practical stakes explicit and puts withdrawals, rather than permanent water loss, at the center of what will follow. Its language aligns sustainability with business continuity and competitiveness."
+    },
+    {
+      "location": "PDF page 3, Key Findings Overview, findings 1–3 as visibly printed",
+      "moves": "Previews three quantitative findings and defines water stress in everyday terms. The page summarizes results before the main discussion; the visible text, rather than duplicate hidden extraction text, supplies the figures here.",
+      "claims": [
+        {
+          "text": "Data centers in the analyzed states depend on about 3.4 trillion gallons of freshwater annually for electricity, about 12 times annual water use in Los Angeles, Phoenix, and Washington D.C. combined.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water needed for generation varies widely with each state’s generation mix; 78% of study-area electricity came from plants using water, and Ohio, Georgia, and Virginia each generated over 90% from water-intensive thermal plants.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "California withdrew more water for energy generation than any other state because of hydropower.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Of electricity generated using water, 66% came from medium-high to extremely high water-stress areas, where demand is close to or exceeds supply; 44% came from plants in areas with at least three months of drought.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Electricity generation in Arizona and Illinois had the greatest exposure to water stress and drought.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The overview connects the scale of dependency, differences in technology, and the geography of scarcity. These are announced results at this point, with their derivation still to come."
+    },
+    {
+      "location": "PDF page 3, Key Findings Overview, findings 4–5; PDF page 4, Figure 1",
+      "moves": "Turns from physical exposure to organizational preparedness, then provides a geographical orientation through a map.",
+      "claims": [
+        {
+          "text": "Most power producers identify data centers as a primary driver of rising electricity demand, but few have considered the associated potential water risks; some existing water-management strategies could provide a foundation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Most data center operators do not account for water risks in purchased electricity. Their strategies mainly concern internal cooling technology and equipment, and only a few disclose generation-related water use.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Figure 1 maps 3,907 study-area power plants with at least 1 MW capacity and active generation in 2024. Its symbols distinguish freshwater hydropower, minimal-to-no-water solar/wind/battery/storage, freshwater thermal generation including reclaimed water, and saltwater/brackish thermal generation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 1 displays the seven-state fleet geographically rather than mapping data center locations. California has many hydropower symbols; freshwater thermal symbols appear prominently across the other mapped states. This is a reading of the map, not a quotation of its text.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "EIA 860 (2024)",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "OpenStreetMap",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The preparedness claims add an institutional dimension to the quantitative preview. The map then changes the mode of presentation and shows the generation assets that will be studied; its footer is numbered 1 despite appearing fourth in the PDF."
+    },
+    {
+      "location": "PDF page 5, printed page 4, Background — Rising Electricity Demand from Data Centers",
+      "moves": "Starts the main exposition with projected electricity growth, explains direct versus indirect water use, and supplies national estimates and projections.",
+      "claims": [
+        {
+          "text": "U.S. data center capacity is expected to nearly double, with electricity demand projected at 9%–17% of U.S. demand by 2030, compared with 4%–5% today.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The opening cites AI-driven expansion and the projection for data center electricity demand.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "AI expansion",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "9% to 17% of total U.S. demand",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "U.S. data centers consumed about 176 TWh of electricity in 2023, with an estimated indirect water dependency of 211 billion gallons based on regional grid mixes.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "A linked estimate supplies the indirect water-dependency figure.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "211 billion gallons",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "By 2030, electricity generation is projected to account for 72% of total U.S. data center water consumption, even as on-site cooling becomes more efficient and uses reclaimed water.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paragraph cites a projected indirect share of total consumption.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "projected to account for 72%",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The main exposition supplies numerical context for the earlier summary. Here the discussion concerns national consumption estimates and projections; those should remain distinct from the report’s own seven-state withdrawal estimates."
+    },
+    {
+      "location": "PDF page 5, printed page 4, Increasing Data Center Water Risk",
+      "moves": "Moves from national growth to local exposure, gives clustering and disruption examples, and infers operational and regulatory materiality.",
+      "claims": [
+        {
+          "text": "Annual water use associated with data center electricity consumption in the Phoenix region is expected to increase by 400% as planned facilities open.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Ceres attributes this regional projection to its 2025 analysis.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Drained by Data",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Many existing or planned data centers are in water-stressed regions and also obtain water-intensive power from water-stressed regions, compounding risk.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Roughly two-thirds of U.S. data centers newly built or planned between 2022 and 2025 were in water-stressed areas of states including California, Arizona, Texas, Illinois, and Virginia.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "A linked source supports the locational share.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "two-thirds",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Nine out of ten data centers have another facility within five miles, increasing pressure on shared resources and scrutiny from communities, regulators, and utilities.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites the proximity of facilities as evidence of clustering.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "nine out of 10 data centers",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Water shortages and community water concerns can disrupt power supply and constrain data center operations.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Coal and nuclear plants have curtailed output or shut down because of water strains, and drought has reduced hydropower generation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "curtailing output or shutting down",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "reduced hydropower generation",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Local opposition over water and grid capacity disrupted $130 billion of data center projects in the first quarter of 2026, and concerns about local impacts have led to state moratoriums and are shaping policy and permitting.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report links opposition, the dollar total, moratoriums, energy and water requirements, and local resource-use practices.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Local opposition over water",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "grid capacity",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "$130 billion",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "state moratoriums on data center growth",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "energy",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "water use",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "requirements and best practices",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The shift from aggregate demand to places and disruptions gives the risk framing operational content. The discussion treats clustering and overlapping water stress as reasons that facility-level water accounting alone is insufficient."
+    },
+    {
+      "location": "PDF pages 5–6, printed pages 4–5, Evaluating Water Risk from Power Generation",
+      "moves": "Defines the components of a risk assessment, explains generation and cooling mechanisms, and compares technologies with an explicit withdrawal–evaporation tradeoff. Adds procurement context and qualifications.",
+      "claims": [
+        {
+          "text": "Assessment of water risk embedded in purchased electricity requires examining grid-connected plants’ generation technology, cooling systems, fuels, water sources, seasonal demand variation, and local basin stress and drought.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Thermal generation using coal, natural gas, nuclear, geothermal, petroleum, or biomass uses significant water, especially for cooling; cooling technology strongly affects the amount.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Linked discussion identifies the magnitude of thermal water use and the importance of cooling design.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "significant volumes of water",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "varies significantly",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "type of cooling used",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Once-through cooling withdraws large amounts and returns most at a higher temperature; recirculating towers and ponds withdraw much less but lose more to evaporation. Dry cooling uses air to minimize water use.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Wind and solar need little or no operational water, whereas hydropower depends on reservoir water that can experience substantial evaporation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Nationally, natural gas supplies 40% of data center electricity, renewables 24%, nuclear 20%, and coal 15%.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The national generation mix is introduced through a linked natural-gas share.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Natural gas supplies 40% of their electricity",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Although 65% of U.S. renewable power purchase agreements signed since 2021 have been dedicated to data centers, renewable supply options are often constrained by timing, transmission, and distribution.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites the procurement share and grid/timing limitations.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "65% of renewable power purchase agreements",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "limited by timing or transmission",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This supplies mechanisms for the risks described earlier rather than treating all water use as equivalent. The cooling comparison preserves a tradeoff between withdrawals and evaporative losses, while the procurement qualification explains why low-water generation may not be immediately available."
+    },
+    {
+      "location": "PDF page 7, printed page 6, Study Area and Data Analysis through the five-step procedure",
+      "moves": "Defines the study population, gives selection and estimation procedures, and states geographical attribution assumptions. The seven-state coverage is restated rather than introduced as a new finding.",
+      "claims": [
+        {
+          "text": "The selected states span differing data center growth projections, generation sources, water stress, and drought conditions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report links projected market growth and sources of generation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "market growth projections",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "sources",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The study starts with 3,907 actively generating plants of at least 1 MW, the minimum EIA reporting threshold, and identifies 1,434 water-dependent plants after excluding saltwater/brackish use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The procedure uses 2024 EIA forms 860 and 923 and the mapped plant inventory in Figure 1.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Reported water volumes are aggregated and missing values estimated using WRI guidance; water stress and drought are characterized by spatially overlaying plant locations with Aqueduct and U.S. Drought Monitor data, assuming withdrawals occur near the plant.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The methods paragraph identifies guidance for filling unreported volumes.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "World Resources Institute’s guidance",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Data center water use is estimated by applying EPRI’s 2024 state electricity-use shares, assuming data centers obtain electricity from the state where they are located.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report identifies its state-share input.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "EPRI’s 2024 state level estimates",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Public disclosures are reviewed to assess data center companies’ handling of indirect water dependence and power producers’ responses to water risks from rapidly rising demand.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The report now specifies how it turns plant records into state-level data center estimates. The local-withdrawal and same-state-electricity assumptions are part of the method, not direct observations of each facility’s supply."
+    },
+    {
+      "location": "PDF page 7, printed page 6, Data Analysis, final paragraph",
+      "moves": "Justifies the choice of withdrawals as a risk metric and delimits the analysis. Explicitly qualifies precision and excludes several dimensions previously identified as relevant.",
+      "claims": [
+        {
+          "text": "Consumption measures water permanently lost from the local system; withdrawals measure the full volume an asset needs to operate and therefore provide a strong indicator of risk exposure.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The findings are directional estimates of the scale and direction of water risk rather than an exact accounting of water use.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water sources and seasonal electricity-demand variability matter to full assessment but are outside the analysis. On-site behind-the-meter generation, even where it uses water, and water elsewhere in the value chain are also excluded.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report points to the existence of on-site generation when delimiting its scope.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "data centers are employing power generation",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "These qualifications explain what the estimates are intended to mean. The study deliberately uses a dependency measure and a bounded scope, while acknowledging that a fuller assessment would need additional information."
+    },
+    {
+      "location": "PDF page 8, printed page 7, Key Findings 1 and city-comparison graphic",
+      "moves": "Restates the overview’s 3.4-trillion-gallon finding, identifies its 2024 basis, disaggregates the range, and makes scale tangible through municipal comparisons.",
+      "claims": [
+        {
+          "text": "Estimated data center electricity-related withdrawals in 2024 varied from 25 billion gallons in Ohio to 1.4 trillion gallons in California, applying EPRI state estimates.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The city-comparison graphic shows estimated annual embedded electricity water use of 1,404 billion gallons for California against 146 billion for Los Angeles (10×), 520 billion for Arizona against 103.5 billion for Phoenix (5×), and 753 billion for Virginia against 36.6 billion for Washington, DC (21×). These are readings of the graphic, not quotations.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The drop-shaped graphic compares state data center electricity-related withdrawals with annual city water use; the prose also supplies the California and Virginia comparisons.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "DC Water Accessed",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "LADWP Briefing Book",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "City of Phoenix",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The annual total from the overview now has a year, an allocation method, and state examples. The visual compares state-level indirect withdrawals with city water use to convey scale; it does not present those cities as the locations of all the attributed withdrawals."
+    },
+    {
+      "location": "PDF page 9, printed page 8, growth projection and Figure 2",
+      "moves": "Extends current estimates through conditional growth scenarios, preserving scenario dependence rather than asserting a single future outcome.",
+      "claims": [
+        {
+          "text": "Embedded water withdrawals for data center electricity in the analyzed states could rise to an estimated 4.1–7.6 trillion gallons by 2030.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPRI growth scenarios incorporating electricity demand, industry growth, AI adoption, and data center efficiency are applied to the estimated power-plant withdrawals.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "EPRI’s data center growth scenarios",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Figure 2 shows annual estimated embedded water in billion gallons, ordered current / low / moderate / high / higher growth: AZ 520 / 617 / 667 / 891 / 1,160; CA 1,404 / 1,681 / 1,825 / 2,482 / 3,301; GA 148 / 177 / 192 / 261 / 346; IL 201 / 239 / 259 / 349 / 460; OH 25 / 30 / 33 / 45 / 61; TX 391 / 465 / 505 / 684 / 905; VA 753 / 862 / 915 / 1,132 / 1,354. These values are read from Figure 2’s labels.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 2 provides the current values and four 2030 growth scenarios for each state.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "EIA (2024)",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Guidance For Calculating Water Use Embedded In Purchased Electricity (2020)",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "EPRI (2024)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The projection builds on the current withdrawal baseline by applying demand-growth scenarios. The chart keeps the state variation visible while showing that the stated future range depends on alternative growth assumptions."
+    },
+    {
+      "location": "PDF page 10, printed page 9, Key Findings 2 and Figure 3",
+      "moves": "Restates generation-mix findings, explains their relation to dependency, and supports them with plant counts and generation totals.",
+      "claims": [
+        {
+          "text": "Greater state-grid reliance on thermal generation or hydropower means greater freshwater requirements and indirect water dependency for data centers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water-dependent plants were 37% of the 3,907 active plants, or 1,434 plants, but generated 1,142 TWh of the study area’s 1,467 TWh in 2024, almost 78%.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The remaining 63% of plants—solar, wind, battery storage, and thermal facilities using saltwater—generated about 325 TWh, close to 22% of study-area electricity.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Thermal generation dominates, ranging from 57% in California to 95% in Ohio.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 3 compares state generation shares for freshwater/reclaimed thermal, saltwater/brackish thermal, freshwater hydropower, and minimal-to-no-water solar/wind/battery/storage generation. California visibly combines a larger non-freshwater-thermal share with hydropower and minimal-water sources; Ohio, Georgia, and Virginia are overwhelmingly freshwater thermal. This describes the chart rather than quoting it.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "EIA 860 (2024)",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "EIA 923 (2024)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Plant counts and generation shares distinguish how numerous technologies are from how much electricity they supply. The figure supports the move from a general water-dependency claim to differences in state portfolios."
+    },
+    {
+      "location": "PDF page 11, printed page 10, generation-mix interpretation and Figure 4",
+      "moves": "Connects technology mix to withdrawals, gives state examples, and identifies hydropower’s dominant contribution while explaining that its turbine flows return to the source.",
+      "claims": [
+        {
+          "text": "Total power-generation withdrawals range from 1.6 trillion gallons in Ohio, largely associated with coal and hydropower, to 37.9 trillion in California, driven by its large hydroelectric fleet.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 4 reports estimated and reported withdrawals by state and technology.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "EIA (2024)",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Guidance For Calculating Water Use Embedded In Purchased Electricity (2020)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Illinois relies primarily on nuclear power at 63%; Texas’s natural-gas and coal fleet accounts for roughly 90% of its withdrawals, despite significant additions of minimal-water renewable generation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Texas discussion cites progress adding renewable generation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "renewable generation",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Hydropower accounts for approximately 78% of study-area withdrawals, especially in California, Arizona, and Georgia, passing large volumes through turbines and returning them to their source.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Freshwater-using power plants across the study area withdrew roughly 65 trillion gallons, about 227 times combined 2024 water use in Los Angeles, Phoenix, and Washington D.C.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Figure 4 shows hydropower / thermal freshwater-and-reclaimed withdrawals in billion gallons: AZ 6,822 / 177; CA 37,637 / 308; GA 3,296 / 190; IL 76 / 3,586; OH 570 / 1,014; TX 982 / 7,527; VA 1,153 / 1,790; all seven states 50,536 / 14,592. These are readings of chart labels.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 4 separates freshwater hydropower from freshwater/reclaimed thermal generation using stacked horizontal bars.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "EIA (2024)",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Guidance For Calculating Water Use Embedded In Purchased Electricity (2020)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The very large withdrawal total is now connected to hydropower throughput, explicitly distinguished from water permanently lost. Texas provides a coexistence example: renewable additions can occur while substantial fossil-related water dependency remains."
+    },
+    {
+      "location": "PDF page 12, printed page 11, Key Findings 3 and Figure 5",
+      "moves": "Restates stress and drought shares, motivates spatial exposure analysis through a previous Phoenix study, and reports the state-by-state comparison.",
+      "claims": [
+        {
+          "text": "Local water context is critical: data center growth could raise annual water stress by as much as 32% in basins supplying electricity to Phoenix-area data centers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report attributes this example to Ceres’ 2025 Drained by Data report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "as much as 32%",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Overlaying plant locations with stress and drought data provides insight into potentially compounding risks in data center locations and electricity-supplying regions.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Figure 5 shows percentages for water stress / at least three months of moderate-or-worse drought / both: AZ 79 / 93 / 75; CA 66 / 4 / 4; GA 84 / 23 / 23; IL 77 / 51 / 49; OH 39 / 70 / 27; TX 65 / 41 / 30; VA 54 / 42 / 18; across all states 66 / 44 / 32. These values are read from the figure’s bar labels; stress means medium-high to extremely high and drought is D1 or greater.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 5 compares generation exposure to water stress, drought, and their intersection.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "WRI Aqueduct 4.0",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "U.S. Drought Monitor, 2024",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The analysis shifts from the volume of water required to the conditions where it is required. The three bars for each state keep water stress, drought, and overlap distinct, giving a geographical basis for the compounding-risk language."
+    },
+    {
+      "location": "PDF page 13, printed page 12, interpretation of Figure 5",
+      "moves": "Restates the aggregate stress and drought figures, introduces their overlap, contrasts state experiences, and qualifies the snapshot through temporal variation.",
+      "claims": [
+        {
+          "text": "About 32% of total generation across the seven states came from plants exposed both to water stress and at least three months of moderate drought in the year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "California had a large share of generation in stressed basins, 66%, but limited drought exposure. Ohio is described as having the opposite experience: drought exposure but few plants facing water stress.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Arizona’s risks were compounded, with 75% of generation exposed both to water stress and at least three months of moderate drought.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Drought and water stress vary considerably across years and seasons.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "California’s 2021 drought reduced statewide hydropower generation because reservoir levels were low.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "2021 drought led to reduced statewide hydropower generation",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The prose interprets the preceding chart rather than introducing a new measure. It also prevents the single-year comparison from becoming a fixed characterization of each state. The wording of the total-generation overlap is preserved alongside the earlier water-using-generation framing."
+    },
+    {
+      "location": "PDF page 14, California case study",
+      "moves": "Develops a technology-specific example, distinguishing hydropower’s relatively low consumption from its reliability dependency, and supports the mechanism with utility planning.",
+      "claims": [
+        {
+          "text": "California is a leading current and proposed data center market and a major hydropower producer; hydropower’s renewable status and relatively low water consumption do not remove water-related electricity reliability risks.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "About 39% of water used for California hydropower generation in 2024 was in medium-high to extremely high water-stress basins.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Reservoir evaporation, drought, and requirements to maintain storage and river flows in dry periods can constrain water available for generation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "PG&E’s 2022 Integrated Resource Plan revised its near-term hydropower forecast downward by 15%–21%, reflecting warmer temperatures, reduced snowpack, recent extreme droughts, and anticipated permitting changes reducing hydropower water allocation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites the utility’s strategic planning as a concrete response to these constraints.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "15% to 21% lower hydroelectric generation",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This case gives the dependency metric a practical meaning: water can be largely returned yet still be unavailable when generation needs it. The planning example connects climate and permitting conditions to expected output."
+    },
+    {
+      "location": "PDF page 14, Illinois case study",
+      "moves": "Introduces spatial concentration of nuclear exposure, juxtaposes that exposure with expansion plans, concedes technological variation, and recommends risk-aware development.",
+      "claims": [
+        {
+          "text": "Illinois is the most nuclear-dependent analyzed state, with 63% of generation from nuclear power in 2024. Much capacity is clustered in the northwest, drawing on water-stressed portions of the Mississippi-Missouri basin.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Seventy-five percent of Illinois nuclear generation comes from plants in high-water-stress areas.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Illinois lifted its large-reactor moratorium in January 2026, while the White House set a goal of 400 GW of national nuclear capacity over 25 years and a near-term target of 5 GW of new capacity plus generation increases at existing facilities by 2030.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The case links the state policy change and national targets.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Illinois lifted its moratorium",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "5GW in new capacity and increases in generation",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Some advanced reactors are designed to reduce or avoid water-intensive cooling, but most existing and planned nuclear facilities still depend on water; future development should account for water-risk exposure.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report acknowledges reactor designs with lower cooling-water requirements.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "next generation advanced reactors",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The second case moves from hydropower constraints to concentrated thermal-generation exposure. The recommendation follows the combination of existing risk and proposed growth, while retaining the concession that reactor designs differ."
+    },
+    {
+      "location": "PDF page 15, printed page 14, Key Findings 4, existing producer practices",
+      "moves": "Restates the preparedness gap while first acknowledging existing asset screening, targets, and technological responses. Uses named companies as examples of a foundation for further action.",
+      "claims": [
+        {
+          "text": "Vistra identifies and discloses Texas power plants in high or extremely high water-stress areas.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Vistra’s disclosure is presented as an example of asset-level risk identification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Vistra identifies and discloses",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Arizona’s SRP has committed to a 30% reduction in generation-related water-use intensity by 2035.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites SRP’s dated commitment.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "2035 commitment",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Dominion Energy met a 50% water-withdrawal reduction target in 2023 and continues prioritizing a shift from coal and oil to solar and wind.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Dominion is offered as an example of water targets and generation transition.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Dominion Energy",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "PG&E uses dry cooling at some California gas plants, and Southern California Edison operates less-water-intensive simple-cycle turbines.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites the two producers’ technology choices.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "PG&E uses dry cooling",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Southern California Edison operates",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "NRG reduced generation-related withdrawals by 77% through water-saving cooling towers and a coal-to-gas transition.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "NRG supplies an example combining cooling changes with fuel transition.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "NRG reduced water withdrawals",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Having established exposure, the report now considers responses. These examples acknowledge action already taken and establish that the reported gap concerns addressing incremental data center demand, rather than an absence of all water management."
+    },
+    {
+      "location": "PDF page 15, printed page 14, Key Findings 4, disclosure gap and broader planning",
+      "moves": "Supports the announced preparedness gap with contrasting load-growth and water disclosures, then qualifies it by identifying broader planning that may indirectly capture new demand.",
+      "claims": [
+        {
+          "text": "A review of sustainability reports, integrated resource plans, and CDP disclosures finds that most large producers assessed identify data centers as major load-growth drivers, but few evaluate associated water risks or develop water strategies specifically for the added demand.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "AEP anticipates about 12 GW of new contracted load in 2026–2030, driven by data centers, is investing $5.2 billion in transmission and distribution, and is exploring fuel cells; its disclosures do not address the link to greater water reliance.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "12 gigawatts (GW)",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "$5.2 billion to expand and strengthen",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "do not address",
+                  "reference_entry": null
+                }
+              ]
+            },
+            {
+              "text": "Dominion describes 81 Northern Virginia data center projects coming online in 2020–2024 and $65 billion of investment through 2030 for gas, solar, and wind, but readily available disclosures do not discuss the water-use implications of continued data center growth.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "81 new data center projects",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "$65 billion investment",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Broader producer planning may capture growing data center demand even without a dedicated strategy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "SRP evaluates water alongside reliability, affordability, and emissions in future-energy scenarios and coordinates drought tracking and planning with state and regional partners.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "includes water as a metric to evaluate",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "tracking and planning for drought",
+                  "reference_entry": null
+                }
+              ]
+            },
+            {
+              "text": "APS uses long-term supply planning, retires water-intensive units, uses reclaimed water, and engages regionally on water.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "APS uses long-term supply planning",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The examples substantiate a gap in available disclosures, not a direct observation of every internal decision. The final concession keeps broader water planning visible even where the specific connection to data center growth is not disclosed."
+    },
+    {
+      "location": "PDF page 16, printed page 15, Key Findings 5",
+      "moves": "Restates limited attention to electricity-related water risk, contrasts direct-use programs with indirect-use reporting, and presents emerging exceptions and a proposed technology change.",
+      "claims": [
+        {
+          "text": "Amazon, Microsoft, and Apple are among data center operators increasingly setting direct-water-use targets and strategies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The paragraph names and links three direct-water examples.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Amazon",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Microsoft",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Apple",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Disclosures about water embedded in purchased electricity are much more limited, and most efforts do not clearly connect to mitigating water risk.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Meta discloses total embedded water consumption in purchased electricity, including contracted renewable energy, and reports water consumption avoided through procurement.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "discloses",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "CyrusOne estimates facility water burden using on-site consumption, WUE Site, plus electricity-production water, WUE Source, following WRI guidance. Its WUE Source has declined 67% since 2018, mainly through renewable procurement, alongside its SBTi-validated climate-neutral-by-2030 target.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "CyrusOne is presented as an example of estimating the wider water burden and reporting a reduction.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "estimates data center facility water burden",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "67% since 2018",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Oracle has announced replacing planned gas turbines and grid reliance at Project Jupiter in New Mexico with Bloom Energy fuel cells. These avoid a steam cycle and cooling towers and are expected to minimize water use relative to the originally planned gas turbines.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The technology substitution is an announced project choice, with water savings described prospectively.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "replacing planned gas turbines and grid dependence",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The report moves from producers to purchasers and identifies exceptions within the claimed reporting gap. It keeps past reported improvements at CyrusOne distinct from expected water benefits at Oracle’s announced project."
+    },
+    {
+      "location": "PDF page 17, printed page 16, Recommended Actions, introduction and first two data center recommendations",
+      "moves": "Turns explicitly from findings to prescriptions. Recommends expanded assessment and disclosure, with claimed benefits for decision quality and stakeholder trust.",
+      "claims": [
+        {
+          "text": "Data center companies should integrate direct and purchased-electricity water use into risk assessments covering current and future climate, demand growth, energy mixes, site water sources, seasonal supply and demand, and infrastructure needs; comprehensive assessment will improve evaluation and mitigation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Companies should disclose direct and embedded water use and associated risks for each existing and proposed facility, or aggregate by city, county, or basin if data limits require it. Disclosure should explain mitigation and effects on siting, cooling, and procurement decisions; this transparency will build trust with shareholders, communities, and regulators.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The recommendations extend beyond the analysis’s own exclusions by asking companies to assess seasonality, water sources, and future scenarios. The turn is explicitly practical: information is meant to inform choices and relationships."
+    },
+    {
+      "location": "PDF page 17, printed page 16, remaining data center recommendations",
+      "moves": "Recommends scrutiny of procurement, supplier collaboration, precompetitive learning, and shared measurement infrastructure.",
+      "claims": [
+        {
+          "text": "Companies should evaluate how power purchase agreements, renewable purchases, and behind-the-meter investments change water availability and electricity reliability risks, to understand renewable procurement’s water benefits and improve decisions.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Companies should work with power producers to understand water stress and drought in supplying regions and support existing efforts to address vulnerabilities.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Companies should expand precompetitive peer collaboration on shared learning, sector-specific data collection, barriers to action, standards, and best practices to co-develop responses to sector-wide risks.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Companies should engage peers, producers, researchers, and other sectors to develop a standardized methodology and database for embedded-water use, business risks, and local impacts; this will provide an accessible, scientifically grounded and standardized approach.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "These prescriptions move from what an individual operator should assess toward collective tools and coordination. They build on the earlier finding that electricity-related water dependency crosses organizational boundaries."
+    },
+    {
+      "location": "PDF pages 17–18, printed pages 16–17, Power producers recommendations",
+      "moves": "Assigns disclosure, planning, and collaboration responsibilities to electricity suppliers, tying them to resilience and business continuity.",
+      "claims": [
+        {
+          "text": "Power producers should disclose plant-level withdrawals, consumption, water sources, drought vulnerability, basin risk, generation-water targets, and mitigation, to clarify vulnerabilities and support customers concerned about value-chain water risk.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Producers should integrate water risk from data center demand growth into resource planning and infrastructure decisions, including more efficient cooling, to strengthen water resilience and long-term continuity.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Producers should expand collaboration with customers, water managers, and community stakeholders to adapt to changes in water supply and rising power demand.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The responsibility now shifts upstream to those who hold plant-level operating information and plan generation infrastructure. The specific recommendation to integrate demand growth addresses the disclosure gap identified in the producer review."
+    },
+    {
+      "location": "PDF page 18, printed page 17, Policymakers recommendations",
+      "moves": "Proposes standardized disclosure, incentives, and resource-sensitive permitting, and extends attention to behind-the-meter generation despite its exclusion from the study.",
+      "claims": [
+        {
+          "text": "Policymakers should require standardized reporting of direct and electricity-embedded water use so stakeholders can access consistent information on risk and impacts.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Policymakers should incentivize lower-water technologies and conservation to scale water savings and support long-term resilience for all water users.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Policymakers should incentivize low-water renewable energy to support sustainable, resilient data center development and other electricity customers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Siting, permitting, infrastructure, and resource planning should account for basin stress, seasonal supply and demand, and community impacts so present and future water needs are met.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Policymakers should ensure behind-the-meter generation minimizes local freshwater impacts, especially in stressed regions, so the emerging supply strategy does not create unintended consequences.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The report’s opening values of protection and fairness now become proposed public rules and incentives. Including behind-the-meter generation shows the recommendations are broader than the measured grid-related exposure."
+    },
+    {
+      "location": "PDF page 18, printed page 17, Investors recommendations",
+      "moves": "Addresses capital providers through disclosure expectations and engagement, and points to the publisher’s own platform.",
+      "claims": [
+        {
+          "text": "Investors should encourage comprehensive value-chain water-risk disclosures from data center companies and power producers to support investment decisions.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Investors should ask companies to show how supplying-region water stress and drought affect procurement and siting decisions, to establish whether vulnerabilities are addressed and risk mitigated.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Investors should engage companies and producers on whether water risk is appropriately accounted for and mitigated, supporting long-term value creation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report offers Ceres’ own initiative as a platform and source of engagement tools.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Ceres Valuing Water Finance Initiative",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "tools to support investors",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The action section closes by linking water-risk management to long-term value. The reference to Ceres’ initiative makes the publisher’s advocacy and investor-engagement role explicit within the recommendations."
+    },
+    {
+      "location": "PDF page 19, printed page 18, Appendix — Scope and power plant selection; Water use data",
+      "moves": "Returns from prescriptions to reproducibility details. Restates the seven-state scope, now described as roughly 50% of U.S. capacity, and specifies filtering, classification, reported-data coverage, and estimation.",
+      "claims": [
+        {
+          "text": "The appendix describes the seven-state scope as roughly 50% of U.S. data center capacity, whereas the earlier scope description referred to the share of data centers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The scope paragraph identifies a capacity-based share.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "50% of U.S. data center capacity",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Of 5,230 plants reporting at least 1 MW across the seven states, 3,907 generated actively in 2024. The 1,434-plant water-use subset excludes retired plants, zero or negative net generation, saltwater/brackish cooling, and minimal-or-no-water technologies such as wind and solar.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Selection uses publicly available plant- and generator-level 2024 EIA forms 860 and 923.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Plants with multiple generators or fuels are treated as single facilities by EIA plant ID and assigned to the technology contributing the largest share of their 2024 generation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Only 194 of the 1,434 selected plants reported withdrawal or consumption under EIA-923 Schedule 8D; the remaining 1,240, including smaller thermal and hydroelectric facilities, were estimated by applying WRI technology-specific water-intensity factors to 2024 net generation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The appendix identifies the factors used for plants lacking reported cooling-water data.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "WRI’s technology-specific water-intensity factors",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The WRI factors treat hydropower as a withdrawal rather than an instream use.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The appendix supplies a firmer account of what was counted and reveals the extent of estimation. Its hydropower accounting convention helps explain the large withdrawal volumes encountered earlier, without changing their stated role as dependency estimates."
+    },
+    {
+      "location": "PDF page 19, printed page 18, Appendix — Attributing water use; Water risk characterization",
+      "moves": "Restates proportional state attribution and future growth scenarios, then specifies spatial and temporal exposure procedures and the definition of compounded exposure.",
+      "claims": [
+        {
+          "text": "For each state, EPRI’s 2024 data center electricity-use share is applied to total reported and estimated power-plant withdrawals, attributing a proportional share to data centers in that state. The same EPRI data supports low, medium, high, and higher 2030 growth projections.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The appendix identifies the state-share input.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "EPRI’s 2024 state-level estimates",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Each plant’s coordinates are mapped to Aqueduct 4.0 for baseline annual watershed water stress.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The appendix names the baseline stress dataset.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "WRI Aqueduct 4.0",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Drought exposure uses 2024 weekly U.S. Drought Monitor categories developed by the National Drought Mitigation Center, USDA, and NOAA. All 53 collection periods are combined in a multiband raster to extract weekly drought intensity at each plant and identify at least three months of D1 drought.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The appendix identifies the weekly drought data source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "U.S. Drought Monitor",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Compounding exposure means both medium-high to extremely high water stress and moderate-or-greater drought during 2024.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This makes the earlier maps and percentages traceable to plant coordinates and a defined weekly dataset. The report is documenting exposure through location and annual conditions, while its data center allocation remains a proportional state-level estimate."
+    },
+    {
+      "location": "PDF pages 19–20, printed pages 18–19, Appendix — Limitations through single-year snapshot",
+      "moves": "Restates directional precision and discloses data quality, model, geography, and time limitations, including differences in reliance on estimation across states.",
+      "claims": [
+        {
+          "text": "EIA water data are self-reported and not independently verified; the report’s results are directional estimates rather than precise measurements.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "National-average WRI factors do not represent individual plant age, cooling design, climate, or efficiency. Missing reporting by many small and hydroelectric plants means a significant portion of the analysis is estimated.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Arizona, Texas, and Illinois, with large thermal fleets subject to reporting, use a greater share of reported data, while California and Virginia, with more dams and small plants, require a larger share of estimated values.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water sources are assumed to share the power plant’s location. The analysis is a 2024 snapshot even though withdrawals, water stress, and drought vary seasonally and across years.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The appendix qualifies both the water volumes and exposure classifications. These limits explain why the report repeatedly describes scale and direction rather than a precise inventory and why state estimates do not have identical data foundations."
+    },
+    {
+      "location": "PDF page 20, printed page 19, Appendix — balancing authority and cross-border limitations",
+      "moves": "Explains the mismatch between state aggregation and electricity delivery, gives concrete geographical examples, and states potential directions of attribution error.",
+      "claims": [
+        {
+          "text": "Generation mix and water use depend on plant-level characteristics and dispatch by balancing authorities whose boundaries frequently cross state lines; electricity delivered to a facility reflects its balancing authority rather than a state-average mix.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "PJM, serving Virginia’s data center corridor, spans 13 states, while ERCOT serves most but not all of Texas.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "State-level figures should be read as approximations of regional water-risk exposure across state power fleets, not precise electricity mixes or associated water use delivered to individual facilities or utility territories.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Because attribution follows where electricity is generated rather than ultimately consumed, exporting states may have overstated water use and importing states, such as Virginia and California, may have understated water use.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The discussion ends its technical account by defining the appropriate geographical interpretation of the findings. The examples clarify why state-level dependencies cannot be transferred directly to an individual data center’s electricity supply."
+    },
+    {
+      "location": "PDF page 21, printed page 20, About Ceres and Acknowledgments",
+      "moves": "Closes with organizational self-description, author and contributor credits, funding acknowledgments, and a disclaimer separating report views from acknowledged parties.",
+      "claims": [
+        {
+          "text": "Ceres describes itself as a nonprofit advocacy organization seeking a cleaner, more just and resilient economy through research, investor and corporate action, and market and policy solutions; it presents sustainability as consistent with business opportunities, innovation, and jobs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The lead authors are Kirsten James, Senior Water Program Director; Joelle Young Patil, Manager, Water Program; Benjamin Jacobson, Manager, Water and Agriculture; and Shama Perveen, Director, Water Research.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The report credits Luke Angus, Maura Conron, and Heather Green for editorial review and design support, and Paul Reig and Tianyi Luo at Bluerisk for strategic support and review.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Support came from Omidyar Network, the Park Foundation, the Sobecki Family Foundation, the Swiss Agency for Development and Cooperation, and the Walton Family Foundation; the report’s views do not necessarily reflect those of the listed individuals, companies, or organizations.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The final page identifies the institutional position behind the risk-and-action framing. It adds provenance and acknowledgments rather than a further analytical conclusion. No formal reference list appears; cited works elsewhere are represented by their printed inline or figure-source labels, without invented bibliography entries."
+    }
+  ]
+}
