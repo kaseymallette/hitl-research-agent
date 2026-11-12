@@ -354,8 +354,8 @@ simplifies, or removes.
 │   ├── cost.py                       per-model rates; cost from reported usage
 │   └── config.py                     Settings: key, model, effort, limits
 ├── prompts/                          close-reading and evaluation instructions for an agent run
-├── evaluations/                      Phase 3: the judging workspace, with its Codex prompts
 ├── scripts/
+│   ├── run_single_source.py          Phase 3: an article's five Codex calls -> its five files
 │   ├── run_analysis.py               one A/B cell -> analysis, argument evaluation, run record
 │   ├── write_primer.py               an article -> a primer on its field, to read first
 │   └── prepare_sources.py            PDF -> text + crops (the experimental arm)
@@ -366,6 +366,7 @@ simplifies, or removes.
 │   ├── test_prompt_files.py          prompts/ matches the prompts in code
 │   ├── test_cost.py                  rates, cached input, unknown model
 │   ├── test_run_analysis.py          the runner, offline: provenance, records, both calls
+│   ├── test_run_single_source.py     the Codex harness, against a fake Codex CLI
 │   ├── test_write_primer.py          the primer script, offline
 │   └── preparation/                  PDF extraction behavior, with fixtures
 ├── docs/
@@ -375,10 +376,9 @@ simplifies, or removes.
 │   ├── DESIGN.md                     the system, and the rules it holds to
 │   ├── EVALUATION_KEY.md             Phase 2: what each blind run is, kept from the judge
 │   ├── ENGINEERING_DIRECTIVES.md     DSA and SWE directives for code changes
-│   ├── JUDGING_PROMPTS.md            Phase 3: the prompts for judging each analysis
 │   ├── REPOSITORY.md                 every file, and why it exists
 │   ├── RUBRIC.md                     Phase 3: the criteria for judging each analysis
-│   ├── adr/0001-0021.md              one record per architectural decision
+│   ├── adr/0001-0022.md              one record per architectural decision
 │   ├── assets/                       Phase 2: the tournament brackets shown in the key
 │   │   ├── evaluation-bracket.svg    Barnett's
 │   │   └── kanbur-evaluation-bracket.svg  kanbur's
@@ -403,7 +403,7 @@ outputs/                              created by the pipeline
 │   ├── runs/                         kanbur: the runs in one shape, ready to judge
 │   ├── <experiment>/                 the six blind judgments of an experiment
 │   └── judgments/                    Phase 3: the judgments of the collection's analysis
-├── analyses/<slug>/                  Phase 3: analysis in the chosen configuration
+├── analyses/<slug>/                  Phase 3: 01_close_reading.json to 05_argument_judgment.md
 ├── collection.yaml                   Phase 3: the accepted analysis and evaluation per article
 └── synthesis/                        Phase 3
 ```

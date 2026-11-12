@@ -21,28 +21,26 @@ says what is wrong with it.
 ## What's in the folder
 
 ```
-RUBRIC.md                      this file
-article.pdf                    the article
-prompts/                       the instructions the analysis followed
-  close-reading.md
-  evaluate-argument.md
-run/
-  analysis.json                the close reading
-  argument_evaluation.md       the argument evaluation
-references/
-  claims_reference.md          the article's own claims
-judgments/                     where every judgment is written
+RUBRIC.md                        this file
+article.pdf                      the article
+prompts/                         the instructions the analysis followed
+01_close_reading.json            the close reading
+02_claims_reference.md           the article's own claims
+03_close_reading_judgment.md     the judgment of the close reading
+04_argument_evaluation.md        the argument evaluation
+05_argument_judgment.md          the judgment of the argument evaluation
 ```
 
-Open only the files your prompt names. Another session's judgment may already
-be in `judgments/`; leave it unread, so each judgment stays independent.
+Each session's folder holds only the files that session reads, and the one it
+writes, so each judgment stays independent. Open only the files your prompt
+names.
 
 Work from the article. Don't look up the works it cites or check its findings
 against outside sources; the analysis wasn't asked to either.
 
 ### The two documents in the run
 
-**The close reading** (`analysis.json`) is a reading of the article from start
+**The close reading** (`01_close_reading.json`) is a reading of the article from start
 to finish, recording what the author says without judging it:
 
 - `reading_plan` — the first look: what kind of document it is, how densely it
@@ -68,7 +66,7 @@ softened, not strengthened — to mark `verbatim` only exact wording, to record
 a reading of a figure or an equation printed as an image as `paraphrased`,
 naming the element, and never to invent or complete a reference.
 
-**The argument evaluation** (`argument_evaluation.md`) is the model's own
+**The argument evaluation** (`04_argument_evaluation.md`) is the model's own
 judgment of whether the article's argument holds: what it rests on, whether
 the conclusions follow, and what bias shapes the author's framing and the
 model's own reading. It was written from the article and the close reading,
@@ -84,9 +82,9 @@ for what you're judging before you open the run.
 
 | Session | Reads | Scores | Writes |
 | --- | --- | --- | --- |
-| 1. Claims reference list | the article alone | — | `references/claims_reference.md` |
-| 2. Close reading | the article, `claims_reference.md`, `analysis.json` | A1–A5 | `judgments/close_reading.md` |
-| 3. Argument evaluation | the article, `argument_evaluation.md` | B1–B6 | `judgments/evaluation.md` |
+| 1. Claims reference list | the article alone | — | `02_claims_reference.md` |
+| 2. Close reading | the article, `02_claims_reference.md`, `01_close_reading.json` | A1–A5 | `03_close_reading_judgment.md` |
+| 3. Argument evaluation | the article, `04_argument_evaluation.md` | B1–B6 | `05_argument_judgment.md` |
 
 The close-reading session never reads the argument evaluation, and the
 evaluation session never reads the close reading or the reference list. The
@@ -145,7 +143,7 @@ isn't.
 
 ### A2. Coverage
 
-Counted against `claims_reference.md`, not scored. For each type —
+Counted against `02_claims_reference.md`, not scored. For each type —
 contributions, abstract claims, conclusions, figures, tables — report how many
 were caught, caught without what they show (a figure named but not read), and
 missed. Name what was missed. Say where the reading stops if it stops before

@@ -26,3 +26,6 @@ htmlcov/
 .idea/
 .DS_Store
 
+
+# Codex event logs from scripts/run_single_source.py
+.codex_runs/

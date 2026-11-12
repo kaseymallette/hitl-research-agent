@@ -146,32 +146,43 @@ a change to two of these fields, which is why they are configuration.
 instruction files for an agent such as Codex, which reads the article and
 writes its own output ([ADR-0020](adr/0020-codex-joins-experiment-2.md)).
 Each holds the prompt the API sends, word for word, with the source header to
-fill from `sources.yaml`, the close reading's JSON format, where to write, and
-a request to note in `run_note.md` how the PDF was read. They exist so an agent
-run needs no pasting; `tests/test_prompt_files.py` keeps their prompt text
-identical to `prompts.py`.
-
----
-
-## `evaluations/`
-
-The workspace for running and judging one article's close reading and
-argument evaluation, in the layout each Codex session expects: `RUBRIC.md`,
-`prompts/`, a `source.yaml` for the article's details, a `scores.md` the
-judges fill in, and empty `run/`, `references/` and `judgments/` for the
-article's runs, claims list and judgments. Its `README.md` holds the five
-Codex prompts in order — the close reading, the claims reference, the judgment
-of the close reading, the argument evaluation, and its judgment — written so
-they are the same for every article: only `article.pdf` and `source.yaml`
-change. The folder is kept outside the repository so a session can't see
-other runs, which is why it carries its own copies of `docs/RUBRIC.md` and
-`prompts/`; `tests/test_prompt_files.py` keeps the copies identical.
+fill from `source.yaml`, the close reading's JSON format, the file to write,
+and a request to say in the final message how the PDF was read. They name the
+files `run_single_source.py` stages; `tests/test_prompt_files.py` keeps their
+prompt text identical to `prompts.py`.
 
 ---
 
 ## `scripts/`
 
 Not installed, not shipped, not type-checked (`mypy src` covers `src/` only).
+
+### `run_single_source.py`
+
+Phase 3's single-source analysis of one article in Codex
+([ADR-0022](adr/0022-five-calls-five-files-one-folder.md)): five calls, each
+its own `codex exec` session on GPT-6.1 Sol at medium effort, signed in with
+ChatGPT rather than an API key, each writing one file to
+`outputs/analyses/<slug>/` — `01_close_reading.json`,
+`02_claims_reference.md`, `03_close_reading_judgment.md`,
+`04_argument_evaluation.md`, `05_argument_judgment.md`. It holds the session
+requests for all five calls and for the two revisions, so the script is the
+record of how an article was run.
+
+Each session runs in a temporary folder holding only the files its call
+reads, which is how the judges stay independent of each other. With no option
+it runs whichever calls' files are missing, so a stopped run resumes; `--only`
+reruns one call and overwrites its file, and `--revise 01` or `--revise 04`
+edits that file in place from its judgment, with git keeping the earlier
+version. Only a technical failure stops a run — Codex erroring or timing out,
+the file not written, or a close reading that is not JSON — and then nothing
+is copied into the article's folder
+([ADR-0005](adr/0005-no-hard-quality-gates.md)). Codex's event log and final
+message go to `.codex_runs/<slug>/`, which git ignores.
+
+```bash
+uv run python scripts/run_single_source.py <slug>
+```
 
 ### `run_analysis.py` (470 lines)
 
@@ -253,7 +264,7 @@ keeping. If it loses, most of these 793 lines go.
 
 ---
 
-## `tests/` — 95 tests
+## `tests/` — 105 tests
 
 | File | Tests | Covers |
 | --- | --- | --- |
@@ -263,7 +274,8 @@ keeping. If it loses, most of these 793 lines go.
 | `test_models.py` | 14 | Application-owned fields rejected from model content, a required verbatim/paraphrased form, an asserted claim standing without support, no attribution labels on the close reading, the evaluation schema holding only the model's judgment, a reading step with no claim, the reading plan first and required, gap/annotation consistency, JSON round trip, a stable `source_id` per slug |
 | `test_cost.py` | 5 | Cost from documented rates, cached input not double-charged, unknown model refused |
 | `test_run_analysis.py` | 15 | The runner, offline: provenance from the manifest in both arms, a crop per gap, an article with no crops, a failed cell's record and cost, prompt and schema fingerprints, no overwrite, no empty cell, failed runs kept on rerun, both documents written, a failed evaluation keeping the close reading |
-| `test_prompt_files.py` | 2 | The agent files in `prompts/` carry the prompt text the code sends, and `evaluations/` copies them and the rubric unchanged |
+| `test_prompt_files.py` | 1 | The agent files in `prompts/` carry the prompt text the code sends |
+| `test_run_single_source.py` | 11 | The Codex harness, against a fake Codex CLI: five files in order, each session sees only its call's files, no API key passed, resume, `--only`, missing inputs, revision in place, technical failures write nothing |
 | `test_write_primer.py` | 2 | The primer script, offline: a labelled primer with its cost, and a failure that leaves a record and no primer |
 
 Supporting files: `preparation/conftest.py` loads the preparation script by file
@@ -322,17 +334,16 @@ copied, and stay under `outputs/` because they are model output.
 ## `docs/`
 
 `DESIGN.md` and `BUILD_PLAN.md` (below), this file, `PROMPT_LOG.md`, `RUBRIC.md`,
-`JUDGING_PROMPTS.md`, their A/B versions, `EVALUATION_KEY.md`, and:
+the A/B rubric and judging prompts, `EVALUATION_KEY.md`, and:
 
-### `RUBRIC.md` and `JUDGING_PROMPTS.md`
+### `RUBRIC.md`
 
-The criteria and session prompts for judging each analysis in the collection,
-from Phase 3 on: three sessions per article — a claims reference list from the
-article alone, the close reading against it on A1–A5, and the argument
-evaluation against the article on B1–B6, with no problems list. They report
-and never withhold. They exist so every analysis is judged the same way, by
-pasting the same prompts into new chats, before the researcher accepts or
-rejects it.
+The criteria for judging each analysis in the collection, from Phase 3 on:
+three sessions per article — a claims reference list from the article alone,
+the close reading against it on A1–A5, and the argument evaluation against the
+article on B1–B6, with no problems list. It reports and never withholds. It is
+staged into each judging session by `run_single_source.py`, which holds the
+session prompts, so every analysis is judged the same way.
 
 ### `AB_TESTING_RUBRIC.md`
 

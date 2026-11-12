@@ -1,6 +1,6 @@
 # ADR-0021 — The collection is analyzed by Codex, on GPT-6.1 Sol at medium effort, from the PDF
 
-- **Status:** Accepted
+- **Status:** Accepted; output layout superseded by ADR-0022
 - **Date:** 2026-11-06
 - **Landed in:** not yet committed
 
@@ -70,3 +70,7 @@ reused.
 
 Supersedes [ADR-0008](0008-compare-pdf-against-prepared-text.md). Completes
 Phase 2's choice under ADR-0019.
+
+The output layout is superseded by
+[ADR-0022](0022-five-calls-five-files-one-folder.md): five calls, five files
+in `outputs/analyses/<slug>/`, run by `scripts/run_single_source.py`.

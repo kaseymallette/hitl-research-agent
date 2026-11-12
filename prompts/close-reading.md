@@ -4,29 +4,27 @@ Use these instructions to write the close reading of one article, the first
 call of single-source analysis. They are the same prompt the API sends,
 arranged for an agent such as Codex that reads files and writes its own
 output ([ADR-0020](../docs/adr/0020-codex-joins-experiment-2.md)).
+`scripts/run_single_source.py` runs them in a folder of their own
+([ADR-0022](../docs/adr/0022-five-calls-five-files-one-folder.md)).
 
 ## What you're given
 
-- **The article:** the PDF path named in the request.
-- **Its source details:** the article's entry in `data/research/sources.yaml`,
-  found by the PDF's file name without `.pdf`. Use its `source_title` and
+- **The article:** `article.pdf`.
+- **Its source details:** `source.yaml`. Use its `source_title` and
   `source_type` in the header below.
-- **Where to write:** the output folder named in the request.
 
 ## What to write
 
-1. **`analysis.json`** in the output folder: only the JSON described at the
-   end of the prompt below, with nothing before or after it.
-2. **`run_note.md`** in the same folder, with a section headed
-   `## Close reading` saying, in a few sentences:
+1. **`01_close_reading.json`**: only the JSON described at the end of the
+   prompt below, with nothing before or after it.
+2. **Your final message**, saying in a few sentences:
    - **how you read the PDF** — for example, whether you viewed its pages as
      images, extracted its text with a tool (name it), or both, and whether
      you could see its figures, tables, and equations as they appear on the
      page;
    - the model and reasoning effort you ran at, if you know them.
 
-Do not read any other analysis of this article in the repository, and do not
-look in `outputs/` except to write your own files.
+Open only the files named here.
 
 ## The prompt
 

@@ -395,35 +395,32 @@ Synthesis receives no research question
 ### Analyze the collection
 
 Seven articles, in `data/research/synthesis/`, each with an entry in
-`data/research/sources.yaml`.
+`data/research/sources.yaml`, all analyzed and judged by hand in the Codex
+app. Their files stay where they are: the runs in `outputs/analyses/<slug>/`,
+the claims lists and judgments in `outputs/judgments/<article>/`.
 
-- **Kanbur** reuses its Codex medium run,
-  `outputs/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling/adr_0020/codex__gpt-6.1-sol-medium/`.
-- **The other six**, Barnett included, run in Codex: one session for the
-  close reading from `prompts/close-reading.md`, then a new session for the
-  argument evaluation from `prompts/evaluate-argument.md`, each given the PDF
-  path and the output folder `outputs/analyses/<slug>/`.
+From here on an article runs through `scripts/run_single_source.py`
+([ADR-0022](adr/0022-five-calls-five-files-one-folder.md)): five Codex
+sessions, each writing one file to `outputs/analyses/<slug>/`.
 
-Each folder holds `analysis.json`, `argument_evaluation.md`, and
-`run_note.md`. An `analysis.json` that will not parse is a technical failure:
-rerun the session. Anything else is a result
-([ADR-0005](adr/0005-no-hard-quality-gates.md)).
+1. `01_close_reading.json`, from `prompts/close-reading.md`.
+2. `02_claims_reference.md`, from the article alone.
+3. `03_close_reading_judgment.md`, 01 against the article and 02 on A1–A5.
+4. `04_argument_evaluation.md`, from `prompts/evaluate-argument.md` and 01.
+5. `05_argument_judgment.md`, 04 against the article alone on B1–B6. There
+   is no problems reference list: it would be the judge's own opinion, and
+   scoring against it would measure agreement with the judge.
 
-### Judge each analysis
-
-Three sessions per article, following [RUBRIC.md](RUBRIC.md) and
-[JUDGING_PROMPTS.md](JUDGING_PROMPTS.md): a claims reference list written from
-the article alone, the close reading judged against it, and the argument
-evaluation judged against the article directly. Barnett and kanbur reuse the
-claims lists from their A/B judging. There is no problems reference list:
-it would be the judge's own opinion, and scoring against it would measure
-agreement with the judge. Judgments go to `outputs/judgments/<article>/judgments/`, beside the
-article's `references/`.
+The judging follows [RUBRIC.md](RUBRIC.md). Skim 02 against the article
+before trusting 03: the judge uses it as written. An `01_close_reading.json`
+that will not parse is a technical failure and the call is rerun; anything
+else is a result ([ADR-0005](adr/0005-no-hard-quality-gates.md)).
 
 ### Accept or reject
 
 I review each article's two readings, with their judgments, and decide: accept, reject, revise, or
-rerun. Only accepted close readings go to synthesis.
+rerun. A revision edits 01 or 04 in place from its judgment (`--revise`), and
+the judgment is run again (`--only 03` or `--only 05`). Only accepted close readings go to synthesis.
 
 ### Claims store, synthesis, and retrieval
 

@@ -21,15 +21,3 @@ def test_the_agent_prompt_files_carry_the_prompts_the_code_sends() -> None:
     assert PDF_INPUT_INSTRUCTIONS.strip() in close
     assert EVALUATION_PROMPT.strip() in evaluate
     assert EVALUATION_INPUT_NOTES["pdf"] in evaluate
-
-
-def test_the_evaluations_workspace_copies_match_their_originals() -> None:
-    """evaluations/ is copied out of the repository for judging, so it holds
-    its own copies of the rubric and prompts; they must match the originals."""
-    copies = {
-        "evaluations/RUBRIC.md": "docs/RUBRIC.md",
-        "evaluations/prompts/close-reading.md": "prompts/close-reading.md",
-        "evaluations/prompts/evaluate-argument.md": "prompts/evaluate-argument.md",
-    }
-    for copy, original in copies.items():
-        assert (ROOT / copy).read_bytes() == (ROOT / original).read_bytes(), copy
