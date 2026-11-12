@@ -1,0 +1,2585 @@
+{
+  "reading_plan": "Source title: Data Centers and Water: Frequently Asked Questions\nSource type: government_report\nFirst look: This is CRS report R49057, dated July 31, 2026, a 42-page government FAQ with a summary, contents, 27 numbered pages of explanatory prose, a ten-page legislative table, and author information and disclaimer. The prose is moderately dense, with technical cooling terminology, closely qualified legal distinctions, and extensive numbered footnotes. I will follow the printed order in roughly 200–400-word stretches, slowing at legal distinctions and treating natural subsection breaks and table rows as units. Page locations below use printed numbering, with PDF-page numbers for front matter. I extracted text with Apple PDFKit, viewed contact sheets of all pages, and inspected the planning box and selected legislative-table pages at larger size. The document has no separate reference list: citations below preserve its numbered footnote markers, and reference_entry is null rather than turning footnotes into an invented bibliography. All readings of Table A-1 and the rendered planning box are explicitly paraphrased.",
+  "reading_path": [
+    {
+      "location": "PDF p. 1, cover; PDF p. 2, Summary, opening two paragraphs",
+      "moves": "Identifies the report and introduces its subject through congressional and constituent concerns; defines the facility and sketches its technical functions.",
+      "claims": [
+        {
+          "text": "The summary attributes increased data-center development partly to expanding AI use and other computing trends; growth in facility number and size has raised concerns about water use, consumption, and discharge.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The summary presents data centers as facilities supporting digital information services whose heat-generating hardware requires thermal regulation; their cooling choices depend on size, computing load, location, climate, hardware needs, and water availability.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The opening adopts the perspective of congressional information needs. It frames several kinds of water-related questions without yet evaluating particular facilities."
+    },
+    {
+      "location": "PDF p. 2, Summary, remaining paragraphs; PDF pp. 3–4, Contents",
+      "moves": "Previews the institutional scope and organizes the FAQ; introduces quantity, quality, and legislative topics as distinct strands.",
+      "claims": [
+        {
+          "text": "The summary says local effects of withdrawals and consumption depend on local or regional water conditions, available supplies, and competing demands; most operators obtain water from municipal systems.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The summary locates freshwater access mainly under state law while recognizing federal infrastructure that can indirectly supply data centers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The summary identifies wastewater, stormwater, and development-related dredged or fill material as potential discharges subject to federal requirements, and says wastewater most commonly goes to publicly owned treatment works.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The summary describes 119th-Congress proposals to improve information, encourage practices such as reuse, and limit or facilitate construction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The contents makes the report’s question-and-answer texture visible. These are initial orientations; the following reading records the explanations and details as they appear."
+    },
+    {
+      "location": "p. 1, Introduction, opening through municipal-supply estimate",
+      "moves": "Explains growth, distinguishes national scale from local concern, supplies quantitative comparisons, and defines direct water use.",
+      "claims": [
+        {
+          "text": "AI, cryptocurrency, the rise of the internet, and expanding digital consumption have increased the number and scale of data centers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The introduction cites Adam Zewe’s MIT News explanation of generative AI’s environmental impact.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Direct data-center water use is estimated at approximately 2% of total U.S. water consumption; direct use here concerns on-site thermal regulation, excluding off-site power generation and upstream hardware or materials manufacture.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The estimate is attributed to AWWA, Cooling the Cloud: Water Utilities in a Data Driven World.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "3",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A 100 MW U.S. data center may directly consume roughly as much water daily as 2,600 households.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The IEA comparison averages cooling strategies: total direct and indirect consumption equals 6,500 households, with 40% direct and 60% at power plants; the report derives 2,600 households for direct consumption.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "4",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Municipal systems are estimated to supply 97% of water provided to U.S. data centers, with a few facilities self-sourcing.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Bluefield Research’s June 23, 2025 press release supplies this estimate.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "5",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The national percentage does not settle the local question. The household example shifts attention to the scale one community may encounter, and the direct-use definition establishes a boundary for the report."
+    },
+    {
+      "location": "pp. 1–2, Introduction, water-quality concerns and scope",
+      "moves": "Adds the quality dimension, acknowledges incomplete knowledge, and delimits the report’s inquiry.",
+      "claims": [
+        {
+          "text": "Water discharged by data centers may affect wastewater treatment processes or the receiving aquatic ecosystem.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Data center water use is difficult to quantify comprehensively, and understanding of its potential effects on local water resources is evolving.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The report expressly excludes discussion of indirect water use such as off-site power generation; introduced bills include information gathering, incentives, and measures supporting or limiting development.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The report moves from motivating examples to an explicit scope. It does not promise a comprehensive accounting, and it names uncertainty before beginning the FAQ."
+    },
+    {
+      "location": "p. 2, What Are Data Centers?",
+      "moves": "Defines the facility, classifies its sizes and services, and differentiates computing hardware.",
+      "claims": [
+        {
+          "text": "Data centers range from server closets to whole buildings, typically require dedicated uninterruptible power and cooling, and may provide enterprise, on-demand, high-performance, internet, or hosting services; large stand-alone facilities may have on-site backup generation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "CPUs handle general-purpose workloads, GPUs are primarily used in AI-model training, and application-specific integrated circuits are frequently used for cryptocurrency mining and increasingly for AI.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The definition prevents the reader from treating all facilities as identical. Different workloads and scales provide a technical basis for the variation in cooling that follows."
+    },
+    {
+      "location": "pp. 2–3, How Do Data Centers Use Water?, opening through cooling categories",
+      "moves": "Explains the heat-removal mechanism and compares categories of cooling.",
+      "claims": [
+        {
+          "text": "Heat comes from processing, computing, and networking equipment; thermal-regulation systems may use water, and on-site generation may have separate water-using thermal systems.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Air cooling transfers heat with chilled air; liquid cooling transfers it with liquids; hybrids combine technologies and two-phase systems transfer heat through liquid–vapor changes.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Small, medium, or co-located data centers typically use direct-expansion computer room air conditioners; larger facilities may use other systems.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites Shehabi et al., 2024 United States Data Center Energy Usage Report, p. 5.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "8",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This develops the hardware account into a physical explanation. The repeated qualifications make water use a feature of particular technologies rather than an automatic fixed quantity per facility."
+    },
+    {
+      "location": "p. 3, How Do Data Centers Use Water?, AI cooling needs through historical estimate",
+      "moves": "Reports changing technology and increasing demand; offers evidence for an aggregate trend.",
+      "claims": [
+        {
+          "text": "AI training and inference increase cooling needs; liquid cooling can be more efficient than air cooling but may not be cost-effective for small or medium facilities, and some companies plan retrofits.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Companies are exploring immersion cooling, with components contacting a thermally conducting fluid, and two-phase cooling.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Sebastian Moss’s report on Nvidia hiring for immersion-cooling work is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "9",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "U.S. data centers directly used approximately 17 billion gallons of water in 2023, compared with 5.6 billion gallons in 2014, according to one study.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Shehabi et al., the LBNL 2024 report, pp. 55–56, supplies the estimates.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "10",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The trend claim is anchored in dated estimates rather than extrapolated to all future facilities. The account also retains the economic qualification on liquid cooling."
+    },
+    {
+      "location": "pp. 3–4, What Are Some Potential Options to Reduce Water Used by Data Centers?, WUE definition",
+      "moves": "Defines a comparison metric, specifies consumption, and qualifies the metric’s scope.",
+      "claims": [
+        {
+          "text": "WUE is typically total data-center water consumption divided by the electricity demand of its IT equipment.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water consumption is water withdrawn and permanently removed from its original source through evaporation or other irreversible processes such as deep-well wastewater injection.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Facility WUE generally excludes indirect consumption; including both on-site cooling and off-site electricity could be more comprehensive, but different electricity sources complicate cooling-system comparisons.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report attributes the case for a comprehensive metric to Shehabi et al., LBNL 2024 Report, pp. 44–45.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "12",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The report introduces a tool for comparison and immediately explains its limitations. Reduced on-site water consumption and reduced overall water consumption are not automatically the same claim."
+    },
+    {
+      "location": "p. 4, cooling technologies, economizers, and operating practices",
+      "moves": "Explains mechanisms for reducing WUE and states a water–energy tradeoff.",
+      "claims": [
+        {
+          "text": "Evaporative cooling dissipates IT heat by converting water to vapor; water-cooled chillers typically have the highest WUE, meaning poorer water efficiency, largely because of cooling-tower use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The cooling-technology discussion cites Xu et al., a review in Energies, vol. 16, no. 3 (2023), p. 1279.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "13",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Waterside economizers can lower mechanical-chiller use and compressor heat; airside economizers can shut chilled-water systems down under suitable weather conditions, reducing water consumption.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Elevating setpoint temperatures and changing operating or management practices can further reduce water use.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Evaporation-based cooling systems are generally more energy efficient than air-cooled chillers or other waterless systems. While air-cooled chillers use no water, they use comparatively more energy.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The options follow from the WUE definition, but the final comparison prevents the reader from equating a lower water requirement with improvement on every resource measure."
+    },
+    {
+      "location": "pp. 4–5, What Are the Potential Water Sources Available for Data Centers?, source quality",
+      "moves": "Turns from cooling choices to supply choices and explains why municipal water is attractive.",
+      "claims": [
+        {
+          "text": "Municipal water generally meets cooling-quality requirements; regulated public systems must meet SDWA requirements, including requirements concerning disinfection and corrosivity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "AWWA’s Cooling the Cloud is cited for cooling-water quality and effects on equipment.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "16",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "18",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Compared with water causing corrosion, mineral scaling, or microbial growth, regulated water may be less detrimental to cooling; direct surface water, groundwater, or reclaimed water may require pretreatment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The equipment-quality discussion cites AWWA’s Cooling the Cloud.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "18",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The report’s SDWA footnote says its regulations apply to systems serving more than 25 individuals and include maximum contaminant levels.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This applicability explanation appears in footnote 17.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "17",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The 97% municipal-supply estimate is restated here rather than newly established. The new explanation links source choice to cooling reliability and possible pretreatment needs."
+    },
+    {
+      "location": "p. 5, source proximity and timing",
+      "moves": "Adds access constraints and compares supply-development pathways.",
+      "claims": [
+        {
+          "text": "Proximity to water sources is likely a key selection factor; treated wastewater and nonpotable purple-pipe networks can make reuse accessible, but competing demand may limit supplies.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Self-supply may require state or local withdrawal approvals and delivery infrastructure; connection to an existing public system may involve fewer steps and less time.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The self-supply discussion cites WEF, Water and Wastewater Utilities and Data Centers: Frequently Asked Questions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "19",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The discussion moves from technically suitable water to practically obtainable water. Infrastructure, competition, and timing join water quality as selection considerations."
+    },
+    {
+      "location": "pp. 5–6, What Drives a Data Center’s Water Demand?",
+      "moves": "Relates demand to equipment, climate, and water chemistry; describes the limit to recirculation.",
+      "claims": [
+        {
+          "text": "Among water-based liquid-cooling systems, open-loop systems require more water than closed-loop systems.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s FAQ supports the demand discussion; footnote 22 distinguishes direct heat transfer and possible cooling-tower evaporation in open loops from two separate, nonmixing fluid systems in closed loops, which may still employ evaporative cooling.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "21",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "22",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Evaporatively cooled data centers generally need more water during hotter hours and seasons.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Lower dissolved-solids concentrations can permit repeated use in cooling; evaporation raises concentrations until a threshold requires discharge.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The water-quality and cycling explanation cites Alliance for Water Stewardship, Water Stewardship in Data Centres (2025).",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "23",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The earlier list of drivers becomes a causal account. Crucially, the footnote does not equate closed-loop systems with zero evaporation, and cycling creates the bridge to wastewater."
+    },
+    {
+      "location": "p. 6, Do Data Center Operators Pay…?, agreements and rate structures",
+      "moves": "Explains water charges and compares incentives embedded in pricing.",
+      "claims": [
+        {
+          "text": "Water-system customers, including data-center operators, generally pay rates supporting service costs; volume, rates, and other terms may be set in service agreements that limit disclosure.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water rates are not generally publicly available, although some utilities voluntarily provide data and some states collect rate information.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 25 identifies the UNC Environmental Finance Center’s voluntary utility data and state collections.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "25",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Uniform rates charge the same unit price; flat fees charge the same amount regardless of use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites the AWWA/Raftelis/UNC Environmental Finance Center Water and Wastewater Rate Survey.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "26",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Increasing block rates raise prices for successive portions of use to encourage conservation; decreasing block rates lower successive prices and may encourage industrial development.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPA, Setting Small Drinking Water System Rates for a Sustainable Future, is cited for the pricing rationale.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "27",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "28",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Payment is not a single national rule or tariff. The comparison shows how the same category of service can reward conservation or larger-volume use, without recommending a rate structure."
+    },
+    {
+      "location": "p. 7, water-rate regulation and full cost recovery",
+      "moves": "Specifies state variation in rate oversight and explains a pricing principle.",
+      "claims": [
+        {
+          "text": "Commercial customers may pay different unit rates from residents.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPA’s small-system rate guide supports this point.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "29",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "All states except Georgia, Michigan, Minnesota, North Dakota, and South Dakota regulate certain private water-system owners through PUCs or PSCs.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites Janice Beecher’s 2018 Michigan water-sector policy brief.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "30",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Wisconsin’s PSC regulates all water-system rates; Alaska, Indiana, Maine, Maryland, Mississippi, New Jersey, Pennsylvania, Rhode Island, and West Virginia have varying jurisdiction over public systems as well as private systems.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Beecher’s policy brief is cited for the jurisdictional comparison.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "31",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Some commissions use full cost recovery to fund operations, maintenance, and capital costs; they typically allow some investor return, especially for private operators.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Beecher’s Economic Regulation of Utility Infrastructure (2013) is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "32",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The general pricing comparison is qualified by state-specific institutions. Full cost recovery appears as a sustainability rationale for service provision rather than a conclusion about what any data center ought to pay."
+    },
+    {
+      "location": "pp. 7–8, Why Are Local Water Authorities and the States…?, state primacy and water rights",
+      "moves": "States a governing institutional premise, cites statutory language, and distinguishes deference from constitutional incapacity.",
+      "claims": [
+        {
+          "text": "Congress has generally deferred to the states’ primacy in intrastate water allocation.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The Water Supply Act of 1958 recognizes primary state and local responsibility; footnotes 34–35 also identify federal participation and state-law compliance at federal facilities.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "34",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "35",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The footnote explains that deference does not resolve what powers the federal government constitutionally could exercise; federal ownership and reserved water rights also exist, often unquantified.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 34 discusses the Reclamation Act, federal public-domain water rights, a 1973 Justice Department letter, and reserved rights for federal reservations.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "34",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "State rules vary between states and between surface water and groundwater; self-supplying data centers must address those requirements, while a utility generally handles them when supplying a customer.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 36 explains riparian reasonable use, prior-appropriation seniority, eastern and western tendencies, and differences in permit and reporting regimes.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "36",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This explains why state and local institutions dominate without claiming that federal authority is inherently absent. The distinction between utility responsibility and operator responsibility follows directly from the supply alternatives."
+    },
+    {
+      "location": "p. 8, municipal provision, utility duties, and federal assistance",
+      "moves": "Explains service-provider authority and qualifies utilities’ ability to accept or reject customers.",
+      "claims": [
+        {
+          "text": "Municipalities and other providers have largely developed and distributed local supplies; federal agencies can assist development and protect drinking-water quality and fish and wildlife.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report points to CRS reports on federally supported water infrastructure and the Safe Drinking Water Act.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "37",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "38",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "In many states a utility must serve its area when conditions such as capacity and rights are satisfied; some states allow terms of service or refusal for particular reasons, with fair and impartial application to similarly situated customers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "State primacy coexists with federal investment in reservoirs and infrastructure storing water for irrigation and municipal and industrial uses.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The text adds practical limits to the idea that a community or provider can simply choose whether to supply a facility. Its transition to federal infrastructure follows from the coexistence of state allocation and federal ownership."
+    },
+    {
+      "location": "p. 9, Are There U.S. Data Centers That Directly Source Their Water?, groundwater example",
+      "moves": "Reports limited examples of self-supply, explains permitting authority, and preserves a numerical qualification in the example.",
+      "claims": [
+        {
+          "text": "A few facilities reportedly use or propose groundwater withdrawals for primary or backup supply; a proposed Richland Parish, Louisiana facility plans cooling withdrawals from the Mississippi River Alluvial Aquifer.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Local reporting by Josie Abugov is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "41",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The Louisiana facility is registered for more than 23 million gallons daily or 8.4 billion annually, but Meta says actual operation from 2028 would use 500–600 million gallons annually, averaging 1.5 million daily.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 41 explicitly contrasts registered limits and the company’s projected actual use; neither is presented as measured operational consumption.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "41",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Groundwater management is primarily determined by states or their entities, with limited federal exceptions mainly for drinking-water protection.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 42 gives Missouri as a contrasting case: no amount-or-purpose restrictions apart from export and major-user reporting, with major users capable of at least 100,000 gallons daily; footnote 43 points to federal facilitation of local groundwater management.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "42",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "43",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The report moves from general rules to a proposal, carefully distinguishing a permitted or registered amount from expected use. The example is not proof of a uniform groundwater regime."
+    },
+    {
+      "location": "pp. 9–10, self-supply information gaps, irrigation districts, and local effects",
+      "moves": "Acknowledges the limit of CRS’s search, supplies alternative-supply examples, and conditions possible effects.",
+      "claims": [
+        {
+          "text": "To date, CRS has not found sources that identify currently operating U.S. commercial data centers that self-source using surface water.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Interest in alternatives may increase with sites beyond municipal service areas and local concerns; one possible route to surface water is an irrigation district.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 40 links siting interest to local restrictions and community concerns.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "40",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Marana prohibited potable municipal water for data-center cooling and similar uses; a project was expected to receive nonpotable irrigation-district water. In Imperial County, a developer claimed it sought to transfer water conserved by fallowing; the district denied industrial cooling use and the developer sued.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 44 provides the Marana ordinance and Charles Borla’s reporting, then Betty Miller’s reporting on the Imperial dispute.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "44",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "44",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "44",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The relative significance of new demand depends on local water amount, condition, weather and seasonal availability, other human and environmental needs, and whether data-center demand peaks coincide with scarcity or others’ peaks.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The absence of identified examples remains a search result, not a categorical assertion that no such facilities exist. The contrasting irrigation-district cases keep access contingent, and the local-effects account returns to timing as well as volume."
+    },
+    {
+      "location": "p. 10, Are Federal Reservoirs and Infrastructure Providing Water…?, agency comparison",
+      "moves": "Differentiates the two main federal project systems and allocation responsibilities.",
+      "claims": [
+        {
+          "text": "Reclamation operates in 17 western states, stores and delivers water for irrigation and municipal and industrial purposes, and DOI typically obtains state water rights and contracts with irrigation districts or municipalities.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 47 enumerates the 17 states; footnote 48 cites the CRS report on Reclamation history and authorities.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "47",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "48",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "At USACE dams water supply is often secondary to other purposes; USACE generally does not hold state water rights for mostly nonconsumptive projects, so a party seeking stored water must secure rights through the state.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "In early-July-2026 research, CRS identified no developers or operators directly entering withdrawal supply agreements with either Reclamation or USACE.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Federal ownership now receives institutional detail. The distinction between the agencies matters for how water rights and contracts would work; the reported absence of direct agreements remains explicitly time-bounded."
+    },
+    {
+      "location": "p. 11, indirect federal supplies and proposed reporting",
+      "moves": "Uses cases to demonstrate indirect supply, then introduces a proposed information requirement.",
+      "claims": [
+        {
+          "text": "Project Turbo near Gainesville, Georgia, paused as of December 2025, had planned city-system supply sourced primarily from USACE’s Lake Lanier.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 50 cites Clyde Morris and explains Gainesville’s 1953 agreement allowing up to 8 million gallons daily without payment to USACE.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "50",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "An Amazon project in Caddo and Bossier parishes planned service from Blanchard Utilities, which draws from Caddo Lake’s USACE-operated dam; the unusual ownership arrangement means Blanchard withdrawals do not require a USACE supply agreement.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 51 cites Liz Swain and a May 20, 2026 USACE communication explaining that reservoir and real-estate authority did not transfer with dam operations.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "51",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "51",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A 2026 study found 66 completed or under-construction Central Arizona data centers, including Tucson 9, Phoenix 25, Scottsdale 5, and Mesa 8; these cities receive significant Colorado River supplies via the Central Arizona Project, and the latter three also significant Salt River Project supplies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Arizona State University’s Morrison Institute study supplies the counts; a CRS Colorado River report is cited for federal river management.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "52",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "53",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "H.R. 9497, as ordered reported in July 2026, would require a report within one year of enactment on new commercial and industrial users’ effects on certain USACE projects.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 55 explains that municipal and industrial terminology can include commercial uses such as data centers.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "55",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Indirect routes provide the answer the absence of direct agreements could not. The city counts describe study locations, not measured quantities of federally supplied data-center water."
+    },
+    {
+      "location": "p. 12, How Does and Can the Federal Government Support…?, planning assistance",
+      "moves": "Returns to state access rules, introduces interstate coordination, and catalogs limited federal support.",
+      "claims": [
+        {
+          "text": "Interstate compacts and river-basin organizations may govern access to shared waters and account for effects on other states.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Congress authorizes some technical assistance for state and local water-resource planning, including USACE assistance and watershed studies; Reclamation’s Drought Response Program supports drought plans and resilience projects in its 17 western states.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The text identifies 42 U.S.C. §1962d-16 and 33 U.S.C. 2267a; footnote 57 describes a proposed H.R. 9497 expansion concerning projected supply needs.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "57",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Reclamation assistance discussed here has been limited to state and local governments and water- or power-delivery entities; S. 3737 would add data centers and others as eligible applicants.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "California, Texas, and Florida have undertaken state planning, but whether or how recent efforts account for data-center demand is unclear.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The report shifts from supplying particular projects to anticipating demand across jurisdictions. Its descriptions separate existing authority, proposed eligibility changes, and what is unknown about actual planning."
+    },
+    {
+      "location": "pp. 12–13, Interagency Committee and Federal Water Planning Since 1965 box",
+      "moves": "Introduces an existing coordination body, then supplies a historical institutional explanation in a boxed aside.",
+      "claims": [
+        {
+          "text": "Congress established the Interagency Committee on Water Management and Infrastructure in statute in 2022 to improve coordination and identify cross-agency research needs; groups have advocated implementation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The text cites P.L. 117-316 and 15 U.S.C. §9708; footnote 58 identifies a September 30, 2025 coalition letter.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "58",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The Federal Water Planning Since 1965 box says Congress has enacted no overarching water-policy legislation since the 1965 Water Resources Planning Act, which created the Water Resources Council.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The box describes declining planning funds and early-1980s dissolution of the council and most basin commissions as shifting planning toward individual projects, with brief council re-formation for particular decisions in the mid-2010s.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The box identifies the 1975 assessment of national resource conditions and the National Water Commission’s 1973 Water Policies for the Future as the latest respective nationwide assessments of those kinds.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The box says coordination has largely been ad hoc since 1983; the 2022 committee followed two years of informal operation and brings together several agency heads where responsibilities overlap.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The box deepens the preceding planning discussion rather than making a new data-center-specific finding. Its account explains why federal coordination can be advocated while state concern about federal control persists."
+    },
+    {
+      "location": "pp. 13–14, What Are the Available Data on Data Center Water Use?",
+      "moves": "Identifies information gaps, explains aggregation, and gives a state-level response.",
+      "claims": [
+        {
+          "text": "Sector- and facility-specific water-use data are limited: utility data are not always public, public-supply records aggregate users, and self-suppliers often face fewer reporting requirements.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 60 cites Naseri and Marston’s database paper and Medalie et al.’s USGS assessment; footnote 61 cites Luukkonen et al. on facility-inventory gaps; footnote 62 returns to Medalie et al.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "60",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "60",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "61",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "62",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Texas directed its PUC to survey data-center and virtual-currency-mining energy and water use and report to the Legislative Budget Board and governor by the end of 2026.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 63 cites the Texas PUC FAQ and an April 2, 2026 staff memorandum.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "63",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "63",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The report returns from the historical aside to a current practical limitation. It explains why routine utility measurement does not by itself produce a public facility-level account, then identifies an attempt to collect one."
+    },
+    {
+      "location": "p. 14, What Is the Current Federal Role…?, historical estimates and new models",
+      "moves": "States the assessment gap and explains how federal statistical categories constrain available information.",
+      "claims": [
+        {
+          "text": "To date, the federal government has not conducted a systematic assessment of water use by data centers.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "USGS has compiled national, state, and county withdrawal estimates for roughly 70 years, historically at five-year intervals through 2015; data centers appear to have been classed as commercial through 1995, after which separate commercial estimates ended.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The discussion cites USGS’s data-access page, Census and 1995 classification materials, and USGS’s account of category changes.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "65",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "66",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "66",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "67",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "To fulfill Secure Water Act mandates, USGS developed AI- and machine-learning-based withdrawal and consumption models relying heavily on state, local, and federal data.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 68 identifies the statutory mandate, USGS’s Water Use page, and Alzraiee et al.’s modeling paper; footnote 69 describes grants for state data improvement.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "68",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "68",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "69",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The absence of a dedicated assessment is now placed in the history of statistical classification. The report distinguishes collecting water-use data generally from isolating data centers within it."
+    },
+    {
+      "location": "pp. 14–15, USGS assessments and United States Water Withdrawals Database",
+      "moves": "Compares datasets, their granularity, and their exclusions.",
+      "claims": [
+        {
+          "text": "The 2025 USGS Integrated Water Availability Assessment for 2010–20 estimates monthly public-supply, irrigation, and thermoelectric-cooling withdrawals at subwatershed scale; public deliveries distinguish domestic from combined commercial, industrial, and institutional use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 70 identifies HUC-12 scale and the assessment; footnote 71 cites Larsen et al.’s public-delivery analysis.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "70",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "71",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "USGS’s 2026 release of 2020 self-supplied industrial water use uses manufacturing-based facility categories, NAICS 31–33.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The 2026 USGS dataset and Census manufacturing classification are cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "72",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "73",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Virginia Tech researchers’ federally supported 2025 United States Water Withdrawals Database compiles state-reported withdrawal data and estimates for 42 states, including public, industrial, and commercial use; the released dataset does not add further facility detail.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites Naseri and Marston, with footnote 75 specifying the limit to facility information.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "74",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "75",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "USGS assessments supplement reported values with modeled estimates to fill gaps but exclude self-supplied commercial use, unlike the database’s inclusion of commercial reporting.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Naseri and Marston is cited for the comparison.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "76",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The comparison shows why more spatial or temporal detail does not necessarily answer a facility-specific question. Different coverage and classification rules remain consequential even in improved datasets."
+    },
+    {
+      "location": "pp. 15–16, cooperative studies and water-bottling analogy",
+      "moves": "Describes research mechanisms and proposes a limited analogy for information-gathering challenges.",
+      "claims": [
+        {
+          "text": "USGS can partner on sectoral or regional effects of water use; cooperative matching funds support work on increasing demand and competition.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "USGS Water Use and Cooperative Projects pages are cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "77",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "78",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Congress directed a nationwide water-bottling withdrawal assessment; appropriations explanations for 2021 and 2022 directed $2.75 million for research on water tables, availability, and quality.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 79 gives the appropriation details and cites USGS Withdrawals for Bottled Water.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "79",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Because bottled-water facilities also lack a comprehensive inventory combining withdrawal volume and source, that study may be a useful analogue for the data-collection challenges of a future data-center study.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Luukkonen et al., Data and Knowledge Gaps, is cited for the inventory gap.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "80",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The analogy follows from a specific shared obstacle rather than equating the industries. Its tentative wording leaves the usefulness of the comparison conditional."
+    },
+    {
+      "location": "p. 16, What Is Water Reuse?",
+      "moves": "Defines reuse, differentiates treatment by purpose, and reports emerging adoption and a barrier.",
+      "claims": [
+        {
+          "text": "Reuse captures wastewater, stormwater, saltwater, or graywater and treats it as needed for a beneficial purpose; treatment depends on intended use and health or environmental risk.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WateReuse and EPA’s basic-information page support the definition; EPA’s end-use resource hub adds examples including industry, agriculture, replenishment, and drinking water.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "82",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "82",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "83",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Some data centers recycle wastewater on site or obtain reclaimed water from nearby treatment plants.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites ACWA and EPA, Water Reuse for Data Centers.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "84",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "EPA reports that many operators are interested in recycled cooling water but face an unclear permitting pathway.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WRAP online Action 3.10 is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "85",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The report introduces reuse as an established category with multiple end uses, then narrows to data centers. Interest and actual adoption are kept distinct, and the identified obstacle leads to the regulatory question."
+    },
+    {
+      "location": "pp. 16–17, Does the Federal Government Have a Role in Regulating Water Reuse?, state rules",
+      "moves": "States the federal regulatory position and compares state treatment frameworks.",
+      "claims": [
+        {
+          "text": "At the federal level, there are no laws or regulations governing water reuse.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "EPA’s Basic Information About Water Reuse is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "87",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "States primarily regulate water allocation and development; some have specific reuse programs while others use existing frameworks, with treatment and monitoring varying by source and end use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPA’s Basic Information About Water Reuse is cited for the program and treatment distinctions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "88",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "89",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "As of February 2024, 20 states had industrial-reuse guidelines or regulations.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 90 identifies CRS’s REUSExplorer search for industry under reuse application.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "90",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The answer distinguishes direct regulation from other possible federal roles. The state count is dated and concerns guidelines or regulations, not a claim that the remaining states cannot practice reuse."
+    },
+    {
+      "location": "p. 17, original WRAP, REUSExplorer, and statutory working group",
+      "moves": "Describes collaborative federal action and informational tools.",
+      "claims": [
+        {
+          "text": "EPA’s 2020 National Water Reuse Action Plan identified 37 actions and more than 200 milestones for varied stakeholders.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites EPA’s WRAP page and February 2020 plan.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "91",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "92",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "REUSExplorer summarizes more than 185 state reuse regulations and can be searched by state, water source, and use to clarify treatment requirements and support state rule development.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites EPA’s REUSExplorer and basic-information pages and EPA/ACWA’s December 2025 data-center presentation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "93",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "94",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "94",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Section 50218 of the 2021 Infrastructure Investment and Jobs Act directed EPA to establish a Water Reuse Interagency Working Group to coordinate implementation of a national action plan.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "A federal role emerges through coordination and information despite the absence of federal reuse rules. The text places collaborative activity alongside a specific statutory direction."
+    },
+    {
+      "location": "pp. 17–18, WRAP 2.0",
+      "moves": "Reports a renewed initiative, preserves its stated priorities, and catalogs data-center actions.",
+      "claims": [
+        {
+          "text": "EPA’s April 2026 WRAP 2.0 expands the original initiative and emphasizes reuse for industry, technology, and energy dominance; EPA explicitly characterizes it as collaborative rather than a federal regulatory mandate.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPA’s WRAP 2.0 page and April 16, 2026 press release provide the characterization.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "95",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "96",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "EPA proposes compiling cooling-system best practices with states and regulated entities so states can readily permit recycled water for data centers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The WRAP 2.0 booklet, p. 10, is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "97",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Other WRAP 2.0 actions address regulatory hurdles, a utility forum, a Center of Excellence for AI-related reuse, and on-site reuse through the BILD initiative.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The WRAP 2.0 booklet, p. 10, is cited for these actions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "98",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The progression from the original plan to its successor is institutional continuity with a more explicit industry and technology emphasis. That emphasis is presented as EPA’s framing, without being adopted as the reader’s own value judgment."
+    },
+    {
+      "location": "p. 18, What Types of Water-Related Discharges Do Data Centers Generate?, wastewater types",
+      "moves": "Turns from supply and reuse to discharge and classifies wastewater streams.",
+      "claims": [
+        {
+          "text": "The two main wastewater types are cooling-related effluent and domestic wastewater; cooling-related flows predominate, while domestic flows such as toilets are generally more limited.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Rasheed Ahmad’s Keeping Data Centers Cool is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "100",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Cooling discharges include noncontact cooling water, blowdown, and construction, commissioning, or maintenance flows; source-water and wastewater treatment can generate additional streams.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s FAQ supports the classification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "101",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "102",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Cooling-discharge frequency and volume depend on technology, size and design, climate, operations, and development phase.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s FAQ is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "103",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The move is a deliberate new line of discussion. Earlier cooling choices now become explanations for output streams, while domestic and treatment-system flows prevent the category from being reduced to cooling alone."
+    },
+    {
+      "location": "pp. 18–19, cooling-system effluent and commissioning",
+      "moves": "Compares cooling technologies and explains why construction-related discharges differ from normal operations.",
+      "claims": [
+        {
+          "text": "Open-loop evaporative systems typically discharge larger volumes; sealed closed-loop systems may discharge less in routine operation, but both produce wastewater during maintenance, construction, and commissioning.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s Advancing Understanding of Data Center Effluent webcast is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "104",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "105",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Air-cooled systems may generate little or no wastewater; immersion or hybrid cooling may reduce cooling-water demand and effluent.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s FAQ is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "106",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Cleaning, degreasing, passivation, and flushing can generate short-term, high-volume discharges with higher pollutant concentrations than routine operation; commissioning can recur at every development phase.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s FAQ, Allegheny Surface Technology’s passivation account, and WEF’s effluent webcast support the mechanisms and repeated commissioning.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "107",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "108",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "109",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "110",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The decisive distinction is not only between cooling technologies but between routine operation and intermittent development or maintenance. The text explicitly prevents commissioning from being understood as a single lifetime event."
+    },
+    {
+      "location": "p. 19, Stormwater; Discharges of Dredged or Fill Material for Development",
+      "moves": "Extends the classification beyond wastewater and links discharges to site development.",
+      "claims": [
+        {
+          "text": "Multiphase construction can create multiple construction-runoff periods; operational stormwater may contact generators, fuel or chemical tanks, stored equipment, and loading areas.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Ohio EPA’s draft general-permit fact sheet supports the operational examples.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "111",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Development of a data-center parcel may in some cases require discharging dredged or fill material into wetlands or surface waters on the site.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "These are separate pathways to water-quality effects. The development qualification matters: dredged or fill discharges are possible site-dependent activities, not an inevitable output of every data center."
+    },
+    {
+      "location": "p. 20, What Types of Pollutants…?, evaporative concentration",
+      "moves": "Explains pollutant formation through concentration rather than assuming all pollutants are added.",
+      "claims": [
+        {
+          "text": "Pollutants vary with source water, cooling method, operations, and phase; evaporation can concentrate source-water pollutants, commonly dissolved solids and potentially chlorine from chlorinated supplies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s FAQ supports concentration; Ohio EPA’s fact sheet and Ahmad’s article support pollutant examples.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "113",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "114",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "114",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Different cycles of concentration affect pollutant buildup; fresh water may be added in some facilities to dilute concentrated cooling water and allow more cycles.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s effluent webcast is cited for cycle variation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "115",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The earlier discussion of dissolved solids returns as a water-quality explanation. Repeated cycling can conserve incoming water while changing what is eventually discharged."
+    },
+    {
+      "location": "p. 20, treatment chemicals, corrosion, pH, and temperature",
+      "moves": "Adds intentional and unintentional pollutant pathways and broadens the legal sense of pollutant.",
+      "claims": [
+        {
+          "text": "Cooling treatments may include acids, disinfectants, dispersants, corrosion inhibitors, and biocides; formulations vary and may be proprietary, and discharges can contain these chemicals especially during maintenance and commissioning.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s effluent webcast and FAQ are cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "116",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "116",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Corrosion, cleaning, and passivation can release copper, nickel, chromium, and treatment chemicals; metals can also leach during stagnation or startup without intentional chemical addition.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s webcast and FAQ support the separate pathways.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "117",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "118",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Acidic or alkaline pH and elevated temperature can also be pollutants under the Clean Water Act.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites 33 U.S.C. §1362(6) and 40 C.F.R. §401.16.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "119",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "119",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The account avoids treating all contamination as deliberate addition. It also expands the reader’s understanding from named chemicals to physical and chemical parameters regulated as pollutants."
+    },
+    {
+      "location": "p. 21, federal regulation overview and Section 404 permits",
+      "moves": "Introduces conditional permit obligations and distinguishes individual from general authorizations.",
+      "claims": [
+        {
+          "text": "Required federal permits depend on site characteristics, operations, discharge destination, and varying state and local rules.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Development placing dredged or fill material in waters of the United States requires a Section 404 permit, administered by USACE in most states.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 121 says Michigan and New Jersey administer their own programs, while USACE retains jurisdiction in certain waters.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "121",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Individual permits typically address projects with more-than-minimal individual or cumulative effects; general permits cover similar activities with only minimal individual and cumulative adverse environmental effects.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The text converts the discharge classification into permitting branches. Jurisdictional waters and actual placement of material remain explicit conditions rather than being assumed from the presence of a data center."
+    },
+    {
+      "location": "pp. 21–22, NWP 39, individual permits, and Section 401",
+      "moves": "Specifies a nationwide authorization, gives a permit count, and identifies a linked certification.",
+      "claims": [
+        {
+          "text": "USACE’s five-year nationwide permits include NWP 39; its 2026 reissuance explicitly added data centers among examples, and eligibility requires no more than half an acre of nontidal waters lost.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "USACE’s permitting page, January 8, 2026 Federal Register notice, and NWP 39 decision document support the account.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "122",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "123",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "124",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Footnote 123 reports that E.O. 14318 directed review of whether a specific data-center NWP was needed, but the 2026 rule preamble does not reference that order.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This qualification is expressly included in footnote 123.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "123",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "As of July 2026, USACE public data show 21 individual data-center permits issued between 2009 and 2026, with others pending; no public-facing count exists for general-permit authorizations.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 125 describes CRS’s all-districts, all-years search for data center in USACE public records.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "125",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A Section 404 permit often also triggers Section 401 state or authorized-tribal water-quality certification; EPA certifies on exclusive federal lands or relevant Indian lands without authorized tribes.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 126 gives EPA’s role; footnote 127 points to the CRS Section 401 report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "126",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "127",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The numerical finding is bounded by the database and permit category. The executive-order qualification also avoids asserting a causal link the rule’s preamble does not itself establish."
+    },
+    {
+      "location": "p. 22–p. 23 opening, Regulation of Stormwater",
+      "moves": "Explains NPDES delegation, a construction threshold, and uncertainty about industrial classification.",
+      "claims": [
+        {
+          "text": "NPDES authorizes point-source pollutant discharges to waters of the United States; 47 states and the Virgin Islands administer approved programs, while EPA administers in Massachusetts, New Hampshire, New Mexico, DC, remaining territories, and Indian lands.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites 33 U.S.C. §1342 and EPA’s state-program authority page; footnote 129 says no tribe has assumed the program.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "128",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "129",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Construction disturbing at least one acre and discharging stormwater to waters of the United States requires NPDES coverage, often through a general construction permit with erosion, sediment, and pollution controls.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It is unclear whether data centers belong to designated industrial-stormwater sectors, but authorities may designate a facility anyway; Ohio’s draft data-center general permit would cover operational runoff from specified site activities.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites 40 C.F.R. §122.26(b)(14), EPA industrial-stormwater guidance, designation authority, and Ohio EPA’s fact sheet.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "130",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "130",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "131",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "132",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This branch introduces a land-disturbance trigger distinct from the half-acre waters-loss limit discussed above. The report preserves uncertainty about sector classification while showing that it does not necessarily eliminate permitting authority."
+    },
+    {
+      "location": "p. 23, Regulation of Wastewater; Municipal Sewer Systems",
+      "moves": "Follows the most common wastewater route and explains institutional responsibility for pretreatment.",
+      "claims": [
+        {
+          "text": "Wastewater obligations depend on composition and disposal destination; most data centers discharge to POTWs and are indirect dischargers if the POTW discharges to jurisdictional waters.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPA’s Water-Related Permits for Data Centers, an ASCE account, and the Virginia JLARC report support the disposal pattern; 40 C.F.R. Part 403 establishes the indirect-discharge framework.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "133",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "133",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "133",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "134",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Pretreatment aims to prevent interference with POTW operation or pollutant passage through treatment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites 40 C.F.R. §403.2 and EPA’s pretreatment overview.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "135",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "135",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Local municipalities mostly implement pretreatment; an approved POTW is the control authority, otherwise an authorized state or EPA fills that role.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPA’s implementation page and 40 C.F.R. §403.3 support this allocation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "136",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "137",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The common municipal route introduces a regulatory relationship between data center and treatment plant. Indirect discharge still has obligations, but the immediate compliance authority differs from a direct-discharge permit writer."
+    },
+    {
+      "location": "pp. 23–24, pretreatment standards and data-center classification",
+      "moves": "Classifies three kinds of pretreatment requirement and applies them to data centers.",
+      "claims": [
+        {
+          "text": "All industrial users face general and specific prohibitions: no pass through or interference, plus eight prohibited pollutant categories.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPA’s applicability and prohibition guidance and 40 C.F.R. §403.5(a)–(b) are cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "139",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "140",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "141",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "142",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "EPA issues industry-specific categorical standards through ELGs; local limits can be numeric, narrative, or best management practices protecting treatment, receiving water, worker safety, and sludge practices.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPA’s effluent-guidelines page and local-limits guidance, plus 40 C.F.R. §403.5(c), are cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "143",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "144",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "144",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "EPA has no data-center ELGs, so categorical pretreatment standards do not apply; data centers are reportedly not typically significant industrial users because cooling blowdown is excluded from flow thresholds, although it can still affect treatment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s FAQ and 40 C.F.R. §403.3(v) are cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "145",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "145",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Data centers remain subject to general and specific prohibitions, and a control authority may impose local limits at the collection-system connection.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The distinctions explain a regulatory gap without turning it into an assertion of no regulation. Classification by flow threshold and actual effect on treatment are expressly different questions."
+    },
+    {
+      "location": "pp. 24–25, pretreatment challenges and slug-load effects",
+      "moves": "Reports practical difficulties, explains mechanisms of treatment disruption, and distinguishes reported problems from universal conditions.",
+      "claims": [
+        {
+          "text": "Some authorities report intermittent high-volume construction or maintenance slug loads, insufficient discharge information, and capacity limits where many data centers share a sewershed.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "InsideEPA’s March 31, 2026 report, WEF’s FAQ, and WEF’s effluent webcast supply the reported concerns.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "146",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "146",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "147",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "148",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "148",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "149",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A slug can cause pass through, interference, or a temporary compliance upset if volume exceeds capacity or pollutants disrupt treatment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s webcast supports the mechanism; footnote 150 defines upset through 40 C.F.R. §122.41(n).",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "150",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Startup or maintenance metals can increase sludge metal concentrations and affect sludge-permit compliance; some authorities also report chemical corrosion of POTW infrastructure.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "InsideEPA, WEF’s webcast, and WEF’s FAQ are cited for metals and sludge; InsideEPA is cited for corrosion.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "151",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "151",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "151",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "152",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The report moves from formal classification to operational consequences. Qualifiers such as some authorities and may preserve the status of these as reported and conditional effects rather than inevitable outcomes."
+    },
+    {
+      "location": "p. 25, communication and pretreatment responses",
+      "moves": "Reports a practical response and enumerates alternatives rather than prescribing one universal remedy.",
+      "claims": [
+        {
+          "text": "Some control authorities say clearer information on effluent quantity and quality allows them to take compliance-protecting steps.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "InsideEPA, WEF’s webcast, and WEF’s FAQ support the reported experience.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "153",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "153",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "153",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Options include adjusting POTW treatment, requiring on-site pretreatment, requiring on-site storage to buffer flows, or requiring hauling to an appropriate disposal facility.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "WEF’s webcast and FAQ are cited for the options.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "154",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "154",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "These options directly address the previously described unpredictability and capacity problems. The report offers conditional management possibilities rather than claiming information alone removes all constraints."
+    },
+    {
+      "location": "pp. 25–26, Surface Waters and cooling-water intakes",
+      "moves": "Explains the direct-discharge alternative and adds intake-related protections.",
+      "claims": [
+        {
+          "text": "Direct discharge to waters of the United States requires an NPDES wastewater permit; EPA says this is less common for data centers than other industrial sectors but may occur without municipal wastewater access.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "EPA’s Water-Related Permits for Data Centers is cited.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "155",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Permits can limit or monitor flow, temperature, pH, nutrients, chlorine, additives, and metals; without data-center ELGs, permit writers typically use best professional judgment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Ohio EPA’s fact sheet supplies examples; EPA’s effluent-guidelines page supports the ELG discussion.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "156",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "157",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "An NPDES-permitted data center designed to withdraw at least 2 million gallons daily from jurisdictional waters for cooling must also meet Section 316(b) intake-performance requirements, intended to minimize environmental harm and reduce fish and aquatic-life injury or death from impingement and entrainment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites 33 U.S.C. §1326(b) and EPA’s Cooling Water Intakes page.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "158",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "158",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "159",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The route change brings the operator into direct permitting and adds a separate intake obligation. The numerical threshold concerns intake design and specified conditions, not every data center using two million gallons from any source."
+    },
+    {
+      "location": "p. 26, Alternative Disposal Methods",
+      "moves": "Closes the disposal taxonomy with other possible regulatory frameworks.",
+      "claims": [
+        {
+          "text": "Subsurface injection of wastewater or treatment residuals requires authorization under the SDWA Underground Injection Control program.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report cites 40 C.F.R. Part 144.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "160",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "On-site storage or treatment impoundments and lagoons may be subject to federal or state design, construction, operating, and permit standards protecting groundwater and surface-water quality.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The regulatory discussion ends by showing that changing disposal destination can change the applicable framework. The conditional phrasing is retained for on-site facilities."
+    },
+    {
+      "location": "pp. 26–27, Congressional Action",
+      "moves": "Distinguishes enacted provisions from pending proposals, describes the search method, and qualifies coverage.",
+      "claims": [
+        {
+          "text": "As of July 30, 2026, at least one relevant provision had become law: FY2026 NDAA Section 1531 adds estimates of new electricity and water use and community effects from military-installation data-center construction or expansion to DOD’s roadmap, provided estimates do not delay triennial updates.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The text identifies P.L. 119-60; footnote 163 identifies the amended Title 10 note.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "163",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Most identified bills have not advanced beyond introduction; water provisions often sit within broader data-center or energy measures, using information, incentive, restriction, or facilitation mechanisms.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "CRS identified legislation by searching Congress.gov for data center(s), datacenter(s), and water; Table A-1 is a selection, and other industrial or commercial water bills may cover data centers depending on text or interpretation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Footnote 161 states the search method; H.R. 9497 is the prose example of a broader commercial-and-industrial-user provision.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "161",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The regulatory account gives way to legislative inventory. The roadmap’s enacted status, the predominance of introductory-stage measures, and the selection method keep the table from being mistaken for a list of current legal duties."
+    },
+    {
+      "location": "p. 28, Appendix, Table A-1, first three House rows",
+      "moves": "Opens a dated legislative inventory and presents tax, research, and technology-assessment proposals.",
+      "claims": [
+        {
+          "text": "Table A-1 lists H.R. 2940, Advancing Water Reuse Act: Section 2 would provide a 30% investment tax credit for qualifying reuse projects, including installing, replacing, or modifying an on-site recycling system in a data center. Ways and Means referral: 4/17/2025.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists H.R. 5227, Unleashing Low-Cost Rural AI Act: DOE would designate a national laboratory to study AI and data-center growth, including co-location effects on water use, land use, energy, reliability, and consumer costs. Science, Space, and Technology referral: 9/9/2025.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists H.R. 5332, Liquid Cooling for AI Act of 2025: GAO would assess liquid-cooling research needs, including coolant choices, compatibility, corrosion, biological growth, filtration, deaeration, and fluid monitoring; the long title also calls for government-wide federal-agency guidance. Referred to Science, Space, and Technology and Energy and Commerce on 9/11/2025; Section 3 is similar to S. 3269 Section 2.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The table makes the previously named policy mechanisms concrete. Its date is July 30, 2026, and its proposal language should not be read as enacted authority."
+    },
+    {
+      "location": "p. 29, Table A-1, H.R. 6900, H.R. 6984, and H.R. 7858",
+      "moves": "Adds reuse incentives, recurring transparency reports, and a distributional study.",
+      "claims": [
+        {
+          "text": "Table A-1 lists H.R. 6900, American Affordability Act of 2025: Section 24001 repeats the 30% qualifying reuse-investment credit, including data-center on-site recycling. It was referred to Ways and Means, Education and Workforce, and Energy and Commerce on 12/18/2025; the related H.R. 2940 provision is a restatement of the preceding row’s mechanism.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists H.R. 6984, Data Center Transparency Act: EPA would report to Congress and publish online within six months of enactment and every three months thereafter, covering consumption, reuse and reused volumes, potable supply, utility demand, service disruptions, residential water rates, and pollutant types and amounts. Energy and Commerce referral: 1/8/2026.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists H.R. 7858, Data Center Community Impact Act: DOE, coordinating with EPA, Commerce, FERC, and CEQ, would study effects on communities of color and low-income communities, including water consumption, local and drought-prone supplies, and wastewater effects. Energy and Commerce referral: 3/5/2026.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The inventory now distinguishes aggregate transparency from an explicitly distributional inquiry. These are the proposals’ different study objects, without the report endorsing one frame over another."
+    },
+    {
+      "location": "p. 30, Table A-1, H.R. 8033 and H.R. 8037",
+      "moves": "Juxtaposes an environmental assessment proposal with a proposal constraining litigation remedies.",
+      "claims": [
+        {
+          "text": "Table A-1 lists H.R. 8033, No Harm Data Centers Act: Section 5 would have EPA seek an agreement with the National Academies for an environmental and public-health assessment, including water consumption and supply, mitigation recommendations, and a congressional report. Energy and Commerce referral: 3/20/2026; related to H.R. 9629 Section 2.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists H.R. 8037, Protect American AI Act of 2026: litigation concerning covered environmental reviews, including under the CWA, would not invalidate data-center or infrastructure approvals; a court finding a violation would remand for agency resolution rather than vacate, and the agency would continue processing covered applications. Referred to Energy and Commerce and Judiciary on 3/24/2026.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The adjacent entries give operational substance to the earlier statement that legislation can either scrutinize impacts or facilitate development. The second proposal’s decisive tradeoff is preserving approvals and processing while a violation is resolved."
+    },
+    {
+      "location": "p. 31, Table A-1, H.R. 9372, H.R. 9419, and H.R. 9442",
+      "moves": "Introduces measurement standards, a broader reuse credit, and a moratorium linked to reporting.",
+      "claims": [
+        {
+          "text": "Table A-1 lists H.R. 9372, Data Infrastructure Energy Measurement and Standards Act: as introduced, NIST with DOE would research measurement best practices, definitions, methods, procedures, and technical standards for data-center water use, including AI training and inference and other compute-intensive processes. Science, Space, and Technology ordered an amended substitute reported on 6/25/2026.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists H.R. 9419, Power and Water for Families Act of 2026: Section 201 includes a 30% reuse-investment credit, adding replacement of freshwater with municipal recycled water and construction or expansion of municipal recycling for a taxpayer’s goods or services to on-site recycling. Referred to Ways and Means and Energy and Commerce on 6/24/2026; Section 201 is similar to H.R. 2940 and H.R. 6900.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists H.R. 9442, Artificial Intelligence Data Center Moratorium Act: the bill would halt new construction until protective legislation is enacted and require DOE quarterly reports including water use, wastewater discharges, and thermal outputs. Referred to Energy and Commerce and Foreign Affairs on 6/24/2026; see also S. 4214.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The table differentiates a measurement program from mandatory facility reporting. The credit’s repeated core is extended with additional eligible pathways, while the moratorium adds a construction restriction rather than merely another study."
+    },
+    {
+      "location": "p. 32, Table A-1, H.R. 9629 and H.R. 9777",
+      "moves": "Restates an assessment mechanism in a related bill and introduces separation from public supplies.",
+      "claims": [
+        {
+          "text": "Table A-1 lists H.R. 9629, Protecting Communities from Data Center Impacts Act of 2026: Section 2 uses the EPA–National Academies assessment and mitigation-recommendation mechanism already described for H.R. 8033 Section 5. Energy and Commerce referral: 7/9/2026.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists H.R. 9777, Protecting Ratepayers Act: private data-center owners, operators, maintainers, or prospective entities could not build, own, operate, or maintain new or existing facilities unless all water, including backup water, came from on-site or other sources separate from and not deriving water from the public water system. Energy and Commerce referral: 7/20/2026.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The first row is a legislative restatement rather than new environmental evidence. The second’s all-water and backup-water conditions matter: the proposal goes beyond adding a supplementary self-supply option."
+    },
+    {
+      "location": "p. 33, Table A-1, H.R. 9825",
+      "moves": "Details a mandatory reporting proposal with size threshold, recurring observations, and forward projections.",
+      "claims": [
+        {
+          "text": "Table A-1 lists H.R. 9825, Data Center Water and Energy Transparency Act of 2026, related to S. 4213: operators with covered centers at peak demand of at least 25 MW would annually report to states monthly water totals and sources, annual average power and water effectiveness, and at least five years of projected on-site resource use with reduction proposals and anticipated efficiencies.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 says H.R. 9825 would also require new or expanded facilities’ first-five-year use and source projections or projected expansion increases, with reduction proposals; DOE and EPA receive reports where states lack collection authority, and the agencies report annually on specified information including water supply and community effects. Listed agencies are EPA and DOE; Energy and Commerce referral: 7/22/2026.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This row specifies what transparency would mean in practice. The threshold, monthly breakdown inside annual reports, and forward-looking construction or expansion information are distinct requirements, not one undifferentiated disclosure."
+    },
+    {
+      "location": "p. 34, Table A-1, P.L. 119-60, S. 3269, and S. 3737",
+      "moves": "Marks the enacted-law exception and adds related Senate cooling and partnership proposals.",
+      "claims": [
+        {
+          "text": "Table A-1 lists P.L. 119-60, FY2026 NDAA, as enacted 12/18/2025. It restates the Section 1531 roadmap requirement and its no-delay condition from the main text, with related Senate-passed S. 2296 Section 1625; listed committees include Senate Veterans’ Affairs and Armed Services and House Armed Services and Rules.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists S. 3269, Liquid Cooling for AI Act of 2025: its GAO review is similar to but broader than H.R. 5332’s, adding explicit single- and two-phase engineered-fluid and thermal-performance, heat-transfer-capacity, and energy-efficiency testing considerations. Energy and Natural Resources referral: 4/15/2026.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists S. 3737, GROW SMART Act: voluntary water-partnership applicants would include one or more agricultural entities, including irrigation districts, and one or more industrial or commercial entities, including data centers. Reclamation is the relevant agency; Energy and Natural Resources hearings held 3/17/2026.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The table visually distinguishes a public law from bills, reinforcing the main-text status distinction. The Senate entries add technical scope and partnership eligibility rather than new measured findings about water use."
+    },
+    {
+      "location": "p. 35, Table A-1, S. 3852",
+      "moves": "Presents disclosure of utility demand and contractual arrangements.",
+      "claims": [
+        {
+          "text": "Table A-1 lists S. 3852, GRID Act: its utility definition includes public water systems, treatment works, and other regulated essential-service utilities; DOE would require public usage estimates for new and existing data centers and public disclosure of utility transactions or agreements by both centers and utilities. Energy and Natural Resources referral: 2/11/2026.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This transparency proposal extends beyond quantities to agreements. It connects with the earlier discussion of nondisclosure in water-service contracts without asserting that the proposal has altered current practice."
+    },
+    {
+      "location": "p. 36, Table A-1, S. 4213 and S. 4214",
+      "moves": "Records Senate counterparts and their legislative status while recognizing repeated mechanisms.",
+      "claims": [
+        {
+          "text": "Table A-1 lists S. 4213, Data Center Water and Energy Transparency Act of 2026, with the reporting, 25 MW threshold, monthly source-and-use data, effectiveness averages, five-year projections, expansion disclosures, and annual agency reporting already encountered in H.R. 9825. It lists EPA, DOE, and Agriculture and referral to Energy and Natural Resources on 3/25/2026.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists S. 4214, Artificial Intelligence Data Center Moratorium Act, repeating the construction-moratorium objective and quarterly DOE reporting on water use, wastewater discharge, and thermal output encountered in H.R. 9442. Commerce, Science, and Transportation referral: 3/25/2026.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "These rows are recorded as counterparts and restatements, not independent support for the effectiveness of either mechanism. Their committee and referral details preserve the institutional inventory."
+    },
+    {
+      "location": "p. 37, Table A-1, S. 4784, S. 5054, and source note",
+      "moves": "Closes the inventory with expanded military reporting, tax-linked disclosure, and compilation provenance.",
+      "claims": [
+        {
+          "text": "Table A-1 lists S. 4784, FY2027 NDAA: Section 1632 would extend the existing DOD roadmap’s resource-use estimates to data centers supporting military operations as well as construction or expansion and change updates from triennial to annual. The table lists Senate Finance and a motion to proceed on 7/27/2026.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 lists S. 5054, Data Center Tax Accountability and Disclosure Act of 2026: its stated purpose includes excluding AI data centers from bonus depreciation; covered facilities at 25 MW or more, including specified dual-use or co-located facilities but excluding federal data centers, would annually report water quantities, sources, average WUE, and rights, permits, or long-term supply agreements.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1 says S. 5054 would let states elect to receive reports, require electing states to share them with EPA and DOE, direct the agencies to receive reports elsewhere and publish them online, and direct OMB standards for facilities serving federal and nonfederal users. Finance referral: 7/21/2026.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A-1’s source note attributes compilation to CRS using a Congress.gov search and names Kezee Procita as compiler.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The final entries return to the already-enacted roadmap and introduce an election-based disclosure system coupled to a tax proposal. The source note confirms that this is a compiled legislative snapshot rather than analysis of the proposals’ eventual consequences."
+    },
+    {
+      "location": "p. 38, Author Information and Disclaimer",
+      "moves": "Identifies the specialists and states the report’s institutional role and reuse conditions.",
+      "claims": [
+        {
+          "text": "The report identifies Peter Folger and Elena H. Humphreys as coordinators and Nicole T. Carter, Corrie E. Clark, Laura Gatz, Anna E. Normand, and Charles V. Stern as contributing specialists.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "CRS describes itself as nonpartisan shared congressional staff operating at Congress’s behest and direction; report information is intended for public understanding of information provided to Members in that institutional role.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The disclaimer says U.S. government CRS reports are not protected by U.S. copyright and may be reproduced in full without permission, while third-party images or material may require the holder’s permission.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The closing locates the FAQ’s informational perspective institutionally. It ends with attribution and use conditions rather than an overall policy recommendation or a verdict on data centers."
+    }
+  ]
+}
