@@ -50,9 +50,9 @@ Check each list against your own reading before going on: every later
 session uses it as written.
 
 When they're done, copy `judgments/` into
-`outputs/judgments/<article>/<experiment>/` in the repository, under the
+`outputs/ab_testing/judgments/<article>/<experiment>/` in the repository, under the
 experiment's name in the key, and `references/` into
-`outputs/judgments/<article>/references/`.
+`outputs/ab_testing/judgments/<article>/references/`.
 
 ### Later experiments on the same article
 
@@ -60,7 +60,7 @@ The reference lists are written once per article, in its first experiment,
 and every later experiment on that article uses the same two, so all of its
 runs are judged against the same lists.
 
-- Before starting, copy `outputs/judgments/<article>/references/` into the
+- Before starting, copy `outputs/ab_testing/judgments/<article>/references/` into the
   new folder as `references/`, and skip prompts 1 and 5.
 - Copy only `judgments/` back; the article's folder already has the lists.
 

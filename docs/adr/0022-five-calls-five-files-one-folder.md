@@ -96,5 +96,5 @@ effort, and PDF input stand.
 2026-11-11: the first seven articles were moved into the five-file layout as
 well, with their accepted versions renamed 01–05 and `outputs/collection.yaml`
 pointed at them. Their earlier versions, run notes, and score tables are in
-git history. Barnett's and kanbur's Phase 2 tournaments stay in
-`outputs/judgments/`.
+git history. Barnett's and kanbur's Phase 2 tournaments, and the prepared
+text they were tested on, moved under `outputs/ab_testing/`.

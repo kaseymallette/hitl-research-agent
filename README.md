@@ -352,9 +352,10 @@ outputs/                              created by the pipeline
 ├── collection.yaml                   Phase 3: the accepted analysis and evaluation per article
 ├── synthesis/                        Phase 3
 ├── primers/<slug>/                   primer.md + primer_record.json, on request
-├── ab_testing/<slug>/<config>/       Phase 1: analysis, argument evaluation, run record
-├── judgments/<article>/              Phase 2: the blind judgments of Barnett's and kanbur's tournaments
-└── preparation/<slug>/               prepared text, crops, prep_record.json
+└── ab_testing/                       Phases 1 and 2, kept as the record of the choice
+    ├── <slug>/<adr>/<config>/        each experiment run: analysis, argument evaluation, run record
+    ├── judgments/<article>/          the blind tournament judgments behind the brackets
+    └── preparation/<slug>/           the extracted text and crops the PDF was tested against
 ```
 
 An article's analysis and its judgments live together in one folder, numbered

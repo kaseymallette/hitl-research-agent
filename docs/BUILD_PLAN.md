@@ -240,7 +240,7 @@ outputs/ab_testing/<slug>/<config>/argument_evaluation.json  the model's evaluat
 outputs/ab_testing/<slug>/<config>/run_record.json    usage, cost, runtime, attempts
 outputs/ab_testing/<slug>/<config>/failed_run_<n>.json  an earlier failed run of the cell, kept for its cost
 outputs/ab_testing/summary.csv                        one row per cell, for Phase 2
-outputs/preparation/<slug>/                           extracted text, crops, preparation record
+outputs/ab_testing/preparation/<slug>/                           extracted text, crops, preparation record
 ```
 
 A cell holds the analysis the model returned. A thin or heavily paraphrased
@@ -353,8 +353,8 @@ For each experiment, Claude judged the runs blind, in new sessions that knew
 nothing of which run was which, following [AB_TESTING_RUBRIC.md](AB_TESTING_RUBRIC.md) and
 [AB_TESTING_JUDGING_PROMPTS.md](AB_TESTING_JUDGING_PROMPTS.md): each run's close reading and
 argument evaluation alone, then head to head, as a five-match bracket per
-article. The judgments are in `outputs/judgments/<article>/<experiment>/`, the
-problems lists in `outputs/judgments/<article>/references/` (the claims lists
+article. The judgments are in `outputs/ab_testing/judgments/<article>/<experiment>/`, the
+problems lists in `outputs/ab_testing/judgments/<article>/references/` (the claims lists
 are now each article's `02_claims_reference.md`), and the
 results, with each run's cost and runtime, in
 [EVALUATION_KEY.md](EVALUATION_KEY.md).
@@ -374,7 +374,7 @@ text on Barnett, which settles
 
 ### Done when
 
-- [x] A judgment for each experiment, saved in `outputs/judgments/`.
+- [x] A judgment for each experiment, saved in `outputs/ab_testing/judgments/`.
 - [ ] My check of at least one, with any disagreement noted.
 - [x] The configuration for the collection chosen and recorded in an ADR,
       with the input-method question settled.

@@ -125,7 +125,7 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 
 > The study has some system assumptions and inlet parameters. The system is assumed to be operated under the steady-state conditions and membrane fouling is neglected. The DCMD module and server tank are assumed well-insulated without any heat loss rate. The piping of the hybrid system is also considered as wellinsulated since the previous experimental data center cooling study<sup>25</sup> showed that the heat loss through the pipe is very small thanks to the insulated pipes and the low temperature difference between the operating liquid temperature and the ambient temperature. The released heat from the servers is assumed in the range of 0.7 and 1.5 kW. The heat and mass transfer characteristics of the DCMD module is withdrawn from Reference 31. The velocity and hydraulic diameter are determined as 1.85 m/s and 0.003 m for the feed side, respectively, while the permeate side has the inlet velocity of 2.92 m/s with the same hydraulic diameter value. The corrosion and salt deposition in the water pipe is neglected in performance calculations and for pipeline damage. The PVDF membrane with the thickness, thermal conductivity, porosity, and pore size values of 126 μm, 0.41 W/mK, 0.75, and 0.22 μm are also withdrawn from Reference 31. The membrane area is selected in the range of 5 to 75 cm<sup>2</sup> . The reference state temperature and pressure are 293.15 K and 1 atm. Following the withdrawn DCMD data from Reference 31, the developed DCMD mathematical model is also validated with Reference 31.
 >
-> *[equation E1, page 4 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E1_p04.png)]*
+> *[equation E1, page 4 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E1_p04.png)]*
 
 **Notes:**
 
@@ -143,11 +143,11 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 >
 > FIGURE 2 The solution algorithm of the proposed combined system [Colour figure can be viewed at wileyonlinelibrary.com]
 >
-> *[equation E2, page 5 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E2_p05.png)]*
+> *[equation E2, page 5 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E2_p05.png)]*
 >
 > In the DCMD module, the enthalpy rates of streams 5 to 7 can be found with Equations (1) and (2). However, for streams 1 to 4, the thermophysical properties of seawater are required. The specific enthalpy of seawater at stream i, hswi is given in Equation (3), where S is the salinity of seawater. The coefficients Ai − Ci are explained in Appendix A. In addition, the correlation for the density of seawater at stream i, ρswi is given in Equation (4),
 >
-> *[equation E3, page 5 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E3_p05.png)]*
+> *[equation E3, page 5 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E3_p05.png)]*
 >
 > where F1i is 0.5. The coefficients F2i − F4i and A1i −A4i are presented in Appendix B. Similar to the water enthalpy rate, the seawater enthalpy rate at stream i, Hswi , can be obtained by multiplying the mass flow rate of seawater at stream i, m_ swi , and hswi . Following Equations (1) to (4), H1 and H5 can be found at the feed side and permeate side, respectively. The values of H1 and H5 allow us calculating H2 and H6 by using the pump work rate. Equations (5) and (6) present the calculation of H2 and H6, respectively, where W<sup>_</sup> fp and W<sup>_</sup> pp are the power rates of the feed and permeate pumps, respectively. The calculation of H2 makes the possible to write an energy balance for DC server tank as shown in Equation (7),
 
@@ -161,21 +161,21 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 
 > The enthalpy is the function of temperature so that T3 can be found. Then, the thermal model of the DCMD can be created. Since the feed side has higher temperature, heat transfer occurs from the feed side to the permeate side through the membrane. To calculate the heat transfer rate, the heat flux between the feed flow and membrane (q<sup>00</sup> f<sup>),insidethemembrane(q</sup> m<sup>00),andbetweenthe</sup> membrane and permeate flow (q<sup>00</sup> p<sup>)mustbedefined.</sup> Equation (8) presents the q<sup>00</sup> f<sup>,</sup> where αf is the convective heat transfer coefficient of feed flow whereas Tf is the feed flow temperature, which is equal to T3, and Tf, m is the temperature of the membrane surface at feed flow side. Similarly, q<sup>00</sup> p<sup>canbedefined</sup> between the permeate side of the membrane and the permeate flow as shown in Equation (9),
 >
-> *[equation E4, page 5 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E4_p05.png)]*
+> *[equation E4, page 5 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E4_p05.png)]*
 >
 > in which αp is the convective heat transfer coefficient of permeate flow whereas Tp is the permeate flow temperature, which is equal to T6, and Tp, m is the temperature of the membrane surface at permeate flow side. Due to the direction of heat and mass transfer, we can define the temperature limits as Tf > Tf, m > Tp, m > Tp. Hereby, the convective heat transfer coefficients can be calculated by using the channel characteristics and fluid properties of the feed and permeate sides. Equation (10) explains the convective heat transfer coefficient, α, according to the channel characteristics and fluid properties,
 >
-> *[equation E5, page 5 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E5_p05.png)]*
+> *[equation E5, page 5 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E5_p05.png)]*
 >
 > where k is the thermal conductivity of fluid and dh is the hydraulic diameter. The dimensionless Nusselt number,
 >
 > Nu, can be explained by the Dittus and Boelter correlation as shown in Equation (11),<sup>31</sup> in which L is the DCMD module length, Re and Pr dimensionless Reynolds and Prandtl number, respectively. Besides the terms of q<sup>00</sup> p<sup>andq00</sup> f<sup>,theheatfluxinsidethe</sup> membrane, q<sup>00</sup> m<sup>,shouldbemodeledtocompletethe</sup> DCMD model since the heat flux inside the membrane is the middle step between q<sup>00</sup> f<sup>andq</sup> p<sup>00.Therearetwoheat</sup> transfer mechanisms in the membrane which are the latent heat of evaporation and the heat conduction. Equation (12) presents the q<sup>00</sup> m<sup>,</sup>
 >
-> *[equation E6, page 6 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E6_p06.png)]*
+> *[equation E6, page 6 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E6_p06.png)]*
 >
 > where J is the mass flux through the membrane module, Δhfg is the specific enthalpy of vaporization, km is the thermal conductivity of membrane, and δm is the thickness of membrane. To calculate the Δhfg, the experimental correlation was withdrawn from Reference 31. However, the physical model of the Δhfg can be built by means of the non-equilibrium thermodynamic fundamentals and the Clausius-Clapeyron equation as explained in detail by Luo and Lior.<sup>33</sup> The first term on the right side of Equation (12), J � Δhfg, denotes the heat flux via vapor (latent heat of evaporation) whilst the second term, (km/δm) � (Tf, m − Tp, m), shows the heat flux via conductive heat transfer. The mass flux rate, J, is directly related to the transferred mass from the feed side to the permeate side as shown in Equation (13),
 >
-> *[equation E7, page 6 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E7_p06.png)]*
+> *[equation E7, page 6 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E7_p06.png)]*
 
 **Notes:**
 
@@ -203,7 +203,7 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 >
 > For the exergetic assessments, the exergy efficiency, ε, is the most-known assessment criterion. The exergy assessments can also be used in sustainability assessments. Rosen et al<sup>38</sup> stated the sustainability performance as the ratio of the fuel exergy rate to the destruction exergy rate, which was called as the sustainability index, SI. Both ε and SI are presented in Equations (24) and (25), respectively,
 >
-> *[equation E8, page 7 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E8_p07.png)]*
+> *[equation E8, page 7 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E8_p07.png)]*
 >
 > Hereby, it can be said that the increment in fuel exergy rate via better utilization grows the SI of the combined system. Also, the decrement in the exergy destruction rate via better design considerations achieves higher SI trends.
 
@@ -252,7 +252,7 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 > |60|844.81|841.32|0.415|33 792.00|33 853.00|0.180|22 278.00|22 159.00|0.537|
 > |70|980.75|985.34|0.466|49 037.00|49 267.00|0.467|35 073.00|35 147.00|0.211|
 >
-> *[table T1, page 9 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/T1_p09.png)]*
+> *[table T1, page 9 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/T1_p09.png)]*
 >
 > costs can be considered as the part of COMhyb . However, the DCMD module consists of the membrane which requires periodic replacement and this results in high replacement cost values; hence, the replacement cost term should be considered separately from the classical operation&maintenance cost term. Al-Obaidani et al<sup>27</sup> defines the CRCm as 15% of the PECm in the membrane distillation operations; hence, we used the same ratio for the replacement costs of the DCMD module. While the COMhyb and CRChyb can be defined with PEC values, Celhyb is calculated by the product of the unit electricity cost, cel, and the total consumed electricity by the feed and permeate pumps, as defined in Equation (32),
 >
@@ -265,7 +265,7 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 > |Feed and permeate pumps|950.00 SGD<sup>25 b</sup>|
 > |DCMD module|140.00 SGD/m<sup>239 c</sup>|
 >
-> *[table T2, page 9 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/T2_p09.png)]*
+> *[table T2, page 9 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/T2_p09.png)]*
 >
 > aIncludes the tank, condenser pipe, and dielectric liquid prices. bPrices are collected from the cost of our experimental setup equipment. cConverted from the USD currency to the SGD currency.
 >
@@ -285,7 +285,7 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 
 > Thermoeconomic model combines both thermodynamic and economic parameters to provide a single methodology instead of two different aspects. In the current work, the exergetic parameters are used in the thermoeconomic model and the exergy-cost matrix, which is a unique cost matrix for each original energy system, is built with respect to the economic and exergetic parameters.<sup>46</sup> A unit cost value, c, is defined for each system stream. In the hybrid system, the unit cost of stream 1, c1, is assumed zero since the seawater does not have a cost at atmospheric conditions. However, the inlet water stream to the system, stream 5, has the unit water cost of Singapore, cw = c5 = 2.74 m<sup>3</sup> /h, from the economic analysis. Also, the unit costs of the electricity inputs for the feed and permeate pumps are equal to the electricity price in the economic analysis, cel = c8 = c9 = 0.2552 SGD/kWh. Although we are able to define the unit costs of the inlet streams with electricity and/or water prices, the unit costs of the internal streams (eg, streams 2-4,6,7) are not known. To calculate the unit costs of the internal streams, the exergy cost matrix is built with the thermoeconomic balance equation, which is shown in Equation (31), where C<sup>_</sup> p and C<sup>_</sup> f are the levelized product and fuel costs of the system component, respectively; Z<sup>_</sup> k is the levelized component cost of component k. The levelized cost, C<sup>_</sup> , is obtained by multiplying the unit cost of the stream, c, with the exergy rate, E<sup>_</sup> . The product and fuel cost terms depend on the inlet and outlet streams of the system component. The levelized component cost is calculated by considering the purchased equipment and future cost terms with the capital recovery factor and annual operating time (hours) as given in Equation (32), where CO & M is the operation and maintenance cost that is equal to 1.092% of PEC,<sup>42</sup> τ is the annual operating time with 8000 hours, and CRF is the capital recovery factor which is explained in Equation (33),
 >
-> *[equation E9, page 10 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E9_p10.png)]*
+> *[equation E9, page 10 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E9_p10.png)]*
 >
 > where i and n are the interest rate and system lifetime with 1.7% and 20 years, respectively. The exergy cost matrix consists of relationships between the balance equations of system components; therefore the unit costs of the internal streams can be calculated. Table 3 presents the thermoeconomic balance equations for all system components, and the exergy-cost matrix of the hybrid system is given in Equation (34), where u1 − 4 are unknown unit cost parameters and represent internal streams of the hybrid system as projected in Table 3. In thermoeconomic assessments, the main goal is to reach the minimum C<sup>_</sup> p value for the overall system.<sup>36</sup> Besides the minimum C<sup>_</sup> p goal, the minimum levelized cost of the produced distilled water, C<sup>_</sup> dw, can be specifically aimed in this study.
 
@@ -299,7 +299,7 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 
 > The hybrid system can be investigated from the viewpoints of thermodynamics (both energetic and exergetic), economics, and thermoeconomics. However, their performance assessment criteria and relevant performance trends are different than one another; therefore, the multi-criteria decision-making step is required for the proposed hybrid design. For this purpose, the multiobjective optimization procedure is developed in this study and the best trade-off point is found with the genetic algorithm tool in the MATLAB environment. As illustrated in Figure 2, the multiobjective optimization starts when the thermodynamic, economic, and thermoeconoic results are obtained. In the current study, we define two different coupled-objectives which are (a) ε −C<sup>_</sup> p, and (b) ε− C<sup>_</sup> dw, respectively. The first coupledobjectives are two of the most preferred objective functions in the multiobjective optimization studies of energy systems,<sup>47</sup> and the multiobjective optimization simply aims to find the best trade-off point according to the maximum exergetic efficiency and the minimum levelized product cost. In addition, we also perform the second coupled-objectives apart from the first coupled-objectives, because the proposed system is not only an original design from the viewpoints of the combined energy systems and the data center waste heat utilization, but also novel with respect to the energy-water nexus perspective. Therefore, the minimization of the distilled water cost is coupled with the maximum exergy efficiency goal; and then, the trends between these two coupled-objective functions are investigated. The multiobjective optimization procedure is explained in Equation (35),
 >
-> *[equation E10, page 10 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E10_p10.png)]*
+> *[equation E10, page 10 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E10_p10.png)]*
 >
 > |System||Thermoeconomic auxiliary|
 > |---|---|---|
@@ -309,21 +309,21 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 > |Membrane|_C3+ _C6+ _ZDCMD= _C4+ _C7+ _Cdw|c6=c7=u3,cdw=u4|
 > |Permeate pump|_C5+cel�_Wpp+ _Zpp= _C6|c3=u3|
 >
-> *[table T3, page 10 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/T3_p10.png)]*
+> *[table T3, page 10 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/T3_p10.png)]*
 >
 > TABLE 3 Thermoeconomic balance equations of the hybrid system
 >
 > MOF1 = max ε½ � and min�C<sup>_</sup> p� 0:7 kW ≤ QDC ≤ 1:5 kW MOF2 = max ε½ � and min�C<sup>_</sup> dw� subject to 5 cm<sup>2</sup> ≤ Am ≤ 75 cm<sup>2:</sup> ð35Þ
 >
-> *[equation E11, page 11 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E11_p11.png)]*
+> *[equation E11, page 11 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E11_p11.png)]*
 >
 > Once the performance trends of ε, C<sup>_</sup> p , and C<sup>_</sup> dw are collected in the MATLAB environment, the genetic algorithm-based optimization tool is used to conduct multiobjective optimization. The optimization results present the Pareto frontier plots of the multiobjective functions (MOFs). The Pareto frontier plot shows the optimal points of the multiobjective optimization problem, and the best trade-off point is selected according to the design criteria by the decision-maker which can be a person or an algorithm. To decide the best trade-off point, there are different weighting approaches such as weighted-sum and weighted-product.<sup>47</sup> In this study, the weighted-sum approach is preferred for determining the best trade-off point. For weighting, the utopia and the pseudo-nadir points of the Pareto frontier plot are used in the normalization step of the objective functions. Equation (36) shows the normalization formula for the objective function,
 >
-> *[equation E12, page 11 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E12_p11.png)]*
+> *[equation E12, page 11 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E12_p11.png)]*
 >
 > where f<sup>*</sup> is the normalized value of the objective function in the Pareto frontier plot, f is the real value of the objective function, f<sup>U</sup> is the utopia point (the ideal case of the multiobjective optimization problem), and f<sup>PN</sup> is the pseudo-nadir point (the worst case of the multiobjective optimization problem between the anchor points of the Pareto frontier plot). After normalizing the objective functions, the weighted-sum, WS, can be defined with Equation (37), where ω is the weighting percentage of the objective functions. In the current work, the same weighting percentages (50%) are applied to the WS calculations.
 >
-> *[equation E13, page 11 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E13_p11.png)]*
+> *[equation E13, page 11 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E13_p11.png)]*
 
 **Notes:**
 
@@ -351,7 +351,7 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 
 > The energy and exergy efficiencies are illustrated in Figures 5A,B, respectively. The membrane thermal efficiency is independent of the membrane area, it only depends on the ratio of the heat flux via vapor to the total heat flux, as defined in Equation (21). The η trends deduce that the minimum thermal efficiency is calculated as 50.1% while the maximum is found as 64.5%. That is, the efficiency increases by 28.8% from the lowest Q<sup>_</sup> DC to the highest Q<sup>_</sup> DC . The ε trends are affected by both membrane area and Q<sup>_</sup> DC due to the differences in exergy destruction rates. From 0.7 to 1.5 kW, the exergy efficiency trends rise by 70.2% at the membrane area of 5 cm<sup>2</sup> while the increment rate is 62.7% at the area of 75 cm<sup>2</sup> , The ε trends state that the exergy efficiency is higher at the low membrane areas since less exergy destruction rates occurred compared to the larger membrane areas. In the defined range, the maximum ε is obtained as 53.7% whilst the minimum ε is 27.3%.
 >
-> *[equation E14, page 12 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E14_p12.png)]*
+> *[equation E14, page 12 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E14_p12.png)]*
 >
 > Figures 6A,B present the GOR and PR trends for the DCMD performance assessment, respectively. It is seen that both GOR and PR have the highest values at the minimum membrane area, 5 cm<sup>2</sup> , and the difference between the minimum and maximum membrane areas is huge, namely, the maximum GOR and PR values are nearly 14 times higher than the GOR and PR values of the minimum membrane area. One of the main concerns is the increase of pump power rate (both feed and permeate pumps) when the membrane area increases. However, according to the performance curves of the selected pumps for the hybrid system, the increase of membrane area from 5 to 75 cm<sup>2</sup> does not remarkably affect the pump power rate. It must be noted that the increase of membrane area can affect the pump power rates for larger-scale operations from the viewpoints of membrane area (Am) and DC cooling load (Q<sup>_</sup> DC ), but the current study proposes this hybrid system for the low Q<sup>_</sup> DC values; and therefore, the increase of Am is not a critical consideration for the pump operations. In addition, both GOR and PR grow up by increasing of Q<sup>_</sup> DC . From 0.7 to 1.5 kW, the GOR increases by nearly 33.8% whereas the PR trends reach their 1.9 times higher value.
 >
@@ -371,7 +371,7 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 
 ## Step 18 — 4 | RESULTS AND DISCUSSION (continued) (page 13, ~279 words)
 
-> *[equation E15, page 13 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E15_p13.png)]*
+> *[equation E15, page 13 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E15_p13.png)]*
 >
 > The conventional economic analysis is analyzed with the payback period PP trends in Figure 8. In the operating ranges of the hybrid system, the PP does not show crucial variation and stays stable at roundly 3.72 years that is very smaller than the system lifetime, 20 years. The Q<sup>_</sup> DC does not change the PP values remarkably while the Am has a very small impact as shown in Figure 8. The reason behind the stable trends may be the low cooling loads of the currently proposed hybrid system, and the
 >
@@ -401,7 +401,7 @@ Section mostly discusses liquid immersion cooling systems and their advantages o
 
 > To see the impact of the difference between the C<sup>_</sup> p and C<sup>_</sup> dw on the selection of the best trade-off point step, we perform the multiobjective optimization study for the coupled objective functions of ε −C<sup>_</sup> p and ε −C<sup>_</sup> dw. The C<sup>_</sup> dc is not selected in the multiobjective optimization study, because its performance trends are between the C<sup>_</sup> p and C_ dw trends. Figure 10 projects the Pareto frontier plots for the coupled-objective functions of ε −C<sup>_</sup> p and ε −C<sup>_</sup> dw . As mentioned in the modeling section, the maximization of the exergetic efficiency and the minimization of the levelized cost are aimed; and the weighting percentages of these objectives are considered as 50%. The best tradeoff point (BToP) is found different for these two coupled functions due to the aforementioned levelized cost difference between the C<sup>_</sup> p and C<sup>_</sup> dw . For the coupled-objective function of ε −C<sup>_</sup> p , the BToP is at the Q<sup>_</sup> DC and Am values of 1.1 kW and 5.13 cm<sup>2</sup> whereas the BToP is at the Q<sup>_</sup> DC and Am values of 1.1 kW and 5.19 cm<sup>2</sup> for the coupledobjective function of ε −C<sup>_</sup> dw . The results infer that the Q_ DC is the same for both coupled-objective functions since it has a significant impact on both exergy efficiency and levelized cost performances (see Figures 5B and 9B, respectively); thus, the middle Q<sup>_</sup> DC value is selected in the operating range of Q<sup>_</sup> DC . On the other hand, the optimal Am value is found close to the minimum Am value. The reason is the impact of Am is less than the impact of Q_ DC for both exergy efficiency and levelized cost trends. When the optimal Am values are compared for two different coupled-objectives, the optimal Am value of the ε− C<sup>_</sup> dw (Am = 5.19 cm<sup>2</sup> ) is found slightly greater than the optimal Am value of the ε −C<sup>_</sup> p (Am = 5.13 cm<sup>2</sup> ), because
 >
-> *[equation E16, page 14 — [image](../../../../outputs/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E16_p14.png)]*
+> *[equation E16, page 14 — [image](../../../../outputs/ab_testing/preparation/kanbur_et_al_2020_desalination_integrated_data_center_cooling/images/E16_p14.png)]*
 >
 > the Am has more dominant impact on the C<sup>_</sup> dw trends while its impact on the C<sup>_</sup> p is less. It is worth reminding that the obtained outcomes are for the low Q<sup>_</sup> DC values, and the BToP trends can give different outcomes for larger Q<sup>_</sup> DC and Am values. Since the main focus of the current study is to propose a hybrid solution for the Q<sup>_</sup> DC values, larger-scale Q<sup>_</sup> DC and Am are not considered in this work.
 

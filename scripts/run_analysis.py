@@ -258,7 +258,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--effort", default=None, help="reasoning effort")
     parser.add_argument("--max-output-tokens", type=int, default=None)
     parser.add_argument("--manifest", default="data/research/sources.yaml")
-    parser.add_argument("--prepared", default="outputs/preparation")
+    parser.add_argument("--prepared", default="outputs/ab_testing/preparation")
     parser.add_argument("--out", default="outputs/ab_testing")
     parser.add_argument("--confirm-paid", action="store_true", help="required: this calls the API")
     args = parser.parse_args(argv)

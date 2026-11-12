@@ -52,7 +52,7 @@ from hitl_research_agent.models import SourceType
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = REPO_ROOT / "data" / "research" / "sources.yaml"
-DEFAULT_OUTPUT_ROOT = REPO_ROOT / "outputs" / "preparation"
+DEFAULT_OUTPUT_ROOT = REPO_ROOT / "outputs" / "ab_testing" / "preparation"
 
 PARSER_NAME = "pymupdf4llm"
 PARSER_VERSION = pymupdf4llm.__version__ if hasattr(pymupdf4llm, "__version__") else "unknown"

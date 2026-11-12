@@ -517,7 +517,7 @@ $50.00 output. They aren't confirmed billing.
 ### Shared setup and run IDs
 
 Experiment 1 writes Barnett's reference lists, `claims_reference.md` and
-`problems_reference.md`, kept once in `outputs/judgments/barnett/references/`. Experiments
+`problems_reference.md`, kept once in `outputs/ab_testing/judgments/barnett/references/`. Experiments
 2–5 copy them in and judge against the same lists. Each experiment's own folder
 under `barnett/` holds only its six judgments.
 
@@ -540,7 +540,7 @@ say nothing about how a run was made, so they stay blind.
 
 ### Experiment 1 records
 
-Judgments: `outputs/judgments/barnett/exp1_barnett_pdf_sol_high_vs_medium/`
+Judgments: `outputs/ab_testing/judgments/barnett/exp1_barnett_pdf_sol_high_vs_medium/`
 
 **Sources and letter assignments**
 
@@ -562,7 +562,7 @@ Judgments: `outputs/judgments/barnett/exp1_barnett_pdf_sol_high_vs_medium/`
 
 ### Experiment 2 records
 
-Judgments: `outputs/judgments/barnett/exp2_barnett_text_crops_sol_high_vs_medium/`
+Judgments: `outputs/ab_testing/judgments/barnett/exp2_barnett_text_crops_sol_high_vs_medium/`
 
 **Sources and letter assignments**
 
@@ -582,7 +582,7 @@ Judgments: `outputs/judgments/barnett/exp2_barnett_text_crops_sol_high_vs_medium
 
 ### Experiment 3 records
 
-Judgments: `outputs/judgments/barnett/exp3_barnett_pdf_winner_vs_astra_low/`
+Judgments: `outputs/ab_testing/judgments/barnett/exp3_barnett_pdf_winner_vs_astra_low/`
 
 **Sources and letter assignments**
 
@@ -598,7 +598,7 @@ reasoning; evaluation 31,163 input, 1,794 output, 17 reasoning.
 
 ### Experiment 4 records
 
-Judgments: `outputs/judgments/barnett/exp4_barnett_text_crops_winner_vs_astra_low/`
+Judgments: `outputs/ab_testing/judgments/barnett/exp4_barnett_text_crops_winner_vs_astra_low/`
 
 **Sources and letter assignments**
 
@@ -614,7 +614,7 @@ reasoning; evaluation 25,680 input, 1,826 output, 45 reasoning.
 
 ### Experiment 5 records
 
-Judgments: `outputs/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
+Judgments: `outputs/ab_testing/judgments/barnett/exp5_barnett_pdf_vs_text_crops/`
 
 **Sources and letter assignments**
 
@@ -1121,14 +1121,14 @@ costs.
 The article is `data/research/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf`.
 All runs are in
 `outputs/ab_testing/kanbur_et_al_2020_desalination_integrated_data_center_cooling/`.
-Judgments go in `outputs/judgments/kanbur/`, with the reference lists in
+Judgments go in `outputs/ab_testing/judgments/kanbur/`, with the reference lists in
 `references/` and each experiment's judgments in its own folder.
 
 The runs came out in different shapes. The API's files are JSON with an id and
 a provenance block, while the App's and Codex's are a bare `analysis.json` with
 no id and an `argument_evaluation.md`. Side by side, a judge could tell the API
 run apart and couldn't record an id for the others. So the judging folders use
-uniform copies in `outputs/judgments/kanbur/runs/<configuration>/`: each run
+uniform copies in `outputs/ab_testing/judgments/kanbur/runs/<configuration>/`: each run
 as `analysis.json` (`id` and `content`) and `argument_evaluation.json` (`id`,
 `analysis_id`, and `content.evaluation`), with no provenance. The API copies
 keep their original ids; the App and Codex copies have ids assigned here. The
@@ -1147,15 +1147,15 @@ content is unchanged, and the originals are untouched.
 
 1. Copy in `AB_TESTING_RUBRIC.md` as `RUBRIC.md`, `prompts/`, and the article as `article.pdf`.
 2. For each letter, copy the run's two files, `analysis.json` and
-   `argument_evaluation.json`, from `outputs/judgments/kanbur/runs/<configuration>/`
+   `argument_evaluation.json`, from `outputs/ab_testing/judgments/kanbur/runs/<configuration>/`
    into `runs/A/` or `runs/B/`. Copy only the files: the copies' folder names
    say which configuration they are.
 3. Never copy Codex's `run_note.md`. It says how Codex read the PDF and names
    its configuration.
 4. **Experiment 1:** start with an empty `references/` and run all eight
    prompts; prompts 1 and 5 write kanbur's reference lists. Copy
-   `references/` back to `outputs/judgments/kanbur/references/`.
-5. **Experiments 2–4:** copy `outputs/judgments/kanbur/references/` in as
+   `references/` back to `outputs/ab_testing/judgments/kanbur/references/`.
+5. **Experiments 2–4:** copy `outputs/ab_testing/judgments/kanbur/references/` in as
    `references/`, skip prompts 1 and 5, and run the other six.
 6. **Experiment 5:** both runs were judged alone in Experiments 3 and 4, so
    run only prompts 4 and 8, the two head-to-heads, in two sessions. Session
@@ -1168,8 +1168,8 @@ content is unchanged, and the originals are untouched.
 
 | Experiment | Judgments folder |
 | --- | --- |
-| 1 | `outputs/judgments/kanbur/exp1_kanbur_medium_app_vs_codex/` |
-| 2 | `outputs/judgments/kanbur/exp2_kanbur_high_app_vs_codex/` |
-| 3 | `outputs/judgments/kanbur/exp3_kanbur_medium_winner_vs_api/` |
-| 4 | `outputs/judgments/kanbur/exp4_kanbur_high_winner_vs_api/` |
-| 5 | `outputs/judgments/kanbur/exp5_kanbur_medium_vs_high/` |
+| 1 | `outputs/ab_testing/judgments/kanbur/exp1_kanbur_medium_app_vs_codex/` |
+| 2 | `outputs/ab_testing/judgments/kanbur/exp2_kanbur_high_app_vs_codex/` |
+| 3 | `outputs/ab_testing/judgments/kanbur/exp3_kanbur_medium_winner_vs_api/` |
+| 4 | `outputs/ab_testing/judgments/kanbur/exp4_kanbur_high_winner_vs_api/` |
+| 5 | `outputs/ab_testing/judgments/kanbur/exp5_kanbur_medium_vs_high/` |
