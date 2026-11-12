@@ -320,14 +320,12 @@ pointing into `synthesis/`.
 
 ## `outputs/collection.yaml`
 
-The research collection: for each accepted article, its slug, the file names
-of its accepted analysis and argument evaluation in `outputs/analyses/<slug>/`,
-and the scores of those versions (A1–A4 and B1–B6) with the judgment each came
-from, so the store can carry them alongside the claims.
-An article's accepted version may be the original or a revision, as recorded
-in its `outputs/judgments/<article>/scores.md`, so the claims store reads this
-list instead of guessing. The files stay where they are rather than being
-copied, and stay under `outputs/` because they are model output.
+The research collection: for each accepted article, its slug, the files of
+its analysis and argument evaluation in `outputs/analyses/<slug>/`, and the
+scores of those versions (A1–A4 and B1–B6) with the judgment each came from,
+so the store can carry them alongside the claims. Only accepted articles are
+listed, so the claims store reads this list rather than every folder. The
+files stay under `outputs/` because they are model output.
 
 ---
 

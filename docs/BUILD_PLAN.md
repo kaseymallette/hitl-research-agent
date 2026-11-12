@@ -354,7 +354,8 @@ nothing of which run was which, following [AB_TESTING_RUBRIC.md](AB_TESTING_RUBR
 [AB_TESTING_JUDGING_PROMPTS.md](AB_TESTING_JUDGING_PROMPTS.md): each run's close reading and
 argument evaluation alone, then head to head, as a five-match bracket per
 article. The judgments are in `outputs/judgments/<article>/<experiment>/`, the
-article's reference lists in `outputs/judgments/<article>/references/`, and the
+problems lists in `outputs/judgments/<article>/references/` (the claims lists
+are now each article's `02_claims_reference.md`), and the
 results, with each run's cost and runtime, in
 [EVALUATION_KEY.md](EVALUATION_KEY.md).
 
@@ -396,8 +397,7 @@ Synthesis receives no research question
 
 Seven articles, in `data/research/synthesis/`, each with an entry in
 `data/research/sources.yaml`, all analyzed and judged by hand in the Codex
-app. Their files stay where they are: the runs in `outputs/analyses/<slug>/`,
-the claims lists and judgments in `outputs/judgments/<article>/`.
+app, then moved into the five-file layout below with their accepted versions.
 
 From here on an article runs through `scripts/run_single_source.py`
 ([ADR-0022](adr/0022-five-calls-five-files-one-folder.md)): five Codex

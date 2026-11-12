@@ -353,17 +353,16 @@ outputs/                              created by the pipeline
 ├── synthesis/                        Phase 3
 ├── primers/<slug>/                   primer.md + primer_record.json, on request
 ├── ab_testing/<slug>/<config>/       Phase 1: analysis, argument evaluation, run record
-├── judgments/<article>/              Phase 2: the blind judgments of each experiment
+├── judgments/<article>/              Phase 2: the blind judgments of Barnett's and kanbur's tournaments
 └── preparation/<slug>/               prepared text, crops, prep_record.json
 ```
 
 An article's analysis and its judgments live together in one folder, numbered
 in the order the calls run, so the whole of it can be read top to bottom. The
-seven articles analyzed before the script keep their earlier layout: runs in
-`outputs/analyses/<slug>/` under their old names, and the claims lists,
-judgments, and scores in `outputs/judgments/<article>/`. Data folders are named
-by role rather than by phase number, so renumbering a phase never moves source
-material.
+seven articles analyzed before the script were moved into the same layout,
+with their accepted versions; earlier versions are in git history. Data
+folders are named by role rather than by phase number, so renumbering a phase
+never moves source material.
 
 ## Stack, setup, and documentation
 

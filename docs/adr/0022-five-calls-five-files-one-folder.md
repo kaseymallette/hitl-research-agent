@@ -92,3 +92,9 @@ points at their files.
 Supersedes the output layout in
 [ADR-0021](0021-codex-sol-medium-on-the-pdf-for-the-collection.md); its model,
 effort, and PDF input stand.
+
+2026-11-11: the first seven articles were moved into the five-file layout as
+well, with their accepted versions renamed 01–05 and `outputs/collection.yaml`
+pointed at them. Their earlier versions, run notes, and score tables are in
+git history. Barnett's and kanbur's Phase 2 tournaments stay in
+`outputs/judgments/`.
