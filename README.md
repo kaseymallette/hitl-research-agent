@@ -39,7 +39,11 @@ way a judgment about relevance goes wrong.
 The collection has 10 articles, in
 [`data/research/synthesis/`](data/research/synthesis). Two of them, Barnett
 and kanbur, are also the experiment set in
-[`data/research/ab_testing/`](data/research/ab_testing).
+[`data/research/ab_testing/`](data/research/ab_testing). Seven PDFs are
+included because their licenses allow sharing (open access or US government
+work). Barnett-Itzhaki, Katakam, and Kanbur are publisher-copyrighted, so
+their PDFs aren't in the repository; their DOIs are in
+[`sources.yaml`](data/research/sources.yaml).
 
 I collected the articles for this pilot study myself, using the research question to identify relevant sources. For finding articles later, I plan to pilot Consensus, a tool built for that work. Nothing in this system receives the research question, so its outputs can support other research questions as the collection grows.
 

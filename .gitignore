@@ -29,3 +29,8 @@ htmlcov/
 
 # Codex event logs from scripts/run_single_source.py
 .codex_runs/
+
+# Publisher-copyrighted articles: kept locally, not redistributed (DOIs in data/research/sources.yaml)
+data/research/*/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf
+data/research/*/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf
+data/research/*/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
