@@ -1,0 +1,1850 @@
+{
+  "reading_plan": "Source title: Sustainable AI infrastructure: A scenario-based forecast of water footprint under uncertainty. Source type: peer_reviewed_paper. First look: a 12-page, two-column Journal of Cleaner Production research article, with front-matter highlights and abstract, a literature-rich technical narrative, displayed equations, cooling schematics, a map, forecast and sensitivity plots, three tables, an algorithm, disclosures, an Appendix, and about two pages of references. The prose is moderately dense, becoming more technical in the accounting and probabilistic-method sections. I will follow natural paragraph and subsection breaks, generally taking roughly 200–500 source words per step and slowing down for definitions, assumptions, equations, and numerical results. I read extracted PDFKit text alongside rendered page images; readings of visual elements are paraphrases, with no inferred precise chart values. Repeated claims will be noted as restatements in their later setting.",
+  "reading_path": [
+    {
+      "location": "p. 1, Highlights and Abstract",
+      "moves": "Announces the problem, defines the three-part scope, previews a probabilistic method and its findings, and frames the study around mitigation and planning. The opening adopts a sustainability perspective in which overlooked water demand deserves attention alongside energy.",
+      "claims": [
+        {
+          "text": "Rapid AI and cloud expansion is creating a significant, often overlooked impact on global water resources.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The assessment distinguishes on-site operational consumption, off-site electricity-generation consumption, and embodied consumption in hardware and supply chains.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A Bayesian-inspired scenario-based probabilistic framework combines sparse empirical data, expert-informed assumptions, and policy-relevant trajectories to forecast 2030 and 2050 demand.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Without mitigation, global data-centre water consumption could increase more than seven times by mid-century, with cooling-related operational consumption accounting for most demand.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Cooling efficiency, alternative technologies, electricity sourcing, and siting that considers regional water availability are mitigation levers; sensitivity analysis highlights compute growth and efficiency trends.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The framework offers a transparent, adaptable basis for aligning AI infrastructure development with long-term water sustainability goals.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The opening supplies the authors’ stated purpose and preview. These are introductory claims, whose development remains ahead; the journey begins with water sustainability as the organising concern."
+    },
+    {
+      "location": "pp. 1–2, Section 1, opening through consumptive blue-water scope",
+      "moves": "Establishes AI expansion as a premise using economic and electricity projections, then identifies a gap in environmental discussion and defines the assessment boundary.",
+      "claims": [
+        {
+          "text": "By 2030, an estimated 70% of companies worldwide will use AI, associated with roughly $15 trillion in output and productivity gains; anticipated GDP gains are 26% in China and about 14% in North America.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The introduction attributes these adoption and economic projections to PwC.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(PwC, 2018)",
+                  "reference_entry": "PwC, 2018. Sizing the Prize: What’s the Real Value of AI for Your Busi-\nness and how Can You Capitalise? Technical Report, PricewaterhouseCoop-\ners, URL: https://www.pwc.com/gx/en/issues/data-and-analytics/publications/\nartificial-intelligence-study.html. (Accessed 07 April 2025)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Data centres currently account for 1%–2% of global electricity consumption, and this share is expected to increase significantly with more complex and widespread AI models.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The introduction cites discussions of AI and data-centre energy demand.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Cowls et al., 2023; Sachs, 2024)",
+                  "reference_entry": "Cowls, J., Tsamados, A., Taddeo, M., Floridi, L., 2023. The AI gambit: leveraging\nartificial intelligence to combat climate change—opportunities, challenges, and\nrecommendations. Ai Soc. 1–25. http://dx.doi.org/10.1007/s00146-021-01294-x."
+                },
+                {
+                  "citation_text": "(Cowls et al., 2023; Sachs, 2024)",
+                  "reference_entry": "Sachs, G., 2024. AI is poised to drive 160% increase in data center power demand.\nIn: Goldman Sachs Insights. Vol. 14, URL: goldmansachs.com/insights/articles/AI-\npoised-to-drive-160-increase-in-power-demand."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Global data-centre electricity consumption could exceed 3000 TWh annually by 2030.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The stated electricity projection is attributed to Masanet and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Masanet et al., 2020)",
+                  "reference_entry": "Masanet, E., 2025. The water use of data center workloads: A\nreview and assessment of key determinants. Resour. Conserv. Recycl. 219, 108310.\nhttp://dx.doi.org/10.1016/j.resconrec.2025.108310."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A holistic understanding of AI and data-centre environmental impact requires equal attention to water, despite the predominant focus on energy and carbon.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite energy and carbon studies as examples of the prevailing focus.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Bose et al., 2021; Kaack et al., 2022)",
+                  "reference_entry": "Bose, R., Roy, S., Mondal, H., Chowdhury, D.R., Chakraborty, S., 2021. Energy-efficient\napproach to lower the carbon emissions of data centers. Comput. 103, 1703–1721.\nhttp://dx.doi.org/10.1007/s00607-020-00889-4."
+                },
+                {
+                  "citation_text": "(Bose et al., 2021; Kaack et al., 2022)",
+                  "reference_entry": "Kaack, L.H., Donti, P.L., Strubell, E., Kamiya, G., Creutzig, F., Rolnick, D., 2022.\nAligning artificial intelligence with climate change mitigation. Nat. Clim. Chang.\n12, 518–527. http://dx.doi.org/10.1038/s41558-022-01377-7."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The assessment quantifies consumptive blue water: freshwater evaporated, embedded in products, or transferred to other catchments and thereby rendered unavailable.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The water-footprint definition is grounded in the cited assessment manual.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Hoekstra et al., 2011)",
+                  "reference_entry": "Hoekstra, A.Y., Chapagain, A.K., Aldaya, M.M., Mekonnen, M.M., 2011. The Water\nFootprint Assessment Manual: Setting the Global Standard. Earthscan, London and\nWashington, D.C."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The introduction moves from the scale and anticipated benefits of AI to a particular environmental accounting boundary. The demand for equal attention to water is a normative framing supported by the contrast with existing energy-focused discussion."
+    },
+    {
+      "location": "p. 2, Section 1, electricity-water links, efficiency terms, and dispersed footprint",
+      "moves": "Explains mechanisms, defines metrics, and introduces geographical and supply-chain complications through examples and cited studies.",
+      "claims": [
+        {
+          "text": "Increasing AI activity increases water consumption directly through cooling and indirectly through electricity generation, whose footprint depends on the energy mix.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The indirect energy-water connection is supported by a review of data-centre energy integration.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Oró et al., 2015)",
+                  "reference_entry": "Oró, E., Depoorter, V., Garcia, A., Salom, J., 2015. Energy efficiency and renewable\nenergy integration in data centres. strategies and modelling review. Renew. Sustain.\nEnergy Rev. 42, 429–445. http://dx.doi.org/10.1016/j.rser.2014.10.035."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Fossil-fuel electricity typically consumes 2–3 litres per kWh; nuclear power can also be water-intensive, especially with once-through cooling.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite a global electricity-water meta-analysis and a nuclear cooling-water review.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Jin et al., 2019; Lin et al., 2024)",
+                  "reference_entry": "Jin, Y., Behrens, P., Tukker, A., Scherer, L., 2019. Water use of electricity technologies:\nA global meta-analysis. Renew. Sustain. Energy Rev. 115, 109391. http://dx.doi.\norg/10.1016/j.rser.2019.109391."
+                },
+                {
+                  "citation_text": "(Jin et al., 2019; Lin et al., 2024)",
+                  "reference_entry": "Lin, H., Zhang, S., Cao, R., Yu, S., Bai, W., Zhang, R., Yang, J., Dai, L., Chen, J.,\nZhang, Y., et al., 2024. A review on the risk, prevention and control of cooling\nwater intake blockage in coastal nuclear power plants. Nucl. Eng. Technol. 56,\n389–401. http://dx.doi.org/10.1016/j.net.2023.10.009.\nMasanet, E., Shehabi, A., Lei, N., Smith, S., Koomey, J., 2020. Recalibrating global data\ncenter energy-use estimates. Sci. 367, 984–986. http://dx.doi.org/10.1126/science.\naba3758."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Companies have invested in renewables, efficient processors, and energy management, while water has received much less attention overall.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The cited review documents energy-efficiency and technological developments.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Khosravi et al., 2024)",
+                  "reference_entry": "Khosravi, A., Sandoval, O.R., Taslimi, M.S., Sahrakorpi, T., Amorim, G., Pabon, J.J.G.,\n2024. Review of energy efficiency and technological advancements in data center\npower systems. Energy Build. 114834. http://dx.doi.org/10.1016/j.enbuild.2024.\n114834."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "WUE measures on-site cooling water per kWh of energy consumption.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "PUE is total energy use divided by IT energy use.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Operational water consumption includes on-site cooling and off-site electricity generation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Embodied water consumption (EWU) covers consumptive water required to manufacture servers, GPUs, and networking hardware.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Large AI data centres already consume millions of litres per day.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The introduction cites published accounts of data-centre water consumption.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Hao, 2024; Dgtl Infra, 2024; Mytton, 2021)",
+                  "reference_entry": "Hao, K., 2024. Ai Is Taking Water from the Desert. The Atlantic, URL: https://www.\ntheatlantic.com."
+                },
+                {
+                  "citation_text": "(Hao, 2024; Dgtl Infra, 2024; Mytton, 2021)",
+                  "reference_entry": "Dgtl Infra, 2024. Data center water usage. URL: dgtlinfra.com/data-center-water-\nusage/. (Accesed 07 March 2025)."
+                },
+                {
+                  "citation_text": "(Hao, 2024; Dgtl Infra, 2024; Mytton, 2021)",
+                  "reference_entry": "Mytton, D., 2021. Data centre water consumption. Npj Clean Water 4, 11. http:\n//dx.doi.org/10.1038/s41545-021-00101-w."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Many centres occupy freshwater-limited regions, including Latin America, the southwestern United States, India, and Australia; siting often prioritises demand proximity or latency over local water conditions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Regional vulnerability is linked to the cited AI water-footprint study.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Li et al., 2025)",
+                  "reference_entry": "Li, P., Yang, J., Islam, M.A., Ren, S., 2025. Making ai less’ thirsty’: Uncovering\nand addressing the secret water footprint of AI models. Commun. ACM 5, 4–61.\nhttp://dx.doi.org/10.1145/3724499."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Separation of facilities, power generation, and hardware manufacturing disperses the environmental footprint; power and hardware supply chains can impose water demands in water-stressed regions and complicate planning.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The discussion invokes a review of green AI.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Bolón-Canedo et al., 2024)",
+                  "reference_entry": "Bolón-Canedo, V., Morán-Fernández, L., Cancela, B., Alonso-Betanzos, A., 2024.\nA review of green artificial intelligence: Towards a more sustainable future.\nNeurocomputing 128096. http://dx.doi.org/10.1016/j.neucom.2024.128096."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The accounting boundary now has mechanisms and vocabulary. Geographic separation adds a reason that facility-level energy efficiency alone cannot describe the full water footprint."
+    },
+    {
+      "location": "p. 2, Section 1, literature gap and existing regional studies",
+      "moves": "Qualifies the gap claim by acknowledging relevant studies, reports their findings, and uses them to motivate more differentiated forecasting.",
+      "claims": [
+        {
+          "text": "Quantitative projections that distinguish water-use components and account for uncertainty remain rare; most assessments focus on electricity or broad environmental accounting.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors give examples of the existing assessment literature.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Al Kez et al., 2022; Isler-Kaya and Karaosmanoglu, 2023; Li et al., 2024)",
+                  "reference_entry": "Al Kez, D., Foley, A.M., Laverty, D., Del Rio, D.F., Sovacool, B., 2022. Exploring the\nsustainability challenges facing digitalization and internet data centers. J. Clean.\nProd. 371, 133633. http://dx.doi.org/10.1016/j.jclepro.2022.133633."
+                },
+                {
+                  "citation_text": "(Al Kez et al., 2022; Isler-Kaya and Karaosmanoglu, 2023; Li et al., 2024)",
+                  "reference_entry": "Isler-Kaya, A., Karaosmanoglu, F., 2023. Life cycle assessment of a climate-friendly\ndata center cooling device. Energy Build. 288, 113006. http://dx.doi.org/10.1016/\nj.enbuild.2023.113006."
+                },
+                {
+                  "citation_text": "(Al Kez et al., 2022; Isler-Kaya and Karaosmanoglu, 2023; Li et al., 2024)",
+                  "reference_entry": "Li, P., Yang, J., Wierman, A., Ren, S., 2024. Towards environmentally equitable AI\nvia geographical load balancing. In: Proceedings of the 15th ACM International\nConference on Future and Sustainable Energy Systems. pp. 291–307. http://dx.doi.\norg/10.1145/3632775.3661938."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A growing literature nevertheless quantifies direct and indirect data-centre water use and regional vulnerability.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Siddik and colleagues are reported to attribute nearly 2% of US electricity use and approximately 0.5% of US greenhouse-gas emissions to data centres, and to locate a significant share of servers’ direct water footprint in water-stressed watersheds.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Siddik et al. (2021)",
+                  "reference_entry": "Siddik, M.A.B., Shehabi, A., Marston, L., 2021. The environmental footprint of data\ncenters in the United States. Environ. Res. Lett. 16, 064017. http://dx.doi.org/10.\n1088/1748-9326/abfba1."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Server efficiency and utilisation, grid water consumption, cooling type, and climate zone are main determinants of data-centre water footprints.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "A review of workload water use is cited for these determinants.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lei et al., 2025)",
+                  "reference_entry": "Lei, N., Lu, J., Shehabi, A.,"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Regional studies already demonstrate European variability and incorporate water availability into renewable-integrated site selection.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The European footprint study is presented as a regional example.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Farfan and Lohrmann (2023)",
+                  "reference_entry": "Farfan, J., Lohrmann, A., 2023. Gone with the clouds: Estimating the electricity and\nwater footprint of digital data services in Europe. Energy Convers. Manage. 290,\n117225. http://dx.doi.org/10.1016/j.enconman.2023.117225."
+                }
+              ]
+            },
+            {
+              "text": "The site-selection study makes water availability a critical criterion alongside renewable integration.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Ayyildiz et al. (2025)",
+                  "reference_entry": "Ayyildiz, E., Yildirim, B., Aydin, N., 2025. Location selection methodology for data\ncenter with renewable energy integration. Renew. Energy 123270. http://dx.doi.\norg/10.1016/j.renene.2025.123270."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The authors narrow their novelty claim: water research exists, but a component-separated, uncertainty-aware future projection is still presented as missing. The cited findings establish a basis to build on rather than a completely empty field."
+    },
+    {
+      "location": "p. 2, Section 1, proposed contribution, scenarios, methodological rationale, and roadmap",
+      "moves": "States the contribution, introduces three alternative pathways, justifies the methodological family and time horizon, and outlines the paper. The three-part accounting contribution restates the abstract, now explicitly presented as the response to the literature gap.",
+      "claims": [
+        {
+          "text": "Limited water-footprint research constrains policymakers and planners preparing for sustainable AI expansion.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "BAU assumes rapid compute growth with limited efficiency gains; moderate intervention combines slower growth with incremental efficiency improvements; sustainable transformation stabilises expansion and aggressively reduces water and energy intensity.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The scenarios aim to represent a realistic range based on current technological and policy trends.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Bayesian-inspired models suit sparse empirical data, expert judgement, and scenario-based assumptions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Methodological literature is cited for combining information under uncertainty and data scarcity.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Van de Schoot et al., 2021; Bonomi et al., 2016; Leoni et al., 2021)",
+                  "reference_entry": "Van de Schoot, R., Depaoli, S., King, R., Kramer, B., Märtens, K., Tadesse, M.G.,\nVannucci, M., Gelman, A., Veen, D., Willemsen, J., et al., 2021. Bayesian statistics\nand modelling. Nat. Rev. Methods Prim. 1, 1. http://dx.doi.org/10.1038/s43586-\n020-00001-2."
+                },
+                {
+                  "citation_text": "(Van de Schoot et al., 2021; Bonomi et al., 2016; Leoni et al., 2021)",
+                  "reference_entry": "Bonomi, M., Camilloni, C., Cavalli, A., Vendruscolo, M., 2016. Metainference: A\nbayesian inference method for heterogeneous systems. Sci. Adv. 2, e1501177.\nhttp://dx.doi.org/10.1126/sciadv.1501177."
+                },
+                {
+                  "citation_text": "(Van de Schoot et al., 2021; Bonomi et al., 2016; Leoni et al., 2021)",
+                  "reference_entry": "Leoni, L., Cantini, A., BahooToroody, F., Khalaj, S., De Carlo, F., Abaei, M.M.,\nBahooToroody, A., 2021. Reliability estimation under scarcity of data: a comparison\nof three approaches. Math. Probl. Eng. 2021, 5592325. http://dx.doi.org/10.1155/\n2021/5592325."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Forecasts to 2050 align with international sustainability and net-zero targets for 2030 and 2050, and are intended to support planning, especially in water-stressed regions.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This closes the introduction by translating its gap into a specific modelling programme. The roadmap announces the order of exposition without yet supplying the technical details."
+    },
+    {
+      "location": "pp. 2–3, Section 2 opening and Section 2.1 through power density",
+      "moves": "Starts the drivers discussion, introduces a potentially conservative demand projection, and gives a physical explanation of AI cooling requirements.",
+      "claims": [
+        {
+          "text": "AI workloads require far more computational power than traditional applications, increasing cooling needs and water consumption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The opening of Section 2 attributes the workload-energy connection to Cowls and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Cowls et al., 2023)",
+                  "reference_entry": "Cowls, J., Tsamados, A., Taddeo, M., Floridi, L., 2023. The AI gambit: leveraging\nartificial intelligence to combat climate change—opportunities, challenges, and\nrecommendations. Ai Soc. 1–25. http://dx.doi.org/10.1007/s00146-021-01294-x."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Some projections put data-centre consumption near 1.7 billion litres per day by 2030, but accelerating large-model deployment and specialised hardware may make that an underestimate.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The numerical projection is cited to an industry report; the possibility of underestimation is the authors’ qualification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Bluefield Research, 2023)",
+                  "reference_entry": "Bluefield Research, 2023. Data Center Water Usage Projections. Technical Report,\nBluefield Research, URL: https://www.bluefieldresearch.com."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Hyperscale cloud and specialised training/inference facilities use GPU and TPU clusters that generate substantial heat and need continuous cooling within thermal safety limits.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "AI-focused centres frequently exceed 40 kW and can reach 80 kW for advanced deep learning, compared with typical enterprise power densities of 5–10 kW.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The high-density comparison cites two reviews; the prose supplies kW values without further specifying a denominator here.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Al Kez et al., 2022, 2025)",
+                  "reference_entry": "Al Kez, D., Foley, A.M., Laverty, D., Del Rio, D.F., Sovacool, B., 2022. Exploring the\nsustainability challenges facing digitalization and internet data centers. J. Clean.\nProd. 371, 133633. http://dx.doi.org/10.1016/j.jclepro.2022.133633."
+                },
+                {
+                  "citation_text": "(Al Kez et al., 2022, 2025)",
+                  "reference_entry": "Al Kez, D., Foley, A., Wong, F.W., BM, H., Dolfi, A., Srinivasan, G., 2025. AI-driven\ncooling technologies for high-performance data centers: State-of-the-art review and\nfuture directions. In: Social Science Research Network. http://dx.doi.org/10.2139/\nssrn.5148380."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The discussion now grounds the earlier water concern in heat generation and power density. The 2030 projection is explicitly treated as possibly low, preserving the authors’ anticipatory concern rather than turning it into a settled estimate."
+    },
+    {
+      "location": "p. 3, Section 2.1, training and retraining examples",
+      "moves": "Offers numerical examples, converts energy demand into illustrative water volumes, and contrasts successive model generations in emphatic language.",
+      "claims": [
+        {
+          "text": "A single GPT-3 training cycle required around 1287 MWh of electricity; the authors describe major retraining as typically repeated every one to two years.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The GPT-3 training-energy estimate is cited to De Vries.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(De Vries, 2023)",
+                  "reference_entry": "De Vries, A., 2023. The growing energy footprint of artificial intelligence. Joule 7,\n2191–2194. http://dx.doi.org/10.1016/j.joule.2023.09.004."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A Gemini training cycle was estimated to consume over one million litres of water, depending on regional cooling configurations.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Gemini estimate is attributed to Leon.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Leon, 2024)",
+                  "reference_entry": "Leon, M., 2024. The escalating AI’s energy demands and the imperative need for sus-\ntainable solutions. WSEAS Trans. Syst. 23, 444–457. http://dx.doi.org/10.37394/\n23202.2024.23.46."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Smaller fine-tuning operations occur monthly or quarterly between major retraining events and have substantially lower resource demands.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "With typical evaporative cooling, the training run discussed could consume about 700,000–1,000,000 litres, equivalent to the daily water use of 5000–7000 people.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The water-volume and population comparison is supported by two cited accounts. The phrase referring to this training run follows discussion of both GPT-3 and Gemini, so it is not assigned more precisely here.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Hao, 2024; Bhaskar and Seth, 2024)",
+                  "reference_entry": "Hao, K., 2024. Ai Is Taking Water from the Desert. The Atlantic, URL: https://www.\ntheatlantic.com."
+                },
+                {
+                  "citation_text": "(Hao, 2024; Bhaskar and Seth, 2024)",
+                  "reference_entry": "Bhaskar, P., Seth, N., 2024. Environment and sustainability development: A chatgpt\nperspective. In: Applied Data Science and Smart Systems. CRC Press, pp. 54–62.\nhttp://dx.doi.org/10.1201/9781003471059."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A major GPT-scale training event could have a water footprint of approximately 1.9–4.9 million litres at cooling intensities of 1.5–3.8 litres per kWh.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Newer generations require exponentially more computational resources and drive water consumption further upward; the authors use GPT-4 and a possible future GPT-5 to make GPT-3 seem already antiquated.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "These examples make the thermal mechanism tangible at model-training scale. Different numerical estimates and qualifications remain distinct; the generational comparison intensifies the urgency of the framing."
+    },
+    {
+      "location": "p. 3, Section 2.1, compute scaling, inference, and 2030 outlook; Fig. 1 on p. 4",
+      "moves": "Generalises from examples to an exponential trajectory, adds inference as continuing demand, introduces visual evidence, and draws a sustainability implication.",
+      "claims": [
+        {
+          "text": "AI model computational requirements have followed an exponential trend called the AI compute scaling law.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite a discussion of scaling laws.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Diaz and Madaio, 2024)",
+                  "reference_entry": "Diaz, F., Madaio, M., 2024. Scaling laws do not scale. In: Proceedings of the AAAI/ACM\nConference on AI, Ethics, and Society. pp. 341–357. http://dx.doi.org/10.1609/aies.\nv7i1.31641."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Since 2012, training compute for state-of-the-art models has doubled every three to four months.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The doubling-time claim is attributed to Turchin.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Turchin, 2019)",
+                  "reference_entry": "Turchin, A., 2019. Assessing the future plausibility of catastrophically dangerous ai.\nFutures 107, 45–58. http://dx.doi.org/10.1016/j.futures.2018.11.007."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Inference uses less water per request than initial training but produces substantial cumulative demand as daily AI interactions reach billions.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Figure 1 shows training computation against publication date on a logarithmic vertical scale, with coloured points across application domains and a dense upward concentration in recent decades; this visually supports the account of rising compute.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 1 is credited to OurWorldinData.org/artificial-intelligence. Its caption says estimates are accurate within a factor of two, or five for recent undisclosed models such as GPT-4. The plotted points do not provide readable exact values for individual models here.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Frontier-model compute requirements could rise ten- to one-hundredfold by 2030.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The forecast is linked to AI compute, compute-optimal training, and AI-index sources.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Amodei and Hernandez, 2018; Hoffmann et al., 2022; Zhang et al., 2023)",
+                  "reference_entry": "Amodei, D., Hernandez, D., 2018. AI and Compute. OpenAI Blog, URL: https://openai.\ncom/research/ai-and-compute. (Accessed March 2025)."
+                },
+                {
+                  "citation_text": "(Amodei and Hernandez, 2018; Hoffmann et al., 2022; Zhang et al., 2023)",
+                  "reference_entry": "Hoffmann, J., Borgeaud, S., Mensch, A., Buchatskaya, E., Hennigan, T., Cassirer, J.,\nJones, T., et al., 2022. Training compute-optimal large language models. ArXiv\npreprint arXiv:2203.15556 URL: https://arxiv.org/abs/2203.15556."
+                },
+                {
+                  "citation_text": "(Amodei and Hernandez, 2018; Hoffmann et al., 2022; Zhang et al., 2023)",
+                  "reference_entry": "Zhang, N., Saxena, S., Sharma, T., Zhang, T., Brynjolfsson, E., et al., 2023. The AI index\n2023 annual report. URL: https://aiindex.stanford.edu/report/. (Accessed March\n2025)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Without proactive measures, increasing compute will magnify environmental impacts disproportionately in water-scarce regions; targeted compute efficiency, cooling, and water-management improvements will be required.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Training examples become an argument about sustained growth, and inference broadens the burden beyond occasional training events. The figure supplies a visual historical pattern; future magnification and the need for action are the authors’ inferences."
+    },
+    {
+      "location": "p. 3, Section 2.2, footprint definitions and Eqs. (1)–(2)",
+      "moves": "Defines terms, excludes two footprint categories, decomposes consumption, and operationalises the on-site component. The later WUE definition refines the earlier introductory wording by explicitly using IT/server energy as its denominator.",
+      "claims": [
+        {
+          "text": "Water footprint is freshwater consumed and made unavailable for reuse, conventionally classified as blue surface/groundwater, green soil-held rainwater used by plants, and grey pollution-assimilation volume.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The classification follows the water-footprint manual.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Hoekstra et al., 2011)",
+                  "reference_entry": "Hoekstra, A.Y., Chapagain, A.K., Aldaya, M.M., Mekonnen, M.M., 2011. The Water\nFootprint Assessment Manual: Setting the Global Standard. Earthscan, London and\nWashington, D.C."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Only consumptive blue water is included: evaporation, incorporation into products, or transfer out of the originating basin; green and grey components are excluded.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The blue-water boundary is supported with a cited critical review.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Ansorge and Stejskalová, 2025)",
+                  "reference_entry": "Ansorge, L., Stejskalová, L., 2025. Water footprint which is not the water footprint:\nCritical review of the article by müller, et al. (2024). J. Environ. Manag. 374,\n124038. http://dx.doi.org/10.1016/j.jenvman.2025.124038."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The framework extends an existing three-component accounting structure.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors identify Li and colleagues as the framework being extended.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Li et al. (2025)",
+                  "reference_entry": "Li, P., Yang, J., Islam, M.A., Ren, S., 2025. Making ai less’ thirsty’: Uncovering\nand addressing the secret water footprint of AI models. Commun. ACM 5, 4–61.\nhttp://dx.doi.org/10.1145/3724499."
+                }
+              ]
+            },
+            {
+              "text": "Equation (1) adds on-site operational, off-site electricity-related, and embodied water volumes at time t to obtain total consumption.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Equation (2) calculates on-site water as server energy consumption e(t), in kWh/day, multiplied by WUE, in litres/kWh.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "WUE varies by cooling technology, design, and ambient climate, and tends to be higher in AI-focused centres because of denser compute configurations.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The text moves from descriptive scale to an explicit accounting model. These definitions make the scope reproducible and distinguish consumption in this study from broader uses of the term water footprint."
+    },
+    {
+      "location": "p. 3, Section 2.2, Eqs. (3)–(4) and embodied-water example",
+      "moves": "Completes the component equations, states an amortisation assumption, compares electricity sources, and gives a manufacturing example. The electricity-source intensity comparison restates the introduction’s fossil/nuclear contrast and adds that solar and wind are almost water-free. PUE is restated while being placed within the off-site equation.",
+      "claims": [
+        {
+          "text": "Equation (3) calculates off-site water as server energy multiplied by PUE and the electricity water intensity factor, EWIF; PUE is total input energy divided by computing energy.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "EWIF depends heavily on the regional energy mix; solar and wind electricity are described as almost water-free.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The source presents this electricity comparison alongside its repeated fossil- and nuclear-generation water-intensity discussion.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Jin et al., 2019; Lin et al., 2024)",
+                  "reference_entry": "Jin, Y., Behrens, P., Tukker, A., Scherer, L., 2019. Water use of electricity technologies:\nA global meta-analysis. Renew. Sustain. Energy Rev. 115, 109391. http://dx.doi.\norg/10.1016/j.rser.2019.109391."
+                },
+                {
+                  "citation_text": "(Jin et al., 2019; Lin et al., 2024)",
+                  "reference_entry": "Lin, H., Zhang, S., Cao, R., Yu, S., Bai, W., Zhang, R., Yang, J., Dai, L., Chen, J.,\nZhang, Y., et al., 2024. A review on the risk, prevention and control of cooling\nwater intake blockage in coastal nuclear power plants. Nucl. Eng. Technol. 56,\n389–401. http://dx.doi.org/10.1016/j.net.2023.10.009.\nMasanet, E., Shehabi, A., Lei, N., Smith, S., Koomey, J., 2020. Recalibrating global data\ncenter energy-use estimates. Sci. 367, 984–986. http://dx.doi.org/10.1126/science.\naba3758."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Embodied manufacturing water is treated as a fixed amount amortised over equipment life.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Equation (4) expresses embodied water as T times W divided by T0, with W the production-water volume, T0 expected lifespan in years, and T the analysis duration.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Embodied consumption is smaller in daily volume but grows with rapid hardware turnover and demand for high-performance processors.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Manufacturing a single AI accelerator GPU can require 20,000–30,000 litres of water, and AI centres deploy thousands of units annually.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The manufacturing estimate is attributed to the cited Goldman Sachs research report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Davenport et al., 2024)",
+                  "reference_entry": "Davenport, C., Singer, C., Mehta, N., et al., 2024. Generational Growth: AI, Data\nCenters and the Coming Us Power Demand Surge. Goldman Sachs Research Re-\nport 26, URL: https://www.goldmansachs.com/insights/goldman-sachs-research/\ngenerational-growth-ai-data-centers-and-the-coming-us-power-demand-surge."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Hardware demand, shorter refresh cycles, and increasing model complexity make embodied water increasingly important.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The model now covers operational and manufacturing pathways. The fixed-lifespan treatment is an explicit simplification, while the GPU example explains why a smaller daily component still belongs in the accounting."
+    },
+    {
+      "location": "p. 4, Section 3 opening and Section 3.1; Fig. 2",
+      "moves": "Turns to technology comparison, describes the heat-removal problem, and makes the water-energy tradeoff of air cooling explicit.",
+      "claims": [
+        {
+          "text": "Energy-efficiency advances have helped stabilise electricity consumption despite rising service demand, relying heavily on cooling-infrastructure improvements.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The account cites IEA and global energy-use estimates.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(International Energy Agency, 2020; Masanet et al., 2020)",
+                  "reference_entry": "International Energy Agency, 2020. Data Centres and Data Transmission Networks.\nTechnical Report, IEA, URL: https://www.iea.org/reports/data-centres-and-data-\ntransmission-networks. (Accessed March 2025)."
+                },
+                {
+                  "citation_text": "(International Energy Agency, 2020; Masanet et al., 2020)",
+                  "reference_entry": "Masanet, E., 2025. The water use of data center workloads: A\nreview and assessment of key determinants. Resour. Conserv. Recycl. 219, 108310.\nhttp://dx.doi.org/10.1016/j.resconrec.2025.108310."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "AI GPUs and TPUs generate considerably more heat than conventional CPUs, while training cycles lasting weeks or months further increase cooling demand.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The hardware heat comparison is supported by the AI water-footprint study.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Li et al., 2025)",
+                  "reference_entry": "Li, P., Yang, J., Islam, M.A., Ren, S., 2025. Making ai less’ thirsty’: Uncovering\nand addressing the secret water footprint of AI models. Commun. ACM 5, 4–61.\nhttp://dx.doi.org/10.1145/3724499."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Traditional air systems are increasingly unable to handle AI thermal loads, encouraging liquid and immersion alternatives; liquid often uses water-based coolants, while dielectric immersion can substantially reduce on-site water but faces technical and infrastructure constraints.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The transition and adoption constraints are linked to two cooling discussions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Jones, 2018; Gao and Evans, 2021)",
+                  "reference_entry": "Jones, N., 2018. How to stop data centres from gobbling up the world’s electricity.\nNat. http://dx.doi.org/10.1038/d41586-018-06610-y."
+                },
+                {
+                  "citation_text": "(Jones, 2018; Gao and Evans, 2021)",
+                  "reference_entry": "Gao, J., Evans, D., 2021. Google Data Center Cooling: Machine Learning Applica-\ntion and Sustainability Outcomes. Google Sustainability Reports, URL: https:\n//sustainability.google/projects/machine-learning/. (Accessed March 2025)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Air cooling circulates cool air through racks and discharges heat to the environment or heat exchangers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 2 shows outside air entering a mixing room, cool-air arrows moving below a raised floor and through racks, and hot-air arrows moving toward a false-ceiling exhaust.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Air cooling has minimal direct water consumption and is preferable where water is scarce, but needs more energy, particularly when warm climates require mechanical cooling.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Air cooling can raise total data-centre energy demand by 10%–30% relative to evaporative cooling, depending on temperature and humidity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The numerical water-energy tradeoff is attributed to Li and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Li et al., 2025)",
+                  "reference_entry": "Li, P., Yang, J., Islam, M.A., Ren, S., 2025. Making ai less’ thirsty’: Uncovering\nand addressing the secret water footprint of AI models. Commun. ACM 5, 4–61.\nhttp://dx.doi.org/10.1145/3724499."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The equations’ efficiency terms acquire physical meaning through cooling choices. The air-cooling example shows why minimising direct water can carry an energy cost, keeping the tradeoff visible rather than treating all efficiency gains as interchangeable."
+    },
+    {
+      "location": "pp. 4–5, Sections 3.2–3.3, evaporative, direct liquid, and immersion cooling; Figs. 3–4",
+      "moves": "Explains alternative mechanisms, identifies consumptive losses, and compares performance with adoption constraints.",
+      "claims": [
+        {
+          "text": "Evaporative towers are common in large centres, especially where water is abundant, because of high thermal efficiency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite studies of evaporative cooling and integrated systems.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Kim et al., 2014; Chu and Huang, 2023)",
+                  "reference_entry": "Kim, M.H., Ham, S.W., Park, J.S., Jeong, J.W., 2014. Impact of integrated hot water\ncooling and desiccant-assisted evaporative cooling systems on energy savings in a\ndata center. Energy 78, 384–396. http://dx.doi.org/10.1016/j.energy.2014.10.023."
+                },
+                {
+                  "citation_text": "(Kim et al., 2014; Chu and Huang, 2023)",
+                  "reference_entry": "Chu, J., Huang, X., 2023. Research status and development trends of evaporative\ncooling air-conditioning technology in data centers. Energy Built Environ. 4,\n86–110. http://dx.doi.org/10.1016/j.enbenv.2021.08.004."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Heated water is sprayed over fill material and loses heat as some evaporates; blowdown removes water to discharge accumulated minerals and contaminants.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The discussion of losses cites a cooling-tower water-conservation study.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Wang et al., 2024)",
+                  "reference_entry": "Wang, W., Li, L., Gao, M., Zhang, M., Xu, Q., Wang, J., 2024. Water-saving performance\nstudy of water conservation and plume abatement device in wet mechanical draft\ncooling towers. Case Stud. Therm. Eng. 56, 104188. http://dx.doi.org/10.1016/j.\ncsite.2024.104188."
+                }
+              ]
+            },
+            {
+              "text": "Figure 3 shows a cooling tower connected through a heat exchanger/chiller to the air circulation of a data centre, with separate hot and cold flow arrows.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The authors treat evaporation and blowdown as consumptive losses permanently removed from the local water cycle; the model counts volumes but excludes grey-water pollution assimilation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Evaporative systems can consume millions of litres annually, with particular concern in hot, arid, water-stressed regions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The concern is supported by a study of data-centre water footprints.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Ristic et al., 2015)",
+                  "reference_entry": "Ristic, B., Madani, K., Makuch, Z., 2015. The water footprint of data centers. Sustain.\n7, 11260–11284. http://dx.doi.org/10.3390/su70811260."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Direct liquid cooling passes coolant through cold plates attached to CPUs and GPUs; immersion fully submerges servers in dielectric fluid that circulates through a heat-rejection loop.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Direct liquid cooling removes heat at its source with low thermal resistance, supporting high-density computing and reducing reliance on water-intensive evaporation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 4 shows a rack connected by liquid-flow paths to a heat exchanger/chiller and a cooling tower; the schematic depicts a tower as part of the illustrated solution.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Liquid cooling significantly reduces water demand, especially with closed loops replacing evaporation, and can cut cooling energy by up to 50% relative to air systems.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The energy-saving figure is cited to Google.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Google, 2021)",
+                  "reference_entry": "Google, 2021. Google To Replenish 120% of the Water It Uses By 2030. Technical\nReport, Google Press Release, URL: https://www.blog.google."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Costs, integration complexity, and hardware compatibility limit broader adoption; immersion particularly requires substantial retrofitting and specialised equipment.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The comparison explains why cooling is a mitigation lever while retaining the conditions attached to benefits. The text moves between generic liquid-cooling advantages and a specific illustrated configuration; the diagram is recorded as shown."
+    },
+    {
+      "location": "p. 5, Section 3.4 and Table 1",
+      "moves": "Summarises technologies qualitatively, introduces market evidence, and infers a transition toward more efficient cooling.",
+      "claims": [
+        {
+          "text": "Table 1 lists air cooling as low-water, moderate-to-low energy efficiency, and high adoption; evaporative cooling as high-water, high efficiency, and high adoption; direct liquid as low-water, very high efficiency, and emerging adoption; immersion as very low-water, very high efficiency, and limited adoption.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Selecting cooling strategies that minimise water will be essential to long-term operational sustainability as AI workloads scale.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Air cooling remains dominant; US computer-room air conditioners and air handlers grew 64% between 2020 and 2023.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The market claim is attributed to the US data-centre market analysis.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Research, 2024)",
+                  "reference_entry": "Research, A., 2024. Us data center market analysis 2024: Current trends\nand future prospects. URL: https://www.arizton.com/market-reports/us-data-\ncenters. (Accessed 08 April 2025)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The global liquid-cooling market is projected to rise from $5.65 billion in 2024 to over $48 billion by 2034.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The growth projection is cited to GlobeNewswire.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(GlobeNewswire, 2025)",
+                  "reference_entry": "GlobeNewswire, 2025. Data center liquid cooling market size to hit usd 10 billion\nby 2030. https://www.globenewswire.com/news-release/2025/ Available at: https:\n//www.globenewswire.com/news-release/2025/."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "North America held more than 35% of the global immersion-cooling market in 2023.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The regional share is cited to a market forecast.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Global Market Insights Inc., 2023)",
+                  "reference_entry": "Global Market Insights Inc., 2023. Data center immersion cooling market size, industry\nshare and forecast. pp. 2023–2032, https://www.gminsights.com/industry-analysis/\nAvailable at: https://www.gminsights.com/industry-analysis/."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "These market trends indicate a growing transition toward water- and energy-efficient thermal management.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The authors move from mechanism to adoption. The table separates technical qualities from deployment maturity, and market forecasts support the inference that adoption is shifting rather than already complete."
+    },
+    {
+      "location": "pp. 5–6, Section 4 opening, Fig. 5, and national comparisons",
+      "moves": "Changes scale from technologies to geography, identifies a siting mismatch and its social implications, and supplies a mapped comparison.",
+      "claims": [
+        {
+          "text": "Data centres cluster around digital infrastructure, tax incentives, and renewable access, often overlapping water-stressed areas and intensifying competition with agriculture and residents.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Water-intensive cooling without adequate regulation or local consultation raises environmental and social concerns; uneven disclosure impedes assessment and planning.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Major data-centre deployment is concentrated in North America, Europe, India, and parts of Oceania.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 5 maps country-level bubbles whose size represents facility counts and colour represents water-stress categories. The US bubble is visibly the largest, European bubbles cluster densely, and India is marked high-stress; exact country counts cannot be recovered from the unlabelled bubbles.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Data Center Map (2025)",
+                  "reference_entry": "Data Center Map, 2025. Data center map - global database of data centers. https:\n//www.datacentermap.com. (Accessed 08 April 2025)."
+                }
+              ]
+            },
+            {
+              "text": "National water-stress classifications used for the map are attributed to the Aqueduct atlas.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "World Resources Institute (2024)",
+                  "reference_entry": "World Resources Institute, 2024. Aqueduct water risk atlas. https://www.wri.org/\napplications/aqueduct/country-rankings. (Accessed April 2025)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors read the map as showing many US facilities in medium-high-stress regions, India expanding despite high stress, and Spain combining substantial facilities with higher stress than Germany or the UK.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Figure 5 presents national classifications and counts; the national comparison is stated in the surrounding prose.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The geographic turn follows naturally from the earlier climate-sensitive cooling comparisons. The perspective now includes competition over water and consultation, while the map supplies a country-level picture rather than facility-specific hydrological detail."
+    },
+    {
+      "location": "p. 6, Section 4, regional examples",
+      "moves": "Gives local examples of water-related tension, reports responses, and infers the need for context-specific management.",
+      "claims": [
+        {
+          "text": "In the UK, Thames Water has warned that data-centre water restrictions may be imposed during heatwaves.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The warning is supported by a heatwave review and a BBC report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Zuo et al., 2015; BBC News, 2025)",
+                  "reference_entry": "Zuo, J., Pullen, S., Palmer, J., Bennetts, H., Chileshe, N., Ma, T., 2015. Impacts\nof heat waves and corresponding measures: a review. J. Clean. Prod. 92, 1–12.\nhttp://dx.doi.org/10.1016/j.jclepro.2014.12.078."
+                },
+                {
+                  "citation_text": "(Zuo et al., 2015; BBC News, 2025)",
+                  "reference_entry": "BBC News, 2025. Concern UK’s AI ambitions could lead to water shortages. URL:\nhttps://www.bbc.co.uk/news/articles/ce85wx9jjndo."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Major technology companies in Arizona and Virginia consume millions of litres daily, prompting scrutiny and regulatory discussion; some operators are exploring recycled water and liquid cooling.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The US example is cited to Mytton. The article introduces it under a southwestern-US label while naming both states.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Mytton, 2021)",
+                  "reference_entry": "Mytton, D., 2021. Data centre water consumption. Npj Clean Water 4, 11. http:\n//dx.doi.org/10.1038/s41545-021-00101-w."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Chinese data-centre water consumption is expected to exceed three billion cubic metres annually by 2030; northern concentration overlaps chronic scarcity, prompting policy support for less water-intensive cooling and renewables.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The China example is attributed to He and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(He et al., 2019)",
+                  "reference_entry": "He, G., Zhao, Y., Jiang, S., Zhu, Y., Li, H., Wang, L., 2019. Impact of virtual water\ntransfer among electric sub-grids on china’s water sustainable developments in 2016\n2030, and 2050. J. Clean. Prod. 239, 118056. http://dx.doi.org/10.1016/j.jclepro.\n2019.118056."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Rapid construction in Chile and Brazil, sometimes without infrastructure for industrial-scale water demand, has sparked debate over viability under worsening drought.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Latin American example is cited to Farfan and Lohrmann.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Farfan and Lohrmann, 2023)",
+                  "reference_entry": "Farfan, J., Lohrmann, A., 2023. Gone with the clouds: Estimating the electricity and\nwater footprint of digital data services in Europe. Energy Convers. Manage. 290,\n117225. http://dx.doi.org/10.1016/j.enconman.2023.117225."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Regional disparities require management that reflects hydrology, infrastructure constraints, and regulation, and forecasts should anticipate regional vulnerability.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The map’s broad mismatch is given concrete institutional and political forms. The recommendation follows these examples by asking for differentiated management rather than a uniform global remedy."
+    },
+    {
+      "location": "p. 6, Section 4, Köppen classification and transition to forecasts",
+      "moves": "Introduces a climate classification as a planning lens, compares climate types, and recommends climate-aware siting before turning to forecasting.",
+      "claims": [
+        {
+          "text": "Köppen classification groups regions by long-term temperature and precipitation and offers an ecoclimatic perspective linked to vegetation and water availability.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The classification is grounded in the cited global climate maps.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Beck et al., 2018)",
+                  "reference_entry": "Beck, H.E., Zimmermann, N.E., McVicar, T.R., Vergopolan, N., Berg, A., Wood, E.F.,\n2018. Present and future köppen-geiger climate classification maps at 1-km\nresolution. Sci. Data 5, 1–12. http://dx.doi.org/10.1038/sdata.2018.214."
+                }
+              ]
+            },
+            {
+              "text": "The link to vegetation and water variability is cited separately.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Sohoulande, 2024)",
+                  "reference_entry": "Sohoulande, C.D., 2024. Vegetation and water resource variability within the köppen-\ngeiger global climate classification scheme: a probabilistic interpretation. Theor.\nAppl. Climatol. 155, 1081–1092. http://dx.doi.org/10.1007/s00704-023-04682-z."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Hot-desert BWh and hot-semi-arid BSh regions, including parts of the southwestern US, northern Mexico, Australia, and northern Africa, are poorly suited to evaporative towers because heat, low humidity, and scarce freshwater increase losses and strain.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Temperate oceanic Cfb and humid subtropical Cfa climates offer more favourable conditions for air or hybrid cooling through lower temperatures and higher humidity.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Siting assessments should incorporate Köppen criteria as climate variability and digital demand increase; policy, operations, and design also affect water consumption.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Climate classification supplies a proposed bridge between geography and engineering choice. The final transition acknowledges additional drivers and turns to modelling their possible future trajectories."
+    },
+    {
+      "location": "pp. 6–7, Section 5 opening and Section 5.1 opening",
+      "moves": "Justifies scenario forecasting under data scarcity, distinguishes probabilities from point estimates, and qualifies the Bayesian description. The three-component scope and sparse-data combination are restated as the rationale for probabilistic rather than single-point estimates.",
+      "claims": [
+        {
+          "text": "High-resolution global data are lacking and technology changes rapidly, making accurate AI water-footprint estimation difficult.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Traditional historical-trend forecasting is poorly suited to emerging large-scale AI infrastructure, whose future is shaped by evolving models, hardware, and operations.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "BAU, moderate intervention, and sustainable transformation explore plausible futures rather than a single reliable trend.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The forecasting method propagates input uncertainty with Monte Carlo simulation; it does not implement full Bayesian inference but incorporates prior assumptions about inputs.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This is a methodological turn from the physical and geographical context. The explicit qualification narrows what Bayesian-inspired means here: prior-informed forward simulation rather than full Bayesian inference."
+    },
+    {
+      "location": "p. 7, Section 5.1, baseline energy, Eq. (5), and efficiency assumptions",
+      "moves": "Specifies the uncertain baseline, states deterministic efficiency assumptions, and distinguishes direct energy savings from broader waste-heat benefits. The choice of 2030 and 2050 is restated, now naming the EU Green Deal alongside the SDGs.",
+      "claims": [
+        {
+          "text": "Base-year server electricity use is modelled as normally distributed from industry estimates.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Equation (5) assigns e(2025) a mean of 1.0 × 10^9 kWh/day and a standard deviation of 0.1 × 10^9 kWh/day.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Masanet et al., 2020)",
+                  "reference_entry": "Masanet, E., 2025. The water use of data center workloads: A\nreview and assessment of key determinants. Resour. Conserv. Recycl. 219, 108310.\nhttp://dx.doi.org/10.1016/j.resconrec.2025.108310."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "WUE, PUE, and EWIF are deterministic values improving annually by assumed rates in the 0.5%–1% range, described as modest but realistic gains from cooling, optimisation, and cleaner energy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The efficiency assumptions are based on technical reports and industry trends.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(International Energy Agency, 2020; Google, 2021)",
+                  "reference_entry": "International Energy Agency, 2020. Data Centres and Data Transmission Networks.\nTechnical Report, IEA, URL: https://www.iea.org/reports/data-centres-and-data-\ntransmission-networks. (Accessed March 2025)."
+                },
+                {
+                  "citation_text": "(International Energy Agency, 2020; Google, 2021)",
+                  "reference_entry": "Google, 2021. Google To Replenish 120% of the Water It Uses By 2030. Technical\nReport, Google Press Release, URL: https://www.blog.google."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Immersion and direct-to-chip cooling can reduce energy demand directly; waste-heat reuse does not reduce cooling energy itself but lowers net primary energy use at a wider system level and can indirectly reduce water consumption.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Embodied water is also assumed to improve at a fixed annual rate, EWU*, as manufacturing and supply chains become more efficient.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The method acquires its numerical starting point and separates uncertainty in baseline energy from deterministic efficiency trajectories. Waste-heat reuse is carefully described at a different system boundary from direct cooling savings."
+    },
+    {
+      "location": "p. 7, Section 5.1, scenario growth rates and climate-policy analogy",
+      "moves": "Defines scenarios numerically, characterises them as plausible bounds, and uses climate-mitigation pathways as an analogy and design precedent.",
+      "claims": [
+        {
+          "text": "BAU assumes compute demand grows 10% annually.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Moderate intervention assumes 5% annual compute-demand growth through policy and efficiency measures.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Sustainable transformation assumes no further compute growth and infrastructure stabilised at current levels.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors treat these rates as plausible upper, middle, and lower bounds grounded in historical data and expert forecasts.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The scenario-bound justification cites AI compute, AI-index, and compute-optimal-model work.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Amodei and Hernandez, 2018; Zhang et al., 2023; Hoffmann et al., 2022)",
+                  "reference_entry": "Amodei, D., Hernandez, D., 2018. AI and Compute. OpenAI Blog, URL: https://openai.\ncom/research/ai-and-compute. (Accessed March 2025)."
+                },
+                {
+                  "citation_text": "(Amodei and Hernandez, 2018; Zhang et al., 2023; Hoffmann et al., 2022)",
+                  "reference_entry": "Zhang, N., Saxena, S., Sharma, T., Zhang, T., Brynjolfsson, E., et al., 2023. The AI index\n2023 annual report. URL: https://aiindex.stanford.edu/report/. (Accessed March\n2025)."
+                },
+                {
+                  "citation_text": "(Amodei and Hernandez, 2018; Zhang et al., 2023; Hoffmann et al., 2022)",
+                  "reference_entry": "Hoffmann, J., Borgeaud, S., Mensch, A., Buchatskaya, E., Hennigan, T., Cassirer, J.,\nJones, T., et al., 2022. Training compute-optimal large language models. ArXiv\npreprint arXiv:2203.15556 URL: https://arxiv.org/abs/2203.15556."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "BAU is analogous to baseline emissions, moderate intervention to intermediate mitigation, and sustainable transformation to net-zero ambitions; the analogy argues for water governance comparable to carbon governance.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Shared Socioeconomic Pathways are cited as a comparable three-tier modelling precedent.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Riahi et al., 2017)",
+                  "reference_entry": "Riahi, K., Van Vuuren, D.P., Kriegler, E., Edmonds, J., O’neill, B.C., Fujimori, S.,\nBauer, N., Calvin, K., Dellink, R., Fricko, O., et al., 2017. The shared socioeconomic\npathways and their energy, land use, and greenhouse gas emissions implications:\nAn overview. Glob. Environ. Chang. 42, 153–168. http://dx.doi.org/10.1016/j.\ngloenvcha.2016.05.009."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Using scenario growth, baseline energy, and efficiency improvements, the authors describe constructing likelihood functions based on plausible compute demand, cooling, and hardware turnover.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The scenarios are now assumptions with exact growth rates, rather than general policy labels. The climate analogy supplies a conceptual precedent and a governance perspective; it does not itself constitute a measured forecast of AI adoption."
+    },
+    {
+      "location": "p. 7, Section 5.1, Monte Carlo procedure and Eq. (6)",
+      "moves": "Details the simulation, defines the interval calculation, and explains the authors’ probability interpretation.",
+      "claims": [
+        {
+          "text": "Monte Carlo simulation uses 10,000 iterations, drawing inputs from prior distributions and computing total water with Equation (1) to produce an empirical distribution for each year and scenario.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The method is supported by a Monte Carlo uncertainty-quantification survey.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Zhang, 2021)",
+                  "reference_entry": "Zhang, J., 2021. Modern monte carlo methods for efficient uncertainty quantification\nand propagation: A survey. Wiley Interdiscip. Rev.: Comput. Stat. 13, e1539.\nhttp://dx.doi.org/10.1002/wics.1539."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors describe Monte Carlo as appropriate for high uncertainty and complex interacting variables, providing a range of outcomes rather than one prediction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Equation (6) defines the central 90% interval by the simulated fifth and ninety-fifth percentiles; quantiles are calculated non-parametrically without assuming a distribution shape.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors interpret the resulting 90% credible interval as containing the true water-demand value with 90% probability, conditional on the data and prior-informed assumptions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The interpretation is cited to Bayesian Data Analysis.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Gelman et al., 2015)",
+                  "reference_entry": "Gelman, A., Carlin, J.B., Stern, H.S., Dunson, D.B., Vehtari, A., Rubin, D.B., 2015.\nBayesian Data Analysis, third ed. CRC Press, Boca Raton, FL."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The forecast’s numerical ranges are given an explicit construction and the authors’ conditional interpretation. This follows from the stated forward-simulation approach while retaining the source’s own credible-interval terminology."
+    },
+    {
+      "location": "pp. 7–8, Section 5.1 end and Algorithm 1",
+      "moves": "Summarises the computational workflow, marks spatial disaggregation as outside scope, and proposes periodic updating.",
+      "claims": [
+        {
+          "text": "Algorithm 1 loops through each scenario and year from 2025 to 2050, samples baseline server energy, and compounds it by the scenario growth rate.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Algorithm 1 compounds WUE, PUE, and EWIF downward by their annual improvement rates; embodied water is its baseline multiplied by the compounded EWU improvement and divided by equipment lifespan T0.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Algorithm 1 multiplies energy by WUE for on-site water and by PUE and EWIF for off-site water, divides the operational sum and embodied amount by 10^9, then stores simulated means and intervals.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Spatially disaggregated modelling could use location-specific efficiency parameters, but is outside the present scope.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The framework is designed for scheduled reassessment: inputs such as WUE, PUE, and EWIF could be updated annually or biannually and simulations rerun to improve tracking, policy, and investment decisions.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The algorithm makes the compounding and aggregation rules explicit. The updating proposal is a prospective use of the framework, and the spatial extension is deliberately reserved rather than treated as part of the current implementation."
+    },
+    {
+      "location": "p. 7, Section 5.2 and Table 2",
+      "moves": "Reports scenario outcomes with intervals, compares trajectories, and makes the first substantive interpretation of the forecasts.",
+      "claims": [
+        {
+          "text": "Table 2 reports BAU consumption of 4.18 [3.67–4.68] billion litres/day in 2030 and 28.11 [24.71–31.47] in 2050; brackets represent the reported 90% credible intervals.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table 2 reports moderate-intervention consumption of 3.06 [2.68–3.44] billion litres/day in 2030 and 8.36 [7.31–9.72] in 2050.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table 2 reports sustainable-transformation consumption of 1.86 [1.63–2.09] billion litres/day in 2030 and 1.38 [1.15–1.61] in 2050.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors interpret BAU as nearly sevenfold growth between 2030 and 2050, moderate intervention as a more manageable trajectory, and sustainable transformation as a net mid-century reduction.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 2 supplies the scenario means and intervals on which the comparison is based.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The assumed pathways now yield reported water-demand distributions. The prose specifies 2030 to 2050 for its nearly-sevenfold comparison; that temporal comparison is kept distinct from the looser mid-century formulations in the opening."
+    },
+    {
+      "location": "p. 8, Section 5.2 continuation and Fig. 6",
+      "moves": "Compares the results with an external estimate, introduces a trajectory chart, and draws policy and design implications.",
+      "claims": [
+        {
+          "text": "The BAU trajectory is said to align with a prior estimate that data-centre water consumption could exceed 20 billion litres/day by 2050, while adding an explicit probabilistic interpretation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The external baseline comparison is attributed to Hao.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Hao (2024)",
+                  "reference_entry": "Hao, K., 2024. Ai Is Taking Water from the Desert. The Atlantic, URL: https://www.\ntheatlantic.com."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Figure 6 shows an accelerating upper BAU curve, a more slowly rising moderate curve, a slightly declining sustainable curve, and shaded uncertainty bands that widen most for BAU. Its vertical axis is labelled in billion litres/day but displays decimal values below 0.04; those plotted magnitudes are recorded as displayed rather than converted into Table 2’s numbers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "BAU could intensify water stress in vulnerable regions; moderate growth with efficiency yields significant reductions relative to BAU; systemic changes such as non-water cooling and longer hardware life can decouple AI adoption from rising water use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors infer these intervention implications from the scenario comparison and Fig. 6.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Achieving the sustainable pathway will require regulation, technological innovation, and forward-looking infrastructure planning.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The authors move from reporting outcomes to interpreting them as intervention opportunities. The chart visibly supports the ordering and shapes of trajectories; its displayed scale is kept separate from the table rather than silently reconciled."
+    },
+    {
+      "location": "p. 8, Section 6 opening and Section 6.1",
+      "moves": "Restates the central result, identifies leverage points, invokes sensitivity analysis, and broadens the sustainability requirement beyond decarbonisation. The opening restates cooling’s primary role, the risk of rapidly rising mid-century consumption, and the mitigation potential already reported in the scenarios.",
+      "claims": [
+        {
+          "text": "Operational water dominates total consumption and is most responsive to WUE and PUE improvements; embodied water is smaller but relevant as refresh cycles shorten.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors invoke the Appendix sensitivity analysis for these leverage points.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "These findings suggest that water sustainability cannot be achieved through energy decarbonisation alone.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "AI infrastructure design and operation need an integrated view of water, energy, and emissions.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The discussion gathers earlier results rather than supplying another forecast. The move from operational dominance to integrated sustainability is an interpretive and normative conclusion, and the Appendix is named as its supporting analysis."
+    },
+    {
+      "location": "pp. 8–9, Section 6.2, strengths and limitations",
+      "moves": "States methodological strengths, explains data scarcity, concedes simplifying assumptions, and proposes extensions.",
+      "claims": [
+        {
+          "text": "The approach is well suited to scarce or fast-changing data because it combines expert judgement and scenario assumptions transparently and can forecast without comprehensive historical datasets.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Commercial sensitivities and cybersecurity concerns lead many companies not to disclose detailed water-use statistics, obstructing traditional modelling.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Although variables interact in deterministic equations, probabilistic inputs are treated independently, with no modelled statistical dependencies or correlations.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "This simplification may overlook important interrelationships during simultaneous policy or technology changes; disruption and regional feedback may produce nonlinear effects.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Future models should incorporate these effects; real-time monitoring and a dynamic Bayesian framework are promising directions for greater accuracy.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This section qualifies the method’s adaptability with a concrete independence assumption. The concession does not retract the scenario results, but specifies relationships the current model leaves unrepresented."
+    },
+    {
+      "location": "p. 9, Section 6.3, governance implications and environmentally beneficial AI",
+      "moves": "Restates urgency, applies the climate-governance analogy, predicts intensifying conflict, and balances the concern with beneficial applications. The section restates the nearly-sevenfold warning, the climate-governance analogy, and the conclusion that decarbonisation alone is insufficient, now demanding water as a core planning pillar.",
+      "claims": [
+        {
+          "text": "Water conflicts around data centres are likely to intensify with more extreme weather and climate variability.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Utilities and regulators have already signalled possible restrictions during drought or peak demand.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(BBC News, 2025)",
+                  "reference_entry": "BBC News, 2025. Concern UK’s AI ambitions could lead to water shortages. URL:\nhttps://www.bbc.co.uk/news/articles/ce85wx9jjndo."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "AI applications in smart grids, building optimisation, climate forecasting, and ecosystem monitoring offer tangible energy- and water-efficiency benefits and can support mitigation and adaptation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Encouraging environmentally focused AI while managing large generative models’ resource intensity could align digital innovation with climate and sustainability goals.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The governance discussion extends the paper’s water-centred framing while conceding that AI also has environmental benefits. The concession distinguishes applications and purposes rather than abandoning the concern about infrastructure scale."
+    },
+    {
+      "location": "p. 9, Section 6.3, regulations and recommended actions",
+      "moves": "Turns implications into recommendations, gives institutional precedents, and specifies technological and reporting measures.",
+      "claims": [
+        {
+          "text": "Reducing water use requires water-efficient cooling, renewable and low-water electricity, and procurement and life-cycle regulations that account for embodied water.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "International reporting and siting standards could prevent transboundary clustering of water stress; the EU Green Deal and US state water regulations offer promising implementation models.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite the Green Deal and a California water-conservation implementation report as precedents.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Commission, 2020; California Department of Water Resources, 2023)",
+                  "reference_entry": "Commission, E., 2020. The European Green Deal. Technical Report COM(2019) 640\nfinal, European Commission, URL: https://ec.europa.eu/info/strategy/priorities-\n2019-2024/european-green-deal_en. (Accessed 17 March 2025)."
+                },
+                {
+                  "citation_text": "(Commission, 2020; California Department of Water Resources, 2023)",
+                  "reference_entry": "California Department of Water Resources, 2023. Making Water Conservation a Califor-\nnia Way of Life: Implementing Executive Order B-37-16. Technical Report, State of\nCalifornia, URL: https://water.ca.gov/Programs/Water-Use-And-Efficiency/Making-\nConservation-a-California-Way-of-Life. (Accessed 17 March 2025)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "AI energy optimisation and modular centre design could further reduce operational and embodied consumption.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Deployment of low-water, closed-loop direct liquid and immersion cooling should be accelerated.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The recommendation cites corporate water commitments.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Microsoft, 2020; Google, 2021)",
+                  "reference_entry": "Microsoft, 2020. Microsoft Will Replenish More Water Than It Consumes by 2030.\nTechnical Report, Microsoft Blog, URL: https://blogs.microsoft.com."
+                },
+                {
+                  "citation_text": "(Microsoft, 2020; Google, 2021)",
+                  "reference_entry": "Google, 2021. Google To Replenish 120% of the Water It Uses By 2030. Technical\nReport, Google Press Release, URL: https://www.blog.google."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Data-centre cooling should incorporate grey-water and non-potable sources, particularly where municipalities face water stress.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The alternative-source recommendation cites Farfan and Lohrmann.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Farfan and Lohrmann, 2023)",
+                  "reference_entry": "Farfan, J., Lohrmann, A., 2023. Gone with the clouds: Estimating the electricity and\nwater footprint of digital data services in Europe. Energy Convers. Manage. 290,\n117225. http://dx.doi.org/10.1016/j.enconman.2023.117225."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Real-time AI-driven cooling optimisation should be promoted.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Sustainability reporting should require disclosure of WUE, EWIF, and EWU.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The disclosure recommendation cites the World Water Development Report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(United Nations, 2019)",
+                  "reference_entry": "United Nations, 2019. World Water Development Report. UNESCO, URL: https://www.\nunesco.org."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Siting decisions should incorporate water availability to avoid clustering in already stressed areas.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The recommendations follow the earlier three-component accounting and cooling comparisons. They combine technical choices, supply-chain accounting, disclosure, and siting, extending beyond the parameters directly varied in the forecasts."
+    },
+    {
+      "location": "p. 9, Section 6.3 end, waste heat and geographic refinement",
+      "moves": "Identifies an unmodelled opportunity, returns to the geographical mismatch, and recommends a regionalised extension. The recommendation to incorporate climate and water-stress indicators into siting is repeated.",
+      "claims": [
+        {
+          "text": "Reuse of computing waste heat for residential or district heating may indirectly reduce energy and water consumption; it was not explicitly modelled and should be evaluated alongside cooling and siting measures.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Many fast-growing clusters are located in water-stressed areas because low electricity prices, renewables, tax incentives, and land availability take priority over hydrological suitability.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Although global in scope, the framework can be adapted to location-specific climate classifications, WUE benchmarks, and energy-water interactions to align digital growth with sustainability and avoid freshwater conflicts.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This passage restates the siting concern with a clearer account of economic incentives and identifies how future modelling could address it. Waste-heat reuse remains explicitly outside the present simulation."
+    },
+    {
+      "location": "pp. 9–10, Section 7, summary and future research",
+      "moves": "Restates contributions and principal results, characterises the contribution positively, and proposes specific modelling extensions. The conclusion restates the framework’s novelty, its claimed significance and flexibility under data scarcity, the cooling and compute-growth levers, the unchecked-growth warning, and the cooling, alternative-water, and siting responses.",
+      "claims": [
+        {
+          "text": "Regional disaggregation could sum consumption across regions with location-specific WUE, EWIF, and embodied intensity, better representing uneven infrastructure and environmental pressures.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Future regional models should reflect differences in climate, infrastructure, electricity mix, regulation, facility density, cooling adoption, and local water stress.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Dynamic Bayesian modelling could integrate real-time data; a unified water-energy-emissions metric would offer a more comprehensive environmental assessment.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The conclusion recapitulates rather than introduces another set of model outputs. Its forward-looking contribution is the proposed regional summation and richer sustainability assessment; the claim of significance is the authors’ own evaluative framing."
+    },
+    {
+      "location": "p. 10, Section 7 end and authorship/interest statements",
+      "moves": "Ends with a conditional mitigation claim and coordinated-action agenda, then gives responsibility and competing-interest disclosures. The closing action agenda repeats accelerated immersion/closed-loop cooling, standardised operational and embodied accounting, climate-aware siting, and greater real-time disclosure, and adds funding water-efficient hardware and systems RD&D.",
+      "claims": [
+        {
+          "text": "Strategic improvements in WUE, EWIF, and hardware life-cycle management could reduce 2050 water use by up to 95% relative to BAU.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Industry, regulators, and researchers should jointly fund research, development, and demonstration of water-efficient AI hardware and systems.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The CRediT statement assigns Herrera conception, data curation, formal analysis, investigation, methodology, software, validation, visualisation, and drafting/revision; the coauthors share investigation, methodology, supervision, validation, analysis, visualisation, and writing roles in different combinations.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors declare no known competing financial interests or personal relationships that could have appeared to influence the work.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The authors close with the possibility of a much lower-water future and an action agenda, then shift to disclosures. The 95% figure is preserved as a conditional claim relative to BAU, without substituting an unstated baseline or mechanism."
+    },
+    {
+      "location": "p. 10, Appendix, sensitivity design, Fig. A.7, and Table A.3",
+      "moves": "Reports a parameter-perturbation exercise, ranks leverage, translates relative effects to absolute volumes, and reinforces the mitigation interpretation.",
+      "claims": [
+        {
+          "text": "The sensitivity analysis varies WUE, PUE, EWIF, and EWU by ±20% for 2050 under BAU.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Figure A.7 shows negative and positive parameter-change bars around zero; WUE has the widest responses, EWIF and PUE follow, and the embodied row is shortest. The embodied row is labelled EWE in the plot. Exact bar endpoints are not numerically labelled, so no precise values are estimated from their lengths.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Table A.3 gives a BAU baseline of 28.11 billion litres/day; WUE has a 16.7% relative difference and 4.69 billion litres/day absolute difference, PUE 14.3% and 4.02, EWIF 15.1% and 4.24, and EWU 4.6% and 1.29.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under the stated baseline, a 20% WUE improvement reduces demand by 4.69 billion litres/day and deterioration increases it by a similar amount; comparable absolute differences are 4.24 for EWIF, 4.02 for PUE, and 1.29 for EWU.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The Appendix prose states these absolute effects and refers to Table A.3.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Cooling and power infrastructure improvements have the greatest potential to reduce long-term demand; hardware design and procurement also matter and should not be overlooked.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors draw this conclusion from the sensitivity ranking and the smaller but nonzero embodied contribution.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The Appendix supplies the sensitivity evidence repeatedly invoked in the discussion. Plot and table readings are recorded separately, preserving the printed table values and avoiding an inferred reconciliation of the chart’s bar lengths with those values."
+    },
+    {
+      "location": "pp. 10–12, Data availability and References",
+      "moves": "Provides a reproducibility pointer and closes with the bibliography that identifies cited evidence, methodological precedents, industry material, and policy sources.",
+      "claims": [
+        {
+          "text": "The authors state that supporting data and code are openly available at https://github.com/manuelhf/waterforAI.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The document ends with access information and the reference list rather than another argument. References used above have been matched only against these printed entries; linked repositories and cited works have not been opened or independently checked."
+    }
+  ]
+}
