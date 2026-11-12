@@ -1,5 +1,5 @@
 # Provenance manifest for the research sources, confirmed by the project owner.
-# Unknown fields stay unset. These are the seven sources in data/research/synthesis/.
+# Unknown fields stay unset. These are the ten sources in data/research/synthesis/.
 sources:
   - slug: li_et_al_2025_making_ai_less_thirsty
     pdf: data/research/synthesis/li_et_al_2025_making_ai_less_thirsty.pdf
@@ -148,3 +148,66 @@ sources:
       publisher: "arXiv, from the first-page stamp and the PDF's 'arXiv GenPDF' creator"
       url: "the arXiv abstract page for the version stamped on the PDF; not checked against arXiv"
       retrieved_at: "no quarantine timestamp survives on this copy; this is when the PDF was first committed to the repository (9c89760), so it was retrieved no later than this"
+
+  - slug: ceres_2026_water_behind_the_watts
+    pdf: data/research/synthesis/ceres_2026_water_behind_the_watts.pdf
+    source_title: "Water Behind the Watts: The Hidden Risk of Powering Data Centers"
+    source_authors: [Kirsten James, Joelle Young Patil, Benjamin Jacobson, Shama Perveen]
+    publication_date: null
+    source_type: other
+    doi: null
+    publisher: Ceres
+    url: null
+    retrieved_at: "2026-11-12T05:25:23+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: "cover page and running header; the PDF metadata's subject line reads 'The Hidden Water Cost of Powering Data Centers', the cover's subtitle is used"
+      source_authors: "'Lead Authors' under Acknowledgments on the last page; the PDF metadata names only 'Ceres'"
+      publication_date: "unset: the cover prints only 'August 2026', not a day"
+      source_type: "'other': a 21-page report from Ceres, a nonprofit advocacy organization (its own description on the last page), not a research institute; confirmed by the project owner"
+      doi: "unset: none printed in the PDF"
+      publisher: "Ceres, from the cover, footer ('ceres.org'), and 'About Ceres' on the last page"
+      url: "unset: the file carries no download origin, and the PDF prints only 'ceres.org'"
+      retrieved_at: "macOS quarantine timestamp on the PDF file"
+
+  - slug: crs_2026_data_centers_and_water_faq
+    pdf: data/research/synthesis/crs_2026_data_centers_and_water_faq.pdf
+    source_title: "Data Centers and Water: Frequently Asked Questions"
+    source_authors: [Peter Folger, Elena H. Humphreys, Nicole T. Carter, Corrie E. Clark, Laura Gatz, Anna E. Normand, Charles V. Stern]
+    publication_date: "2026-07-31"
+    source_type: government_report
+    doi: null
+    publisher: Congressional Research Service
+    url: null
+    retrieved_at: "2026-11-12T05:25:57+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: "cover page and PDF metadata"
+      source_authors: "the summary page lists all seven, with Folger and Humphreys as coordinators; PDF metadata lists the same seven"
+      publication_date: "'July 31, 2026' on the cover and summary page"
+      source_type: "'government_report': a Congressional Research Service report, number R49057, written for Members of Congress"
+      doi: "unset: none printed; CRS identifies the report as R49057"
+      publisher: "Congressional Research Service, from the cover and PDF metadata ('CRS Report')"
+      url: "unset: the file carries no download origin; the cover prints the site, https://crsreports.congress.gov, but not the report's own address"
+      retrieved_at: "macOS quarantine timestamp on the PDF file"
+
+  - slug: herrera_et_al_2025_sustainable_ai_infrastructure
+    pdf: data/research/synthesis/herrera_et_al_2025_sustainable_ai_infrastructure.pdf
+    source_title: "Sustainable AI infrastructure: A scenario-based forecast of water footprint under uncertainty"
+    source_authors: [Manuel Herrera, Xiang Xie, Andrea Menapace, Ariele Zanfei, Bruno M. Brentan]
+    publication_date: "2025-09-17"
+    source_type: peer_reviewed_paper
+    doi: 10.1016/j.jclepro.2025.146528
+    publisher: Elsevier
+    url: "https://doi.org/10.1016/j.jclepro.2025.146528"
+    retrieved_at: "2026-11-12T05:26:32+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: "first page and PDF metadata"
+      source_authors: "first-page byline (Newcastle University, Eurac Research, AIaqua, Universidade Federal de Minas Gerais); PDF metadata names only the first author"
+      publication_date: "'Available online 17 September 2025' on the first page; the issue is Journal of Cleaner Production 526 (2025)"
+      source_type: "'peer_reviewed_paper': a Journal of Cleaner Production article printing 'Received 9 April 2025; Received in revised form 14 July 2025; Accepted 30 August 2025'"
+      doi: "printed on the first page and in PDF metadata; not checked against Crossref"
+      publisher: "Elsevier, from the first page ('Published by Elsevier Ltd.'); open access under CC BY 4.0"
+      url: "publication URL via DOI. The file carries no download origin"
+      retrieved_at: "macOS quarantine timestamp on the PDF file"
