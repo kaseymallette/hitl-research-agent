@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="350" viewBox="0 0 1000 350" role="img" aria-labelledby="title desc">
 <title id="title">Single source analysis: five calls for one article</title>
-<desc id="desc">The close reading (01) and the claims reference (02) both feed the close reading judgment (03). The argument evaluation (04), which reads the close reading, feeds the argument judgment (05). Both judgments go to the researcher, who accepts, revises, reruns, or rejects.</desc>
+<desc id="desc">The close reading (01) and the claims reference (02) both feed the close reading judgment (03). The argument evaluation (04), which reads the close reading, feeds the argument judgment (05). Both judgments go to review: accept, revise, rerun, or reject. A revision edits 01, 02, or 04, then reruns its judgment.</desc>
 <defs><marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <rect width="1000" height="350" rx="16" fill="#f8fafc"/>
 <style>text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; } .label { font-size: 11px; letter-spacing: 1.2px; } .name { font-size: 15px; } .note { font-size: 12px; }</style>
@@ -41,7 +41,7 @@
 <path d="M 568 150 H 612 V 218 H 648" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round" marker-end="url(#head)"/>
 <path d="M 568 285 H 612 V 218" fill="none" stroke="#475569" stroke-width="2" stroke-linejoin="round"/>
 <rect x="652" y="188" width="316" height="60" rx="8" fill="#0f172a"/>
-<text x="810" y="213" fill="#ffffff" class="name" text-anchor="middle" font-weight="600">I review and decide</text>
+<text x="810" y="213" fill="#ffffff" class="name" text-anchor="middle" font-weight="600">Review and decide</text>
 <text x="810" y="234" fill="#cbd5e1" class="note" text-anchor="middle">accept · revise · rerun · reject</text>
-<text x="810" y="272" fill="#64748b" class="note" text-anchor="middle">a revision edits 01 or 04, then its judgment reruns</text>
+<text x="810" y="272" fill="#64748b" class="note" text-anchor="middle">edit 01, 02, or 04, then rerun its judgment</text>
 </svg>

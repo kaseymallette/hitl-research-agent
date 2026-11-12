@@ -139,7 +139,7 @@ session sees only the files it needs, so the judges work independently
 ([ADR-0021](docs/adr/0021-codex-sol-medium-on-the-pdf-for-the-collection.md),
 [ADR-0022](docs/adr/0022-five-calls-five-files-one-folder.md)).
 
-![Single source analysis: the close reading and the claims reference feed the close reading judgment; the argument evaluation feeds the argument judgment; both judgments come to me to accept, revise, rerun, or reject.](docs/assets/single-source-flow.svg)
+![Single source analysis: the close reading and the claims reference feed the close reading judgment; the argument evaluation feeds the argument judgment; both judgments go to review, to accept, revise, rerun, or reject.](docs/assets/single-source-flow.svg)
 
 | Call | What it does | File |
 | --- | --- | --- |
@@ -163,9 +163,9 @@ beyond the ChatGPT Pro plan: no API key is used.
 
 ### Review and revise
 
-Before trusting 03, skim 02 against the article: the judge uses it as
-written. Then read the judgments and decide. To revise, commit first, then
-edit the reading from its judgment and judge it again:
+Before trusting 03, skim 02 against the article and fix any gaps: the
+judge uses it as written. Then read the judgments and decide. To revise,
+commit first, then edit the reading from its judgment and judge it again:
 
 ```bash
 uv run python scripts/run_single_source.py <slug> --revise 01
