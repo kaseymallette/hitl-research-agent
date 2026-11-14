@@ -1,0 +1,1038 @@
+{
+  "reading_plan": "Source title: Arkansas Code § 6-17-429 (2025): Right to Read Act — Definitions\nSource type: government_policy\nThis is Justia’s reproduction of an enacted, codified Arkansas statute in the 2025 Code, not a pending bill, rule, or guidance document. Seventeen content-bearing pages and a blank eighteenth page present a single section divided into subsections (a)-(p), with deeply nested lists and a legislative history. Despite the title’s reference to definitions, most of the text imposes preparation, credential, curriculum, support, notification, promotion, and enforcement provisions; definitions appear near the end. I will proceed in printed order, usually by subsection or a short cluster of related subdivisions, splitting dense lists into steps of about a page or less. I will preserve dates, actors, modal verbs, open versus limited lists, and apparent drafting tensions without deciding policy merit or importing other law. The supplied page images show ordinary codified text, with no visible underlining or strikethrough marking amendments.",
+  "reading_path": [
+    {
+      "location": "§ 6-17-429(a), page 1",
+      "moves": "Names the section and permits citation by its short title.",
+      "claims": [
+        {
+          "text": "This section shall be known and may be cited as the “Right to Read Act”.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The opening gives the section a rights-oriented name before specifying duties or defining the reading practices it will require."
+    },
+    {
+      "location": "§ 6-17-429(b)(1)(A)-(B), pages 1-2",
+      "moves": "Requires knowledge and skills for preparation-program completers and licensure applicants, then introduces an awareness requirement for non-elementary preparation.",
+      "claims": [
+        {
+          "text": "Under (b)(1)(A)(i), a person completing a state-approved educator preparation program shall have proficient knowledge and skills to teach reading consistent with the best practices of scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under (b)(1)(A)(ii), a person seeking teacher licensure by reciprocity or by adding an endorsement shall have that proficient knowledge and those skills.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A person who completes a state-approved educator preparation program other than a teacher of elementary education program shall demonstrate an awareness of the best practices of scientific reading instruction.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The section begins with entry into teaching. The broad proficiency language in (A) is followed by awareness language for non-elementary completers in (B); the text does not expressly say that (B) replaces (A). I retain both rather than silently harmonizing them."
+    },
+    {
+      "location": "§ 6-17-429(b)(2), page 2",
+      "moves": "Assigns preparation programs a public disclosure duty and incorporates an assessment cross-reference without making its content an exhaustive limit.",
+      "claims": [
+        {
+          "text": "Each state-approved educator preparation program shall post on its website information describing its preparation of teachers to teach reading using scientific reading instruction, aligned with but not limited to the content measured by the state board’s adopted stand-alone reading assessment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision identifies the assessment adopted by the State Board of Education under the cited section as an alignment benchmark.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "§ 6-17-402",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Preparation becomes publicly describable, and the assessment supplies a benchmark rather than a ceiling on program content."
+    },
+    {
+      "location": "§ 6-17-429(c)(1)(A)-(B), page 2",
+      "moves": "Requires district and charter-school professional development for prescribed credential pathways; states two teacher-category lists.",
+      "claims": [
+        {
+          "text": "Each public school district and open-enrollment public charter school shall provide scientific-reading-instruction professional development for one prescribed pathway to a proficiency credential for teachers licensed at the elementary level in K-6, teachers with a special education license in K-12, and teachers licensed as reading specialists in K-12.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each public school district and open-enrollment public charter school shall provide professional development for one prescribed pathway to an awareness credential for the categories printed in (c)(1)(B): teachers licensed at a level other than the elementary level in K-6, teachers with a special education license in K-12, and teachers licensed as reading specialists in K-12.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The duty moves from preparation programs to employing institutions. Both printed lists include special education teachers and reading specialists; the awareness list is not simply stated as all teachers outside the proficiency list."
+    },
+    {
+      "location": "§ 6-17-429(c)(2)(A)-(B), page 2",
+      "moves": "Attaches mandatory probation and parent notice to failure to provide the development in (c)(1).",
+      "claims": [
+        {
+          "text": "Each public school or open-enrollment public charter school that does not provide the professional development under subdivision (c)(1) shall be placed in probationary status.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each such school shall provide notice to parents that the public school district has not met this section’s requirements.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The first enforcement mechanism uses shall for probation. The actor is printed as public school here, although (c)(1) assigned the district the duty; the notice itself refers to district noncompliance."
+    },
+    {
+      "location": "§ 6-17-429(d)(1)(A)-(B), page 3",
+      "moves": "Sets a school-year deadline, distinguishes proficiency from awareness by teaching position, and permits an intensive-support opportunity.",
+      "claims": [
+        {
+          "text": "By the beginning of the 2023-2024 school year, all teachers employed in classroom teaching positions requiring a license to teach elementary students in K-6 or to teach a special education course directly relating to literacy for K-12 shall demonstrate proficiency in knowledge and practices of scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A teacher described in (d)(1)(A)(i) who has not demonstrated proficiency by the 2023-2024 school year may be afforded an opportunity to do so through intensive support status, for a period specified by the evaluator in the teacher’s professional growth plan.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision locates intensive support status under the cited law.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "§ 6-17-2807",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "By the beginning of the 2023-2024 school year, all other teachers shall demonstrate awareness in knowledge and practices of scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The earlier credential distinction now becomes a dated classroom qualification. The special education trigger here is a course directly relating to literacy, a narrower description than the license categories in (c). The support opportunity is permitted, not guaranteed."
+    },
+    {
+      "location": "§ 6-17-429(d)(2)-(3), page 3",
+      "moves": "Requires completion of the applicable prescribed credential, sets alternative timing rules, and creates a conjunctive endorsement exception.",
+      "claims": [
+        {
+          "text": "All teachers shall demonstrate proficiency or awareness, as applicable to their teaching position, by completing the prescribed scientific-reading-instruction credential as a condition of licensure, or within one year if already licensed or employed under a waiver from licensure.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The requirements of subsection (d) shall not apply to a teacher who both has already demonstrated proficiency through an approved, prescribed pathway and is adding an endorsement to the teaching license.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This supplies the credential mechanism and a limited exception. The one-year provision does not state its starting event more precisely here; the exception requires both prior proficiency and an added endorsement."
+    },
+    {
+      "location": "§ 6-17-429(e), page 4",
+      "moves": "Assigns annual reporting to three kinds of preparation-program provider.",
+      "claims": [
+        {
+          "text": "A provider of a state-approved educator preparation program, graduate program, or alternative preparation program shall include in its annual report to the Division of Elementary and Secondary Education a description of its preparation of educators to teach reading using scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The earlier website disclosure gains an administrative reporting counterpart, covering graduate and alternative programs as well."
+    },
+    {
+      "location": "§ 6-17-429(f)(1)-(3), page 4",
+      "moves": "Requires a division-approved materials list and specifies instructional standards and an open list of program categories.",
+      "claims": [
+        {
+          "text": "The division shall identify and create an approved list of materials, resources, and curriculum programs for public school districts and open-enrollment public charter schools that are supported by the science of reading and based on explicit, systematic, cumulative, and diagnostic instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The approved list shall include without limitation evidence-based dyslexia programs aligned to structured literacy or grounded in the Orton-Gillingham methodology.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The approved list shall include without limitation evidence-based reading intervention programs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The approved list shall include without limitation evidence-based reading programs grounded in the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The section moves from educator qualifications to instructional resources. Science-of-reading and evidence-based language are enacted selection criteria; no particular study is offered as their evidentiary basis. The categories are expressly nonexhaustive."
+    },
+    {
+      "location": "§ 6-17-429(g)(1)-(3), page 4",
+      "moves": "Requires approved-list purchasing, establishes an alternative-approval submission, and requires disclosure of off-list use.",
+      "claims": [
+        {
+          "text": "A public school district or open-enrollment public charter school purchasing a curriculum program shall choose one from the division’s approved list created under subsection (f).",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A public school district or open-enrollment public charter school choosing to purchase an off-list curriculum shall submit to the division, for approval of the alternative, both a rationale for choosing it and evidence-based research regarding it.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A public school district or open-enrollment public charter school using a curriculum not on the subsection (f) list shall notify all parents, legal guardians, and persons standing in loco parentis to students both in writing and on its website.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The list becomes a purchasing rule qualified by an approval route. Off-list use has its own notice requirement; the text does not say that obtaining alternative approval removes that duty."
+    },
+    {
+      "location": "§ 6-17-429(h)(1)-(2), page 5",
+      "moves": "Requires continuing annual professional development after the initial credential-pathway development.",
+      "claims": [
+        {
+          "text": "Each public school district and open-enrollment public charter school shall establish a professional development program that includes, without limitation, instruction based on the science of reading.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The program is required by the cross-referenced professional-development provision.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "§ 6-15-2914(b)(1)(B)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "That program shall be provided annually after the professional development required under subdivision (c)(1) is complete.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Initial qualification is followed by a recurring obligation; completion of the first pathway does not end institutional professional development."
+    },
+    {
+      "location": "§ 6-17-429(i)(1)(A)-(B), page 5",
+      "moves": "Makes unlawful employment or missing professional development an accreditation violation; permits probation and requires notice when imposed. Revisits the earlier probation and parent-notice mechanism.",
+      "claims": [
+        {
+          "text": "A public school district or open-enrollment public charter school employing an educator in violation of this section or failing to provide its required professional development shall violate the accreditation standards and may be placed in probationary status by the division.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision identifies the governing accreditation standards.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Standards for Accreditation of Arkansas Public Schools and School Districts",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A district or charter school placed in probationary status under (i)(1)(A) shall send written notification to parents of students in the district explaining the reason for probation.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This extends enforcement to employment and states discretionary probation, whereas (c)(2) required probation for missing development. The written reason-for-probation notice adds specificity to the earlier notice duty without resolving the difference in modal language."
+    },
+    {
+      "location": "§ 6-17-429(i)(2)(A)-(B), page 5",
+      "moves": "Permits provider penalties up to revocation and mandates periodic division audits.",
+      "claims": [
+        {
+          "text": "A provider of a state-approved educator preparation, graduate, or alternative preparation program that does not comply with this section may face penalties up to and including revocation of approval status.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall audit each program under subdivision (i)(2)(A) at least once every three years to verify compliance with this section.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Enforcement reaches the preparation providers as well as schools. Penalties are possible, while the audit interval is mandatory."
+    },
+    {
+      "location": "§ 6-17-429(i)(3)(A)(i)-(iii), pages 5-6",
+      "moves": "Prohibits specified K-2 instructional practices; repeats the three-cueing prohibition with an expanded MSV description.",
+      "claims": [
+        {
+          "text": "A public school district or open-enrollment public charter school shall not use a program of instruction for K-2 students based in any practice or intervention program utilizing the three-cueing system model of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Such a K-2 program shall not utilize visual memory as the primary basis for teaching word recognition.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The text shifts from approving resources to forbidding practices. Item (iii) repeats three-cueing as a model based on meaning, structure and syntax, and visual, also called MSV; it is noted here rather than counted as a new prohibition."
+    },
+    {
+      "location": "§ 6-17-429(i)(3)(B)(i)-(ii), page 6",
+      "moves": "Requires violation notice, provides a sixty-day remedy period, mandates a capped funding withholding, and requires restoration upon compliance.",
+      "claims": [
+        {
+          "text": "If the state board determines that a district or open-enrollment public charter school violated (i)(3)(A), it shall notify that district or charter school of the violation.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "If the district or charter school fails to remedy that violation within sixty days of notification of noncompliance, the state board shall direct the division to withhold a maximum of ten percent of its monthly distribution of state foundation funding aid.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The funding withholding is linked to the cited foundation-funding provision.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "§ 6-20-2305(a)(1)(B)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Once the state board determines the district or charter school has complied with this section, the division shall restore the monthly distribution to its original amount before the reduction under (i)(3)(B)(ii)(a).",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The prohibited practices acquire a specific financial enforcement sequence. Ten percent is a maximum, not a fixed deduction; restoration concerns the monthly amount and does not expressly promise repayment of previously withheld aid."
+    },
+    {
+      "location": "§ 6-17-429(j), (j)(1)(A)-(B), pages 6-7",
+      "moves": "Begins phased implementation of division support duties; requires literacy-coach access and conditions coach provision on appropriation.",
+      "claims": [
+        {
+          "text": "The division’s subsection (j) duties shall begin with the 2023-2024 school year and reach full implementation no later than the 2025-2026 school year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall ensure every K-3 teacher in a public school rated D or F under the cited law or state board rules, or in a division-identified low-performing public school based on its K-3 literacy screener results, has access to a literacy coach to support increased literacy rates through coaching for teachers and administrators.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision identifies the school-rating authorities.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "§ 6-15-2105",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "§ 6-15-2106",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Subject to legislative appropriation, the division shall provide, train, and assign literacy coaches to low-performing public schools based on K-3 literacy screener results, using criteria established by the division.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The reading turns from sanctions toward support. Coach access is tied to identified school performance, and the provision, training, and assignment duty explicitly depends on appropriation."
+    },
+    {
+      "location": "§ 6-17-429(j)(1)(C)(i)-(iv), page 7",
+      "moves": "Sets a nonexhaustive list of mandatory coach qualifications, including a dated federal-law reference.",
+      "claims": [
+        {
+          "text": "A literacy coach shall have, without limitation, expertise in both pedagogy and the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall have evidence of success in coaching and classroom instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall understand learning disabilities in reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall understand the child find mandate of the Individuals with Disabilities Education Act as it existed on January 1, 2023.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The required understanding is tied to the named federal act and its specified historical version.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Individuals with Disabilities Education Act, 20 U. S. C. § 1400 et seq., as it existed on January 1, 2023",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Support personnel must combine instructional expertise, demonstrated experience, and disability-related understanding. The federal reference is a qualification benchmark, not an account here of what child find requires."
+    },
+    {
+      "location": "§ 6-17-429(j)(1)(D)(i)-(vi), page 7",
+      "moves": "Assigns literacy coaches classroom-support and professional-learning duties.",
+      "claims": [
+        {
+          "text": "A literacy coach shall use knowledge of evidence-based instruction and practices aligned to the science of reading to support teachers in maximizing student learning.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall engage in instructional coaching cycles with teachers to build capacity for classroom instructional practices.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall deliver consistent and frequent job-embedded professional learning.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall design and facilitate relevant, cohesive professional learning sessions with teachers to strengthen implementation of evidence-based instructional practices aligned to the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall assist teachers in analyzing data to inform instructional adjustments.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall partner with teachers to integrate professional learning into classroom practice.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The qualifications are translated into sustained work alongside teachers, connecting professional learning to classroom practice and data-informed adjustments."
+    },
+    {
+      "location": "§ 6-17-429(j)(1)(D)(vii)-(xiii), page 8",
+      "moves": "Continues coach duties, permits evaluation use of feedback, and sets compensation and performance requirements.",
+      "claims": [
+        {
+          "text": "A literacy coach shall work with teachers on effective communication strategies and resource sharing with parents, legal guardians, and persons standing in loco parentis to students.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall partner with a principal or designated leader to connect school-wide literacy goals with evidence-based instruction and practices aligned to the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall provide feedback on teachers’ evidence-based instruction and practices; that feedback may be used for teacher evaluations.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall actively participate in professional learning to deepen coaching knowledge and skills.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall be compensated on a competitive salary schedule determined by the division.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall receive a yearly bonus of up to $10,000 based on measurable performance outcomes.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy coach shall meet performance criteria established by the division.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Coaching now connects families, school leadership, and teacher evaluation. The coach is also subject to continuing learning and performance conditions; the bonus is capped and tied to outcomes, not stated as a flat $10,000 award."
+    },
+    {
+      "location": "§ 6-17-429(j)(1)(E)-(F), page 8",
+      "moves": "Permits direct or contracted employment and requires leadership participation by identified recipients.",
+      "claims": [
+        {
+          "text": "A literacy coach may be employed by the division directly or by contract.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Districts and open-enrollment public charter schools identified by the division for coach access under (j)(1)(A) shall agree to involve the public school, district, and charter-school leadership team as directed by the division.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The delivery arrangement remains flexible, while institutions receiving access must commit leadership participation."
+    },
+    {
+      "location": "§ 6-17-429(j)(2)(A)-(B), pages 8-9",
+      "moves": "Creates a tutoring-grant program, defines eligibility through alternative conditions, and fixes grant amount and allocation priorities.",
+      "claims": [
+        {
+          "text": "The division shall establish a literacy tutoring grant program to fund supplemental educational services for eligible students.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "An eligible student means a public-school student in K-3 who either does not meet the state-board-defined reading standard, is at risk for reading difficulties according to a high-quality literacy screener under this section, or has received a good cause exemption for promotion to grade four, pending the availability of funds.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The grant shall be $1,500 per eligible student per year on a first-come, first-served basis, with priority to eligible students who are to be retained in grade three.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Support expands from coaching teachers to funding services for students. The availability-of-funds wording occurs in the good-cause-exemption branch; the first-come rule is expressly qualified by retention priority."
+    },
+    {
+      "location": "§ 6-17-429(j)(2)(C)(i)-(iii), page 9",
+      "moves": "Assigns administration under state board rules, application and eligibility duties, provider evaluation criteria, and a two-year disqualification consequence.",
+      "claims": [
+        {
+          "text": "The division shall administer and implement the grant according to rules developed and adopted by the state board; those rules shall require the listed division duties.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall evaluate student eligibility for the grant.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall develop an application process for students and providers and accept applications.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall evaluate supplemental educational service providers, including without limitation those with early-literacy expertise, for initial and continued eligibility for payments.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall establish minimum evaluation criteria for approved providers to ensure effectiveness in improving eligible students’ reading abilities, including without limitation performance on the Arkansas annual reading assessment or other division-approved literacy assessments.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A provider failing to demonstrate improvement in eligible students’ reading abilities for two consecutive years shall be deemed ineligible to participate in the grant program.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The grant becomes an administered program with entry and continued-performance controls. Assessment performance is one nonexclusive evaluation measure, while two consecutive years without demonstrated improvement triggers ineligibility."
+    },
+    {
+      "location": "§ 6-17-429(j)(2)(C)(iv)-(vii), page 10",
+      "moves": "Requires payments, funding-shortfall priorities, institutional notice, and maintenance of approved service lists; limits payable uses. Repeats the $1,500 amount as a per-school-year maximum.",
+      "claims": [
+        {
+          "text": "The division shall remit payments to approved providers for services rendered to eligible students.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall establish criteria to prioritize eligible students when applications exceed available grant funding.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall notify each district’s and open-enrollment public charter school’s governing authority of the grant application process, requirements, and deadlines for parents, legal guardians, or persons standing in loco parentis.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall remit payment for services provided, up to the previously specified $1,500 maximum per eligible student per school year, for the listed purposes designed to improve reading or literacy skills.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Permitted uses include online or in-person high-dosage tutoring from state-approved providers whose employees are trained in the science of reading and hold either valid elementary-education or reading teaching certificates, or baccalaureate or graduate degrees in education, English, or another subject indicative of reading and literacy expertise.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The alternative listed use is evidence-based digital literacy applications or software on a state-approved list and aligned with the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall develop and curate a regularly updated list of approved tutoring providers and evidence-based digital literacy applications or software aligned with the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Eligibility alone does not remove funding constraints. Payment is routed to approved services and tools, and employee qualifications combine required reading-science training with alternative credential routes. The permitted purposes are enumerated without an open-ended including clause."
+    },
+    {
+      "location": "§ 6-17-429(j)(2)(C)(viii) and (D)(i)-(iii), page 11",
+      "moves": "Requires verification of paid-for delivery and sets the family-notification deadline and contents.",
+      "claims": [
+        {
+          "text": "The division shall develop a procedure to verify that grant recipients received the services or materials for which payments were made.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By October 1 each year, or as soon as practicable when a student’s reading need is identified after October 1, each district and open-enrollment public charter school shall notify the parent, legal guardian, or person standing in loco parentis about the student’s eligibility for the grant.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The same notice shall explain the grant application process.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The same notice shall convey other information provided by the division.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The grant sequence closes by checking delivery and requiring outreach, with a flexible timing rule only for needs identified after October 1."
+    },
+    {
+      "location": "§ 6-17-429(k), (k)(1)(A)-(B), page 11",
+      "moves": "Begins phased district and charter-school duties, requires repeated written progress notice, and permits the family’s preferred communication language.",
+      "claims": [
+        {
+          "text": "Districts and open-enrollment public charter schools shall begin subsection (k) duties with the 2023-2024 school year, with full implementation no later than the 2025-2026 school year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall notify all parents, legal guardians, or persons standing in loco parentis in writing, in a parent-friendly manner, of their student’s reading progress each time the student is assessed throughout the year using high-quality literacy screener results.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The text links this notice to two cited statutory requirements.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "§ 6-15-2907(a)(2)",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "§ 6-15-2006(a)(1)(C)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The written, parent-friendly notification may be in the language of communication preferred by the parent, legal guardian, or person standing in loco parentis.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Family information extends beyond grants to recurring assessment progress. Parent-friendly writing is mandatory; use of the preferred language is permitted by may."
+    },
+    {
+      "location": "§ 6-17-429(k)(2)(A)-(B)(i), pages 11-12",
+      "moves": "Requires an individual reading plan for K-3 students below the standard and begins its mandatory contents with a nonexhaustive diagnosis list.",
+      "claims": [
+        {
+          "text": "Districts and open-enrollment public charter schools shall develop an individual reading plan for each K-3 student who does not meet the state-board-determined reading standard, as measured by a high-quality literacy screener or the state annual accountability assessment.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The plan shall include the student’s specific, diagnosed reading skill needs, including without limitation phonemic awareness, phonics decoding, text reading fluency, vocabulary-building strategies, and self-regulated use of reading comprehension strategies, as identified by high-quality literacy screener data.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Assessment results now trigger an individualized document. The listed skill needs do not exhaust what the diagnosis may identify."
+    },
+    {
+      "location": "§ 6-17-429(k)(2)(B)(ii)-(vii), page 12",
+      "moves": "Completes the mandatory plan contents, preserving distinctions between possible services, planned intervention, encouraged family action, and teacher judgment.",
+      "claims": [
+        {
+          "text": "The individual reading plan shall include goals and benchmarks for the student’s growth.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The plan shall state how progress will be monitored and evaluated.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The plan shall include the type of additional instructional services and interventions the student may receive.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The plan shall identify the intensive, evidence-based literacy intervention program aligned to the science of reading that the teacher will use to address phonemic awareness, phonics, fluency, vocabulary, and comprehension.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The plan shall include strategies that parents, legal guardians, or persons standing in loco parentis are encouraged to use to help achieve the student’s reading goal.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The plan shall include any additional services the teacher determines are available and appropriate to accelerate reading skill development.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The plan joins diagnosis to goals, monitoring, instruction, and home support. Requiring inclusion of suggested family strategies does not itself require families to use them; additional services remain qualified by availability and teacher judgment."
+    },
+    {
+      "location": "§ 6-17-429(k)(3)-(4), pages 12-13",
+      "moves": "Requires written plan updates and division reporting with an earlier specified deadline.",
+      "claims": [
+        {
+          "text": "Districts and open-enrollment public charter schools shall notify all parents, legal guardians, or persons standing in loco parentis in writing of their child’s independent reading plan content and progress throughout the year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By the beginning of the 2024-2025 school year, districts and open-enrollment public charter schools shall report to the division the types of interventions used and the students receiving each type.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The plan gains family and agency visibility. The text says independent reading plan in (k)(3), after individual reading plan in (k)(2); I preserve that wording rather than assume a separate defined instrument. The reporting deadline precedes the general full-implementation deadline."
+    },
+    {
+      "location": "§ 6-17-429(l)(1)-(2)(A), page 13",
+      "moves": "Sets a promotion restriction and a good-cause permission; retains the printed disjunction rather than rewriting it.",
+      "claims": [
+        {
+          "text": "By the beginning of the 2025-2026 school year, if a public school student has not met the third-grade reading standard, as defined by the state board, or the student does not have a good-cause exemption, as provided under this subsection, the student shall not be promoted to grade four (4).",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A student in grade three (3) who does not meet the reading standard for promotion to grade four (4) may be promoted by the school district for good cause.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Student progression becomes an express consequence. Read literally, (l)(1) uses or between not meeting the standard and not having an exemption; (l)(2)(A) nevertheless expressly permits good-cause promotion of a student below the standard. The reading records both provisions without substituting and for or or resolving their tension."
+    },
+    {
+      "location": "§ 6-17-429(l)(2)(B)(i)-(iii), pages 13-14",
+      "moves": "Limits good-cause exemptions to listed categories; sets detailed language-learning, disability, intervention, retention, and evaluation conditions.",
+      "claims": [
+        {
+          "text": "Good-cause exemptions for promotion shall be limited to the students listed in (l)(2)(B).",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The first category is Limited English Proficiency students with less than three years of instruction in an English language learner program.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The second category is students with a disability who are not eligible for the alternate assessment and whose individualized education program or 504 Plan reflects both more than two years of intensive, evidence-based literacy intervention aligned to the science of reading and either a continuing need in reading proficiency or prior retention in kindergarten or grades one, two, or three.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The third category requires all of the following: two or more years of intensive, evidence-based literacy intervention aligned to the science of reading; continuing need in reading proficiency and previous retention in kindergarten or grades one, two, or three; a special education referral and full comprehensive evaluation; and failure to meet exceptional education criteria.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The good-cause permission is bounded by categories with different conjunctions and time thresholds. More than two years in (ii) differs from two or more in (iii); continuing need or prior retention in (ii) differs from the combined requirements in (iii)."
+    },
+    {
+      "location": "§ 6-17-429(l)(2)(B)(iv)-(vi), page 14",
+      "moves": "Continues the limited exemption list, permits reevaluation tools, and reserves a board-identified category in consultation with reading experts.",
+      "claims": [
+        {
+          "text": "The fourth category is students already retained for one year in kindergarten or grades one, two, or three.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The fifth category is students able to demonstrate that they are successful, independent readers and can perform at or above grade level.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A district or open-enrollment public charter school may use tools to reevaluate a student in accordance with state board rules, which shall include without limitation subsequent student assessments or alternative assessments.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The sixth category is other students with necessary, justifiable good-cause exemptions identified as appropriate by the state board in consultation with reading experts.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The list remains limited to its categories, but the last category delegates room to identify additional justified cases. The tools for reevaluation are expressly nonexhaustive, and the permission to use them does not turn into an automatic promotion entitlement."
+    },
+    {
+      "location": "§ 6-17-429(l)(3)(A)-(B), pages 14-15",
+      "moves": "Requires subsequent-summer and school-year support for students below the end-of-third-grade standard, expressly including those promoted for good cause.",
+      "claims": [
+        {
+          "text": "For each student below the state board’s reading standard at the end of grade three, including those promoted to grade four with good-cause exemptions, the enrolling district or open-enrollment public charter school shall provide at least ninety minutes of evidence-based literacy instruction aligned to the science of reading during each school day, during the subsequent summer and school year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For the same students and period, the district or charter school shall assign a teacher with an English language arts value-added model score in the statewide top quartile for the past three years. If unable to identify such a teacher, it shall assign a teacher with a highly-effective Teacher Excellence and Support System rating, where possible, or one deemed high-performing through a Master Professional Educator designation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The fallback teacher-rating criterion cites the Teacher Excellence and Support System.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Teacher Excellence and Support System, § 6-17-2801 et seq.",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Promotion by exemption does not remove the support obligation. The daily instruction has a minimum duration, and the staffing rule gives a primary criterion followed by conditional alternatives; it does not make that top-quartile assignment unconditional when no such teacher can be identified."
+    },
+    {
+      "location": "§ 6-17-429(l)(3)(C)-(F), page 15",
+      "moves": "Adds home support, eligibility identification, grant priority, and an intervention option. Reconnects with earlier grant notification and priority, while retaining an awkward grammatical subject in (E)-(F).",
+      "claims": [
+        {
+          "text": "For the students covered by (l)(3), the enrolling district or charter school shall provide parents, legal guardians, or persons standing in loco parentis with a read-at-home plan to support early literacy growth.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The read-at-home plan shall include evidence-based science-of-reading strategies and tools aligned to the student’s individual reading plan for families to use with their children.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district or charter school shall identify students eligible for literacy tutoring grants under this section and notify parents, legal guardians, or persons standing in loco parentis of their child’s eligibility.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Subdivision (l)(3)(E) requires priority to receive a literacy tutoring grant under this section for the below-standard group addressed by (l)(3), which includes students promoted for good cause.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Subdivision (l)(3)(F) requires an option to participate in additional intensive, evidence-based literacy intervention programs aligned to the science of reading for that group.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Home plans and grant access accompany school-based instruction. Grant identification and notice revisit earlier duties; priority here covers the (l)(3) group rather than only students to be retained. Clauses (E) and (F) say be given after a lead-in naming the district or charter school as actor; the student-directed paraphrase follows the surrounding context and flags that grammatical mismatch rather than concealing it."
+    },
+    {
+      "location": "§ 6-17-429(m)(1)-(3), page 15",
+      "moves": "Assigns enforcement, mandatory rulemaking, and annual independent evaluation to the division.",
+      "claims": [
+        {
+          "text": "The division shall enforce this section.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall promulgate rules to implement this section.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The division shall contract with a vendor for an annual independent evaluation identifying and assessing strategies taken by the state, districts, and open-enrollment public charter schools to support Arkansas students in reading at grade level by the end of grade three.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "After the substantive obligations, the text assigns overall implementation and requires an external annual assessment of strategies. The evaluation requirement does not itself report an evaluation finding."
+    },
+    {
+      "location": "§ 6-17-429(n)(1)-(2), pages 15-16",
+      "moves": "Defines two terms already used throughout the section.",
+      "claims": [
+        {
+          "text": "“Science of reading” means the study of the relationship between cognitive science and educational outcomes; and",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "“Structured literacy” means an approach by which licensed personnel teach reading in an explicit, systematic, cumulative, and diagnostic manner.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Definitions arrive late, giving express meanings to the terms that have organized preparation, curriculum, and intervention duties. Structured literacy repeats the instructional qualities specified for approved materials in (f); science of reading is defined as a field of study rather than a named curriculum or research report."
+    },
+    {
+      "location": "§ 6-17-429(o)(1)-(4), page 16",
+      "moves": "Requires an ombudsman, permits additional assignments, fixes direct supervision, and sets minimum qualifications and an exclusion.",
+      "claims": [
+        {
+          "text": "The Secretary of the Department of Education shall hire an Education Ombudsman to assist division enforcement of this section, including without limitation proficiency, professional development, and permitted instructional-program requirements.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The secretary may designate additional requirements related to public education, including without limitation enforcement of literacy requirements.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The secretary shall supervise the Education Ombudsman.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The secretary shall not delegate that supervision to a division employee.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The ombudsman’s minimum qualifications shall include a master’s degree in education or a related field.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A past or current public school district superintendent is not eligible to serve as Education Ombudsman under this section.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "A further enforcement office is placed under the secretary’s direct supervision. Its minimum degree requirement is open to additional qualifications; the superintendent exclusion is categorical as printed."
+    },
+    {
+      "location": "§ 6-17-429(o)(5)(A)-(D), pages 16-17",
+      "moves": "Permits communication, issue review, recommendations, and requests for division assistance; conditions student communication on family permission.",
+      "claims": [
+        {
+          "text": "The Education Ombudsman may communicate with a public school student with permission from a parent, legal guardian, or person standing in loco parentis.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The ombudsman may communicate with a public school student’s parent, legal guardian, or person standing in loco parentis.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The ombudsman may communicate with administration, faculty, and staff employed by a public school district or open-enrollment public charter school.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The ombudsman may review an issue or concern related to the education of a public school student enrolled in a public school or open-enrollment public charter school.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The ombudsman may recommend training and resources to a public school, district, or open-enrollment public charter school.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The ombudsman may request division support and assistance for a public school, district, or open-enrollment public charter school.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The office’s tools are stated as permissions, not compulsory actions in every case. Student contact alone carries the explicit permission condition; the text does not give this office a separate power here to impose the earlier financial sanction."
+    },
+    {
+      "location": "§ 6-17-429(o)(6)(A)-(B), page 17",
+      "moves": "Requires annual reporting to the state board and biennial submission to legislative education committees.",
+      "claims": [
+        {
+          "text": "The Education Ombudsman shall prepare and submit an annual report to the state board about the ombudsman’s work and any recommendations related to the office’s focus areas.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "That report shall be submitted every two years to both the House Committee on Education and the Senate Committee on Education.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The office gains two reporting audiences on different schedules, adding legislative visibility to annual board reporting."
+    },
+    {
+      "location": "§ 6-17-429(p), page 17",
+      "moves": "Permits state board rulemaking, alongside the division’s mandatory rulemaking in (m).",
+      "claims": [
+        {
+          "text": "The state board may promulgate rules to implement this section.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The operative text ends with a board permission rather than the division’s shall. The section has moved from teacher preparation through institutional duties, student supports and progression, to enforcement machinery."
+    },
+    {
+      "location": "History and publisher disclaimer, page 17; blank page 18",
+      "moves": "Prints the section’s legislative history and separates a publisher qualification from operative law; page 18 adds no text.",
+      "claims": [
+        {
+          "text": "The History lists acts from 2017 through 2025 as the section’s legislative provenance; it does not show the individual amendments or their effective dates.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The printed history is a legislative provenance list, not evidentiary support for particular policy provisions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Acts 2017, No. 1063, § 1; 2019, No. 83, §§ 3, 4; 2019, No. 910, §§ 1432, 1433; 2021, No. 489, § 1; 2021, No. 606, §§ 1, 2; 2023, No. 109, § 1; 2023, No. 237, §§  27-29; 2023, No. 791, § 1; 2025, No. 195, §§ 1-6.",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The publisher’s disclaimer says the codes may not be the most recent version, Arkansas may have more current or accurate information, and the publisher gives no warranties or guarantees of accuracy, completeness, or adequacy and asks readers to check official sources.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The supplied source ends as a 2025 codified reproduction with a history and a publisher disclaimer, not as an amendment-marked bill or a guarantee of current law. No external source has been used to revise its wording or decide how its ambiguities operate."
+    }
+  ]
+}

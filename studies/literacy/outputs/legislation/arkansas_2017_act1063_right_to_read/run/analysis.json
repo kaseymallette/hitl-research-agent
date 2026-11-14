@@ -1,0 +1,275 @@
+{
+  "reading_plan": "Source title: Act 1063 (Senate Bill 502): An Act to Create the Right to Read Act; to Require Licensed Teachers at the Elementary Level to Be Proficient in Scientific Reading Instruction; to Require All Other Licensed Teachers to Have a Cursory Knowledge of Scientific Reading Instruction; and for Other Purposes. Source type: government_policy. This is a three-page enacted Arkansas act, marked Act 1063 of the Regular Session and APPROVED: 04/06/2017, retaining the Senate Bill 502 heading and As Engrossed: S3/14/17 notation. One legislative section adds Arkansas Code § 6-17-429, with subsections (a)-(g). The page images show the added code text underlined, including some italicized additions, and no struck-through provisions. The text is compact but dense with duties, credential distinctions, phased dates, and enforcement clauses. I will follow the opening framing, then each subsection or closely connected group of subdivisions, checking continuations across pages and distinguishing mandatory duties from permissions and their separate triggers.",
+  "reading_path": [
+    {
+      "location": "Page 1, act heading, title, subtitle, and enactment clause",
+      "moves": "Identifies Act 1063 in the form of Senate Bill 502, as engrossed S3/14/17, from the 91st General Assembly, Regular Session, 2017; names Senator Elliott as sponsor. States the legislative purpose and enacting authority. The subtitle repeats the purpose of creating the Right to Read Act.",
+      "claims": [
+        {
+          "text": "The title states the purposes of creating the Right to Read Act, requiring licensed teachers at the elementary level to be proficient in scientific reading instruction, and requiring all other licensed teachers to have a cursory knowledge of scientific reading instruction, and adds “AND FOR OTHER PURPOSES.”",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The opening frames reading instruction through teacher knowledge and differentiates elementary teachers from other licensed teachers. It offers a purpose rather than findings or research support; the operative provisions will specify the duties and their reach."
+    },
+    {
+      "location": "Section 1, opening amendment and Arkansas Code § 6-17-429(a) (page 1)",
+      "moves": "Amends existing law by adding a new code section and assigns its short title. The page legend identifies underlining as additions; the new section is underlined, with no struck-through text visible.",
+      "claims": [
+        {
+          "text": "Section 1 amends Arkansas Code Title 6, Chapter 17, Subchapter 4 to add section 6-17-429, Right to Read Act.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The amendment identifies the location in existing law to which the new section is added.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Arkansas Code Title 6, Chapter 17, Subchapter 4",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "This section shall be known and may be cited as the \"Right to Read Act\".",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The announced purpose becomes an addition to the education code. Subsection (a) names the section; it does not itself define scientific reading instruction or establish an individual remedy."
+    },
+    {
+      "location": "Section 1, § 6-17-429(b)(1)(A)(i)-(ii) (page 1)",
+      "moves": "Adds a mandatory proficiency standard, a deadline, and a two-category list of persons covered.",
+      "claims": [
+        {
+          "text": "No later than 2023, a person who completes a state-approved educator preparation program shall have proficient knowledge and skills to teach reading consistent with the best practices of scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "No later than 2023, a person seeking teacher licensure by reciprocity or by adding an endorsement shall have proficient knowledge and skills to teach reading consistent with the best practices of scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The first substantive requirement reaches preparation-program completers and specified licensure applicants. Its wording does not restrict the program-completer category to elementary education, and it supplies no definition or named research basis for the best practices standard."
+    },
+    {
+      "location": "Section 1, § 6-17-429(b)(1)(B) (pages 1-2)",
+      "moves": "Adds a mandatory awareness standard and a 2023 deadline for completers of programs other than elementary teacher education.",
+      "claims": [
+        {
+          "text": "No later than 2023, a person who completes a state-approved educator preparation program other than a teacher of elementary education program shall demonstrate an awareness of the best practices of scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This introduces awareness for a specified group of program completers after the preceding provision broadly requires proficiency of program completers. The text does not expressly call this an exception or explain how the two standards fit together; both requirements remain part of the reading."
+    },
+    {
+      "location": "Section 1, § 6-17-429(b)(2) (page 2)",
+      "moves": "Adds a website disclosure duty for preparation programs, sets its starting deadline, and cross-references an assessment as a content anchor while expressly leaving the content open beyond that assessment.",
+      "claims": [
+        {
+          "text": "Beginning no later than the 2022-2023 school year, each state-approved educator preparation program shall post on its website information describing its program to prepare teachers to teach reading using scientific reading instruction aligned with, but not limited to, the content measured by the stand-alone reading assessment adopted by the State Board of Education under § 6-17-402.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision anchors the described instruction to the content measured by the State Board of Education’s stand-alone reading assessment, while allowing content beyond it.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "§ 6-17-402",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The section turns from individual knowledge to public disclosure of program preparation. The assessment provides a cross-referenced alignment point, but neither the assessment content nor the referenced statute is reproduced here."
+    },
+    {
+      "location": "Section 1, § 6-17-429(c)(1)(A)-(B) (page 2)",
+      "moves": "Adds professional-development duties for public school districts and open-enrollment public charter schools beginning in 2018-2019. Divides the required pathways by license level.",
+      "claims": [
+        {
+          "text": "Beginning with the 2018-2019 school year, a public school district and an open-enrollment public charter school shall provide teachers licensed at the elementary level professional development for one (1) of the prescribed pathways to obtaining a proficiency credential in knowledge and practices in scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Beginning with the 2018-2019 school year, those districts and charter schools shall provide teachers licensed at a level other than the elementary level professional development for one (1) of the prescribed pathways to obtaining an awareness credential in knowledge and practices in scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Employers now have a duty to provide routes toward the two kinds of credential. The provision requires one of the prescribed pathways for each category but does not list the pathways or identify their prescriber here. Its distinction rests on license level."
+    },
+    {
+      "location": "Section 1, § 6-17-429(c)(2)(A)-(B) (page 2)",
+      "moves": "Adds consequences for failing to provide the preceding professional development, with a 2020-2021 starting date. Both probation and parent notice are mandatory.",
+      "claims": [
+        {
+          "text": "Beginning with the 2020-2021 school year, a public school that does not provide the professional development under subdivision (c)(1) of this section shall be placed in probationary status.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The triggering failure is tied expressly to the professional-development duty just stated.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subdivision (c)(1) of this section",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Beginning with the 2020-2021 school year, that nonproviding public school shall provide notice to parents that the public school district has not met the requirements of this section.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The employer duty acquires an express consequence after its initial implementation period. The text names a public school as the subject of probation and notice, and describes the district’s noncompliance in the notice; it does not specify written notice in this subsection."
+    },
+    {
+      "location": "Section 1, § 6-17-429(d)(1)(A)-(B) (page 2)",
+      "moves": "Adds mandatory demonstrations of proficiency or awareness by the beginning of 2021-2022, dividing teachers by the license their teaching position requires.",
+      "claims": [
+        {
+          "text": "By the beginning of the 2021-2022 school year, all teachers employed in a teaching position that requires an elementary education (K-6) license or special education (K-12) license shall demonstrate proficiency in knowledge and practices of scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By the beginning of the 2021-2022 school year, all other teachers shall demonstrate awareness in knowledge and practices of the scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The duty shifts from providing development to teachers demonstrating knowledge and practice. This position-based division expressly includes special education (K-12) in the proficiency group, adding specificity beyond the title and the earlier license-level division."
+    },
+    {
+      "location": "Section 1, § 6-17-429(d)(2)(A)-(B)(i)-(ii) (pages 2-3)",
+      "moves": "Adds an ongoing requirement for teachers beginning employment in 2021-2022 and later, specifies credential completion, and provides two timing routes, including one for already licensed teachers or those employed under a licensure waiver.",
+      "claims": [
+        {
+          "text": "All teachers who begin employment in the 2021-2022 school year and each school year thereafter shall demonstrate proficiency or awareness in knowledge and practices in scientific reading instruction, as applicable to their teaching position, by completing the prescribed proficiency or awareness credential as a condition of licensure, or within one (1) year if already licensed or employed under a waiver from licensure.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The initial demonstration deadline is followed by a continuing rule for new employment cohorts. The licensure waiver does not remove the reading-credential requirement: it places the teacher within the one-year completion route. The provision does not separately spell out the point from which that year is measured."
+    },
+    {
+      "location": "Section 1, § 6-17-429(e) (page 3)",
+      "moves": "Adds an annual reporting duty for providers of state-approved educator preparation programs and identifies the Department of Education as recipient.",
+      "claims": [
+        {
+          "text": "A provider of a state-approved educator preparation program shall include in its annual report to the Department of Education a description of the provider’s program to prepare educators to teach reading using scientific reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The program-description duty returns in a different channel: annual reporting to the department complements the website disclosure in (b)(2). This is a separate reporting obligation, without an express starting school year here."
+    },
+    {
+      "location": "Section 1, § 6-17-429(f)(1)(A) (page 3)",
+      "moves": "Adds an accreditation consequence for district employment or professional-development violations and permits departmental probation. Revisits professional-development noncompliance already addressed in (c)(2), now with a broader trigger and discretionary probation wording.",
+      "claims": [
+        {
+          "text": "A public school district that employs an educator in violation of this section or does not provide the professional development required under this section shall be in violation of the Standards for Accreditation of Arkansas Public Schools and Schools Districts.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision identifies the accreditation standards whose violation follows from the specified noncompliance; their text is not reproduced.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Standards for Accreditation of Arkansas Public Schools and Schools Districts",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The department may place a public school district with either of those violations in probationary status.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The enforcement framework expands to unlawful employment as well as missing professional development. The accreditation violation is mandatory, while departmental probation is permissive here. That wording differs from the mandatory public-school probation in (c)(2); the document does not expressly reconcile the two formulations."
+    },
+    {
+      "location": "Section 1, § 6-17-429(f)(1)(B) (page 3)",
+      "moves": "Adds a written parent-notification duty triggered by district probation under (f)(1)(A). Returns to parent notice but specifies its form, recipients, and content for this trigger.",
+      "claims": [
+        {
+          "text": "A public school district placed in probationary status under subdivision (f)(1)(A) of this section shall send written notification to the parents of the students in the public school district of the reason for being placed in probationary status.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This notice duty is tied specifically to district probation under the preceding enforcement provision.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subdivision (f)(1)(A) of this section",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Parents again receive notice, but this duty requires written notification explaining the reason for district probation. Its specific trigger and content distinguish it from the earlier notice that the district has not met the section’s requirements."
+    },
+    {
+      "location": "Section 1, § 6-17-429(f)(2) (page 3)",
+      "moves": "Adds possible penalties for noncompliant preparation-program providers, identifying revocation of approval as the inclusive upper end.",
+      "claims": [
+        {
+          "text": "A provider of a state-approved educator preparation program that does not comply with the requirements of this section may be subject to penalties up to and including having the provider’s approval status revoked.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The consequences now reach the preparation providers as well as public school districts. Revocation is possible rather than automatic; the provision does not enumerate lesser penalties or name the sanctioning actor in this sentence."
+    },
+    {
+      "location": "Section 1, § 6-17-429(g)(1)-(2) (page 3)",
+      "moves": "Adds enforcement authority and an enforcement duty for the department, followed by a mandatory rulemaking duty.",
+      "claims": [
+        {
+          "text": "The department is vested with the authority to and shall enforce this section.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department shall promulgate rules to implement this section.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The section closes its operative provisions by locating implementation and enforcement with the department, previously named as the Department of Education. Rulemaking supplies a mechanism for carrying out requirements whose pathways and detailed standards are not set out in this text."
+    },
+    {
+      "location": "Page 3, closing signature and approval notation",
+      "moves": "Closes with /s/Elliott and records approval. Supplies the approval date rather than a separately stated effective-date clause.",
+      "claims": [
+        {
+          "text": "APPROVED: 04/06/2017",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The approval notation completes the document’s presentation as Act 1063, despite its retained bill and engrossment headings. The text has several implementation deadlines but no separately stated effective date, funding appropriation, research findings, or definition of scientific reading instruction."
+    }
+  ]
+}

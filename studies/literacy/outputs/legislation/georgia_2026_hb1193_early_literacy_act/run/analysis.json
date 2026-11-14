@@ -1,0 +1,2350 @@
+{
+  "reading_plan": "Source title: House Bill 1193 (As Passed House and Senate): Georgia Early Literacy Act of 2026. Source type: government_policy. This is the Georgia General Assembly’s 42-page HB 1193/AP, labeled AS PASSED HOUSE AND SENATE, not a signed enactment in the supplied text. A long title precedes four parts: coaching and credentials; revisions to the Early Literacy and Dyslexia Act, materials, and governance; attendance, readiness, and promotion; and effectiveness/conflicts. It is dense, line-numbered amendatory legislation with nested Code subsections, underlined additions, and struck-through deletions. I first survey the complete structure, then follow the printed order at subsection scale, usually less than a page per step, splitting long lists and procedures. I compare the extracted text with all supplied page images to recover the language after amendment, distinguish mandates from permissions and encouragement, preserve dates and conditions, and mark repetition without counting the same provision again. Cross-references are recorded as printed without supplying outside legal content or evaluating the policy.",
+  "reading_path": [
+    {
+      "location": "Caption and title, pp. 1-2, lines 1-31",
+      "moves": "Identifies HB 1193/AP as AS PASSED HOUSE AND SENATE, names its sponsors, and announces amendments to Title 20. The long title previews coaching, materials, screening, governance, attendance, and placement; those operative provisions are recorded where they occur below.",
+      "claims": [],
+      "meaning": "The opening frames literacy as a statewide education effort spanning classroom support, state administration, and early grade progression. This is a passed bill text; the document does not itself establish a date of gubernatorial approval."
+    },
+    {
+      "location": "Part I, Section 1-1, p. 2",
+      "moves": "Supplies a short title.",
+      "claims": [
+        {
+          "text": "This Act shall be known and may be cited as the \"Georgia Early Literacy Act of 2026.\"",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The named Act now moves from its broad title to the personnel and resources intended to carry out literacy work."
+    },
+    {
+      "location": "Section 1-2; new 20-2-186.1(a)-(b), p. 3",
+      "moves": "Changes existing law by adding a definition and an appropriation-dependent reimbursement grant.",
+      "claims": [
+        {
+          "text": "As used in this paragraph, the term 'eligible school' means a school with any of grades kindergarten through three.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Subject to General Assembly appropriations, the State Board of Education shall provide grants to local units of administration with eligible schools to reimburse expenditures sufficient for the beginning salary and benefits of one school based literacy coach per eligible school.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "An eligible school with 200 or fewer full-time equivalent students shall earn 50 percent of that amount.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The bill begins with a funding mechanism, with both an appropriation condition and a smaller allocation for small schools; it does not state an unconditional funded coach entitlement."
+    },
+    {
+      "location": "Section 1-2; 20-2-186.1(c)(1)-(2), p. 3",
+      "moves": "Assigns standard-setting authority and sets an open list of minimum coach qualifications.",
+      "claims": [
+        {
+          "text": "The State Board of Education, in collaboration with the Office of Student Achievement, shall establish minimum qualifications and duties for school based literacy coaches.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Minimum qualifications shall include, but shall not be limited to, certification by the Professional Standards Commission.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "School based literacy coaches must have at least five years of documented successful classroom teaching or literacy intervention experience at assigned grade levels.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "School based literacy coaches must know scientifically based reading research and have special expertise in quality reading instruction and intervention, dyslexia specific interventions, and data analysis.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Funding is followed by a professional specification: the bill sets a floor while allowing further qualifications."
+    },
+    {
+      "location": "Section 1-2; 20-2-186.1(c)(3)(A)-(D), pp. 3-4",
+      "moves": "Prescribes the first four duties in an expressly nonexhaustive list, including a numerical classroom-time minimum.",
+      "claims": [
+        {
+          "text": "School based literacy coaches shall coach educators using nonevaluative, evidence based practices, including modeling instruction, analyzing instructional practice and data, actionable feedback, and side-by-side classroom support.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall collaborate with the principal to create a strategic literacy coaching plan.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall spend no less than 70 percent of the school day in classrooms working directly with students and teachers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall prioritize teachers, activities, and roles with the greatest impact on student reading achievement, such as classroom coaching and mentoring.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The role is organized around classroom practice and a protected share of classroom time, rather than simply possession of a credential."
+    },
+    {
+      "location": "Section 1-2; 20-2-186.1(c)(3)(E)-(H), p. 4",
+      "moves": "Continues the open minimum-duty list with data use, implementation fidelity, and practice assessment.",
+      "claims": [
+        {
+          "text": "Coaches shall analyze screening, diagnostic, and progress monitoring data to inform instruction, grouping, and intervention within a multi-tiered system of supports framework.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall synthesize student performance and educator practice data to set coaching goals and design targeted, needs based educator support.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall support implementation and monitoring of evidence based literacy curricula and instructional materials with fidelity and alignment to the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall demonstrate competency through approved, periodic, practice based assessment verifying application of the science of reading, learning science, and instructional science to explicit, systematic, evidence based literacy instruction directly with students.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The bill connects coaching to student evidence and curriculum implementation, and subjects the coach’s own practical competence to recurring verification."
+    },
+    {
+      "location": "Section 1-2; 20-2-186.1(c)(4)-(e), pp. 4-5",
+      "moves": "Prohibits incompatible assignments, sets an implementation deadline, and preserves alternative funding.",
+      "claims": [
+        {
+          "text": "A school based literacy coach shall not be authorized or required to perform administrative functions or duties, including, but not limited to, rotating duty assignments or service as evaluator, substitute teacher, assessment coordinator, or school administrator.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A school based literacy coach shall not be invited, required, or permitted to attend placement committee meetings.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A school based literacy coach shall not be designated as a teacher of record.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By August 1, 2026, the State Board shall establish implementation policies, rules, and regulations, including, but not limited to, the grant request and receipt process.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Nothing in the Code section shall be construed to prohibit local units of administration from hiring or contracting with school based literacy coaches using other funds available for such purpose.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The boundaries reinforce the classroom coaching role. The final saving clause allows local hiring outside this grant mechanism."
+    },
+    {
+      "location": "Section 1-3; new 20-2-270.3(a)-(e), p. 5",
+      "moves": "Changes existing law by creating a RESA employment, assignment, reporting, and cooperation structure.",
+      "claims": [
+        {
+          "text": "Each regional educational service agency (RESA) board of control shall authorize regional literacy coaches and regional leadership literacy coaches to provide coaching, support, and related services to local systems and other public schools in its service area.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each RESA board shall assign regional literacy coaches in collaboration with the State Literacy Director and Georgia Literacy Coach Coordinator; at least one regional leadership literacy coach shall be the primary contact with system and school leaders.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Authorized regional literacy and regional leadership literacy coaches shall be employed by the RESA and report to its director.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Both kinds of regional coach and the RESA director shall cooperate fully with the Georgia Literacy Coordinating Committee, State Literacy Director, and Georgia Literacy Coach Coordinator.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Both kinds of regional coach shall cooperate fully with observation, evaluation, and feedback from the Georgia Literacy Coach Coordinator or designee.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The school role acquires a regional support structure with RESA employment and statewide coordination running alongside the local reporting line."
+    },
+    {
+      "location": "Section 1-3; 20-2-270.3(f)(1)-(3), p. 6",
+      "moves": "Sets regional coach standards in open minimum lists. Certification, five years of successful teaching/intervention, reading and dyslexia expertise, nonevaluative coaching practices, and student-data analysis repeat the school coach standards already recorded, now expressly applied to regional coaches.",
+      "claims": [
+        {
+          "text": "The State Board, collaborating with the Office of Student Achievement, shall establish minimum qualifications and duties for regional literacy coaches; the enumerated qualifications and duties are not exhaustive.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Regional literacy coaches shall collaborate with school principals, school based literacy coaches, and Department of Education and Office of Student Achievement representatives.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Regional literacy coaches shall provide ongoing support for effective implementation and continuous improvement of comprehensive literacy programs in local systems and public schools.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Regional literacy coaches shall provide ongoing professional learning activities and materials for teachers and literacy coaches, including science of reading research and curriculum based professional learning to support application in instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The repeated professional floor ties regional and school coaches together, while the new duties emphasize sustained support across schools."
+    },
+    {
+      "location": "Section 1-3; 20-2-270.3(g)(1)-(2), p. 7",
+      "moves": "Creates a distinct leadership coach qualification framework, again expressly nonexhaustive; certification and reading/dyslexia/data expertise repeat the earlier professional floor.",
+      "claims": [
+        {
+          "text": "The State Board and Office of Student Achievement shall establish minimum qualifications and duties for regional leadership literacy coaches.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Their qualifications shall include at least five years of documented success as a literacy coach or K-3 classroom teacher or administrator.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall have successful experience leading a school, district, or regional literacy program, to include principal, curriculum director, superintendent, or state-level literacy specialist roles.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall have extensive knowledge of implementing a structured literacy program founded in the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall have successful experience working with adult learners.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall have exceptional interpersonal skills.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall have exceptional communication skills.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall have successful experience leading educational programs and/or initiatives.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Leadership coaching adds organizational and adult-learning experience to the instructional expertise required throughout the coaching structure."
+    },
+    {
+      "location": "Section 1-3; 20-2-270.3(g)(3)(A)-(E), pp. 7-8",
+      "moves": "Prescribes the first part of an open list of regional leadership duties.",
+      "claims": [
+        {
+          "text": "Regional leadership literacy coaches shall participate in literacy improvement and coaching professional learning within the RESA network.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall collaborate with superintendents and principals to create literacy rich environments, prioritizing schools that include K-3.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall join superintendents and principals in side-by-side classroom observations supporting teachers and paraprofessionals in applying the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall help regional coaches prioritize local system needs based on student data and communication with system leaders.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall facilitate communication and collaboration between systems and regional coaches.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The leadership role brings school and district leaders into classroom observation and uses their communication with coaches to organize support."
+    },
+    {
+      "location": "Section 1-3; 20-2-270.3(g)(3)(F)-(I), p. 8",
+      "moves": "Completes the leadership duties with planning and community and postsecondary relationships.",
+      "claims": [
+        {
+          "text": "Leadership coaches shall guide systems in developing and implementing local unified literacy plans.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall facilitate system-community collaboration supporting literacy from birth to age five.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall facilitate collaboration with local and regional postsecondary institutions.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They shall collaborate with other regional leadership literacy coaches.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The remit extends beyond currently enrolled K-3 students to early childhood, institutional partnerships, and local planning."
+    },
+    {
+      "location": "Section 1-4; new 20-2-208.2(a)-(b), pp. 8-9",
+      "moves": "Changes existing law by requiring an endorsement and specifying its training content and deadline.",
+      "claims": [
+        {
+          "text": "No later than December 31, 2026, the Professional Standards Commission shall establish a literacy coaching endorsement for teachers and other certificated personnel trained in an evidence based approach to oral and written language aligned to the science of reading and founded on how children learn to read.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "That approach is characterized by explicit, systematic, cumulative, diagnostic instruction in phonology, sound-symbol association, syllable instruction, morphology, syntax, and semantics.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Endorsement requirements shall include training in universal reading screeners for measuring and monitoring foundational literacy progress, guidance to parents, and training or guidance to teachers and other school personnel.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Part I closes by adding a formal training credential alongside the job qualifications, classroom duties, and regional organization."
+    },
+    {
+      "location": "Part II, Section 2-1; amendment instruction and 20-2-153.1(a.1), p. 9",
+      "moves": "Changes existing law: repeals and reserves (b)(2), replaces (b)(6), renumbers former (b)(16) as (17), adds a new (b)(16), and revises/adds the stated subsections. Adds legislative intent rather than empirical findings.",
+      "claims": [
+        {
+          "text": "The General Assembly intends early literacy instruction to be comprehensive, focused on structured literacy and foundational literacy skills, aligned to the science of reading, and anchored by high-quality instructional materials aligned to that science.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The stated intent is that educators shall be given access to science of reading research and receive comprehensive curriculum based professional learning supporting its instructional application.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The stated intent is that continuing parental and guardian involvement in comprehensive statewide literacy efforts shall be encouraged and integrated into children’s education.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The text now expressly names the instructional orientation already embedded in the coaching provisions, while presenting family participation as part of the same effort."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(b)(6) and (16), p. 10",
+      "moves": "Replaces the dyslexia definition and adds a unified literacy plan definition and required components.",
+      "claims": [
+        {
+          "text": "'Dyslexia' shall have the same meaning as the definition adopted and amended from time to time by the International Dyslexia Association and approved by the board and posted on the websites of the department and the Office of Student Achievement.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The definition incorporates the International Dyslexia Association definition as amended from time to time, subject to board approval and website posting; the bill does not print that external definition.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "International Dyslexia Association",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "'Unified literacy plan' means a comprehensive, evidence based framework to ensure coherent, aligned, and continuous literacy development for learners from birth through career readiness.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "As appropriate to grades served, the plan shall establish measurable goals for all tested grades, using statewide assessments and approved screener data to monitor progress, guide instructional decisions, and evaluate program effectiveness.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "As appropriate to grades served, it shall include explicit collaboration strategies with birth-to-five early learning providers supporting school readiness and early language development.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "As appropriate to grades served, it shall establish literacy transition plans for the transition from kindergarten to elementary school.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The framework spans birth through career readiness but conditions its concrete requirements on the grades an institution serves. Dyslexia is defined through an external organization rather than reproduced here."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(c)(1)-(2), p. 10",
+      "moves": "Retains literacy metric rulemaking and amends the materials deadline, recommendation process, and alignment standard; deletions and additions are resolved from the page image.",
+      "claims": [
+        {
+          "text": "The board, consulting the department and Office of Student Achievement, shall establish necessary policies, rules, and regulations for uniform grade-appropriate literacy metrics.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By March 1, 2027, the board shall, upon the Office of Student Achievement’s recommendation, approve high-quality instructional materials aligned to the science of reading for teaching K-3 students to read.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By that same date it shall establish a procedure for each public school and local system to certify annually to the department that locally approved materials and content constitute high-quality materials aligned to the science of reading.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subsection (a) of Code Section 20-2-1017",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The intent is translated into state metrics, approval, and recurring local certification. The printed deadline here is March 1, before the task force materials deadline encountered later."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(c)(3), pp. 11-12",
+      "moves": "Replaces the old screener submission/review and approval language, deletes former criteria, and inserts a new list and capabilities. Deleted center reviews and old dates are not operative provisions.",
+      "claims": [
+        {
+          "text": "By April 1, 2028, and April 1 every third year thereafter, the board shall approve, upon recommendation of the Office of Student Achievement, a list of at least two and at most five universal reading screeners for public school and system comprehensive literacy programs, one free of charge.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each approved screener shall provide screening and diagnostic capabilities for progress monitoring.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each shall measure, at a minimum, foundational reading skills, including, but not limited to, phonological awareness, oral language, alphabetic principle (including letter naming, letter sound, and sound letter correspondences), decoding, encoding, accuracy, vocabulary, and comprehension.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each shall identify students significantly at risk of not attaining grade level reading proficiency, including, but not limited to, students with dyslexia characteristics.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each shall have robust reporting capabilities, including direct provision to the department and Office of Student Achievement of results by student; student subgroups by grade, educational program, demographics, and other task-force criteria; school; and system.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The screener rules now combine a bounded choice of products with broad minimum measurement and reporting capabilities."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(c)(4)-(5), pp. 12-13",
+      "moves": "Amends publication from a July 15 list to regularly updated publication, deletes the council’s free-screener agreement provision, and changes the handbook deadline to July 1.",
+      "claims": [
+        {
+          "text": "The department shall publish and regularly update on its public website the free screener and other approved screeners; each public school and local system shall adopt and administer one as part of its comprehensive literacy program.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "paragraph (3) of this subsection",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The department shall publish online and distribute electronically by July 1 each year to every local system and public school a dyslexia informational handbook with guidance, technical assistance, and training for evidence based practices.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The handbook shall include, but not be limited to, practices specifically for students with dyslexia characteristics.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall include guidance on developing support plans for those students.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall include a list and brief description of dyslexia training programs accredited by the International Dyslexia Association and any other nationally or internationally recognized accreditor.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "International Dyslexia Association",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "It shall include dyslexia endorsement programs approved by the Professional Standards Commission in collaboration with the Office of Student Achievement.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "State publication enables the local adoption duty; the handbook places dyslexia-specific instructional and training information alongside the general screener system."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(c)(6)-(7), pp. 13-14",
+      "moves": "Amends professional learning duties, adds a comprehensive free program and deadline, and retains technical assistance.",
+      "claims": [
+        {
+          "text": "The department shall develop or procure one or more K-3 teacher professional learning programs in the science of reading, structured literacy, and foundational literacy skills supporting state standards; it shall consult the University System, Professional Standards Commission, Office of Student Achievement, Literacy Coordinating Committee, RESAs, and literacy experts.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Programs shall emphasize application of science of reading research and use of high-quality instructional materials.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Programs shall promote teachers’ ability to teach all students, including those with dyslexia, and ensure teachers and coaches can use approved screeners and assessment data to tailor instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "One program shall be statewide, comprehensive, curriculum based structured literacy professional learning aligned to and including science of reading research for K-3 teachers and coaches; it shall be recommended by the Georgia Literacy Task Force.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-14-202",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Beginning no later than school year 2027-2028, that comprehensive program shall be free to public school K-3 teachers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department shall give public schools and systems technical assistance in implementing this Code section.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The professional learning requirement connects product selection to instructional application, with free availability expressly promised to K-3 public school teachers."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(c)(8), p. 14",
+      "moves": "Changes the annual impact-report date to November 1, expands recipients, and specifies content and public access.",
+      "claims": [
+        {
+          "text": "By November 1 each year the department shall report implementation impacts, including, but not limited to, third grade comprehensive summative assessment results and first and second grade formative reading results by school and system.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subsection (a) of Code Section 20-2-281",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Code Section 20-2-280",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The report shall analyze impacts of universal screeners, high-quality materials, and practices aligned to the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall be provided to the Governor, Senate President, House Speaker, chairs of the House Education, Senate Education and Youth, House Higher Education, Senate Higher Education, House Appropriations, and Senate Appropriations committees, and the board; it shall be available to the public on the department’s website.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The bill adds a recurring reporting route from classroom implementation to executive, legislative, board, and public audiences without itself making a finding about effectiveness."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(d)(2), p. 15",
+      "moves": "Amends local instructional support into a single paragraph with an enumerated list; deletes the funding-insufficiency notice and funding-source assistance subparagraphs.",
+      "claims": [
+        {
+          "text": "Using school based coaches and other available resources, each public school and local system shall provide K-3 teacher support that shall include onsite professional learning and research materials in science of reading, structured literacy, foundational literacy, and evidence based decision making.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Support shall include demonstrated lessons applying that learning and research in instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Support shall include school based coaches working side-by-side with teachers in classrooms.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Support shall include school based coaches working directly with individual students and small groups as time permits.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Support shall include prompt feedback to improve instruction.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The earlier coaching roles become a local support obligation. The student-facing component retains the qualification “as time permits.”"
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(d.1)(1), pp. 15-16",
+      "moves": "Amends educator preparation core-curriculum criteria, preserving an open list and adding diagnostic instruction and explicit assessment use.",
+      "claims": [
+        {
+          "text": "The Professional Standards Commission shall adopt core-curriculum rules for every state approved educator preparation program; the following criteria are minimum inclusions, not an exhaustive list.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criteria shall require board content standards aligned to the science of reading to guide curricula and instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Evidence based reading teaching standards shall be exclusively aligned to the science of reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Those standards shall prepare teachers for explicit, systematic, sequential, diagnostic, cumulative instruction in phonemic awareness, phonics, vocabulary, fluency, and text comprehension.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Those standards shall employ multisensory and multimodal intervention strategies.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criteria shall include content based literacy and mathematics practices.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criteria shall include appropriate strategies for English language learners.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criteria shall include appropriate strategies for students with disabilities.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criteria shall include strategies, including but not limited to assessment results, to identify strengths and weaknesses and differentiate instruction by student need.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criteria shall include strategies and practices supporting research based content aligned to state standards and grading practices.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criteria shall include early identification of reading deficiency.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Criteria shall include strategies supporting educational technology and distance learning.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The instructional orientation now reaches the preparation pipeline, with an exclusive alignment requirement for reading teaching standards and a broader set of accompanying curriculum criteria."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(d.1)(2), pp. 16-17",
+      "moves": "Adds ongoing compliance review, a review interval, discretion over sequencing, and annual reports.",
+      "claims": [
+        {
+          "text": "Beginning January 1, 2027, the Commission shall review every state approved educator preparation program’s compliance, particularly reading teaching standards and assessment/differentiation strategies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subparagraphs (B) and (F) of paragraph (1) of this subsection",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The Executive Director has discretion over review order and priority, but each program shall be reviewed no less often than every four years.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By November 1 annually the Commission shall report reviews and significant findings to the University System Chancellor, governing bodies of non-University-System approved programs, State Board, Office of Student Achievement, Georgia Council on Literacy, and chairs of the House and Senate Higher Education, House Education, and Senate Education and Youth committees.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The curriculum criteria acquire a compliance cycle. The list of recipients still names the Georgia Council on Literacy, whose termination appears later in this bill."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(e)(1), pp. 17-18",
+      "moves": "Changes the Georgia Literacy Coach Coordinating Committee into the Georgia Literacy Coordinating Committee, revises membership, and broadens responsibilities.",
+      "claims": [
+        {
+          "text": "The Georgia Literacy Coordinating Committee is established within the Office of Student Achievement. At a minimum it shall include the State Literacy Director, Georgia Literacy Coach Coordinator, department representative, at least one RESA representative, research based education organization representatives with expertise identified by the department and Office, and other subject matter experts identified by those agencies.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "In collaboration with the board, department, Early Care and Learning, Public Health, University System, Technical College System, and other stakeholders determined by the Office, the committee shall maintain and amend as needed the Georgia Literacy Plan originally created by the Council on Literacy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Georgia Literacy Plan",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "It shall review for oversight, accountability, and effective implementation of this Code section and plan literacy efforts supporting schools/systems, children/families, and adult learners.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Georgia Literacy Plan",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "It shall support coordination of all statewide literacy and reading programs across state, regional, and local agencies, systems, and initiatives.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall review literacy outcomes’ conditions, needs, issues, and problems and recommend legislation and appropriations to improve outcomes.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall review local unified literacy plans and make recommendations.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall review statewide birth-to-five initiatives and suggest policy and appropriation changes.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall review community literacy best practices and recommend improvements.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Coordination is expanded from coaching to literacy across ages and agencies. The inherited plan supplies continuity while the membership and responsibilities change."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(e)(2) and (f)(1), p. 18",
+      "moves": "Replaces old staff positions and their duty list with two positions cross-referenced to a new article; adds local plan adoption.",
+      "claims": [
+        {
+          "text": "The Office of Student Achievement shall employ the State Literacy Director and Georgia Literacy Coach Coordinator, with duties in Article 4 of Chapter 14.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Article 4 of Chapter 14 of this title",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "By January 1, 2027, every local board of education and other public school governing body shall adopt a unified literacy plan.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The bill gives the enlarged coordinating structure named staff and makes the previously defined local plan mandatory."
+    },
+    {
+      "location": "Section 2-1; 20-2-153.1(f)(2)(A)-(C), pp. 18-19",
+      "moves": "Adds three eligibility/authorization consequences tied to literacy plans from January 1, 2027.",
+      "claims": [
+        {
+          "text": "Beginning January 1, 2027, a local system without an adopted unified literacy plan is ineligible for waivers or variances under the cited provisions and may not enter or renew a charter system or strategic waivers school system contract with the State Board.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-244",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Article 4 of this chapter",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "From that date neither the State Board nor a local board shall authorize a new or renewal local charter school petition unless it includes the school’s unified literacy plan.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-2062",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "From that date neither the State Board nor State Charter Schools Commission shall authorize a new or renewal state charter school petition unless it includes the school’s unified literacy plan.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-2081",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The planning duty now conditions access to institutional flexibility and charter authorization, rather than ending as a stand-alone planning requirement."
+    },
+    {
+      "location": "Section 2-2; amended 20-2-1010(a)-(b), pp. 19-20",
+      "moves": "Changes authority to define instructional materials into a duty, updates K-12 scope and local actors, and preserves board discretion and competitive bidding.",
+      "claims": [
+        {
+          "text": "The State Board shall define instructional materials and content by regulation to include, but not be limited to, systematically designed materials in any medium, digital materials, and necessary hardware, software, and technical equipment constituting the principal source of study for state funded public school courses, including K-12.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The board may provide multiple listings by regulation and may, at its discretion, authorize local systems and other public schools to choose among listed or adopted materials for a grade.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Nothing in this Code section shall be construed to exempt computer hardware or related equipment acquired by the state from competitive bidding.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The bill places literacy materials within a broader instructional-materials framework: definition is mandatory, while multiple listings and local selection authorization remain discretionary."
+    },
+    {
+      "location": "Section 2-2; 20-2-1010(c)(1)-(2), p. 20",
+      "moves": "Adds overriding state policy limiting K-3 materials and imposing a future restriction on use of Article 6 funds.",
+      "claims": [
+        {
+          "text": "Notwithstanding contrary law, state policy requires that only high-quality instructional materials and content aligned to the science of reading shall be used for K-3 literacy and reading education.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "From school year 2029-2030 onward, public schools receiving Article 6 funds shall use none of those funds to purchase or use K-3 literacy/reading materials not approved by the State Board upon Georgia Literacy Task Force recommendation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Article 6 of this chapter",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The earlier approval process gains a use standard and a dated spending prohibition. The funding restriction applies to the specified funds rather than being phrased as a ban on every possible funding source."
+    },
+    {
+      "location": "Section 2-3; new 20-2-1015.1(a)-(c), pp. 20-21",
+      "moves": "Adds local approval and funding-estimate duties while separately using strong encouragement for exclusive use.",
+      "claims": [
+        {
+          "text": "Local boards and other public school governing bodies shall approve high-quality K-3 instructional materials as required under Code Section 20-2-153.1.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "They are strongly encouraged to provide exclusively high-quality science-of-reading-aligned materials for K-3 literacy and reading instruction.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The State Board shall annually determine a reasonable funding level to help local governing bodies obtain those materials and present it to the General Assembly for consideration in appropriations.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The local provisions distinguish mandatory approval, strongly encouraged exclusive provision, and a required funding proposal; the last does not itself appropriate money. The softer language coexists with the preceding section’s “only” policy."
+    },
+    {
+      "location": "Section 2-4; new Article 4, 20-14-200, p. 21",
+      "moves": "Changes existing law by adding an accountability article. Subsection (a) repeats the committee’s establishment and incorporates its previously recorded membership and responsibilities; subsection (b) adds authority.",
+      "claims": [
+        {
+          "text": "Upon the State Literacy Director’s recommendation, the Office of Student Achievement is authorized to engage subject matter experts to work with the Georgia Literacy Coordinating Committee.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The committee is placed in the accountability chapter as well as the Early Literacy and Dyslexia Act; the second statement of its establishment does not create another committee."
+    },
+    {
+      "location": "Section 2-4; 20-14-201(1)(A)-(G), pp. 21-22",
+      "moves": "Repeats the employment duty and specifies the State Literacy Director’s reporting line and responsibilities.",
+      "claims": [
+        {
+          "text": "The State Literacy Director shall report to the director of the Office of Student Achievement.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Director shall oversee maintenance, amendment, implementation, alignment, and evaluation of the statewide literacy plan with other stakeholders.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The Director shall evaluate and recommend continuous improvement and alignment of literacy/reading programs across state, regional, and local agencies, systems, and initiatives.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Director shall be the primary literacy/reading liaison with Education, Early Care and Learning, Public Health, the University System, Technical College System, RESAs, Professional Standards Commission, and Office of Student Achievement.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Director shall recommend effective implementation and continuous improvement of the Georgia Early Literacy and Dyslexia Act and other literacy/reading legislation, policies, rules, and regulations across ages and grades.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "'Georgia Early Literacy and Dyslexia Act'",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The Director shall chair the Georgia Literacy Coordinating Committee.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Director shall chair the Georgia Literacy Task Force.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Director shall supervise and evaluate staff assigned to either body, including, but not limited to, the Georgia Literacy Coach Coordinator.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The broad coordinating responsibilities now have a single reporting line and leadership role linking the committee to the task force that follows."
+    },
+    {
+      "location": "Section 2-4; 20-14-201(2)(A)-(E), pp. 22-23",
+      "moves": "Specifies the Georgia Literacy Coach Coordinator’s reporting line and operational duties; committee membership repeats the earlier membership provision.",
+      "claims": [
+        {
+          "text": "The Georgia Literacy Coach Coordinator shall report to the State Literacy Director.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Coordinator shall coordinate statewide regional leadership, regional, and school based literacy coaches.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Coordinator shall collaborate with and coordinate coaches and specialists affiliated with the department or a RESA whose positions use state or federal funds, including, but not limited to, regional literacy coaches.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Coordinator shall observe, evaluate, and give feedback to those state- or federally-supported department/RESA coaches and specialists.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Coordinator shall review and collaborate on development and implementation of statewide literacy/reading professional learning, professional development, and training.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The Director’s broad role is paired with a coach-focused operational role; nonevaluative coaching of teachers earlier in the text coexists with evaluation of coaches here."
+    },
+    {
+      "location": "Section 2-4; 20-14-202(a)-(b)(1), p. 23",
+      "moves": "Defines task force, establishes a standing body and convening deadline, and assigns recommendation recipients. The specified free professional learning program repeats the earlier program description; here the text assigns responsibility for recommending it.",
+      "claims": [
+        {
+          "text": "As used in this Code section, the term 'task force' means the Georgia Literacy Task Force established pursuant to this Code section.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The Georgia Literacy Task Force is established as a standing body; the Office of Student Achievement shall convene it by September 1, 2026.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The task force shall recommend the comprehensive curriculum based K-3 structured literacy professional learning program to the State Board, Office of Student Achievement, Literacy Coordinating Committee, and State Literacy Director.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "A standing recommendation body now sits within the administration already described, starting with the professional learning program."
+    },
+    {
+      "location": "Section 2-4; 20-14-202(b)(2)(A)-(B), p. 24",
+      "moves": "Requires screener recommendations and valid/reliable assessment systems. The screening, foundational-skill, dyslexia-risk, and direct-reporting capabilities repeat (c)(3) above, now imposed on every task-force recommendation; the definition of foundational reading skills is explicitly cross-referenced here.",
+      "claims": [
+        {
+          "text": "The task force shall recommend at least two and at most five universal reading screeners that are valid and reliable reading screening, formative, and diagnostic assessment systems for system and public school selection and use.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Subparagraph (B)(ii) expressly incorporates the foundational reading skills definition in Code Section 20-2-153.1; the capability requirements otherwise repeat the earlier screener criteria.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The recommendation body cannot simply offer a product list: its recommendations must satisfy the same capabilities prescribed for approved screeners, with validity and reliability expressly named."
+    },
+    {
+      "location": "Section 2-4; 20-14-202(b)(2)(C)-(F), pp. 24-25",
+      "moves": "Adds open minimum selection considerations, free-screener designation, recurring submission deadlines, and an approval gate.",
+      "claims": [
+        {
+          "text": "When recommending screeners, the task force shall at minimum consider administration time with the intention of minimizing effects on instructional time.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall consider integration of results with instructional support for teachers and students.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall consider timeliness of reporting to teachers, administrators, and parents.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall recommend one screener to be available free to local systems and public schools.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By April 1, 2028, and April 1 every third year thereafter, it shall submit the recommended list, including the free screener, to the State Board.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "No universal reading screener shall be approved by the State Board of Education unless it has been recommended by the task force;",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The list is both a recommendation and a prerequisite to approval. Practical effects on instruction and reporting join the measurement criteria already stated."
+    },
+    {
+      "location": "Section 2-4; 20-14-202(b)(3), p. 25",
+      "moves": "Requires a bounded materials recommendation list and four-year cycle.",
+      "claims": [
+        {
+          "text": "The task force shall recommend to the State Board at least two and at most five systematically designed programs of high-quality science-of-reading-aligned instructional materials for K-3.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "It shall submit the recommended materials list by April 1, 2027, and April 1 every fourth year thereafter.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The materials list uses a four-year cycle, unlike the screener list’s three-year cycle. Its April 1 initial deadline follows the March 1, 2027 board materials-approval deadline printed earlier; the bill does not explain that sequence."
+    },
+    {
+      "location": "Section 2-4; 20-14-202(c)(1)-(4), pp. 25-26",
+      "moves": "Repeats the Director’s chairmanship and fixes appointed membership, credentials, verification, and terms.",
+      "claims": [
+        {
+          "text": "Every appointed member shall have at least three years’ experience with scientifically based reading instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Governor shall appoint three members, two with significant experience as literacy/reading specialist, coach, teacher, or curriculum specialist.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The House Speaker shall appoint three members, two with that same significant experience.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Senate President shall appoint three members, two with that same significant experience.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Office of Student Achievement shall appoint one member who has been a certified academic dyslexia therapist for at least three years.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The State Board shall appoint one member.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Office of Student Achievement shall verify each appointee’s qualifying credentials.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Appointed members shall serve three-year terms and may be reappointed for one additional two-year term.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The bill distributes appointments among five authorities while requiring reading-instruction experience for all appointed members and more specific expertise for several seats."
+    },
+    {
+      "location": "Section 2-4; 20-14-202(c)(5)-(6), pp. 26-27",
+      "moves": "Permits flexible meeting arrangements but imposes frequency and quorum; grants a statutory exemption and assigns allowances and funding.",
+      "claims": [
+        {
+          "text": "The task force is authorized to meet virtually or in person wherever and whenever necessary or convenient for its duties, but shall meet at least twice yearly and at the chairperson’s call.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A quorum for transacting business of the task force shall be a majority of the members.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Task force meetings shall be exempt from Chapter 14 of Title 50 notwithstanding contrary law.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Chapter 14 of Title 50",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Legislative members shall receive the statutory legislative allowances.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 28-1-8",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Nonlegislative members shall receive the daily expense allowance specified in subsection (a) of Code Section 45-7-21 and the state employee mileage or transportation allowance.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subsection (a) of Code Section 45-7-21",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "State officials other than legislative members, and state employees, shall receive no task force service compensation but shall receive expense reimbursement as in their state capacities.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Expenses of those nonlegislative state officials and employees shall be paid from their respective departments’ appropriated or otherwise available funds.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "All other funds necessary to carry out this article shall come from appropriations to the Office of Student Achievement.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The standing body gains operating rules and a funding source, with an express meeting-law exemption but no independent appropriation amount."
+    },
+    {
+      "location": "Section 2-4; 20-14-202(d), p. 27",
+      "moves": "Requires efforts toward multiple vendors and public eligibility rubrics.",
+      "claims": [
+        {
+          "text": "The task force shall endeavor to include multiple vendors in each annual screener and instructional-materials list, using the printed reference to subsection (a).",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subsection (a) of this Code section",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "It shall make public every rubric and measurement used to determine eligibility and compliance for all screeners and high-quality materials accepted for consideration.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The text requires public criteria even though meetings have just been exempted from a statutory chapter. It calls these lists annual and references (a), although the lists were specified in (b) on three- and four-year cycles; those textual differences are left intact."
+    },
+    {
+      "location": "Section 2-4; 20-14-203(a)-(b), p. 27",
+      "moves": "Sets a mandatory board decision window and a written-disagreement procedure; the final sentence repeats the board’s timely vote duty.",
+      "claims": [
+        {
+          "text": "Within 60 days of receiving any task force recommendation, the State Board shall vote to adopt or reject it.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The State School Superintendent shall recommend adoption; if disagreeing with a recommendation, the Superintendent shall submit reasons to the board in writing.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The recommendations do not automatically become board policy, but the board must make an express and timely choice regardless of superintendent disagreement."
+    },
+    {
+      "location": "Section 2-4; 20-14-204, pp. 27-28",
+      "moves": "Assigns a statewide public-awareness campaign and states its purpose and audiences.",
+      "claims": [
+        {
+          "text": "The Office of Student Achievement shall develop and implement a comprehensive statewide literacy promotional campaign in collaboration with Education, Early Care and Learning, Public Health, the University System, Technical College System, RESAs, local systems, and public schools.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The bill states the campaign’s purpose as increasing public awareness and education about literacy’s essential importance to all Georgians and urging families and communities to participate, especially for children from birth through fifth grade.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The campaign shall increase awareness and education about literacy’s essential importance in all Georgians’ lives and urge families and communities to support and participate in literacy efforts, especially for children from birth through fifth grade.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The administrative and instructional program turns outward to public participation, carrying the family-involvement intent into a named campaign."
+    },
+    {
+      "location": "Section 2-5; amended 20-1-45, p. 28",
+      "moves": "Changes existing law by advancing the council sunset from the deleted 2030 year to 2026.",
+      "claims": [
+        {
+          "text": "The Georgia Council on Literacy shall be abolished and its article repealed on December 31, 2026.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The preceding committee, staff, and task force arrangements accompany an earlier end to the council. The bill still names the council as an educator-preparation report recipient above, without explaining that reference after the sunset."
+    },
+    {
+      "location": "Part III, Section 3-1; amended 20-2-690.1(b), pp. 28-29",
+      "moves": "Retains compulsory-attendance ages and graduation exception; adds encouragement at age five rather than an age-five compulsory-attendance rule.",
+      "claims": [
+        {
+          "text": "Each child shall attend public school, private school, or a home study program between the sixth and sixteenth birthdays.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "State policy encourages families to have children attend one of those settings beginning at age five.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Compulsory attendance does not apply after successful completion of all requirements for a high school diploma or state approved high school equivalency (HSE) diploma.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The focus changes from literacy administration to participation in schooling; the new encouragement is distinct from the compulsory ages retained in the same sentence."
+    },
+    {
+      "location": "Section 3-2; amended 20-2-150(c), p. 29",
+      "moves": "Changes the early-enrollment attendance provision from seventh/seven to sixth/six.",
+      "claims": [
+        {
+          "text": "Children enrolled in Georgia public schools for at least 20 school days before their sixth birthday become subject to this article, Code Sections 20-2-690 through 20-2-701, and board compulsory-attendance rules even before age six.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Sections 20-2-690 through 20-2-701",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Although enrollment at five is encouraged rather than generally compelled, sufficiently long early public school enrollment activates the attendance provisions specified here."
+    },
+    {
+      "location": "Section 3-3; amended 20-2-151(b)(1)(A)-(B)(iii), pp. 29-30",
+      "moves": "Changes full-day kindergarten from optional to mandatory provision by systems, defines it, and adds a first-grade pathway with a readiness exception.",
+      "claims": [
+        {
+          "text": "All local school systems shall offer full-day kindergarten.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Full-day kindergarten means at least four and one-half hours of daily classroom instruction over a 180 day year or its equivalent under State Board guidelines.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "State policy requires a child to attend full-day kindergarten before first-grade enrollment in a state supported primary program unless assessed ready for first grade and meeting first-grade age eligibility.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "State supported kindergarten’s purposes are equal opportunity to prepare for successful first grade and a foundation for academic progress throughout educational careers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Kindergarten eligibility requires age five by September 1, except as otherwise provided by subsection (b) of Code Section 20-2-150.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subsection (b) of Code Section 20-2-150",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The bill pairs universal local provision of full-day kindergarten with a readiness-based exception to attending it before first grade."
+    },
+    {
+      "location": "Section 3-3; 20-2-151(b)(1)(B)(iv)-(viii), pp. 30-31",
+      "moves": "Adds limits, assessment permissions, and overriding parental enrollment choices.",
+      "claims": [
+        {
+          "text": "This subparagraph shall not be construed or applied to require a child to complete a full school year of kindergarten prior to enrolling in first grade.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "At principal discretion or parent/guardian request, a child meeting first-grade age eligibility may be assessed for first-grade readiness under paragraph (2).",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "paragraph (2) of this subsection",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "An age-eligible child assessed ready under paragraph (2) may be placed in or promoted to first grade.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "No student shall remain in kindergarten for more than two years.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Notwithstanding contrary law, a child enrolling for the first time in state supported education who is first-grade-age-eligible under this section or Code Section 20-2-150 shall be enrolled in state supported kindergarten at parent/guardian request.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-150",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Notwithstanding contrary law, children attaining age four or five by September 1 are eligible for Georgia’s voluntary Pre-K Program and shall be enrolled at parent/guardian request, subject to the printed provisions on available seats.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "This paragraph shall not require or permit more than one year in that Pre-K program.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Four- and five-year-olds shall be treated on the same basis for selection for available Pre-K seats.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The pathway is qualified by flexible kindergarten duration, a two-year ceiling, and parental choices; Pre-K eligibility is broadened while preserving equal treatment for available seats and a one-year limit."
+    },
+    {
+      "location": "Section 3-3; 20-2-151(b)(2)(A)-(B), p. 31",
+      "moves": "Retains primary-program purpose and funding scope; adds readiness assessment components and retains the first-grade age threshold. Deletes the earlier separate assessment/placement sentences continued at the top of p. 32.",
+      "claims": [
+        {
+          "text": "State policy defines the primary program’s purpose as mastery of essential basic skills and knowledge enabling later advanced learning.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For funding under this article, the primary grades program includes grades one, two, and three.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "First-grade eligibility requires readiness assessment by teachers and other system/public school personnel using board-approved assessments, screeners, and instruments, including, but not limited to, the board-adopted first-grade readiness assessment and universal reading screener.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-281",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Readiness assessment shall consider teacher input and recommendations.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall consider other relevant information, including, but not limited to, parent/guardian preference.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The child shall attain age six by September 1, subject to the cited exception.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subsection (b) of Code Section 20-2-150",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "First-grade entry combines an age rule with several forms of readiness information. Parent preference is explicitly relevant without being made the sole determinant."
+    },
+    {
+      "location": "Section 3-3; 20-2-151(b)(2)(C), p. 32",
+      "moves": "Adds intervention and written notice triggered by significant reading risk at readiness assessment.",
+      "claims": [
+        {
+          "text": "If readiness assessment identifies a child as significantly at risk of not attaining grade level reading proficiency under Code Section 20-2-153.1, a tiered reading intervention plan shall immediately be developed and implemented.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The principal or designee shall notify the parent/guardian in writing by first-class mail of the significant-risk finding before first grade, the intervention plan, and possible nonplacement or nonpromotion to first grade.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The assessment process is linked first to an immediate instructional response and notice of a possible placement consequence; the next paragraph addresses continued risk."
+    },
+    {
+      "location": "Section 3-3; 20-2-151(b)(2)(D)(i)-(iii), pp. 32-33",
+      "moves": "Adds a conditional nonreadiness determination and a parent/guardian appeal procedure.",
+      "claims": [
+        {
+          "text": "For a first-grade-age-eligible child still significantly at risk after implementation of a tiered intervention plan, the principal or designee shall find the child not ready for first-grade placement or promotion, except as otherwise provided in this paragraph.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The principal or designee shall notify the parent/guardian by first-class mail of nonreadiness, the option to appeal, committee composition and functions, and the requirement of a unanimous committee decision to place or promote.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "If the parent/guardian appeals, the principal or designee shall establish a placement committee of the principal/designee, parent/guardian, and student’s teacher and mail written notice of its time and place by first-class mail.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The intervention response can lead to a nonreadiness determination, but the bill provides an appeal involving the family, teacher, and school leadership."
+    },
+    {
+      "location": "Section 3-3; 20-2-151(b)(2)(D)(iv)-(vi), p. 33",
+      "moves": "Prescribes placement committee review, unanimity, subsequent instruction and assessment, a special education substitution, and further appeal limits.",
+      "claims": [
+        {
+          "text": "The committee shall review overall first-grade readiness and progress toward grade level reading proficiency.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall decide whether to place or promote to first grade; an affirmative placement/promotion decision shall be unanimous.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall prescribe accelerated, differentiated, or additional instruction needed for grade level performance by the next school year’s end.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall prescribe appropriate additional assessments beyond those given to other students and provide a continuous assessment plan for the next year to monitor progress.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For children eligible for special education or related services, the child’s Individualized Education Plan Committee shall be the placement committee.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Committee decisions may be appealed only as provided by the local board or other public school governing body.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The appeal is an instructional planning process as well as a placement decision. The eligibility-based special education substitution here will differ slightly in wording from later provisions for students receiving services."
+    },
+    {
+      "location": "Section 3-3; 20-2-151(b)(2)(E)-(G), p. 34",
+      "moves": "Adds dated state implementation/approval duties, amends guidelines, and requires written reasons for nonplacement/nonpromotion.",
+      "claims": [
+        {
+          "text": "By July 1, 2026, the State Board shall adopt policies and procedures to implement this paragraph.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By that date it shall approve one or more first-grade readiness assessments, screeners, and other instruments and shall consider for approval any recommended by the Office of Student Achievement.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By July 15, 2026, the department, with the Office of Student Achievement, shall develop guidelines for using approved instruments in grade placement and supply guidelines and technical assistance to systems and public schools.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Guidelines shall include information pertinent to placement of students identified as disabled or limited-English-proficient.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Whenever a child is not placed in or promoted to first grade, the system/public school shall document reasons under state policies, procedures, and guidelines and give the reasons in writing to the parent/guardian.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "State instruments and guidance support local decisions, while reasons must be documented and supplied to the family in every nonplacement/nonpromotion case."
+    },
+    {
+      "location": "Section 3-3; 20-2-151(b)(2)(H)-(I), pp. 34-35",
+      "moves": "Replaces discretionary Superintendent reporting with mandatory Office reporting, relocates the kindergarten two-year limit already recorded, and phases in intervention/placement consequences.",
+      "claims": [
+        {
+          "text": "By November 1 each year the Office of Student Achievement shall report Georgia children’s readiness for first-grade placement or promotion, including, but not limited to, grade level reading proficiency.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall submit the report to the Governor, Senate President, House Speaker, chairs of House Education, Senate Education and Youth, House Higher Education, Senate Higher Education, House Appropriations, and Senate Appropriations, and State Board.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Subparagraphs (C) and (D) shall apply from school year 2027-2028 onward.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subparagraphs (C) and (D) of this paragraph",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "By July 1, 2027, the board and department shall update the policies, procedures, and guidelines required by (E) and (F).",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subparagraphs (E) and (F) of this paragraph",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The bill distinguishes the 2026 preparation dates from the 2027-2028 start of intervention and nonreadiness procedures and gives readiness a recurring state reporting channel."
+    },
+    {
+      "location": "Section 3-4; amended 20-2-283(a)-(b)(1)(A), pp. 35-36",
+      "moves": "Changes existing promotion law: revises the state criteria deadline, extends governing-body coverage, and adds first grade to grades three, five, and eight.",
+      "claims": [
+        {
+          "text": "No later than January 1, 2027, the State Board shall adopt criteria for local boards and other public school governing bodies to develop placement and promotion policies consistent with the Georgia Academic Placement and Promotion Policy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Georgia Academic Placement and Promotion Policy",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Except as provided in this Code section, a student shall not be promoted to second grade if significantly at risk of not attaining grade level reading proficiency by the end of first grade under Code Section 20-2-153.1 and not meeting state and local board/other school governing body promotion standards and criteria.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The earlier first-grade-entry rules are followed by an end-of-first-grade promotion rule. Its trigger expressly joins significant reading risk with failure to meet promotion standards."
+    },
+    {
+      "location": "Section 3-4; 20-2-283(b)(1)(B)-(D), p. 36",
+      "moves": "Renumbers the retained upper-grade restrictions and broadens local governing-body wording. The wording links grade-level assessment performance and promotional criteria; it is preserved rather than simplified into a different logical test.",
+      "claims": [
+        {
+          "text": "Except as provided in this Code section, no student shall be promoted to fourth grade if the student does not achieve grade level, as defined by the Office of Student Achievement under Code Section 20-14-31, on the third grade end-of-grade reading assessment developed under subsection (a) of Code Section 20-2-281 and meet state and local promotion standards and criteria.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-14-31",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "subsection (a) of Code Section 20-2-281",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The parallel restriction on promotion to sixth grade uses fifth grade end-of-grade mathematics and reading assessments, the Office’s grade-level definition, and state and local promotion standards and criteria.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-14-31",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "subsection (a) of Code Section 20-2-281",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The parallel restriction on promotion to ninth grade uses eighth grade end-of-grade mathematics and reading assessments, the Office’s grade-level definition, and state and local promotion standards and criteria.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-14-31",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "subsection (a) of Code Section 20-2-281",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The new first-grade restriction is inserted into a retained assessment-based framework for third, fifth, and eighth grades, whose process is set out next."
+    },
+    {
+      "location": "Section 3-4; 20-2-283(b)(2), p. 37",
+      "moves": "Amends cross-references to the renumbered upper-grade assessments and retains notification, retesting, and instructional opportunities.",
+      "claims": [
+        {
+          "text": "For below-grade-level performance on any assessment specified in (b)(1)(B), (C), or (D), the principal or designee shall notify the parent/guardian in writing by first-class mail of the performance, retest, assigned accelerated/differentiated/additional instruction, and possible next-year retention.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subparagraph (B), (C), or (D) of paragraph (1) of this subsection",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The student shall be retested with a grade-appropriate end-of-grade or alternative assessment as provided by the State Board and local board or school governing body.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The student shall be given an opportunity for accelerated, differentiated, or additional instruction in the applicable subject.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "For the upper grades, a below-level result leads to another assessment opportunity and instructional support before the next paragraph’s retention requirement."
+    },
+    {
+      "location": "Section 3-4; 20-2-283(b)(3)(A)-(C), pp. 37-38",
+      "moves": "Retains conditional upper-grade retention and appeal notice, updating the designee wording and assessment references.",
+      "claims": [
+        {
+          "text": "If the student remains below grade level on an assessment specified in (b)(1)(B), (C), or (D) and on the second additional opportunity under paragraph (2), the principal or designee shall retain the student for the next year except as otherwise provided.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subparagraph (B), (C), or (D) of paragraph (1) of this subsection",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "paragraph (2) of this subsection",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The principal or designee shall notify the parent/guardian and teacher by first-class mail of retention, the parent/guardian/teacher option to appeal, committee composition/functions, and unanimous-promotion requirement.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "If the parent, guardian, or teacher appeals, the principal/designee shall establish a committee of principal/designee, parent/guardian, and teacher of the assessment subject in which grade level was not met, and mail the parent/guardian written notice of time and place by first-class mail.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The upper-grade procedure allows a teacher as well as the family to initiate an appeal, unlike the parent/guardian appeals specified for first-grade entry above."
+    },
+    {
+      "location": "Section 3-4; 20-2-283(b)(3)(D)-(F), pp. 38-39",
+      "moves": "Prescribes upper-grade committee decision standards and instruction/monitoring; retains special education substitution and limits further appeals.",
+      "claims": [
+        {
+          "text": "The committee shall review overall academic achievement in light of the assessment and local standards and decide promotion or retention.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Promotion must be unanimous and determine that, with accelerated, differentiated, or additional instruction next year, the student is likely to reach the Office-defined grade level by year end.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-14-31",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Whether retained or promoted, the committee shall prescribe accelerated, differentiated, or additional instruction needed for grade level performance by next year’s end.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall prescribe appropriate additional assessments beyond those given to other grade peers and a continuous assessment plan for the subsequent year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For students receiving special education or related services, the Individualized Education Plan Committee shall be the placement committee.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Its decision may be appealed only as provided by the local board or other public school governing body.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "An appeal can override the default retention result only through a unanimous, forward-looking determination; instructional planning is required regardless of which placement is chosen."
+    },
+    {
+      "location": "Section 3-4; new 20-2-283(b)(4)(A), p. 39",
+      "moves": "Adds a separate first-grade risk process rather than applying the upper-grade end-of-grade retesting procedure to first grade.",
+      "claims": [
+        {
+          "text": "When a student is significantly at risk as specified in (b)(1)(A), the principal/designee shall notify the parent/guardian by first-class mail of the end-of-first-grade risk finding, updated tiered reading intervention plan, and possible next-year retention.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subparagraph (A) of paragraph (1) of this subsection",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The student shall be reassessed for significant risk of not attaining grade level reading proficiency by first grade’s end.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The student shall receive intensive reading intervention under Code Section 20-2-153.1.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "First grade has its own sequence built around reading risk, an updated intervention plan, reassessment, and intensive intervention rather than the upper-grade assessment subjects."
+    },
+    {
+      "location": "Section 3-4; 20-2-283(b)(4)(B)(i)-(iii), pp. 39-40",
+      "moves": "Adds continued-risk retention and family appeal for first grade. The notice and three-person committee structure resemble those at first-grade entry, but here the decision concerns retention within the first-grade program.",
+      "claims": [
+        {
+          "text": "If the student remains significantly at risk under (b)(1)(A) after the procedures in (4)(A), the principal/designee shall retain the student the next year except as otherwise provided in this paragraph.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subparagraph (A) of paragraph (1) of this subsection",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "subparagraph (A) of this paragraph",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The principal/designee shall notify the parent/guardian by first-class mail of retention, the parent/guardian appeal option, committee composition/functions, and unanimous-promotion requirement.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "On a parent/guardian appeal, the principal/designee shall establish a committee of principal/designee, parent/guardian, and student’s teacher and mail the parent/guardian first-class written notice of its time and place.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The first-grade route now reaches a retention decision with its own appeal; the triggering condition remains continued risk after intervention, not simply chronological age."
+    },
+    {
+      "location": "Section 3-4; 20-2-283(b)(4)(B)(iv)-(vii), pp. 40-41",
+      "moves": "Adds first-grade committee decision criteria, instruction/monitoring, special education substitution, appeal limits, and a two-year cap. The instructional and continuous-assessment duties parallel the previously recorded upper-grade committee duties, now applying to this separate first-grade procedure.",
+      "claims": [
+        {
+          "text": "The first-grade placement committee shall review overall academic achievement and progress toward grade level reading proficiency and determine promotion or retention.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Promotion must be unanimous and determine that, with intensive reading intervention next year under Code Section 20-2-153.1, the student is likely to perform at the Office-defined grade level by year end.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-153.1",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Code Section 20-14-31",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Whether retained or promoted under this first-grade procedure, the student shall receive committee-prescribed accelerated, differentiated, or additional instruction needed for grade level performance by the end of the next year, appropriate additional assessments, and a continuous assessment plan.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For first-grade students receiving special education or related services, the Individualized Education Plan Committee shall be the placement committee.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "First-grade committee decisions may be appealed only as provided by the local board or other public school governing body.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "No student shall remain in the first grade program for more than two years.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The first-grade consequence is qualified by a specific promotion finding, continued support whichever placement results, and a maximum of two years in first grade."
+    },
+    {
+      "location": "Section 3-4; 20-2-283(c)-(e), p. 41",
+      "moves": "Retains local retention authority and the no-property-interest provision, extends governing-body wording, and requires state implementation policies.",
+      "claims": [
+        {
+          "text": "This section does not preclude the principal/designee from retaining a student who performs satisfactorily on the specified third-, fifth-, or eighth-grade assessments as provided by the local board or other public school governing body.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "subparagraph (B), (C), or (D) of paragraph (1) of subsection (b) of this Code section",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "This Code section does not create a property interest in promotion.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The State Board of Education shall establish policies and procedures for implementation of this Code section.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The detailed assessment and appeal rules do not exhaust locally permitted retention decisions, and the bill expressly denies that the section creates a property interest in promotion."
+    },
+    {
+      "location": "Section 3-5; amended 20-2-284(a), p. 41",
+      "moves": "Changes the local policy adoption year to 2026 and extends the duty beyond local boards.",
+      "claims": [
+        {
+          "text": "By July 1, 2026, every local board and other public school governing body shall develop and adopt a placement/promotion policy under the State Board criteria in Code Section 20-2-283 and consistent with the Georgia Academic Placement and Promotion Policy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-283",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Georgia Academic Placement and Promotion Policy",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The local adoption deadline printed here precedes the January 1, 2027 state criteria deadline in Section 3-4. The text gives both dates without explaining their relationship."
+    },
+    {
+      "location": "Section 3-5; 20-2-284(b)-(c), pp. 41-42",
+      "moves": "Adds first-grade proficiency assessments to policy-use requirements and deletes the final optional-use phrase from the model-policy sentence.",
+      "claims": [
+        {
+          "text": "Except for end-of-grade assessments specified in Code Section 20-2-283, local placement/promotion policies shall state how end-of-grade assessments for grades one through eight under Code Section 20-2-281 and first-grade reading proficiency assessments are weighted or otherwise used by principals/designees to determine overall achievement and appropriate accelerated/differentiated/additional instruction, placement, promotion, or retention.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Code Section 20-2-283",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Code Section 20-2-281",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The State Board shall develop a model placement and promotion policy to assist every local board and other public school governing body.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The policy framework must explain assessment use beyond the specially prescribed tests. A state model is required, but the remaining text does not expressly require local adoption of that model."
+    },
+    {
+      "location": "Section 3-6; amended 20-2-285(1)-(4), p. 42",
+      "moves": "Retains historical grade-three/five/eight implementation dates and adds first grade to the timetable.",
+      "claims": [
+        {
+          "text": "The State Board shall provide an implementation timetable for this Code section and the Georgia Academic Placement and Promotion Policy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law or named source; this is an incorporated definition, standard, or procedural reference rather than an independent empirical finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Georgia Academic Placement and Promotion Policy",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The timetable shall include third grade beginning in 2003-2004.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall include fifth grade beginning in 2004-2005.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall include eighth grade beginning in 2005-2006.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It shall include first grade beginning in 2027-2028.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The first-grade promotion provisions join an older implementation framework on a new school-year schedule, matching the earlier phased first-grade-entry intervention provisions."
+    },
+    {
+      "location": "Part IV, Sections 4-1 and 4-2, p. 42",
+      "moves": "Sets the general effectiveness condition and repeals conflicting law.",
+      "claims": [
+        {
+          "text": "This Act shall become effective upon its approval by the Governor or upon its becoming law without such approval.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "All laws and parts of laws in conflict with this Act are repealed.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The document ends with a contingent general effective date, distinct from its many implementation deadlines, and a general conflicts repeal. No approval date or signature is supplied in this passed-bill text."
+    }
+  ]
+}

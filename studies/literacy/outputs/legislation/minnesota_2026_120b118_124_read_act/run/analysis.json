@@ -1,0 +1,2378 @@
+{
+  "reading_plan": "Source title: Minnesota Statutes 2026, Sections 120B.118 to 120B.124: Reading to Ensure Academic Development Act (Read Act). Source type: government_policy. This is an official 2026 statutory compilation, not a marked bill: 17 supplied PDF pages (printed pages 18-34) contain complete sections 120B.118 through 120B.124, with a partial preceding 120B.117 and opening 120B.125. The Act moves from title and policy through definitions, district goals/screening/intervention/planning, early-childhood programs and dyslexia expertise, to implementation and partnership/review machinery. It is densely enumerated and rich in cross-references and phased dates. I will proceed in printed order at subdivision or paragraph pace, splitting the longest lists, retaining modal strength and exceptions, noting repeated duties without duplicating them, and distinguishing statutory cross-references from empirical support. The clean page images show no struck-through or underlined amendments; history lines record provenance rather than operative provisions. No external law, research, or present-day compliance status is supplied or inferred.",
+  "reading_path": [
+    {
+      "location": "Opening fragment of 120B.117, PDF page 1 (printed page 18)",
+      "moves": "Continues a neighboring report provision before the Read Act begins. The fragment opens mid-sentence; its missing scope and subdivision number cannot be recovered here. The History line is legislative provenance, not evidence for the report.",
+      "claims": [
+        {
+          "text": "The commissioner must consult with the Indian Affairs Council and other ethnic councils along with other community partners, including students of color and American Indian students, in developing the report.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The commissioner must submit the report to the chairs and ranking minority members of the legislative committees with jurisdiction over education and higher education policy and finance by November 3, 2025, for the initial report, and by November 3 each even-numbered year thereafter.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The report must be available to the public on the commissioner's website.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The PDF begins outside the named source range. The visible consultation, submission, and website duties can be recorded, but the incomplete opening reference to an advisory council is not treated as a complete enacted requirement."
+    },
+    {
+      "location": "120B.118, subdivision 1",
+      "moves": "Names the statutory range and permits two short titles.",
+      "claims": [
+        {
+          "text": "Sections 120B.118 to 120B.124 may be cited as the \"Reading to Ensure Academic Development Act\" or the \"Read Act.\"",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "After the incomplete neighboring opening, the reading enters the Act itself through its authorized names and statutory range."
+    },
+    {
+      "location": "120B.118, subdivision 2",
+      "moves": "States legislative intent and frames literacy policy around the science of reading.",
+      "claims": [
+        {
+          "text": "It is the intent of the legislature that public schools promote foundational literacy and grade-level reading proficiency through the use of curricula, textbooks, instructional materials, instructional practices, interventions, and teacher development and training aligned with the science of reading.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The title now has a policy direction: foundational literacy and grade-level proficiency are linked to aligned materials, instruction, interventions, and educator development."
+    },
+    {
+      "location": "120B.119, subdivision 1",
+      "moves": "Fixes the scope of the definitions.",
+      "claims": [
+        {
+          "text": "For purposes of sections 120B.118 to 120B.124, the following terms have the meanings given.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references sections 120B.118 to 120B.124. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "sections 120B.118 to 120B.124",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The policy vocabulary that follows governs the specified Read Act sections."
+    },
+    {
+      "location": "120B.119, subdivision 2",
+      "moves": "Defines the institutional abbreviation CAREI.",
+      "claims": [
+        {
+          "text": "\"CAREI\" means the Center for Applied Research and Educational Improvement at the University of Minnesota.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "A named University of Minnesota center enters the statutory vocabulary before implementation duties are assigned."
+    },
+    {
+      "location": "120B.119, subdivision 2a",
+      "moves": "Defines a certified trained facilitator through cumulative employment, training, certification, fidelity, standing, and coaching conditions; permits a qualified literacy lead to serve.",
+      "claims": [
+        {
+          "text": "\"Certified trained facilitator\" means a person employed by a district or Minnesota service cooperative who has completed professional development approved by the Department of Education in structured literacy, completed the vendor's certification prerequisites and facilitator training requirements, completed the vendor's annual recertification requirements, remains in good standing with the sponsoring agency and vendor, uses the vendor's training materials with fidelity, and participates in mentoring or coaching provided by CAREI and the Department of Education on facilitating literacy training.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A literacy lead who meets the requirements under this subdivision may be a certified trained facilitator.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Training capacity is tied to both department approval and continuing vendor requirements, rather than completion of a single course."
+    },
+    {
+      "location": "120B.119, subdivision 3",
+      "moves": "Defines district inclusively and cross-references cooperative-unit law.",
+      "claims": [
+        {
+          "text": "\"District\" means a school district, charter school, or cooperative unit as defined in section 123A.24, subdivision 2.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 123A.24, subdivision 2. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 123A.24, subdivision 2",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The duties later assigned to districts reach school districts, charter schools, and qualifying cooperative units."
+    },
+    {
+      "location": "120B.119, subdivision 4",
+      "moves": "Defines evidence-based through validity and demonstrated reading success, specifies instructional content, and excludes three-cueing.",
+      "claims": [
+        {
+          "text": "\"Evidence-based\" means the instruction or item described is based on reliable, trustworthy, and valid evidence and has demonstrated a record of success in increasing students' reading competency in the areas of phonological and phonemic awareness, phonics, vocabulary development, reading fluency, and reading comprehension.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Evidence-based literacy instruction is explicit, systematic, and includes phonological and phonemic awareness, phonics and decoding, spelling, fluency, vocabulary, oral language, and comprehension that can be differentiated to meet the needs of individual students.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Evidence-based instruction does not include the three-cueing system, as defined in subdivision 16.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The policy preference becomes an operative standard with an express methodological exclusion; no outside study is identified to substantiate it."
+    },
+    {
+      "location": "120B.119, subdivision 5",
+      "moves": "Defines fluency.",
+      "claims": [
+        {
+          "text": "\"Fluency\" means the ability of students to read text accurately, automatically, and with proper expression.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Accuracy, automaticity, and expression are all part of the reading standard."
+    },
+    {
+      "location": "120B.119, subdivision 6",
+      "moves": "Defines foundational skills with an inclusive list and embeds grade-specific mastery and continuing-instruction requirements.",
+      "claims": [
+        {
+          "text": "\"Foundational reading skills\" includes phonological and phonemic awareness, phonics and decoding, and fluency.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Foundational reading skills appropriate to each grade level must be mastered in kindergarten, grade 1, grade 2, and grade 3.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Struggling readers in grades 4 and above who do not demonstrate mastery of grade-level foundational reading skills must continue to receive explicit, systematic instruction to reach mastery.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The definitions already impose duties: early mastery is expected, and struggling readers in later grades must continue to receive instruction."
+    },
+    {
+      "location": "120B.119, subdivision 7",
+      "moves": "Defines literacy specialist through licensure and approved structured-literacy development.",
+      "claims": [
+        {
+          "text": "\"Literacy specialist\" means a person licensed by the Professional Educator Licensing and Standards Board who has completed professional development approved by the Department of Education in structured literacy.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The facilitator definition is joined by a separately credentialed professional role."
+    },
+    {
+      "location": "120B.119, subdivision 8",
+      "moves": "Defines literacy lead, assigns implementation and staff-support duties, and permits several employment and service arrangements.",
+      "claims": [
+        {
+          "text": "\"Literacy lead\" means a literacy specialist with expertise in working with educators as adult learners.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A district literacy lead must support the district's implementation of the Read Act.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A district literacy lead must provide support to school-based coaches.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A district literacy lead must support implementation of structured literacy, interventions, curriculum delivery, and teacher training.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A district literacy lead must assist with development of personal learning plans.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A district literacy lead must train paraprofessionals and other support staff to support classroom literacy instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A literacy lead may be employed by one district, jointly by two or more districts, or may provide services to districts through a partnership with the regional service cooperatives or another district.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Adult-learning expertise is added to specialist credentials so the role can carry implementation through coaching and training."
+    },
+    {
+      "location": "120B.119, subdivision 9",
+      "moves": "Defines MTSS as a continuous-improvement framework, describes its inclusive premise and three tiers, and connects monitoring to decisions.",
+      "claims": [
+        {
+          "text": "\"Multitiered system of support\" or \"MTSS\" means a systemic, continuous improvement framework for ensuring positive social, emotional, behavioral, developmental, and academic outcomes for every student.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The MTSS framework provides access to layered tiers of culturally and linguistically responsive, evidence-based practices and relies on the understanding and belief that every student can learn and thrive.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Through a MTSS at the core (Tier 1), supplemental (Tier 2), and intensive (Tier 3) levels, educators provide high quality, evidence-based instruction and intervention that is matched to a student's needs; progress is monitored to inform instruction and set goals and data is used for educational decision making.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "MTSS is broader than reading remediation here; its responsiveness and belief that every student can thrive explain the framework later encouraged."
+    },
+    {
+      "location": "120B.119, subdivision 10",
+      "moves": "Defines oral language, names its components, and expressly includes sign language with expressive and receptive skills.",
+      "claims": [
+        {
+          "text": "\"Oral language,\" also called \"expressive language\" and \"receptive language,\" includes speaking and listening, and consists of five components: phonology, morphology, syntax, semantics, and pragmatics.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Oral language also includes sign language, in which speaking and listening skills are defined as expressive and receptive skills, and consists of phonology, including sign language phonological awareness, morphology, syntax, semantics, and pragmatics.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The literacy vocabulary extends beyond spoken sound, a distinction that matters when later provisions address alternatives to sound-based approaches."
+    },
+    {
+      "location": "120B.119, subdivision 10a",
+      "moves": "Defines parent.",
+      "claims": [
+        {
+          "text": "\"Parent\" means a student's parent or legal guardian.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Later parent rights and notification duties extend to legal guardians."
+    },
+    {
+      "location": "120B.119, subdivision 11",
+      "moves": "Defines phonemic awareness.",
+      "claims": [
+        {
+          "text": "\"Phonemic awareness\" means the ability to notice, think about, and manipulate individual sounds in spoken syllables and words.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The text distinguishes manipulation of individual spoken sounds from the letter-sound instruction defined next."
+    },
+    {
+      "location": "120B.119, subdivision 12",
+      "moves": "Defines phonics instruction and specifies its explicit, systematic, direct character.",
+      "claims": [
+        {
+          "text": "\"Phonics instruction\" means the explicit, systematic, and direct instruction of the relationships between letters and the sounds they represent and the application of this knowledge in reading and spelling.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The vocabulary now links letters and sounds to both reading and spelling."
+    },
+    {
+      "location": "120B.119, subdivision 13",
+      "moves": "Defines progress monitoring by its use of data, ongoing improvement measures, and reliable, valid state-approved screening.",
+      "claims": [
+        {
+          "text": "\"Progress monitoring\" means using data collected to inform whether interventions are working.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Progress monitoring involves ongoing monitoring of progress that quantifies rates of improvement and informs instructional practice and the development of individualized programs using state-approved screening that is reliable and valid for the intended purpose.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Monitoring is an instructional feedback process, rather than merely a record of test results."
+    },
+    {
+      "location": "120B.119, subdivision 14",
+      "moves": "Defines reading comprehension through word recognition and language comprehension, and describes explicit strategy instruction.",
+      "claims": [
+        {
+          "text": "\"Reading comprehension\" means a function of word recognition skills and language comprehension skills.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "It is an active process that requires intentional thinking during which meaning is constructed through interactions between the text and reader.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Comprehension skills are taught explicitly by demonstrating, explaining, modeling, and implementing specific cognitive strategies to help beginning readers derive meaning through intentional, problem-solving thinking processes.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The definitions connect foundational skills to meaning-making and intentional thinking."
+    },
+    {
+      "location": "120B.119, subdivision 15",
+      "moves": "Defines structured literacy, specifies instructional characteristics and components, and states its consistency with the science of reading.",
+      "claims": [
+        {
+          "text": "\"Structured literacy\" means an approach to reading instruction in which teachers carefully structure important literacy skills, concepts, and the sequence of instruction to facilitate children's literacy learning and progress.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "This approach is consistent with the principles identified in the science of reading and is designed to ensure all students develop strong foundational literacy skills.",
+              "form": "verbatim",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Structured literacy is characterized by the provision of systematic, explicit, sequential, and diagnostic instruction in phonemic awareness, phonics, fluency, vocabulary and oral language development, and reading comprehension.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "This approach is consistent with the principles identified in the science of reading and is designed to ensure all students develop strong foundational literacy skills.",
+              "form": "verbatim",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "This approach is consistent with the principles identified in the science of reading and is designed to ensure all students develop strong foundational literacy skills.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "This supplies the approach to which earlier personnel qualifications refer; the stated science-of-reading basis is general and names no study."
+    },
+    {
+      "location": "120B.119, subdivision 16",
+      "moves": "Defines the three-cueing system and its MSV alias.",
+      "claims": [
+        {
+          "text": "\"Three-cueing system,\" also known as \"meaning structure visual (MSV),\" means a method that teaches students to use meaning, structure and syntax, and visual cues when attempting to read an unknown word.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The earlier exclusion of three-cueing now has a specific statutory referent."
+    },
+    {
+      "location": "120B.119, subdivision 17",
+      "moves": "Defines vocabulary development and asserts its communication and achievement benefits. These are the statute's own assertions, with no study or report named.",
+      "claims": [
+        {
+          "text": "\"Vocabulary development\" means the process of acquiring new words.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A robust vocabulary improves all areas of communication, including listening, speaking, reading, and writing.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Vocabulary growth is directly related to school achievement and is a strong predictor for reading success.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The definitions close with affirmative claims about vocabulary, stated without an identified research citation."
+    },
+    {
+      "location": "120B.12, subdivision 1",
+      "moves": "States the universal literacy goal, requires instruction by 2026-2027 and approved staff training, and strongly encourages MTSS while describing what it should include.",
+      "claims": [
+        {
+          "text": "The legislature seeks to have every child reading at or above grade level every year, beginning in kindergarten, and to support multilingual learners and students receiving special education services in achieving their individualized reading goals in order to meet grade-level benchmarks.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "By the 2026-2027 school year, districts must provide evidence-based reading instruction through a focus on student mastery of the foundational reading skills of phonemic awareness, phonics, and fluency, as well as the development of oral language, vocabulary, and reading comprehension skills.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Students must receive evidence-based instruction that is proven to effectively teach children to read, consistent with sections 120B.118 to 120B.124.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references sections 120B.118 to 120B.124. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "sections 120B.118 to 120B.124",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "To meet this goal, each district must provide teachers and instructional support staff with responsibility for teaching reading with training on evidence-based reading instruction that is approved by the Department of Education by the deadlines provided in section 120B.123, subdivision 5.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The legislature seeks to have every child reading at or above grade level every year, beginning in kindergarten, and to support multilingual learners and students receiving special education services in achieving their individualized reading goals in order to meet grade-level benchmarks.",
+              "form": "verbatim",
+              "citations": []
+            },
+            {
+              "text": "The provision expressly cross-references section 120B.123, subdivision 5. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.123, subdivision 5",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Districts are strongly encouraged to adopt a MTSS framework.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The framework should include a process for engaging families and communities, monitoring student progress, evaluating program fidelity, and analyzing student outcomes and needs in order to design and implement ongoing evidenced-based, culturally responsive instruction and interventions.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The definitions become a program of district action; the universal goal expressly accommodates individualized goals for multilingual learners and students receiving special education services."
+    },
+    {
+      "location": "120B.12, subdivision 2, paragraph (a)",
+      "moves": "Requires three annual K-3 screenings, specifies covered learners and skills, permits integrated dyslexia screening, sets validity criteria, and requires June 15 performance reporting.",
+      "claims": [
+        {
+          "text": "Each school district must screen every student enrolled in kindergarten, grade 1, grade 2, and grade 3 using a screening tool approved by the Department of Education three times each school year: (1) within the first six weeks of the school year; (2) by February 15 each year; and (3) within the last six weeks of the school year.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Students enrolled in kindergarten, grade 1, grade 2, and grade 3, including multilingual learners, students receiving special education services, and students enrolled in dual language immersion programs, must be universally screened for mastery of foundational reading skills, including phonemic awareness, phonics, decoding, fluency, oral language, and for characteristics of dyslexia as measured by a screening tool approved by the Department of Education.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The screening for characteristics of dyslexia may be integrated with universal screening for mastery of foundational skills and expressive and receptive language mastery.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The screening tool used must be a valid and reliable universal screener that is highly correlated with foundational reading skills.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A district must submit data on student performance in kindergarten, grade 1, grade 2, and grade 3 on foundational reading skills, including phonemic awareness, phonics, decoding, fluency, and oral language to the Department of Education in the annual local literacy plan submission due on June 15.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The goal receives an identification mechanism that reaches every K-3 student, including immersion, multilingual, and special education populations."
+    },
+    {
+      "location": "120B.12, subdivision 2, paragraph (b)",
+      "moves": "Sets five conditional screening rules for dual language immersion programs, including district approval of partner-language tools and a fallback when none exists.",
+      "claims": [
+        {
+          "text": "For students in dual language immersion programs, if students are screened in the partner language, they must be screened at the same interval as the screenings in English under paragraph (a);",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For students in dual language immersion programs, if the program provides instruction in foundational reading skills in English, the students receiving that instruction must be screened in English;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For students in dual language immersion programs, if the program provides instruction in foundational reading skills in the partner language, the students receiving that instruction must be screened in the partner language;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For students in dual language immersion programs, if no screener is available in the partner language, the districts must identify how students' reading proficiency is assessed and how the districts determine and provide targeted reading instruction in the partner language and supports to students identified as needing additional support in developing mastery of foundational reading skills; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For students in dual language immersion programs, the partner language screening tool must be approved by the district for kindergarten through grade 3 students.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Universal screening is qualified by the language of instruction and tool availability, rather than simply translated into an English-only requirement."
+    },
+    {
+      "location": "120B.12, subdivision 2, paragraph (c)",
+      "moves": "Requires screening and continued support for below-grade-level readers in grades 4 and above; permits a limited parent-and-teacher screening opt-out while preserving interventions and monitoring.",
+      "claims": [
+        {
+          "text": "Students in grades 4 and above, including multilingual learners and students receiving special education services, who are not reading at grade level must be screened for reading difficulties, including characteristics of dyslexia, using a screening tool approved by the Department of Education, and must continue to receive evidence-based instruction, interventions, and progress monitoring until the students achieve grade-level proficiency.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A parent, in consultation with a teacher, may opt a student out of the literacy screener if the parent and teacher decide that continuing to screen would not be beneficial to the student.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "In such limited cases, the student must continue to receive progress monitoring and literacy interventions.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Screening extends beyond the universal early-grade population, but opting out of a screener does not remove continuing literacy support."
+    },
+    {
+      "location": "120B.12, subdivision 2, paragraphs (d)-(e)",
+      "moves": "Requires literacy-needs evaluation, multilingual-learner instruction and monitoring, responsive approved screeners, and annual June 15 reporting; prescribes vendor guidelines for English learners.",
+      "claims": [
+        {
+          "text": "Reading screeners in English, and in the predominant languages of district students where practicable, must identify and evaluate students' areas of academic need related to literacy.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The district also must monitor the progress and provide reading instruction appropriate to the specific needs of multilingual learners.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The district must use an approved, developmentally appropriate, and culturally responsive screener and annually report summary screener results to the commissioner by June 15 in the form and manner determined by the commissioner.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "An English language learner must be screened for characteristics of dyslexia according to the vendor's assessment guidelines.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The identification system adds language and cultural conditions as well as a common reporting schedule."
+    },
+    {
+      "location": "120B.12, subdivision 2, paragraph (f)",
+      "moves": "Requires a dyslexia-screening and intervention summary in the local plan and four specified report components; repeats the strong encouragement to use MTSS without recording it again.",
+      "claims": [
+        {
+          "text": "The district also must include in its local literacy plan under subdivision 4a, a summary of the district's efforts to screen, identify, and provide interventions to students who demonstrate characteristics of dyslexia as measured by a screening tool approved by the Department of Education.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "For students screened or identified under paragraph (a), the district report must include a summary of the district's efforts to screen for characteristics of reading difficulties, including dyslexia;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For students screened or identified under paragraph (a), the district report must include the number of students universally screened for that reporting year;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For students screened or identified under paragraph (a), the district report must include the number of students demonstrating characteristics of dyslexia for that year; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "For students screened or identified under paragraph (a), the district report must include an explanation of how students identified under this subdivision are provided with alternate instruction and interventions under section 125A.56, subdivision 1.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 125A.56, subdivision 1. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 125A.56, subdivision 1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The screening duties now generate an account of both the numbers identified and the instructional response."
+    },
+    {
+      "location": "120B.12, subdivision 2a, paragraph (a)",
+      "moves": "Repeats the K-3 schedule and adds a minimum annual screening frequency for older below-grade-level readers; requires language-access-compliant parent information after each screener.",
+      "claims": [
+        {
+          "text": "A district must administer an approved reading screener to students in grades 4 and above who are not reading at grade level at least once per year until the student reaches grade-level proficiency.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "After each screener, schools following the language access plan must inform parents of students below grade level about the student's reading proficiency as measured by a screener approved by the Department of Education;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "After each screener, schools following the language access plan must inform parents of students below grade level about reading-related services currently being provided to the student and the student's progress; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "After each screener, schools following the language access plan must inform parents of students below grade level about strategies for parents to use at home in helping their student succeed in becoming grade-level proficient in reading in English and in their native language.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Identification now carries an information duty to families; the repeated K-3 schedule is not a second provision."
+    },
+    {
+      "location": "120B.12, subdivision 2a, paragraphs (b)-(c)",
+      "moves": "Requires language-sensitive immersion proficiency measurement and timely family notification, permits national-research information, and prohibits denial of a special education evaluation.",
+      "claims": [
+        {
+          "text": "For students enrolled in dual language immersion programs, the district must measure the student's reading proficiency in English or in the program's partner language, if available, according to subdivision 2.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Following the district's language access plan under section 123B.32, the district must notify families with timely information about students' reading proficiency, including how the student's reading proficiency is assessed, any reading-related services or supports provided to the student and the student's progress, and strategies for families to use at home in helping students succeed in becoming grade-level proficient in reading in English or the partner language.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 123B.32. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 123B.32",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The dual language immersion program may provide information about national research on reading proficiency for students in dual language immersion programs in the parent notification.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A district may not use this section to deny a student's right to a special education evaluation.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The parent provisions preserve both immersion-specific communication and the independent right to evaluation."
+    },
+    {
+      "location": "120B.12, subdivision 3, paragraph (a)",
+      "moves": "Requires aligned targeted interventions and their continuation to grade-level reading; encourages MTSS, requires family-engagement efforts and possible collaboration, and permits an open list of intervention methods.",
+      "claims": [
+        {
+          "text": "For each student identified under subdivision 2, the district shall provide aligned and targeted reading intervention to accelerate student growth and reach the goal of reading at or above grade level by the end of the current grade and school year.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A district is encouraged to provide reading intervention through a MTSS framework.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "If a student does not read at or above grade level by the end of the current school year, the district must continue to provide aligned and targeted reading intervention as defined by the MTSS framework until the student reads at grade level.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "District intervention methods shall encourage family engagement and, where possible, collaboration with appropriate school and community programs that specialize in evidence-based instructional practices and measure mastery of foundational reading skills, including phonemic awareness, phonics, decoding, fluency, and oral language.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Intervention may include but is not limited to requiring student attendance in summer school, intensified reading instruction that may require that the student be removed from the regular classroom for part of the school day, extended-day programs, or programs that strengthen students' cultural connections.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Screening leads to a continuing district obligation; summer school and removal from the regular classroom are possible methods within an explicitly nonexclusive list."
+    },
+    {
+      "location": "120B.12, subdivision 3, paragraph (b)",
+      "moves": "Strongly encourages personal learning plans, mandates their collaborative format, parental consultation, content and updates, limits retention, and excludes students under an IEP from this paragraph.",
+      "claims": [
+        {
+          "text": "A district or charter school is strongly encouraged to provide a personal learning plan for a student who is unable to demonstrate grade-level proficiency, as measured by the statewide reading assessment in grade 3 or a screener identified by the Department of Education under section 120B.123.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.123. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.123",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The district or charter school must determine the format of the personal learning plan in collaboration with the student's educators and other appropriate professionals.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The school must develop the learning plan in consultation with the student's parent or guardian.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The personal learning plan must include targeted instruction that is evidence-based and ongoing progress monitoring, and address knowledge gaps and skill deficiencies through strategies such as specific exercises and practices during and outside of the regular school day, group interventions, periodic assessments or screeners, and reasonable timelines.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The personal learning plan may include grade retention, if it is in the student's best interest; a student may not be retained solely due to delays in literacy or not demonstrating grade-level proficiency.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A school must maintain and regularly update and modify the personal learning plan until the student reads at grade level.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "This paragraph does not apply to a student under an individualized education program.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "An encouraged planning mechanism carries specified conditions; literacy delay alone cannot justify retention."
+    },
+    {
+      "location": "120B.12, subdivision 3, paragraphs (c)-(d)",
+      "moves": "Requires only evidence-based interventions from 2026-2027, strongly encourages approved materials, and requires trained-teacher oversight and qualifying training for unlicensed intervention providers.",
+      "claims": [
+        {
+          "text": "Starting in the 2026-2027 school year, a district must use only evidence-based literacy interventions.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Districts are strongly encouraged to use intervention materials approved by the Department of Education under the Read Act.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Starting in the 2026-2027 school year, to provide foundational reading intervention, a trained teacher who has completed an approved professional development training must oversee and monitor the instruction provided by any paraprofessional or other unlicensed person, including a volunteer.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A paraprofessional or other unlicensed person, including a volunteer, must complete evidence-based training developed under the Read Act and offered at no cost through the regional literacy networks under section 120B.124, subdivision 4, or a training that the department has determined meets or exceeds the requirements of section 120B.124, subdivision 4.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.124, subdivision 4. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.124, subdivision 4",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The intervention requirement is narrowed by evidence standards and supported by supervision and training; approval of particular materials remains encouraged."
+    },
+    {
+      "location": "120B.12, subdivision 4, paragraph (a)",
+      "moves": "Requires structured-literacy staff training and specifies six content areas including culturally and linguistically responsive pedagogy.",
+      "claims": [
+        {
+          "text": "A district must provide training on evidence-based structured literacy instruction to teachers and instructional staff in accordance with subdivision 1, paragraphs (b) and (c).",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The training must include teaching in the areas of phonemic awareness, phonics, vocabulary development, reading fluency, reading comprehension, and culturally and linguistically responsive pedagogy.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The instructional duties now require district support for the people delivering them."
+    },
+    {
+      "location": "120B.12, subdivision 4, paragraph (b)",
+      "moves": "Requires use of screening data to identify staff-development needs across five specified instructional capacities.",
+      "claims": [
+        {
+          "text": "Each district shall use subdivision 2 data to identify staff-development needs so that elementary teachers are able to implement explicit, systematic, evidence-based instruction in the five reading areas of phonemic awareness, phonics, fluency, vocabulary, and comprehension with emphasis on mastery of foundational reading skills as defined in section 120B.119 and other literacy-related areas including writing until the student achieves grade-level reading and writing proficiency;",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.119. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.119",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Each district shall use subdivision 2 data to identify staff-development needs so that elementary teachers receive training to provide students with evidence-based reading and oral language instruction that meets students' developmental, linguistic, and literacy needs using the intervention methods or programs selected by the district for the identified students;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each district shall use subdivision 2 data to identify staff-development needs so that licensed teachers employed by the district have opportunities to improve reading and writing instruction through approved professional development identified in the local literacy plan;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each district shall use subdivision 2 data to identify staff-development needs so that licensed teachers recognize students' diverse needs in cross-cultural settings and are able to serve the oral language and linguistic needs of students who are multilingual learners by maximizing strengths in their native languages in order to cultivate students' English language development, including academic language development, and build academic literacy; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each district shall use subdivision 2 data to identify staff-development needs so that licensed teachers are trained in culturally responsive pedagogy that enables students to master content, develop skills to access content, and build relationships.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Staff development must respond to observed student needs and includes writing, native-language strengths, academic English, and culturally responsive pedagogy."
+    },
+    {
+      "location": "120B.12, subdivision 4, paragraph (c)",
+      "moves": "Requires department-approved training for classroom teachers in district early childhood programs, including the named program types, with specified early-literacy content.",
+      "claims": [
+        {
+          "text": "A district that offers early childhood programs, including voluntary prekindergarten for eligible four-year-old children, early childhood special education, and school readiness programs, must provide classroom teachers in early childhood programs training approved by the Department of Education to provide children in early childhood programs with explicit, systematic instruction in phonological and phonemic awareness; oral language, including listening comprehension; vocabulary; and letter-sound correspondence.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The training system reaches preschool instruction as well as school-age reading."
+    },
+    {
+      "location": "120B.12, subdivision 4a, paragraph (a), opening and clauses (1)-(8)",
+      "moves": "Requires an annually updated local literacy plan and enumerates fourteen required content categories, with nested student and immersion-program details and phased dates.",
+      "claims": [
+        {
+          "text": "Consistent with this section, a school district must adopt a local literacy plan to have every child reading at or above grade level every year beginning in kindergarten and to support multilingual learners and students receiving special education services in achieving their individualized reading goals.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A district must update and submit the plan to the commissioner by June 15 each year.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include a process to assess students' foundational reading skills, oral language, and level of reading proficiency and the approved screeners used, by school site and grade level, under section 120B.123;",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.123. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.123",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The district local literacy plan must include a process to notify and involve parents;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include a description of how schools in the district will determine the targeted reading instruction that is evidence-based and includes an intervention strategy for a student and the process for intensifying or modifying the reading strategy in order to obtain measurable reading progress;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include evidence-based intervention methods for students who are not reading at or above grade level and progress monitoring to provide information on the effectiveness of the intervention;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include identification of staff development needs, including a plan to meet those needs;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include the curricula used by school site and grade level and, if applicable, the district plan and timeline for adopting evidence-based curricula and materials starting in the 2025-2026 school year;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include a statement of whether the district has adopted a MTSS framework;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include student data using the measures of foundational literacy skills and mastery identified by the Department of Education for the following students: (i) students in kindergarten through grade 3; (ii) students who demonstrate characteristics of dyslexia; and (iii) students in grades 4 to 12 who are identified as not reading at grade level;",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The earlier duties are collected into a district planning and disclosure instrument that also accounts for funds and library support."
+    },
+    {
+      "location": "120B.12, subdivision 4a, paragraph (a), clauses (9)-(14)",
+      "moves": "Continues required plan contents with training counts, Read Act spending, literacy-aid spending after fiscal year 2026 as soon as practicable, immersion-program details beginning December 31, 2025, and library use beginning 2026-2027.",
+      "claims": [
+        {
+          "text": "The district local literacy plan must include the number of teachers and other staff who have completed training approved by the department;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include the number of teachers and other staff proposed for training in structured literacy;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include how the district used funding provided under the Read Act to implement the requirements of the Read Act;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include beginning as soon as practicable after the end of fiscal year 2026, how the district used literacy aid funding received under section 124D.98;",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 124D.98. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 124D.98",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The district local literacy plan must include beginning on December 31, 2025, for a district with a dual language immersion program: (i) the program's partner language; (ii) grade levels included in the program; (iii) the language used to screen students' foundational reading skills; (iv) the percentage of grade 3 students taking the Minnesota Comprehensive Assessments; and (v) the number of students in the program in grades 4 to 12 who are identified as not reading at grade level; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The district local literacy plan must include beginning with the 2026-2027 school year, a description of how schools in the district will use the school library media center to complement students' foundational reading skills.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The plan extends from instructional design and student measures to implementation capacity, use of funds, language-program transparency, and library support."
+    },
+    {
+      "location": "120B.12, subdivision 4a, paragraph (b)",
+      "moves": "Repeats the June 15 submission deadline, adds public website posting, and requires the commissioner template.",
+      "claims": [
+        {
+          "text": "Annually by June 15, the district must post its literacy plan on the official school district website and submit it to the commissioner of education using the template developed by the commissioner of education.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The plan becomes publicly accessible as well as administratively reportable."
+    },
+    {
+      "location": "120B.12, subdivision 4a, paragraph (c)",
+      "moves": "Requires a streamlined template, evidence-based instruction and training, common student categories, and a focus on foundational skills with reduced teacher paperwork.",
+      "claims": [
+        {
+          "text": "Districts must use a streamlined template developed by the commissioner of education for local literacy plans that meets the requirements of this subdivision and requires all reading instruction and teacher training in reading instruction to be evidence-based.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The template must require a district to report information using the student categories required in the commissioner's report under paragraph (d).",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The template must focus district resources on improving students' foundational reading skills while reducing paperwork requirements for teachers.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The reporting mechanism is constrained by instructional priorities and an explicit administrative-burden objective."
+    },
+    {
+      "location": "120B.12, subdivision 4a, paragraph (d)",
+      "moves": "Requires a December 1, 2025 legislative summary with seven categories, including training status, site-and-grade materials, disaggregated performance, and immersion information.",
+      "claims": [
+        {
+          "text": "By December 1, 2025, the commissioner of education must submit a report to the legislative committees with jurisdiction over prekindergarten through grade 12 education summarizing the local literacy plans submitted to the commissioner.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The commissioner's December 1, 2025 report must include the number of teachers and other staff, by grade level, who have completed training approved by the Department of Education;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The commissioner's December 1, 2025 report must include the number of teachers and other staff, by grade level, required to complete the training under section 120B.123, subdivision 5, who have not completed the training;",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.123, subdivision 5. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.123, subdivision 5",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The commissioner's December 1, 2025 report must include the number of teachers exempt under section 120B.123, subdivision 5, from completing training approved by the Department of Education;",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.123, subdivision 5. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.123, subdivision 5",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The commissioner's December 1, 2025 report must include the statewide total number of teachers or other staff required to complete the training under section 120B.123, subdivision 5, that have received other training or education that meets the requirements of the training approved by the Department of Education;",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.123, subdivision 5. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.123, subdivision 5",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The commissioner's December 1, 2025 report must include by school site and grade, the approved screeners and the reading curriculum used;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The commissioner's December 1, 2025 report must include by school site and grade, using the measurements of foundational literacy skills and mastery identified by the department, both aggregated data and disaggregated data on student performance on the approved screeners using the student categories under section 120B.35, subdivision 3, paragraph (a), clause (2); and",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.35, subdivision 3, paragraph (a), clause (2). These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.35, subdivision 3, paragraph (a), clause (2)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The commissioner's December 1, 2025 report must include information about dual language immersion programs.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Local reporting is converted into statewide legislative oversight rather than ending with district submission."
+    },
+    {
+      "location": "120B.12, subdivision 4a, paragraph (e)",
+      "moves": "Requires updated legislative reports on December 1, 2026 and December 1, 2027, adding immersion advisory committee updates and recommendations.",
+      "claims": [
+        {
+          "text": "By December 1, 2026, and December 1, 2027, the commissioner of education must submit updated reports containing the information required under paragraph (d) and updates and recommendations from the dual language immersion advisory committee established under subdivision 6, to the legislative committees with jurisdiction over prekindergarten through grade 12 education.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The initial summary is followed by two expressly dated updates, not an unspecified permanent annual report."
+    },
+    {
+      "location": "120B.12, subdivision 5",
+      "moves": "Requires the commissioner to recommend multiple tools and identify dual-purpose screeners; repeats district use of approved screening through an implementation cross-reference.",
+      "claims": [
+        {
+          "text": "The commissioner must recommend to districts multiple screening tools to assist districts and teachers with identifying students under subdivision 2 and to assess students' reading proficiency.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The commissioner must identify screeners that may be used for both purposes.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A district must administer an approved screener according to section 120B.123, subdivision 1.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.123, subdivision 1. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.123, subdivision 1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The district assessment duty is paired with state responsibility to supply screening choices."
+    },
+    {
+      "location": "120B.12, subdivision 6, paragraphs (a)-(d)",
+      "moves": "Requires a dual language immersion advisory committee by January 1, 2026; sets open-meeting, representativeness, and nonexclusive membership requirements.",
+      "claims": [
+        {
+          "text": "By January 1, 2026, the Department of Education must establish a dual language immersion advisory committee to advise the department on the unique needs of dual language immersion programs implementation of the Read Act requirements.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Meetings of the advisory committee are subject to the Open Meeting Law under chapter 13D.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references chapter 13D. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "chapter 13D",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Demographics of the advisory committee must be inclusive and represent the diversity of dual language immersion programs.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The advisory committee membership must include, but is not limited to, members whose native language is the partner language of a dual language immersion program;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The advisory committee membership must include, but is not limited to, families of students enrolled in dual language immersion programs;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The advisory committee membership must include, but is not limited to, members with expertise in special education; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The advisory committee membership must include, but is not limited to, teachers, administrators, and other instructional staff with knowledge and experience in dual language immersion programs.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Immersion provisions now acquire an advisory institution whose membership must represent program diversity."
+    },
+    {
+      "location": "120B.12, subdivision 6, paragraphs (e)-(f)",
+      "moves": "Requires the department, in consultation with the committee, to issue screening guidance, identify materials and professional development, recommend literacy transfer supports, and post outputs online.",
+      "claims": [
+        {
+          "text": "In consultation with the advisory committee, the department must develop and issue guidance to dual language immersion programs on screeners;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "In consultation with the advisory committee, the department must identify materials available in programs' partner languages to provide instruction in foundational reading skills and methods for evaluating alignment to the requirements under the Read Act;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "In consultation with the advisory committee, the department must identify professional development opportunities in programs' partner languages on providing instruction in foundational reading skills aligned to the requirements under the Read Act; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "In consultation with the advisory committee, the department must make recommendations on how districts can support the transfer of literacy skills between the partner language to English.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department must post the guidance, list of materials and professional development opportunities, and recommendations on its website.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The advisory institution feeds concrete department resources for implementing the Act in partner languages."
+    },
+    {
+      "location": "120B.121, paragraph (a)",
+      "moves": "Establishes a research-based Head Start literacy program, states its purposes and premises, imposes eight provider duties, and encourages collaboration and nonstate supplementation.",
+      "claims": [
+        {
+          "text": "A research-based early childhood literacy program premised on actively involved parents, ongoing professional staff development, and high quality early literacy program standards is established to increase the literacy skills of children participating in Head Start to prepare them to be successful readers and to increase families' participation in providing early literacy experiences to their children.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Providers of the early childhood literacy program must work to prepare children to be successful learners;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Providers of the early childhood literacy program must work to close the achievement gap for at-risk children;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Providers of the early childhood literacy program must use a culturally relevant integrated approach to early literacy that daily offers a literacy-rich classroom learning environment composed of books, writing materials, writing centers, labels, rhyming, and other related literacy materials and opportunities;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Providers of the early childhood literacy program must support children's home language while helping the children master English and use multiple literacy strategies to provide a cultural bridge between home and school;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Providers of the early childhood literacy program must use literacy mentors, ongoing literacy groups, and other teachers and staff to provide appropriate, extensive professional development opportunities in early literacy and classroom strategies for preschool teachers and other preschool staff;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Providers of the early childhood literacy program must use ongoing data-based assessments that enable preschool teachers to understand, plan, and implement literacy strategies, activities, and curriculum that meet children's literacy needs and continuously improve children's literacy;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Providers of the early childhood literacy program must foster participation by parents, community stakeholders, literacy advisors, and evaluation specialists; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Providers of the early childhood literacy program must provide parents of English learners with oral and written information to monitor the program's impact on their children's English language development, to know whether their children are progressing in developing their English proficiency and, where practicable, their native language proficiency, and to actively engage with their children in developing their English and native language proficiency.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Program providers are encouraged to collaborate with qualified, community-based early childhood providers in implementing this program and to seek nonstate funds to supplement the program.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The reading starts a distinct early-childhood program, with family participation, home-language support, and culturally relevant literacy environments central to its design."
+    },
+    {
+      "location": "120B.121, paragraph (b)",
+      "moves": "Permits partnerships to extend literacy programs through grade 3, imposes collaborative best-effort conditions, and requires data uses and assessment-informed coaching training.",
+      "claims": [
+        {
+          "text": "Program providers under paragraph (a) interested in extending literacy programs to children in kindergarten through grade 3 may elect to form a partnership with an eligible organization under section 124D.38, subdivision 2, or 124D.42, subdivision 8, schools enrolling children in kindergarten through grade 3, and other interested and qualified community-based entities to provide ongoing literacy programs that offer seamless literacy instruction focused on closing the literacy achievement gap.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law; the cited text is not reproduced or independently evaluated here.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 124D.38, subdivision 2, or 124D.42, subdivision 8",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "To close the literacy achievement gap by the end of third grade, partnership members must agree to use best efforts and practices and to work collaboratively to implement a seamless literacy model from age three to grade 3, consistent with paragraph (a).",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Literacy programs under paragraph (b) must collect and use literacy data to evaluate children's literacy skills;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Literacy programs under paragraph (b) must collect and use literacy data to monitor the progress and provide reading instruction appropriate to the specific needs of English learners; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Literacy programs under paragraph (b) must collect and use literacy data to formulate specific intervention strategies to provide reading instruction to children premised on the outcomes of formative and summative assessments and research-based indicators of literacy development.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The literacy programs under this paragraph also must train teachers and other providers working with children to use the assessment outcomes under clause (3) to develop and use effective, long-term literacy coaching models that are specific to the program providers.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The optional extension becomes a continuous age-three-to-grade-three model with mandatory practices once undertaken."
+    },
+    {
+      "location": "120B.122, subdivision 1",
+      "moves": "Requires employment of a dyslexia specialist and assigns technical-assistance, awareness, guidance, and recommendation duties.",
+      "claims": [
+        {
+          "text": "The department must employ a dyslexia specialist to provide technical assistance for dyslexia and related disorders and to serve as the primary source of information and support for schools in addressing the needs of students with dyslexia and related disorders.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The dyslexia specialist shall also act to increase professional awareness and instructional competencies to meet the educational needs of students with dyslexia or identified with risk characteristics associated with dyslexia and shall develop implementation guidance and make recommendations to the commissioner consistent with sections 120B.118 to 120B.124, to be used to assist general education teachers and special education teachers to recognize educational needs and to improve literacy outcomes for students with dyslexia or identified with risk characteristics associated with dyslexia, including recommendations related to increasing the availability of online and asynchronous professional development programs and materials.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references sections 120B.118 to 120B.124. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "sections 120B.118 to 120B.124",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The statewide support structure now includes a designated professional source for dyslexia and related disorders."
+    },
+    {
+      "location": "120B.122, subdivision 2",
+      "moves": "Defines dyslexia specialist through a closed set of professional qualifications and at least three years of specified field experience.",
+      "claims": [
+        {
+          "text": "For purposes of this section, a \"dyslexia specialist\" means a dyslexia therapist, licensed psychologist, licensed speech-language pathologist, or certified dyslexia training specialist who has a minimum of three years of field experience in screening, identifying, and treating dyslexia and related disorders.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The role just assigned has a credential and experience threshold."
+    },
+    {
+      "location": "120B.122, subdivision 3",
+      "moves": "Requires high training in dyslexia and in specified evidence-based multisensory interventions and treatments.",
+      "claims": [
+        {
+          "text": "A dyslexia specialist shall be highly trained in dyslexia and related disorders and in using interventions and treatments that are evidence-based, multisensory, direct, explicit, structured, and sequential in the areas of phonics, phonemic awareness, vocabulary, fluency, and comprehension.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The qualification requirements align the specialist role with the instructional characteristics used throughout the Act."
+    },
+    {
+      "location": "120B.123, subdivision 1",
+      "moves": "Repeats the K-3 screening timetable and June 15 reporting, adds vendor-approved accommodations for documented plans and plan identification of screeners, and restricts staff and partners to approved screeners from 2024-2025.",
+      "claims": [
+        {
+          "text": "A district must provide vendor-approved screening accommodations to students with documented accommodation plans.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A district must identify any screener it uses in the district's annual literacy plan, and submit screening data with the annual literacy plan by June 15.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Starting in the 2024-2025 school year, district staff and external partners offering literacy supports in schools may only use screeners that have been approved by the Department of Education.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Implementation reinforces the screening system and adds explicit access and external-partner controls."
+    },
+    {
+      "location": "120B.123, subdivision 2",
+      "moves": "Restates the duty of progress monitoring for below-grade-level readers and incorporates the statutory definition. No duplicate claim is recorded; the cross-reference is printed as section 120B.119.",
+      "claims": [],
+      "meaning": "The implementation section makes the previously defined feedback process an express district duty; this is repetition of the continuing-support requirement."
+    },
+    {
+      "location": "120B.123, subdivision 3",
+      "moves": "Requires evidence-based curricula and interventions at every grade and evidence-based new literacy purchases from July 1, 2023.",
+      "claims": [
+        {
+          "text": "A district must use evidence-based curriculum and intervention materials at each grade level that are designed to ensure student mastery of phonemic awareness, phonics, vocabulary development, reading fluency, and reading comprehension.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Starting July 1, 2023, when a district purchases new literacy curriculum, or literacy intervention or supplementary materials, the curriculum or materials must be evidence-based as defined in section 120B.119.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.119. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.119",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The evidence standard extends from intervention practice to curriculum and purchasing decisions."
+    },
+    {
+      "location": "120B.123, subdivision 4",
+      "moves": "Repeats encouragement of MTSS, here specifying data-based decisions about core instruction and Tier 2 or Tier 3 intervention.",
+      "claims": [
+        {
+          "text": "A district is encouraged to use a data-based decision-making process within the MTSS framework to determine the evidence-based core reading instruction and Tier 2 or Tier 3 intervention required to meet a student's identified needs.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The encouraged framework is given a specific decision-making use without becoming a universal adoption mandate."
+    },
+    {
+      "location": "120B.123, subdivision 5, paragraph (a)",
+      "moves": "Requires approved-program training by July 1, 2026 for seven listed teacher and staff groups.",
+      "claims": [
+        {
+          "text": "By July 1, 2026, a district must provide training from a menu of approved evidence-based programs to reading intervention teachers working with students in kindergarten through grade 12;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By July 1, 2026, a district must provide training from a menu of approved evidence-based programs to all classroom teachers of students in kindergarten through grade 3 and children in prekindergarten programs;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By July 1, 2026, a district must provide training from a menu of approved evidence-based programs to kindergarten through grade 12 special education teachers responsible for foundational reading instruction;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By July 1, 2026, a district must provide training from a menu of approved evidence-based programs to curriculum directors;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By July 1, 2026, a district must provide training from a menu of approved evidence-based programs to instructional support staff, contractors, and volunteers who assist in providing reading interventions under the oversight and monitoring of a trained licensed teacher;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By July 1, 2026, a district must provide training from a menu of approved evidence-based programs to employees who select literacy instructional materials for a district; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By July 1, 2026, a district must provide training from a menu of approved evidence-based programs to teachers holding English as a second language teaching licenses.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The general training duty receives its first deadline and a specified set of recipients."
+    },
+    {
+      "location": "120B.123, subdivision 5, paragraph (b)",
+      "moves": "Requires approved-program training by July 1, 2027 for three additional teacher groups.",
+      "claims": [
+        {
+          "text": "By July 1, 2027, a district must provide training from a menu of approved evidence-based programs to teachers who provide foundational reading instruction to students in grades 4 to 12;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By July 1, 2027, a district must provide training from a menu of approved evidence-based programs to teachers who provide instruction to students in a state-approved alternative program; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "By July 1, 2027, a district must provide training from a menu of approved evidence-based programs to teachers who provide instruction to students in dual language immersion programs.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "A later deadline applies to foundational instruction in grades 4-12, alternative programs, and dual language immersion."
+    },
+    {
+      "location": "120B.123, subdivision 5, paragraphs (c)-(d)",
+      "moves": "Permits commissioner deadline extensions and identifies two ways training may satisfy the requirement.",
+      "claims": [
+        {
+          "text": "The commissioner of education may grant a district an extension to the deadlines in this subdivision.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Professional development requirements may be satisfied by training provided by a certified trained facilitator; or",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Professional development requirements may be satisfied by training provided by a training program that the department has determined meets the professional development requirements under the Read Act.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The fixed deadlines and program menu are qualified by extension authority and alternative qualifying provision."
+    },
+    {
+      "location": "120B.123, subdivision 5, paragraph (e)",
+      "moves": "Requires approved training for specified new-to-state or newly licensed educators from July 1, 2027, prescribes its delivery, and requires qualifying waivers after review.",
+      "claims": [
+        {
+          "text": "Beginning July 1, 2027, an educator required to receive training under paragraph (a), who is new to the state of Minnesota or is a newly licensed teacher who did not receive instruction in the teaching of foundational reading skills based on structured literacy, must complete one of the approved required trainings.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Training must be offered through the regional literacy network and facilitated by a local certified trained facilitator.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The Department of Education must review district literacy lead waiver requests and grant waivers to educators new to the state or educators who provide reading instruction exclusively using alternatives to sound-based approaches, and who have completed the professional development requirements consistent with this subdivision.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The schedule becomes an ongoing entry requirement with recognition of prior qualifying development and alternatives to sound-based instruction."
+    },
+    {
+      "location": "120B.123, subdivision 5, paragraph (f)",
+      "moves": "Temporarily reduces instructional-hour requirements subject to collective agreement or charter consultation and qualifying teacher training; restricts secondary reductions to two school years.",
+      "claims": [
+        {
+          "text": "For the 2024-2025, 2025-2026, and 2026-2027 school years only, the hours of instruction requirement under section 120A.41 for students in elementary and secondary school, as defined in section 120A.05, subdivisions 9 and 13, is reduced by 5-1/2 hours for a district that enters into an agreement with the exclusive representative of the teachers that requires teachers to receive at least 5-1/2 hours of approved evidence-based training required under this subdivision, on a day when other students in the district receive instruction.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120A.41; section 120A.05, subdivisions 9 and 13. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120A.41",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "section 120A.05, subdivisions 9 and 13",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "If a charter school's teachers are not represented by an exclusive representative, the charter school may reduce the number of instructional hours for students in elementary and secondary school, as defined in section 120A.05, subdivisions 9 and 13, by 5-1/2 hours after consulting with its teachers in order to provide teachers with at least 5-1/2 hours of evidence-based training required under this subdivision on a day when other students receive instruction.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120A.05, subdivisions 9 and 13. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120A.05, subdivisions 9 and 13",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The hours of instruction reduction for secondary school students is applicable only for the 2025-2026 and 2026-2027 school years.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The statute makes limited time available for training while attaching labor-process, duration, and timing conditions."
+    },
+    {
+      "location": "120B.123, subdivision 5, paragraph (g)",
+      "moves": "Exempts educators first enrolled on or after June 1, 2026 in specified Minnesota-approved preparation programs from additional paragraph (a) training.",
+      "claims": [
+        {
+          "text": "An educator who was first enrolled in an elementary, special education, or early childhood education Minnesota-approved teacher preparation program on or after June 1, 2026, does not need to receive additional training according to paragraph (a).",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The training mandate is qualified by a preparation-program cohort exception, not a general exemption for all new teachers."
+    },
+    {
+      "location": "120B.123, subdivision 5a, paragraph (a)",
+      "moves": "Connects Tier 1 renewal from July 1, 2027 to training registration, participation, or completion for specified educators; permits progress evidence and sets the second-renewal threshold; assigns costs to the hiring entity.",
+      "claims": [
+        {
+          "text": "Starting July 1, 2027, a Tier 1 early childhood education teacher, elementary education teacher, special education teacher who is responsible for teaching reading, kindergarten through grade 12 English as a second language teacher, grade 4 through 12 classroom teacher responsible for foundational reading skills instruction, teacher who provides instruction to students in a state-approved alternative program, or a teacher who is responsible for selecting literacy curriculum materials for grades 6 through 12, and is licensed under section 122A.181 for their first licensure renewal must demonstrate that they are registered for, are currently taking, or have completed evidence-based structured literacy training consistent with training approved by the Department of Education.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 122A.181. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 122A.181",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A Tier 1 teacher may demonstrate evidence of progress in meeting the subject matter reading standards for reading in administrative rule through evidence-based structured literacy coursework or through employer verification.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The training required must be in progress before a second renewal of the Tier 1 license.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A hiring district, cooperative, or charter school is responsible for any fees and enrollment costs associated with completing these professional development requirements.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "An individual educator must not be financially responsible for the initial enrollment costs associated with the training needed to meet these requirements.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Training becomes part of licensure progression while initial enrollment costs are expressly kept off individual educators."
+    },
+    {
+      "location": "120B.123, subdivision 5a, paragraph (b)",
+      "moves": "Applies a parallel Tier 2 renewal condition, but requires training in progress before the first renewal; repeats hiring-entity cost responsibility.",
+      "claims": [
+        {
+          "text": "Starting, July 1, 2027, a Tier 2 early childhood education teacher, elementary education teacher, special education teacher who is responsible for teaching reading, kindergarten through grade 12 English as a second language teacher, grade 4 through 12 classroom teacher responsible for foundational reading skills instruction, teacher who provides instruction to students in a state-approved alternative program, or a teacher who is responsible for selecting literacy curriculum materials for grades 6 through 12, and is licensed under section 122A.182, for their first licensure renewal must demonstrate that they are registered for, currently taking, or have completed evidence-based structured literacy training consistent with training approved by the Department of Education.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 122A.182. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 122A.182",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A Tier 2 teacher may demonstrate evidence of progress in meeting the subject matter reading standards for reading in administrative rule through evidence-based structured literacy coursework or through employer verification.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The training required must be in progress before the first renewal of the Tier 2 license is granted.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The distinction between first and second renewal thresholds matters even though the eligible educator categories and cost rules recur."
+    },
+    {
+      "location": "120B.123, subdivision 5a, paragraph (c)",
+      "moves": "Requires training completion for the specified Tier 2 field-experience route to Tier 3, but prohibits denial to an educator making progress; repeats the cost protections.",
+      "claims": [
+        {
+          "text": "Starting July 1, 2027, a Tier 2 early childhood education teacher, elementary education teacher, special education teacher who is responsible for teaching reading, kindergarten through grade 12 English as a second language teacher, grade 4 through 12 classroom teacher responsible for foundational reading skills instruction, teacher who provides instruction to students in a state-approved alternative program, or a teacher who is responsible for selecting literacy curriculum materials for grades 6 through 12, who demonstrates field-specific teaching experience to complete the coursework requirements under section 122A.183, subdivision 2, clause (5), must demonstrate they have completed evidence-based structured literacy training required under subdivision 5 before the Professional Educator Licensing and Standards Board issues the Tier 3 license.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 122A.183, subdivision 2, clause (5). These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 122A.183, subdivision 2, clause (5)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The board must not deny a Tier 3 license to an educator who has made progress toward completion, but has not completed, the required training.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The completion rule and express non-denial rule must be kept together rather than resolving their tension by omitting either."
+    },
+    {
+      "location": "120B.123, subdivision 5a, paragraph (d)",
+      "moves": "Requires K-12 reading-endorsed or ESL-licensed teachers to show equivalent training completion to the relicensure committee from July 1, 2027; repeats the cost protections.",
+      "claims": [
+        {
+          "text": "Starting July 1, 2027, a teacher with a kindergarten through grade 12 reading endorsement or kindergarten through grade 12 English as a second language license from the Professional Educator Licensing and Standards Board must demonstrate to the school's relicensure committee they have completed evidence-based structured literacy training equivalent to the training required in subdivision 5.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "A further credential group must document completed training, rather than registration alone."
+    },
+    {
+      "location": "120B.123, subdivision 5a, paragraph (e)",
+      "moves": "Protects educators from extension costs for specified leave or disability reasons and attaches disciplinary procedures to insubordination or willful refusal.",
+      "claims": [
+        {
+          "text": "An educator that fails to complete the required professional development within a vendor's subscription window due to medical, personal, or family leave or for reasons tied to a learning disability, must not be held financially responsible for the costs of extending the training.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "An educator that fails to complete the required professional development within a vendor's subscription window for reasons of insubordination or willful refusal to comply with state and district directives regarding the professional development are subject to the disciplinary procedures outlined in their collective bargaining agreement or set by their hiring charter school or cooperative.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The training regime distinguishes supported delays from refusal and specifies different consequences."
+    },
+    {
+      "location": "120B.123, subdivision 6",
+      "moves": "Requires a literacy lead or active support for a specialist becoming one by August 30, 2025, permits interboard or cooperative contracting, and requires implementation collaboration.",
+      "claims": [
+        {
+          "text": "By August 30, 2025, a district must employ or contract with a literacy lead, or be actively supporting a designated literacy specialist through the process of becoming a literacy lead.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A board may satisfy the requirements of this subdivision by contracting with another school board or cooperative unit under section 123A.24 for the services of a literacy lead by August 30, 2025.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 123A.24. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 123A.24",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A district literacy lead must collaborate with district administrators and staff to support the district's implementation of requirements under the Read Act.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The previously defined lead becomes a required district implementation capacity with flexible staffing arrangements."
+    },
+    {
+      "location": "120B.123, subdivision 7, paragraphs (a)-(e)",
+      "moves": "Requires a screener list by July 1, 2023, repeats approved-screener use, assigns joint training approval and lead-training identification, requires department specialists and a local-plan template.",
+      "claims": [
+        {
+          "text": "By July 1, 2023, the department must make available to districts a list of approved evidence-based screeners in accordance with section 120B.12.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.12. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.12",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The Department of Education must partner with CAREI as required under section 120B.124 to approve professional development programs, subject to final determination by the department.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.124. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.124",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "After the implementation partnership under section 120B.124 ends, the department must continue to regularly provide districts with information about professional development opportunities available throughout the state on reading instruction that is evidence-based.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.124. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.124",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The department and CAREI must identify training required for a literacy lead and literacy specialist employed by a district or Minnesota service cooperatives.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department must employ one or more literacy specialists to provide support to districts implementing the Read Act and coordinate duties assigned to the department under the Read Act.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The literacy specialist must work on state efforts to improve literacy tracking and implementation.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department must develop a template for a local literacy plan in accordance with section 120B.12, subdivision 4a.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.12, subdivision 4a. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.12, subdivision 4a",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "District obligations are matched by state staffing, approval, and administrative support that continue beyond the initial CAREI partnership."
+    },
+    {
+      "location": "120B.123, subdivision 7, paragraphs (f)-(g)",
+      "moves": "Requires joint intervention approval and availability starting November 1, 2025, third-party cultural review and disclosure, notice of two-stage review, and continuing facilitator support; permits later department identification of models.",
+      "claims": [
+        {
+          "text": "The department must partner with CAREI as required under section 120B.124 to approve literacy intervention models, subject to final determination by the department.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 120B.124. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 120B.124",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The department must make a list of the approved evidence-based intervention models available to districts as they are approved by the department and CAREI, starting November 1, 2025.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Upon approval of the evidence-based intervention models, the department must ensure the models are reviewed by a contracted third party for culturally responsive guidance and materials, and make those findings available to districts once the review process is complete.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department must notify districts of the two-step review process for all materials approved under the Read Act for effectiveness as evidence-based structured literacy, and for cultural responsiveness.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department may identify additional literacy intervention models after the partnership with CAREI has ended.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department must provide ongoing coaching, mentoring, and support to certified trained facilitators.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "Effectiveness approval is followed by a separate cultural-responsiveness review, and support persists beyond the partnership."
+    },
+    {
+      "location": "120B.123, subdivision 8",
+      "moves": "Incorporates accessibility standards for all professional development and digital curriculum resources and subjects professional development to a second statutory requirement.",
+      "claims": [
+        {
+          "text": "All professional development and digital curriculum resources must comply with the accessibility standards developed according to section 16E.03, subdivision 9.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 16E.03, subdivision 9. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 16E.03, subdivision 9",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Professional development provided in accordance with the Read Act is subject to the requirements of section 363A.43.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 363A.43. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 363A.43",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The implementation architecture is bounded by accessibility law as well as literacy standards."
+    },
+    {
+      "location": "120B.124, subdivision 1, paragraph (a), opening and clauses (1)-(6)",
+      "moves": "Requires the department-CAREI partnership for the printed period and assigns curriculum, training-program, intervention-material, lead-training, measurement, and guidance tasks.",
+      "claims": [
+        {
+          "text": "The Department of Education must partner with CAREI for two years beginning July 1, 2023, until August 30, 2025, to support implementation of the Read Act.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The Department of Education and CAREI must jointly identify at least five literacy curricula and supporting materials that are evidence-based or focused on structured literacy by January 1, 2024, and post a list of the curricula on the department website.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The list must include curricula that use culturally and linguistically responsive materials that reflect diverse populations and curricula that reflect the experiences of students from diverse backgrounds, including multilingual learners, biliterate students, and students who are Black, Indigenous, and People of Color.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A district that purchases an approved curriculum before the cultural responsiveness review is completed is encouraged to work with the curriculum's publisher to obtain updated materials that are culturally and linguistically responsive and reflect diverse populations.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A district is not required to use an approved curriculum;",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The Department of Education and CAREI must jointly identify at least three professional development programs that focus on the five pillars of literacy and the components of structured literacy by August 15, 2023, subject to final approval by the department.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department must post a list of the programs on the department website.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The programs may include a program offered by CAREI.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The requirements of section 16C.08 do not apply to the selection of a provider under this section;",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references section 16C.08. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "section 16C.08",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The Department of Education and CAREI must jointly identify evidence-based literacy intervention materials for students in kindergarten through grade 12;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Department of Education and CAREI must jointly develop an evidence-based literacy lead training and coaching program that trains and supports literacy specialists throughout Minnesota to support schools' efforts in screening, measuring growth, monitoring progress, and implementing interventions in accordance with subdivision 1.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Literacy lead training must include instruction on how to train paraprofessionals and volunteers that provide Tier 2 interventions on evidence-based literacy intervention;",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The Department of Education and CAREI must jointly identify measures of foundational literacy skills and mastery that a district must report on a local literacy plan;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Department of Education and CAREI must jointly provide guidance to districts about best practices in literacy instruction, and practices that are not evidence-based;",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The support and approval roles described earlier are now specified as joint implementation work; the text calls the period two years while printing July 1, 2023 through August 30, 2025."
+    },
+    {
+      "location": "120B.124, subdivision 1, paragraph (a), clauses (7)-(10)",
+      "moves": "Continues the joint task list: requires model MTSS plans, geographic equity in training, facilitator mentoring, and identification and posting of intervention models by November 1, 2025; expressly leaves use of an approved intervention model optional.",
+      "claims": [
+        {
+          "text": "The Department of Education and CAREI must jointly develop MTSS model plans that districts may adopt to support efforts to screen, identify, intervene, and monitor the progress of students not reading at grade level;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Department of Education and CAREI must jointly ensure that teacher professional development options and MTSS framework trainings are geographically equitable by supporting trainings through the regional service cooperatives;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Department of Education and CAREI must jointly develop a coaching and mentorship program for certified trained facilitators based on the previously approved trainings; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Department of Education and CAREI must jointly identify evidence-based literacy intervention models by November 1, 2025, and post a list of the interventions on the department website.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A district is not required to use an approved intervention model.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The partnership reaches regional delivery and sustained implementation support while preserving district choice among evidence-based intervention models."
+    },
+    {
+      "location": "120B.124, subdivision 1, paragraphs (b)-(c)",
+      "moves": "Requires third-party culturally and linguistically responsive supplemental materials and guidance, and public posting of the evaluation rubric and curriculum evaluations.",
+      "claims": [
+        {
+          "text": "The department must contract with a third party to develop culturally and linguistically responsive supplemental materials and guidance for the approved literacy curricula to meet the culturally and linguistically responsive standards under paragraph (a), clause (1).",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department must post on its website the rubric used to evaluate curriculum under this subdivision and how each curriculum reviewed was evaluated under the rubric.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The approved lists are complemented by materials development and transparency about evaluation."
+    },
+    {
+      "location": "120B.124, subdivision 2",
+      "moves": "Requires a district request/reconsideration opportunity and published procedure; sets evidentiary and rubric conditions, equal review cycles for alternatives, and a final no-cost-curriculum review by March 3, 2025.",
+      "claims": [
+        {
+          "text": "The department must provide districts an opportunity to request that the department add to the list of curricula or professional development programs a specific curriculum or professional development program.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department must publish the request for reconsideration procedure on the department website.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A request for review must demonstrate that the curriculum or intervention program meets the requirements of the Read Act, is evidence-based, and has structured literacy components.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The review process must use the rubric used to approve curriculum under subdivision 1 with the addition of culturally responsive criteria as determined by the department.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Alternative curriculum and intervention programs for those who cannot access sound-based approaches must be reviewed on the same review cycle as traditional programs.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department and CAREI must conduct a final curriculum review of previously submitted curriculum by March 3, 2025, to review curriculum that is available to districts at no cost.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The initial selection system allows additional review while retaining the Read Act standards and an accessibility-related timing requirement."
+    },
+    {
+      "location": "120B.124, subdivision 3",
+      "moves": "Requires four kinds of joint implementation support: curriculum guidance, accessible development, MTSS guidance, and broader implementation assistance.",
+      "claims": [
+        {
+          "text": "The department and CAREI must support district implementation by issuing guidance for teachers on implementing curriculum that is evidence-based, or focused on structured literacy;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department and CAREI must support district implementation by providing teachers accessible options for evidence-based professional development focused on structured literacy;",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department and CAREI must support district implementation by providing districts with guidance on adopting MTSS; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department and CAREI must support district implementation by providing districts with literacy implementation guidance and support.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Approval and reconsideration are paired with practical teacher and district assistance."
+    },
+    {
+      "location": "120B.124, subdivision 4",
+      "moves": "Requires department training for unlicensed school staff and outside providers, regional delivery, consistency, a maximum duration, approved-training foundations and a trainer component, with specified no-cost access.",
+      "claims": [
+        {
+          "text": "The department must develop and provide evidence-based literacy-intervention training for unlicensed people regularly providing interventions in Minnesota districts, including the specified category of paraprofessionals and other unlicensed school staff; and",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The department must develop and provide evidence-based literacy-intervention training for unlicensed people regularly providing interventions in Minnesota districts, including the specified category of volunteers, contractors, and other persons not employed by Minnesota districts.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The regional literacy networks must provide training on evidence-based literacy interventions consistent with paragraph (a).",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department and the regional literacy networks must collaborate to ensure that training provided by the regional literacy networks is consistent across providers.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The trainings must not exceed eight hours.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The trainings must be based on approved training developed for teachers, and must include a train the trainer component to enable literacy leads to provide the training to paraprofessionals and volunteers.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department and the regional literacy networks must provide the trainings at no cost to paraprofessionals and other unlicensed school staff who regularly provide interventions to students in Minnesota districts.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The unlicensed-provider training referenced earlier now receives its delivery rules and eight-hour ceiling."
+    },
+    {
+      "location": "120B.124, subdivision 5",
+      "moves": "Requires an ongoing materials review process and partnership decision by October 1, 2026; permits competitively selected reviewers and publisher submissions; assigns publisher costs and sets rubric, approval, listing, publication, and review-cycle rules.",
+      "claims": [
+        {
+          "text": "By October 1, 2026, the department must establish an ongoing review process in order to identify curriculum and intervention materials that are evidence-based, focused on structured literacy, culturally and linguistically responsive, and reflective of diverse populations.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department may partner with one or more institutions of higher education or a third party to conduct independent and objective reviews of curriculum and intervention materials using the competitive solicitation procedures under chapter 16C.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references chapter 16C. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "chapter 16C",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The department must determine whether it will partner with an institution of higher education or a third party to conduct ongoing reviews of literacy materials by October 1, 2026.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A publisher may submit curriculum or intervention materials for review.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The publisher is responsible for paying the cost of the review directly to a partnering institution of higher education or third party.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The review must use the Read Act rubric used to approve curriculum.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department may modify the Read Act rubric as necessary to reflect the evolving needs of grade levels and special populations, including alignment with the Minnesota English Language Arts standards, the incorporation of culturally and linguistically responsive criteria, and the inclusion of criteria reflective of diverse populations.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The Read Act rubric must be posted on the department website.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department and its partner may approve the curriculum or intervention materials if they determine that the curriculum or intervention materials are evidence-based, focused on structured literacy, culturally and linguistically responsive, and reflect diverse populations.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The department must add the approved curriculum or intervention materials to the list of curricula and materials approved under the Read Act.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Following each review cycle, the department must post its findings on the department website.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Alternative curriculum and intervention programs for those who cannot access sound-based approaches must be reviewed on the same review cycle as traditional programs.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A program undergoing a full review cycle must be added to the reviewed curricula and intervention program list after the review process is completed.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The temporary partnership gives way to a continuing review architecture; completing review and receiving approval generate distinct list duties."
+    },
+    {
+      "location": "120B.124, subdivision 6",
+      "moves": "Records an express repeal notice rather than a surviving substantive provision.",
+      "claims": [
+        {
+          "text": "MS 2025 Supp [Repealed, 2026 c 125 art 1 s 11]",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references 2026 c 125 art 1 s 11. These are legal cross-references, not a separately supplied empirical justification.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "2026 c 125 art 1 s 11",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The Act closes with a repeal marker whose prior content is not reproduced and cannot be reconstructed from this document."
+    },
+    {
+      "location": "120B.125",
+      "moves": "Begins a neighboring transition-planning statute and cuts off after the first required plan component; cross-references other law.",
+      "claims": [
+        {
+          "text": "Consistent with sections 120B.13, 120B.131, 120B.132, 120B.14, 120B.15, 120B.303, subdivision 1, 125A.08, and other related sections, school districts, beginning in the 2013-2014 school year, must assist all students by no later than grade 9 to explore their educational, college, and career interests, aptitudes, and aspirations and develop a plan for a smooth and successful transition to postsecondary education or employment.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The provision expressly cross-references the following law; the cited text is not reproduced or independently evaluated here.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "sections 120B.13, 120B.131, 120B.132, 120B.14, 120B.15, 120B.303, subdivision 1, 125A.08, and other related sections",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "All students' transition plans must provide a comprehensive plan to prepare for and complete a career and college ready curriculum by meeting state and local academic standards and developing career and employment-related skills such as team work, collaboration, creativity, communication, critical thinking, and good work habits;",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The supplied PDF ends beyond the Read Act range. Only the visible grade-9 assistance duty and first plan criterion can be read; the remainder of the statutory list is absent."
+    }
+  ]
+}

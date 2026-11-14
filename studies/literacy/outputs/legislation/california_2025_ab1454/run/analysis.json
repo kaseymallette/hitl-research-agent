@@ -1,0 +1,437 @@
+{
+  "reading_plan": "Source title: Assembly Bill No. 1454, Chapter 471: Pupil literacy: credential program standards and professional development: instructional materials\nSource type: government_policy\nFirst look: This four-page PDF presents a chaptered California act approved and filed October 09, 2025. A Legislative Counsel's Digest and Digest Key precede four enacted sections: three additions to the Education Code covering literacy specialist preparation, administrative preparation, and K-8 instructional materials, followed by conditional reimbursement. The prose is dense with shall duties, dates, all-of-the-following lists, and code cross-references. No struck-through or underlined amendment markup is visible; these are added sections. I will move in document order, distinguish digest background from operative law, slow at subdivisions and numbered criteria, and mark repeated language without confusing different actors' duties. The source title mentions professional development, but I will follow the provisions actually printed rather than infer a separate professional-development program.",
+  "reading_path": [
+    {
+      "location": "Opening: title, chapter designation, act description, and approval/filing notice (p. 1)",
+      "moves": "Identifies Assembly Bill No. 1454 as Chapter 471 and announces additions to existing law, rather than showing amendments by strikeout or underline. The approval and filing notice establishes the chaptered status.",
+      "claims": [
+        {
+          "text": "The act adds Sections 44265.1, 44270.6, and 60205 to the Education Code, relating to pupil literacy.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Governor approved the act on October 09, 2025, and it was filed with the Secretary of State on October 09, 2025.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The opening presents an enacted addition to the Education Code. Its subject is literacy, but its immediate legal instruments are credential preparation and instructional materials."
+    },
+    {
+      "location": "Legislative Counsel's Digest: credentialing background and proposed changes (p. 1)",
+      "moves": "Summarizes existing credential law and previews the new commission duties in the digest's prospective language. This is explanatory framing, not the operative enactment. It places administrative preparation before specialist preparation, although the enacted sections reverse that order.",
+      "claims": [
+        {
+          "text": "The digest states that existing law requires the Commission on Teacher Credentialing to establish standards for issuance and renewal of credentials, certificates, and permits.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The digest describes existing minimum requirements for a preliminary services credential specializing in administrative services as including, among other requirements, completion of an entry-level specialized and professional preparation program or a one-year internship in supervised administrative-services training, subject to commission approval.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The digest describes existing minimum requirements for the reading and literacy leadership specialist credential and reading and literacy added authorization as including, among other requirements, completion of specialized and professional preparation.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The reader is introduced to the commission as the institutional actor and to existing preparation requirements as the setting for new literacy standards. The September 1, 2028 administrative deadline and January 1, 2028 specialist deadline are previewed here; their operative duties are recorded below."
+    },
+    {
+      "location": "Legislative Counsel's Digest: instructional materials and local duties (p. 1)",
+      "moves": "Moves from credentialing to state adoption of materials and then local adoption. Previews the requirements later enacted in Section 3, including the January 31, 2027 deadline, criteria, guidance, and certification, without independently enacting them.",
+      "claims": [
+        {
+          "text": "The digest states that existing law requires the state board to adopt basic instructional materials for kindergarten and grades 1 to 8, inclusive, for school district governing boards and county boards of education, subject to specified provisions.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Among those existing provisions, the digest says the State Board of Education must adopt at least 5 basic instructional materials for all applicable grade levels in each specified subject area, including language arts and, within language arts, including but not limited to spelling, reading, and English language development.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The digest characterizes the additional duties imposed on local educational agencies as a state-mandated local program.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Literacy is now connected to both educator preparation and materials selection. The digest frames local certification and adoption procedures as additional duties, setting up the reimbursement issue that follows."
+    },
+    {
+      "location": "Legislative Counsel's Digest: reimbursement background and Digest Key (p. 2)",
+      "moves": "States constitutional and statutory background, previews the conditional reimbursement clause later enacted in Section 4, and supplies procedural classifications. The key is not an appropriation.",
+      "claims": [
+        {
+          "text": "The digest states that the California Constitution requires reimbursement of local agencies and school districts for certain state-mandated costs, and that statutory provisions establish reimbursement procedures.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The digest invokes the California Constitution as the basis for the reimbursement background.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "The California Constitution",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The Digest Key lists a majority vote, no appropriation, Fiscal Committee: yes, and Local Program: yes.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The preliminary account closes with the fiscal consequence of local duties. Its conditional reimbursement preview will receive operative form at the end of the act."
+    },
+    {
+      "location": "SECTION 1: addition of Education Code Section 44265.1; subdivision (a), opening requirement (p. 2)",
+      "moves": "Adds a new Education Code section and shifts from the digest to the people's enactment. Assigns the commission a mandatory deadline and identifies two forms of preparation standards for two named credentials.",
+      "claims": [
+        {
+          "text": "No later than January 1, 2028, the commission shall ensure that both its standards of program quality and effectiveness and its teaching performance expectations for preparation of candidates for the reading and literacy leadership specialist credential and the reading and literacy added authorization include preparation to deliver instruction and support teachers to deliver instruction through effective means for teaching literacy, aligned to all the criteria in paragraphs (1) to (3).",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The first operative duty addresses both direct literacy instruction and support for teachers. It reaches program standards and teaching performance expectations, with all three following criteria required together."
+    },
+    {
+      "location": "SECTION 1: Section 44265.1(a)(1)-(3) (p. 2)",
+      "moves": "Specifies the three required alignment criteria. Uses a named framework and statutory dyslexia guidelines as standards, and gives content to evidence-based foundational reading instruction. The including clauses preserve an open scope.",
+      "claims": [
+        {
+          "text": "The preparation required by subdivision (a) must align to the English Language Arts/English Language Development (ELA/ELD) Framework, including instruction to meet the varied language development needs of English learners.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The named framework supplies an alignment standard.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "The English Language Arts/English Language Development (ELA/ELD) Framework",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The preparation must align to evidence-based means of teaching foundational reading skills. These shall include explicit and systematic instruction in print concepts, phonological awareness, phonics and word recognition, and fluency to all pupils, and attention to oral and written language development, vocabulary and background knowledge, and comprehension, including tiered supports for pupils with reading difficulties, English learners, and pupils with exceptional needs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The preparation must align to the program guidelines for dyslexia developed pursuant to Section 56335.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision incorporates the dyslexia program guidelines by their statutory source.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Section 56335",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The general promise of effective literacy instruction acquires specific instructional content and learner supports. The document labels the means evidence-based but does not cite a study or report establishing that characterization."
+    },
+    {
+      "location": "SECTION 1: Section 44265.1(b) (p. 2)",
+      "moves": "States legislative intent rather than a separately phrased shall duty. Extends the preparation perspective to programs teaching English learners in their primary languages.",
+      "claims": [
+        {
+          "text": "The Legislature intends candidates for the reading and literacy leadership specialist credential and reading and literacy added authorization to be prepared to deliver instruction and support teachers to deliver instruction through effective means for teaching literacy in programs in which English learner pupils are being instructed in their primary languages.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The first section closes by making primary-language instruction part of its intended reach. English learners appear both as pupils with varied development needs and as pupils learning through their primary languages."
+    },
+    {
+      "location": "SEC. 2: addition of Education Code Section 44270.6; subdivision (a), opening requirement (p. 2)",
+      "moves": "Adds a second section to existing law. Assigns another mandatory commission deadline, now for administrative-services preparation. Cross-references the existing credential provision.",
+      "claims": [
+        {
+          "text": "No later than September 1, 2028, the commission shall ensure that program standards for professional preparation of candidates for a preliminary services credential with a specialization in administrative services, established pursuant to paragraph (3) of subdivision (a) of Section 44270, include preparation to support teachers in delivering instruction through effective means for teaching literacy, aligned to all the following criteria.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The existing credential is identified by a specific code cross-reference.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "paragraph (3) of subdivision (a) of Section 44270",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The act moves from literacy specialists to administrators and from delivering and supporting instruction to supporting teachers. It sets a later deadline and addresses program standards without repeating Section 1's separate requirement for teaching performance expectations."
+    },
+    {
+      "location": "SEC. 2: Section 44270.6(a)(1)-(3) (p. 3)",
+      "moves": "Repeats Section 1's framework, evidence-based foundational-skills description, and dyslexia-guideline criteria for the newly covered administrative preparation standards. The repeated instructional content is not recorded again as independent definitions.",
+      "claims": [
+        {
+          "text": "The administrative preparation standards required in Section 44270.6(a) must satisfy the same three alignment criteria already stated for specialist preparation in Section 44265.1(a)(1)-(3): the ELA/ELD Framework with English learner language-development instruction; the specified evidence-based foundational reading skills and accompanying language, knowledge, comprehension, and tiered supports; and the dyslexia program guidelines.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The repeated framework and dyslexia references provide the alignment standards for this distinct administrative preparation duty.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "The English Language Arts/English Language Development (ELA/ELD) Framework",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Section 56335",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The literacy expectations remain consistent as the regulated credential changes. The repetition links administrator preparation to the instructional content already required in specialist preparation."
+    },
+    {
+      "location": "SEC. 2: Section 44270.6(b) (p. 3)",
+      "moves": "Adds an implementation-confirmation duty beyond the requirement to revise standards.",
+      "claims": [
+        {
+          "text": "The commission shall confirm that administrative preparation programs implement the standards pursuant to this section.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "Setting standards is not the end of the commission's responsibility here: it must also confirm program implementation. The text does not specify a confirmation method or a separate deadline for this subdivision."
+    },
+    {
+      "location": "SEC. 2: Section 44270.6(c) (p. 3)",
+      "moves": "Repeats the primary-language legislative-intent move for administrative candidates, with the role limited to supporting teachers.",
+      "claims": [
+        {
+          "text": "The Legislature intends candidates for a preliminary services credential with a specialization in administrative services to be prepared to support teachers to deliver instruction through effective means for teaching literacy in programs in which English learner pupils are being instructed in their primary languages.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The administrative section closes in parallel with the specialist section, carrying its primary-language perspective into the preparation of those who support teachers."
+    },
+    {
+      "location": "SEC. 3: addition of Education Code Section 60205; subdivision (a) (p. 3)",
+      "moves": "Adds a third Education Code section and moves from credential preparation to instructional materials. Assigns the state board an adoption duty, deadline, grade range, subjects, and procedural cross-reference.",
+      "claims": [
+        {
+          "text": "On or before January 31, 2027, the state board shall adopt instructional materials for kindergarten and grades 1 to 8, inclusive, in English language arts and English language development, adhering to the procedures established pursuant to Section 60227.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The adoption must use the procedures established pursuant to the cited section.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Section 60227",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The state board becomes the actor and the earliest stated implementation deadline appears. The operative scope is K-8 English language arts and English language development materials."
+    },
+    {
+      "location": "SEC. 3: Section 60205(b), opening requirement and paragraphs (1)-(3) (p. 3)",
+      "moves": "Requires all listed criteria for state-adopted materials. Reuses the credential sections' literacy criteria, while specifying the current framework and integrated and designated English language development instruction. Repeated foundational-skills content is noted rather than treated as a new definition.",
+      "claims": [
+        {
+          "text": "The state board shall ensure that materials adopted pursuant to this section adhere to all the criteria in subdivision (b).",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The materials must align to the current English Language Arts/English Language Development (ELA/ELD) Framework, including integrated and designated English language development instruction adopted by the state board and strategies to meet the varied language development needs of English learners.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The current framework supplies the alignment standard.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "current English Language Arts/English Language Development (ELA/ELD) Framework",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The materials must align to the evidence-based means of teaching foundational reading skills specified in paragraph (2). This repeats the explicit and systematic print-concepts, phonological-awareness, phonics/word-recognition, and fluency instruction, attention to language development, vocabulary/background knowledge, and comprehension, and tiered supports listed in the credential sections. Unlike those sections, this paragraph does not add the words to all pupils after fluency.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The materials must align to the dyslexia program guidelines already named in the credential sections.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The same statutory source identifies the program guidelines.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Section 56335",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The act carries a common instructional approach into the materials themselves. Its framework criterion now expressly includes integrated and designated English language development, while the state board must ensure every listed criterion is met."
+    },
+    {
+      "location": "SEC. 3: Section 60205(b)(4) (p. 3)",
+      "moves": "Adds a materials-specific criterion addressing resources that cover a subset of skills and standards, with an express designation requirement.",
+      "claims": [
+        {
+          "text": "The adopted instructional materials must include materials focused on teaching specific skills and standards that are a subset of the entire ELA/ELD Framework and must clearly designate which standards those materials effectively address.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The full framework supplies the reference against which a subset is identified.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "English Language Arts/English Language Development (ELA/ELD) Framework",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The materials criteria accommodate focused resources within the adoption, while requiring clarity about their coverage. This prepares for the later permission to combine materials to achieve full coverage."
+    },
+    {
+      "location": "SEC. 3: Section 60205(c) (p. 3)",
+      "moves": "Connects state adoption to revised guidance and makes guidance and an existing statutory process mandatory for local adoption.",
+      "claims": [
+        {
+          "text": "Upon adoption of instructional materials pursuant to subdivision (a), the state board shall update the state Guidance for Local Instructional Materials Adoptions to reflect the criteria in subdivision (b).",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The named guidance is the document the board must update.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Guidance for Local Instructional Materials Adoptions",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "For purposes of adopting instructional materials, a local educational agency shall follow this guidance and the processes described in Section 60002.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The local duty incorporates the named guidance and a statutory process.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Guidance for Local Instructional Materials Adoptions",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "Section 60002",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "State criteria now flow into local selection through guidance and process duties. The guidance update is triggered by adoption rather than given a separate calendar deadline."
+    },
+    {
+      "location": "SEC. 3: Section 60205(d)(1)-(2) (p. 3)",
+      "moves": "Sets a conditional certification duty for materials outside the state board's adoption and separately grants permission to combine materials. It does not prohibit local adoption of non-state-adopted materials.",
+      "claims": [
+        {
+          "text": "A local educational agency adopting instructional materials not adopted by the state board pursuant to subdivision (a) shall certify that the materials align to the criteria in subdivision (b).",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A local educational agency may adopt a set of instructional materials that, in combination, address all state standards and components of the ELA/ELD Framework.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The named framework provides the components the combined set may address.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "English Language Arts/English Language Development (ELA/ELD) Framework",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Local choice remains available, with certification attached to the non-state-adopted route. The permission to combine resources complements the earlier requirement to include clearly identified subset materials."
+    },
+    {
+      "location": "SEC. 3: Section 60205(e) (p. 4)",
+      "moves": "Ends the materials section with legislative intent concerning primary-language materials. Its asset-oriented framing presents pupils' languages as resources teachers can build upon.",
+      "claims": [
+        {
+          "text": "The Legislature intends the state board's adoption of English language arts and English language development materials to include high-quality instructional materials in pupils' primary languages, enabling teachers to build upon pupils' linguistic assets in programs for which English learner pupils are being instructed in their primary language.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The primary-language intent recurring in both credential sections now reaches materials. Here the stated purpose is to enable teachers to build on pupils' linguistic assets; the wording remains a statement of intent."
+    },
+    {
+      "location": "SEC. 4: conditional reimbursement (p. 4)",
+      "moves": "Closes with a conditional state-mandate reimbursement requirement and an exact statutory route. Returns to the fiscal issue previewed in the digest.",
+      "claims": [
+        {
+          "text": "If the Commission on State Mandates determines that the act contains costs mandated by the state, reimbursement to local agencies and school districts for those costs shall be made pursuant to Part 7 (commencing with Section 17500) of Division 4 of Title 2 of the Government Code.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The provision identifies the statutory reimbursement route.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Part 7 (commencing with Section 17500) of Division 4 of Title 2 of the Government Code",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The final consequence depends on a determination by the Commission on State Mandates. The act does not itself determine a reimbursable amount or appropriate funds. It ends without a separately stated effective date, waiver, or penalty."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# The article in this workspace. scripts/workspace.py load fills these four
+# fields from data/<corpus>/sources.yaml; the prompts read them from here.
+source_title:
+source_type:
+publisher:
+doi:
