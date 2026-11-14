@@ -162,9 +162,9 @@ What has been difficult about working this way:
 └── tests/
 ```
 
-Earlier work (the A/B experiments, the decision records, the prompt log, and
-the API pipeline) is on the `v2` branch. The literacy study was developed on
-the `mom-research` branch, kept as a record.
+Earlier versions are kept as tags: `v1-final`, and `v2-final` (the A/B
+experiments, the decision records, the prompt log, and the API pipeline). The
+literacy study was developed separately and is kept as `mom-research-final`.
 
 ## Setup and checks
 

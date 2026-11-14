@@ -94,9 +94,9 @@ each text received.
 
 ## This folder
 
-The literacy study inside `hitl-research-agent`. It was developed on the
-`mom-research` branch and moved here; that branch is kept as a record and is
-no longer worked on. Paths below are relative to `studies/literacy/`; run the
+The literacy study inside `hitl-research-agent`. It was developed on a
+separate branch and moved here; that branch's history is kept as the
+`mom-research-final` tag. Paths below are relative to `studies/literacy/`; run the
 commands in `RUNBOOK.md` from the repository root.
 
 ```

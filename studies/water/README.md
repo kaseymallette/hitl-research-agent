@@ -145,7 +145,7 @@ impression of quality.
 
 The close reading is scored on A1–A5 and the argument evaluation on B1–B6. In
 Phase 2, Claude used the same failure modes to compare runs head to head
-([AB_TESTING_RUBRIC.md](https://github.com/kaseymallette/hitl-research-agent/blob/v2/docs/AB_TESTING_RUBRIC.md)).
+([AB_TESTING_RUBRIC.md](https://github.com/kaseymallette/hitl-research-agent/blob/v2-final/docs/AB_TESTING_RUBRIC.md)).
 
 ### The A/B experiments
 
@@ -162,7 +162,7 @@ same prompts throughout:
 
 Phase 2 judged each experiment as a blind tournament. Runs met head to head, the
 judge read the article and both runs without knowing which was which, and the
-winner went on. [EVALUATION_KEY.md](https://github.com/kaseymallette/hitl-research-agent/blob/v2/docs/EVALUATION_KEY.md) has every verdict
+winner went on. [EVALUATION_KEY.md](https://github.com/kaseymallette/hitl-research-agent/blob/v2-final/docs/EVALUATION_KEY.md) has every verdict
 and what each run cost.
 
 **Barnett: GPT-6.1 Sol medium, from the PDF.** Sol high was no better, and
