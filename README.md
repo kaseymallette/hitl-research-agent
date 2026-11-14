@@ -13,6 +13,8 @@ The experiment that tests it:
 
 I’m building this framework to become a better researcher: to work through more literature, make connections across sources, and pursue questions I might otherwise miss. I want AI to help me evaluate the authors’ arguments: whether their evidence supports their claims, whether their methods justify their conclusions, and what assumptions or limitations affect those conclusions.
 
+### Judging the judge
+
 But before I can rely on AI to judge an argument, I need to judge AI. When using models to summarize and analyze articles, I’ve noticed that they can misattribute claims, leave out important qualifications, or attach evidence that does not support their interpretations. This project therefore evaluates both how faithfully the model represents a source and how well it reasons about the authors’ claims. I need to know whether its assessment helps me understand the argument or gives me errors to correct.
 
 ### AI as a research assistant?
@@ -24,23 +26,40 @@ The justification to use AI to support research still needs to be made, and that
 The AI agents need to add something worthwhile, whether that is helping me compare explanations, noticing conflicting evidence, or identifying an assumption worth investigating. *Does this system help me conduct better research that justifies the time and money spent to build and implement it?* *Will I use it to support my research consistently?*
 
 
-## Experiment
+### Why not RAG?
 
-An open question is whether structured source analysis improves downstream research compared with retrieving passages directly from original documents.
+A common approach to answering questions from a collection of documents is retrieval-augmented generation (RAG). The text is extracted from each document and split into chunks. Each chunk is converted into an embedding, a vector that represents its meaning, and the vectors are indexed. A question is embedded the same way, the chunks whose vectors are closest to it are retrieved, and a model answers from them.
 
-The experiment uses only the [water study](studies/water/), because all ten of its articles are analyzed and accepted. Whether and how it applies to the literacy study will be decided after.
+RAG treats relevance as similarity: a chunk is retrieved because its wording resembles the question. But a chunk is cut from its place in the argument. It no longer carries which claim it supports, which qualifications the author attached, or whether the claim is the author's own or one the author is citing. Nothing in the index says whether the evidence actually supports the conclusion it sits next to.
 
-The experiment compares three approaches:
+### Teaching a model to read
 
-1. **Original documents:** Extract, chunk, embed, and retrieve passages directly from source documents.
-2. **Structured analyses:** Retrieve from the close readings, claims references, and argument evaluations (see [Methods](#methods)).
-3. **Combined retrieval:** Use both original source passages and structured analyses.
+This project's analysis is modeled on how a researcher reads an article instead. A language model takes in a whole text at once, attending across all of it in parallel. The close reading makes it go sequentially, following the argument step by step and recording at each step what the author claims, the support given, and how the step builds on what came before. The claims reference lists what the article itself claims. The argument evaluation then lets the model take a position: whether the evidence supports the conclusions, what the argument assumes, and where it falls short, kept separate from what the author says.
 
-The approaches are compared on retrieval quality, source attribution, synthesis accuracy, and the costs of each approach.
+### Is the reading worth it?
 
-Judging started blind and head to head, in the A/B experiments that chose the analysis setup, and moves here to codebook judging. Each answer is coded for its attribution (does it represent the sources faithfully?), its argument (does its own reasoning hold up?), and the water distinctions (does it keep apart what the field keeps apart, such as withdrawal and consumption?), with every code pointing to the passage that shows it. The codes are in the [water codebook](studies/water/CODEBOOK.md).
+The question is whether that reading is worth doing. Does structured source analysis improve downstream research compared with retrieving passages directly from the original documents? Retrieving from analyses means retrieving claims with their support, their qualifications, and a judgment of the argument, rather than passages that sound like the question.
 
 The goal is not to assume that additional analysis produces better research. It is to determine whether that analysis provides measurable value, and under what conditions.
+
+## Two studies
+
+| Study | Question | Status |
+| --- | --- | --- |
+| [**Literacy**](studies/literacy/) | How is the science of reading defined, simplified, and contested as it moves from scholarship, through the popular press, into state legislation? | Legislation trial run done (six laws); scholarly and popular press next |
+| [**Water**](studies/water/) | Why does AI infrastructure use freshwater, and when could other cooling methods or water supplies, including desalination, reduce pressure on local freshwater? | Ten articles analyzed and accepted |
+
+The literacy study is a collaboration with a professor of literacy education.
+The water study came first and is where the harness was built.
+
+Both studies do the same core work: take the claims out of individual
+documents, then compare them across documents. Water compares what sources
+claim about one question. Literacy traces how claims change as they travel
+between corpora. The experiment runs on the water study first, because all
+ten of its articles are analyzed and accepted.
+
+What we're doing, why, and what's been decided is in
+[`docs/PROJECT.md`](docs/PROJECT.md).
 
 ## Methods
 
@@ -108,24 +127,29 @@ The literacy study runs its documents through
 PDF, extracted text, and page images) into a separate Codex workspace and
 saves the results back to the study.
 
-## Two studies
+## Experiment design
 
-| Study | Question | Status |
-| --- | --- | --- |
-| [**Literacy**](studies/literacy/) | How is the science of reading defined, simplified, and contested as it moves from scholarship, through the popular press, into state legislation? | Legislation trial run done (six laws); scholarly and popular press next |
-| [**Water**](studies/water/) | Why does AI infrastructure use freshwater, and when could other cooling methods or water supplies, including desalination, reduce pressure on local freshwater? | Ten articles analyzed and accepted |
+The experiment uses only the [water study](studies/water/), because all ten of its articles are analyzed and accepted. Whether and how it applies to the literacy study will be decided after.
 
-The literacy study is a collaboration with a professor of literacy education.
-The water study came first and is where the harness was built.
+It compares three approaches:
 
-Both studies do the same core work: take the claims out of individual
-documents, then compare them across documents. Water compares what sources
-claim about one question. Literacy traces how claims change as they travel
-between corpora. The experiment runs on the water study first, because all
-ten of its articles are analyzed and accepted.
+1. **Original documents:** Extract, chunk, embed, and retrieve passages directly from source documents.
+2. **Structured analyses:** Retrieve from the close readings, claims references, and argument evaluations (see [Methods](#methods)).
+3. **Combined retrieval:** Use both original source passages and structured analyses.
 
-What we're doing, why, and what's been decided is in
-[`docs/PROJECT.md`](docs/PROJECT.md).
+The approaches are compared on retrieval quality, source attribution, synthesis accuracy, and the costs of each approach.
+
+### From analysis to codebook
+
+Evaluating the analyses became circular. The close reading needed something to be checked against, so the claims reference was added: a second, model-written list of the article's claims. A judge, also a model, then scored the close reading against the rubric partly by whether it matched that list. Every layer was model-generated and checked by another model, and each one added complexity without adding an independent standard.
+
+The codebook keeps what that design got right and drops the circle. The analysis split reading a source into two epistemic tasks, attribution and argument evaluation. Those two tasks, plus the water question's own distinctions, become the codebook's three dimensions:
+
+- **Attribution:** what do the sources say? Codes come from the rubric's close reading criteria: whether a claim is the author's, whether its qualifications and certainty survive, and whether conflicts and differences between sources are noted.
+- **Argument:** does the answer's own argument hold up? Codes come from the rubric's argument evaluation criteria: whether the evidence is weighed, whether the grounds are sufficient, whether warrants and qualifiers are stated, and whether the model's view is kept separate from the author's.
+- **Water distinctions:** does the answer keep apart what the water literature keeps apart? Codes come from what the analyses kept running into across the ten articles: withdrawal and consumption, onsite and grid water, water quality, accounting boundaries and units, local pressure, modeled and measured results, and desalination as one option among others.
+
+The codebook's examples are taken from the accepted analyses. Every attribution code is checked against the original article, not against another model's output. Each approach's answers are coded with it, and the approaches are compared code by code. The codes are in the [water codebook](studies/water/CODEBOOK.md).
 
 ## Development approach and lessons
 
