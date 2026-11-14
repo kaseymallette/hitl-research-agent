@@ -21,21 +21,53 @@ reduce pressure on local freshwater? Details are in
 **The main question.** Can AI meaningfully support rigorous,
 evidence-grounded research?
 
-**The experiment, tested on both studies.** Does structured source analysis
-improve downstream research quality compared with retrieving original source
-passages directly? The structured analysis is the close reading (claims, their
-support, and the model's reading of each step) and the argument evaluation;
-the alternative is extracting, embedding, and retrieving the documents' text;
-a combination of both is the third option. For literacy this is concrete:
-tracing a claim from a law back through the press to scholarship is a matter
-of finding the related passages.
+**The experiment.** Does structured source analysis improve downstream
+research quality compared with retrieving original source passages directly?
+It runs on the water study first; see below.
 
 ## How they connect
 
 Both studies take claims out of individual documents and compare them across
 documents. Water compares sources on one question. Literacy traces claims
-between corpora. The experiment is run on the studies' own data,
-with literacy judged by the domain expert, rather than on a benchmark.
+between corpora. What the experiment means for literacy is decided once the
+water experiment is done.
+
+## The experiment: water
+
+**Why water.** All ten articles are analyzed and accepted, so the experiment
+can start now on a complete collection.
+
+**The framing.** Suppose a researcher had to write a paper on the water
+question. The test questions are the questions they would need answered to
+write it: research questions about the collection, not lookups of single
+facts. Each approach is judged on how well what it retrieves would let the
+researcher answer them, grounded in the sources.
+
+### The three approaches
+
+1. **Original documents.** Extract, chunk, embed, and retrieve passages from
+   each article's text. `scripts/prepare_sources.py` already extracts the text.
+2. **Structured analyses.** Retrieve from each article's close reading (01),
+   claims reference (02), and argument evaluation (04).
+3. **Combined.** Retrieve from both.
+
+Every retrieved item names its article and what kind of item it is (source
+text, close reading, claims reference, or argument evaluation), so the model's
+reading and judgment are never reported as what a source says.
+
+**Measures:** retrieval quality, source attribution, synthesis accuracy, and
+cost.
+
+### Steps
+
+- [ ] Write the test questions.
+- [ ] Decide how each measure is judged, and by whom.
+- [ ] Build the original-documents index.
+- [ ] Build the structured-analyses index.
+- [ ] Build the combined index.
+- [ ] Run every test question through all three, recording what comes back
+      and what it cost.
+- [ ] Judge the results and compare the three approaches.
 
 ## Decisions
 
@@ -58,8 +90,10 @@ with literacy judged by the domain expert, rather than on a benchmark.
   travels (a claim, a term, a cited study), and whether to trace specific
   lineages or compare how each corpus treats the same concept. To settle with
   the domain expert, starting with a few concepts traced by hand.
-- How to run the experiment: the measures are retrieval quality, source
-  attribution, synthesis accuracy, and cost; how to judge each is open.
+- The water experiment's test questions, and how each measure is judged.
+- Whether the literacy study gets an argument analysis of each document (for
+  legislation, an argument analysis of the law) alongside its discourse
+  analysis, and what the experiment looks like for literacy.
 - Whether the legislation PDFs, which are public domain, should be tracked.
 
 ## Status

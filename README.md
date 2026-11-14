@@ -34,7 +34,7 @@ The experiment compares three approaches:
 2. **Structured analyses:** Retrieve from the close readings, claims references, and argument evaluations (see [Methods](#methods)).
 3. **Combined retrieval:** Use both original source passages and structured analyses.
 
-The approaches will be compared across two research case studies, evaluating retrieval quality, source attribution, synthesis accuracy, and the costs of each approach.
+The approaches will be compared first on the water study's ten articles, evaluating retrieval quality, source attribution, synthesis accuracy, and the costs of each approach. How the experiment applies to the literacy study will be decided after.
 
 The goal is not to assume that additional analysis produces better research. It is to determine whether that analysis provides measurable value, and under what conditions.
 
@@ -117,9 +117,8 @@ The water study came first and is where the harness was built.
 Both studies do the same core work: take the claims out of individual
 documents, then compare them across documents. Water compares what sources
 claim about one question. Literacy traces how claims change as they travel
-between corpora. Each is a test case for the experiment: whether working from
-the structured analyses finds and grounds those claims better than retrieving
-from the documents themselves.
+between corpora. The experiment runs on the water study first, because all
+ten of its articles are analyzed and accepted.
 
 What we're doing, why, and what's been decided is in
 [`docs/PROJECT.md`](docs/PROJECT.md).
