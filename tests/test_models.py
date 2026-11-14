@@ -98,7 +98,7 @@ def test_a_claim_the_author_simply_asserts_stands_without_support() -> None:
 
 def test_the_close_reading_carries_no_attribution_labels() -> None:
     """Claims are the author's and moves and meaning are the model's, by where
-    they sit; no label repeats what the structure already says (ADR-0013)."""
+    they sit; no label repeats what the structure already says."""
     claim_fields = set(Claim.model_json_schema()["properties"])
     support_fields = set(Support.model_json_schema()["properties"])
     assert claim_fields == {"text", "form", "support"}

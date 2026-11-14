@@ -1,4 +1,4 @@
-# mom-research
+# Literacy study
 
 My mom is a professor of literacy education at Binghamton University. We are
 doing a collaborative study combining her scholarship and content knowledge in
