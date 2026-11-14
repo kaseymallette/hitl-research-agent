@@ -151,6 +151,32 @@ The codebook keeps what that design got right and drops the circle. The analysis
 
 The codebook's examples are taken from the accepted analyses. Every attribution code is checked against the original article, not against another model's output. Each approach's answers are coded with it, and the approaches are compared code by code. The codes are in the [water codebook](studies/water/CODEBOOK.md).
 
+## Status and next steps
+
+**Done**
+
+- **Water:** all ten articles analyzed, judged, and accepted into the collection.
+- **Codebook:** a draft [water codebook](studies/water/CODEBOOK.md) with three dimensions, each code illustrated with examples from the accepted analyses.
+- **Research questions:** ten candidate questions a researcher would need answered to write a paper on the water question, in [`docs/PROJECT.md`](docs/PROJECT.md#research-questions).
+
+**Next: the water experiment**
+
+Each approach needs its own searchable index, and each index is built the same way: break the material into pieces, turn each piece into an embedding, and store the embeddings so a question can be matched against them.
+
+1. **Build the original-documents index (standard RAG).**
+   - **Extract** the text of each article from its PDF. [`scripts/prepare_sources.py`](scripts/prepare_sources.py) already does this.
+   - **Chunk** the text into passages of a set length, each labeled with its article and page.
+   - **Embed** each chunk with an embedding model, which turns the passage into a vector: a list of numbers that places passages with similar meaning near each other.
+   - **Index** the vectors, so that a question can be embedded the same way and matched to the nearest chunks.
+2. **Build the structured-analyses index.** Split each article's close reading, claims reference, and argument evaluation into items: a step of the close reading, an entry in the claims reference, a paragraph of the argument evaluation. Label each item with its article and what kind of item it is, then embed and index the items the same way.
+3. **Set up the combined approach,** which searches both indexes and merges the results.
+4. **Build the answering step.** For a question and an approach, retrieve the closest items, up to the same amount of text for every approach, and have the same model write an answer from them with the same prompt, citing a source for each claim. Record what was retrieved and what each step cost.
+5. **Trial run.** Answer two or three of the questions with all three approaches, code the answers with the codebook, and look closely at a few. Revise the codes, and anything in the indexes or the prompt that isn't working, before going further.
+6. **Full run.** Answer all ten questions with all three approaches: 30 answers.
+7. **Code and compare.** Code every answer, have a second session check the coding, spot-check where the two disagree, and compare the approaches code by code and by cost.
+
+Choices still to make along the way: how long a chunk should be, which embedding model to use, how much retrieved text each answer gets, and which model writes the answers.
+
 ## Development approach and lessons
 
 Two coding assistants helped me build this project.

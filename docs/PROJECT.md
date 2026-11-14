@@ -81,17 +81,56 @@ in draft. A second session checks the coding, and the researcher spot-checks
 where they disagree. The approaches are compared by how often each code
 appears in their answers.
 
+### Research questions
+
+Ten candidates, moving from explaining freshwater use to comparing
+interventions and judging what the evidence can support.
+
+1. What explains the use of freshwater, and specifically drinking-quality
+   water, in the cooling systems described in this collection, and under what
+   conditions could other water supplies meet the same requirements?
+2. Which differences among reported water footprints reflect differences in
+   the systems studied, and which reflect definitions, accounting boundaries,
+   or units of comparison?
+3. Under what conditions do changes in cooling technology reduce overall water
+   consumption, and when do they shift water use between the facility,
+   electricity generation, and other life-cycle stages?
+4. How does accounting for where and when water is used change assessments of
+   pressure on local freshwater resources and the relative merits of
+   interventions?
+5. What does the collection establish about desalination as a way to reduce
+   reliance on existing freshwater supplies, and what remains unresolved when
+   it is compared with reclaimed water or lower-water cooling?
+6. How far can findings from the systems and workloads studied here be
+   generalized to AI infrastructure operating at commercial scale?
+7. Under what combinations of computing-demand growth, efficiency
+   improvements, and infrastructure changes could total water use rise,
+   stabilize, or fall?
+8. Where does agreement across the collection reflect independent evidence,
+   and where does it reflect reliance on shared estimates, datasets, or
+   illustrative cases?
+9. Which proposed reporting, planning, and governance measures are supported
+   by the collection's findings, and which depend on additional evidence or
+   value judgments?
+10. What does the collection show about who bears the effects of data center
+    water use (nearby communities, agriculture, ecosystems), and how much of
+    that rests on evidence of actual harm rather than on volumes of water used
+    or exposure to water stress?
+
 ### Steps
 
-- [ ] Write the test questions.
 - [x] Draft the codebook.
-- [ ] Trial-code a few answers, then revise the codes.
+- [x] Draft the test questions.
 - [ ] Build the original-documents index.
 - [ ] Build the structured-analyses index.
-- [ ] Build the combined index.
-- [ ] Run every test question through all three, recording what comes back
-      and what it cost.
-- [ ] Judge the results and compare the three approaches.
+- [ ] Set up the combined approach (searches both indexes).
+- [ ] Build the answering step: same retrieved-text budget, model, and prompt
+      for every approach, citing sources and recording cost.
+- [ ] Trial run: answer a few questions with each approach, code the answers,
+      and revise the codes.
+- [ ] Full run: all ten questions through all three approaches (30 answers),
+      recording what comes back and what it cost.
+- [ ] Code the answers and compare the three approaches.
 
 ## Decisions
 
