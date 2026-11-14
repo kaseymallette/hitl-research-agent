@@ -18,17 +18,23 @@ and when could other cooling or water supplies, including desalination,
 reduce pressure on local freshwater? Details are in
 [`studies/water/README.md`](../studies/water/README.md).
 
-**The method question, shared by both.** Does a structured close reading
-(claims, their support, and the model's reading of each step) help find and
-compare claims across documents, compared with working from the documents'
-text directly? For literacy this is concrete: tracing a claim from a law back
-through the press to scholarship is a matter of finding the related passages.
+**The main question.** Can AI meaningfully support rigorous,
+evidence-grounded research?
+
+**The experiment, tested on both studies.** Does structured source analysis
+improve downstream research quality compared with retrieving original source
+passages directly? The structured analysis is the close reading (claims, their
+support, and the model's reading of each step) and the argument evaluation;
+the alternative is extracting, embedding, and retrieving the documents' text;
+a combination of both is the third option. For literacy this is concrete:
+tracing a claim from a law back through the press to scholarship is a matter
+of finding the related passages.
 
 ## How they connect
 
 Both studies take claims out of individual documents and compare them across
 documents. Water compares sources on one question. Literacy traces claims
-between corpora. The method question is answered on the studies' own data,
+between corpora. The experiment is run on the studies' own data,
 with literacy judged by the domain expert, rather than on a benchmark.
 
 ## Decisions
@@ -52,8 +58,8 @@ with literacy judged by the domain expert, rather than on a benchmark.
   travels (a claim, a term, a cited study), and whether to trace specific
   lineages or compare how each corpus treats the same concept. To settle with
   the domain expert, starting with a few concepts traced by hand.
-- How to test the method question: what to compare (document text, close
-  readings, or both) and how to judge what each one finds.
+- How to run the experiment: the measures are retrieval quality, source
+  attribution, synthesis accuracy, and cost; how to judge each is open.
 - Whether the legislation PDFs, which are public domain, should be tracked.
 
 ## Status
