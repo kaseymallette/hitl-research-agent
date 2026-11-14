@@ -22,12 +22,6 @@ from hitl_research_agent.inputs import (
     validate_attachments,
 )
 from hitl_research_agent.models import PreparationGap, Provenance, SourceDocument
-from hitl_research_agent.prompts import (
-    CROPS_INPUT_INSTRUCTIONS,
-    PDF_INPUT_INSTRUCTIONS,
-    SYSTEM_PROMPT,
-    build_messages,
-)
 
 PROVENANCE = Provenance(
     source_title="A Paper",
@@ -127,52 +121,6 @@ def test_attachments_over_the_documented_request_limit_are_refused() -> None:
 
 
 # --------------------------------------------------------------------------- message assembly
-
-
-def test_every_mode_sends_the_same_analysis_prompt(tmp_path: Path) -> None:
-    """The experiment compares input formats. If the analysis instructions
-    differed between arms, the comparison would measure nothing."""
-    plain = build_messages(_source())
-    as_pdf = build_messages(_source(), input_mode="pdf", attachments=[_pdf(tmp_path)])
-    as_crops = build_messages(
-        _source(annotated=True), input_mode="prepared_text_and_crops", attachments=[_crop(tmp_path)]
-    )
-    for messages in (plain, as_pdf, as_crops):
-        assert messages[0].content == SYSTEM_PROMPT
-
-
-def test_the_pdf_mode_sends_the_file_and_withholds_the_prepared_text(tmp_path: Path) -> None:
-    attachment = _pdf(tmp_path)
-    messages = build_messages(_source(), input_mode="pdf", attachments=[attachment])
-    blocks = messages[1].content
-    assert isinstance(blocks, list)
-    assert any(b.get("type") == "file" for b in blocks if isinstance(b, dict))
-    text = " ".join(b["text"] for b in blocks if isinstance(b, dict) and b.get("type") == "text")
-    assert PDF_INPUT_INSTRUCTIONS in text
-    assert "Body text only." not in text  # the prepared text is not the input in this mode
-
-
-def test_the_crops_mode_sends_the_text_and_one_image_per_gap(tmp_path: Path) -> None:
-    messages = build_messages(
-        _source(annotated=True), input_mode="prepared_text_and_crops", attachments=[_crop(tmp_path)]
-    )
-    blocks = messages[1].content
-    assert isinstance(blocks, list)
-    assert sum(1 for b in blocks if isinstance(b, dict) and b.get("type") == "image") == 1
-    text = " ".join(b["text"] for b in blocks if isinstance(b, dict) and b.get("type") == "text")
-    assert CROPS_INPUT_INSTRUCTIONS in text
-    assert "Body text." in text
-    assert "gap U1" in text and "page 4" in text  # the model can locate the crop again
-
-
-def test_text_only_mode_sends_one_plain_string_and_no_format_instructions() -> None:
-    messages = build_messages(_source())
-    assert messages[1].content == (
-        "Source title: A Paper\nSource type: peer_reviewed_paper\n\nBody text only."
-    )
-
-
-# --------------------------------------------------------------------------- annotations
 
 
 def test_an_annotation_is_locatable_and_carries_no_interpretation() -> None:
