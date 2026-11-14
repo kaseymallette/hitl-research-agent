@@ -63,13 +63,18 @@ cost.
 Judging started blind and head to head: the A/B experiments chose the analysis
 setup by tournament. The experiment moves to codebook judging, in the style of
 the literacy study's codebook. No one writes correct answers to the
-questions. Each answer is coded for two things, the same two tasks as the
-close reading and the argument evaluation:
+questions. Each answer is coded for three things: the same two tasks as the
+close reading and the argument evaluation, and the water question's own
+distinctions:
 
 - **Attribution:** does it represent the sources faithfully and credit each
   claim to the source that makes it? Checked against the original articles.
 - **Argument:** does its own argument hold up: reasons for the why, evidence
   weighed, conclusions qualified and bounded, counterevidence addressed?
+- **Water distinctions:** does it keep apart withdrawal and consumption,
+  onsite and grid water, water of different quality, different accounting
+  boundaries and units, local and total pressure, modeled and measured results,
+  and treat desalination as one option among others?
 
 The codes are in [`studies/water/CODEBOOK.md`](../studies/water/CODEBOOK.md),
 in draft. A second session checks the coding, and the researcher spot-checks

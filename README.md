@@ -38,7 +38,7 @@ The experiment compares three approaches:
 
 The approaches are compared on retrieval quality, source attribution, synthesis accuracy, and the costs of each approach.
 
-Judging started blind and head to head, in the A/B experiments that chose the analysis setup, and moves here to codebook judging. Each answer is coded for its attribution (does it represent the sources faithfully?) and its argument (does its own reasoning hold up?), with every code pointing to the passage that shows it. The codes are in the [water codebook](studies/water/CODEBOOK.md).
+Judging started blind and head to head, in the A/B experiments that chose the analysis setup, and moves here to codebook judging. Each answer is coded for its attribution (does it represent the sources faithfully?), its argument (does its own reasoning hold up?), and the water distinctions (does it keep apart what the field keeps apart, such as withdrawal and consumption?), with every code pointing to the passage that shows it. The codes are in the [water codebook](studies/water/CODEBOOK.md).
 
 The goal is not to assume that additional analysis produces better research. It is to determine whether that analysis provides measurable value, and under what conditions.
 
