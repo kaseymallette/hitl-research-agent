@@ -28,13 +28,17 @@ The AI agents need to add something worthwhile, whether that is helping me compa
 
 An open question is whether structured source analysis improves downstream research compared with retrieving passages directly from original documents.
 
+The experiment uses only the [water study](studies/water/), because all ten of its articles are analyzed and accepted. Whether and how it applies to the literacy study will be decided after.
+
 The experiment compares three approaches:
 
 1. **Original documents:** Extract, chunk, embed, and retrieve passages directly from source documents.
 2. **Structured analyses:** Retrieve from the close readings, claims references, and argument evaluations (see [Methods](#methods)).
 3. **Combined retrieval:** Use both original source passages and structured analyses.
 
-The approaches will be compared first on the water study's ten articles, evaluating retrieval quality, source attribution, synthesis accuracy, and the costs of each approach. How the experiment applies to the literacy study will be decided after.
+The approaches are compared on retrieval quality, source attribution, synthesis accuracy, and the costs of each approach.
+
+Judging started blind and head to head, in the A/B experiments that chose the analysis setup, and moves here to codebook judging. Each answer is coded for its attribution (does it represent the sources faithfully?) and its argument (does its own reasoning hold up?), with every code pointing to the passage that shows it. The codes are in the [water codebook](studies/water/CODEBOOK.md).
 
 The goal is not to assume that additional analysis produces better research. It is to determine whether that analysis provides measurable value, and under what conditions.
 
@@ -153,7 +157,7 @@ What has been difficult about working this way:
 │   └── ENGINEERING_DIRECTIVES.md  the coding baseline
 ├── studies/
 │   ├── literacy/                  three corpora, codebooks, rubrics, prompts, results
-│   └── water/                     sources, prompts, rubric, accepted analyses
+│   └── water/                     sources, prompts, rubric, codebook, accepted analyses
 ├── scripts/
 │   ├── run_single_source.py       water: five Codex calls per article
 │   ├── workspace.py               literacy: load a source into the Codex workspace, save its results

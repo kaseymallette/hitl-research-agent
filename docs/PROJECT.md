@@ -58,10 +58,29 @@ reading and judgment are never reported as what a source says.
 **Measures:** retrieval quality, source attribution, synthesis accuracy, and
 cost.
 
+### How it's judged
+
+Judging started blind and head to head: the A/B experiments chose the analysis
+setup by tournament. The experiment moves to codebook judging, in the style of
+the literacy study's codebook. No one writes correct answers to the
+questions. Each answer is coded for two things, the same two tasks as the
+close reading and the argument evaluation:
+
+- **Attribution:** does it represent the sources faithfully and credit each
+  claim to the source that makes it? Checked against the original articles.
+- **Argument:** does its own argument hold up: reasons for the why, evidence
+  weighed, conclusions qualified and bounded, counterevidence addressed?
+
+The codes are in [`studies/water/CODEBOOK.md`](../studies/water/CODEBOOK.md),
+in draft. A second session checks the coding, and the researcher spot-checks
+where they disagree. The approaches are compared by how often each code
+appears in their answers.
+
 ### Steps
 
 - [ ] Write the test questions.
-- [ ] Decide how each measure is judged, and by whom.
+- [x] Draft the codebook.
+- [ ] Trial-code a few answers, then revise the codes.
 - [ ] Build the original-documents index.
 - [ ] Build the structured-analyses index.
 - [ ] Build the combined index.
