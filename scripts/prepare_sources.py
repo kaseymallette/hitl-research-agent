@@ -50,9 +50,9 @@ from hitl_research_agent.inputs import (
 )
 from hitl_research_agent.models import SourceType
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_MANIFEST = REPO_ROOT / "data" / "research" / "sources.yaml"
-DEFAULT_OUTPUT_ROOT = REPO_ROOT / "outputs" / "ab_testing" / "preparation"
+STUDY = Path(__file__).resolve().parents[1] / "studies" / "water"
+DEFAULT_MANIFEST = STUDY / "data" / "sources.yaml"
+DEFAULT_OUTPUT_ROOT = STUDY / "outputs" / "preparation"
 
 PARSER_NAME = "pymupdf4llm"
 PARSER_VERSION = pymupdf4llm.__version__ if hasattr(pymupdf4llm, "__version__") else "unknown"
@@ -667,7 +667,7 @@ def prepare_source(
     entry: ManifestEntry, output_root: Path, *, max_characters: int
 ) -> dict[str, Any]:
     """Prepare one source. Returns a summary; writes the text and records to disk."""
-    pdf = (REPO_ROOT / entry.pdf) if not Path(entry.pdf).is_absolute() else Path(entry.pdf)
+    pdf = (STUDY / entry.pdf) if not Path(entry.pdf).is_absolute() else Path(entry.pdf)
     out = output_root / entry.slug
     (out / "images").mkdir(parents=True, exist_ok=True)
     for stale in (out / "images").glob("*.png"):
@@ -740,7 +740,7 @@ def prepare_source(
 
 def render_page(entry: ManifestEntry, output_root: Path, page_no: int) -> Path:
     """Render one whole page from the original PDF, for a human who needs to look."""
-    pdf = (REPO_ROOT / entry.pdf) if not Path(entry.pdf).is_absolute() else Path(entry.pdf)
+    pdf = (STUDY / entry.pdf) if not Path(entry.pdf).is_absolute() else Path(entry.pdf)
     doc = pymupdf.open(pdf)
     if not 1 <= page_no <= len(doc):
         raise ValueError(f"page {page_no} is outside this {len(doc)}-page PDF")

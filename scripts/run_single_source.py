@@ -5,10 +5,10 @@
     uv run python scripts/run_single_source.py <slug> --only 03
     uv run python scripts/run_single_source.py <slug> --revise 01
 
-The article is the `<slug>` entry in `data/research/sources.yaml`. Each call is
-its own Codex session (`codex exec`) on GPT-6.1 Sol at medium effort (ADR-0021),
+The article is the `<slug>` entry in `studies/water/data/sources.yaml`. Each call is
+its own Codex session (`codex exec`) on GPT-6.1 Sol at medium effort,
 signed in with ChatGPT rather than an API key, and writes one file to
-`outputs/analyses/<slug>/` (ADR-0022):
+`studies/water/outputs/analyses/<slug>/`:
 
     01_close_reading.json          the close reading
     02_claims_reference.md         the article's own claims, from the article alone
@@ -28,7 +28,7 @@ hand by pasting the same file. Each session runs in a temporary folder holding
 only the files that call reads, so no session can see another's judgment.
 Only a technical failure stops a run: Codex exiting with an error or timing
 out, the call's file not written, or a close reading that does not parse as
-JSON (ADR-0005). Codex's event log and final message for each call go to
+JSON. Codex's event log and final message for each call go to
 `.codex_runs/<slug>/`, which git ignores.
 """
 
@@ -49,8 +49,9 @@ from typing import Any
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SOURCES = REPO_ROOT / "data" / "research" / "sources.yaml"
-ANALYSES = REPO_ROOT / "outputs" / "analyses"
+STUDY = REPO_ROOT / "studies" / "water"
+SOURCES = STUDY / "data" / "sources.yaml"
+ANALYSES = STUDY / "outputs" / "analyses"
 LOGS = REPO_ROOT / ".codex_runs"
 APP_CODEX = Path("/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex")
 
@@ -58,15 +59,15 @@ MODEL = "gpt-6.1-sol"
 EFFORT = "medium"
 TIMEOUT_SECONDS = 60 * 60
 
-PROMPTS = REPO_ROOT / "prompts"
+PROMPTS = STUDY / "prompts"
 CLOSE_READING_PROMPT = "prompts/01_close_reading.md"
 ARGUMENT_EVALUATION_PROMPT = "prompts/04_argument_evaluation.md"
 
 # Repository files a session may be given, under the name it sees them by.
 REPO_FILES = {
-    "RUBRIC.md": REPO_ROOT / "docs" / "RUBRIC.md",
-    CLOSE_READING_PROMPT: REPO_ROOT / CLOSE_READING_PROMPT,
-    ARGUMENT_EVALUATION_PROMPT: REPO_ROOT / ARGUMENT_EVALUATION_PROMPT,
+    "RUBRIC.md": STUDY / "RUBRIC.md",
+    CLOSE_READING_PROMPT: STUDY / CLOSE_READING_PROMPT,
+    ARGUMENT_EVALUATION_PROMPT: STUDY / ARGUMENT_EVALUATION_PROMPT,
 }
 SOURCE_FIELDS = ("source_title", "source_type", "publisher", "doi")
 
@@ -162,7 +163,7 @@ def stage(call: Call, entry: dict[str, Any], article_dir: Path, workspace: Path)
         target = workspace / name
         target.parent.mkdir(parents=True, exist_ok=True)
         if name == "article.pdf":
-            shutil.copyfile(REPO_ROOT / entry["pdf"], target)
+            shutil.copyfile(STUDY / entry["pdf"], target)
         elif name == "source.yaml":
             fields = {field: entry.get(field) for field in SOURCE_FIELDS}
             target.write_text(yaml.safe_dump(fields, sort_keys=False), encoding="utf-8")
@@ -258,7 +259,7 @@ def calls_to_run(only: str | None, revise: str | None, article_dir: Path) -> lis
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("slug", help="the article's slug in data/research/sources.yaml")
+    parser.add_argument("slug", help="the article's slug in studies/water/data/sources.yaml")
     choice = parser.add_mutually_exclusive_group()
     choice.add_argument("--only", choices=sorted(CALLS), help="rerun one call")
     choice.add_argument("--revise", choices=sorted(REVISIONS), help="revise 01 or 04 in place")

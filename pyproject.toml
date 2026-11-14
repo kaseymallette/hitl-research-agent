@@ -30,7 +30,7 @@ packages = ["src/hitl_research_agent"]
 target-version = "py312"
 line-length = 100
 # Generated run/preparation artifacts (including preserved one-off scripts) are data, not project code.
-extend-exclude = ["outputs"]
+extend-exclude = ["studies"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]

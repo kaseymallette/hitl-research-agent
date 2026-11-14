@@ -16,6 +16,7 @@ from typing import Any
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+PROMPTS = REPO_ROOT / "studies" / "water" / "prompts"
 HARNESS = REPO_ROOT / "scripts" / "run_single_source.py"
 SLUG = "li_et_al_2025_making_ai_less_thirsty"
 
@@ -212,8 +213,6 @@ def test_every_call_reads_its_request_from_its_prompt_file() -> None:
     by hand by pasting the same file."""
     harness = load_harness()
     calls = [*harness.CALLS.values(), *harness.REVISIONS.values()]
-    assert sorted(call.prompt for call in calls) == sorted(
-        p.name for p in (REPO_ROOT / "prompts").glob("*.md")
-    )
+    assert sorted(call.prompt for call in calls) == sorted(p.name for p in PROMPTS.glob("*.md"))
     for call in calls:
-        assert call.request == (REPO_ROOT / "prompts" / call.prompt).read_text(encoding="utf-8")
+        assert call.request == (PROMPTS / call.prompt).read_text(encoding="utf-8")
