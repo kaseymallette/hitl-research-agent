@@ -97,6 +97,7 @@ without a record.
 | [0020](0020-codex-joins-experiment-2.md) | Codex joins Experiment 2 as a third way of running the prompts | 2026-10-24 | Accepted |
 | [0021](0021-codex-sol-medium-on-the-pdf-for-the-collection.md) | The collection is analyzed by Codex, on GPT-6.1 Sol at medium effort, from the PDF | 2026-11-06 | Accepted; output layout superseded by 0022 |
 | [0022](0022-five-calls-five-files-one-folder.md) | An article's single-source analysis is five Codex calls writing five files to one folder | 2026-11-11 | Accepted |
-| [0023](0023-synthesis-retrieves-from-a-store-of-the-accepted-articles.md) | Synthesis retrieves from a store of each accepted article's close reading, claims reference, and argument evaluation | 2026-11-12 | Accepted |
+| [0023](0023-synthesis-retrieves-from-a-store-of-the-accepted-articles.md) | Synthesis retrieves from a store of each accepted article's close reading, claims reference, and argument evaluation | 2026-11-12 | Accepted; retrieval amended by 0024 |
+| [0024](0024-hybrid-retrieval-full-text-and-three-embedding-models.md) | Retrieval is hybrid: full-text search and three local embedding models, compared on the same queries | 2026-11-12 | Accepted |
 
 New records start from [template.md](template.md).

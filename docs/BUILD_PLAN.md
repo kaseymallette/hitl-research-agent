@@ -430,7 +430,9 @@ the judgment is run again (`--only 03` or `--only 05`). Only accepted articles e
 
 Decided in [ADR-0023](adr/0023-synthesis-retrieves-from-a-store-of-the-accepted-articles.md):
 
-- **The store:** a SQLite database with full-text search, built by a script
+- **The store:** a SQLite database with full-text search and vectors
+  from three local embedding models
+  ([ADR-0024](adr/0024-hybrid-retrieval-full-text-and-three-embedding-models.md)), built by a script
   from the articles in `outputs/collection.yaml`: each one's close reading,
   claims reference, and argument evaluation, with its provenance from
   `sources.yaml`. Rebuilt, never edited, and not committed. It stops only on a
@@ -440,7 +442,8 @@ Decided in [ADR-0023](adr/0023-synthesis-retrieves-from-a-store-of-the-accepted-
   `reference_section`, and `evaluation_section`. Close-reading items keep
   their step, order, and location; the two Markdown documents are split at
   their headings.
-- **Retrieval:** a query script that searches text, lists an article's items
+- **Retrieval:** a query script that searches by text, by embedding, or both
+  (hybrid with bge-m3, the default), logs every query, lists an article's items
   in document order, and returns one item with its support, citations, and
   location. Every result names its kind and source.
 - **Synthesis:** a Codex session given the store and the query script. It

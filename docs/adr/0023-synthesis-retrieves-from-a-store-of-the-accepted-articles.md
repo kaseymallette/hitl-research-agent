@@ -1,6 +1,6 @@
 # ADR-0023 — Synthesis retrieves from a store of each accepted article's close reading, claims reference, and argument evaluation
 
-- **Status:** Accepted
+- **Status:** Accepted; retrieval amended by ADR-0024
 - **Date:** 2026-11-12
 - **Landed in:** not yet committed
 
@@ -108,3 +108,5 @@ reference or evaluation section, but cites the whole section.
 Amends [ADR-0018](0018-three-agents-analysis-synthesis-research-assistant.md):
 synthesis may retrieve argument evaluations and claims references as well as
 close readings, each labeled by kind. The rest of ADR-0018 stands.
+
+2026-11-12: amended by [ADR-0024](0024-hybrid-retrieval-full-text-and-three-embedding-models.md): the store also holds vectors from three local embedding models, and retrieval is full-text, embedding, or hybrid.
