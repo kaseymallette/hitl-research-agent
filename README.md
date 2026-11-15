@@ -151,6 +151,28 @@ The codebook keeps what that design got right and drops the circle. The analysis
 
 The codebook's examples are taken from the accepted analyses. Every attribution code is checked against the original article, not against another model's output. Each approach's answers are coded with it, and the approaches are compared code by code. The codes are in the [water codebook](studies/water/CODEBOOK.md).
 
+## Development approach and lessons
+
+Two coding assistants helped me build this project.
+
+- **Claude Code** is responsible for all of the code.
+- **Codex** helps with design and prompt writing.
+
+Neither decides what I research or what the evidence means.
+
+What has been difficult about working this way:
+
+- Each implementation step produced the next step’s problem, and the design
+  grew to absorb every one. A safeguard added for one failure became the thing
+  the next step had to work around. The accumulated machinery eventually cost
+  more than the failures it caught, and removing it took longer than building
+  it had.
+- The architecture drifted without my deciding it should. No single step chose
+  to turn quotation matching into a hard acceptance gate, but it arrived there
+  across many small changes that each looked reasonable at the time, and the
+  direction was only visible in aggregate.
+- The coding assistants did not consistently follow my instructions. I had to repeat requirements, correct assumptions, and undo changes I had not asked for. That took time and money away from the research and made supervising the assistants a substantial part of the work.
+
 ## Status and next steps
 
 **Done**
@@ -176,28 +198,6 @@ Each approach needs its own searchable index, and each index is built the same w
 7. **Code and compare.** Code every answer, have a second session check the coding, spot-check where the two disagree, and compare the approaches code by code and by cost.
 
 Choices still to make along the way: how long a chunk should be, which embedding model to use, how much retrieved text each answer gets, and which model writes the answers.
-
-## Development approach and lessons
-
-Two coding assistants helped me build this project.
-
-- **Claude Code** is responsible for all of the code.
-- **Codex** helps with design and prompt writing.
-
-Neither decides what I research or what the evidence means.
-
-What has been difficult about working this way:
-
-- Each implementation step produced the next step’s problem, and the design
-  grew to absorb every one. A safeguard added for one failure became the thing
-  the next step had to work around. The accumulated machinery eventually cost
-  more than the failures it caught, and removing it took longer than building
-  it had.
-- The architecture drifted without my deciding it should. No single step chose
-  to turn quotation matching into a hard acceptance gate, but it arrived there
-  across many small changes that each looked reasonable at the time, and the
-  direction was only visible in aggregate.
-- The coding assistants did not consistently follow my instructions. I had to repeat requirements, correct assumptions, and undo changes I had not asked for. That took time and money away from the research and made supervising the assistants a substantial part of the work.
 
 ## Layout
 
