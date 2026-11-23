@@ -39,3 +39,8 @@ studies/water/data/kanbur_et_al_2020_desalination_integrated_data_center_cooling
 studies/literacy/data/**/*.pdf
 # Proposal drafts, and the original submission with reviews
 studies/literacy/proposal/
+
+# Water: prepared article text and the index built from it contain the copyrighted articles' text;
+# regenerate with scripts/prepare_sources.py and scripts/build_index.py
+studies/water/outputs/preparation/
+studies/water/outputs/index/

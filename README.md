@@ -185,7 +185,7 @@ What has been difficult about working this way:
 
 Each approach needs its own searchable index, and each index is built the same way: break the material into pieces, turn each piece into an embedding, and store the embeddings so a question can be matched against them.
 
-1. **Build the original-documents index (standard RAG).**
+1. **Build the original-documents index (standard RAG).** Done: [`scripts/build_index.py`](scripts/build_index.py), 525 passages from the ten articles.
    - **Extract** the text of each article from its PDF. [`scripts/prepare_sources.py`](scripts/prepare_sources.py) already does this.
    - **Chunk** the text into passages of a set length, each labeled with its article and page.
    - **Embed** each chunk with an embedding model, which turns the passage into a vector: a list of numbers that places passages with similar meaning near each other.
@@ -211,6 +211,7 @@ Choices still to make along the way: how long a chunk should be, which embedding
 ├── scripts/
 │   ├── run_single_source.py       water: five Codex calls per article
 │   ├── workspace.py               literacy: load a source into the Codex workspace, save its results
+│   ├── build_index.py             water: chunk, embed, and search the articles' text (standard RAG)
 │   └── prepare_sources.py         extracts a PDF's text, tables, and figure crops
 ├── src/hitl_research_agent/       the data models and input handling prepare_sources.py uses
 └── tests/

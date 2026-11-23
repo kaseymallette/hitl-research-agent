@@ -121,7 +121,7 @@ interventions and judging what the evidence can support.
 
 - [x] Draft the codebook.
 - [x] Draft the test questions.
-- [ ] Build the original-documents index.
+- [x] Build the original-documents index.
 - [ ] Build the structured-analyses index.
 - [ ] Set up the combined approach (searches both indexes).
 - [ ] Build the answering step: same retrieved-text budget, model, and prompt
@@ -146,6 +146,13 @@ interventions and judging what the evidence can support.
 - **Source PDFs that can't be redistributed stay local.** Only their
   `sources.yaml` entries are tracked. That covers all literacy PDFs for now
   and three publisher-copyrighted water articles.
+- **The original-documents index.** `scripts/build_index.py` cuts each
+  article's prepared text into passages of at most 450 tokens, overlapping by
+  up to 50, at paragraph, then line, sentence, or word breaks. Each passage is
+  labeled with its article and PDF pages and embedded with
+  `BAAI/bge-small-en-v1.5` (local, through fastembed: no API key or per-call
+  cost). Ten articles give 525 passages. The index and the prepared text stay
+  local, like the PDFs.
 
 ## Open
 
