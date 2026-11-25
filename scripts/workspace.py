@@ -18,7 +18,7 @@ from typing import Any
 import pymupdf
 import yaml
 
-STUDY = Path(__file__).resolve().parents[1] / "studies" / "literacy"
+STUDY = Path(__file__).resolve().parents[1] / "studies" / "science_of_reading"
 DEFAULT_WORKSPACE = Path.home() / "sor-workspace"
 CORPORA = ("scholarly", "popular-press", "legislation")
 # The fields the prompts read from source.yaml.

@@ -1,4 +1,4 @@
-"""scripts/workspace.py: loading a literacy source into the workspace and saving its results.
+"""scripts/workspace.py: loading a science of reading source and saving its results.
 
 The script is not a package module, so it is loaded by file path.
 """
@@ -15,7 +15,7 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = REPO_ROOT / "scripts" / "workspace.py"
-STUDY = REPO_ROOT / "studies" / "literacy"
+STUDY = REPO_ROOT / "studies" / "science_of_reading"
 
 
 def load_script() -> ModuleType:

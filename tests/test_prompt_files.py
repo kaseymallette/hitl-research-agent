@@ -1,8 +1,8 @@
-"""The literacy workspace template holds copies of the rubric and prompts; they must not drift."""
+"""The science of reading workspace holds copies of the rubric and prompts; they must not drift."""
 
 from pathlib import Path
 
-STUDY = Path(__file__).resolve().parents[1] / "studies" / "literacy"
+STUDY = Path(__file__).resolve().parents[1] / "studies" / "science_of_reading"
 
 
 def test_the_evaluations_workspace_copies_match_their_originals() -> None:

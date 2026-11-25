@@ -35,10 +35,10 @@ studies/water/data/barnett_itzhaki_2026_water_footprint_artificial_intelligence.
 studies/water/data/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf
 studies/water/data/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
 
-# Literacy study: source PDFs stay local; only data/<corpus>/sources.yaml is tracked
-studies/literacy/data/**/*.pdf
+# Science of reading study: source PDFs stay local; only data/<corpus>/sources.yaml is tracked
+studies/science_of_reading/data/**/*.pdf
 # Proposal drafts, and the original submission with reviews
-studies/literacy/proposal/
+studies/science_of_reading/proposal/
 
 # Water: prepared article text and the index built from it contain the copyrighted articles' text;
 # regenerate with scripts/prepare_sources.py and scripts/build_index.py

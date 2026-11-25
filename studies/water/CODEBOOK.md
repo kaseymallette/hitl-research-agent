@@ -141,7 +141,7 @@ writing, not the source.
 
 ## Process
 
-The same as the literacy codebook's trial run:
+The same as the science of reading codebook's trial run:
 
 1. Code a trial set of answers with these codes.
 2. A separate session checks every code against the answer and, for ATT codes,

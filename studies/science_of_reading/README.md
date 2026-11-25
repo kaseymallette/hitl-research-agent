@@ -1,4 +1,4 @@
-# Literacy study
+# Science of reading study
 
 My mom is a professor of literacy education at Binghamton University. We are
 doing a collaborative study combining her scholarship and content knowledge in
@@ -94,9 +94,9 @@ each text received.
 
 ## This folder
 
-The literacy study inside `hitl-research-agent`. It was developed on a
+The science of reading study inside `hitl-research-agent`. It was developed on a
 separate branch and moved here; that branch's history is kept as the
-`mom-research-final` tag. Paths below are relative to `studies/literacy/`; run the
+`mom-research-final` tag. Paths below are relative to `studies/science_of_reading/`; run the
 commands in `RUNBOOK.md` from the repository root.
 
 ```

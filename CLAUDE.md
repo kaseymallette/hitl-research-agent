@@ -23,6 +23,6 @@ Project-specific commands, constraints, and architectural decisions belong in th
 
 Checks: `uv run pytest` · `uv run ruff check . && uv run ruff format --check .` · `uv run mypy src`
 
-[docs/PROJECT.md](docs/PROJECT.md) holds the questions, current decisions, and status. When a decision changes, update it there; don't create decision records or prompt logs. The two case studies live in `studies/literacy/` and `studies/water/`, each with its own README.
+[docs/PROJECT.md](docs/PROJECT.md) holds the questions, current decisions, and status. When a decision changes, update it there; don't create decision records or prompt logs. The two case studies live in `studies/science_of_reading/` and `studies/water/`, each with its own README.
 
 **The one hard rule:** only a technical failure may stop a run. A thin analysis, a claim with no evidence item, a `verbatim` quotation that does not match the source text — these are reported to the researcher, never withheld. Do not add validation that blocks a result on analysis quality. Directive 10 above treats invalid external data as a thing to handle explicitly; model output that is poor is not invalid data.

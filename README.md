@@ -41,28 +41,43 @@ The question is whether that reading is worth doing. Does structured source anal
 
 The goal is not to assume that additional analysis produces better research. It is to determine whether that analysis provides measurable value, and under what conditions.
 
+## The pilot: literacy
+
+The pilot measures retrieval with precision and recall on a small set of literacy articles from a professor of literacy education, a subject expert who can judge what is relevant. It comes first because the water articles have no such expert, so nobody can confirm what a correct retrieval is there.
+
+*Planned; waiting on the articles.* The plan, for three articles:
+
+1. **Analyze each article** with the single-source analysis: a close reading, a claims reference, and an argument evaluation.
+2. **Split each into pieces.** There are four sources of pieces: the article text, the close reading, the claims reference, and the argument evaluation.
+3. **Generate questions.** A model writes one question for every piece, a question that piece answers. Each question's correct answer is the piece it was written from.
+4. **Measure recall automatically.** Search with each question and check where its piece comes back:
+   - **Recall@5 and recall@10:** how often the piece is in the top 5 or top 10 results.
+   - **MRR (mean reciprocal rank):** how high it ranks on average, from 1 (always first) to 0 (never found).
+5. **Measure precision with the expert.** For a set of questions, the expert marks which retrieved pieces are relevant; precision is the share that are.
+6. **Compare the four sources:** which retrieves better, and what kind of questions each one supports (factual, explanatory, argument, comparative).
+
 ## Two studies
 
 | Study | Question | Status |
 | --- | --- | --- |
-| [**Literacy**](studies/literacy/) | How is the science of reading defined, simplified, and contested as it moves from scholarship, through the popular press, into state legislation? | Legislation trial run done (six laws); scholarly and popular press next |
+| [**Science of reading**](studies/science_of_reading/) | How is the science of reading defined, simplified, and contested as it moves from scholarship, through the popular press, into state legislation? | Legislation trial run done (six laws); scholarly and popular press next |
 | [**Water**](studies/water/) | Why does AI infrastructure use freshwater, and when could other cooling methods or water supplies, including desalination, reduce pressure on local freshwater? | Ten articles analyzed and accepted |
 
-The literacy study is a collaboration with a professor of literacy education.
+The science of reading study is a collaboration with a professor of literacy education.
 The water study came first and is where the harness was built.
 
 Both studies do the same core work: take the claims out of individual
 documents, then compare them across documents. Water compares what sources
-claim about one question. Literacy traces how claims change as they travel
+claim about one question. Science of reading traces how claims change as they travel
 between corpora. The experiment runs on the water study first, because all
 ten of its articles are analyzed and accepted.
 
 What we're doing, why, and what's been decided is in
 [`docs/PROJECT.md`](docs/PROJECT.md).
 
-## Methods
+## Water study: methods
 
-The experiment uses only the [water study](studies/water/), because all ten of its articles are analyzed and accepted. Whether and how it applies to the literacy study will be decided after. It compares two approaches to answering the same research questions from the same ten articles: traditional RAG, which retrieves passages of the articles themselves, and structured RAG, which retrieves from analyses of them. In the code they are `rag` and `structured`.
+The water experiment uses all ten of the [water study](studies/water/)'s articles, which are analyzed and accepted. Whether and how it applies to the science of reading study will be decided after. It compares two approaches to answering the same research questions from the same ten articles: traditional RAG, which retrieves passages of the articles themselves, and structured RAG, which retrieves from analyses of them. In the code they are `rag` and `structured`.
 
 ### Traditional RAG
 
@@ -96,7 +111,7 @@ Both approaches answer the same way. For a question, the nearest items are taken
 
 A third approach, retrieving from both, was dropped after the trial run because it added a variable without isolating one.
 
-## Results
+## Water study: results
 
 ### The trial
 
@@ -144,9 +159,9 @@ The codebook keeps what that design got right and drops the circle. The analysis
 
 The codebook's examples are taken from the accepted analyses. Every attribution code is checked against the original article, not against another model's output. Each approach's answers are coded with it, and the approaches are compared code by code. The codes are in the [water codebook](studies/water/CODEBOOK.md).
 
-## The literacy study
+## The science of reading study
 
-The [literacy study](studies/literacy/) is a collaboration with a professor of literacy education. It examines how the science of reading is defined, simplified, and contested as it moves from scholarship, through the popular press, into state legislation, using critical discourse analysis across the three corpora. The legislation trial run is done (six laws); the scholarly and popular press corpora are next. Its documents run through [`scripts/workspace.py`](scripts/workspace.py), and whether the experiment applies to it will be decided after the water results.
+The [science of reading study](studies/science_of_reading/) is a collaboration with a professor of literacy education. It examines how the science of reading is defined, simplified, and contested as it moves from scholarship, through the popular press, into state legislation, using critical discourse analysis across the three corpora. The legislation trial run is done (six laws); the scholarly and popular press corpora are next. Its documents run through [`scripts/workspace.py`](scripts/workspace.py), and whether the experiment applies to it will be decided after the water results.
 
 ## The harness
 
@@ -182,8 +197,8 @@ harness needs.
 - **The prompts are the requests.** Each call sends its prompt file in
   [`studies/water/prompts/`](studies/water/prompts/) exactly as written, so
   any call can also be run by hand by pasting the same file into a new Codex
-  session. The literacy study's prompts are in
-  [`studies/literacy/prompts/`](studies/literacy/prompts/).
+  session. The science of reading study's prompts are in
+  [`studies/science_of_reading/prompts/`](studies/science_of_reading/prompts/).
 - **Resumable.** With no option, only the calls whose file is missing run, so
   a stopped run picks up where it left off. `--only 03` reruns one call.
 - **Revise in place.** `--revise 01` revises the close reading from its
@@ -206,7 +221,7 @@ uv run python scripts/build_index.py build source_text
 uv run python scripts/answer.py --questions 1 5 8
 ```
 
-The literacy study runs its documents through
+The science of reading study runs its documents through
 [`scripts/workspace.py`](scripts/workspace.py), which loads one source (its
 PDF, extracted text, and page images) into a separate Codex workspace and
 saves the results back to the study.
@@ -241,6 +256,8 @@ What has been difficult about working this way:
 - **Codebook:** a draft [water codebook](studies/water/CODEBOOK.md) with three dimensions, each code illustrated with examples from the accepted analyses.
 - **Research questions:** ten candidate questions a researcher would need answered to write a paper on the water question, in [`docs/PROJECT.md`](docs/PROJECT.md#research-questions).
 
+**Next: the literacy pilot.** Waiting on three literacy articles; the plan is in [The pilot: literacy](#the-pilot-literacy).
+
 **Next: the water experiment**
 
 Each approach needs its own searchable index, and each index is built the same way: break the material into pieces, turn each piece into an embedding, and store the embeddings so a question can be matched against them.
@@ -265,11 +282,11 @@ The choices so far (chunk length, embedding model, a 4,000-token retrieved-text 
 │   ├── PROJECT.md                 the questions, current decisions, and status
 │   └── ENGINEERING_DIRECTIVES.md  the coding baseline
 ├── studies/
-│   ├── literacy/                  three corpora, codebooks, rubrics, prompts, results
+│   ├── science_of_reading/        three corpora, codebooks, rubrics, prompts, results
 │   └── water/                     sources, prompts, rubric, codebook, accepted analyses
 ├── scripts/
 │   ├── run_single_source.py       water: five Codex calls per article
-│   ├── workspace.py               literacy: load a source into the Codex workspace, save its results
+│   ├── workspace.py               science of reading: load a source into the Codex workspace, save its results
 │   ├── build_index.py             water: index and search the articles' text and their analyses
 │   ├── answer.py                  water: answer a research question from one approach's retrieved items
 │   └── prepare_sources.py         extracts a PDF's text, tables, and figure crops
@@ -279,7 +296,7 @@ The choices so far (chunk length, embedding model, a 4,000-token retrieved-text 
 
 Earlier versions are kept as tags: `v1-final`, and `v2-final` (the A/B
 experiments, the decision records, the prompt log, and the API pipeline). The
-literacy study was developed separately and is kept as `mom-research-final`.
+science of reading study was developed separately and is kept as `mom-research-final`.
 
 ## Setup and checks
 

@@ -5,13 +5,13 @@ reference. When a decision changes, edit it here; don't add a new record.
 
 ## The questions
 
-**Literacy (the main study).** How is the science of reading defined,
+**Science of reading (the main study).** How is the science of reading defined,
 simplified, and contested as it travels from peer-reviewed research, through
 the popular press, into state legislation? What gets lost in translation at
 each step? The study analyzes discourse (critical discourse analysis,
 translation theory, critical policy analysis), not whether any approach to
 reading instruction works. Details are in
-[`studies/literacy/README.md`](../studies/literacy/README.md).
+[`studies/science_of_reading/README.md`](../studies/science_of_reading/README.md).
 
 **Water (the first case study).** Why does AI infrastructure use freshwater,
 and when could other cooling or water supplies, including desalination,
@@ -28,8 +28,8 @@ It runs on the water study first; see below.
 ## How they connect
 
 Both studies take claims out of individual documents and compare them across
-documents. Water compares sources on one question. Literacy traces claims
-between corpora. What the experiment means for literacy is decided once the
+documents. Water compares sources on one question. Science of reading traces claims
+between corpora. What the experiment means for science of reading is decided once the
 water experiment is done.
 
 ## The experiment: water
@@ -66,7 +66,7 @@ cost.
 
 Judging started blind and head to head: the A/B experiments chose the analysis
 setup by tournament. The experiment moves to codebook judging, in the style of
-the literacy study's codebook. No one writes correct answers to the
+the science of reading study's codebook. No one writes correct answers to the
 questions. Each answer is coded for three things: the same two tasks as the
 close reading and the argument evaluation, and the water question's own
 distinctions:
@@ -143,11 +143,11 @@ interventions and judging what the evidence can support.
 - **The human decides what counts.** Each analysis is accepted, revised,
   rerun, or rejected before it is used.
 - **Analyses run in Codex, reading the PDF.** Water uses
-  `scripts/run_single_source.py` (five automated calls); literacy uses
+  `scripts/run_single_source.py` (five automated calls); science of reading uses
   `scripts/workspace.py` (load, run the session, save). The two workflows stay
   separate until it's clear what tracing claims between corpora needs.
 - **Source PDFs that can't be redistributed stay local.** Only their
-  `sources.yaml` entries are tracked. That covers all literacy PDFs for now
+  `sources.yaml` entries are tracked. That covers all science of reading PDFs for now
   and three publisher-copyrighted water articles.
 - **The original-documents index.** `scripts/build_index.py` cuts each
   article's prepared text into passages of at most 200 tokens, overlapping by
@@ -186,19 +186,23 @@ interventions and judging what the evidence can support.
 
 ## Open
 
-- What "travel" means concretely for the literacy study: the unit that
+- What "travel" means concretely for the science of reading study: the unit that
   travels (a claim, a term, a cited study), and whether to trace specific
   lineages or compare how each corpus treats the same concept. To settle with
   the domain expert, starting with a few concepts traced by hand.
 - The water experiment's test questions, and how each measure is judged.
-- Whether the literacy study gets an argument analysis of each document (for
+- Whether the science of reading study gets an argument analysis of each document (for
   legislation, an argument analysis of the law) alongside its discourse
-  analysis, and what the experiment looks like for literacy.
+  analysis, and what the experiment looks like for science of reading.
 - Whether the legislation PDFs, which are public domain, should be tracked.
 
 ## Status
 
-- **Literacy:** six laws analyzed (close reading and discourse analysis), and
+- **Pilot (literacy):** three literacy articles from the literacy education
+  professor, to measure retrieval precision and recall with a subject expert
+  who can judge relevance. Planned; waiting on the articles. The plan is in
+  the README.
+- **Science of reading:** six laws analyzed (close reading and discourse analysis), and
   the legislation codebook revised from them. Proposed new codes await
   review. Scholarly and popular press not started.
 - **Water:** ten articles analyzed and accepted. Synthesis across them not
