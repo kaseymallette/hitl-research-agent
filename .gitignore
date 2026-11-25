@@ -44,3 +44,6 @@ studies/science_of_reading/proposal/
 # regenerate with scripts/prepare_sources.py and scripts/build_index.py
 studies/water/outputs/preparation/
 studies/water/outputs/index/
+
+# Literacy pilot: the articles stay local (likely publisher-copyrighted)
+studies/literacy_pilot/data/*.pdf

@@ -316,6 +316,7 @@ The choices so far (chunk length, embedding model, a 4,000-token retrieved-text 
 │   ├── PROJECT.md                 the questions, current decisions, and status
 │   └── ENGINEERING_DIRECTIVES.md  the coding baseline
 ├── studies/
+│   ├── literacy_pilot/data/       the pilot's articles (PDFs stay local)
 │   ├── science_of_reading/        three corpora, codebooks, rubrics, prompts, results
 │   └── water/                     sources, prompts, rubric, codebook, accepted analyses
 ├── scripts/
