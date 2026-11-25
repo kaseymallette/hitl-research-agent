@@ -49,44 +49,14 @@ The goal is not to assume that additional analysis produces better research. It 
 
 ## The pilot: literacy
 
-The pilot measures retrieval with precision and recall on a small set of literacy articles from a professor of literacy education, a subject expert who can judge what is relevant. It comes first because the water articles have no such expert, so nobody can confirm what a correct retrieval is there.
+The pilot compares traditional RAG with structured RAG on three literacy articles, judged by a professor of literacy education, a subject expert who can say what is relevant. It comes first because the water articles have no such expert. It follows the standard benchmark methods, TREC's for retrieval and the TREC 2024 RAG Track's for answers. The full plan, with the candidate questions, is in [`studies/literacy_pilot/README.md`](studies/literacy_pilot/README.md).
 
-*Planned; waiting on the articles (about three).*
+*Planned. The articles are in; the 15 candidate questions await the expert's approval.*
 
-**The experiment, done two ways.** The same comparison as the water study, traditional RAG against structured RAG, measured two ways:
-
-| | Traditional RAG (article text) | Structured RAG (close reading, claims reference, argument evaluation) |
-| --- | --- | --- |
-| **Phase 1: the expert judges** | precision, recall, nDCG; synthesis graded | precision, recall, nDCG; synthesis graded |
-| **Phase 2: generated questions** | recall@5, recall@10, MRR | recall@5, recall@10, MRR |
-
-Both phases start the same way: each article gets the single-source analysis (close reading, claims reference, argument evaluation) through the harness, and both indexes are built from the articles, as in the water study.
-
-**Phase 1: the expert judges retrieval and synthesis (first).**
-
-1. **The expert writes the questions:** 15 in all, 5 of each kind.
-   - **Explicit:** the answer is stated in one place in an article.
-   - **Conceptual:** the answer needs an idea explained, which may be spread across an article.
-   - **Synthesis:** the answer needs more than one article, or more than one part of one.
-2. **Retrieve for each question** with both approaches.
-3. **The expert grades every retrieved piece:** 0 (not relevant), 1 (partly relevant), or 2 (relevant). She doesn't see which approach retrieved it.
-4. **Measure:**
-   - **Precision:** the share of retrieved pieces graded 1 or 2.
-   - **Recall:** of all the relevant pieces either approach found, the share each one found. Every relevant piece in the pool counts, so this is recall against what the two approaches found together, not against every relevant piece in the articles.
-   - **nDCG:** whether the most relevant pieces come back first, using the 0, 1, 2 grades.
-5. **Write a synthesis for each question** from each approach's retrieved pieces, with the same model and prompt, citing the pieces it uses.
-6. **The expert grades each synthesis** the way the water study's codebook does, without knowing which approach it came from:
-   - **Attribution:** does it represent the articles faithfully, credit each claim to the article that makes it, and cite only pieces that say what it claims?
-   - **Argument:** are its conclusions supported, qualified, and bounded, and does it say where the articles are silent or disagree?
-7. **Compare** the two approaches, overall and by kind of question, on both retrieval and synthesis.
-
-**Phase 2: generated questions (after Phase 1's results).**
-
-1. **A model writes one question for every piece**, a question that piece answers. Pieces come from four sources: the article text, the close reading, the claims reference, and the argument evaluation. Each question's correct answer is the piece it was written from.
-2. **Search with each question** and check where its piece comes back:
-   - **Recall@5 and recall@10:** how often the piece is in the top 5 or top 10 results.
-   - **MRR (mean reciprocal rank):** how high it ranks on average, from 1 (always first) to 0 (never found).
-3. **Check against Phase 1:** whether the generated questions rank the approaches the way the expert's judgments do. If they do, generated questions can stand in where there is no expert, as in the water study.
+| | What is measured |
+| --- | --- |
+| **Phase 1: the expert judges** | Retrieval: each approach's top 10 for each of 15 questions, pooled and graded 0, 1, 2 without knowing the approach; nDCG@10, and precision, recall, and F1 at 10, strict and inclusive. Answers: nugget recall and citation support. |
+| **Phase 2: generated questions** (after Phase 1) | A question per piece; recall@5, recall@10, and MRR; checked against the expert's judgments. |
 
 The water experiment continues after the pilot.
 
@@ -290,7 +260,7 @@ What has been difficult about working this way:
 - **Codebook:** a draft [water codebook](studies/water/CODEBOOK.md) with three dimensions, each code illustrated with examples from the accepted analyses.
 - **Research questions:** ten candidate questions a researcher would need answered to write a paper on the water question, in [`docs/PROJECT.md`](docs/PROJECT.md#research-questions).
 
-**Next: the literacy pilot, Phase 1.** Waiting on the literacy articles and the expert's 15 questions; the plan is in [The pilot: literacy](#the-pilot-literacy). The water experiment continues after the pilot.
+**Next: the literacy pilot, Phase 1.** The articles are in; waiting on the expert's approval of the 15 questions; the plan is in [The pilot: literacy](#the-pilot-literacy). The water experiment continues after the pilot.
 
 **Next: the water experiment**
 
@@ -316,7 +286,7 @@ The choices so far (chunk length, embedding model, a 4,000-token retrieved-text 
 │   ├── PROJECT.md                 the questions, current decisions, and status
 │   └── ENGINEERING_DIRECTIVES.md  the coding baseline
 ├── studies/
-│   ├── literacy_pilot/data/       the pilot's articles (PDFs stay local)
+│   ├── literacy_pilot/            the pilot's plan and questions; data/ holds the articles (local only)
 │   ├── science_of_reading/        three corpora, codebooks, rubrics, prompts, results
 │   └── water/                     sources, prompts, rubric, codebook, accepted analyses
 ├── scripts/

@@ -198,17 +198,19 @@ interventions and judging what the evidence can support.
 
 ## Status
 
-- **Pilot (literacy), first:** about three literacy articles from the
-  literacy education professor, to measure traditional against structured
-  RAG with a subject expert who can judge relevance. Phase 1: she writes 15
-  questions (5 explicit, 5 conceptual, 5 synthesis) and grades each retrieved
-  piece 0, 1, or 2; measured by precision, pooled recall, and nDCG. She also
-  grades a synthesis written from each approach's pieces for attribution and
-  argument, as the water codebook does. Phase 2,
-  after Phase 1's results: a model writes a question per piece; measured by
-  recall@5, recall@10, and MRR, and checked against her judgments. Planned;
-  waiting on the articles. The plan is in the README. The water experiment
-  continues after the pilot.
+- **Pilot (literacy), first:** three literacy articles from the literacy
+  education professor, to measure traditional against structured RAG with a
+  subject expert who can judge relevance, using standard benchmark methods.
+  Phase 1: she approves 15 drafted questions (5 explicit, 5 conceptual, 5
+  synthesis) and their relevance criteria, then grades each approach's top 10
+  per question, pooled and blind, 0, 1, or 2 (TREC depth-10 pooling); scored
+  by nDCG@10 and by precision, recall, and F1 at 10, strict and inclusive.
+  Answers are scored by nugget recall and citation support (TREC 2024 RAG
+  Track). Phase 2, after Phase 1's results: a model writes a question per
+  piece; scored by recall@5, recall@10, and MRR, and checked against her
+  judgments. The articles are in; the questions await her approval. The plan
+  is in [`studies/literacy_pilot/README.md`](../studies/literacy_pilot/README.md).
+  The water experiment continues after the pilot.
 - **Science of reading:** six laws analyzed (close reading and discourse analysis), and
   the legislation codebook revised from them. Proposed new codes await
   review. Scholarly and popular press not started.
