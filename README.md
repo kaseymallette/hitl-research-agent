@@ -49,9 +49,9 @@ The goal is not to assume that additional analysis produces better research. It 
 
 ## The pilot: literacy
 
-The pilot compares traditional RAG with structured RAG on three literacy articles, judged by a professor of literacy education, a subject expert who can say what is relevant. It comes first because the water articles have no such expert. It follows the standard benchmark methods, TREC's for retrieval and the TREC 2024 RAG Track's for answers. The full plan, with the candidate questions, is in [`studies/literacy_pilot/README.md`](studies/literacy_pilot/README.md).
+The pilot compares traditional RAG with structured RAG on three literacy articles, judged by the expert (Kasey's mom), a professor of literacy education and a subject expert who can say what is relevant. It comes first because the water articles have no such expert. It follows the standard benchmark methods, TREC's for retrieval and the TREC 2024 RAG Track's for answers. The full plan, with the questions, is in [`studies/literacy_pilot/README.md`](studies/literacy_pilot/README.md).
 
-*Planned. The articles are in; the 15 candidate questions await the expert's approval.*
+*Planned. The articles are in, and the expert has approved the 15 questions.*
 
 | | What is measured |
 | --- | --- |
@@ -260,7 +260,7 @@ What has been difficult about working this way:
 - **Codebook:** a draft [water codebook](studies/water/CODEBOOK.md) with three dimensions, each code illustrated with examples from the accepted analyses.
 - **Research questions:** ten candidate questions a researcher would need answered to write a paper on the water question, in [`docs/PROJECT.md`](docs/PROJECT.md#research-questions).
 
-**Next: the literacy pilot, Phase 1.** The articles are in; waiting on the expert's approval of the 15 questions; the plan is in [The pilot: literacy](#the-pilot-literacy). The water experiment continues after the pilot.
+**Next: the literacy pilot, Phase 1.** The articles are in and the 15 questions approved; next, analyze the articles and build the pool for judging; the plan is in [The pilot: literacy](#the-pilot-literacy). The water experiment continues after the pilot.
 
 **Next: the water experiment**
 

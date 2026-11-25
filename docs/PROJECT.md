@@ -208,7 +208,7 @@ interventions and judging what the evidence can support.
   Answers are scored by nugget recall and citation support (TREC 2024 RAG
   Track). Phase 2, after Phase 1's results: a model writes a question per
   piece; scored by recall@5, recall@10, and MRR, and checked against her
-  judgments. The articles are in; the questions await her approval. The plan
+  judgments. The articles are in, and she has approved the questions. The plan
   is in [`studies/literacy_pilot/README.md`](../studies/literacy_pilot/README.md).
   The water experiment continues after the pilot.
 - **Science of reading:** six laws analyzed (close reading and discourse analysis), and

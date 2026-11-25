@@ -1,14 +1,14 @@
 # Literacy pilot
 
-The pilot compares traditional RAG (searching the articles' text) with structured RAG (searching each article's close reading, claims reference, and argument evaluation) on three literacy articles, judged by a literacy education professor. It follows the standard benchmark methods: TREC's pooled relevance judgments and metrics for retrieval, and the TREC 2024 RAG Track's nugget and support evaluation for the answers.
+The pilot compares traditional RAG (searching the articles' text) with structured RAG (searching each article's close reading, claims reference, and argument evaluation) on three literacy articles, judged by the expert (Kasey's mom), a literacy education professor. It follows the standard benchmark methods: TREC's pooled relevance judgments and metrics for retrieval, and the TREC 2024 RAG Track's nugget and support evaluation for the answers.
 
-*Planned. The articles are in `data/` (local only, publisher-copyrighted); the candidate questions await approval.*
+*Planned. The articles are in `data/` (local only, publisher-copyrighted); the expert has approved the 15 questions and their relevance criteria.*
 
 ## Roles
 
 | Who | Does |
 | --- | --- |
-| The expert | Approves the 15 questions and their relevance criteria, and makes every judgment |
+| The expert (Kasey's mom) | Approves the 15 questions and their relevance criteria, and makes every judgment |
 | Kasey | Runs both approaches and computes the scores |
 | All three | Review the results |
 
@@ -26,25 +26,25 @@ Five questions of each kind:
 - **Conceptual:** the answer needs an idea explained, possibly spread across an article.
 - **Synthesis:** the answer needs more than one article.
 
-The candidates, awaiting approval:
+The 15 questions and their relevance criteria, approved by the expert:
 
-| ID | Question |
-| --- | --- |
-| E01 | What criteria were used to select the middle schools participating in the survey of accomplished educators? |
-| E02 | What assessment instruments were used to develop individualized literacy intervention plans for adolescents? |
-| E03 | What responsibilities did the preservice teachers undertake in their roles as teacher-researchers? |
-| E04 | What data sources were collected during the academic year following the summer literacy intervention? |
-| E05 | How were the quantitative and qualitative survey responses analyzed in the study of middle-level educators? |
-| C01 | How does the belief that effort determines academic success obscure structural inequities? |
-| C02 | How do interpersonal relationships influence adolescents' engagement with literacy learning? |
-| C03 | To what extent do educators privilege conventional literacy practices over broader forms of communication? |
-| C04 | How do researchers' theoretical perspectives shape their interpretations of teacher knowledge? |
-| C05 | How does the separation of academic disciplines constrain opportunities for literacy development? |
-| S01 | What evidence challenges an exclusively skills-based conceptualization of literacy learning? |
-| S02 | How do social and cultural contexts shape understandings of literacy? |
-| S03 | What tensions exist between contemporary literacy scholarship and educators' beliefs or practices? |
-| S04 | How do researchers integrate different analytical approaches to develop more comprehensive understandings of literacy? |
-| S05 | What implications do the studies have for the preparation of literacy educators? |
+| ID | Question | Relevant | Not relevant |
+| --- | --- | --- | --- |
+| E01 | What criteria were used to select the middle schools participating in the survey of accomplished educators? | Passages stating the criteria or process used to choose the participating middle schools or the accomplished educators surveyed. | Descriptions of the schools or educators that don't say why they were chosen, and the survey's findings. |
+| E02 | What assessment instruments were used to develop individualized literacy intervention plans for adolescents? | Passages naming or describing the assessments used to build each adolescent's intervention plan, and how the results shaped the plan. | General discussion of literacy assessment, or of the intervention itself, that names no instrument used in the study. |
+| E03 | What responsibilities did the preservice teachers undertake in their roles as teacher-researchers? | Passages describing what the preservice teachers did as teacher-researchers: teaching, assessing, collecting data, reflecting, or reporting. | Discussion of teacher preparation in general, or of the preservice teachers' beliefs, that doesn't say what they were responsible for. |
+| E04 | What data sources were collected during the academic year following the summer literacy intervention? | Passages identifying the data gathered during the following academic year, such as interviews, observations, assessments, or school records. | Data collected during the summer program itself, and results that don't say where the data came from. |
+| E05 | How were the quantitative and qualitative survey responses analyzed in the study of middle-level educators? | Passages describing the analysis of the survey's quantitative or qualitative responses: statistics used, coding procedures, themes, or how the two were combined. | The survey's findings without the method, and the analysis methods of the other studies. |
+| C01 | How does the belief that effort determines academic success obscure structural inequities? | Passages explaining how attributing success to effort hides or excuses inequities of race, class, gender, language, or schooling, including examples from participants. | Passages that mention effort or motivation without connecting them to inequity. |
+| C02 | How do interpersonal relationships influence adolescents' engagement with literacy learning? | Passages on how relationships with teachers, peers, tutors, or family affect adolescents' motivation, participation, or growth in literacy. | Discussion of engagement or of relationships alone, without the link between them. |
+| C03 | To what extent do educators privilege conventional literacy practices over broader forms of communication? | Passages showing or arguing that educators favor print-based, school-sanctioned reading and writing over other forms, such as digital, visual, oral, multimodal, or home literacies. | Descriptions of literacy practices that don't compare how educators value them. |
+| C04 | How do researchers' theoretical perspectives shape their interpretations of teacher knowledge? | Passages stating a study's theoretical framework (for example, critical theory) and how it frames what the researchers see in teachers' knowledge. | Findings about teacher knowledge with no reference to the lens used to interpret them. |
+| C05 | How does the separation of academic disciplines constrain opportunities for literacy development? | Passages arguing or showing that dividing schooling into separate subjects limits literacy learning, such as literacy confined to English class or little cross-disciplinary reading and writing. | Discussion of content-area literacy that doesn't address the effects of the separation. |
+| S01 | What evidence challenges an exclusively skills-based conceptualization of literacy learning? | Findings or arguments showing that literacy learning depends on more than decoding and discrete skills, such as identity, relationships, culture, motivation, or meaning-making. | Descriptions of skills instruction that don't challenge the skills-only view. |
+| S02 | How do social and cultural contexts shape understandings of literacy? | Passages showing how race, class, gender, community, culture, or school context shape what counts as literacy, or how teachers and students understand it. | Mentions of context, such as describing a study's setting, that say nothing about its effect on understanding. |
+| S03 | What tensions exist between contemporary literacy scholarship and educators' beliefs or practices? | Passages showing gaps or conflicts between what current scholarship recommends and what educators believe or do. | Statements of scholarship, or of educators' views, alone, without the contrast. |
+| S04 | How do researchers integrate different analytical approaches to develop more comprehensive understandings of literacy? | Passages describing studies that combine methods or lenses (quantitative and qualitative, or several theoretical frameworks) and what the combination reveals. | Descriptions of a single method that don't address combining approaches. |
+| S05 | What implications do the studies have for the preparation of literacy educators? | Passages drawing conclusions or recommendations for teacher education, professional development, or how literacy educators are prepared. | Findings about current teachers or students that aren't connected to preparation. |
 
 ### 2. Runs
 
