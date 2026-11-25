@@ -122,8 +122,8 @@ interventions and judging what the evidence can support.
 - [x] Draft the codebook.
 - [x] Draft the test questions.
 - [x] Build the original-documents index.
-- [ ] Build the structured-analyses index.
-- [ ] Set up the combined approach (searches both indexes).
+- [x] Build the structured-analyses index.
+- [x] Set up the combined approach (searches both indexes).
 - [ ] Build the answering step: same retrieved-text budget, model, and prompt
       for every approach, citing sources and recording cost.
 - [ ] Trial run: answer a few questions with each approach, code the answers,
@@ -153,6 +153,18 @@ interventions and judging what the evidence can support.
   `BAAI/bge-small-en-v1.5` (local, through fastembed: no API key or per-call
   cost). Ten articles give 525 passages. The index and the prepared text stay
   local, like the PDFs.
+- **The structured-analyses index.** The same script splits each article's
+  close reading into its reading-path steps (with their claims, support, and
+  cited references), the claims reference into its entries (with the headings
+  they sit under), and the argument evaluation into paragraphs. Each item is
+  labeled with its article and kind, and embedded with the same model. An item
+  over 450 tokens is split at line breaks, its location or section repeated on
+  every part. Ten articles give 1,751 items: 542 close reading, 1,107 claims
+  reference, 102 argument evaluation.
+- **The combined approach** ranks the items of both indexes together by
+  cosine similarity to the question. Both indexes use the same model, so the
+  scores share one scale, and how many of each kind come back depends only on
+  how close they are to the question.
 
 ## Open
 

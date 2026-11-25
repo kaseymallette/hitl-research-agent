@@ -5,10 +5,14 @@ for the model's tokenizer.
 """
 
 import importlib.util
+import json
+import sys
+import types
 from pathlib import Path
 from types import ModuleType
 from typing import Any
 
+import numpy as np
 import pytest
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "build_index.py"
@@ -157,3 +161,184 @@ def test_article_chunks_records_are_slices_with_pages() -> None:
         assert r["kind"] == "source_text"
         assert r["pdf_pages"] and r["printed_pages"] == [str(p) for p in r["pdf_pages"]]
     assert records[0]["pdf_pages"] == [1] and records[-1]["pdf_pages"] == [2]
+
+
+CLAIMS_MD = """# Claims reference: article.pdf
+
+## Source, scope, and use
+
+Opening paragraph,
+continued on a second line.
+
+## Claims
+
+### Background (p. 2)
+
+- **C1 — First.** A claim
+  that wraps onto an indented line.
+  - a nested detail
+- **C2 — Second.** Another claim,
+lazily continued.
+
+1. **Numbered.** An ordered entry.
+
+| Col | Val |
+| --- | --- |
+| a | 1 |
+
+#### Detail (p. 3)
+
+- **C3 — Deep.** Under a subsection.
+
+### Results
+
+Closing prose.
+"""
+
+
+def test_claims_reference_items_follow_lists_tables_paragraphs_and_headings() -> None:
+    items = bi.claims_reference_items(CLAIMS_MD)
+    assert items == [
+        ("Section: Source, scope, and use", "Opening paragraph,\ncontinued on a second line."),
+        (
+            "Section: Claims > Background (p. 2)",
+            "- **C1 — First.** A claim\n  that wraps onto an indented line.\n  - a nested detail",
+        ),
+        (
+            "Section: Claims > Background (p. 2)",
+            "- **C2 — Second.** Another claim,\nlazily continued.",
+        ),
+        ("Section: Claims > Background (p. 2)", "1. **Numbered.** An ordered entry."),
+        ("Section: Claims > Background (p. 2)", "| Col | Val |\n| --- | --- |\n| a | 1 |"),
+        (
+            "Section: Claims > Background (p. 2) > Detail (p. 3)",
+            "- **C3 — Deep.** Under a subsection.",
+        ),
+        ("Section: Claims > Results", "Closing prose."),
+    ]
+
+
+def test_claims_reference_items_before_any_heading_have_no_prefix() -> None:
+    assert bi.claims_reference_items("- lone entry\n") == [("", "- lone entry")]
+
+
+def test_argument_evaluation_items_are_paragraphs() -> None:
+    md = "Title: X\nType: y\n\nFirst paragraph.\n\n\n  Second paragraph.  \n"
+    assert bi.argument_evaluation_items(md) == [
+        ("", "Title: X\nType: y"),
+        ("", "First paragraph."),
+        ("", "Second paragraph."),
+    ]
+
+
+def test_close_reading_items_render_every_step() -> None:
+    reading = {
+        "reading_plan": "plan",
+        "reading_path": [
+            {
+                "location": "p. 1",
+                "moves": "Frames.",
+                "claims": [
+                    {
+                        "text": "Claim one.",
+                        "form": "paraphrased",
+                        "support": [
+                            {
+                                "text": "Cited support.",
+                                "form": "verbatim",
+                                "citations": [{"citation_text": "9", "reference_entry": "Ref 9."}],
+                            },
+                            {"text": "Bare support.", "form": "paraphrased", "citations": []},
+                        ],
+                    }
+                ],
+                "meaning": "So what.",
+            },
+            {"location": "p. 2", "moves": "Ends.", "claims": [], "meaning": "Done."},
+        ],
+    }
+    items = bi.close_reading_items(reading)
+    assert items == [
+        (
+            "Location: p. 1\nMoves: Frames.",
+            "Claims:\n- Claim one. (paraphrased)\n"
+            "  Support: Cited support. (verbatim) Cites: [9] Ref 9.\n"
+            "  Support: Bare support. (paraphrased)\nMeaning: So what.",
+        ),
+        ("Location: p. 2\nMoves: Ends.", "Claims:\nMeaning: Done."),
+    ]
+
+
+def test_analysis_records_split_long_items_and_repeat_the_prefix() -> None:
+    body = "\n".join(f"line {n} has five words" for n in range(10))
+    items = [("Section: S", "short item"), ("Section: L", body), ("", "no prefix")]
+    records = bi.analysis_records("demo", "claims_reference", "02", items, words, max_tokens=17)
+    assert [r["id"] for r in records] == [f"demo#02-{n:03d}" for n in range(len(records))]
+    assert records[0]["text"] == "Section: S\nshort item"
+    assert records[-1]["text"] == "no prefix"
+    long_parts = records[1:-1]
+    assert len(long_parts) > 1
+    assert all(r["text"].startswith("Section: L\n") for r in long_parts)
+    assert all(r["tokens"] == words(r["text"]) <= 17 for r in records)
+    assert "\n".join(r["text"].removeprefix("Section: L\n") for r in long_parts) == body
+    assert {r["kind"] for r in records} == {"claims_reference"}
+
+
+def test_nearest_ranks_by_similarity_and_keeps_index_order_on_ties() -> None:
+    chunks = [{"id": n} for n in "abcd"]
+    vectors = np.array([[1.0, 0.0], [0.0, 1.0], [0.6, 0.8], [0.0, 1.0]])
+    query = np.array([0.0, 1.0])
+    assert [c["id"] for _, c in bi.nearest(chunks, vectors, query, 3)] == ["b", "d", "c"]
+    assert len(bi.nearest(chunks, vectors, query, 10)) == 4
+
+
+def write_index(
+    root: Path, name: str, ids: list[str], vectors: list[list[float]], model: str
+) -> None:
+    folder = root / name
+    folder.mkdir(parents=True)
+    index = {"embedding_model": model, "query_instruction": "Q: "}
+    (folder / "index.json").write_text(json.dumps(index), encoding="utf-8")
+    lines = [json.dumps({"id": i, "kind": name}) for i in ids]
+    (folder / "chunks.jsonl").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    np.save(folder / "embeddings.npy", np.array(vectors, dtype=np.float32))
+
+
+class FakeEmbedding:
+    """Embeds every text as the same direction, and records what it was given."""
+
+    seen: list[str] = []
+
+    def __init__(self, model_name: str) -> None:
+        self.model_name = model_name
+
+    def embed(self, texts: list[str]) -> list[np.ndarray]:
+        FakeEmbedding.seen.extend(texts)
+        return [np.array([0.0, 2.0]) for _ in texts]
+
+
+@pytest.fixture
+def indexes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    monkeypatch.setattr(bi, "INDEX_ROOT", tmp_path)
+    monkeypatch.setitem(
+        sys.modules, "fastembed", types.SimpleNamespace(TextEmbedding=FakeEmbedding)
+    )
+    FakeEmbedding.seen = []
+    return tmp_path
+
+
+def test_combined_ranks_both_indexes_together(indexes: Path) -> None:
+    write_index(indexes, "source_text", ["s1", "s2"], [[0.0, 1.0], [1.0, 0.0]], "m")
+    write_index(indexes, "analyses", ["a1", "a2"], [[0.6, 0.8], [0.8, 0.6]], "m")
+    ranked = bi.retrieve("combined", "why?", 4)
+    assert [c["id"] for _, c in ranked] == ["s1", "a1", "a2", "s2"]
+    assert [c["kind"] for _, c in ranked] == ["source_text", "analyses", "analyses", "source_text"]
+    assert FakeEmbedding.seen == ["Q: why?"]
+    assert [c["id"] for _, c in bi.retrieve("analyses", "why?", 1)] == ["a1"]
+
+
+def test_combined_refuses_indexes_built_with_different_models(indexes: Path) -> None:
+    write_index(indexes, "source_text", ["s1"], [[0.0, 1.0]], "m")
+    write_index(indexes, "analyses", ["a1"], [[0.0, 1.0]], "other")
+    with pytest.raises(ValueError, match="different models"):
+        bi.retrieve("combined", "why?", 1)

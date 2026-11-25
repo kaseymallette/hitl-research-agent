@@ -190,8 +190,8 @@ Each approach needs its own searchable index, and each index is built the same w
    - **Chunk** the text into passages of a set length, each labeled with its article and page.
    - **Embed** each chunk with an embedding model, which turns the passage into a vector: a list of numbers that places passages with similar meaning near each other.
    - **Index** the vectors, so that a question can be embedded the same way and matched to the nearest chunks.
-2. **Build the structured-analyses index.** Split each article's close reading, claims reference, and argument evaluation into items: a step of the close reading, an entry in the claims reference, a paragraph of the argument evaluation. Label each item with its article and what kind of item it is, then embed and index the items the same way.
-3. **Set up the combined approach,** which searches both indexes and merges the results.
+2. **Build the structured-analyses index.** Done: the same script, 1,751 items from the ten articles' analyses. Split each article's close reading, claims reference, and argument evaluation into items: a step of the close reading, an entry in the claims reference, a paragraph of the argument evaluation. Label each item with its article and what kind of item it is, then embed and index the items the same way.
+3. **Set up the combined approach,** which searches both indexes and merges the results. Done: `build_index.py search combined` ranks both indexes' items together by similarity.
 4. **Build the answering step.** For a question and an approach, retrieve the closest items, up to the same amount of text for every approach, and have the same model write an answer from them with the same prompt, citing a source for each claim. Record what was retrieved and what each step cost.
 5. **Trial run.** Answer two or three of the questions with all three approaches, code the answers with the codebook, and look closely at a few. Revise the codes, and anything in the indexes or the prompt that isn't working, before going further.
 6. **Full run.** Answer all ten questions with all three approaches: 30 answers.
@@ -211,7 +211,7 @@ Choices still to make along the way: how long a chunk should be, which embedding
 ├── scripts/
 │   ├── run_single_source.py       water: five Codex calls per article
 │   ├── workspace.py               literacy: load a source into the Codex workspace, save its results
-│   ├── build_index.py             water: chunk, embed, and search the articles' text (standard RAG)
+│   ├── build_index.py             water: index and search the articles' text and their analyses
 │   └── prepare_sources.py         extracts a PDF's text, tables, and figure crops
 ├── src/hitl_research_agent/       the data models and input handling prepare_sources.py uses
 └── tests/
