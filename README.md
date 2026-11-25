@@ -11,6 +11,10 @@ The experiment that tests it:
 
 ## Purpose
 
+Researchers are right to be skeptical of AI for synthesis: models misattribute claims, drop qualifications, and cite evidence that doesn't support them. This project builds a synthesis process that can be checked at every step, and measures it against a subject expert's judgment. It compares two ways of retrieving from a collection, searching the articles' text (traditional RAG) or searching structured analyses of each article (structured RAG), and then grades the syntheses written from each: whether they found the right material, and whether they represent it faithfully. The [pilot](#the-pilot-literacy) uses a literacy education professor's articles, with her as the judge; the science of reading and water studies apply the process to collections too large to read closely by hand.
+
+## Overview
+
 I’m building this framework to become a better researcher: to work through more literature, make connections across sources, and pursue questions I might otherwise miss. I want AI to help me evaluate the authors’ arguments: whether their evidence supports their claims, whether their methods justify their conclusions, and what assumptions or limitations affect those conclusions.
 
 ### Judging the judge
@@ -25,15 +29,17 @@ The justification to use AI to support research still needs to be made, and that
 
 The AI agents need to add something worthwhile, whether that is helping me compare explanations, noticing conflicting evidence, or identifying an assumption worth investigating. *Does this system help me conduct better research that justifies the time and money spent to build and implement it?* *Will I use it to support my research consistently?*
 
-### Why not RAG?
+### Traditional RAG
 
 A common approach to answering questions from a collection of documents is retrieval-augmented generation (RAG). The text is extracted from each document and split into chunks. Each chunk is converted into an embedding, a vector that represents its meaning, and the vectors are indexed. A question is embedded the same way, the chunks whose vectors are closest to it are retrieved, and a model answers from them.
 
 RAG treats relevance as similarity: a chunk is retrieved because its wording resembles the question. But a chunk is cut from its place in the argument. It no longer carries which claim it supports, which qualifications the author attached, or whether the claim is the author's own or one the author is citing. Nothing in the index says whether the evidence actually supports the conclusion it sits next to.
 
-### Teaching a model to read
+### Structured RAG: reading before retrieving
 
 This project's analysis is modeled on how a researcher reads an article instead. A language model takes in a whole text at once, attending across all of it in parallel. The close reading makes it go sequentially, following the argument step by step and recording at each step what the author claims, the support given, and how the step builds on what came before. The claims reference lists what the article itself claims. The argument evaluation then lets the model take a position: whether the evidence supports the conclusions, what the argument assumes, and where it falls short, kept separate from what the author says.
+
+Structured RAG is still RAG. The analyses are split, embedded, and retrieved the same way as the article text; only what is searched differs.
 
 ### Is the reading worth it?
 
@@ -45,16 +51,44 @@ The goal is not to assume that additional analysis produces better research. It 
 
 The pilot measures retrieval with precision and recall on a small set of literacy articles from a professor of literacy education, a subject expert who can judge what is relevant. It comes first because the water articles have no such expert, so nobody can confirm what a correct retrieval is there.
 
-*Planned; waiting on the articles.* The plan, for three articles:
+*Planned; waiting on the articles (about three).*
 
-1. **Analyze each article** with the single-source analysis: a close reading, a claims reference, and an argument evaluation.
-2. **Split each into pieces.** There are four sources of pieces: the article text, the close reading, the claims reference, and the argument evaluation.
-3. **Generate questions.** A model writes one question for every piece, a question that piece answers. Each question's correct answer is the piece it was written from.
-4. **Measure recall automatically.** Search with each question and check where its piece comes back:
+**The experiment, done two ways.** The same comparison as the water study, traditional RAG against structured RAG, measured two ways:
+
+| | Traditional RAG (article text) | Structured RAG (close reading, claims reference, argument evaluation) |
+| --- | --- | --- |
+| **Phase 1: the expert judges** | precision, recall, nDCG; synthesis graded | precision, recall, nDCG; synthesis graded |
+| **Phase 2: generated questions** | recall@5, recall@10, MRR | recall@5, recall@10, MRR |
+
+Both phases start the same way: each article gets the single-source analysis (close reading, claims reference, argument evaluation) through the harness, and both indexes are built from the articles, as in the water study.
+
+**Phase 1: the expert judges retrieval and synthesis (first).**
+
+1. **The expert writes the questions:** 15 in all, 5 of each kind.
+   - **Explicit:** the answer is stated in one place in an article.
+   - **Conceptual:** the answer needs an idea explained, which may be spread across an article.
+   - **Synthesis:** the answer needs more than one article, or more than one part of one.
+2. **Retrieve for each question** with both approaches.
+3. **The expert grades every retrieved piece:** 0 (not relevant), 1 (partly relevant), or 2 (relevant). She doesn't see which approach retrieved it.
+4. **Measure:**
+   - **Precision:** the share of retrieved pieces graded 1 or 2.
+   - **Recall:** of all the relevant pieces either approach found, the share each one found. Every relevant piece in the pool counts, so this is recall against what the two approaches found together, not against every relevant piece in the articles.
+   - **nDCG:** whether the most relevant pieces come back first, using the 0, 1, 2 grades.
+5. **Write a synthesis for each question** from each approach's retrieved pieces, with the same model and prompt, citing the pieces it uses.
+6. **The expert grades each synthesis** the way the water study's codebook does, without knowing which approach it came from:
+   - **Attribution:** does it represent the articles faithfully, credit each claim to the article that makes it, and cite only pieces that say what it claims?
+   - **Argument:** are its conclusions supported, qualified, and bounded, and does it say where the articles are silent or disagree?
+7. **Compare** the two approaches, overall and by kind of question, on both retrieval and synthesis.
+
+**Phase 2: generated questions (after Phase 1's results).**
+
+1. **A model writes one question for every piece**, a question that piece answers. Pieces come from four sources: the article text, the close reading, the claims reference, and the argument evaluation. Each question's correct answer is the piece it was written from.
+2. **Search with each question** and check where its piece comes back:
    - **Recall@5 and recall@10:** how often the piece is in the top 5 or top 10 results.
    - **MRR (mean reciprocal rank):** how high it ranks on average, from 1 (always first) to 0 (never found).
-5. **Measure precision with the expert.** For a set of questions, the expert marks which retrieved pieces are relevant; precision is the share that are.
-6. **Compare the four sources:** which retrieves better, and what kind of questions each one supports (factual, explanatory, argument, comparative).
+3. **Check against Phase 1:** whether the generated questions rank the approaches the way the expert's judgments do. If they do, generated questions can stand in where there is no expert, as in the water study.
+
+The water experiment continues after the pilot.
 
 ## Two studies
 
@@ -256,7 +290,7 @@ What has been difficult about working this way:
 - **Codebook:** a draft [water codebook](studies/water/CODEBOOK.md) with three dimensions, each code illustrated with examples from the accepted analyses.
 - **Research questions:** ten candidate questions a researcher would need answered to write a paper on the water question, in [`docs/PROJECT.md`](docs/PROJECT.md#research-questions).
 
-**Next: the literacy pilot.** Waiting on three literacy articles; the plan is in [The pilot: literacy](#the-pilot-literacy).
+**Next: the literacy pilot, Phase 1.** Waiting on the literacy articles and the expert's 15 questions; the plan is in [The pilot: literacy](#the-pilot-literacy). The water experiment continues after the pilot.
 
 **Next: the water experiment**
 

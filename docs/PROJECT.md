@@ -198,10 +198,17 @@ interventions and judging what the evidence can support.
 
 ## Status
 
-- **Pilot (literacy):** three literacy articles from the literacy education
-  professor, to measure retrieval precision and recall with a subject expert
-  who can judge relevance. Planned; waiting on the articles. The plan is in
-  the README.
+- **Pilot (literacy), first:** about three literacy articles from the
+  literacy education professor, to measure traditional against structured
+  RAG with a subject expert who can judge relevance. Phase 1: she writes 15
+  questions (5 explicit, 5 conceptual, 5 synthesis) and grades each retrieved
+  piece 0, 1, or 2; measured by precision, pooled recall, and nDCG. She also
+  grades a synthesis written from each approach's pieces for attribution and
+  argument, as the water codebook does. Phase 2,
+  after Phase 1's results: a model writes a question per piece; measured by
+  recall@5, recall@10, and MRR, and checked against her judgments. Planned;
+  waiting on the articles. The plan is in the README. The water experiment
+  continues after the pilot.
 - **Science of reading:** six laws analyzed (close reading and discourse analysis), and
   the legislation codebook revised from them. Proposed new codes await
   review. Scholarly and popular press not started.
