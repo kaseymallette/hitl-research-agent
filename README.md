@@ -25,7 +25,6 @@ The justification to use AI to support research still needs to be made, and that
 
 The AI agents need to add something worthwhile, whether that is helping me compare explanations, noticing conflicting evidence, or identifying an assumption worth investigating. *Does this system help me conduct better research that justifies the time and money spent to build and implement it?* *Will I use it to support my research consistently?*
 
-
 ### Why not RAG?
 
 A common approach to answering questions from a collection of documents is retrieval-augmented generation (RAG). The text is extracted from each document and split into chunks. Each chunk is converted into an embedding, a vector that represents its meaning, and the vectors are indexed. A question is embedded the same way, the chunks whose vectors are closest to it are retrieved, and a model answers from them.
@@ -63,7 +62,20 @@ What we're doing, why, and what's been decided is in
 
 ## Methods
 
-The framework uses AI to assist with three research activities:
+The experiment uses only the [water study](studies/water/), because all ten of its articles are analyzed and accepted. Whether and how it applies to the literacy study will be decided after. It compares two approaches to answering the same research questions from the same ten articles: traditional RAG, which retrieves passages of the articles themselves, and structured RAG, which retrieves from analyses of them. In the code they are `rag` and `structured`.
+
+### Traditional RAG
+
+The baseline is retrieval-augmented generation as it is usually done:
+
+- **Extract** the text of each article from its PDF with [`scripts/prepare_sources.py`](scripts/prepare_sources.py).
+- **Chunk** the text into passages of at most 200 tokens, overlapping by up to 25, broken at paragraphs where possible. Each passage is labeled with its article and PDF pages. The ten articles give 1,218 passages, averaging 164 tokens: about the size of an analysis item (177), so the same retrieved-text budget holds about as many pieces for either approach.
+- **Embed** each passage with an embedding model (`BAAI/bge-small-en-v1.5`, run locally), which turns it into a vector that places passages with similar meaning near each other.
+- **Retrieve** the passages nearest a question, embedded the same way.
+
+### Structured RAG
+
+Structured RAG retrieves from analyses of the articles instead of their text. The framework uses AI to assist with three research activities:
 
 1. **Single-source analysis:** Each source produces three documents:
    - **Close reading:** reconstructs the author's argument step by step, identifying claims, supporting evidence, methods, assumptions, and limitations, without judging it.
@@ -75,6 +87,66 @@ The framework uses AI to assist with three research activities:
 The framework distinguishes what an author states from what the model infers or evaluates. Human review determines which analyses enter the research collection.
 
 ![Single source analysis: the close reading and the claims reference feed the close reading judgment; the argument evaluation feeds the argument judgment; both judgments go to review, to accept, revise, rerun, or reject.](studies/water/assets/single-source-flow.svg)
+
+For retrieval, each accepted analysis is split into items: a step of the close reading, an entry of the claims reference, a paragraph of the argument evaluation. Each item is labeled with its article and its kind, so the model's reading and judgment are never presented as what an article says. They are embedded with the same model as the passages. The ten articles give 1,751 items.
+
+### Answering
+
+Both approaches answer the same way. For a question, the nearest items are taken in rank order up to a budget of 4,000 tokens of text. One Codex session on GPT-6.1 Sol at medium effort writes the answer from them with the same [prompt](studies/water/prompts/06_answer.md), citing the items each claim rests on. The budget, model, and prompt are identical for both approaches; only what is retrieved differs. Each answer's record keeps what was retrieved, what was cited, and the tokens used.
+
+A third approach, retrieving from both, was dropped after the trial run because it added a variable without isolating one.
+
+## Results
+
+### The trial
+
+Questions 1, 5, and 8 were answered with both approaches. Both had the same 4,000-token budget and pieces of about the same size, so each got 20 to 30 pieces of text. Each bar on the left is all ten articles: the colored part is the articles retrieved, and its solid part the articles the answer cited.
+
+- **Retrieved:** about the same breadth. Traditional RAG retrieved 7 or 8 of the ten articles, structured RAG 8 to 10.
+- **Cited:** traditional RAG's answer cited more articles on question 1 (7 against 5); structured RAG's cited more on questions 5 and 8 (9 against 6 on each).
+- **No answer cited an item it was not given.**
+
+An answer leaving some of what it was given uncited is expected: retrieval picks pieces by similar wording, and some are off the question.
+
+![Trial results by question. Articles retrieved of the 10, and cited: question 1, traditional RAG 8 retrieved and 7 cited, structured RAG 8 and 5; question 5, 7 and 6 against 9 and 9; question 8, 8 and 6 against 10 and 9. Items cited of retrieved: question 1, 12 of 23 and 12 of 20; question 5, 17 of 25 and 19 of 21; question 8, 19 of 24 and 22 of 30.](studies/water/assets/trial-retrieval.svg)
+
+<details>
+<summary>The numbers as a table</summary>
+
+| Question | Approach | Articles retrieved, of 10 | Articles cited | Items cited of retrieved |
+| --- | --- | --- | --- | --- |
+| 1 | Traditional RAG | 8 | 7 | 12 of 23 (52%) |
+| 1 | Structured RAG | 8 | 5 | 12 of 20 (60%) |
+| 5 | Traditional RAG | 7 | 6 | 17 of 25 (68%) |
+| 5 | Structured RAG | 9 | 9 | 19 of 21 (90%) |
+| 8 | Traditional RAG | 8 | 6 | 19 of 24 (79%) |
+| 8 | Structured RAG | 10 | 9 | 22 of 30 (73%) |
+
+</details>
+
+The first trial cut the articles into passages twice the size of the analysis items, so traditional RAG got half as many pieces and reached only 4 to 6 articles. That compared piece sizes, not approaches; the passages were re-cut to match and traditional RAG's answers rerun.
+
+These counts show how much of the collection each answer drew on, not whether it represented the sources faithfully. The answers are in [`studies/water/outputs/answers/`](studies/water/outputs/answers/).
+
+### Full results
+
+All ten questions with both approaches: 20 answers. Not yet run.
+
+### From analysis to codebook
+
+Evaluating the analyses became circular. The close reading needed something to be checked against, so the claims reference was added: a second, model-written list of the article's claims. A judge, also a model, then scored the close reading against the rubric partly by whether it matched that list. Every layer was model-generated and checked by another model, and each one added complexity without adding an independent standard.
+
+The codebook keeps what that design got right and drops the circle. The analysis split reading a source into two epistemic tasks, attribution and argument evaluation. Those two tasks, plus the water question's own distinctions, become the codebook's three dimensions:
+
+- **Attribution:** what do the sources say? Codes come from the rubric's close reading criteria: whether a claim is the author's, whether its qualifications and certainty survive, and whether conflicts and differences between sources are noted.
+- **Argument:** does the answer's own argument hold up? Codes come from the rubric's argument evaluation criteria: whether the evidence is weighed, whether the grounds are sufficient, whether warrants and qualifiers are stated, and whether the model's view is kept separate from the author's.
+- **Water distinctions:** does the answer keep apart what the water literature keeps apart? Codes come from what the analyses kept running into across the ten articles: withdrawal and consumption, onsite and grid water, water quality, accounting boundaries and units, local pressure, modeled and measured results, and desalination as one option among others.
+
+The codebook's examples are taken from the accepted analyses. Every attribution code is checked against the original article, not against another model's output. Each approach's answers are coded with it, and the approaches are compared code by code. The codes are in the [water codebook](studies/water/CODEBOOK.md).
+
+## The literacy study
+
+The [literacy study](studies/literacy/) is a collaboration with a professor of literacy education. It examines how the science of reading is defined, simplified, and contested as it moves from scholarship, through the popular press, into state legislation, using critical discourse analysis across the three corpora. The legislation trial run is done (six laws); the scholarly and popular press corpora are next. Its documents run through [`scripts/workspace.py`](scripts/workspace.py), and whether the experiment applies to it will be decided after the water results.
 
 ## The harness
 
@@ -122,34 +194,22 @@ harness needs.
   JSON. A weak reading is written and judged, never withheld. Codex's event
   log for each call is kept in `.codex_runs/<slug>/`.
 
+[`scripts/build_index.py`](scripts/build_index.py) builds and searches the two
+indexes, and [`scripts/answer.py`](scripts/answer.py) answers research
+questions from them:
+
+```bash
+uv run python scripts/build_index.py build source_text
+```
+
+```bash
+uv run python scripts/answer.py --questions 1 5 8
+```
+
 The literacy study runs its documents through
 [`scripts/workspace.py`](scripts/workspace.py), which loads one source (its
 PDF, extracted text, and page images) into a separate Codex workspace and
 saves the results back to the study.
-
-## Experiment design
-
-The experiment uses only the [water study](studies/water/), because all ten of its articles are analyzed and accepted. Whether and how it applies to the literacy study will be decided after.
-
-It compares three approaches:
-
-1. **Original documents:** Extract, chunk, embed, and retrieve passages directly from source documents.
-2. **Structured analyses:** Retrieve from the close readings, claims references, and argument evaluations (see [Methods](#methods)).
-3. **Combined retrieval:** Use both original source passages and structured analyses.
-
-The approaches are compared on retrieval quality, source attribution, synthesis accuracy, and the costs of each approach.
-
-### From analysis to codebook
-
-Evaluating the analyses became circular. The close reading needed something to be checked against, so the claims reference was added: a second, model-written list of the article's claims. A judge, also a model, then scored the close reading against the rubric partly by whether it matched that list. Every layer was model-generated and checked by another model, and each one added complexity without adding an independent standard.
-
-The codebook keeps what that design got right and drops the circle. The analysis split reading a source into two epistemic tasks, attribution and argument evaluation. Those two tasks, plus the water question's own distinctions, become the codebook's three dimensions:
-
-- **Attribution:** what do the sources say? Codes come from the rubric's close reading criteria: whether a claim is the author's, whether its qualifications and certainty survive, and whether conflicts and differences between sources are noted.
-- **Argument:** does the answer's own argument hold up? Codes come from the rubric's argument evaluation criteria: whether the evidence is weighed, whether the grounds are sufficient, whether warrants and qualifiers are stated, and whether the model's view is kept separate from the author's.
-- **Water distinctions:** does the answer keep apart what the water literature keeps apart? Codes come from what the analyses kept running into across the ten articles: withdrawal and consumption, onsite and grid water, water quality, accounting boundaries and units, local pressure, modeled and measured results, and desalination as one option among others.
-
-The codebook's examples are taken from the accepted analyses. Every attribution code is checked against the original article, not against another model's output. Each approach's answers are coded with it, and the approaches are compared code by code. The codes are in the [water codebook](studies/water/CODEBOOK.md).
 
 ## Development approach and lessons
 
@@ -185,19 +245,18 @@ What has been difficult about working this way:
 
 Each approach needs its own searchable index, and each index is built the same way: break the material into pieces, turn each piece into an embedding, and store the embeddings so a question can be matched against them.
 
-1. **Build the original-documents index (standard RAG).** Done: [`scripts/build_index.py`](scripts/build_index.py), 525 passages from the ten articles.
+1. **Build the original-documents index (standard RAG).** Done: [`scripts/build_index.py`](scripts/build_index.py), 1,218 passages from the ten articles.
    - **Extract** the text of each article from its PDF. [`scripts/prepare_sources.py`](scripts/prepare_sources.py) already does this.
    - **Chunk** the text into passages of a set length, each labeled with its article and page.
    - **Embed** each chunk with an embedding model, which turns the passage into a vector: a list of numbers that places passages with similar meaning near each other.
    - **Index** the vectors, so that a question can be embedded the same way and matched to the nearest chunks.
 2. **Build the structured-analyses index.** Done: the same script, 1,751 items from the ten articles' analyses. Split each article's close reading, claims reference, and argument evaluation into items: a step of the close reading, an entry in the claims reference, a paragraph of the argument evaluation. Label each item with its article and what kind of item it is, then embed and index the items the same way.
-3. **Set up the combined approach,** which searches both indexes and merges the results. Done: `build_index.py search combined` ranks both indexes' items together by similarity.
-4. **Build the answering step.** For a question and an approach, retrieve the closest items, up to the same amount of text for every approach, and have the same model write an answer from them with the same prompt, citing a source for each claim. Record what was retrieved and what each step cost.
-5. **Trial run.** Answer two or three of the questions with all three approaches, code the answers with the codebook, and look closely at a few. Revise the codes, and anything in the indexes or the prompt that isn't working, before going further.
-6. **Full run.** Answer all ten questions with all three approaches: 30 answers.
-7. **Code and compare.** Code every answer, have a second session check the coding, spot-check where the two disagree, and compare the approaches code by code and by cost.
+3. **Build the answering step.** For a question and an approach, retrieve the closest items, up to the same amount of text for every approach, and have the same model write an answer from them with the same prompt, citing a source for each claim. Record what was retrieved and what each step cost. Done: [`scripts/answer.py`](scripts/answer.py) with [`prompts/06_answer.md`](studies/water/prompts/06_answer.md); answers go to `studies/water/outputs/answers/<approach>/`.
+4. **Trial run.** Answers written for questions 1, 5, and 8 with both approaches; coding them is next. Answer two or three of the questions with both approaches, code the answers with the codebook, and look closely at a few. Revise the codes, and anything in the indexes or the prompt that isn't working, before going further.
+5. **Full run.** Answer all ten questions with both approaches: 20 answers.
+6. **Code and compare.** Code every answer, have a second session check the coding, spot-check where the two disagree, and compare the approaches code by code and by cost.
 
-Choices still to make along the way: how long a chunk should be, which embedding model to use, how much retrieved text each answer gets, and which model writes the answers.
+The choices so far (chunk length, embedding model, a 4,000-token retrieved-text budget, and GPT-6.1 Sol at medium effort for the answers) are in [`docs/PROJECT.md`](docs/PROJECT.md#decisions); the budget is revisited after the trial run.
 
 ## Layout
 
@@ -212,6 +271,7 @@ Choices still to make along the way: how long a chunk should be, which embedding
 │   ├── run_single_source.py       water: five Codex calls per article
 │   ├── workspace.py               literacy: load a source into the Codex workspace, save its results
 │   ├── build_index.py             water: index and search the articles' text and their analyses
+│   ├── answer.py                  water: answer a research question from one approach's retrieved items
 │   └── prepare_sources.py         extracts a PDF's text, tables, and figure crops
 ├── src/hitl_research_agent/       the data models and input handling prepare_sources.py uses
 └── tests/

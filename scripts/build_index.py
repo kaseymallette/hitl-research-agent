@@ -1,12 +1,12 @@
 """Water experiment: build and search the indexes the approaches retrieve from.
 
     uv run python scripts/build_index.py build  {source_text,analyses}
-    uv run python scripts/build_index.py search {source_text,analyses,combined} "QUESTION" [-k 5]
+    uv run python scripts/build_index.py search {rag,structured} "QUESTION" [-k 5]
 
 ``source_text`` (original documents, standard RAG) reads each article's prepared text
 and page map from ``outputs/preparation`` (run ``prepare_sources.py prepare`` for every
-article first) and splits the text into passages of at most ``MAX_TOKENS`` model tokens
-that overlap by up to ``OVERLAP_TOKENS``. Each passage's ``text`` is exactly
+article first) and splits the text into passages of at most ``SOURCE_MAX_TOKENS`` model
+tokens that overlap by up to ``SOURCE_OVERLAP_TOKENS``. Each passage's ``text`` is exactly
 ``prepared_text[start:end]`` and is labeled with its article and PDF pages.
 
 ``analyses`` (structured analyses) reads each article's close reading (01), claims
@@ -20,7 +20,8 @@ than ``MAX_TOKENS`` is split, with its location or section repeated on every par
 item per line), ``embeddings.npy`` (one unit-length vector per item, in the same order),
 and ``index.json`` (the model, the settings, and a hash of every file the items came
 from). ``search`` embeds a question the same way and prints the nearest items, for spot
-checks; ``combined`` (the third approach) ranks the items of both indexes together.
+checks. It takes an approach rather than an index: ``rag`` searches ``source_text``,
+and ``structured`` searches ``analyses``.
 """
 
 from __future__ import annotations
@@ -45,19 +46,18 @@ ANALYSES = STUDY / "outputs" / "analyses"
 ANALYSIS_FILES = ("01_close_reading.json", "02_claims_reference.md", "04_argument_evaluation.md")
 INDEX_ROOT = STUDY / "outputs" / "index"
 INDEXES = ("source_text", "analyses")
-# The experiment's three approaches, and the indexes each retrieves from.
-APPROACHES = {
-    "source_text": ("source_text",),
-    "analyses": ("analyses",),
-    "combined": ("source_text", "analyses"),
-}
+# The experiment's two approaches, and the index each retrieves from.
+APPROACHES = {"rag": "source_text", "structured": "analyses"}
 
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 # BGE's recommended prefix for retrieval queries; passages are embedded without one.
 QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
 # The model reads at most 512 tokens, including its two special tokens.
 MAX_TOKENS = 450
-OVERLAP_TOKENS = 50
+# Article passages are cut to about the size of an analysis item (mean 177 tokens), so the
+# same retrieved-text budget holds about as many pieces for either approach.
+SOURCE_MAX_TOKENS = 200
+SOURCE_OVERLAP_TOKENS = 25
 
 Span = tuple[int, int]
 CountTokens = Callable[[str], int]
@@ -142,8 +142,8 @@ def article_chunks(
     text: str,
     page_map: list[dict[str, Any]],
     count: CountTokens,
-    max_tokens: int = MAX_TOKENS,
-    overlap_tokens: int = OVERLAP_TOKENS,
+    max_tokens: int = SOURCE_MAX_TOKENS,
+    overlap_tokens: int = SOURCE_OVERLAP_TOKENS,
 ) -> list[dict[str, Any]]:
     records = []
     for n, (start, end) in enumerate(chunk_spans(text, count, max_tokens, overlap_tokens)):
@@ -354,8 +354,8 @@ def build(name: str) -> int:
         "embedding_model": EMBEDDING_MODEL,
         "query_instruction": QUERY_INSTRUCTION,
         "dimension": int(vectors.shape[1]),
-        "max_tokens": MAX_TOKENS,
-        "overlap_tokens": OVERLAP_TOKENS if name == "source_text" else 0,
+        "max_tokens": SOURCE_MAX_TOKENS if name == "source_text" else MAX_TOKENS,
+        "overlap_tokens": SOURCE_OVERLAP_TOKENS if name == "source_text" else 0,
         "chunks": len(chunks),
         "sources": sources,
     }
@@ -373,30 +373,26 @@ def load_index(name: str) -> tuple[dict[str, Any], list[dict[str, Any]], np.ndar
 
 
 def nearest(
-    chunks: list[dict[str, Any]], vectors: np.ndarray, query: np.ndarray, k: int
+    chunks: list[dict[str, Any]], vectors: np.ndarray, query: np.ndarray, k: int | None = None
 ) -> list[tuple[float, dict[str, Any]]]:
-    """The k chunks most similar to the unit-length query, most similar first; ties keep
-    index order. Vectors and query are unit length, so the dot product is the cosine."""
+    """The k chunks (all, if k is None) most similar to the unit-length query, most
+    similar first; ties keep index order. Vectors and query are unit length, so the dot
+    product is the cosine."""
     scores = vectors @ query
     order = np.argsort(-scores, kind="stable")[:k]
     return [(float(scores[i]), chunks[i]) for i in order]
 
 
-def retrieve(approach: str, question: str, k: int) -> list[tuple[float, dict[str, Any]]]:
-    """The k items nearest the question from the approach's indexes. The combined approach
-    ranks both indexes' items together by similarity: both are embedded with the same
-    model, so their scores are on one scale."""
+def retrieve(
+    approach: str, question: str, k: int | None = None
+) -> list[tuple[float, dict[str, Any]]]:
+    """The k items (all, if k is None) nearest the question in the approach's index,
+    with the question embedded by the model and instruction the index was built with."""
     from fastembed import TextEmbedding
 
-    loaded = [load_index(name) for name in APPROACHES[approach]]
-    settings = {(i["embedding_model"], i["query_instruction"]) for i, _, _ in loaded}
-    if len(settings) != 1:
-        raise ValueError(f"{approach}: indexes were built with different models: {settings}")
-    [(model_name, instruction)] = settings
-    chunks = [c for _, cs, _ in loaded for c in cs]
-    vectors = np.vstack([v for _, _, v in loaded])
-    model = TextEmbedding(model_name=model_name)
-    query = _unit(np.array(list(model.embed([instruction + question]))))[0]
+    index, chunks, vectors = load_index(APPROACHES[approach])
+    model = TextEmbedding(model_name=index["embedding_model"])
+    query = _unit(np.array(list(model.embed([index["query_instruction"] + question]))))[0]
     return nearest(chunks, vectors, query, k)
 
 

@@ -43,13 +43,17 @@ write it: research questions about the collection, not lookups of single
 facts. Each approach is judged on how well what it retrieves would let the
 researcher answer them, grounded in the sources.
 
-### The three approaches
+### The two approaches
 
 1. **Original documents.** Extract, chunk, embed, and retrieve passages from
    each article's text. `scripts/prepare_sources.py` already extracts the text.
 2. **Structured analyses.** Retrieve from each article's close reading (01),
    claims reference (02), and argument evaluation (04).
-3. **Combined.** Retrieve from both.
+
+A third approach, retrieving from both, was dropped after the trial run: how
+much of each kind it retrieved varied by question (for question 8, none of
+the article text), which added a variable without isolating one. Comparing
+two approaches tests one difference: the articles' text or their analyses.
 
 Every retrieved item names its article and what kind of item it is (source
 text, close reading, claims reference, or argument evaluation), so the model's
@@ -123,14 +127,13 @@ interventions and judging what the evidence can support.
 - [x] Draft the test questions.
 - [x] Build the original-documents index.
 - [x] Build the structured-analyses index.
-- [x] Set up the combined approach (searches both indexes).
-- [ ] Build the answering step: same retrieved-text budget, model, and prompt
+- [x] Build the answering step: same retrieved-text budget, model, and prompt
       for every approach, citing sources and recording cost.
 - [ ] Trial run: answer a few questions with each approach, code the answers,
       and revise the codes.
-- [ ] Full run: all ten questions through all three approaches (30 answers),
+- [ ] Full run: all ten questions through both approaches (20 answers),
       recording what comes back and what it cost.
-- [ ] Code the answers and compare the three approaches.
+- [ ] Code the answers and compare the two approaches.
 
 ## Decisions
 
@@ -147,12 +150,18 @@ interventions and judging what the evidence can support.
   `sources.yaml` entries are tracked. That covers all literacy PDFs for now
   and three publisher-copyrighted water articles.
 - **The original-documents index.** `scripts/build_index.py` cuts each
-  article's prepared text into passages of at most 450 tokens, overlapping by
-  up to 50, at paragraph, then line, sentence, or word breaks. Each passage is
+  article's prepared text into passages of at most 200 tokens, overlapping by
+  up to 25, at paragraph, then line, sentence, or word breaks. Each passage is
   labeled with its article and PDF pages and embedded with
   `BAAI/bge-small-en-v1.5` (local, through fastembed: no API key or per-call
-  cost). Ten articles give 525 passages. The index and the prepared text stay
-  local, like the PDFs.
+  cost). The index and the prepared text stay local, like the PDFs.
+- **Passages match the size of analysis items.** Both approaches get the same
+  retrieved-text budget, so the pieces must be about the same size, or the
+  approach with smaller pieces gets more of them and reaches more articles for
+  that reason alone. The first trial cut passages at up to 450 tokens (mean
+  386) against analysis items of mean 177: structured RAG got about twice as
+  many pieces. Passages are now cut at up to 200 tokens, and the traditional
+  RAG trial answers were rerun.
 - **The structured-analyses index.** The same script splits each article's
   close reading into its reading-path steps (with their claims, support, and
   cited references), the claims reference into its entries (with the headings
@@ -161,10 +170,19 @@ interventions and judging what the evidence can support.
   over 450 tokens is split at line breaks, its location or section repeated on
   every part. Ten articles give 1,751 items: 542 close reading, 1,107 claims
   reference, 102 argument evaluation.
-- **The combined approach** ranks the items of both indexes together by
-  cosine similarity to the question. Both indexes use the same model, so the
-  scores share one scale, and how many of each kind come back depends only on
-  how close they are to the question.
+- **The answering step.** `scripts/answer.py` gives each answer the items
+  nearest the question, in rank order, until the next would take the total
+  over the budget: 4,000 tokens of item text to start, to revisit after the
+  trial run (`--budget`). One Codex session per answer, on GPT-6.1 Sol at
+  medium effort with the ChatGPT sign-in, as in single-source analysis, writes
+  the answer from `prompts/06_answer.md`, citing items as [E1], [E2]. The
+  budget, model, and prompt are the same for both approaches. Each
+  answer's record keeps the retrieved items, the citations, Codex's token
+  usage, and the time taken; there is no per-token cost to record.
+- **Approach names.** In the scripts and the answer folders the approaches
+  are `rag` (original documents) and `structured` (structured analyses). The
+  indexes keep their own names: `rag` searches `source_text`, `structured`
+  searches `analyses`.
 
 ## Open
 

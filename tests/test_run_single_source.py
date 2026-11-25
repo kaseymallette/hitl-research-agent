@@ -213,6 +213,7 @@ def test_every_call_reads_its_request_from_its_prompt_file() -> None:
     by hand by pasting the same file."""
     harness = load_harness()
     calls = [*harness.CALLS.values(), *harness.REVISIONS.values()]
-    assert sorted(call.prompt for call in calls) == sorted(p.name for p in PROMPTS.glob("*.md"))
+    single_source = [p.name for p in PROMPTS.glob("*.md") if p.name != "06_answer.md"]
+    assert sorted(call.prompt for call in calls) == sorted(single_source)
     for call in calls:
         assert call.request == (PROMPTS / call.prompt).read_text(encoding="utf-8")

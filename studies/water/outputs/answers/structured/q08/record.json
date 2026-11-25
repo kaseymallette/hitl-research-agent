@@ -1,0 +1,310 @@
+{
+  "question_number": 8,
+  "question": "Where does agreement across the collection reflect independent evidence, and where does it reflect reliance on shared estimates, datasets, or illustrative cases?",
+  "approach": "structured",
+  "budget_tokens": 4000,
+  "budget_counts": "item text, in BAAI/bge-small-en-v1.5 tokenizer tokens",
+  "retrieved_tokens": 3929,
+  "retrieved": [
+    {
+      "label": "E1",
+      "id": "lei_et_al_2025_water_use_data_center_workloads#02-001",
+      "slug": "lei_et_al_2025_water_use_data_center_workloads",
+      "kind": "claims_reference",
+      "score": 0.7162,
+      "tokens": 92
+    },
+    {
+      "label": "E2",
+      "id": "li_et_al_2025_making_ai_less_thirsty#02-002",
+      "slug": "li_et_al_2025_making_ai_less_thirsty",
+      "kind": "claims_reference",
+      "score": 0.7037,
+      "tokens": 162
+    },
+    {
+      "label": "E3",
+      "id": "kanbur_et_al_2020_desalination_integrated_data_center_cooling#01-031",
+      "slug": "kanbur_et_al_2020_desalination_integrated_data_center_cooling",
+      "kind": "close_reading",
+      "score": 0.6868,
+      "tokens": 119
+    },
+    {
+      "label": "E4",
+      "id": "crs_2026_data_centers_and_water_faq#02-002",
+      "slug": "crs_2026_data_centers_and_water_faq",
+      "kind": "claims_reference",
+      "score": 0.6821,
+      "tokens": 82
+    },
+    {
+      "label": "E5",
+      "id": "alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds#02-088",
+      "slug": "alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds",
+      "kind": "claims_reference",
+      "score": 0.6776,
+      "tokens": 120
+    },
+    {
+      "label": "E6",
+      "id": "barnett_itzhaki_2026_water_footprint_artificial_intelligence#01-040",
+      "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+      "kind": "close_reading",
+      "score": 0.6764,
+      "tokens": 160
+    },
+    {
+      "label": "E7",
+      "id": "crs_2026_data_centers_and_water_faq#02-149",
+      "slug": "crs_2026_data_centers_and_water_faq",
+      "kind": "claims_reference",
+      "score": 0.6761,
+      "tokens": 51
+    },
+    {
+      "label": "E8",
+      "id": "ceres_2026_water_behind_the_watts#01-033",
+      "slug": "ceres_2026_water_behind_the_watts",
+      "kind": "close_reading",
+      "score": 0.6758,
+      "tokens": 270
+    },
+    {
+      "label": "E9",
+      "id": "herrera_et_al_2025_sustainable_ai_infrastructure#01-056",
+      "slug": "herrera_et_al_2025_sustainable_ai_infrastructure",
+      "kind": "close_reading",
+      "score": 0.675,
+      "tokens": 127
+    },
+    {
+      "label": "E10",
+      "id": "crs_2026_data_centers_and_water_faq#04-006",
+      "slug": "crs_2026_data_centers_and_water_faq",
+      "kind": "argument_evaluation",
+      "score": 0.6744,
+      "tokens": 157
+    },
+    {
+      "label": "E11",
+      "id": "katakam_et_al_2027_desalination_systems_data_center_water_needs#02-119",
+      "slug": "katakam_et_al_2027_desalination_systems_data_center_water_needs",
+      "kind": "claims_reference",
+      "score": 0.6702,
+      "tokens": 45
+    },
+    {
+      "label": "E12",
+      "id": "alston_et_al_2026_cooling_choices_water_impacts_grid#01-040",
+      "slug": "alston_et_al_2026_cooling_choices_water_impacts_grid",
+      "kind": "close_reading",
+      "score": 0.6682,
+      "tokens": 209
+    },
+    {
+      "label": "E13",
+      "id": "crs_2026_data_centers_and_water_faq#04-008",
+      "slug": "crs_2026_data_centers_and_water_faq",
+      "kind": "argument_evaluation",
+      "score": 0.6676,
+      "tokens": 148
+    },
+    {
+      "label": "E14",
+      "id": "herrera_et_al_2025_sustainable_ai_infrastructure#02-002",
+      "slug": "herrera_et_al_2025_sustainable_ai_infrastructure",
+      "kind": "claims_reference",
+      "score": 0.6673,
+      "tokens": 118
+    },
+    {
+      "label": "E15",
+      "id": "alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds#01-043",
+      "slug": "alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds",
+      "kind": "close_reading",
+      "score": 0.6657,
+      "tokens": 270
+    },
+    {
+      "label": "E16",
+      "id": "alston_et_al_2026_cooling_choices_water_impacts_grid#02-100",
+      "slug": "alston_et_al_2026_cooling_choices_water_impacts_grid",
+      "kind": "claims_reference",
+      "score": 0.6641,
+      "tokens": 38
+    },
+    {
+      "label": "E17",
+      "id": "alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds#02-095",
+      "slug": "alissa_et_al_2025_life_cycle_assessment_sustainable_cool_clouds",
+      "kind": "claims_reference",
+      "score": 0.6635,
+      "tokens": 31
+    },
+    {
+      "label": "E18",
+      "id": "barnett_itzhaki_2026_water_footprint_artificial_intelligence#02-012",
+      "slug": "barnett_itzhaki_2026_water_footprint_artificial_intelligence",
+      "kind": "claims_reference",
+      "score": 0.6634,
+      "tokens": 22
+    },
+    {
+      "label": "E19",
+      "id": "katakam_et_al_2027_desalination_systems_data_center_water_needs#01-089",
+      "slug": "katakam_et_al_2027_desalination_systems_data_center_water_needs",
+      "kind": "close_reading",
+      "score": 0.6634,
+      "tokens": 139
+    },
+    {
+      "label": "E20",
+      "id": "herrera_et_al_2025_sustainable_ai_infrastructure#02-092",
+      "slug": "herrera_et_al_2025_sustainable_ai_infrastructure",
+      "kind": "claims_reference",
+      "score": 0.6633,
+      "tokens": 61
+    },
+    {
+      "label": "E21",
+      "id": "herrera_et_al_2025_sustainable_ai_infrastructure#01-010",
+      "slug": "herrera_et_al_2025_sustainable_ai_infrastructure",
+      "kind": "close_reading",
+      "score": 0.663,
+      "tokens": 233
+    },
+    {
+      "label": "E22",
+      "id": "crs_2026_data_centers_and_water_faq#02-018",
+      "slug": "crs_2026_data_centers_and_water_faq",
+      "kind": "claims_reference",
+      "score": 0.6615,
+      "tokens": 65
+    },
+    {
+      "label": "E23",
+      "id": "crs_2026_data_centers_and_water_faq#01-025",
+      "slug": "crs_2026_data_centers_and_water_faq",
+      "kind": "close_reading",
+      "score": 0.6608,
+      "tokens": 279
+    },
+    {
+      "label": "E24",
+      "id": "herrera_et_al_2025_sustainable_ai_infrastructure#02-073",
+      "slug": "herrera_et_al_2025_sustainable_ai_infrastructure",
+      "kind": "claims_reference",
+      "score": 0.6606,
+      "tokens": 100
+    },
+    {
+      "label": "E25",
+      "id": "ceres_2026_water_behind_the_watts#02-085",
+      "slug": "ceres_2026_water_behind_the_watts",
+      "kind": "claims_reference",
+      "score": 0.6576,
+      "tokens": 98
+    },
+    {
+      "label": "E26",
+      "id": "herrera_et_al_2025_sustainable_ai_infrastructure#02-052",
+      "slug": "herrera_et_al_2025_sustainable_ai_infrastructure",
+      "kind": "claims_reference",
+      "score": 0.6573,
+      "tokens": 67
+    },
+    {
+      "label": "E27",
+      "id": "herrera_et_al_2025_sustainable_ai_infrastructure#01-048",
+      "slug": "herrera_et_al_2025_sustainable_ai_infrastructure",
+      "kind": "close_reading",
+      "score": 0.6571,
+      "tokens": 260
+    },
+    {
+      "label": "E28",
+      "id": "alston_et_al_2026_cooling_choices_water_impacts_grid#02-104",
+      "slug": "alston_et_al_2026_cooling_choices_water_impacts_grid",
+      "kind": "claims_reference",
+      "score": 0.6569,
+      "tokens": 154
+    },
+    {
+      "label": "E29",
+      "id": "li_et_al_2025_making_ai_less_thirsty#01-034",
+      "slug": "li_et_al_2025_making_ai_less_thirsty",
+      "kind": "close_reading",
+      "score": 0.6568,
+      "tokens": 99
+    },
+    {
+      "label": "E30",
+      "id": "ceres_2026_water_behind_the_watts#02-002",
+      "slug": "ceres_2026_water_behind_the_watts",
+      "kind": "claims_reference",
+      "score": 0.6553,
+      "tokens": 153
+    }
+  ],
+  "citations": {
+    "cited": {
+      "E1": 1,
+      "E2": 2,
+      "E3": 1,
+      "E4": 2,
+      "E5": 1,
+      "E6": 1,
+      "E8": 8,
+      "E9": 1,
+      "E10": 2,
+      "E12": 3,
+      "E14": 1,
+      "E15": 1,
+      "E18": 1,
+      "E22": 1,
+      "E23": 1,
+      "E24": 2,
+      "E25": 3,
+      "E26": 3,
+      "E27": 4,
+      "E28": 1,
+      "E29": 2,
+      "E30": 2
+    },
+    "not_cited": [
+      "E7",
+      "E11",
+      "E13",
+      "E16",
+      "E17",
+      "E19",
+      "E20",
+      "E21"
+    ],
+    "unknown": []
+  },
+  "indexes": {
+    "analyses": {
+      "built_at": "2026-11-23T23:50:05+00:00",
+      "chunks": 1751
+    }
+  },
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "prompt": "prompts/06_answer.md",
+  "prompt_sha256": "940c5db94018200af6e5ddef8edb851b22b454b2999a15258cb5afc83f204d5c",
+  "started_at": "2026-11-25T21:42:52+00:00",
+  "seconds": 40.1,
+  "usage": {
+    "input_tokens": 63057,
+    "cached_input_tokens": 48256,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1607,
+    "reasoning_output_tokens": 143
+  },
+  "cost": {
+    "billing": "ChatGPT sign-in, no API key: not billed per token",
+    "usd": null
+  }
+}

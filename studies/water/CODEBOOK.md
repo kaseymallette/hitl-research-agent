@@ -1,8 +1,8 @@
 # CODEBOOK — Water Study Experiment
 
-Codes for judging the answers in the water experiment, where each of the three
-approaches (original documents, structured analyses, combined) retrieves from
-the collection and answers the same research questions.
+Codes for judging the answers in the water experiment, where each of the two
+approaches (original documents and structured analyses) retrieves from the
+collection and answers the same research questions.
 
 Judging started blind and head to head: the A/B experiments chose the analysis
 setup by tournament. The experiment moves to codebook judging. An answer's
@@ -37,8 +37,8 @@ badly, or argue well by leaning on a source for something it never said.
 ## Excerpt fields
 
 - **Excerpt ID:** for experiment answers, [DIM]-[Q#]-[APPROACH]-[##], where
-  APPROACH is DOC (original documents), SA (structured analyses), or COMB
-  (combined). For the examples below, taken from the accepted analyses,
+  APPROACH is DOC (original documents) or SA (structured analyses). For the
+  examples below, taken from the accepted analyses,
   [DIM]-[ARTICLE]-[##], where ARTICLE is ALI (Alissa et al. 2025), ALS (Alston
   et al. 2026), BAR (Barnett-Itzhaki 2026), CER (Ceres 2026), CRS (CRS 2026),
   HER (Herrera et al. 2025), KAN (Kanbur et al. 2020), or KAT (Katakam et al.

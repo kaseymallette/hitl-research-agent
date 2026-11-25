@@ -327,18 +327,9 @@ def indexes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     return tmp_path
 
 
-def test_combined_ranks_both_indexes_together(indexes: Path) -> None:
-    write_index(indexes, "source_text", ["s1", "s2"], [[0.0, 1.0], [1.0, 0.0]], "m")
+def test_each_approach_searches_its_own_index(indexes: Path) -> None:
+    write_index(indexes, "source_text", ["s1", "s2"], [[1.0, 0.0], [0.0, 1.0]], "m")
     write_index(indexes, "analyses", ["a1", "a2"], [[0.6, 0.8], [0.8, 0.6]], "m")
-    ranked = bi.retrieve("combined", "why?", 4)
-    assert [c["id"] for _, c in ranked] == ["s1", "a1", "a2", "s2"]
-    assert [c["kind"] for _, c in ranked] == ["source_text", "analyses", "analyses", "source_text"]
-    assert FakeEmbedding.seen == ["Q: why?"]
-    assert [c["id"] for _, c in bi.retrieve("analyses", "why?", 1)] == ["a1"]
-
-
-def test_combined_refuses_indexes_built_with_different_models(indexes: Path) -> None:
-    write_index(indexes, "source_text", ["s1"], [[0.0, 1.0]], "m")
-    write_index(indexes, "analyses", ["a1"], [[0.0, 1.0]], "other")
-    with pytest.raises(ValueError, match="different models"):
-        bi.retrieve("combined", "why?", 1)
+    assert [c["id"] for _, c in bi.retrieve("rag", "why?")] == ["s2", "s1"]
+    assert [c["id"] for _, c in bi.retrieve("structured", "why?", 1)] == ["a1"]
+    assert FakeEmbedding.seen == ["Q: why?", "Q: why?"]
