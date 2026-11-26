@@ -54,7 +54,7 @@ Each document runs through five Codex sessions, in order:
 
 The framework distinguishes what an author states from what the model infers or evaluates. Human review determines which analyses enter the research collection.
 
-![Single source analysis: the close reading and the claims reference feed the close reading judgment; the argument evaluation feeds the argument judgment; both judgments go to review, to accept, revise, rerun, or reject.](studies/water/assets/single-source-flow.svg)
+![Single document analysis: the close reading and the claims reference feed the close reading judgment; the discourse analysis, which reads the close reading, feeds the discourse analysis judgment; both judgments go to review, to accept, revise, rerun, or reject.](studies/science_of_reading/assets/single-document-flow.svg)
 
 The design choices:
 
