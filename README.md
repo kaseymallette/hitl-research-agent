@@ -42,73 +42,45 @@ Six laws have been analyzed and judged: California AB 1454 (2025), Arkansas's Ri
 
 These cover legislation only. The scholarly articles are being run now.
 
-## How it works
+## Scholarly articles: does close reading give better answers?
 
-Each document runs through a series of Codex sessions, in order. Each session sees only the files its step needs. There are two harnesses: one for scholarly articles and one for legislation.
+We ask the same three questions of each article: how is the science of reading defined and enacted, how is teachers' knowledge positioned, and how are students positioned?
 
-### Scholarly articles: does close reading give better answers?
+### Two methods
 
-Each article is used to answer three questions:
+Both quote the article’s exact words.
 
-- How is the science of reading defined, and how is it enacted?
-- How is teachers' knowledge positioned?
-- How are students positioned?
+| Method | How it answers |
+| --- | --- |
+| **A: Baseline** | Answers directly from the article. |
+| **B: Close reading** | First collects relevant passages, then uses that close reading and the article to answer. |
 
-The harness tests two ways of answering them. Every answer quotes the article's exact words.
+### What is measured
 
-- **Null hypothesis:** Method B is no better than Method A.
+- **Precision:** exact, real, relevant quotes ÷ total quotes.
+- **Recall:** relevant claims used ÷ total relevant claims.
 
-**1. Claims reference:** every claim in the article, quoted exactly, listed from the article alone. It doesn't know the questions, so it favors neither method.
+Both methods are scored against an independent **claims reference**, created from the article without seeing the questions or answers.
 
-**Method A: Baseline**
+The null hypothesis is that Method B is no better than Method A.
 
-**2.** Answer the questions from the article alone, with quotes.
+### Workflow
 
-**Method B: Close Reading**
+Each step runs in a separate Codex session and sees only the files it needs.
 
-**3.** Close read the article for the questions, quoting only the relevant passages.<br>
-**4.** Answer the questions using the close reading, with quotes.
+![Five steps: claims reference (1), baseline answers (2), close reading (3), close reading answers (4), and scoring (5). Steps 1, 2, and 4 feed scoring; step 3 feeds step 4. Every step reads the article.](studies/science_of_reading/assets/scholarly-flow.svg)
 
-**5. Scoring:** compare Method A (2) and Method B (4) against the claims reference.
+See the [scholarly harness](studies/science_of_reading/harness/scholarly/) for run instructions and output files.
 
-- **Recall:** which relevant claims did each method use, and which did it miss?
-- **Precision:** which of each method's quotes are real claims, quoted exactly and relevant, and which aren't?
+## Legislation: how do laws frame reading instruction?
 
-![Scholarly harness: the article feeds the claims reference (1), Method A's baseline answers (2), and Method B's close reading (3), which feeds the close reading answers (4); scoring (5) compares 2 and 4 against the claims reference.](studies/science_of_reading/assets/scholarly-flow.svg)
+Each law gets a close reading and an independent claims reference. A separate session checks the close reading against the law and that reference.
 
-```bash
-uv run python scripts/run_scholarly.py <slug>
-```
+The discourse analysis then uses the law and close reading to examine word choices, assumptions, what is emphasized or left out, how people are positioned, and how other texts are invoked. Another session checks each observation against the law and its assigned code.
 
-[`scripts/run_scholarly.py`](scripts/run_scholarly.py) runs the five steps, in order, for one article from [`data/scholarly/sources.yaml`](studies/science_of_reading/data/scholarly/sources.yaml), each in its own Codex session, and writes five files to `outputs/scholarly/<slug>/`:
+![The close reading and claims reference feed a judgment. The close reading also feeds discourse analysis, which receives its own judgment. Both judgments go to the researcher for review.](studies/science_of_reading/assets/legislation-flow.svg)
 
-| Step | Reads | Writes |
-| --- | --- | --- |
-| 1. Claims reference | the article | `01_claims_reference.md` |
-| 2. Baseline answers | the article | `02_baseline_answers.md` |
-| 3. Close reading | the article | `03_close_reading.json` |
-| 4. Close Reading answers | the article and the close reading | `04_close_reading_answers.md` |
-| 5. Scoring | the article, the claims reference, and both sets of answers | `05_scoring.md` |
-
-No step sees another step's file unless the table says so: the claims reference and the baseline answers never see the close reading. With no option, only the steps whose file is missing run, so a stopped run picks up where it left off; `--only 03` reruns one step. The prompts are in [`harness/scholarly/prompts/`](studies/science_of_reading/harness/scholarly/prompts/), and each session is sent its prompt file exactly as written.
-
-### Legislation: discourse analysis
-
-1. **Close reading** of the law.
-2. **Claims reference:** the law's own claims, listed from the law alone.
-3. **Judgment of the close reading:** checked against the law and the claims reference.
-4. **Discourse analysis:** coded on five critical discourse analysis dimensions: lexical choices and definitional framing (LEX), presuppositions (PRE), foregrounding and silencing (FOS), subject positioning (SUB), and intertextuality (INT).
-5. **Judgment of the discourse analysis:** every observation checked against the law, and whether its code fits.
-
-![Legislation harness: the close reading and the claims reference feed the close reading judgment; the discourse analysis, which reads the close reading, feeds the discourse analysis judgment; both judgments go to review, to accept, revise, rerun, or reject.](studies/science_of_reading/assets/legislation-flow.svg)
-
-[`scripts/workspace.py`](scripts/workspace.py) loads one law (its PDF, extracted text, and page images) into a workspace outside the repository, where the five prompts in [`harness/legislation/`](studies/science_of_reading/harness/legislation/) are run in Codex; saving copies the results to `outputs/legislation/<slug>/`. The commands are in the study's [`RUNBOOK.md`](studies/science_of_reading/RUNBOOK.md).
-
-### Design choices
-
-- **The researcher decides.** The framework distinguishes what an author states from what the model infers or evaluates. Every result is recorded, and the expert accepts, revises, reruns, or rejects it; nothing is withheld because an analysis is weak.
-- **Only a technical failure stops a run:** Codex exiting with an error or timing out, a step's file not written, or a close reading that isn't valid JSON.
-- **Why Codex.** Blind head-to-head A/B tests chose GPT-6.1 Sol at medium effort, reading the PDF, run through Codex ([details](https://github.com/kaseymallette/hitl-research-agent/blob/b887401/studies/water/README.md#the-ab-experiments)). It beat a costlier model and extracted text, and Codex runs within the ChatGPT plan, with no API key.
+See the [legislation harness](studies/science_of_reading/harness/legislation/) for the workflow and prompts, and the [codebook](studies/science_of_reading/docs/CODEBOOK.md) for the analysis dimensions.
 
 ## Development approach and lessons
 
@@ -135,7 +107,7 @@ What has been difficult about working this way:
 ## Status
 
 - **Done:** six state laws analyzed and judged; the codebook revised from them; three of the expert's questions answered.
-- **In progress:** the scholarly corpus. Reinking, Hruby, & Risko (2023) is done; the other seven articles in `studies/science_of_reading/data/scholarly/sources.yaml` are running.
+- **In progress:** running the harness on the scholarly articles.
 - **Next:** the popular press.
 
 Decisions and open questions are in [`docs/PROJECT.md`](docs/PROJECT.md).
@@ -178,3 +150,41 @@ uv run ruff check . && uv run ruff format --check .
 ```bash
 uv run mypy src
 ```
+
+## Harness
+
+Run these commands from the repository root.
+
+### Scholarly articles
+
+Choose an article slug from `studies/science_of_reading/data/scholarly/sources.yaml`:
+
+```bash
+uv run python scripts/run_scholarly.py <slug>
+```
+
+Runs all five steps in separate Codex sessions and saves results to `studies/science_of_reading/outputs/scholarly/<slug>/`. Existing outputs are skipped, so the same command resumes an interrupted run.
+
+To rerun only the close reading:
+
+```bash
+uv run python scripts/run_scholarly.py <slug> --only 03
+```
+
+### Legislation
+
+Choose a law's slug from `studies/science_of_reading/data/legislation/sources.yaml` and load it:
+
+```bash
+uv run python scripts/workspace.py load <slug>
+```
+
+In `~/sor-workspace`, follow the workspace README to run its five prompts in separate Codex sessions: close reading, claims reference, close-reading judgment, discourse analysis, and discourse-analysis judgment.
+
+Save the results back to the repository:
+
+```bash
+uv run python scripts/workspace.py save
+```
+
+Results go to `studies/science_of_reading/outputs/legislation/<slug>/`; saving removes the temporary workspace.

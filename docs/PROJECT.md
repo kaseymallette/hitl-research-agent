@@ -23,23 +23,33 @@ works. Details are in
   to the researcher, never withheld.
 - **The human decides what counts.** Each analysis is accepted, revised,
   rerun, or rejected before it is used.
-- **Analyses run in Codex, reading the PDF.** `scripts/workspace.py` loads one
-  document into a workspace outside the repository; each prompt runs in its own
-  Codex session on GPT-6.1 Sol at medium effort; saving copies the results to
-  `outputs/<corpus>/<slug>/`.
+- **Analyses run in separate Codex sessions, reading the PDF.** The scholarly
+  runner uses GPT-6.1 Sol at medium effort. Each session sees only the files
+  its step needs.
+- **Legislation uses the workspace workflow.** `scripts/workspace.py` loads
+  a law's PDF, extracted text, and page images into an external workspace.
+  The close reading, claims reference, discourse analysis, and two judgments
+  run there in Codex. Saving copies the results to
+  `studies/science_of_reading/outputs/legislation/<slug>/`.
 - **Scholarly articles test whether close reading gives better answers; laws
   get a discourse analysis.** `scripts/run_scholarly.py` runs five Codex
-  sessions per article from `harness/scholarly/prompts/`, writing to
-  `outputs/scholarly/<slug>/`: a claims reference (every claim, quoted, from
-  the article alone), Method A's baseline answers (the article alone),
-  Method B's close reading and its answers, and a scoring of both methods
-  against the claims reference for recall and precision. Null hypothesis:
-  Method B is no better than Method A. Every answer quotes the article.
-  The legislation codebook is not used for articles.
+  sessions per article using the study's `harness/scholarly/prompts/`, writing
+  to `studies/science_of_reading/outputs/scholarly/<slug>/`: a claims reference,
+  Method A's baseline answers, Method B's close reading and answers, and scoring.
+  The reference sees neither the questions nor the answers. Method A reads the
+  article alone; Method B answers from the article and close reading. Every
+  step reads the article, and both methods quote its exact words. The
+  legislation codebook is not used for articles.
+- **Precision and recall measure the two methods.** Precision is exact, real,
+  relevant quotations divided by total quotations. Recall is relevant claims
+  used divided by total relevant claims. Both are scored for each question
+  against the claims reference, supplemented with relevant claims it missed.
+  Null hypothesis: Method B is no better than Method A.
 - **Source PDFs stay local.** Only their `sources.yaml` entries are tracked.
-- **Questions are answered from the saved analyses.** The expert's questions
-  are answered from each document's close reading and discourse analysis, and
-  kept in `studies/science_of_reading/questions/`.
+- **The saved cross-document answers currently cover legislation.** The
+  expert's three questions are answered from the six laws' close readings and
+  discourse analyses in `studies/science_of_reading/questions/`. The scholarly
+  harness answers the questions separately for each article.
 
 ## Open
 
@@ -56,8 +66,7 @@ works. Details are in
 - **Legislation:** six laws analyzed (close reading and discourse analysis),
   and the codebook revised from them. Proposed new codes await review.
 - **Questions:** three of the expert's questions answered from the six laws.
-- **Scholarly:** Reinking, Hruby, & Risko (2023) done; the other seven
-  articles are running.
+- **Scholarly:** running the harness on the scholarly articles.
 - **Popular press:** not started.
 
 Earlier work (the water study and the retrieval experiments) is kept in git
