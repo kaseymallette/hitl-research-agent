@@ -107,16 +107,26 @@ The researcher asked for complete, traceable evidence: every relevant passage qu
 | Under 16,000 words | 28.7% | 30.8% | 100% / 100% | 103 / 164 | 6,112 / 7,651 |
 | No limit | 78.8% | 84.3% | 99.4% / 98.8% | 166 / 426 | 16,139 / 21,801 |
 
+![Recall by length instruction. Baseline: 5.0%, 8.7%, 16.5%, 24.2%, 28.7%, and 78.8% with no limit. Close reading: 5.8%, 9.2%, 17.5%, 24.6%, 30.8%, and 84.3% with no limit.](studies/science_of_reading/assets/length-recall.svg)
+
 ### Findings
 
 - **Precision held at every length.** The quotations were accurate whatever the instruction; length changed how much evidence the answers showed, not whether it was right.
 - **Recall rose with length but stayed low under every limit.** It climbed from 5% for a few sentences to 29–31% under 16,000 words. Only the instruction to include everything brought it near 80%.
 - **Any limit made the model select.** Under the 16,000-word limit, the answers ran about 6,100 and 7,700 words, well short of the limit and of the 16,000 words the baseline wrote with no limit, and recall stayed near 30%. The models never used their full allowance under any limit. The jump came from removing the limit, not from the room it allowed.
 - **The length instruction mattered far more than the method.** The close-reading step added about two points of recall or less under each limit and about five points without one.
+- **With no limit, the baseline answer nearly reproduced the claims reference.** Told to include everything, the answer from the article alone used 78.8% of the relevant claims without seeing the reference. The claims reference is not needed to produce the answers; it is needed only to measure them, as the independent list of what an answer missed. Without it, an answer can be checked for precision against the article but has nothing to be scored against for recall.
 
 ### Data
 
 The results are in [`outputs/scholarly/reinking_et_al_2023_legislating_phonics/`](studies/science_of_reading/outputs/scholarly/reinking_et_al_2023_legislating_phonics/). The claims reference and close reading are shared by every level; each level's answers, scoring, and prompts are in its own folder: `few_sentences/`, `few_paragraphs/`, `words_4000/`, `words_8000/`, `words_16000/`, and `no_length_limit/`.
+
+### Implications
+
+The experiment suggests a leaner design for the remaining seven scholarly articles: drop the close reading, which added little, and answer the questions from the article with no length limit.
+
+1. **Test the next two articles.** Run the claims reference, then the questions from the article, then the evaluation, to test whether there is a difference between the claims reference and the questions from the article.
+2. **Decide on the remaining five.** If there is little difference, the questions from the article may be all those five need, checked for precision against the article. If there is a difference, the answer step needs to change before running them.
 
 ## Legislation
 

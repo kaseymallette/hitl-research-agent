@@ -111,7 +111,7 @@ commands in `RUNBOOK.md` from the repository root.
 │   ├── scholarly/        claims reference, baseline answers, close reading and its answers, scoring; run by scripts/run_scholarly.py
 │   ├── legislation/      close reading, claims reference, discourse analysis, and their judgments; run in the workspace
 │   └── popular-press/    close reading, claims reference, argument evaluation, and their judgments; run in the workspace
-├── assets/               the harness diagrams
+├── assets/               the harness diagrams and the length-experiment recall chart
 └── docs/
     └── CODEBOOK.md       the CDA codebook for the legislation corpus: codes and coded excerpts
 ```

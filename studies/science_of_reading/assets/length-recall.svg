@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Recall by length instruction</title>
+  <desc id="d">Baseline recall: sentences 5.0%, paragraphs 8.7%, 4k 16.5%, 8k 24.2%, 16k 28.7%, no limit 78.8%. Close-reading recall: 5.8%, 9.2%, 17.5%, 24.6%, 30.8%, 84.3%.</desc>
+  <style>
+    .ink { fill: #0b0b0b; }
+    .ink2 { fill: #52514e; }
+    .muted { fill: #898781; }
+    .grid { stroke: #e1e0d9; }
+    .axis { stroke: #c3c2b7; }
+    .base { stroke: #2a78d6; }
+    .base-f { fill: #2a78d6; }
+    .close { stroke: #008300; }
+    .close-f { fill: #008300; }
+    .ring { stroke: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #f0efec; }
+      .ink2 { fill: #c3c2b7; }
+      .grid { stroke: #2c2c2a; }
+      .axis { stroke: #383835; }
+      .base { stroke: #3987e5; }
+      .base-f { fill: #3987e5; }
+      .close { stroke: #0ca30c; }
+      .close-f { fill: #0ca30c; }
+      .ring { stroke: #0d1117; }
+    }
+  </style>
+
+  <text x="40" y="34" class="ink" font-size="18" font-weight="600">Recall by length instruction</text>
+  <text x="40" y="56" class="ink2" font-size="13">Share of relevant claims each answer used, Reinking et al. (2023)</text>
+
+  <!-- legend -->
+  <line x1="40" y1="80" x2="60" y2="80" class="base" stroke-width="2"/>
+  <circle cx="50" cy="80" r="4" class="base-f ring" stroke-width="2"/>
+  <text x="68" y="84" class="ink2" font-size="13">Baseline</text>
+  <line x1="142" y1="80" x2="162" y2="80" class="close" stroke-width="2"/>
+  <circle cx="152" cy="80" r="4" class="close-f ring" stroke-width="2"/>
+  <text x="170" y="84" class="ink2" font-size="13">Close reading</text>
+
+  <!-- grid: y = 380 - v * 2.6 (0% at 380, 100% at 120) -->
+  <g stroke-width="1">
+    <line x1="90" y1="120" x2="620" y2="120" class="grid"/>
+    <line x1="90" y1="185" x2="620" y2="185" class="grid"/>
+    <line x1="90" y1="250" x2="620" y2="250" class="grid"/>
+    <line x1="90" y1="315" x2="620" y2="315" class="grid"/>
+    <line x1="90" y1="380" x2="620" y2="380" class="axis"/>
+  </g>
+  <g class="muted" font-size="12" text-anchor="end">
+    <text x="80" y="124">100%</text>
+    <text x="80" y="189">75%</text>
+    <text x="80" y="254">50%</text>
+    <text x="80" y="319">25%</text>
+    <text x="80" y="384">0%</text>
+  </g>
+  <g class="muted" font-size="12" text-anchor="middle">
+    <text x="90" y="402">Sentences</text>
+    <text x="196" y="402">Paragraphs</text>
+    <text x="302" y="402">4k</text>
+    <text x="408" y="402">8k</text>
+    <text x="514" y="402">16k</text>
+    <text x="620" y="402">No limit</text>
+  </g>
+
+  <!-- baseline: 5.0, 8.7, 16.5, 24.2, 28.7, 78.8 -->
+  <polyline fill="none" class="base" stroke-width="2" stroke-linejoin="round"
+    points="90,367 196,357.4 302,337.1 408,317.1 514,305.4 620,175.1"/>
+  <!-- close reading: 5.8, 9.2, 17.5, 24.6, 30.8, 84.3 -->
+  <polyline fill="none" class="close" stroke-width="2" stroke-linejoin="round"
+    points="90,364.9 196,356.1 302,334.5 408,316 514,299.9 620,160.8"/>
+
+  <g class="base-f ring" stroke-width="2">
+    <circle cx="90" cy="367" r="4"><title>Baseline, a few sentences: 5.0%</title></circle>
+    <circle cx="196" cy="357.4" r="4"><title>Baseline, a few paragraphs: 8.7%</title></circle>
+    <circle cx="302" cy="337.1" r="4"><title>Baseline, under 4,000 words: 16.5%</title></circle>
+    <circle cx="408" cy="317.1" r="4"><title>Baseline, under 8,000 words: 24.2%</title></circle>
+    <circle cx="514" cy="305.4" r="4"><title>Baseline, under 16,000 words: 28.7%</title></circle>
+    <circle cx="620" cy="175.1" r="4"><title>Baseline, no limit: 78.8%</title></circle>
+  </g>
+  <g class="close-f ring" stroke-width="2">
+    <circle cx="90" cy="364.9" r="4"><title>Close reading, a few sentences: 5.8%</title></circle>
+    <circle cx="196" cy="356.1" r="4"><title>Close reading, a few paragraphs: 9.2%</title></circle>
+    <circle cx="302" cy="334.5" r="4"><title>Close reading, under 4,000 words: 17.5%</title></circle>
+    <circle cx="408" cy="316" r="4"><title>Close reading, under 8,000 words: 24.6%</title></circle>
+    <circle cx="514" cy="299.9" r="4"><title>Close reading, under 16,000 words: 30.8%</title></circle>
+    <circle cx="620" cy="160.8" r="4"><title>Close reading, no limit: 84.3%</title></circle>
+  </g>
+
+  <!-- direct labels -->
+  <text x="634" y="157" class="ink" font-size="13">Close reading 84.3%</text>
+  <text x="634" y="182" class="ink" font-size="13">Baseline 78.8%</text>
+
+  <text x="40" y="430" class="muted" font-size="11">Source: README, Reinking et al. (2023). Recall measured against a model-generated claims reference.</text>
+</svg>
