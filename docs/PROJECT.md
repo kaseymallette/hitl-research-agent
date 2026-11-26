@@ -53,7 +53,8 @@ works. Details are in
 - **Legislation:** six laws analyzed (close reading and discourse analysis),
   and the codebook revised from them. Proposed new codes await review.
 - **Questions:** three of the expert's questions answered from the six laws.
-- **Scholarly:** the expert's articles are being added; not yet analyzed.
+- **Scholarly:** Reinking, Hruby, & Risko (2023) done; the other seven
+  articles are running.
 - **Popular press:** not started.
 
 Earlier work (the water study and the retrieval experiments) is kept in git

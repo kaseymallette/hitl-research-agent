@@ -6,7 +6,7 @@ A human-in-the-loop AI research framework for analyzing sources, evaluating argu
 
 ## Purpose
 
-Researchers are right to be skeptical of AI for synthesis: models misattribute claims, drop qualifications, and cite evidence that doesn't support them. This project builds an analysis process that can be checked at every step. Each document gets a close reading, and a separate session judges that reading against the source. The analysis is then compared across documents to answer a researcher's questions. It is applied to a real study, done with a professor of literacy education who directs the questions and judges what the evidence means.
+Researchers are right to be skeptical of AI for synthesis: models misattribute claims, drop qualifications, and cite evidence that doesn't support them. This project builds an analysis process that can be checked at every step. Each document gets a close reading, and each point in its answers is traced to the page it comes from. The analysis is then compared across documents to answer a researcher's questions. It is applied to a real study, done with a professor of literacy education who directs the questions and judges what the evidence means.
 
 ## Overview
 
@@ -40,11 +40,11 @@ Six laws have been analyzed and judged: California AB 1454 (2025), Arkansas's Ri
 - **[How is teachers' knowledge positioned?](studies/science_of_reading/questions/02_how_is_teachers_knowledge_positioned.md)** As something the state must verify, update, and supervise, through credentials, required training, and fidelity checks. No law says outright that teachers lack the knowledge, and most also owe them support.
 - **[How are students positioned?](studies/science_of_reading/questions/03_how_are_students_positioned.md)** As beneficiaries of required intervention and as objects of measurement and placement. The laws divide on retention, and range from treating English learners as exceptions to treating their home languages as assets. Students never speak or act.
 
-These cover legislation only. The scholarly corpus is next.
+These cover legislation only. The scholarly articles are being run now.
 
 ## How it works
 
-Each document runs through a sequence of Codex sessions, in order, each in its own session that sees only the files that step needs. There are two harnesses, one per kind of document.
+Each document runs through a series of Codex sessions, in order. Each session sees only the files its step needs. There are two harnesses: one for scholarly articles and one for legislation.
 
 ### Scholarly articles: the three questions
 
@@ -62,7 +62,9 @@ uv run python scripts/run_scholarly.py <slug>
 
 ### Legislation: discourse analysis
 
-1. **Close reading** and 2. **claims reference** of the law, and 3. a **judgment** of the close reading.
+1. **Close reading** of the law.
+2. **Claims reference:** the law's own claims, listed from the law alone.
+3. **Judgment of the close reading:** checked against the law and the claims reference.
 4. **Discourse analysis:** coded on five critical discourse analysis dimensions: lexical choices and definitional framing (LEX), presuppositions (PRE), foregrounding and silencing (FOS), subject positioning (SUB), and intertextuality (INT).
 5. **Judgment of the discourse analysis:** every observation checked against the law, and whether its code fits.
 
@@ -72,7 +74,7 @@ uv run python scripts/run_scholarly.py <slug>
 
 ### Design choices
 
-- **The researcher decides.** The framework distinguishes what an author states from what the model infers or evaluates. The judgments are recorded, and the expert accepts, revises, reruns, or rejects; nothing is withheld because an analysis is weak.
+- **The researcher decides.** The framework distinguishes what an author states from what the model infers or evaluates. Every result is recorded, and the expert accepts, revises, reruns, or rejects it; nothing is withheld because an analysis is weak.
 - **Only a technical failure stops a run:** Codex exiting with an error or timing out, a step's file not written, or a close reading that isn't valid JSON.
 - **Why Codex.** Blind head-to-head A/B tests chose GPT-6.1 Sol at medium effort, reading the PDF, run through Codex ([details](https://github.com/kaseymallette/hitl-research-agent/blob/b887401/studies/water/README.md#the-ab-experiments)). It beat a costlier model and extracted text, and Codex runs within the ChatGPT plan, with no API key.
 
@@ -101,7 +103,8 @@ What has been difficult about working this way:
 ## Status
 
 - **Done:** six state laws analyzed and judged; the codebook revised from them; three of the expert's questions answered.
-- **Next:** the scholarly corpus (the expert's articles are listed in `studies/science_of_reading/data/scholarly/sources.yaml`), then the popular press.
+- **In progress:** the scholarly corpus. Reinking, Hruby, & Risko (2023) is done; the other seven articles in `studies/science_of_reading/data/scholarly/sources.yaml` are running.
+- **Next:** the popular press.
 
 Decisions and open questions are in [`docs/PROJECT.md`](docs/PROJECT.md).
 
