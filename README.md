@@ -123,10 +123,13 @@ The results are in [`outputs/scholarly/reinking_et_al_2023_legislating_phonics/`
 
 ### Implications
 
-The experiment suggests a leaner design for the remaining seven scholarly articles: drop the close reading, which added little, and answer the questions from the article with no length limit.
+On this article, close reading added little compared with removing the answer-length limit. The plan for the remaining scholarly articles is a three-step harness: build an independent claims reference, answer the questions directly from the article with no length limit, and evaluate precision and recall.
 
-1. **Test the next two articles.** Run the claims reference, then the questions from the article, then the evaluation, to test whether there is a difference between the claims reference and the questions from the article.
-2. **Decide on the remaining five.** If there is little difference, the questions from the article may be all those five need, checked for precision against the article. If there is a difference, the answer step needs to change before running them.
+The answers do not see the claims reference. Evaluation uses the article to check the quotations and their attribution, and the reference to identify relevant claims used or missed.
+
+![Proposed three-step harness: claims reference (1) and answers from the article (2) independently feed evaluation (3) for precision and recall. Every step reads the article; answers do not see the claims reference.](studies/science_of_reading/assets/scholarly-proposed-flow.svg)
+
+This is the proposed next workflow; the current runner still implements the five-step comparison above.
 
 ## Legislation
 

@@ -58,6 +58,16 @@ works. Details are in
   discourse analyses in `studies/science_of_reading/questions/`. The scholarly
   harness answers the questions separately for each article.
 
+## Planned next workflow
+
+The answer-length experiment on the first scholarly article motivates a
+three-step harness for the remaining articles: independent claims reference,
+answers from the article with no length limit, and evaluation of precision
+and recall. Answers do not see the reference; evaluation reads the article,
+reference, and answers. This drops the close-reading step. The current
+runner still implements the five-step comparison; the three-step workflow
+is proposed, not yet implemented.
+
 ## Open
 
 - What "travel" means concretely: the unit that travels (a claim, a term, a

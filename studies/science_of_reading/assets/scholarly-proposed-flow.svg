@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="320" viewBox="0 0 1000 320" role="img" aria-labelledby="title desc">
+  <title id="title">Proposed scholarly harness: three steps</title>
+  <desc id="desc">Every step reads the article. Step 1 creates a claims reference without seeing the questions or answers. Step 2 answers the questions directly from the article, without the claims reference or a length limit. Both outputs feed step 3, evaluation: check quotations and attribution against the article for precision, and relevant claims used or missed against the reference for recall.</desc>
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 2 1 L 9 5 L 2 9" fill="none" stroke="#475569" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
+    .label { font-size: 11px; letter-spacing: 1.2px; fill: #475569; }
+    .name { font-size: 18px; font-weight: 600; fill: #0f172a; }
+    .metric { font-size: 24px; font-weight: 700; fill: #0f172a; }
+    .note { font-size: 14px; fill: #475569; }
+    .number { font-size: 14px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+    .connector { fill: none; stroke: #475569; stroke-width: 2; marker-end: url(#head); }
+  </style>
+  <rect width="1000" height="320" rx="16" fill="#f8fafc"/>
+  <text x="32" y="35" class="label">PROPOSED HARNESS / THREE STEPS</text>
+  <text x="968" y="35" class="label" text-anchor="end">EVERY STEP READS THE ARTICLE</text>
+
+  <path d="M 460 116 H 600" class="connector"/>
+  <path d="M 460 242 H 600" class="connector"/>
+
+  <rect x="40" y="76" width="420" height="80" rx="8" fill="#ffffff" stroke="#64748b"/>
+  <rect x="56" y="102" width="28" height="28" rx="5" fill="#64748b"/>
+  <text x="70" y="121" class="number">1</text>
+  <text x="100" y="109" class="name">Claims reference</text>
+  <text x="100" y="134" class="note">From the article, without the questions</text>
+
+  <rect x="40" y="202" width="420" height="80" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <rect x="56" y="228" width="28" height="28" rx="5" fill="#2563eb"/>
+  <text x="70" y="247" class="number">2</text>
+  <text x="100" y="235" class="name">Answer the questions</text>
+  <text x="100" y="260" class="note">From the article alone · no length limit</text>
+
+  <rect x="600" y="76" width="360" height="206" rx="8" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+  <rect x="616" y="92" width="28" height="28" rx="5" fill="#0f172a"/>
+  <text x="630" y="111" class="number">3</text>
+  <text x="660" y="113" class="name">Evaluate the answers</text>
+  <text x="616" y="154" class="metric">Precision</text>
+  <text x="616" y="176" class="note">Exact, real, relevant quotations,</text>
+  <text x="616" y="195" class="note">correctly attributed to their speakers</text>
+  <text x="616" y="235" class="metric">Recall</text>
+  <text x="616" y="258" class="note">Relevant claims used or missed</text>
+</svg>
