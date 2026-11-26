@@ -38,6 +38,7 @@ OVERLAYS: dict[str, dict[str, str | None]] = {
         "scores.md": "prompts/scholarly/scores.md",
         "prompts/close-reading.md": "prompts/scholarly/close-reading.md",
         "prompts/discourse-analysis.md": "prompts/scholarly/discourse-analysis.md",
+        "prompts/extraction.md": "prompts/scholarly/extraction.md",
         "prompts/evaluate-argument.md": None,
     },
     "legislation": {

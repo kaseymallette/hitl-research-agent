@@ -17,4 +17,150 @@
 #      why: "the criterion it meets, e.g. defines the science of reading"
 #    provenance_basis:
 #      source_title: where the title was taken from
-sources: []
+sources:
+  - slug: reinking_et_al_2023_legislating_phonics
+    pdf: "data/scholarly/reinking_et_al_2023_legislating_phonics.pdf"
+    source_title: "Legislating Phonics: Settled Science or Political Polemics?"
+    source_authors: [David Reinking, George G. Hruby, Victoria J. Risko]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: 10.1177/01614681231155688
+    publisher: "Teachers College Record 125(1), 104-131"
+    url: "https://doi.org/10.1177/01614681231155688"
+    retrieved_at: "2026-11-26T02:52:56+00:00"
+    selection:
+      how: "sent by the domain expert, 2026-11-25"
+      why: "extraction protocol, first three articles (expert's no. 1)"
+    provenance_basis:
+      source_title: the article's first page
+      source_authors: the first-page byline, as printed
+      publication_date: "unset: the first page prints the year and volume only"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
+  - slug: seidenberg_2013_science_of_reading_educational_implications
+    pdf: "data/scholarly/seidenberg_2013_science_of_reading_educational_implications.pdf"
+    source_title: "The Science of Reading and Its Educational Implications"
+    source_authors: [Mark S. Seidenberg]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: 10.1080/15475441.2013.812017
+    publisher: "Language Learning and Development 9(4), 331-360 (Taylor & Francis)"
+    url: "https://doi.org/10.1080/15475441.2013.812017"
+    retrieved_at: "2026-11-26T02:54:40+00:00"
+    selection:
+      how: "sent by the domain expert, 2026-11-25"
+      why: "extraction protocol, first three articles (expert's no. 4)"
+    provenance_basis:
+      source_title: the article's first page
+      source_authors: the first-page byline, as printed
+      publication_date: "unset: the first page prints the year and volume only"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
+  - slug: duke_cartwright_2021_sor_progresses_beyond_simple_view
+    pdf: "data/scholarly/duke_cartwright_2021_sor_progresses_beyond_simple_view.pdf"
+    source_title: "The Science of Reading Progresses: Communicating Advances Beyond the Simple View of Reading"
+    source_authors: [Nell K. Duke, Kelly B. Cartwright]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: 10.1002/rrq.411
+    publisher: "Reading Research Quarterly 56(S1), S25-S44 (Wiley, for the International Literacy Association)"
+    url: "https://doi.org/10.1002/rrq.411"
+    retrieved_at: "2026-11-26T02:54:55+00:00"
+    selection:
+      how: "sent by the domain expert, 2026-11-25"
+      why: "extraction protocol, first three articles (expert's no. 5)"
+    provenance_basis:
+      source_title: the article's first page
+      source_authors: the first-page byline, as printed
+      publication_date: "unset: the first page prints the year and volume only"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
+  - slug: cervetti_et_al_2020_rfu_complicates_simple_view
+    pdf: "data/scholarly/cervetti_et_al_2020_rfu_complicates_simple_view.pdf"
+    source_title: "How the Reading for Understanding Initiative's Research Complicates the Simple View of Reading Invoked in the Science of Reading"
+    source_authors: [Gina N. Cervetti, P. David Pearson, Annemarie S. Palincsar, Peter Afflerbach, Panayiota Kendeou, Gina Biancarosa, Jennifer Higgs, Miranda S. Fitzgerald, Amy I. Berman]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: 10.1002/rrq.343
+    publisher: "Reading Research Quarterly 55(S1), S161-S172 (International Literacy Association)"
+    url: "https://doi.org/10.1002/rrq.343"
+    retrieved_at: "2026-11-26T02:55:19+00:00"
+    selection:
+      how: "sent by the domain expert, 2026-11-25"
+      why: null
+    provenance_basis:
+      source_title: the article's first page
+      source_authors: the first-page byline, as printed
+      publication_date: "unset: the first page prints the year and volume only"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
+  - slug: castles_rastle_nation_2018_ending_the_reading_wars
+    pdf: "data/scholarly/castles_rastle_nation_2018_ending_the_reading_wars.pdf"
+    source_title: "Ending the Reading Wars: Reading Acquisition From Novice to Expert"
+    source_authors: [Anne Castles, Kathleen Rastle, Kate Nation]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: 10.1177/1529100618772271
+    publisher: "Psychological Science in the Public Interest 19(1), 5-51 (SAGE)"
+    url: "https://doi.org/10.1177/1529100618772271"
+    retrieved_at: "2026-11-26T02:54:12+00:00"
+    selection:
+      how: "sent by the domain expert, 2026-11-25"
+      why: null
+    provenance_basis:
+      source_title: the article's first page
+      source_authors: the first-page byline, as printed
+      publication_date: "unset: the first page prints the year and volume only"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
+    # The PDF opens with the corrigendum (doi:10.1177/1529100618786959) before the article.
+  - slug: petscher_et_al_2020_how_sor_informs_21st_century_education
+    pdf: "data/scholarly/petscher_et_al_2020_how_sor_informs_21st_century_education.pdf"
+    source_title: "How the Science of Reading Informs 21st-Century Education"
+    source_authors: [Yaacov Petscher, Sonia Q. Cabell, Hugh W. Catts, Donald L. Compton, Barbara R. Foorman, Sara A. Hart, Christopher J. Lonigan, Beth M. Phillips, Christopher Schatschneider, Laura M. Steacy, Nicole Patton Terry, Richard K. Wagner]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: 10.1002/rrq.352
+    publisher: "Reading Research Quarterly 55(S1), S267-S282 (International Literacy Association)"
+    url: "https://doi.org/10.1002/rrq.352"
+    retrieved_at: "2026-11-26T02:56:35+00:00"
+    selection:
+      how: "sent by the domain expert, 2026-11-25"
+      why: null
+    provenance_basis:
+      source_title: the article's first page
+      source_authors: the first-page byline, as printed
+      publication_date: "unset: the first page prints the year and volume only"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
+  - slug: shanahan_2020_what_constitutes_sor_instruction
+    pdf: "data/scholarly/shanahan_2020_what_constitutes_sor_instruction.pdf"
+    source_title: "What Constitutes a Science of Reading Instruction?"
+    source_authors: [Timothy Shanahan]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: 10.1002/rrq.349
+    publisher: "Reading Research Quarterly 55(S1), S235-S247 (International Literacy Association)"
+    url: "https://doi.org/10.1002/rrq.349"
+    retrieved_at: "2026-11-26T02:55:49+00:00"
+    selection:
+      how: "sent by the domain expert, 2026-11-25"
+      why: null
+    provenance_basis:
+      source_title: the article's first page
+      source_authors: the first-page byline, as printed
+      publication_date: "unset: the first page prints the year and volume only"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
+  - slug: nichd_national_reading_panel_report
+    pdf: "data/scholarly/nichd_national_reading_panel_report.pdf"
+    source_title: "Report of the National Reading Panel: Teaching Children to Read (findings and determinations by topic area)"
+    source_authors: []
+    publication_date: null
+    source_type: government_policy
+    doi: null
+    publisher: "Eunice Kennedy Shriver National Institute of Child Health and Human Development (NICHD)"
+    url: null
+    retrieved_at: "2026-11-26T02:55:34+00:00"
+    selection:
+      how: "sent by the domain expert, 2026-11-25"
+      why: null
+    provenance_basis:
+      source_title: "the PDF's title metadata and first page: an NICHD web page printed to PDF, marked as kept for historical purposes"
+      source_authors: "unset: the page names no authors"
+      source_type: "'government_policy': a federal agency's summary page, not a journal article"
+      url: "unset: the printout does not show the page address"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
