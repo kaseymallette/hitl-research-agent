@@ -57,7 +57,7 @@ Both quote the article’s exact words.
 
 ### What is measured
 
-- **Precision:** exact, real, relevant quotes ÷ total quotes.
+- **Precision:** exact, real, relevant, correctly attributed quotes ÷ total quotes. A quote of a view the authors dispute counts only if the answer says whose view it is.
 - **Recall:** relevant claims used ÷ total relevant claims.
 
 Both methods are scored against an independent **claims reference**, created from the article without seeing the questions or answers.

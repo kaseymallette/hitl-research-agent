@@ -31,15 +31,18 @@ tables, and figure captions, before you answer.
 
    <full citation, from the article and source.yaml>
 
-   Answered from the article alone. <One or two sentences on what kind of
-   article it is and what it is about.>
+   Answered from the article alone. <What kind of article it is and what
+   it is about.>
 
    ## 1. How is the science of reading defined, and how is it enacted?
 
-   **Short answer.** <A few sentences.>
+   ### <A key point, in your own words>
 
-   - **p. <printed page>.** "<the authors' exact words>"
-     *Interpretation:* <your reading of what it shows about the question>
+   - **p. <printed page> · <whose view>.** "<the authors' exact words>"
+
+   ### <The next key point>
+
+   …
 
    ## 2. How is teachers' knowledge positioned?
 
@@ -50,22 +53,29 @@ tables, and figure captions, before you answer.
    …
    ```
 
-   - Every point is a quotation: the article's exact words, copied character
-     for character, in quotation marks. Do not paraphrase, summarize, shorten
-     with ellipses, or correct the wording; a word broken across a line with a
-     hyphen may be rejoined. Quote the shortest stretch that makes the point,
-     usually one to three sentences.
+   - Build each answer from key points: the points someone who knows the
+     article would need to make to answer the question fully. Give each key
+     point a heading in your own words, and put under it every quotation from
+     the article that is evidence for it.
+   - Include everything in the article that is relevant to the question,
+     each under the key point it supports. There is no length limit; don't
+     stop at the main points.
+   - Don't interpret the evidence: no interpretation lines or commentary on
+     what a quotation shows. The heading says what the key point is; the
+     quotations under it show where the article says it. Every entry under a
+     heading is a quotation: the article's exact words, copied character for
+     character, in quotation marks. Do not paraphrase, summarize, shorten with
+     ellipses, or correct the wording; a word broken across a line with a
+     hyphen may be rejoined.
    - Give every quotation the article's printed page. Where a page has no
      printed number, give the PDF page and say so.
-   - The quotation is the article; the *Interpretation* line is your reading.
-     Keep your words out of the quotation.
-   - Say whose view a quotation is: the authors' own, or one the authors
+   - Label whose view each quotation is: the authors' own, or one the authors
      report, endorse, or dispute.
    - Content read from a figure, chart, or table printed as an image has no
      words to quote: describe it, name the element ("Table 2 shows…"), and say
      it is your description.
-   - Where the article says little or nothing about a question, say so in the
-     short answer, and quote what it does say, however little.
+   - Where the article says little or nothing about a question, say so, and
+     quote what it does say, however little.
 
 2. **Your final message**, saying in a few sentences how you read the PDF
    (pages as images, text extracted with a tool — name it — or both) and the

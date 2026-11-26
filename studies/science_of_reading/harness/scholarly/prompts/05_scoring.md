@@ -20,7 +20,9 @@ than answering from the article alone.
 - **Its source details:** `source.yaml`.
 - **The claims reference:** `01_claims_reference.md`, every claim in the
   article, quoted exactly and numbered **R1**, **R2**, …, written from the
-  article alone without knowing the questions.
+  article alone without knowing the questions. A `disputing` entry has a
+  "whose words" line saying whether the quotation is the other side's view
+  or the authors' own words.
 - **The two sets of answers:** `02_baseline_answers.md` and
   `04_close_reading_answers.md`.
 
@@ -43,15 +45,20 @@ works it cites or check its claims against outside sources.
    relevant claim.
 2. **Recall.** For each method and each question: of the relevant claims, how
    many does the answer use? List the ones it uses and the ones it misses, by
-   R number.
+   R number. A `disputing` claim counts as used only if the answer
+   attributes it as its whose-words line does.
 3. **Precision.** For each method and each question: go through every
    quotation the answer uses and say whether it is
    - **exact:** the article's exact words, checked against the article's
      text with a tool where you can;
    - **a real claim:** matching a claim in the reference (give its R number);
-   - **relevant:** bearing on the question it is used for.
+   - **relevant:** bearing on the question it is used for;
+   - **correctly attributed:** where it matches a `disputing` claim, the
+     answer says whose view the words are, as the claim's whose-words line
+     does. An answer that presents the other side's view as the authors' own
+     fails, even though the words are exact.
 
-   A quotation counts toward precision only if it is all three. List every
+   A quotation counts toward precision only if it is all four. List every
    quotation that fails, with what is wrong and, where it is inexact, the
    article's actual words.
 
@@ -65,7 +72,7 @@ anything out because an answer does badly.
    - the relevant claims for each question, by R number;
    - a table of results:
 
-     | Question | Method | Relevant claims | Used | Recall | Quotations | Exact, real, relevant | Precision |
+     | Question | Method | Relevant claims | Used | Recall | Quotations | Exact, real, relevant, attributed | Precision |
      | --- | --- | --- | --- | --- | --- | --- | --- |
 
      with a row per question per method, and a total row per method;

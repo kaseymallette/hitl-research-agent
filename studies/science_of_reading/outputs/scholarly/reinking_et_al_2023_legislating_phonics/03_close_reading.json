@@ -1,0 +1,1775 @@
+{
+  "reading_plan": "Source title: Legislating Phonics: Settled Science or Political Polemics? Source type: peer_reviewed_paper. First look: a 28-page journal publication, explicitly a scholarly commentary, with an abstract, argumentative prose, historical context, a teacher-training case, three achievement charts, endnotes, references, and author biographies. The writing is moderately dense and becomes technical when discussing assessment and research synthesis. I will follow the printed order, generally taking a few paragraphs (roughly 200–400 words) per step and slowing for definitions, methodological qualifications, and figures. I will record only material bearing on the science of reading, teachers’ knowledge, or students’ positioning; distinguish the authors’ commitments from positions they attribute to others; and mark readings of charts as paraphrased. References and biographies will be read but will generate steps only if they add relevant substantive material.",
+  "reading_path": [
+    {
+      "location": "p. 104, Abstract",
+      "moves": "States the thesis and commitments; identifies legislated teacher training as the case. The abstract frames the target as an ideology and its rhetoric, signaling an explicitly critical perspective.",
+      "claims": [
+        {
+          "text": "In this commentary, we identify a phonics-first ideology and its polemical distortions of research and science to promote legislation that constrains and diminishes the teaching of reading.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "However, we argue that phonics instruction is more effective when embedded in a more comprehensive program of literacy instruction that accommodates students’ individual needs and multiple approaches to teaching phonics—a view supported by substantial research.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "At the opening, reading instruction is presented as comprehensive and responsive to individual students. The authors position professional reading research against legislation that they say constrains teaching; the detailed grounds have yet to be supplied."
+    },
+    {
+      "location": "p. 105, opening epigraph and first two paragraphs",
+      "moves": "Introduces a premise about the loss of nuance as research becomes policy, reports the scale of legislation, and interprets mandates as a transfer of professional authority into politics. Defines ideology through a cited sociological account.",
+      "claims": [
+        {
+          "text": "When we do not have definitive research to answer a question about policy or practice, we can easily slip over the line and privilege ideology and belief over evidence . . . When research travels to the land of policy, often only the headlines make the journey, leaving the details and the nuance behind. (Pearson, 2004, p. 238)",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "When we do not have definitive research to answer a question about policy or practice, we can easily slip over the line and privilege ideology and belief over evidence . . . When research travels to the land of policy, often only the headlines make the journey, leaving the details and the nuance behind. (Pearson, 2004, p. 238)",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Pearson, 2004, p. 238)",
+                  "reference_entry": "Pearson, P. D. (2004). The reading wars. Educational Policy, 18(1), 216–252."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "However, an increasing number define, endorse, and sometimes mandate instructional approaches—a legislative excursion into matters that in other fields of practice, such as medicine or law, are left to certified professionals and the standards set by their professional organizations or accrediting agencies.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Since 2015, 47 state legislatures have enacted, or are currently considering, a remarkable total of 145 bills that address reading and reading instruction in public schools.1",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "1",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "In so doing, it moves professional practice into the political realm, subject to all the forces and vested interests inherent to that domain.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Ideologies, they say, motivate ameliorative action, create affinity by energizing emotional reactions, and set boundaries of acceptable belief, inoculating members against outside influences and helping to recruit new members.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "They defined ideologies as uniting individuals around shared beliefs and offering “diagnoses of what is and is not problematic in the sociopolitical world” (p. 24).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "Fine and Sandstrom (1993; see also Seliger, 1970/2019)",
+                  "reference_entry": "Fine, G. A., & Sandstrom, K. (1993). Ideology in action: A pragmatic approach to a contested\nconcept. Sociological Theory, 11(1), 21–38."
+                },
+                {
+                  "citation_text": "Fine and Sandstrom (1993; see also Seliger, 1970/2019)",
+                  "reference_entry": "Seliger, M. (2019). Ideology and politics. Taylor & Francis. (Original work published 1970)"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The concern about constraint now has an institutional basis: practices ordinarily governed by certified professionals are becoming legislative matters. The epigraph and definition establish the authors’ interpretive frame for this shift."
+    },
+    {
+      "location": "pp. 105–106, polemics and objections to legislating instruction",
+      "moves": "Characterizes polemical argument, makes an explicit value judgment about legislative orthodoxy, and deduces consequences for professional judgment and student differentiation.",
+      "claims": [
+        {
+          "text": "In that sense, they accept no compromise, present preferred views as self-evident or unmitigated scientific truths (see Gieryn, 1983; Seliger, 1970/ 2019), and take a distinctly adversarial stance toward anyone who does not fully agree (Foucault, as cited in Rabinow, 1998).",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "We believe that legislating how reading must be taught based on narrowly bounded ideological positions, expressed polemically, and aimed at establishing an uncontested orthodoxy is inappropriate and counterproductive.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "First, it contravenes political power and its whims over professional practice, in effect arbitrating differences among scholars in matters of professional practice.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "That is, it sanctions what must be taught, and, at least implicitly, imposes sanctions against any deviation from mandated practice, even if alternatives are recognized as reasonable and sound professional practice supported by research.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Third, it usurps the professional flexibility and judgment that are necessary to meet the diverse needs of individual students; instead, one approach may be prescribed for all.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Finally, much current legislation focuses on phonics (i.e., teaching children how to decode letters into speech sounds), suggesting that it is of such importance that it overrides all other aspects of learning to read.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The authors move from a general account of ideology to a professional and pedagogical objection. Teachers’ judgment is treated as necessary because students’ needs differ, while mandates are said to replace that judgment with uniformity."
+    },
+    {
+      "location": "p. 106, phonics-first definition and numbered themes 1–8",
+      "moves": "Defines the target in two senses and itemizes positions attributed to advocates. These are the authors’ characterization of an opposing ideology, not recommendations they endorse.",
+      "claims": [
+        {
+          "text": "Such legislation has been promoted by activists who are guided by what might be called a phonics-first ideology, with “first” denoting two related meanings fundamental to the ideology: phonics as being of foremost importance in learning to read, and phonics mastered before other aspects of reading are addressed.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Phonics is not just an essential component of learning to read; it is the essential component.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Therefore, phonics should dominate early reading instruction, and it should be mastered first and foremost without distraction. Other aspects of reading (e.g., vocabulary development, fluency in reading, comprehension, motivation) can be attended to after competency in phonics is achieved.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "All children should move lockstep through a well-defined sequence of phonics skills. There is little, if any, need to differentiate instruction to meet the differing needs of individual students. Once children master the content of phonics, almost all of them will become successful readers.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Among several established approaches to teaching phonics, a synthetic approach (teaching letters and their sounds, blending them to pronounce words) is preferred and emphasized.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Virtually all difficulties in learning to read are attributed to and remedied by phonics.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "There is a crisis of reading achievement in the United States. It is explained by a failure of mainstream educators to fully invest in the primacy of phonics.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Phonics instruction is emphasized through the primary grades and, if necessary, beyond.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A settled science unassailably supports these beliefs, assertions, and assumptions.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The critique now has a specific object: priority and sequencing for phonics, a synthetic method, uniform progression, and scientific certainty. In the attributed model, students follow one sequence, and educators are responsible for a crisis through insufficient commitment to phonics."
+    },
+    {
+      "location": "pp. 106–107, authors’ standpoint and endorsement of phonics",
+      "moves": "Declares the authors’ roles as researchers, teacher educators, and family members; distinguishes their position from opposition to phonics and from whole language; states an alternative while acknowledging unresolved professional differences. Restates the abstract’s comprehensive, differentiated alternative, now citing Snow et al. and Wixson et al.",
+      "claims": [
+        {
+          "text": "As researchers in literacy education, we are particularly concerned when research is appropriated selectively, or misrepresented, to argue for a scientific certainty about how to teach every child to read—a certainty that, given the nature of science, the complexity of reading, and individual differences, is never likely to be warranted.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "As teacher educators and professionals who work closely with teachers, we are dismayed to see their options to teach phonics limited, their flexibility to differentiate instruction in response to their students’ individual needs undermined, and their professionalism implicitly questioned and diminished by political decisions based on polemical arguments.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "As parents and grandparents, we observe and experience personally the numbing and often frustrating effects of lockstep commercial phonics programs designed to fit legislative mandates driven by a phonics-first ideology.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Yet, like the overwhelming majority of our colleagues who are considered experts in teaching reading, we are not anti-phonics, neither are we devotees of whole language, the long-standing foil of strong phonics advocates, as detailed in a subsequent section.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "One of us published a critique of whole language for having an agenda grounded in a political ideology and for its unwillingness to submit to empirical comparisons with more conventional approaches (McKenna et al., 1994).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(McKenna et al., 1994)",
+                  "reference_entry": "McKenna, M. C., Stahl, S. A., & Reinking, D. (1994). On research, politics, and whole lan-\nguage. Journal of Reading Behavior, 26, 211–233."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "We endorse, and have consistently endorsed, teaching phonics as an important aspect of learning to read, and we acknowledge research that offers support for doing so.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Although there are reasonable professional differences regarding various aspects of teaching phonics, including many issues that have not been resolved definitively by research, we would be hard-pressed to identify a colleague in the field today who would disagree with the general point that phonics is an indispensable component of learning to read.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The authors qualify the opposition established by the list: their objection concerns dominance and uniform delivery, while they endorse phonics. Family experience supplements their professional standpoint; the comprehensive alternative is asserted with citations rather than developed evidence at this point."
+    },
+    {
+      "location": "pp. 107–108, coalition and structured literacy terminology",
+      "moves": "Identifies a coalition and its interests, then gives a terminology example as evidence of strategic advocacy. Attributes a technical conception of reading to some academics and a search for definite solutions to concerned parents.",
+      "claims": [
+        {
+          "text": "Those who promote a phonics-first ideology and press for legislative action represent a diverse coalition comprising a few outspoken academics who view learning to read as essentially a technical endeavor and achieved essentially, if not exclusively, by mastering specific phonics skills (e.g., Moats, 2020); frustrated or concerned parents desperately looking for definitive and straightforward answers and solutions to their children’s reading difficulties (e.g., Stark & Education Week, 2019); professional organizations created to promote a phonics-first ideology2; commercial interests vested in selling teaching materials or services for teaching phonics (e.g., Heath, 2020); and sympathetic (or opportunistic), though unqualified, politicians and journalists (e.g., Emily Hanford; see Baumhardt, 2019).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Those who promote a phonics-first ideology and press for legislative action represent a diverse coalition comprising a few outspoken academics who view learning to read as essentially a technical endeavor and achieved essentially, if not exclusively, by mastering specific phonics skills (e.g., Moats, 2020); frustrated or concerned parents desperately looking for definitive and straightforward answers and solutions to their children’s reading difficulties (e.g., Stark & Education Week, 2019); professional organizations created to promote a phonics-first ideology2; commercial interests vested in selling teaching materials or services for teaching phonics (e.g., Heath, 2020); and sympathetic (or opportunistic), though unqualified, politicians and journalists (e.g., Emily Hanford; see Baumhardt, 2019).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(e.g., Moats, 2020)",
+                  "reference_entry": "Moats, L. C. (2020). Teaching reading “is” rocket science: What expert teachers of reading\nshould know and be able to do. American Educator, 44(2), 4–9, 39."
+                },
+                {
+                  "citation_text": "(e.g., Stark & Education Week, 2019)",
+                  "reference_entry": "Stark, L., & Education Week (Reporter and Partner). (2019, April 30). What parents of dyslexic\nchildren are teaching schools about literacy. In S. Just (Producer), PBS NewsHour. PBS."
+                },
+                {
+                  "citation_text": "(e.g., Heath, 2020)",
+                  "reference_entry": "Heath, A. (2020). How much does it cost to be trained in Orton Gillingham? https://easierwith-\npractice.com/how-much-does-it-cost-to-be-trained-in-orton-gillingham/"
+                },
+                {
+                  "citation_text": "(e.g., Emily Hanford; see Baumhardt, 2019)",
+                  "reference_entry": "Baumhardt, A. (2019, October 24). A conversation with Emily Hanford on reading instruc-\ntion in the U.S. APM Reports. https://www.apmreports.org/episode/2019/10/23/hanfordan-\ndreading"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "That coalition often engages in strategic activism zealously promoting a phonics-first ideology, both inside and outside the political realm, to gain advantage over opponents.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "A transparent example is when Hal Malchow (n.d.), a president of the International Dyslexia Association, encouraged members to adopt structured literacy instruction as a term developed specifically to gain support for what is essentially a euphemism for lockstep phonics instruction and to put opponents on the defensive (see Gabriel, 2018).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "Hal Malchow (n.d.)",
+                  "reference_entry": "Malchow, H. (n.d.). Structured literacy: A new term to unify us and to sell what we do.\nInternational Dyslexia Association. https://dyslexiaida.org/structured-literacy/"
+                },
+                {
+                  "citation_text": "(see Gabriel, 2018)",
+                  "reference_entry": "Gabriel, R. (2018, Spring). Understanding dyslexia law and policy. Journal of Reading\nRecovery, 28–34."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The text turns from ideological content to its circulation. Professional knowledge competes with advocacy, marketing, and public authority; the terminology example is offered to explain how language can make a preferred approach difficult to oppose."
+    },
+    {
+      "location": "p. 108, legislation and decodable texts",
+      "moves": "Gives a concrete example of policy shaping classroom materials, identifies a tradeoff between decodability and coherent meaning, and contrasts prescription with the research described.",
+      "claims": [
+        {
+          "text": "Examples of how those invested in a phonics-first ideology have promoted their favored instructional approaches toward the enactment of ill-advised legislation are well-documented.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "One example is an analysis of how a Texas law mandating the use of more decodable texts (texts carefully constructed to use phonetically regular words, often at the expense of coherent meaning) influenced the content of commercial reading series submitted for state approval (Hoffman et al., 2002).3",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Hoffman et al., 2002)",
+                  "reference_entry": "Hoffman, J. V., Sailors, M., & Patterson, E. U. (2002). Decodable texts for beginning reading\ninstruction: The year 2000 basals. Journal of Literacy Research, 34(3), 269–298."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Yet, no definitive research has suggested that such texts are necessary or effective (e.g., Mesmer, 2009; Pearson 2004), and there is some evidence that young children better comprehend texts that are more natural and authentic, even if less decodable (Price-Mohr & Price, 2020).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Yet, no definitive research has suggested that such texts are necessary or effective (e.g., Mesmer, 2009; Pearson 2004), and there is some evidence that young children better comprehend texts that are more natural and authentic, even if less decodable (Price-Mohr & Price, 2020).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(e.g., Mesmer, 2009; Pearson 2004)",
+                  "reference_entry": "Mesmer, H. A. E. (2009). Textual scaffolds for developing fluency in beginning readers:\nAccuracy and reading rate in qualitatively leveled and decodable text. Literacy Research\nand Instruction, 49(1), 20–39."
+                },
+                {
+                  "citation_text": "(e.g., Mesmer, 2009; Pearson 2004)",
+                  "reference_entry": "Pearson, P. D. (2004). The reading wars. Educational Policy, 18(1), 216–252."
+                },
+                {
+                  "citation_text": "(Price-Mohr & Price, 2020)",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The broad charge becomes a material classroom example: a mandate can shape what students read. The decisive tradeoff is that phonetic regularity may come at the expense of coherent meaning. Price-Mohr and Price appears in the text but has no matching reference entry."
+    },
+    {
+      "location": "p. 108, Orton-Gillingham and the broader problem",
+      "moves": "Describes another prescribed approach, reports a meta-analysis and a clearinghouse omission as support, then infers consequences for explanations of student difficulty and professional dissent.",
+      "claims": [
+        {
+          "text": "Another example is Orton-Gillingham instruction, which uses a multisensory approach focused exclusively on teaching phonics in a prescribed sequence and drawing attention to individual sounds as they appear in words.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "They found no definitive evidence supporting this approach to teaching phonics.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "In a recent investigation, Stevens et al. (2021), motivated by legislative mandates for Orton-Gillingham in many states in response to pressure from parents’ advocacy groups, conducted a meta-analysis (statistical synthesis of effects across multiple studies) of its effectiveness for children with decoding difficulties.",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "Stevens et al. (2021)",
+                  "reference_entry": "Stevens, E. A., Austin, C., Moore, C., Scammacca, N., Boucher, A. N., & Vaughn, S. (2021).\nCurrent state of the evidence: Examining the effects of Orton-Gillingham reading interven-\ntions for students with or at risk for word-level reading disabilities. Exceptional Children,\n87(4), 397–417. doi:10.1177/0014402921993406"
+                }
+              ]
+            },
+            {
+              "text": "That conclusion is consistent with its conspicuous omission from a list of approaches for teaching reading based on experimental research compiled by the U.S. Department of Education’s What Works Clearinghouse.",
+              "form": "verbatim",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Yet, many practitioners are required to use Orton-Gillingham instruction by legislative mandate, as a result of successful lobbying by the coalition dedicated to a phonics-first ideology.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The greater problem is that limiting such legislation to narrowly conceived beliefs and practices related to phonics excludes other important components of early reading instruction, wrongly suggests that students are failing because they are not taught enough phonics (thus the need for legislation), and implies that all difficulties in learning to read can be attributed to insufficient or inappropriate phonics instruction.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "It also mutes dissenting views, well-informed by research and by extensive experience, among qualified professionals who are less inclined to engage in polemics and political jockeying, nor organized to do so.5",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The second example extends the policy–research discrepancy to children with decoding difficulties. The authors generalize that narrow mandates assign student failure to a single instructional deficit and reduce the public force of experienced professionals’ dissent."
+    },
+    {
+      "location": "pp. 108–109, purpose and selection of the Tennessee course",
+      "moves": "States the purpose and introduces a representative case. Distinguishes constructive professional support from what the authors characterize as proselytizing.",
+      "claims": [
+        {
+          "text": "We also wish to counter legislative interference in professional practice, because that interference is detrimental to students and undermines the effective reading instruction it aims to promote.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Further, it illustrates how such legislation can inspire initiatives that are aimed more at proselytizing teachers to embrace a narrow, circumscribed, and indeed ideological view of phonics, instead of providing them with the sound, constructive support and resources necessary to help them integrate phonics into a comprehensive, multidimensional curriculum to develop reading ability.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Nor does it help them manage phonics instruction in a way that accommodates individual differences.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The discussion turns deliberately toward a case rather than deriving it from the previous examples. Its standard is explicit: teacher learning should supply resources for integrating phonics into a multidimensional curriculum and adapting it to students."
+    },
+    {
+      "location": "pp. 109–110, historical origins and whole language",
+      "moves": "Begins a historical explanation of how phonics became a public controversy. Attributes an explanation of difficulty to Flesch, then defines whole language and its positioning of children’s meaning-making and phonics.",
+      "claims": [
+        {
+          "text": "He argued that the difficulty many children in the United States experienced in learning to read, when compared with European countries, was rooted in being taught to read whole words instead of using phonics to sound out words.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Whole language conceptualized reading and writing as a holistic, organic extension of oral language.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "It rejected, sometimes confrontationally, the explicit teaching of phonics skills isolated from engagement with meaningful texts.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Phonics was there, but in a decidedly subdued, supplemental, incidental role often introduced at teachable moments while reading such texts.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The authors pause their case to supply historical context. This introduces an older contrast between decoding and holistic language activity, with children understood differently under each approach. The history explains the disputed categories without yet establishing the Tennessee critique."
+    },
+    {
+      "location": "p. 110, legislative mobilization, balanced instruction, and contemporary science claims",
+      "moves": "Reports legislative evidence, explains a change in research and policy emphasis, and defines balanced instruction as a middle position. Identifies contemporary appeals to settled science as a continuation of the dispute.",
+      "claims": [
+        {
+          "text": "Those bills ranged from encouraging phonics to requiring a specific type of phonics instruction and, in some cases, even proposed punitive measures for educational institutions that did not commit fully to phonics instruction.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Paterson (2000; see also Allington, 2002) tracked and analyzed 101 bills addressing phonics instruction introduced in 28 state legislatures between 1990 and 1997.",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "Paterson (2000; see also Allington, 2002)",
+                  "reference_entry": "Paterson, F. R. (2000). The politics of phonics. Journal of Curriculum and Supervision, 15(3),\n179–211."
+                },
+                {
+                  "citation_text": "Paterson (2000; see also Allington, 2002)",
+                  "reference_entry": "Allington, R. L. (2002). What I’ve learned about effective reading instruction: From a decade of\nstudying exemplary elementary classroom teachers. Phi Delta Kappan, 83(10), 740–747."
+                }
+              ]
+            },
+            {
+              "text": "For example, two bills in Tennessee proposed negating teaching certificates granted by colleges and universities that did not offer a full course on phonics.",
+              "form": "verbatim",
+              "citations": []
+            },
+            {
+              "text": "In Washington State, a proposed bill allowed parents to initiate legal proceedings against school districts that did not teach phonics.",
+              "form": "verbatim",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The latter included a resurgence of an experimental paradigm for reading research, an emphasis on measurable outcomes (phonics skills in isolation being more readily measured), and the politization of research and policy agendas related to teaching reading—all of which favored phonics over whole language (Pearson, 2004).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The latter included a resurgence of an experimental paradigm for reading research, an emphasis on measurable outcomes (phonics skills in isolation being more readily measured), and the politization of research and policy agendas related to teaching reading—all of which favored phonics over whole language (Pearson, 2004).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Pearson, 2004)",
+                  "reference_entry": "Pearson, P. D. (2004). The reading wars. Educational Policy, 18(1), 216–252."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "It claimed a middle ground standing on the belief, supported by research, that authentic and meaningful language activity and explicit instruction of phonics skills and strategies were not mutually exclusive (Gambrell & Morrow, 2014; McIntyre & Pressley, 1996).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "It claimed a middle ground standing on the belief, supported by research, that authentic and meaningful language activity and explicit instruction of phonics skills and strategies were not mutually exclusive (Gambrell & Morrow, 2014; McIntyre & Pressley, 1996).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Gambrell & Morrow, 2014; McIntyre & Pressley, 1996)",
+                  "reference_entry": "Gambrell, L. B., & Morrow, L. (Eds.). (2014). Best practices in literacy instruction (5th ed.).\nGuilford."
+                },
+                {
+                  "citation_text": "(Gambrell & Morrow, 2014; McIntyre & Pressley, 1996)",
+                  "reference_entry": "McIntyre, E., & Pressley, M. (Eds.). (1996). Balanced instruction: Strategies and skills in whole\nlanguage. Christopher-Gordon."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "In recent years, those promoting a phonics-first ideology have taken the stance that their position is based on a settled science of reading, often drawing on esoteric neurological and psychological studies.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Such an appeal to an obscure, but supposedly certain, science suggests that those who take more nuanced view of phonics are science deniers, a position we confront in a subsequent section.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The history connects instructional categories to institutional incentives and credentials. The authors place balanced instruction between the earlier camps and describe scientific authority as a newer way to delegitimize that middle position; “esoteric” and “obscure” mark their critical framing."
+    },
+    {
+      "location": "p. 111, A Representative Case In Tennessee, first three paragraphs",
+      "moves": "Introduces the Act and course, interprets foundational literacy terminology, and uses titles, funding language, and incentives as evidence of enactment.",
+      "claims": [
+        {
+          "text": "The Tennessee DOE developed the Course in response to a provision in the Tennessee Literacy Success Act (2021) promoted by the current governor.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "In its final form, the Act’s stated aim was to promote foundational literacy skills—a phrase that is often a code for phonics among those who subscribe to a phonics-first ideology.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "That interpretation is consistent with (a) the bill’s original title, “Building Better Readers With Phonics,” and the governor’s remarks to a special session of the legislature emphasizing phonics in promoting the bill; (b) an initiative that immediately followed its passage, “Reading 360,” which provided funding “to help more Tennessee students develop strong phonics-based reading skills” ( “TDOE Announces $100 Million Initiative,” 2021); and the Course’s focus on a single approach to teaching phonics.",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "( “TDOE Announces $100 Million Initiative,” 2021)",
+                  "reference_entry": "TDOE announces $100 million initiative, “Reading 360,” to support literacy in Tennessee.\n(2021, January 4). Tennessee Department of Education. https://www.tn.gov/education/\nnews/2021/1/4/tdoe-announces–100-million-initiative—reading-360—to-support-literacy-\nin-tennessee.html"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Similarly, the Course’s three modules are all entitled “Sounds First, a Research-Based Approach to Foundational Literacy.”",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The Course is offered free online and was incentivized in the summer of 2021 with a $1,000 stipend for teachers who completed it (“TDOE Announces Stipends,” 2021).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The Course is offered free online and was incentivized in the summer of 2021 with a $1,000 stipend for teachers who completed it (“TDOE Announces Stipends,” 2021).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(“TDOE Announces Stipends,” 2021)",
+                  "reference_entry": "TDOE announces stipends for more Tennessee teachers for summer early reading training.\n(2021, April 22). Tennessee Department of Education. https://www.tn.gov/education/\nnews/2021/4/22/tdoe-announces-stipends-for-more-tennessee-teachers-for-summer-early-\nreading-training.html"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "As such, it risks not just overselling phonics, but also neglecting or subordinating equally important aspects of learning to read, including oral language development, vocabulary, fluency, and motivation, among others (e.g., see Almasi & Hart, 2019; Duke & Cartwright, 2021), therefore undermining optimally effective instruction that is more flexibly differentiated to meet individual students’ needs.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "As such, it risks not just overselling phonics, but also neglecting or subordinating equally important aspects of learning to read, including oral language development, vocabulary, fluency, and motivation, among others (e.g., see Almasi & Hart, 2019; Duke & Cartwright, 2021), therefore undermining optimally effective instruction that is more flexibly differentiated to meet individual students’ needs.",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(e.g., see Almasi & Hart, 2019; Duke & Cartwright, 2021)",
+                  "reference_entry": "Almasi, J. F., & Hart, S. J. (2019). Best practices in narrative text comprehension instruction.\nIn L. M. Morrow & L. B. Gambrell (Eds.), Best practices in literacy instruction (6th ed.,\npp. 221–249). Guilford."
+                },
+                {
+                  "citation_text": "(e.g., see Almasi & Hart, 2019; Duke & Cartwright, 2021)",
+                  "reference_entry": "Duke, N. K., & Cartwright, K. B. (2021). The science of reading progresses: Communicating\nadvances beyond the simple view of reading. Reading Research Quarterly, 56, S25–S44."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Returning from the history, enactment becomes concrete: a law generates a course, a sounds-first title, and an incentivized route to teacher participation. The authors connect this narrowing of teacher learning to subordination of other dimensions of students’ reading development."
+    },
+    {
+      "location": "pp. 111–112, course criticism and contrast with Read to Be Ready",
+      "moves": "Restates the allegations organizing the case, then contrasts the course with a preceding initiative. Supplies an official report’s account of instruction and describes collaborative professional development and assessment design.",
+      "claims": [
+        {
+          "text": "The Course unconvincingly and inappropriately invokes a science of reading that is supposedly settled, even though the key sources it cites make no such claim.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The initiative was not created or implemented through legislation.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Instead, the Tennessee DOE was charged with implementing the initiative under the direction of its commissioner of education, a former teacher and dean of a college of education (Tennessee Department of Education, n.d.-a).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Tennessee Department of Education, n.d.-a)",
+                  "reference_entry": "Tennessee Department of Education. (n.d.-a). Setting the foundation: A report on elementary\ngrades reading in Tennessee. https://www.tn.gov/content/dam/tn/education/reports/rpt_\nsetting_the_foundation.pdf"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "In stark contrast to the current legislation’s stance, the DOE’s foundational report for the initiative analyzing reading instruction in the state concluded that “teachers are spending considerable time teaching students word recognition skills [mostly phonics], but they are far less often helping students connect decoding skills to the act of true reading” (p. 14).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "In stark contrast to the current legislation’s stance, the DOE’s foundational report for the initiative analyzing reading instruction in the state concluded that “teachers are spending considerable time teaching students word recognition skills [mostly phonics], but they are far less often helping students connect decoding skills to the act of true reading” (p. 14).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Tennessee Department of Education, n.d.-a)",
+                  "reference_entry": "Tennessee Department of Education. (n.d.-a). Setting the foundation: A report on elementary\ngrades reading in Tennessee. https://www.tn.gov/content/dam/tn/education/reports/rpt_\nsetting_the_foundation.pdf"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Further, unlike the top-down implementation of the current legislation, the DOE staff hired a literacy coach for each elementary school in the state and met regularly with those coaches.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The result was a jointly designed framework and professional development materials for early literacy instruction that accommodated multiple approaches to teaching phonics (e.g., supplementing decoding with making sense of meaningful texts) within a more comprehensive curriculum of foundational skills in the areas of language, vocabulary, background knowledge, and comprehension strategies.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "DOE staff also consulted with literacy professors and researchers in teacher education programs, including one of the authors of this commentary, to develop tools to identify individual students’ needs and differentiate instruction accordingly.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The contrast gives a positive example of professional support: teachers and coaches help design materials, researchers help develop diagnostic tools, and instruction responds to individual need. The authors disclose one author’s participation, making their relationship to this preferred alternative visible."
+    },
+    {
+      "location": "p. 112, qualification of the case and transition to Questionable Assertions",
+      "moves": "Limits representativeness, identifies political change as a source of instructional instability, and turns to four course claims. These headings restate positions already introduced.",
+      "claims": [
+        {
+          "text": "We do not mean to suggest that the phonics-first ideology expressed through legislation and policies in Tennessee is necessarily more, nor less, politicized, well intentioned, effective, or ill-advised than in many other states; it is simply an example with which we are more familiar and that reflects similar developments in other states.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Teachers and students, and the entire hierarchy of education leadership in a state, can be buffeted between two very different views of what constitutes foundational skills and, as in Tennessee, move from a program developed collaboratively to one that is legislatively mandated.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The qualification prevents Tennessee from being treated as uniquely problematic. What matters here is the instability of the knowledge and practices teachers and students are expected to follow as leadership changes; the next move narrows the analysis to particular assertions."
+    },
+    {
+      "location": "p. 113 to opening of p. 114, Is there a reading crisis?, national trend and Figure 1",
+      "moves": "Separates whether there is a crisis from whether phonics causes or solves it, accepts NAEP as an appropriate source, and begins interpreting its trend. Figure 1 supplies visual evidence about the representation of student achievement.",
+      "claims": [
+        {
+          "text": "As we argue here, there is no indisputable evidence of a national crisis in reading, and even if there were a crisis, there is no evidence that the amount of phonics in classrooms is necessarily the cause or the solution.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "What is particularly remarkable is that, as shown in Figure 1, plotting reading scores on the NAEP across decades results in essentially a flat line, although with a slight upward movement since Figure 2. A figure used in Tennessee’s Early Reading Training for Teachers (Module 1, Lesson 1). Note. From TN Early Reading Training, by Tennessee Department of Education [online training module] (https://openedx.tneducation.net/media/early-reading-training-module-1/content/index.html#/lessons/ o9nOWELTIw0SQHn5pYM1OYQPUklmMTRA). the outset.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Figure 1 plots Grade 4 NAEP reading scale scores by racial or ethnic group from 1992 to 2019. The trajectories show persistent group differences and generally modest changes on the displayed scale, which contains breaks. This is a visual reading; precise individual scores are not legible enough to transcribe confidently.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(from Hussar et al., 2020)",
+                  "reference_entry": "Hussar, B., Zhang, J., Hein, S., Wang, K., Roberts, A., Cui, J., Smith, M., Bullock Mann, F.,\nBarmer, A., & Dilig, R. (2020). The condition of education 2020 (NCES 2020-144). U.S.\nDepartment of Education, National Center for Education Statistics. Retrieved July 22,\n2021, from https://nces.ed.gov/pubsearch/pubsinfo.asp?pubid=2020144"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Figure 1 (from Hussar et al., 2020) does reveal some notable discrepancies at the national level among various minority groups—although even there, some encouraging progress can be seen, with a slight narrowing of the gap between Black and White students.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The first assertion is approached through the course’s preferred assessment. The authors distinguish the overall trend from unequal group outcomes; the figure is offered against a crisis narrative without yet resolving what achievement level should be expected."
+    },
+    {
+      "location": "p. 114, Tennessee comparison and Figure 2",
+      "moves": "Reads the course’s own graph as counterevidence and turns from trends to the assumptions behind proficiency expectations.",
+      "claims": [
+        {
+          "text": "There is no reason to believe that students in Tennessee were doing significantly worse than the national average.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "In fact, the graph in Figure 2, copied directly from the Course (Tennessee Department of Education, 2021), shows that the percentage of its students reaching NAEP’s designated level of “proficient” in reading has been close to the national average, with a relatively small gap disappearing between 2009 and 2019.",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Tennessee Department of Education, 2021)",
+                  "reference_entry": "Tennessee Department of Education. (2021). Early Reading Training for Teachers. https://\nopenedx.tneducation.net/media/early-reading-training-module-1/content/index.html#/"
+                }
+              ]
+            },
+            {
+              "text": "Figure 2 compares national and Tennessee percentages of students at or above NAEP proficient at three plotted years: 2009, 2017, and 2019. Tennessee starts below the national line, draws close, and ends slightly above it. The graph has no numeric data labels, so exact percentages cannot be read confidently.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "So, even the data presented within the course (Figure 2), offered to justify an emphasis on phonics, provide no evidence of a crisis.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "This follows the national comparison by testing the crisis claim within Tennessee. Asking whether students should be doing much better shifts the discussion from observed change to the standards by which students are judged."
+    },
+    {
+      "location": "pp. 114–115, proficiency categories and Figure 3",
+      "moves": "Challenges the construction of achievement categories, illustrates an alarming interpretation of proficiency percentages, then contrasts a different grouping. Reads Figure 3 separately from the authors’ prose interpretation.",
+      "claims": [
+        {
+          "text": "The cut scores used to define these categories were set arbitrarily by a small group of hand-picked, politically appointed experts—reportedly against the recommendations of psychometricians (test experts) who had been contracted to advise the development of this approach but who were overruled when they argued against doing it at all (Bracey, 2008).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The cut scores used to define these categories were set arbitrarily by a small group of hand-picked, politically appointed experts—reportedly against the recommendations of psychometricians (test experts) who had been contracted to advise the development of this approach but who were overruled when they argued against doing it at all (Bracey, 2008).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Bracey, 2008)",
+                  "reference_entry": "Bracey, G. W. (2008). Cut scores, NAEP achievement levels and their discontents. School\nAdministrator, 65(6), 20–23. https://eric.ed.gov/?id=EJ797406"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Proficiency levels created a custom-made crisis.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "But, if “basic” means something closer to “average,” which it does, and readers in that group are combined with “proficient” or above, as shown in Figure 3 (National Assessment of Educational Progress [NAEP], n.d.-b), approximately two thirds of all fourth-grade students are reading at or near grade level, with slight increases over the year.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Figure 3 shows the percentage of fourth graders at or above NAEP Basic. Its bar labels give 62% for 1992, 67% for 2017, and 66% for 2019. A note in the graphic cautions about interpreting the achievement levels. These are readings of the figure, not quotations of article prose.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(National Assessment of Educational Progress [NAEP], n.d.-b)",
+                  "reference_entry": "National Assessment of Educational Progress (n.d.-b). NAEP Report Card: Reading. National\nachievement-level results: Overall NAEP achievement levels: Grade 4 as of 2022. The\nNation’s Report Card. Retrieved June 26, 2022, from https://www.nationsreportcard.gov/\nreading/nation/achievement/?grade=4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "There was a statistically significant drop by 1 point in 2019; although that drop is worth watching, it is not a trend indicating a crisis.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The focus moves from change to what labels permit readers to infer about children. Basic-or-above percentages contest the portrayal of most students as unsuccessful readers. The interpretation of Basic as near grade level remains the authors’ claim, distinct from the chart’s percentages."
+    },
+    {
+      "location": "pp. 115–116, demographics and interpretation of achievement levels",
+      "moves": "Qualifies the trend interpretation, acknowledges unequal disadvantage, and uses Ravitch’s grading analogy before explicitly limiting its authority.",
+      "claims": [
+        {
+          "text": "Further, the flat trend across decades begs many possible interpretations, including the changing demographics of test takers who are more culturally and linguistically diverse.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The one third below basic is still a concern, because it includes a disproportionate number of disadvantaged students, although that discrepancy has been slowly narrowing.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Nonetheless, there will always be a bottom 30% in any distribution of scores.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "On the other hand, Ravitch’s interpretation of the levels is no more valid than anyone else’s.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Diane Ravitch (2012), previously a seven-year member of the National Assessment Governing Board that makes decisions about NAEP, described the proficiency levels as follows: “Advanced is truly superb performance, which is like getting an A+ . . . proficient is akin to a solid A. Basic is akin to a B or C level performance . . . And, below basic is where we really need to worry.”",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "Diane Ravitch (2012)",
+                  "reference_entry": "Ravitch, D. (2012, May 14). What do NAEP scores mean? Diane Ravitch’s Blog. https://diane-\nravitch.net/2012/05/14/what-do-naep-scores-mean/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "There is no indisputable operational or broad consensual understanding of what these levels mean beyond the arbitrary cut scores.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The authors acknowledge students below Basic and disadvantaged children’s disproportionate representation while resisting a simple crisis interpretation. Qualifying Ravitch’s analogy leaves the category meanings open rather than establishing a definitive replacement."
+    },
+    {
+      "location": "p. 116, Evidence that phonics is the primary cause…, school factors and teacher knowledge",
+      "moves": "Rejects a single-factor explanation, cites comparative research, and makes an explicitly qualified argument for teachers’ informed professional responsiveness.",
+      "claims": [
+        {
+          "text": "In fact, there is much evidence over decades that among school-related factors, the approach to teaching reading, phonics-centric or otherwise, may be less influential than other factors, such as teachers’ experience and dedication, the availability of materials, instructional leadership, context, and a variety of out-of-school factors—for example, the massive national first-grade studies (see Bond & Dykstra 1967) and subsequent analyses (e.g., Almasi & Hart, 2019; Bowers, 2020; Stahl & Miller, 1989), all supporting that conclusion.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "In fact, there is much evidence over decades that among school-related factors, the approach to teaching reading, phonics-centric or otherwise, may be less influential than other factors, such as teachers’ experience and dedication, the availability of materials, instructional leadership, context, and a variety of out-of-school factors—for example, the massive national first-grade studies (see Bond & Dykstra 1967) and subsequent analyses (e.g., Almasi & Hart, 2019; Bowers, 2020; Stahl & Miller, 1989), all supporting that conclusion.",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(see Bond & Dykstra 1967)",
+                  "reference_entry": "Bond, G. L., & Dykstra, R. (1967). The cooperative research program in first-grade reading\ninstruction. Reading Research Quarterly, 2(4), 5–142."
+                },
+                {
+                  "citation_text": "(e.g., Almasi & Hart, 2019; Bowers, 2020; Stahl & Miller, 1989)",
+                  "reference_entry": "Almasi, J. F., & Hart, S. J. (2019). Best practices in narrative text comprehension instruction.\nIn L. M. Morrow & L. B. Gambrell (Eds.), Best practices in literacy instruction (6th ed.,\npp. 221–249). Guilford."
+                },
+                {
+                  "citation_text": "(e.g., Almasi & Hart, 2019; Bowers, 2020; Stahl & Miller, 1989)",
+                  "reference_entry": "Bowers, J. S. (2020). Reconsidering the evidence that systematic phonics is more effective than\nalternative methods of reading instruction. Educational Psychology Review, 32, 681–705."
+                },
+                {
+                  "citation_text": "(e.g., Almasi & Hart, 2019; Bowers, 2020; Stahl & Miller, 1989)",
+                  "reference_entry": "Stahl, S. A., & Miller, P. D. (1989). Whole language and language experience approaches for\nbeginning reading: A quantitative research synthesis. Review of Educational Research,\n59(1), 87–116."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Arguably, and consistent with that research, the most important factors instructionally are teachers who are well informed, not just about phonics but about all aspects of reading development; who know their students’ individual needs and strengths and are prepared and supported in their response to those differences; who have a large repertoire of instructional options; and who supplement that knowledge with lessons learned from firsthand professional experience (Bondie et al., 2019).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Arguably, and consistent with that research, the most important factors instructionally are teachers who are well informed, not just about phonics but about all aspects of reading development; who know their students’ individual needs and strengths and are prepared and supported in their response to those differences; who have a large repertoire of instructional options; and who supplement that knowledge with lessons learned from firsthand professional experience (Bondie et al., 2019).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Bondie et al., 2019)",
+                  "reference_entry": "Bondie, R. S., Dahnke, C., & Zusho, A. (2019). How does changing “one-size-fits-all” to dif-\nferentiated instruction affect teaching? Review of Research in Education, 43(1), 336–362."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The discussion turns from crisis evidence to explanations for achievement. Teachers’ knowledge receives its fullest positive formulation so far: all aspects of reading development, individual students, multiple instructional options, and firsthand professional experience, together with support to act on that knowledge."
+    },
+    {
+      "location": "p. 116, social, cultural, demographic, and economic factors",
+      "moves": "Broadens the causal account beyond school, offers demographic examples and a research citation, and qualifies the likelihood that phonics explains achievement or social outcomes.",
+      "claims": [
+        {
+          "text": "Social, cultural, and demographic factors that vary over time also undoubtedly influence education achievement in general, and reading achievement in particular.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "For example, the racial and ethnic diversity of the United States has steadily increased over the decades during which the NAEP assessment has been administered, with, for example, many more non–native speakers of English.",
+              "form": "verbatim",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Income inequalities have been argued to be much more influential on all education achievement than any in-school factors (Berliner, 2013).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Income inequalities have been argued to be much more influential on all education achievement than any in-school factors (Berliner, 2013).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Berliner, 2013)",
+                  "reference_entry": "Berliner, D. C. (2013). Effects of inequality and poverty vs. teachers and schooling on America’s\nyouth. Teachers College Record, 115(12)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Without overwhelming evidence to the contrary, it is unlikely that any single in-school factor, let alone one instructional variable such as phonics, can be so powerful that it is the single cause of virtually all variation in reading achievement.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "It is even less likely that that inappropriate or insufficient phonics instruction is a significant explanation of societal ills such as crime and incarceration, as suggested in the Course.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "This extends the prior account rather than replacing teacher knowledge with another single cause. Students are situated within linguistic diversity, economic inequality, and wider social conditions, which the authors resist attributing to a phonics deficit."
+    },
+    {
+      "location": "p. 117, What does the national reading panel report say…, authority and approaches",
+      "moves": "Concedes the NRP’s relevance and support for phonics, then contrasts its range of approaches with the course’s synthetic emphasis.",
+      "claims": [
+        {
+          "text": "The NRP report is a relevant authoritative source to cite, and it provides solid, if not unequivocal, support for teaching phonics to enhance the ability to identify words.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "For example, the report’s findings were derived collectively from studies that used several distinctly different approaches to teaching phonics, none of which proved superior to the others.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Yet, the Course promotes only one approach to phonics: a “synthetic” approach (teaching individual letters and their sounds that are then blended into words) without acknowledging that other approaches may be equally effective.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The authors accept an authority used by the course before disputing the inference drawn from it. This builds on their endorsement of phonics while distinguishing evidence for phonics broadly from evidence for requiring a single approach."
+    },
+    {
+      "location": "p. 117, NRP study selection and analysis",
+      "moves": "Reports the evidence base, defines the comparison, and limits what the synthesis directly measures.",
+      "claims": [
+        {
+          "text": "For those unfamiliar with the NRP report’s analysis of research on phonics instruction, it is important to note that the panel analyzed only 38 experimental studies (resulting in 66 treatment vs. “control” comparisons) that were conducted in Grades K–6.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "That is a remarkably small number of studies that met the NRP’s minimum standards of rigor from among the approximately 100,000 published studies considered.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Thus, the analysis was limited to quantitative data from assessments of reading performance after phonics instruction, broadly considered to be systematic (the treatment), compared with instruction with no phonics or less systematic phonics instruction (the control).",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The discussion moves from authority to research design. The 38 studies and 66 comparisons are distinguished from approximately 100,000 studies considered; the treatment–control contrast is specified before interpretation."
+    },
+    {
+      "location": "pp. 117–118, NRP findings and questions, items 1–3",
+      "moves": "Reports effect strength and subgroup results, then asks alternative explanatory questions. The interrogative form keeps diminished effects, added intensity, and limited evidence as possibilities.",
+      "claims": [
+        {
+          "text": "The overall statistically significant effects in favor of phonics versus no systematic phonics instruction were “moderate.”",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The strongest of these overall moderate effects were in kindergarten and first grade, before most, although not all, children have acquired the ability to read independently.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Further, there were no statistically significant effects for low-achieving readers in Grades 2–6 on word identification.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Or, does it suggest that other approaches to teaching reading (i.e., beyond phonics) may be more beneficial to those children, or perhaps that even more intensive phonics would be helpful?",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Or, as the report indicates, there may have been too few comparisons, suggesting the need for more research.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The findings give substance to the earlier claim of nuance. Age, attainment, and outcome matter. The authors leave open both nonphonics approaches and more intensive phonics rather than treating a nonsignificant finding as proof of no value."
+    },
+    {
+      "location": "p. 118, NRP findings and questions, items 4–7",
+      "moves": "Reports sample composition, instructional duration, assessment composition, and grouping comparisons. Questions how findings travel to other students and tasks.",
+      "claims": [
+        {
+          "text": "Approximately two thirds of the comparisons reviewed were conducted with students experiencing difficulties in learning to read.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Is it valid to make strong claims about teaching phonics to all children, given an analysis based primarily on students experiencing reading or other academic difficulties?",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "In teaching phonemic awareness as a precursor to phonics, the strongest effects were between 2 and 18 hours of instruction, with weak or no effects for longer periods.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A total of 76% of the comparisons assessed accuracy in reading regularly spelled words or pseudowords in isolation.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "That is, what was assessed were the skills taught to children in the experimental groups but not taught, or not taught systematically, to children in the control groups.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Tutoring individual students compared with providing instruction in small groups or whole classes did not produce statistically different effects.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The issue is now generalization: children experiencing difficulty are not interchangeable with all children, and isolated-word assessment differs from connected-text reading. The duration and grouping findings introduce further decisions the authors regard as unresolved."
+    },
+    {
+      "location": "p. 119, NRP caveats, item 8 and synthesis",
+      "moves": "Quotes the NRP on application, intensity, teacher judgment, individual fit, and flexible grouping. These are passages reproduced in this article, not an independent reading of the NRP.",
+      "claims": [
+        {
+          "text": "Programs that focus too much on the teaching of letter-sounds relations and not enough on putting them to use are unlikely to be very effective.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "In implementing systematic phonics instruction, educators must keep the end in mind and ensure that children understand the purpose of learning letter-sounds and are able to apply their skills in their daily reading and writing activities.”",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Usually [in the studies reviewed] the term ‘intensive’ is not defined, so it is not clear how much teaching is required to be considered ‘intensive.’”",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Some of the phonics programs showing large effect sizes are scripted in such a way that teacher judgment is largely eliminated.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Thus, one concern is how to maintain consistency of instruction and at the same time encourage unique contributions from teachers.”",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "As with any instructional program, there is always the question: Does one size fit all? Teachers may be expected to use a particular phonics program . . . yet it quickly becomes apparent that the program suits some students better than others.”",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "[We need] phonics programs that provide guidance in how to place students into flexible instructional groups and how to pace instruction.” (NRP, 2000, Section 2, pp. 96–97)",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "[We need] phonics programs that provide guidance in how to place students into flexible instructional groups and how to pace instruction.” (NRP, 2000, Section 2, pp. 96–97)",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(NRP, 2000, Section 2, pp. 96–97)",
+                  "reference_entry": "National Reading Panel, National Institute of Child Health, Human Development, National\nReading Excellence Initiative, National Institute for Literacy, United States. Public Health\nService, & United States Department of Health. (2000). Report of the National Reading\nPanel: Teaching children to read: An evidence-based assessment of the scientific research\nliterature on reading and its implications for reading instruction: Reports of the subgroups.\nNational Institute of Child Health and Human Development, National Institutes of Health."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "In short, as these points illustrate, the Course cites claims from the NRP report out of context and misrepresents its findings, and qualifications.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The NRP now speaks directly to discretion and student difference. The contrast is internal to the course’s authority: consistency, teacher contribution, application in reading and writing, and flexible pacing coexist in the report as represented here."
+    },
+    {
+      "location": "pp. 119–120, later syntheses, Reading First, and district comparisons",
+      "moves": "Acknowledges unresolved questions, introduces subsequent research, and reports implementation results. Distinguishes a finding against phonics dominance from support for whole language.",
+      "claims": [
+        {
+          "text": "We are not aware of any comprehensive and authoritative analyses that definitively resolve many of the issues and questions the NRP findings raise.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "For example, Bowers (2020; see also Wyse & Bradbury, 2022) synthesized findings across 12 meta-analyses totaling hundreds of studies, and he examined the outcomes of systematic phonics instruction, concluding that an emphasis on phonics was not clearly justified.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "For example, Bowers (2020; see also Wyse & Bradbury, 2022) synthesized findings across 12 meta-analyses totaling hundreds of studies, and he examined the outcomes of systematic phonics instruction, concluding that an emphasis on phonics was not clearly justified.",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "Bowers (2020; see also Wyse & Bradbury, 2022)",
+                  "reference_entry": "Bowers, J. S. (2020). Reconsidering the evidence that systematic phonics is more effective than\nalternative methods of reading instruction. Educational Psychology Review, 32, 681–705."
+                },
+                {
+                  "citation_text": "Bowers (2020; see also Wyse & Bradbury, 2022)",
+                  "reference_entry": "Wyse, D., & Bradbury, A. (2022). Reading wars or reading reconciliation? A critical examina-\ntion of robust research evidence, curriculum policy and teachers’ practices for teaching\nphonics and reading. Review of Education, 10(1), e3314."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "He rejected the idea that this finding offered support for whole language and related methods, arguing instead that it suggested a broader consideration of instructional approaches.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Despite this massive investment in implementing reading instruction in accordance with the NRP findings, including a heavy dose of phonics instruction (varying between 1.5 and 3 hours per day, depending on the district), there was no statistically significant improvement in reading comprehension—the overarching goal to which phonics instruction is dedicated.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Mitigating findings also include the results of the Reading First Impact Studies conducted in 248 schools in 13 states for 3 years with $1 billion in federal funding each year (Gamse et al., 2008).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Gamse et al., 2008)",
+                  "reference_entry": "Gamse, B. C., Jacob, R. T., Horst, M., Boulay, B., & Unlu, F. (2008). Reading First impact study\nfinal report (NCEE 2009-4038). National Center for Education Evaluation and Regional\nAssistance, Institute of Education Sciences, U.S. Department of Education."
+                }
+              ]
+            },
+            {
+              "text": "Reading instruction in those schools was designed to follow closely the NRP’s categories and findings, with a considerable emphasis on systematic phonics instruction and extensive training of teachers.",
+              "form": "verbatim",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Further, an analysis of NAEP scores in large urban districts between 2015 and 2019 (NAEP, n.d.-a) revealed statistically significant losses in those with heavy emphasis on phonics (e.g., Baltimore and Jefferson County, KY) and gains in those with more balanced approaches (e.g., San Diego and Fresno, CA).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Further, an analysis of NAEP scores in large urban districts between 2015 and 2019 (NAEP, n.d.-a) revealed statistically significant losses in those with heavy emphasis on phonics (e.g., Baltimore and Jefferson County, KY) and gains in those with more balanced approaches (e.g., San Diego and Fresno, CA).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(NAEP, n.d.-a)",
+                  "reference_entry": "National Assessment of Educational Progress. (n.d.-a). NAEP Report Card: Reading. District\naverage scores. The Nation’s Report Card. Retrieved June 26, 2022, from https://www.\nnationsreportcard.gov/reading/districts/scores/?grade=4"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "Evidence now extends beyond the NRP and from word-level outcomes to comprehension at scale. Reading First’s 248 schools, 13 states, three years, annual $1 billion funding, and 1.5–3 hours of daily phonics are decisive details. The district comparison is another contrast, not presented here as a controlled causal test."
+    },
+    {
+      "location": "p. 120, Is a balanced approach whole language in disguise?, course statement and survey",
+      "moves": "Quotes a categorical course judgment and tests popularity claims against its linked survey. Associates teacher experience with preference for balance.",
+      "claims": [
+        {
+          "text": "The Course admonishes teachers as follows, directly quoted from one of its lessons: “Whole language and balanced literacy are two instructional approaches that remain popular, despite the fact that there is strong evidence they do NOT work” [original highlighted in red bold letters].",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "More than half of the respondents claimed that they had a “balanced philosophy.”",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The Course provides a link to a recent Education Week survey of K–2 teachers, including special education teachers, and teacher educators.12",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "12",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Interestingly, the more experience the teachers had, the more they favored a balanced approach.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The Course provides a link to a recent Education Week survey of K–2 teachers, including special education teachers, and teacher educators.12",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "12",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Only 3% of the teachers and 4% of the teacher educators who responded claimed whole language as their “teaching philosophy.”",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The Course provides a link to a recent Education Week survey of K–2 teachers, including special education teachers, and teacher educators.12",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "12",
+                  "reference_entry": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The next disputed assertion is tested through the course’s linked source. Survey responses distinguish balanced literacy from whole language and depict experienced teachers as tending toward balance. Popularity and effectiveness remain different issues here."
+    },
+    {
+      "location": "pp. 120–121, balanced literacy and its components",
+      "moves": "Identifies an adversarial strategy, distinguishes balanced literacy from whole language, and defines its components while conceding imprecision and the absence of a fixed curriculum.",
+      "claims": [
+        {
+          "text": "Instead, balanced literacy instruction has always been considered an alternative distinct from whole language, an explicit systematic teaching of phonics being one of the key distinctions (e.g., Pressley et al., 2002).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Instead, balanced literacy instruction has always been considered an alternative distinct from whole language, an explicit systematic teaching of phonics being one of the key distinctions (e.g., Pressley et al., 2002).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(e.g., Pressley et al., 2002)",
+                  "reference_entry": "Pressley, M., Roehrig, A., Bogner, K., Raphael, L. M., & Dolezal, S. (2002). Balanced literacy\ninstruction. Focus on Exceptional Children, 34(5), 1–14."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Although balanced literacy instruction is not always defined precisely and is not a formulaic curriculum, its general components are firmly grounded in research (e.g., the report of the National Research Council’s Committee on the Prevention of Reading Difficulties in Young Children; see Snow et al., 1998, and Wixson et al., 2019).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Although balanced literacy instruction is not always defined precisely and is not a formulaic curriculum, its general components are firmly grounded in research (e.g., the report of the National Research Council’s Committee on the Prevention of Reading Difficulties in Young Children; see Snow et al., 1998, and Wixson et al., 2019).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(e.g., the report of the National Research Council’s Committee on the Prevention of Reading Difficulties in Young Children; see Snow et al., 1998, and Wixson et al., 2019)",
+                  "reference_entry": "Snow, C. E., Burns, M. S., & Griffin, P. (Eds.). (1998). Preventing reading difficulties in young\nchildren. National Academy Press."
+                },
+                {
+                  "citation_text": "(e.g., the report of the National Research Council’s Committee on the Prevention of Reading Difficulties in Young Children; see Snow et al., 1998, and Wixson et al., 2019)",
+                  "reference_entry": "Wixson, K. K., Valencia, S. W., Lipson, M. Y, Risko, V. J., Paratore, J. R., Reinking, D., &\nHruby, G. G. (2019). Children experiencing reading difficulties: What we know and what\nwe can do [Position statement of the International Literacy Association]. https://literacy-\nworldwide.org/get-resources/position-statements"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Beyond explicit attention to teaching phonics skills, those components include language and vocabulary development, comprehension strategies and monitoring, extensive practice in reading texts, building background knowledge, engaging in writing, and creating motivation to read (see Pressley et al., 2002).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Beyond explicit attention to teaching phonics skills, those components include language and vocabulary development, comprehension strategies and monitoring, extensive practice in reading texts, building background knowledge, engaging in writing, and creating motivation to read (see Pressley et al., 2002).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(see Pressley et al., 2002)",
+                  "reference_entry": "Pressley, M., Roehrig, A., Bogner, K., Raphael, L. M., & Dolezal, S. (2002). Balanced literacy\ninstruction. Focus on Exceptional Children, 34(5), 1–14."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Another distinguishing aspect of a balanced approach is that it allows for flexibility of instructional approaches to address students’ needs in these areas.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The authors give substance to the middle position named in the history. Students need vocabulary, knowledge, comprehension, writing, practice, and motivation alongside phonics; teachers need flexibility because the approach is not a single formula."
+    },
+    {
+      "location": "p. 121, NRP quotation on a balanced program",
+      "moves": "Uses the course’s preferred authority to support integration and limits on phonics dominance. Provides concrete alternatives for teachers and broader criteria for children’s reading.",
+      "claims": [
+        {
+          "text": "It is important to emphasize that systematic phonics instruction should be integrated with other reading instruction to create a balanced reading program.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Phonics instruction is never a total reading program.",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(NRP, 2000, Section 2, p. 91)",
+                  "reference_entry": "National Reading Panel, National Institute of Child Health, Human Development, National\nReading Excellence Initiative, National Institute for Literacy, United States. Public Health\nService, & United States Department of Health. (2000). Report of the National Reading\nPanel: Teaching children to read: An evidence-based assessment of the scientific research\nliterature on reading and its implications for reading instruction: Reports of the subgroups.\nNational Institute of Child Health and Human Development, National Institutes of Health."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "In 1st grade, teachers can provide controlled vocabulary texts that allow students to practice decoding, and they can also read quality literature to students to build a sense of story and to develop vocabulary and comprehension.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Phonics should not become the dominant component in a reading program, neither in the amount of time devoted to it nor in the significance attached.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "It is important to evaluate children’s reading competence in many ways, not only their phonics skills but also their interest in books and their ability to understand information that is read to them.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "By emphasizing all of the processes that contribute to growth in reading, teachers will have the best chance of making every child a reader. (NRP, 2000, Section 2, p. 91)",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "This follows directly from the definition of balance and provides a practical tradeoff: controlled texts for decoding can coexist with teachers reading quality literature aloud. Competence includes interest in books and understanding spoken text, extending assessment and instruction beyond phonics."
+    },
+    {
+      "location": "p. 121, rejecting categorical ineffectiveness",
+      "moves": "Answers the course’s failure claim with autobiographical counterexamples and research on teachers recognized as exemplary. Restates the authors’ conception of balance without duplicating its definition.",
+      "claims": [
+        {
+          "text": "Whole generations of people have learned to read with approaches that are now discredited and that included virtually no phonics instruction; we include ourselves.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Like the majority of our elementary school classmates, we learned to read with our teachers using Scott-Foresman’s Dick and Jane reading series that emphasized the now discredited look-say approach (repeated exposure to whole words toward automatic recognition).",
+              "form": "verbatim",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "There is also evidence that the most experienced and successful teachers of reading use a balanced approach (see Pressley et al., 2002, who interviewed and followed teachers nominated as exemplary by their peers and supervisors).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "There is also evidence that the most experienced and successful teachers of reading use a balanced approach (see Pressley et al., 2002, who interviewed and followed teachers nominated as exemplary by their peers and supervisors).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(see Pressley et al., 2002, who interviewed and followed teachers nominated as exemplary by their peers and supervisors)",
+                  "reference_entry": "Pressley, M., Roehrig, A., Bogner, K., Raphael, L. M., & Dolezal, S. (2002). Balanced literacy\ninstruction. Focus on Exceptional Children, 34(5), 1–14."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The argument moves from defining balance to rejecting absolute failure. The authors’ learning histories supply counterexamples, and nominated exemplary teachers provide a research-based example of success associated with balanced practice."
+    },
+    {
+      "location": "pp. 121–122, Is there a settled science of reading?, scientific thinking and multiple sciences",
+      "moves": "Turns explicitly to science, contrasts certainty with continual rethinking, and distinguishes a single authoritative Science from multiple disciplinary sciences.",
+      "claims": [
+        {
+          "text": "Among the common misrepresentations the course uses to advance a phonics-only ideology, the most revealing is the claim that teaching reading is based on a settled science.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "We see much evidence of these latter three metaphors in the Course’s posture of certainty with none of the skepticism, equivocation, collegial debate, and deeper explorations characteristic of the rethinking that defines a scientific mindset.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "In that regard, the psychologist Adam Grant (2021) has argued, based on his and others’ research, that the essence of thinking like a scientist is continually rethinking.",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "Adam Grant (2021)",
+                  "reference_entry": "Grant, A. (2021). Think again: The power of knowing what you don’t know. Viking."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Many scientists and philosophers of science would regard a settled science as the antithesis of authentic science and of the role of research that can inform practice (e.g., Bryers, 2011; Kampourakis & McCain, 2019).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Many scientists and philosophers of science would regard a settled science as the antithesis of authentic science and of the role of research that can inform practice (e.g., Bryers, 2011; Kampourakis & McCain, 2019).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(e.g., Bryers, 2011; Kampourakis & McCain, 2019)",
+                  "reference_entry": null
+                },
+                {
+                  "citation_text": "(e.g., Bryers, 2011; Kampourakis & McCain, 2019)",
+                  "reference_entry": "Kampourakis, K., & McCain, K. (2019). Uncertainty: How it makes science advance. Oxford\nUniversity Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Thus, there is no one uppercase Science of Reading. Instead, there are multiple lowercase sciences of reading, each contributing interesting and relevant findings to our understanding.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Yes, there are scientists who have expertise in the areas of cognitive, social, or developmental psychology, cognitive neuroscience, cultural anthropology, and psycho- and social linguistics, and who study reading.",
+              "form": "verbatim",
+              "citations": []
+            },
+            {
+              "text": "They have developed sophisticated tools and approaches for collecting and analyzing data, generated replicable findings, and crafted intriguing theories.",
+              "form": "verbatim",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "But, to suggest that they constitute a settled science of reading is to ignore the history of science, or, for that matter, reading research (Alexander & Fox, 2019; Hruby et al., 2016).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "But, to suggest that they constitute a settled science of reading is to ignore the history of science, or, for that matter, reading research (Alexander & Fox, 2019; Hruby et al., 2016).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Alexander & Fox, 2019; Hruby et al., 2016)",
+                  "reference_entry": "Alexander, P. A., & Fox, E. (2019). Reading research and practice over the decades: A histori-\ncal analysis. In D. Alvermann, N. Unrau, M. Sailors, & R. B. Ruddell (Eds.), Theoretical\nmodels and processes of literacy (7th ed., pp. 35–64). Routledge."
+                },
+                {
+                  "citation_text": "(Alexander & Fox, 2019; Hruby et al., 2016)",
+                  "reference_entry": "Hruby, G. G., Burns, L., Boztakis, S., Groenke, S., Hall, L., Laughter, J., Allington, R. L.,\nClark, G., & Davis, J. (2016). The meta-theoretical assumptions of literacy engagement:\nA preliminary centennial history. Review of Research in Education,  40(1), 588–643.\ndoi:10.3102/0091732X16664311"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The authors develop science as plural and revisable. Scientific knowledge is affirmed but distinguished from the certainty attributed to the course. The citation prints “Bryers,” whereas the bibliography lists Byers; that discrepancy is retained rather than silently repaired."
+    },
+    {
+      "location": "p. 122, science of practice and professional judgment",
+      "moves": "Separates understanding reading scientifically from applying evidence to teaching. Uses a medical analogy to explain why general findings require case-sensitive judgment.",
+      "claims": [
+        {
+          "text": "But is there a science of teaching reading? That is less clear, and perhaps an inappropriate question.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Even research that provides generalizations about effective practice across many individuals can break down at the level of a particular case or context (Joyce & Cartwright, 2020).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Even research that provides generalizations about effective practice across many individuals can break down at the level of a particular case or context (Joyce & Cartwright, 2020).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Joyce & Cartwright, 2020)",
+                  "reference_entry": "Joyce, K. E., & Cartwright, N. (2020). Bridging the gap between research and practice: Predicting\nwhat will work locally. American Educational Research Journal, 57(3), 1045–1082."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "We see physicians because we expect them to know the latest science and the evidence about effective practices in general, but we want them to apply professional judgment that includes clinical experience and a deep understanding of our individual case.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Anything that might be considered standard practice in general is not necessarily best practice in every particular case.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "In practice, there is much room for professional judgment and variation, even to the point of rejecting findings from generalizations in light of the specific circumstances of unique cases.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Neither is a science of practice entirely settled for every specific case.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The account of multiple sciences becomes an account of professional use. Practical judgment is compatible with knowing current evidence, while students’ particular circumstances make general findings insufficient as automatic prescriptions."
+    },
+    {
+      "location": "pp. 122–123, brain research and instructional interpretation",
+      "moves": "Questions the authority conferred by neuroscience, notes limits in teachers’ and researchers’ ability to assess it, and cites disagreement and caution among neuroscientists. Gives an interpretation favorable to whole language as a counterexample to a single instructional reading.",
+      "claims": [
+        {
+          "text": "Most teachers and researchers addressing issues of reading instruction are not qualified to assess the validity of findings, theories, and interpretations of brain research.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Thus, it can readily offer a veneer of scientific respectability (Vandenbroeck, 2017).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Thus, it can readily offer a veneer of scientific respectability (Vandenbroeck, 2017).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Vandenbroeck, 2017)",
+                  "reference_entry": "Vandenbroeck, M. (Ed.). (2017). Constructions of neuroscience in early childhood education.\nRoutledge."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Yet, there is little unanimity among brain researchers, either theoretically or in the interpretation of findings (Poldrack et al., 2017; Price, 2017; Ramus et al., 2018; Szücs & Ioannidis, 2017), and many are reluctant to speculate about, let alone apply, their data toward instructional issues (Katzir & Pare-Blagoev, 2006; Peters & Ansari, 2019).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Yet, there is little unanimity among brain researchers, either theoretically or in the interpretation of findings (Poldrack et al., 2017; Price, 2017; Ramus et al., 2018; Szücs & Ioannidis, 2017), and many are reluctant to speculate about, let alone apply, their data toward instructional issues (Katzir & Pare-Blagoev, 2006; Peters & Ansari, 2019).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Poldrack et al., 2017; Price, 2017; Ramus et al., 2018; Szücs & Ioannidis, 2017)",
+                  "reference_entry": "Poldrack, R. A., Baker, C. I., Durnez, J., Gorgolewski, K. J., Matthews, P. M., Munafo, M. R.,\nNichols, T. E., Poline, J-B., Vul, E., & Yarkoni, T. (2017). Scanning the horizon: Towards\ntransparent and reproducible neuroimaging research. Nature Reviews Neuroscience, 18,\n115–126."
+                },
+                {
+                  "citation_text": "(Poldrack et al., 2017; Price, 2017; Ramus et al., 2018; Szücs & Ioannidis, 2017)",
+                  "reference_entry": "Price, C. J. (2017). The evolution of cognitive models: From neuropsychology to neuroimaging\nand back. Cortex, 107, 37–49."
+                },
+                {
+                  "citation_text": "(Poldrack et al., 2017; Price, 2017; Ramus et al., 2018; Szücs & Ioannidis, 2017)",
+                  "reference_entry": "Ramus, F., Altarelli, I., Jednoróg, K., Zhao, J., Scotto, di, & Covella, L. (2018). Neuroanatomy\nof developmental dyslexia: Pitfalls and promise. Neuroscience and Biobehavioral Reviews,\n84, 434–452."
+                },
+                {
+                  "citation_text": "(Poldrack et al., 2017; Price, 2017; Ramus et al., 2018; Szücs & Ioannidis, 2017)",
+                  "reference_entry": "Szücs, D., & Ioannidis, J. P. A. (2017). Empirical assessment of published effect sizes and\npower in the recent cognitive neuroscience and psychology literature. PLoS Biology, 15(3),\ne2000797. https://doi.org/10.1371/journal.pbio.2000797"
+                },
+                {
+                  "citation_text": "(Katzir & Pare-Blagoev, 2006; Peters & Ansari, 2019)",
+                  "reference_entry": "Katzir, T., & Pare-Blagoev, J. (2006). Applying cognitive neuroscience research to education,\nthe case of literacy. Educational Psychologist, 41, 53–74."
+                },
+                {
+                  "citation_text": "(Katzir & Pare-Blagoev, 2006; Peters & Ansari, 2019)",
+                  "reference_entry": "Peters, L., & Ansari, D. (2019). Are specific learning disorders truly specific, and are they disor-\nders? Trends in Neuroscience and Education, 17, Article 100115. https://doi.org/10.1016/j.\ntine.2019.100115"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "To favor its narrow assertions consistent with a phonics-first ideology, the Course truncates the diversity of interpretations among brain researchers, suggesting that behaviors, cognitive processes, and neural activity are isomorphic.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "For example, in a recent comprehensive review of brain research from an evolutionary standpoint, Ellis and Solms (2018) observed that the hardwired emotional/motivational brain functions that mediate all learning are consistent with the underlying rationale for a whole language approach (see also Hruby & Mitra, 2023).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "Ellis and Solms (2018)",
+                  "reference_entry": "Ellis, G., & Solms, M. (2018). Beyond evolutionary psychology. Cambridge University Press."
+                },
+                {
+                  "citation_text": "(see also Hruby & Mitra, 2023)",
+                  "reference_entry": "Hruby, G. G., & Mitra, A. (2023). A naturalized view of literacy education: What the neuro- and\nlife sciences may have to offer language and literacy research. In R. J. Tierney, F. Rizvi,\n& K. Ercikan (Eds.), International encyclopedia of education (4th ed.), D. Yaden & T.\nRodgers (Vol. Eds.), Volume 10: Literacies and language education. Elsevier."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This adds tension to the defense of expertise: teaching knowledge does not automatically confer neuroscience expertise. The authors expose interpretive diversity and limits on application rather than replacing judgment with an apparently univocal brain-based mandate. The counterexample also keeps emotion and motivation in the account of learners."
+    },
+    {
+      "location": "p. 123, the course’s IES claim and scientific practice",
+      "moves": "Quotes a concrete assertion of settled science, challenges its institutional basis, and returns to unresolved NRP issues. The funding assertion belongs to the course, not the authors.",
+      "claims": [
+        {
+          "text": "Perhaps the most obvious example that the Course is a polemic is the statement that “the [research] results were so conclusive in favor of systematic phonics instruction that the Institute of Education Science [IES] no longer funds research on whether systematic instruction is effective. It is considered ‘settled science.’”",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "We would challenge the authors of the Course to provide evidence of any such IES policy.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Neither the NRP report, nor any research since, suggests that there is a settled science that establishes an indisputable boundary between scientific and nonscientific instructional practice in every context, for every student.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Consistent throughout the report, and summarized in its conclusions, are many unanswered questions and unresolved issues that need clarification through more research, and most of these remain unanswered.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The general objection is attached to an institutional assertion, challenged without an alternative IES policy being supplied. The practical limit remains universal prescription: research does not establish an uncontested instructional boundary for every student and setting."
+    },
+    {
+      "location": "pp. 123–124, inquiry and works/doesn’t-work binaries",
+      "moves": "Characterizes inquiry as provisional, revisits the categorical failure claim, and calls for attention to how, why, and under what circumstances instruction fits.",
+      "claims": [
+        {
+          "text": "Scientists are never entirely comfortable that their current data and explanations are fully explanatory.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "They are continually testing the veracity and utility of current theories, findings, and interpretations.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Scientists seek final truths only in the abstract, knowing that the best they can do is reduce ignorance (Wagner, 1993).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Scientists seek final truths only in the abstract, knowing that the best they can do is reduce ignorance (Wagner, 1993).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Wagner, 1993)",
+                  "reference_entry": "Wagner, J. (1993). Ignorance in educational research or, how can you not know that? Educational\nResearcher, 22(5), 15–23."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "No evidence is cited in the Course, and we are not aware of any.",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "The Course, consistent with a phonics-first ideology, bases much of its case for phonics on the report of the National Reading Panel (NRP; National Reading Panel, 2000).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(NRP; National Reading Panel, 2000)",
+                  "reference_entry": "National Reading Panel, National Institute of Child Health, Human Development, National\nReading Excellence Initiative, National Institute for Literacy, United States. Public Health\nService, & United States Department of Health. (2000). Report of the National Reading\nPanel: Teaching children to read: An evidence-based assessment of the scientific research\nliterature on reading and its implications for reading instruction: Reports of the subgroups.\nNational Institute of Child Health and Human Development, National Institutes of Health."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "They want to understand how, why, and in what circumstances different approaches may or may not be a good fit.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Multidimensional continua, not binaries, are the stuff of science, especially when science is applied to real-world decisions in the realm of instructional practice (see Yaden et al., 2021).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Multidimensional continua, not binaries, are the stuff of science, especially when science is applied to real-world decisions in the realm of instructional practice (see Yaden et al., 2021).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(see Yaden et al., 2021)",
+                  "reference_entry": "Yaden, D. B., Jr., Reinking, D., & Smagorinsky, P. (2021). The trouble with binaries: A per-\nspective on the science of reading. Reading Research Quarterly, 56, S119–S129."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "In stating that balanced instruction doesn’t work, the Course implies that phonics does, which is unscientific in conception and inaccurate in fact.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The alternative asks evidence for conditional understanding rather than a universal sorting of methods into success and failure. Scientific inquiry is connected back to differentiated instruction and case-sensitive professional knowledge."
+    },
+    {
+      "location": "p. 124, science as rhetoric and the social setting of teaching",
+      "moves": "Draws an interpretive conclusion about the course’s use of science, describes the deference its rhetoric demands, and locates teaching and learning within social and ethical relations.",
+      "claims": [
+        {
+          "text": "In short, the Course, similar to legislatively inspired efforts in other states, uses science as a rhetorical tool to promote a preferred orthodoxy or, as some have argued more forcefully, as a bludgeon to silence discussion or debate (Ayres, 2006).",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "In short, the Course, similar to legislatively inspired efforts in other states, uses science as a rhetorical tool to promote a preferred orthodoxy or, as some have argued more forcefully, as a bludgeon to silence discussion or debate (Ayres, 2006).",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(Ayres, 2006)",
+                  "reference_entry": "Ayres, W. (2006). Trudge toward freedom: Educational research in the public interest. In G.\nLadson-Billings & W. R. Tate (Eds.), Education research in the public interest (pp. 81–97).\nTeachers College Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Science, used this way, is not a means of inquiry toward better understanding or to obtain better results, but something that requires uncritical deference and genuflection.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "It suggests that the aim of science is to reach a state where no further understanding is possible, where no more questions need to be asked, where no more evidence needs to be considered, where no other perspectives or interpretations can be reasonably offered, and where anyone who thinks otherwise is a misguided, if not a heretical denier of immutable truth.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Such perspectives are not science, especially in matters of teaching and learning, which are always embedded in an incredibly complex social system that entails cultural norms, values, and beliefs, including issues of equity and justice.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The authors draw together their readings of evidence, certainty, and prescription. Teachers are described as being asked to defer rather than inquire; teaching and students are placed within cultural values and justice. The religious imagery expresses the force of the authors’ critical framing."
+    },
+    {
+      "location": "pp. 124–125, Conclusion",
+      "moves": "Synthesizes and restates findings about phonics, research selection, and political orthodoxy. Explicitly relates the rejection of universal answers to poverty and institutional injustice, then makes a final normative claim about consequences. The claims that the movement is not a neutral arbiter and uses evidence rhetorically repeat the preceding analysis.",
+      "claims": [
+        {
+          "text": "Neither is there justification for suggesting that there is a settled science of reading that provides final answers about how reading should be taught to every child, particularly among those who live in poverty and who experience institutional inequities and injustice.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "A manufactured ideological truth argued polemically and dedicated to gaining advantage politically through legislation has real consequences that are not in the best interests of children, their families and communities, and the dedicated teachers who serve them.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The conclusion returns to legislation and professional judgment through the case analysis. The final emphasis is on whose needs the debate should serve—students, families, communities, and teachers—and the authors’ judgment that certainty is especially inadequate for children experiencing poverty and injustice. This synthesizes the critique rather than introducing another empirical test."
+    },
+    {
+      "location": "pp. 125–126, Notes 3, 6, and 9–12",
+      "moves": "Adds qualifications deferred to endnotes. Notes 3 and 11 restate commercial influence and the small NRP evidence base; note 12 identifies the survey link. Notes 6, 9, and 10 add language differences, graph-scale qualifications, and recognized phonics approaches.",
+      "claims": [
+        {
+          "text": "Flesch failed to acknowledge that the relation of letters and sounds in English is far more irregular than many European languages.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Children learning English have been found to take twice as long to learn the basics of phonics than do children learning to read in more regularly spelled European languages (see Seymour et al., 2003)",
+          "form": "verbatim",
+          "support": [
+            {
+              "text": "Children learning English have been found to take twice as long to learn the basics of phonics than do children learning to read in more regularly spelled European languages (see Seymour et al., 2003)",
+              "form": "verbatim",
+              "citations": [
+                {
+                  "citation_text": "(see Seymour et al., 2003)",
+                  "reference_entry": "Seymour, P. H., Aro, M., Erskine, J. M., & Collaboration with COST Action A8 Network.\n(2003). Foundation literacy acquisition in European orthographies. British Journal of psy-\nchology, 94(2), 143–174."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Figure 1 shows the average scores for Grade 4 students, which is most relevant to early reading, but graphs for students in Grades 8 and 12 are similarly flat.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "However, we acknowledge that “flat” is a relative term, conditional on the scale used to present data.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Nonetheless, the variation across years is relatively small, even when occasional differences are statistically significant.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Further, any statistical differences are open to multiple interpretations.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The NRP acknowledged several approaches to systematic phonics instruction, including synthetic phonics, analytic phonics, embedded phonics, analogy phonics, onset-rime phonics, and phonics through spelling.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The notes qualify the earlier history and figure reading. Students’ language environment matters to decoding demands, “flat” partly depends on display scale, and NRP options extend beyond synthetic phonics. The remaining bibliography and biographies add no further instructional claims relevant to the three questions."
+    }
+  ]
+}

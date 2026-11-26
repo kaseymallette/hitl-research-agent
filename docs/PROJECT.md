@@ -43,10 +43,15 @@ works. Details are in
   step reads the article, and both methods quote its exact words. The
   legislation codebook is not used for articles.
 - **Precision and recall measure the two methods.** Precision is exact, real,
-  relevant quotations divided by total quotations. Recall is relevant claims
-  used divided by total relevant claims. Both are scored for each question
-  against the claims reference, supplemented with relevant claims it missed.
-  Null hypothesis: Method B is no better than Method A.
+  relevant, correctly attributed quotations divided by total quotations.
+  Recall is relevant claims used divided by total relevant claims. Both are
+  scored for each question against the claims reference, supplemented with
+  relevant claims it missed. Null hypothesis: Method B is no better than
+  Method A.
+- **Disputing claims say whose words they are.** The claims reference keeps
+  the claims the authors dispute, and each says whether it is the other
+  side's view or the authors' own words. Scoring credits a quotation of one
+  only when the answer attributes it the same way.
 - **Source PDFs stay local.** Only their `sources.yaml` entries are tracked.
 - **The saved cross-document answers currently cover legislation.** The
   expert's three questions are answered from the six laws' close readings and

@@ -27,10 +27,7 @@ works it cites or check its claims against outside sources.
 
 Use the close reading to find what bears on each question, then check each
 point against the article on its page. The article decides: where the close
-reading and the article disagree, answer from the article and say what the
-close reading got wrong. Where the article says something relevant that the
-close reading does not record, include it and say that the close reading
-leaves it out.
+reading and the article disagree, answer from the article.
 
 ## What to write
 
@@ -42,16 +39,19 @@ leaves it out.
    <full citation, from the article and source.yaml>
 
    Answered from the article and its close reading (`03_close_reading.json`).
-   Every point gives the article's printed page and the close reading claim it
-   comes from (**CR 35.2** = step 35, claim 2). <One or two sentences on what
-   kind of article it is and what it is about.>
+   Every quotation gives the article's printed page and the close reading
+   claim it comes from (**CR 35.2** = step 35, claim 2). <What kind of
+   article it is and what it is about.>
 
    ## 1. How is the science of reading defined, and how is it enacted?
 
-   **Short answer.** <A few sentences.>
+   ### <A key point, in your own words>
 
-   - **p. <printed page> · CR <step>.<claim>.** "<the authors' exact words>"
-     *Interpretation:* <your reading of what it shows about the question>
+   - **p. <printed page> · CR <step>.<claim> · <whose view>.** "<the authors' exact words>"
+
+   ### <The next key point>
+
+   …
 
    ## 2. How is teachers' knowledge positioned?
 
@@ -63,30 +63,32 @@ leaves it out.
    ```
 
    - Number steps and claims from 1, in the order they appear in the close
-     reading. Where a point is not a claim in
-     the close reading, say where it is instead ("CR 5, moves only") or that
-     it is not recorded.
-   - Give every point the article's printed page (or pages). Where a page has
-     no printed number, give the PDF page and say so.
-   - Keep what the article says apart from your interpretation of it. The
-     point itself reports the article; the *Interpretation* line, where you
-     add one, is your reading. Leave it out where the point speaks for itself.
-   - Say whose view a point is: the authors' own, or one the authors report,
-     endorse, or dispute. When the authors characterize the other side, say
-     that it is their characterization.
-   - Every point is a quotation: the article's exact words, copied character
-     for character, in quotation marks. Do not paraphrase, summarize, shorten
-     with ellipses, or correct the wording. Where the close reading's text is
-     not the article's exact wording, quote the article, not the close reading.
+     reading. Where a quotation is not a claim in the close reading, say where
+     it is instead ("CR 5, moves only") or that it is not recorded.
+   - Give every quotation the article's printed page (or pages). Where a page
+     has no printed number, give the PDF page and say so.
+   - Label whose view each quotation is: the authors' own, or one the authors
+     report, endorse, or dispute. When the authors characterize the other
+     side, label it as their characterization.
+   - Build each answer from key points: the points someone who knows the
+     article would need to make to answer the question fully. Give each key
+     point a heading in your own words, and put under it every quotation from
+     the article that is evidence for it.
+   - Include everything in the article that is relevant to the question,
+     each under the key point it supports. There is no length limit; don't
+     stop at the main points.
+   - Don't interpret the evidence: no interpretation lines or commentary on
+     what a quotation shows. The heading says what the key point is; the
+     quotations under it show where the article says it. Every entry under a
+     heading is a quotation: the article's exact words, copied character for
+     character, in quotation marks. Do not paraphrase, summarize, shorten with
+     ellipses, or correct the wording. Where the close reading's text is not
+     the article's exact wording, quote the article, not the close reading.
    - Content read from a figure, chart, or table printed as an image has no
      words to quote: describe it, name the element ("Table 2 shows…"), and say
      it is your description.
-   - Where the article says little or nothing about a question, say so in the
-     short answer, and quote what it does say, however little.
-   - End with a section headed `## Where the close reading and the article
-     differ`, listing each point the close reading left out, misread, or
-     marked `verbatim` when the wording is not the article's. Write "None
-     found" if there are none.
+   - Where the article says little or nothing about a question, say so, and
+     quote what it does say, however little.
 
 2. **Your final message**, saying in a few sentences how you read the PDF
    (pages as images, text extracted with a tool — name it — or both) and the

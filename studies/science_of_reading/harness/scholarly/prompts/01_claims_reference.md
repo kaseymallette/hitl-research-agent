@@ -36,6 +36,12 @@ For each claim:
   view the authors report), `endorsing` (another source's view the authors
   adopt), or `disputing` (another source's view the authors reject or
   qualify).
+- **Whose words:** for a `disputing` claim, say in plain words whose view
+  the quotation states: the other side's view, which is not the authors'
+  ("not the authors' view: <whose view>"); the authors' own words arguing
+  against or reporting it ("the authors' own words, arguing against <whom>");
+  or the authors' words quoting the other side directly (say which words are
+  the other side's).
 - **Evidence:** the evidence the authors give for it, quoted exactly the same
   way, with its citation as printed. Leave it out where the claim is simply
   asserted.
@@ -54,6 +60,12 @@ description.
    > "<the article's exact words>"
 
    Evidence: "<the article's exact words>" (<citation as printed>)
+   ```
+
+   A `disputing` entry adds its whose-words line after the voice:
+
+   ```markdown
+   **R30** · p. 106 · disputing · whose words: not the authors' view: <whose view>
    ```
 
    End with the number of claims listed and where the list stops (the main
