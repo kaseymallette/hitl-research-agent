@@ -52,6 +52,10 @@ Each document runs through five Codex sessions, in order:
 4. **Discourse analysis:** coded on five critical discourse analysis dimensions: lexical choices and definitional framing (LEX), presuppositions (PRE), foregrounding and silencing (FOS), subject positioning (SUB), and intertextuality (INT).
 5. **Judgment of the discourse analysis:** every observation checked against the document, and whether its code fits.
 
+The framework distinguishes what an author states from what the model infers or evaluates. Human review determines which analyses enter the research collection.
+
+![Single source analysis: the close reading and the claims reference feed the close reading judgment; the argument evaluation feeds the argument judgment; both judgments go to review, to accept, revise, rerun, or reject.](studies/water/assets/single-source-flow.svg)
+
 The design choices:
 
 - **Independent sessions.** [`scripts/workspace.py`](scripts/workspace.py) loads one document (its PDF, extracted text, and page images) into a workspace outside the repository, so no session sees other runs or judgments. Saving copies the results to `outputs/<corpus>/<slug>/` and clears the workspace for the next one.
