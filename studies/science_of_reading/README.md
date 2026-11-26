@@ -108,7 +108,7 @@ commands in `RUNBOOK.md` from the repository root.
 ├── outputs/              saved results, per corpus and article: outputs/<corpus>/<slug>/
 ├── questions/            my mom's questions, answered from the saved analyses
 ├── harness/              one folder per corpus: its rubric and the prompts its Codex sessions are sent
-│   ├── scholarly/        the three questions from the article, close reading, the three questions from both; run by scripts/run_scholarly.py
+│   ├── scholarly/        claims reference, baseline answers, close reading and its answers, scoring; run by scripts/run_scholarly.py
 │   ├── legislation/      close reading, claims reference, discourse analysis, and their judgments; run in the workspace
 │   └── popular-press/    close reading, claims reference, argument evaluation, and their judgments; run in the workspace
 ├── assets/               the harness diagrams

@@ -46,19 +46,51 @@ These cover legislation only. The scholarly articles are being run now.
 
 Each document runs through a series of Codex sessions, in order. Each session sees only the files its step needs. There are two harnesses: one for scholarly articles and one for legislation.
 
-### Scholarly articles: the three questions
+### Scholarly articles: does close reading give better answers?
 
-1. **Answers from the article:** the three questions answered from the article alone, before any close reading exists.
-2. **Close reading:** reconstructs the author's argument step by step, identifying claims, supporting evidence, methods, assumptions, and limitations, without judging it.
-3. **Answers from the article and close reading:** the three questions answered again, each point traced to the close reading and checked against the article's page.
+Each article is used to answer three questions:
 
-![Scholarly harness: the article branches to the questions from the article and to the close reading; below the close reading, the questions from the article and the close reading.](studies/science_of_reading/assets/scholarly-flow.svg)
+- How is the science of reading defined, and how is it enacted?
+- How is teachers' knowledge positioned?
+- How are students positioned?
+
+The harness tests two ways of answering them. Every answer quotes the article's exact words.
+
+- **Null hypothesis:** Method B is no better than Method A.
+
+**1. Claims reference:** every claim in the article, quoted exactly, listed from the article alone. It doesn't know the questions, so it favors neither method.
+
+**Method A: Baseline**
+
+**2.** Answer the questions from the article alone, with quotes.
+
+**Method B: Close Reading**
+
+**3.** Close read the article for the questions, quoting only the relevant passages.<br>
+**4.** Answer the questions using the close reading, with quotes.
+
+**5. Scoring:** compare Method A (2) and Method B (4) against the claims reference.
+
+- **Recall:** which relevant claims did each method use, and which did it miss?
+- **Precision:** which of each method's quotes are real claims, quoted exactly and relevant, and which aren't?
+
+![Scholarly harness: the article feeds the claims reference (1), Method A's baseline answers (2), and Method B's close reading (3), which feeds the close reading answers (4); scoring (5) compares 2 and 4 against the claims reference.](studies/science_of_reading/assets/scholarly-flow.svg)
 
 ```bash
 uv run python scripts/run_scholarly.py <slug>
 ```
 
-[`scripts/run_scholarly.py`](scripts/run_scholarly.py) runs the three sessions for one article from [`data/scholarly/sources.yaml`](studies/science_of_reading/data/scholarly/sources.yaml) and writes the three files to `outputs/scholarly/<slug>/`. With no option, only the steps whose file is missing run, so a stopped run picks up where it left off; `--only 03` reruns one step. The prompts are in [`harness/scholarly/prompts/`](studies/science_of_reading/harness/scholarly/prompts/), and each session is sent its prompt file exactly as written.
+[`scripts/run_scholarly.py`](scripts/run_scholarly.py) runs the five steps, in order, for one article from [`data/scholarly/sources.yaml`](studies/science_of_reading/data/scholarly/sources.yaml), each in its own Codex session, and writes five files to `outputs/scholarly/<slug>/`:
+
+| Step | Reads | Writes |
+| --- | --- | --- |
+| 1. Claims reference | the article | `01_claims_reference.md` |
+| 2. Baseline answers | the article | `02_baseline_answers.md` |
+| 3. Close reading | the article | `03_close_reading.json` |
+| 4. Close Reading answers | the article and the close reading | `04_close_reading_answers.md` |
+| 5. Scoring | the article, the claims reference, and both sets of answers | `05_scoring.md` |
+
+No step sees another step's file unless the table says so: the claims reference and the baseline answers never see the close reading. With no option, only the steps whose file is missing run, so a stopped run picks up where it left off; `--only 03` reruns one step. The prompts are in [`harness/scholarly/prompts/`](studies/science_of_reading/harness/scholarly/prompts/), and each session is sent its prompt file exactly as written.
 
 ### Legislation: discourse analysis
 
@@ -117,7 +149,7 @@ Decisions and open questions are in [`docs/PROJECT.md`](docs/PROJECT.md).
 ├── studies/
 │   └── science_of_reading/        the study: corpora, codebook, prompts, results, and answered questions
 ├── scripts/
-│   ├── run_scholarly.py           the scholarly harness: three Codex sessions per article
+│   ├── run_scholarly.py           the scholarly harness: five Codex sessions per article
 │   └── workspace.py               legislation: load a law into the Codex workspace, save its results
 ├── src/hitl_research_agent/       the data models for a source's provenance
 └── tests/

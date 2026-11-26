@@ -44,9 +44,11 @@ sys.exit(step.get("exit", 0))
 """
 
 GOOD = {
-    "01": {"write": ["01_answers_from_article.md", "answers from the article"]},
-    "02": {"write": ["02_close_reading.json", '{"reading_plan": "p", "reading_path": []}']},
-    "03": {"write": ["03_answers.md", "answers"]},
+    "01": {"write": ["01_claims_reference.md", "claims"]},
+    "02": {"write": ["02_baseline_answers.md", "baseline"]},
+    "03": {"write": ["03_close_reading.json", '{"reading_plan": "p", "reading_path": []}']},
+    "04": {"write": ["04_close_reading_answers.md", "close reading answers"]},
+    "05": {"write": ["05_scoring.md", "scoring"]},
 }
 
 
@@ -119,16 +121,18 @@ def article_dir(tmp_path: Path) -> Path:
     return tmp_path / "analyses" / SLUG
 
 
-def test_a_full_run_writes_the_three_files_in_order(
+def test_a_full_run_writes_the_five_files_in_order(
     harness: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     assert run(harness, tmp_path, monkeypatch, GOOD) == 0
     assert sorted(p.name for p in article_dir(tmp_path).iterdir()) == [
-        "01_answers_from_article.md",
-        "02_close_reading.json",
-        "03_answers.md",
+        "01_claims_reference.md",
+        "02_baseline_answers.md",
+        "03_close_reading.json",
+        "04_close_reading_answers.md",
+        "05_scoring.md",
     ]
-    assert [s["label"] for s in sessions(tmp_path)] == ["01", "02", "03"]
+    assert [s["label"] for s in sessions(tmp_path)] == ["01", "02", "03", "04", "05"]
     assert all(s["model"] == "gpt-6.1-sol" for s in sessions(tmp_path))
 
 
@@ -139,7 +143,15 @@ def test_each_session_sees_only_what_its_call_reads(
     seen = {s["label"]: s["files"] for s in sessions(tmp_path)}
     assert seen["01"] == ["article.pdf", "source.yaml"]
     assert seen["02"] == ["article.pdf", "source.yaml"]
-    assert seen["03"] == ["02_close_reading.json", "article.pdf", "source.yaml"]
+    assert seen["03"] == ["article.pdf", "source.yaml"]
+    assert seen["04"] == ["03_close_reading.json", "article.pdf", "source.yaml"]
+    assert seen["05"] == [
+        "01_claims_reference.md",
+        "02_baseline_answers.md",
+        "04_close_reading_answers.md",
+        "article.pdf",
+        "source.yaml",
+    ]
 
 
 def test_no_api_key_reaches_codex(
@@ -152,28 +164,28 @@ def test_no_api_key_reaches_codex(
 def test_a_stopped_run_picks_up_at_the_first_missing_file(
     harness: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    plan = {**GOOD, "02": {"exit": 1}}
+    plan = {**GOOD, "03": {"exit": 1}}
     assert run(harness, tmp_path, monkeypatch, plan) == 1
-    assert not (article_dir(tmp_path) / "03_answers.md").exists()
+    assert not (article_dir(tmp_path) / "04_close_reading_answers.md").exists()
 
     assert run(harness, tmp_path, monkeypatch, GOOD) == 0
-    assert [s["label"] for s in sessions(tmp_path)] == ["01", "02", "02", "03"]
+    assert [s["label"] for s in sessions(tmp_path)] == ["01", "02", "03", "03", "04", "05"]
 
 
 def test_only_reruns_one_call_and_overwrites_its_file(
     harness: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     run(harness, tmp_path, monkeypatch, GOOD)
-    plan = {"03": {"write": ["03_answers.md", "answers, again"]}}
-    assert run(harness, tmp_path, monkeypatch, plan, "--only", "03") == 0
-    assert (article_dir(tmp_path) / "03_answers.md").read_text() == "answers, again"
-    assert [s["label"] for s in sessions(tmp_path)][-1] == "03"
+    plan = {"05": {"write": ["05_scoring.md", "scoring, again"]}}
+    assert run(harness, tmp_path, monkeypatch, plan, "--only", "05") == 0
+    assert (article_dir(tmp_path) / "05_scoring.md").read_text() == "scoring, again"
+    assert [s["label"] for s in sessions(tmp_path)][-1] == "05"
 
 
 def test_a_call_whose_inputs_are_missing_does_not_start(
     harness: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    assert run(harness, tmp_path, monkeypatch, GOOD, "--only", "03") == 1
+    assert run(harness, tmp_path, monkeypatch, GOOD, "--only", "04") == 1
     assert sessions(tmp_path) == []
 
 
@@ -182,16 +194,16 @@ def test_a_call_whose_inputs_are_missing_does_not_start(
     [
         {"exit": 2},
         {},
-        {"write": ["02_close_reading.json", "not json {"]},
+        {"write": ["03_close_reading.json", "not json {"]},
     ],
     ids=["codex-error", "no-file", "invalid-json"],
 )
 def test_a_technical_failure_stops_the_run_and_writes_nothing(
     harness: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, step: dict[str, Any]
 ) -> None:
-    assert run(harness, tmp_path, monkeypatch, {**GOOD, "02": step}) == 1
-    assert not (article_dir(tmp_path) / "02_close_reading.json").exists()
-    assert [s["label"] for s in sessions(tmp_path)] == ["01", "02"]
+    assert run(harness, tmp_path, monkeypatch, {**GOOD, "03": step}) == 1
+    assert not (article_dir(tmp_path) / "03_close_reading.json").exists()
+    assert [s["label"] for s in sessions(tmp_path)] == ["01", "02", "03"]
 
 
 def test_every_call_reads_its_request_from_its_prompt_file() -> None:

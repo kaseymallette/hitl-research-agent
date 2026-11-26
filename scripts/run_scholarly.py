@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Run the scholarly harness for one article in Codex: three calls, three files.
+"""Run the scholarly harness for one article in Codex: five calls, five files.
 
     uv run python scripts/run_scholarly.py <slug>
     uv run python scripts/run_scholarly.py <slug> --only 03
@@ -10,17 +10,19 @@ Codex session (`codex exec`) on GPT-6.1 Sol at medium effort, signed in with
 ChatGPT rather than an API key, and writes one file to
 `studies/science_of_reading/outputs/scholarly/<slug>/`:
 
-    01_answers_from_article.md   the three questions, answered from the article alone
-    02_close_reading.json        the close reading
-    03_answers.md                the three questions, from the article and 02
+    01_claims_reference.md        every claim in the article, quoted: the answer key
+    02_baseline_answers.md        Method A, Baseline: the questions from the article alone
+    03_close_reading.json         Method B: the close reading, quoted, for the questions
+    04_close_reading_answers.md   Method B, Close Reading: the questions from the article and 03
+    05_scoring.md                 02 and 04 scored against 01 for recall and precision
 
 With no option, the calls whose file is missing run in order, so a stopped run
 picks up where it left off. `--only` reruns one call and overwrites its file.
 
 Each call's request is its file in `harness/scholarly/prompts/`, so a call can
 be run by hand by pasting the same file. Each session runs in a temporary
-folder holding only the files that call reads, so 01 never sees the close
-reading. Only a technical failure stops a run: Codex exiting with an error or
+folder holding only the files that call reads, so 01 and 02 never see the
+close reading. Only a technical failure stops a run: Codex exiting with an error or
 timing out, the call's file not written, or a close reading that does not
 parse as JSON. Codex's event log and final message for each call go to
 `.codex_runs/<slug>/`, which git ignores.
@@ -57,9 +59,11 @@ TIMEOUT_SECONDS = 60 * 60
 
 SOURCE_FIELDS = ("source_title", "source_type", "publisher", "doi")
 
-ANSWERS_FROM_ARTICLE = "01_answers_from_article.md"
-CLOSE_READING = "02_close_reading.json"
-ANSWERS = "03_answers.md"
+CLAIMS_REFERENCE = "01_claims_reference.md"
+BASELINE_ANSWERS = "02_baseline_answers.md"
+CLOSE_READING = "03_close_reading.json"
+CLOSE_READING_ANSWERS = "04_close_reading_answers.md"
+SCORING = "05_scoring.md"
 
 
 @dataclass(frozen=True)
@@ -75,11 +79,21 @@ class Call:
 
 
 CALLS = {
-    "01": Call(
-        "01", ANSWERS_FROM_ARTICLE, ("article.pdf", "source.yaml"), "01_answers_from_article.md"
+    "01": Call("01", CLAIMS_REFERENCE, ("article.pdf", "source.yaml"), "01_claims_reference.md"),
+    "02": Call("02", BASELINE_ANSWERS, ("article.pdf", "source.yaml"), "02_baseline_answers.md"),
+    "03": Call("03", CLOSE_READING, ("article.pdf", "source.yaml"), "03_close_reading.md"),
+    "04": Call(
+        "04",
+        CLOSE_READING_ANSWERS,
+        ("article.pdf", "source.yaml", CLOSE_READING),
+        "04_close_reading_answers.md",
     ),
-    "02": Call("02", CLOSE_READING, ("article.pdf", "source.yaml"), "02_close_reading.md"),
-    "03": Call("03", ANSWERS, ("article.pdf", "source.yaml", CLOSE_READING), "03_answers.md"),
+    "05": Call(
+        "05",
+        SCORING,
+        ("article.pdf", "source.yaml", CLAIMS_REFERENCE, BASELINE_ANSWERS, CLOSE_READING_ANSWERS),
+        "05_scoring.md",
+    ),
 }
 
 
@@ -202,7 +216,7 @@ def main(argv: list[str] | None = None) -> int:
     article_dir = ANALYSES / args.slug
     calls = calls_to_run(args.only, article_dir)
     if not calls:
-        print(f"All three files are already in {article_dir.relative_to(REPO_ROOT)}.")
+        print(f"All five files are already in {article_dir.relative_to(REPO_ROOT)}.")
         return 0
     codex = find_codex(args.codex)
     log_dir = LOGS / args.slug

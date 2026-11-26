@@ -1,7 +1,7 @@
 # Close reading — instructions for an agent run
 
-Use these instructions to write the close reading of one article, the second
-call of the scholarly harness. `scripts/run_scholarly.py` runs them in a
+Use these instructions to write the close reading of one article, the third
+call of the scholarly harness, and the first step of Method B. `scripts/run_scholarly.py` runs them in a
 folder of their own.
 
 ## What you're given
@@ -12,7 +12,7 @@ folder of their own.
 
 ## What to write
 
-1. **`02_close_reading.json`**: only the JSON described at the end of the
+1. **`03_close_reading.json`**: only the JSON described at the end of the
    prompt below, with nothing before or after it.
 2. **Your final message**, saying in a few sentences:
    - **how you read the PDF** — for example, whether you viewed its pages as
@@ -37,27 +37,33 @@ Mark as "verbatim" only wording that literally appears in the document's own tex
 
 ---
 
-You are reading a single source document. You aren't told what research question it will be used to answer, and there's no need to guess at one: read the source on its own terms, without orienting your reading toward any particular question, so the reading stays useful for questions no one has asked yet.
+You are reading a single source document for three research questions:
+
+1. How is the science of reading defined, and how is it enacted?
+2. How is teachers' knowledge positioned?
+3. How are students positioned?
+
+The close reading is only about these questions. Read the whole document, but record only the passages, claims, and evidence that bear on one of them.
 
 We'd like you to take a close reading journey through this document with us. Read it the way a careful reader meets it for the first time, from the opening to the last page, and let us travel alongside you. At each point on the way, you know where you've been and where you are now. Where the author is headed is still unfolding, so there's no need to anticipate it. Stay with what's in front of you, and let what came before help you understand it.
 
-This is a close reading, not a verdict. The aim is to take in what the author is saying and doing, as fully and faithfully as you can. Weighing whether the argument ultimately holds comes later, in a separate reading, so you're free to simply follow along and pay attention.
+This is a close reading, not a verdict. The aim is to take in what the author says about the three questions, faithfully. Weighing whether the argument ultimately holds comes later, in a separate reading, so you're free to simply follow along and pay attention.
 
-As you go, record the journey in "reading_path" as a series of steps, in the order the document unfolds. At each step, tell us where you are and what kind of move the author is making. Using the language of argument helps here. Is the author stating a premise, or introducing evidence for a claim? Defining a term, giving an example, reporting a figure? Drawing an inference, or deducing something from what came earlier? Is an assumption at work, stated or left unspoken, or a value judgment? Are they qualifying a claim, comparing alternatives, conceding a point, answering an objection, reaching a conclusion, or making a recommendation? Restating something, or turning to a new line of discussion? If the framing reveals a perspective or a bias, notice it. A single step can hold more than one move.
+As you go, record each passage that bears on the three questions as a step in "reading_path", in the order the document unfolds. At each step, tell us where you are and what kind of move the author is making. Using the language of argument helps here. Is the author stating a premise, or introducing evidence for a claim? Defining a term, giving an example, reporting a figure? Drawing an inference, or deducing something from what came earlier? Is an assumption at work, stated or left unspoken, or a value judgment? Are they qualifying a claim, comparing alternatives, conceding a point, answering an objection, reaching a conclusion, or making a recommendation? Restating something, or turning to a new line of discussion? If the framing reveals a perspective or a bias, notice it. A single step can hold more than one move.
 
 Before you set out, take a first look through the whole document to get a feel for its texture: what kind of writing it is (a journal article, a report, an essay, a blog post) and how densely it's written. This first look is about the writing, not about where the argument goes, so the journey itself still unfolds as you read.
 
 Let that texture set your pace. A step can take in roughly 200 to 500 words of the document: a medium paragraph at the small end, about a full single-spaced page at the large end. Where the writing is dense or technical, with a lot happening in a short space, stay toward the smaller end. Where it moves more easily, a longer stretch can be a single step. These are a sense of scale, not counts. Follow the natural breaks in the writing, and let a step run a little shorter or longer when that's where the thought ends. Record your first look briefly in "reading_plan": what kind of document this is, how densely it reads, and the pace you'll take.
 
-Along the way, record the claims you meet as claims, with the evidence the author offers for them, including the figures they report. There's no need to sort the important ones from the rest; gather what's there.
+Along the way, record the claims that bear on the three questions, with the evidence the author offers for them, including the figures they report. Leave out claims that don't bear on any of the three questions. Where a stretch of the document has nothing relevant to the questions, skip it: it gets no step. Every step in the reading is about the three questions.
 
 Then reflect on where this step leaves us, given the road so far. Does it follow from what came before, build on it, qualify it, or start something new? Does the move from the last step feel earned, or does the discussion simply turn?
 
 A few practices keep the record of the claims faithful.
 
-Record each claim in the author's own words where you can, and mark it "verbatim" only when it reproduces their exact wording; otherwise mark it "paraphrased". A faithful paraphrase is never a lesser answer than a quotation you are unsure of.
+Record each claim as a quotation: the author's exact words, copied character for character from the document, marked "verbatim". Do not paraphrase, summarize, shorten with ellipses, or correct the wording; a word broken across a line with a hyphen may be rejoined. Quote the shortest stretch that states the claim on its own, usually one to three sentences. The only text marked "paraphrased" is your reading of a figure, chart, diagram, or an equation rendered as an image, as described above.
 
-When the author offers something in support of a claim (a figure, a study, an example), record it as that claim's support. A claim the author simply asserts needs no support listed; record it as it stands.
+When the author offers something in support of a claim (a figure, a study, an example), record it as that claim's support, quoted the same way: the author's exact words, marked "verbatim". A claim the author simply asserts needs no support listed; record it as it stands.
 
 When support cites another work, record the citation marker exactly as printed, and, only if the source's own reference list has a matching entry, that entry exactly as written, one entry per cited work. Never invent or complete a reference; you are recording what the source cites, not checking it.
 
