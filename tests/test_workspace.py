@@ -44,11 +44,10 @@ def entry(slug: str, corpus: str, **overrides: Any) -> dict[str, Any]:
 
 @pytest.fixture
 def repo(tmp_path: Path) -> Path:
-    """A repository with the real evaluations/ template and empty corpora."""
+    """A repository with each corpus's real workspace files and empty corpora."""
     root = tmp_path / "repo"
-    shutil.copytree(STUDY / "evaluations", root / "evaluations")
-    for overlay in ws.OVERLAYS.values():
-        for source in filter(None, overlay.values()):
+    for files in ws.WORKSPACE_FILES.values():
+        for source in files.values():
             (root / source).parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(STUDY / source, root / source)
     for corpus in ws.CORPORA:
@@ -132,8 +131,8 @@ def test_load_refuses_a_file_that_is_not_a_pdf_and_creates_nothing(
     assert not workspace.exists()
 
 
-@pytest.mark.parametrize("corpus", ["legislation", "scholarly"])
-def test_load_gives_a_corpus_its_own_prompts_rubric_and_codebook(
+@pytest.mark.parametrize("corpus", ws.CORPORA)
+def test_load_gives_a_corpus_exactly_its_own_files_and_empty_result_folders(
     repo: Path, tmp_path: Path, corpus: str
 ) -> None:
     write_sources(repo, corpus, [entry("doc", corpus)])
@@ -141,22 +140,13 @@ def test_load_gives_a_corpus_its_own_prompts_rubric_and_codebook(
 
     ws.load(repo, workspace, "doc")
 
-    for target, source in ws.OVERLAYS[corpus].items():
-        if source is None:
-            assert not (workspace / target).exists()
-        else:
-            assert (workspace / target).read_bytes() == (repo / source).read_bytes()
-
-
-def test_load_leaves_other_corpora_on_the_article_template(repo: Path, tmp_path: Path) -> None:
-    write_sources(repo, "popular-press", [entry("a", "popular-press")])
-    workspace = tmp_path / "workspace"
-
-    ws.load(repo, workspace, "a")
-
-    assert (workspace / "RUBRIC.md").read_bytes() == (repo / "evaluations/RUBRIC.md").read_bytes()
-    assert (workspace / "prompts" / "evaluate-argument.md").is_file()
-    assert not (workspace / "CODEBOOK.md").exists()
+    for target, source in ws.WORKSPACE_FILES[corpus].items():
+        assert (workspace / target).read_bytes() == (repo / source).read_bytes()
+    for name in ws.RESULT_DIRS:
+        assert list((workspace / name).iterdir()) == []
+    prompts = {p.name for p in (workspace / "prompts").iterdir()}
+    expected = {Path(t).name for t in ws.WORKSPACE_FILES[corpus] if t.startswith("prompts/")}
+    assert prompts == expected
 
 
 def test_load_refuses_an_unknown_slug_and_creates_nothing(repo: Path, tmp_path: Path) -> None:

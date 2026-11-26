@@ -1,7 +1,8 @@
-"""Load one source into the evaluations workspace, and save its results back.
+"""Load one source into a workspace, and save its results back.
 
-The workspace is built from evaluations/ in a folder outside the repository,
-so a Codex session working there cannot read other sources' runs or judgments.
+The workspace is built from the corpus's prompts, rubric, and scores sheet in a
+folder outside the repository, so a Codex session working there cannot read
+other sources' runs or judgments.
 Beside article.pdf, load writes the PDF's text (article.txt) and an image of
 each page (pages/), so a session needs no PDF tools of its own.
 
@@ -23,14 +24,21 @@ DEFAULT_WORKSPACE = Path.home() / "sor-workspace"
 CORPORA = ("scholarly", "popular-press", "legislation")
 # The fields the prompts read from source.yaml.
 PROMPT_FIELDS = ("source_title", "source_type", "publisher", "doi")
+# The folders the sessions write into, created empty by load.
+RESULT_DIRS = ("run", "references", "judgments")
 # What save copies to outputs/<corpus>/<slug>/.
-RESULTS = ("run", "references", "judgments", "scores.md")
+RESULTS = (*RESULT_DIRS, "scores.md")
 # Written by load, read by save: which source the workspace holds.
 LOADED = "loaded.yaml"
-# Per corpus: workspace path -> repository file laid over the evaluations/
-# template (None removes the template's file). Corpora not listed use the
-# template as it is.
-OVERLAYS: dict[str, dict[str, str | None]] = {
+# Per corpus: workspace path -> the study file copied there.
+WORKSPACE_FILES: dict[str, dict[str, str]] = {
+    "popular-press": {
+        "README.md": "prompts/README.md",
+        "RUBRIC.md": "docs/RUBRIC.md",
+        "scores.md": "prompts/scores.md",
+        "prompts/close-reading.md": "prompts/close-reading.md",
+        "prompts/evaluate-argument.md": "prompts/evaluate-argument.md",
+    },
     "scholarly": {
         "README.md": "prompts/scholarly/README.md",
         "RUBRIC.md": "docs/RUBRIC_SCHOLARLY.md",
@@ -39,7 +47,6 @@ OVERLAYS: dict[str, dict[str, str | None]] = {
         "prompts/close-reading.md": "prompts/scholarly/close-reading.md",
         "prompts/discourse-analysis.md": "prompts/scholarly/discourse-analysis.md",
         "prompts/extraction.md": "prompts/scholarly/extraction.md",
-        "prompts/evaluate-argument.md": None,
     },
     "legislation": {
         "README.md": "prompts/legislation/README.md",
@@ -48,7 +55,6 @@ OVERLAYS: dict[str, dict[str, str | None]] = {
         "scores.md": "prompts/legislation/scores.md",
         "prompts/close-reading.md": "prompts/legislation/close-reading.md",
         "prompts/discourse-analysis.md": "prompts/legislation/discourse-analysis.md",
-        "prompts/evaluate-argument.md": None,
     },
 }
 # Resolution of the page images: enough to read small print and see
@@ -77,7 +83,7 @@ def find_source(data_dir: Path, slug: str) -> tuple[str, dict[str, Any]]:
 
 
 def load(repo: Path, workspace: Path, slug: str) -> None:
-    """Build the workspace from evaluations/ and put the source's PDF and details in it."""
+    """Build the workspace from the corpus's files and put the source's PDF and details in it."""
     if workspace.exists():
         raise WorkspaceError(
             f"{workspace} already exists; save it (or remove it) before loading another source"
@@ -92,12 +98,11 @@ def load(repo: Path, workspace: Path, slug: str) -> None:
         raise WorkspaceError(f"{entry['pdf']} could not be read as a PDF: {error}") from error
 
     with document:
-        shutil.copytree(repo / "evaluations", workspace)
-        for target, source in OVERLAYS.get(corpus, {}).items():
-            if source is None:
-                (workspace / target).unlink()
-            else:
-                shutil.copyfile(repo / source, workspace / target)
+        for target, source in WORKSPACE_FILES[corpus].items():
+            (workspace / target).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(repo / source, workspace / target)
+        for name in RESULT_DIRS:
+            (workspace / name).mkdir()
         shutil.copyfile(pdf, workspace / "article.pdf")
         write_text_and_pages(document, workspace)
     fields = {name: entry[name] for name in PROMPT_FIELDS}

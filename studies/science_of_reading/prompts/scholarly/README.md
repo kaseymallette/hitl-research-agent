@@ -2,8 +2,7 @@
 
 DRAFT for review. The workspace for one scholarly article: a close reading, a
 discourse analysis on the five CDA dimensions, and a judgment of each.
-`scripts/workspace.py load` builds it from `evaluations/` with the scholarly
-files in place of the template's.
+`scripts/workspace.py load` builds it from these files.
 
 ```
 README.md                    this file: the Codex prompts

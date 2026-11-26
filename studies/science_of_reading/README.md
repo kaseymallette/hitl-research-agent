@@ -105,16 +105,15 @@ commands in `RUNBOOK.md` from the repository root.
 │   ├── scholarly/        scholarly publications, with their source details
 │   ├── popular-press/    popular press
 │   └── legislation/      legislation
-├── evaluations/          the workspace template and Codex prompts; see evaluations/README.md
 ├── outputs/              saved results, per corpus and article: outputs/<corpus>/<slug>/
 ├── questions/            my mom's questions, answered from the saved analyses
-├── prompts/              the prompt originals; evaluations/prompts/ must match them
+├── prompts/              the workspace prompts: popular press here (README.md has the Codex prompts), one folder per other corpus
 │   ├── scholarly/        draft scholarly workspace: close reading, five-dimension discourse analysis, guide, scores
 │   └── legislation/      draft legislation workspace: close reading, five-dimension discourse analysis, guide, scores
 └── docs/
     ├── CODEBOOK.md       the CDA codebook for the legislation corpus: codes and coded excerpts
     ├── CODEBOOK_SCHOLARLY.md   the same codes for the scholarly corpus, without examples until the pilot
-    ├── RUBRIC.md         the rubric original; evaluations/RUBRIC.md must match it
+    ├── RUBRIC.md         the rubric for popular-press articles
     ├── RUBRIC_LEGISLATION.md   draft rubric for legislative texts
     └── RUBRIC_SCHOLARLY.md     draft rubric for scholarly articles
 ```

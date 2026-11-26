@@ -2,8 +2,7 @@
 
 DRAFT for review. The workspace for one legislative text: a close reading, a
 discourse analysis on the five CDA dimensions, and a judgment of each.
-`scripts/workspace.py load` builds it from `evaluations/` with the legislation
-files in place of the article ones.
+`scripts/workspace.py load` builds it from these files.
 
 ```
 README.md                    this file: the Codex prompts

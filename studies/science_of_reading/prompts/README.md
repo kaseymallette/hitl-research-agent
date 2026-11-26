@@ -1,30 +1,26 @@
-# Evaluations
+# Article workspace
 
 The workspace for running and judging one article's close reading and
-argument evaluation. This folder is the template: `scripts/workspace.py load`
-copies it to a folder outside the repository (`~/sor-workspace` by default), so
-no session can see other runs or judgments. The prompts below are the same for
-every article: only `article.pdf` and `source.yaml` change.
+argument evaluation, used for the popular-press corpus (scholarly and
+legislation have their own, in `prompts/scholarly/` and `prompts/legislation/`).
+`scripts/workspace.py load` builds it in a folder outside the repository
+(`~/sor-workspace` by default), so no session can see other runs or judgments.
+The prompts below are the same for every article: only `article.pdf` and
+`source.yaml` change.
 
 ```
-evaluations/
-├── README.md                this file: the Codex prompts
-├── RUBRIC.md                copy of docs/RUBRIC.md: the criteria
-├── source.yaml              the article's details, written by load from data/<corpus>/sources.yaml
-├── scores.md                the scores, filled in by prompts 3 and 5
-├── prompts/                 copies of prompts/: the instructions for the run
-│   ├── close-reading.md
-│   └── evaluate-argument.md
-├── article.pdf              the article, copied in by load
-├── article.txt              its text, marked by page, written by load
-├── pages/                   an image of each page, written by load
-├── run/                     analysis.json and run_note.md (prompt 1), argument_evaluation.md (prompt 4)
-├── references/              claims_reference.md, from prompt 2
-└── judgments/               close_reading.md (prompt 3), evaluation.md (prompt 5)
+README.md                    this file: the Codex prompts
+RUBRIC.md                    docs/RUBRIC.md: the criteria
+source.yaml                  the article's details, written by load from data/<corpus>/sources.yaml
+scores.md                    the scores, filled in by prompts 3 and 5
+prompts/                     close-reading.md and evaluate-argument.md, from prompts/
+article.pdf                  the article, copied in by load
+article.txt                  its text, marked by page, written by load
+pages/                       an image of each page, written by load
+run/                         analysis.json and run_note.md (prompt 1), argument_evaluation.md (prompt 4)
+references/                  claims_reference.md, from prompt 2
+judgments/                   close_reading.md (prompt 3), evaluation.md (prompt 5)
 ```
-
-`RUBRIC.md` and `prompts/` are copies; `tests/test_prompt_files.py` keeps them
-identical to `docs/RUBRIC.md` and `prompts/`.
 
 ## For each article
 
