@@ -107,17 +107,16 @@ commands in `RUNBOOK.md` from the repository root.
 │   └── legislation/      legislation
 ├── outputs/              saved results, per corpus and article: outputs/<corpus>/<slug>/
 ├── questions/            my mom's questions, answered from the saved analyses
-├── prompts/              the workspace prompts: popular press here (README.md has the Codex prompts), one folder per other corpus
-│   ├── scholarly/        draft scholarly workspace: close reading, five-dimension discourse analysis, guide, scores
-│   └── legislation/      draft legislation workspace: close reading, five-dimension discourse analysis, guide, scores
+├── harness/              one folder per corpus: its rubric and the prompts its Codex sessions are sent
+│   ├── scholarly/        the three questions from the article, close reading, the three questions from both; run by scripts/run_scholarly.py
+│   ├── legislation/      close reading, claims reference, discourse analysis, and their judgments; run in the workspace
+│   └── popular-press/    close reading, claims reference, argument evaluation, and their judgments; run in the workspace
+├── assets/               the harness diagrams
 └── docs/
-    ├── CODEBOOK.md       the CDA codebook for the legislation corpus: codes and coded excerpts
-    ├── CODEBOOK_SCHOLARLY.md   the same codes for the scholarly corpus, without examples until the pilot
-    ├── RUBRIC.md         the rubric for popular-press articles
-    ├── RUBRIC_LEGISLATION.md   draft rubric for legislative texts
-    └── RUBRIC_SCHOLARLY.md     draft rubric for scholarly articles
+    └── CODEBOOK.md       the CDA codebook for the legislation corpus: codes and coded excerpts
 ```
 
-`scripts/workspace.py` at the repository root loads a source into the
-workspace and saves its results here. Source PDFs stay local; only each
+`scripts/run_scholarly.py` at the repository root runs a scholarly article
+and writes its results here; `scripts/workspace.py` loads a law (or a
+popular-press article) into the workspace and saves its results here. Source PDFs stay local; only each
 corpus's `sources.yaml` is tracked.

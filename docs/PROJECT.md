@@ -27,6 +27,12 @@ works. Details are in
   document into a workspace outside the repository; each prompt runs in its own
   Codex session on GPT-6.1 Sol at medium effort; saving copies the results to
   `outputs/<corpus>/<slug>/`.
+- **Scholarly articles answer the three questions; laws get a discourse
+  analysis.** `scripts/run_scholarly.py` runs three Codex sessions per article
+  from `harness/scholarly/prompts/`, writing to `outputs/scholarly/<slug>/`:
+  the three questions answered from the article alone, the close reading, then
+  the three questions answered from the article and the close reading.
+  The legislation codebook is not used for articles.
 - **Source PDFs stay local.** Only their `sources.yaml` entries are tracked.
 - **Questions are answered from the saved analyses.** The expert's questions
   are answered from each document's close reading and discourse analysis, and

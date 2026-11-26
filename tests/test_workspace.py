@@ -123,15 +123,15 @@ def test_load_removes_zero_width_spaces_from_the_text(repo: Path, tmp_path: Path
 def test_load_refuses_a_file_that_is_not_a_pdf_and_creates_nothing(
     repo: Path, tmp_path: Path
 ) -> None:
-    write_sources(repo, "scholarly", [entry("bad", "scholarly")])
-    (repo / "data" / "scholarly" / "bad.pdf").write_bytes(b"not a pdf")
+    write_sources(repo, "legislation", [entry("bad", "legislation")])
+    (repo / "data" / "legislation" / "bad.pdf").write_bytes(b"not a pdf")
     workspace = tmp_path / "workspace"
     with pytest.raises(ws.WorkspaceError, match="could not be read as a PDF"):
         ws.load(repo, workspace, "bad")
     assert not workspace.exists()
 
 
-@pytest.mark.parametrize("corpus", ws.CORPORA)
+@pytest.mark.parametrize("corpus", sorted(ws.WORKSPACE_FILES))
 def test_load_gives_a_corpus_exactly_its_own_files_and_empty_result_folders(
     repo: Path, tmp_path: Path, corpus: str
 ) -> None:
@@ -149,6 +149,16 @@ def test_load_gives_a_corpus_exactly_its_own_files_and_empty_result_folders(
     assert prompts == expected
 
 
+def test_load_sends_a_scholarly_article_to_the_scholarly_harness_and_creates_nothing(
+    repo: Path, tmp_path: Path
+) -> None:
+    write_sources(repo, "scholarly", [entry("art", "scholarly")])
+    workspace = tmp_path / "workspace"
+    with pytest.raises(ws.WorkspaceError, match="run_scholarly.py"):
+        ws.load(repo, workspace, "art")
+    assert not workspace.exists()
+
+
 def test_load_refuses_an_unknown_slug_and_creates_nothing(repo: Path, tmp_path: Path) -> None:
     workspace = tmp_path / "workspace"
     with pytest.raises(ws.WorkspaceError, match="no source with slug"):
@@ -164,8 +174,8 @@ def test_load_refuses_a_slug_used_in_two_corpora(repo: Path, tmp_path: Path) -> 
 
 
 def test_load_refuses_a_missing_pdf_and_creates_nothing(repo: Path, tmp_path: Path) -> None:
-    write_sources(repo, "scholarly", [entry("gone", "scholarly")])
-    (repo / "data" / "scholarly" / "gone.pdf").unlink()
+    write_sources(repo, "legislation", [entry("gone", "legislation")])
+    (repo / "data" / "legislation" / "gone.pdf").unlink()
     workspace = tmp_path / "workspace"
     with pytest.raises(ws.WorkspaceError, match="not found"):
         ws.load(repo, workspace, "gone")
@@ -173,12 +183,12 @@ def test_load_refuses_a_missing_pdf_and_creates_nothing(repo: Path, tmp_path: Pa
 
 
 def test_load_leaves_an_existing_workspace_untouched(repo: Path, tmp_path: Path) -> None:
-    write_sources(repo, "scholarly", [entry("a", "scholarly"), entry("b", "scholarly")])
+    write_sources(repo, "legislation", [entry("a", "legislation"), entry("b", "legislation")])
     workspace = tmp_path / "workspace"
     ws.load(repo, workspace, "a")
     with pytest.raises(ws.WorkspaceError, match="already exists"):
         ws.load(repo, workspace, "b")
-    source_pdf = repo / "data" / "scholarly" / "a.pdf"
+    source_pdf = repo / "data" / "legislation" / "a.pdf"
     assert (workspace / "article.pdf").read_bytes() == source_pdf.read_bytes()
 
 
@@ -203,9 +213,9 @@ def test_save_copies_the_results_and_removes_the_workspace(repo: Path, tmp_path:
 
 
 def test_save_will_not_overwrite_earlier_results(repo: Path, tmp_path: Path) -> None:
-    write_sources(repo, "scholarly", [entry("a", "scholarly")])
+    write_sources(repo, "legislation", [entry("a", "legislation")])
     workspace = tmp_path / "workspace"
-    (repo / "outputs" / "scholarly" / "a").mkdir(parents=True)
+    (repo / "outputs" / "legislation" / "a").mkdir(parents=True)
     ws.load(repo, workspace, "a")
     with pytest.raises(ws.WorkspaceError, match="already exists"):
         ws.save(repo, workspace)

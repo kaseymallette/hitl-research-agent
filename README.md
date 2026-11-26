@@ -44,26 +44,37 @@ These cover legislation only. The scholarly corpus is next.
 
 ## How it works
 
-Each document runs through five Codex sessions, in order:
+Each document runs through a sequence of Codex sessions, in order, each in its own session that sees only the files that step needs. There are two harnesses, one per kind of document.
 
-1. **Close reading:** the argument step by step, with what each step claims and its support.
-2. **Claims reference:** what the document itself claims or provides.
-3. **Judgment of the close reading:** checked against the document.
+### Scholarly articles: the three questions
+
+1. **Answers from the article:** the three questions answered from the article alone, before any close reading exists.
+2. **Close reading:** reconstructs the author's argument step by step, identifying claims, supporting evidence, methods, assumptions, and limitations, without judging it.
+3. **Answers from the article and close reading:** the three questions answered again, each point traced to the close reading and checked against the article's page.
+
+![Scholarly harness: the article branches to the questions from the article and to the close reading; below the close reading, the questions from the article and the close reading.](studies/science_of_reading/assets/scholarly-flow.svg)
+
+```bash
+uv run python scripts/run_scholarly.py <slug>
+```
+
+[`scripts/run_scholarly.py`](scripts/run_scholarly.py) runs the three sessions for one article from [`data/scholarly/sources.yaml`](studies/science_of_reading/data/scholarly/sources.yaml) and writes the three files to `outputs/scholarly/<slug>/`. With no option, only the steps whose file is missing run, so a stopped run picks up where it left off; `--only 03` reruns one step. The prompts are in [`harness/scholarly/prompts/`](studies/science_of_reading/harness/scholarly/prompts/), and each session is sent its prompt file exactly as written.
+
+### Legislation: discourse analysis
+
+1. **Close reading** and 2. **claims reference** of the law, and 3. a **judgment** of the close reading.
 4. **Discourse analysis:** coded on five critical discourse analysis dimensions: lexical choices and definitional framing (LEX), presuppositions (PRE), foregrounding and silencing (FOS), subject positioning (SUB), and intertextuality (INT).
-5. **Judgment of the discourse analysis:** every observation checked against the document, and whether its code fits.
+5. **Judgment of the discourse analysis:** every observation checked against the law, and whether its code fits.
 
-The framework distinguishes what an author states from what the model infers or evaluates. Human review determines which analyses enter the research collection.
+![Legislation harness: the close reading and the claims reference feed the close reading judgment; the discourse analysis, which reads the close reading, feeds the discourse analysis judgment; both judgments go to review, to accept, revise, rerun, or reject.](studies/science_of_reading/assets/legislation-flow.svg)
 
-![Single document analysis: the close reading and the claims reference feed the close reading judgment; the discourse analysis, which reads the close reading, feeds the discourse analysis judgment; both judgments go to review, to accept, revise, rerun, or reject.](studies/science_of_reading/assets/single-document-flow.svg)
+[`scripts/workspace.py`](scripts/workspace.py) loads one law (its PDF, extracted text, and page images) into a workspace outside the repository, where the five prompts in [`harness/legislation/`](studies/science_of_reading/harness/legislation/) are run in Codex; saving copies the results to `outputs/legislation/<slug>/`. The commands are in the study's [`RUNBOOK.md`](studies/science_of_reading/RUNBOOK.md).
 
-The design choices:
+### Design choices
 
-- **Independent sessions.** [`scripts/workspace.py`](scripts/workspace.py) loads one document (its PDF, extracted text, and page images) into a workspace outside the repository, so no session sees other runs or judgments. Saving copies the results to `outputs/<corpus>/<slug>/` and clears the workspace for the next one.
-- **The prompts are the requests.** Each session gets its prompt file from [`studies/science_of_reading/prompts/`](studies/science_of_reading/prompts/) exactly as written.
-- **The researcher decides.** The judgments are recorded, and the expert accepts or revises; nothing is withheld because an analysis is weak.
-- **Why Codex.** Blind head-to-head A/B tests chose GPT-6.1 Sol at medium effort, reading the PDF, run through Codex ([details](https://github.com/kaseymallette/hitl-research-agent/blob/b887401/studies/water/README.md#the-ab-experiments)). It beat a costlier model and extracted text, and Codex runs within the ChatGPT plan.
-
-The commands for each run are in the study's [`RUNBOOK.md`](studies/science_of_reading/RUNBOOK.md).
+- **The researcher decides.** The framework distinguishes what an author states from what the model infers or evaluates. The judgments are recorded, and the expert accepts, revises, reruns, or rejects; nothing is withheld because an analysis is weak.
+- **Only a technical failure stops a run:** Codex exiting with an error or timing out, a step's file not written, or a close reading that isn't valid JSON.
+- **Why Codex.** Blind head-to-head A/B tests chose GPT-6.1 Sol at medium effort, reading the PDF, run through Codex ([details](https://github.com/kaseymallette/hitl-research-agent/blob/b887401/studies/water/README.md#the-ab-experiments)). It beat a costlier model and extracted text, and Codex runs within the ChatGPT plan, with no API key.
 
 ## Development approach and lessons
 
@@ -103,7 +114,8 @@ Decisions and open questions are in [`docs/PROJECT.md`](docs/PROJECT.md).
 ├── studies/
 │   └── science_of_reading/        the study: corpora, codebook, prompts, results, and answered questions
 ├── scripts/
-│   └── workspace.py               load a document into the Codex workspace, save its results
+│   ├── run_scholarly.py           the scholarly harness: three Codex sessions per article
+│   └── workspace.py               legislation: load a law into the Codex workspace, save its results
 ├── src/hitl_research_agent/       the data models for a source's provenance
 └── tests/
 ```

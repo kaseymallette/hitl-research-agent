@@ -2,7 +2,7 @@
 
 The workspace for running and judging one article's close reading and
 argument evaluation, used for the popular-press corpus (scholarly and
-legislation have their own, in `prompts/scholarly/` and `prompts/legislation/`).
+legislation have their own, in `harness/scholarly/` and `harness/legislation/`).
 `scripts/workspace.py load` builds it in a folder outside the repository
 (`~/sor-workspace` by default), so no session can see other runs or judgments.
 The prompts below are the same for every article: only `article.pdf` and
@@ -10,10 +10,10 @@ The prompts below are the same for every article: only `article.pdf` and
 
 ```
 README.md                    this file: the Codex prompts
-RUBRIC.md                    docs/RUBRIC.md: the criteria
+RUBRIC.md                    harness/popular-press/RUBRIC.md: the criteria
 source.yaml                  the article's details, written by load from data/<corpus>/sources.yaml
 scores.md                    the scores, filled in by prompts 3 and 5
-prompts/                     close-reading.md and evaluate-argument.md, from prompts/
+prompts/                     close-reading.md and evaluate-argument.md, from harness/popular-press/prompts/
 article.pdf                  the article, copied in by load
 article.txt                  its text, marked by page, written by load
 pages/                       an image of each page, written by load

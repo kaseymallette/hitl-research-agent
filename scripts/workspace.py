@@ -1,8 +1,8 @@
-"""Load one source into a workspace, and save its results back.
+"""Load one law or popular-press article into a workspace, and save its results back.
 
-The workspace is built from the corpus's prompts, rubric, and scores sheet in a
-folder outside the repository, so a Codex session working there cannot read
-other sources' runs or judgments.
+The workspace is built from the corpus's harness/<corpus>/ files in a folder
+outside the repository, so a Codex session working there cannot read other
+sources' runs or judgments. Scholarly articles run with scripts/run_scholarly.py.
 Beside article.pdf, load writes the PDF's text (article.txt) and an image of
 each page (pages/), so a session needs no PDF tools of its own.
 
@@ -30,31 +30,22 @@ RESULT_DIRS = ("run", "references", "judgments")
 RESULTS = (*RESULT_DIRS, "scores.md")
 # Written by load, read by save: which source the workspace holds.
 LOADED = "loaded.yaml"
-# Per corpus: workspace path -> the study file copied there.
+# Per corpus with a workspace: workspace path -> the study file copied there.
 WORKSPACE_FILES: dict[str, dict[str, str]] = {
     "popular-press": {
-        "README.md": "prompts/README.md",
-        "RUBRIC.md": "docs/RUBRIC.md",
-        "scores.md": "prompts/scores.md",
-        "prompts/close-reading.md": "prompts/close-reading.md",
-        "prompts/evaluate-argument.md": "prompts/evaluate-argument.md",
-    },
-    "scholarly": {
-        "README.md": "prompts/scholarly/README.md",
-        "RUBRIC.md": "docs/RUBRIC_SCHOLARLY.md",
-        "CODEBOOK.md": "docs/CODEBOOK_SCHOLARLY.md",
-        "scores.md": "prompts/scholarly/scores.md",
-        "prompts/close-reading.md": "prompts/scholarly/close-reading.md",
-        "prompts/discourse-analysis.md": "prompts/scholarly/discourse-analysis.md",
-        "prompts/extraction.md": "prompts/scholarly/extraction.md",
+        "README.md": "harness/popular-press/README.md",
+        "RUBRIC.md": "harness/popular-press/RUBRIC.md",
+        "scores.md": "harness/popular-press/scores.md",
+        "prompts/close-reading.md": "harness/popular-press/prompts/close-reading.md",
+        "prompts/evaluate-argument.md": "harness/popular-press/prompts/evaluate-argument.md",
     },
     "legislation": {
-        "README.md": "prompts/legislation/README.md",
-        "RUBRIC.md": "docs/RUBRIC_LEGISLATION.md",
+        "README.md": "harness/legislation/README.md",
+        "RUBRIC.md": "harness/legislation/RUBRIC.md",
         "CODEBOOK.md": "docs/CODEBOOK.md",
-        "scores.md": "prompts/legislation/scores.md",
-        "prompts/close-reading.md": "prompts/legislation/close-reading.md",
-        "prompts/discourse-analysis.md": "prompts/legislation/discourse-analysis.md",
+        "scores.md": "harness/legislation/scores.md",
+        "prompts/close-reading.md": "harness/legislation/prompts/close-reading.md",
+        "prompts/discourse-analysis.md": "harness/legislation/prompts/discourse-analysis.md",
     },
 }
 # Resolution of the page images: enough to read small print and see
@@ -89,6 +80,8 @@ def load(repo: Path, workspace: Path, slug: str) -> None:
             f"{workspace} already exists; save it (or remove it) before loading another source"
         )
     corpus, entry = find_source(repo / "data", slug)
+    if corpus not in WORKSPACE_FILES:
+        raise WorkspaceError(f"{slug} is a {corpus} source; run it with scripts/run_scholarly.py")
     pdf = repo / entry["pdf"]
     if not pdf.is_file():
         raise WorkspaceError(f"{entry['pdf']} not found")

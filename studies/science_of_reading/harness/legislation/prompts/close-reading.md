@@ -2,7 +2,7 @@
 
 DRAFT for review. Use these instructions to write the close reading of one
 legislative text: an enacted statute, a bill, a state board rule, or an
-executive order. They adapt `prompts/close-reading.md` to legislation and
+executive order. They adapt `harness/popular-press/prompts/close-reading.md` to legislation and
 keep its output format, so the reading has the same shape as a reading of an
 article.
 

@@ -1,34 +1,27 @@
-# Close reading of a scholarly article — instructions for an agent run
+# Close reading — instructions for an agent run
 
-DRAFT for review. Use these instructions to write the close reading of one
-scholarly article in the workspace. The prompt below is
-`prompts/close-reading.md`'s, with two lines changed: the PDF is in the
-workspace with its text and page images, and the separate reading that
-follows is the discourse analysis rather than an evaluation of the argument.
+Use these instructions to write the close reading of one article, the second
+call of the scholarly harness. `scripts/run_scholarly.py` runs them in a
+folder of their own.
 
 ## What you're given
 
-- **The article:** `article.pdf` in the workspace, with its extracted text in
-  `article.txt` (marked by page) and an image of each page in `pages/`. You
-  don't need PDF tools of your own. Figures, tables, and equations printed as
-  images appear only in the page images.
-- **Its source details:** `source.yaml` in the workspace. Use its
-  `source_title` and `source_type` in the header below.
-- **Where to write:** `run/` in the workspace.
+- **The article:** `article.pdf`.
+- **Its source details:** `source.yaml`. Use its `source_title` and
+  `source_type` in the header below.
 
 ## What to write
 
-1. **`analysis.json`** in `run/`: only the JSON described at the end of the
+1. **`02_close_reading.json`**: only the JSON described at the end of the
    prompt below, with nothing before or after it.
-2. **`run_note.md`** in `run/`, with a section headed `## Close reading`
-   saying, in a few sentences:
+2. **Your final message**, saying in a few sentences:
    - **how you read the PDF** — for example, whether you viewed its pages as
      images, extracted its text with a tool (name it), or both, and whether
      you could see its figures, tables, and equations as they appear on the
      page;
    - the model and reasoning effort you ran at, if you know them.
 
-Open only `article.pdf`, `article.txt`, `pages/`, and `source.yaml`.
+Open only the files named here.
 
 ## The prompt
 
@@ -38,7 +31,7 @@ Treat everything below as the instructions for the reading itself.
 Source title: <source_title>
 Source type: <source_type>
 
-The complete original PDF of this source is in the workspace, with its extracted text and an image of each page. There are no preparation annotations in this input.
+The complete original PDF of this source is attached. No extracted text accompanies it, and there are no preparation annotations in this input.
 
 Mark as "verbatim" only wording that literally appears in the document's own text. Content you read from a figure, chart, diagram, or an equation rendered as an image is not quotable text: record it as "paraphrased", and name the element it came from in the text itself, for example "Figure 2 shows…" or "Table 1 lists…". Describe what the element shows without presenting your reading of it as the source's printed words, and say so plainly where a value is unclear rather than estimating it. Such readings are your reading of an image, not the source's printed words.
 
@@ -48,7 +41,7 @@ You are reading a single source document. You aren't told what research question
 
 We'd like you to take a close reading journey through this document with us. Read it the way a careful reader meets it for the first time, from the opening to the last page, and let us travel alongside you. At each point on the way, you know where you've been and where you are now. Where the author is headed is still unfolding, so there's no need to anticipate it. Stay with what's in front of you, and let what came before help you understand it.
 
-This is a close reading, not a verdict. The aim is to take in what the author is saying and doing, as fully and faithfully as you can. Reading how the author says it comes later, in a separate reading, so you're free to simply follow along and pay attention.
+This is a close reading, not a verdict. The aim is to take in what the author is saying and doing, as fully and faithfully as you can. Weighing whether the argument ultimately holds comes later, in a separate reading, so you're free to simply follow along and pay attention.
 
 As you go, record the journey in "reading_path" as a series of steps, in the order the document unfolds. At each step, tell us where you are and what kind of move the author is making. Using the language of argument helps here. Is the author stating a premise, or introducing evidence for a claim? Defining a term, giving an example, reporting a figure? Drawing an inference, or deducing something from what came earlier? Is an assumption at work, stated or left unspoken, or a value judgment? Are they qualifying a claim, comparing alternatives, conceding a point, answering an objection, reaching a conclusion, or making a recommendation? Restating something, or turning to a new line of discussion? If the framing reveals a perspective or a bias, notice it. A single step can hold more than one move.
 
