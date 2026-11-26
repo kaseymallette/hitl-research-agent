@@ -47,3 +47,9 @@ studies/water/outputs/index/
 
 # Literacy pilot: the articles stay local (likely publisher-copyrighted)
 studies/literacy_pilot/data/*.pdf
+# Its prepared text, indexes, and judging sheet contain the articles' text
+studies/literacy_pilot/outputs/preparation/
+studies/literacy_pilot/outputs/index/
+studies/literacy_pilot/outputs/judging/sheet.csv
+studies/literacy_pilot/outputs/archive/*/judging/sheet.*
+studies/literacy_pilot/outputs/judging/sheet.md

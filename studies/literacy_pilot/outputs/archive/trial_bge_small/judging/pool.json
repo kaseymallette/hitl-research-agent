@@ -1,0 +1,3312 @@
+{
+  "built_at": "2026-11-26T00:05:16+00:00",
+  "depth": 10,
+  "seed": 1,
+  "approaches": {
+    "rag": "source_text",
+    "structured": "analyses"
+  },
+  "pieces": 300,
+  "pool": [
+    {
+      "code": "E01-01",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-000",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.708684
+        }
+      }
+    },
+    {
+      "code": "E01-02",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#060",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.696425
+        }
+      }
+    },
+    {
+      "code": "E01-03",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-023",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.693517
+        }
+      }
+    },
+    {
+      "code": "E01-04",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-030",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.685887
+        }
+      }
+    },
+    {
+      "code": "E01-05",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#039",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.673605
+        }
+      }
+    },
+    {
+      "code": "E01-06",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#000",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.741548
+        }
+      }
+    },
+    {
+      "code": "E01-07",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-003",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.694878
+        }
+      }
+    },
+    {
+      "code": "E01-08",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#018",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.729365
+        }
+      }
+    },
+    {
+      "code": "E01-09",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-012",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.700531
+        }
+      }
+    },
+    {
+      "code": "E01-10",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#024",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.694482
+        }
+      }
+    },
+    {
+      "code": "E01-11",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-000",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.719737
+        }
+      }
+    },
+    {
+      "code": "E01-12",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-011",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.701352
+        }
+      }
+    },
+    {
+      "code": "E01-13",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-000",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.70111
+        }
+      }
+    },
+    {
+      "code": "E01-14",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-011",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.704093
+        }
+      }
+    },
+    {
+      "code": "E01-15",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#022",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.692413
+        }
+      }
+    },
+    {
+      "code": "E01-16",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#019",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.718888
+        }
+      }
+    },
+    {
+      "code": "E01-17",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#085",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.679243
+        }
+      }
+    },
+    {
+      "code": "E01-18",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#021",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.720882
+        }
+      }
+    },
+    {
+      "code": "E01-19",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-012",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.691622
+        }
+      }
+    },
+    {
+      "code": "E01-20",
+      "question_id": "E01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#001",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.716259
+        }
+      }
+    },
+    {
+      "code": "E02-01",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#001",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.670985
+        }
+      }
+    },
+    {
+      "code": "E02-02",
+      "question_id": "E02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#076",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.683921
+        }
+      }
+    },
+    {
+      "code": "E02-03",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-020",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.694488
+        }
+      }
+    },
+    {
+      "code": "E02-04",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#009",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.690399
+        }
+      }
+    },
+    {
+      "code": "E02-05",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#040",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.656494
+        }
+      }
+    },
+    {
+      "code": "E02-06",
+      "question_id": "E02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#002",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.668678
+        }
+      }
+    },
+    {
+      "code": "E02-07",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#04-001",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.67618
+        }
+      }
+    },
+    {
+      "code": "E02-08",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#01-006",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.679172
+        }
+      }
+    },
+    {
+      "code": "E02-09",
+      "question_id": "E02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#077",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.666512
+        }
+      }
+    },
+    {
+      "code": "E02-10",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-016",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.691523
+        }
+      }
+    },
+    {
+      "code": "E02-11",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-015",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.675755
+        }
+      }
+    },
+    {
+      "code": "E02-12",
+      "question_id": "E02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-055",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.680056
+        }
+      }
+    },
+    {
+      "code": "E02-13",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#01-004",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.680971
+        }
+      }
+    },
+    {
+      "code": "E02-14",
+      "question_id": "E02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-027",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.67479
+        }
+      }
+    },
+    {
+      "code": "E02-15",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#005",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.708105
+        }
+      }
+    },
+    {
+      "code": "E02-16",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-027",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.713551
+        }
+      }
+    },
+    {
+      "code": "E02-17",
+      "question_id": "E02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#019",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.674314
+        }
+      }
+    },
+    {
+      "code": "E02-18",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#004",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.665275
+        }
+      }
+    },
+    {
+      "code": "E02-19",
+      "question_id": "E02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#047",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.661271
+        }
+      }
+    },
+    {
+      "code": "E02-20",
+      "question_id": "E02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-012",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.680674
+        }
+      }
+    },
+    {
+      "code": "E03-01",
+      "question_id": "E03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#046",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.675942
+        }
+      }
+    },
+    {
+      "code": "E03-02",
+      "question_id": "E03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#039",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.660694
+        }
+      }
+    },
+    {
+      "code": "E03-03",
+      "question_id": "E03",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-018",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.672101
+        }
+      }
+    },
+    {
+      "code": "E03-04",
+      "question_id": "E03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-001",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.665673
+        }
+      }
+    },
+    {
+      "code": "E03-05",
+      "question_id": "E03",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#01-010",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.674321
+        }
+      }
+    },
+    {
+      "code": "E03-06",
+      "question_id": "E03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-019",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.698792
+        }
+      }
+    },
+    {
+      "code": "E03-07",
+      "question_id": "E03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#003",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.66748
+        }
+      }
+    },
+    {
+      "code": "E03-08",
+      "question_id": "E03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#037",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.678069
+        }
+      }
+    },
+    {
+      "code": "E03-09",
+      "question_id": "E03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#050",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.6833
+        }
+      }
+    },
+    {
+      "code": "E03-10",
+      "question_id": "E03",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#044",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.660704
+        }
+      }
+    },
+    {
+      "code": "E03-11",
+      "question_id": "E03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#019",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.666757
+        }
+      }
+    },
+    {
+      "code": "E03-12",
+      "question_id": "E03",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#008",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.687476
+        }
+      }
+    },
+    {
+      "code": "E03-13",
+      "question_id": "E03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#055",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.67369
+        }
+      }
+    },
+    {
+      "code": "E03-14",
+      "question_id": "E03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#02-011",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.672063
+        }
+      }
+    },
+    {
+      "code": "E03-15",
+      "question_id": "E03",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-019",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.684798
+        }
+      }
+    },
+    {
+      "code": "E03-16",
+      "question_id": "E03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-011",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.670712
+        }
+      }
+    },
+    {
+      "code": "E03-17",
+      "question_id": "E03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#02-003",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.668857
+        }
+      }
+    },
+    {
+      "code": "E03-18",
+      "question_id": "E03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-017",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.691569
+        }
+      }
+    },
+    {
+      "code": "E03-19",
+      "question_id": "E03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#001",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.66239
+        }
+      }
+    },
+    {
+      "code": "E03-20",
+      "question_id": "E03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-027",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.669168
+        }
+      }
+    },
+    {
+      "code": "E04-01",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-039",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.763441
+        }
+      }
+    },
+    {
+      "code": "E04-02",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-010",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.760173
+        }
+      }
+    },
+    {
+      "code": "E04-03",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#011",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.748902
+        }
+      }
+    },
+    {
+      "code": "E04-04",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-003",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.749877
+        }
+      }
+    },
+    {
+      "code": "E04-05",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#040",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.744983
+        }
+      }
+    },
+    {
+      "code": "E04-06",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#009",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.729198
+        }
+      }
+    },
+    {
+      "code": "E04-07",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#001",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.779967
+        }
+      }
+    },
+    {
+      "code": "E04-08",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#04-000",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.758735
+        }
+      }
+    },
+    {
+      "code": "E04-09",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#019",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.817798
+        }
+      }
+    },
+    {
+      "code": "E04-10",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#01-000",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.735537
+        }
+      }
+    },
+    {
+      "code": "E04-11",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#01-017",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.737393
+        }
+      }
+    },
+    {
+      "code": "E04-12",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#028",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.720421
+        }
+      }
+    },
+    {
+      "code": "E04-13",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#037",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.720757
+        }
+      }
+    },
+    {
+      "code": "E04-14",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-000",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.745505
+        }
+      }
+    },
+    {
+      "code": "E04-15",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#000",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.730802
+        }
+      }
+    },
+    {
+      "code": "E04-16",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#030",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.715892
+        }
+      }
+    },
+    {
+      "code": "E04-17",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#042",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.727551
+        }
+      }
+    },
+    {
+      "code": "E04-18",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#01-013",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.730669
+        }
+      }
+    },
+    {
+      "code": "E04-19",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-040",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.758431
+        }
+      }
+    },
+    {
+      "code": "E04-20",
+      "question_id": "E04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-050",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.740279
+        }
+      }
+    },
+    {
+      "code": "E05-01",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#036",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.722328
+        }
+      }
+    },
+    {
+      "code": "E05-02",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-012",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.723657
+        }
+      }
+    },
+    {
+      "code": "E05-03",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-036",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.743451
+        }
+      }
+    },
+    {
+      "code": "E05-04",
+      "question_id": "E05",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#003",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.698232
+        }
+      }
+    },
+    {
+      "code": "E05-05",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#019",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.722853
+        }
+      }
+    },
+    {
+      "code": "E05-06",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#024",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.745775
+        }
+      }
+    },
+    {
+      "code": "E05-07",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-000",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.730318
+        }
+      }
+    },
+    {
+      "code": "E05-08",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#043",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.704971
+        }
+      }
+    },
+    {
+      "code": "E05-09",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#031",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.718097
+        }
+      }
+    },
+    {
+      "code": "E05-10",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#000",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.709937
+        }
+      }
+    },
+    {
+      "code": "E05-11",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-013",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.738507
+        }
+      }
+    },
+    {
+      "code": "E05-12",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-000",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.728438
+        }
+      }
+    },
+    {
+      "code": "E05-13",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#001",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.736619
+        }
+      }
+    },
+    {
+      "code": "E05-14",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#039",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.70311
+        }
+      }
+    },
+    {
+      "code": "E05-15",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-029",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.748758
+        }
+      }
+    },
+    {
+      "code": "E05-16",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-038",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.736845
+        }
+      }
+    },
+    {
+      "code": "E05-17",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#018",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.736456
+        }
+      }
+    },
+    {
+      "code": "E05-18",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-044",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.722646
+        }
+      }
+    },
+    {
+      "code": "E05-19",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-010",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.725385
+        }
+      }
+    },
+    {
+      "code": "E05-20",
+      "question_id": "E05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-017",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.743461
+        }
+      }
+    },
+    {
+      "code": "C01-01",
+      "question_id": "C01",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#01-005",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.701469
+        }
+      }
+    },
+    {
+      "code": "C01-02",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#04-007",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.704323
+        }
+      }
+    },
+    {
+      "code": "C01-03",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#042",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.695353
+        }
+      }
+    },
+    {
+      "code": "C01-04",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#04-005",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.751445
+        }
+      }
+    },
+    {
+      "code": "C01-05",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#006",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.694269
+        }
+      }
+    },
+    {
+      "code": "C01-06",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#031",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.683133
+        }
+      }
+    },
+    {
+      "code": "C01-07",
+      "question_id": "C01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#071",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.663227
+        }
+      }
+    },
+    {
+      "code": "C01-08",
+      "question_id": "C01",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#02-014",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.699759
+        }
+      }
+    },
+    {
+      "code": "C01-09",
+      "question_id": "C01",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#04-009",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.731396
+        }
+      }
+    },
+    {
+      "code": "C01-10",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#030",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.67741
+        }
+      }
+    },
+    {
+      "code": "C01-11",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#04-002",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.707777
+        }
+      }
+    },
+    {
+      "code": "C01-12",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#04-010",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.704803
+        }
+      }
+    },
+    {
+      "code": "C01-13",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#044",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.667177
+        }
+      }
+    },
+    {
+      "code": "C01-14",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#041",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.687811
+        }
+      }
+    },
+    {
+      "code": "C01-15",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-055",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.724065
+        }
+      }
+    },
+    {
+      "code": "C01-16",
+      "question_id": "C01",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#008",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.708524
+        }
+      }
+    },
+    {
+      "code": "C01-17",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#033",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.675594
+        }
+      }
+    },
+    {
+      "code": "C01-18",
+      "question_id": "C01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#04-011",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.703276
+        }
+      }
+    },
+    {
+      "code": "C01-19",
+      "question_id": "C01",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#04-007",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.699167
+        }
+      }
+    },
+    {
+      "code": "C01-20",
+      "question_id": "C01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#070",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.681357
+        }
+      }
+    },
+    {
+      "code": "C02-01",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-012",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.746424
+        }
+      }
+    },
+    {
+      "code": "C02-02",
+      "question_id": "C02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#006",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.791513
+        }
+      }
+    },
+    {
+      "code": "C02-03",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-002",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.77312
+        }
+      }
+    },
+    {
+      "code": "C02-04",
+      "question_id": "C02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#01-025",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.78481
+        }
+      }
+    },
+    {
+      "code": "C02-05",
+      "question_id": "C02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#04-009",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.745717
+        }
+      }
+    },
+    {
+      "code": "C02-06",
+      "question_id": "C02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#044",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.786537
+        }
+      }
+    },
+    {
+      "code": "C02-07",
+      "question_id": "C02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-064",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.813609
+        }
+      }
+    },
+    {
+      "code": "C02-08",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-055",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.756084
+        }
+      }
+    },
+    {
+      "code": "C02-09",
+      "question_id": "C02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#009",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.784174
+        }
+      }
+    },
+    {
+      "code": "C02-10",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#009",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.750936
+        }
+      }
+    },
+    {
+      "code": "C02-11",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#059",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.743179
+        }
+      }
+    },
+    {
+      "code": "C02-12",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#077",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.761646
+        }
+      }
+    },
+    {
+      "code": "C02-13",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#017",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.752713
+        }
+      }
+    },
+    {
+      "code": "C02-14",
+      "question_id": "C02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#043",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.830085
+        }
+      }
+    },
+    {
+      "code": "C02-15",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-011",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.754733
+        }
+      }
+    },
+    {
+      "code": "C02-16",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#078",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.757796
+        }
+      }
+    },
+    {
+      "code": "C02-17",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-023",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.745929
+        }
+      }
+    },
+    {
+      "code": "C02-18",
+      "question_id": "C02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#046",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.770054
+        }
+      }
+    },
+    {
+      "code": "C02-19",
+      "question_id": "C02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-028",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.752645
+        }
+      }
+    },
+    {
+      "code": "C02-20",
+      "question_id": "C02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#04-001",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.773572
+        }
+      }
+    },
+    {
+      "code": "C03-01",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#059",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.737964
+        }
+      }
+    },
+    {
+      "code": "C03-02",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-011",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.752366
+        }
+      }
+    },
+    {
+      "code": "C03-03",
+      "question_id": "C03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#04-002",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.736339
+        }
+      }
+    },
+    {
+      "code": "C03-04",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-045",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.738331
+        }
+      }
+    },
+    {
+      "code": "C03-05",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#073",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.732935
+        }
+      }
+    },
+    {
+      "code": "C03-06",
+      "question_id": "C03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#002",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.713876
+        }
+      }
+    },
+    {
+      "code": "C03-07",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#076",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.728794
+        }
+      }
+    },
+    {
+      "code": "C03-08",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-019",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.744203
+        }
+      }
+    },
+    {
+      "code": "C03-09",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-023",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.731225
+        }
+      }
+    },
+    {
+      "code": "C03-10",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-047",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.73502
+        }
+      }
+    },
+    {
+      "code": "C03-11",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#019",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.732505
+        }
+      }
+    },
+    {
+      "code": "C03-12",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#004",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.716544
+        }
+      }
+    },
+    {
+      "code": "C03-13",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-024",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.742396
+        }
+      }
+    },
+    {
+      "code": "C03-14",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#060",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.747169
+        }
+      }
+    },
+    {
+      "code": "C03-15",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-002",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.740425
+        }
+      }
+    },
+    {
+      "code": "C03-16",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-000",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.736833
+        }
+      }
+    },
+    {
+      "code": "C03-17",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#072",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.728848
+        }
+      }
+    },
+    {
+      "code": "C03-18",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#007",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.717169
+        }
+      }
+    },
+    {
+      "code": "C03-19",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#005",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.765602
+        }
+      }
+    },
+    {
+      "code": "C03-20",
+      "question_id": "C03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-010",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.738522
+        }
+      }
+    },
+    {
+      "code": "C04-01",
+      "question_id": "C04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#044",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.732526
+        }
+      }
+    },
+    {
+      "code": "C04-02",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#003",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.774124
+        }
+      }
+    },
+    {
+      "code": "C04-03",
+      "question_id": "C04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-019",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.759424
+        }
+      }
+    },
+    {
+      "code": "C04-04",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#005",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.734274
+        }
+      }
+    },
+    {
+      "code": "C04-05",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#04-002",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.755612
+        }
+      }
+    },
+    {
+      "code": "C04-06",
+      "question_id": "C04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-010",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.753405
+        }
+      }
+    },
+    {
+      "code": "C04-07",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#01-004",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.745217
+        }
+      }
+    },
+    {
+      "code": "C04-08",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#01-001",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.77593
+        }
+      }
+    },
+    {
+      "code": "C04-09",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#02-050",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.753567
+        }
+      }
+    },
+    {
+      "code": "C04-10",
+      "question_id": "C04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-064",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.767262
+        }
+      }
+    },
+    {
+      "code": "C04-11",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#01-002",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.741128
+        }
+      }
+    },
+    {
+      "code": "C04-12",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#055",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.75186
+        }
+      }
+    },
+    {
+      "code": "C04-13",
+      "question_id": "C04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-003",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.760816
+        }
+      }
+    },
+    {
+      "code": "C04-14",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#002",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.762815
+        }
+      }
+    },
+    {
+      "code": "C04-15",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#006",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.767668
+        }
+      }
+    },
+    {
+      "code": "C04-16",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#016",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.726122
+        }
+      }
+    },
+    {
+      "code": "C04-17",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#02-008",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.771985
+        }
+      }
+    },
+    {
+      "code": "C04-18",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#051",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.739748
+        }
+      }
+    },
+    {
+      "code": "C04-19",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#004",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.760969
+        }
+      }
+    },
+    {
+      "code": "C04-20",
+      "question_id": "C04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#044",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.728682
+        }
+      }
+    },
+    {
+      "code": "C05-01",
+      "question_id": "C05",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#006",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.700031
+        }
+      }
+    },
+    {
+      "code": "C05-02",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-002",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.708937
+        }
+      }
+    },
+    {
+      "code": "C05-03",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-026",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.713968
+        }
+      }
+    },
+    {
+      "code": "C05-04",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#003",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.693679
+        }
+      }
+    },
+    {
+      "code": "C05-05",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-005",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.728277
+        }
+      }
+    },
+    {
+      "code": "C05-06",
+      "question_id": "C05",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#01-003",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.706015
+        }
+      }
+    },
+    {
+      "code": "C05-07",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#018",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.689036
+        }
+      }
+    },
+    {
+      "code": "C05-08",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#019",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.690154
+        }
+      }
+    },
+    {
+      "code": "C05-09",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-024",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.721443
+        }
+      }
+    },
+    {
+      "code": "C05-10",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#082",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.687794
+        }
+      }
+    },
+    {
+      "code": "C05-11",
+      "question_id": "C05",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-075",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.722064
+        }
+      }
+    },
+    {
+      "code": "C05-12",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#073",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.703535
+        }
+      }
+    },
+    {
+      "code": "C05-13",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#013",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.694593
+        }
+      }
+    },
+    {
+      "code": "C05-14",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#060",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.696641
+        }
+      }
+    },
+    {
+      "code": "C05-15",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-051",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.710104
+        }
+      }
+    },
+    {
+      "code": "C05-16",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-007",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.722413
+        }
+      }
+    },
+    {
+      "code": "C05-17",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-013",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.733096
+        }
+      }
+    },
+    {
+      "code": "C05-18",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-001",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.726211
+        }
+      }
+    },
+    {
+      "code": "C05-19",
+      "question_id": "C05",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#003",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.686055
+        }
+      }
+    },
+    {
+      "code": "C05-20",
+      "question_id": "C05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#028",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.734335
+        }
+      }
+    },
+    {
+      "code": "S01-01",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#019",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.727827
+        }
+      }
+    },
+    {
+      "code": "S01-02",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-053",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.741185
+        }
+      }
+    },
+    {
+      "code": "S01-03",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#077",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.732694
+        }
+      }
+    },
+    {
+      "code": "S01-04",
+      "question_id": "S01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#005",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.750672
+        }
+      }
+    },
+    {
+      "code": "S01-05",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#085",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.74068
+        }
+      }
+    },
+    {
+      "code": "S01-06",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-006",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.74181
+        }
+      }
+    },
+    {
+      "code": "S01-07",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-007",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.753348
+        }
+      }
+    },
+    {
+      "code": "S01-08",
+      "question_id": "S01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#009",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.76014
+        }
+      }
+    },
+    {
+      "code": "S01-09",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-021",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.75028
+        }
+      }
+    },
+    {
+      "code": "S01-10",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#028",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.730256
+        }
+      }
+    },
+    {
+      "code": "S01-11",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-051",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.742284
+        }
+      }
+    },
+    {
+      "code": "S01-12",
+      "question_id": "S01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-020",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.769999
+        }
+      }
+    },
+    {
+      "code": "S01-13",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#076",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.745078
+        }
+      }
+    },
+    {
+      "code": "S01-14",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-055",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.74567
+        }
+      }
+    },
+    {
+      "code": "S01-15",
+      "question_id": "S01",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#004",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.729845
+        }
+      }
+    },
+    {
+      "code": "S01-16",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-003",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.747002
+        }
+      }
+    },
+    {
+      "code": "S01-17",
+      "question_id": "S01",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-008",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.744534
+        }
+      }
+    },
+    {
+      "code": "S01-18",
+      "question_id": "S01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-016",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.746091
+        }
+      }
+    },
+    {
+      "code": "S01-19",
+      "question_id": "S01",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#006",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.738966
+        }
+      }
+    },
+    {
+      "code": "S01-20",
+      "question_id": "S01",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#044",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.753185
+        }
+      }
+    },
+    {
+      "code": "S02-01",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#028",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.748831
+        }
+      }
+    },
+    {
+      "code": "S02-02",
+      "question_id": "S02",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#016",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.762945
+        }
+      }
+    },
+    {
+      "code": "S02-03",
+      "question_id": "S02",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#02-012",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.737032
+        }
+      }
+    },
+    {
+      "code": "S02-04",
+      "question_id": "S02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#044",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.75405
+        }
+      }
+    },
+    {
+      "code": "S02-05",
+      "question_id": "S02",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#002",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.750607
+        }
+      }
+    },
+    {
+      "code": "S02-06",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#059",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.780223
+        }
+      }
+    },
+    {
+      "code": "S02-07",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-011",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.756076
+        }
+      }
+    },
+    {
+      "code": "S02-08",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-042",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.781036
+        }
+      }
+    },
+    {
+      "code": "S02-09",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-019",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.740831
+        }
+      }
+    },
+    {
+      "code": "S02-10",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#009",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.768527
+        }
+      }
+    },
+    {
+      "code": "S02-11",
+      "question_id": "S02",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#01-001",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.758476
+        }
+      }
+    },
+    {
+      "code": "S02-12",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-010",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.75105
+        }
+      }
+    },
+    {
+      "code": "S02-13",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-002",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.752923
+        }
+      }
+    },
+    {
+      "code": "S02-14",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-004",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.748208
+        }
+      }
+    },
+    {
+      "code": "S02-15",
+      "question_id": "S02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-020",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.739018
+        }
+      }
+    },
+    {
+      "code": "S02-16",
+      "question_id": "S02",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#02-050",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.736075
+        }
+      }
+    },
+    {
+      "code": "S02-17",
+      "question_id": "S02",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#009",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.751144
+        }
+      }
+    },
+    {
+      "code": "S02-18",
+      "question_id": "S02",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#006",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.756718
+        }
+      }
+    },
+    {
+      "code": "S02-19",
+      "question_id": "S02",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#004",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.745998
+        }
+      }
+    },
+    {
+      "code": "S02-20",
+      "question_id": "S02",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#078",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.770036
+        }
+      }
+    },
+    {
+      "code": "S03-01",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-003",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.726995
+        }
+      }
+    },
+    {
+      "code": "S03-02",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-000",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.737427
+        }
+      }
+    },
+    {
+      "code": "S03-03",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#019",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.72455
+        }
+      }
+    },
+    {
+      "code": "S03-04",
+      "question_id": "S03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#006",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.725245
+        }
+      }
+    },
+    {
+      "code": "S03-05",
+      "question_id": "S03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#002",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.711454
+        }
+      }
+    },
+    {
+      "code": "S03-06",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#085",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.736346
+        }
+      }
+    },
+    {
+      "code": "S03-07",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#083",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.711576
+        }
+      }
+    },
+    {
+      "code": "S03-08",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-000",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.759629
+        }
+      }
+    },
+    {
+      "code": "S03-09",
+      "question_id": "S03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#04-000",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.70218
+        }
+      }
+    },
+    {
+      "code": "S03-10",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#005",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.708467
+        }
+      }
+    },
+    {
+      "code": "S03-11",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-011",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.71775
+        }
+      }
+    },
+    {
+      "code": "S03-12",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-021",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.713534
+        }
+      }
+    },
+    {
+      "code": "S03-13",
+      "question_id": "S03",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#01-003",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.705347
+        }
+      }
+    },
+    {
+      "code": "S03-14",
+      "question_id": "S03",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#044",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.724922
+        }
+      }
+    },
+    {
+      "code": "S03-15",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#060",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.7155
+        }
+      }
+    },
+    {
+      "code": "S03-16",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#000",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.732497
+        }
+      }
+    },
+    {
+      "code": "S03-17",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-025",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.713014
+        }
+      }
+    },
+    {
+      "code": "S03-18",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#076",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.721528
+        }
+      }
+    },
+    {
+      "code": "S03-19",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-000",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.713783
+        }
+      }
+    },
+    {
+      "code": "S03-20",
+      "question_id": "S03",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-010",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.7033
+        }
+      }
+    },
+    {
+      "code": "S04-01",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#001",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.72579
+        }
+      }
+    },
+    {
+      "code": "S04-02",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#028",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.732878
+        }
+      }
+    },
+    {
+      "code": "S04-03",
+      "question_id": "S04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#004",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.716515
+        }
+      }
+    },
+    {
+      "code": "S04-04",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#018",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.717046
+        }
+      }
+    },
+    {
+      "code": "S04-05",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-011",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.733419
+        }
+      }
+    },
+    {
+      "code": "S04-06",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-021",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.753321
+        }
+      }
+    },
+    {
+      "code": "S04-07",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-022",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.728486
+        }
+      }
+    },
+    {
+      "code": "S04-08",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-029",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.739436
+        }
+      }
+    },
+    {
+      "code": "S04-09",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#041",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.72144
+        }
+      }
+    },
+    {
+      "code": "S04-10",
+      "question_id": "S04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#01-001",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.729032
+        }
+      }
+    },
+    {
+      "code": "S04-11",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-038",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.738291
+        }
+      }
+    },
+    {
+      "code": "S04-12",
+      "question_id": "S04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-064",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.729097
+        }
+      }
+    },
+    {
+      "code": "S04-13",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#019",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.722843
+        }
+      }
+    },
+    {
+      "code": "S04-14",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#077",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.725839
+        }
+      }
+    },
+    {
+      "code": "S04-15",
+      "question_id": "S04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#006",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.731509
+        }
+      }
+    },
+    {
+      "code": "S04-16",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-019",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.72801
+        }
+      }
+    },
+    {
+      "code": "S04-17",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#017",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.71345
+        }
+      }
+    },
+    {
+      "code": "S04-18",
+      "question_id": "S04",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-075",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.747156
+        }
+      }
+    },
+    {
+      "code": "S04-19",
+      "question_id": "S04",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-013",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.758947
+        }
+      }
+    },
+    {
+      "code": "S04-20",
+      "question_id": "S04",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#003",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.733009
+        }
+      }
+    },
+    {
+      "code": "S05-01",
+      "question_id": "S05",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#02-057",
+      "runs": {
+        "structured": {
+          "rank": 4,
+          "score": 0.74683
+        }
+      }
+    },
+    {
+      "code": "S05-02",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-011",
+      "runs": {
+        "structured": {
+          "rank": 7,
+          "score": 0.732152
+        }
+      }
+    },
+    {
+      "code": "S05-03",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-026",
+      "runs": {
+        "structured": {
+          "rank": 3,
+          "score": 0.757931
+        }
+      }
+    },
+    {
+      "code": "S05-04",
+      "question_id": "S05",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#055",
+      "runs": {
+        "rag": {
+          "rank": 6,
+          "score": 0.720273
+        }
+      }
+    },
+    {
+      "code": "S05-05",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#018",
+      "runs": {
+        "rag": {
+          "rank": 5,
+          "score": 0.720473
+        }
+      }
+    },
+    {
+      "code": "S05-06",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#028",
+      "runs": {
+        "rag": {
+          "rank": 7,
+          "score": 0.719413
+        }
+      }
+    },
+    {
+      "code": "S05-07",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#017",
+      "runs": {
+        "rag": {
+          "rank": 10,
+          "score": 0.712606
+        }
+      }
+    },
+    {
+      "code": "S05-08",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#019",
+      "runs": {
+        "rag": {
+          "rank": 4,
+          "score": 0.724316
+        }
+      }
+    },
+    {
+      "code": "S05-09",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#000",
+      "runs": {
+        "rag": {
+          "rank": 9,
+          "score": 0.716627
+        }
+      }
+    },
+    {
+      "code": "S05-10",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#02-053",
+      "runs": {
+        "structured": {
+          "rank": 1,
+          "score": 0.778179
+        }
+      }
+    },
+    {
+      "code": "S05-11",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-000",
+      "runs": {
+        "structured": {
+          "rank": 5,
+          "score": 0.735181
+        }
+      }
+    },
+    {
+      "code": "S05-12",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#01-012",
+      "runs": {
+        "structured": {
+          "rank": 9,
+          "score": 0.730925
+        }
+      }
+    },
+    {
+      "code": "S05-13",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#076",
+      "runs": {
+        "rag": {
+          "rank": 2,
+          "score": 0.743335
+        }
+      }
+    },
+    {
+      "code": "S05-14",
+      "question_id": "S05",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#044",
+      "runs": {
+        "rag": {
+          "rank": 1,
+          "score": 0.756441
+        }
+      }
+    },
+    {
+      "code": "S05-15",
+      "question_id": "S05",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-075",
+      "runs": {
+        "structured": {
+          "rank": 2,
+          "score": 0.758594
+        }
+      }
+    },
+    {
+      "code": "S05-16",
+      "question_id": "S05",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#009",
+      "runs": {
+        "rag": {
+          "rank": 3,
+          "score": 0.730677
+        }
+      }
+    },
+    {
+      "code": "S05-17",
+      "question_id": "S05",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#006",
+      "runs": {
+        "rag": {
+          "rank": 8,
+          "score": 0.716678
+        }
+      }
+    },
+    {
+      "code": "S05-18",
+      "question_id": "S05",
+      "id": "mallette_et_al_2005_what_matters_most_middle_level_educators#04-001",
+      "runs": {
+        "structured": {
+          "rank": 10,
+          "score": 0.73023
+        }
+      }
+    },
+    {
+      "code": "S05-19",
+      "question_id": "S05",
+      "id": "mallette_et_al_2009_summer_literacy_program_at_risk_adolescents#02-077",
+      "runs": {
+        "structured": {
+          "rank": 6,
+          "score": 0.733024
+        }
+      }
+    },
+    {
+      "code": "S05-20",
+      "question_id": "S05",
+      "id": "mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers#02-008",
+      "runs": {
+        "structured": {
+          "rank": 8,
+          "score": 0.730993
+        }
+      }
+    }
+  ]
+}

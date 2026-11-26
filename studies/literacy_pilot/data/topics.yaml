@@ -1,0 +1,103 @@
+# The pilot's 15 questions (TREC topics), approved by the expert with their
+# relevance criteria. The pilot README shows the same table.
+topics:
+- id: E01
+  kind: explicit
+  question: What criteria were used to select the middle schools participating in the survey of accomplished
+    educators?
+  relevant: Passages stating the criteria or process used to choose the participating middle schools or
+    the accomplished educators surveyed.
+  not_relevant: Descriptions of the schools or educators that don't say why they were chosen, and the
+    survey's findings.
+- id: E02
+  kind: explicit
+  question: What assessment instruments were used to develop individualized literacy intervention plans
+    for adolescents?
+  relevant: Passages naming or describing the assessments used to build each adolescent's intervention
+    plan, and how the results shaped the plan.
+  not_relevant: General discussion of literacy assessment, or of the intervention itself, that names no
+    instrument used in the study.
+- id: E03
+  kind: explicit
+  question: What responsibilities did the preservice teachers undertake in their roles as teacher-researchers?
+  relevant: 'Passages describing what the preservice teachers did as teacher-researchers: teaching, assessing,
+    collecting data, reflecting, or reporting.'
+  not_relevant: Discussion of teacher preparation in general, or of the preservice teachers' beliefs,
+    that doesn't say what they were responsible for.
+- id: E04
+  kind: explicit
+  question: What data sources were collected during the academic year following the summer literacy intervention?
+  relevant: Passages identifying the data gathered during the following academic year, such as interviews,
+    observations, assessments, or school records.
+  not_relevant: Data collected during the summer program itself, and results that don't say where the
+    data came from.
+- id: E05
+  kind: explicit
+  question: How were the quantitative and qualitative survey responses analyzed in the study of middle-level
+    educators?
+  relevant: 'Passages describing the analysis of the survey''s quantitative or qualitative responses:
+    statistics used, coding procedures, themes, or how the two were combined.'
+  not_relevant: The survey's findings without the method, and the analysis methods of the other studies.
+- id: C01
+  kind: conceptual
+  question: How does the belief that effort determines academic success obscure structural inequities?
+  relevant: Passages explaining how attributing success to effort hides or excuses inequities of race,
+    class, gender, language, or schooling, including examples from participants.
+  not_relevant: Passages that mention effort or motivation without connecting them to inequity.
+- id: C02
+  kind: conceptual
+  question: How do interpersonal relationships influence adolescents' engagement with literacy learning?
+  relevant: Passages on how relationships with teachers, peers, tutors, or family affect adolescents'
+    motivation, participation, or growth in literacy.
+  not_relevant: Discussion of engagement or of relationships alone, without the link between them.
+- id: C03
+  kind: conceptual
+  question: To what extent do educators privilege conventional literacy practices over broader forms of
+    communication?
+  relevant: Passages showing or arguing that educators favor print-based, school-sanctioned reading and
+    writing over other forms, such as digital, visual, oral, multimodal, or home literacies.
+  not_relevant: Descriptions of literacy practices that don't compare how educators value them.
+- id: C04
+  kind: conceptual
+  question: How do researchers' theoretical perspectives shape their interpretations of teacher knowledge?
+  relevant: Passages stating a study's theoretical framework (for example, critical theory) and how it
+    frames what the researchers see in teachers' knowledge.
+  not_relevant: Findings about teacher knowledge with no reference to the lens used to interpret them.
+- id: C05
+  kind: conceptual
+  question: How does the separation of academic disciplines constrain opportunities for literacy development?
+  relevant: Passages arguing or showing that dividing schooling into separate subjects limits literacy
+    learning, such as literacy confined to English class or little cross-disciplinary reading and writing.
+  not_relevant: Discussion of content-area literacy that doesn't address the effects of the separation.
+- id: S01
+  kind: synthesis
+  question: What evidence challenges an exclusively skills-based conceptualization of literacy learning?
+  relevant: Findings or arguments showing that literacy learning depends on more than decoding and discrete
+    skills, such as identity, relationships, culture, motivation, or meaning-making.
+  not_relevant: Descriptions of skills instruction that don't challenge the skills-only view.
+- id: S02
+  kind: synthesis
+  question: How do social and cultural contexts shape understandings of literacy?
+  relevant: Passages showing how race, class, gender, community, culture, or school context shape what
+    counts as literacy, or how teachers and students understand it.
+  not_relevant: Mentions of context, such as describing a study's setting, that say nothing about its
+    effect on understanding.
+- id: S03
+  kind: synthesis
+  question: What tensions exist between contemporary literacy scholarship and educators' beliefs or practices?
+  relevant: Passages showing gaps or conflicts between what current scholarship recommends and what educators
+    believe or do.
+  not_relevant: Statements of scholarship, or of educators' views, alone, without the contrast.
+- id: S04
+  kind: synthesis
+  question: How do researchers integrate different analytical approaches to develop more comprehensive
+    understandings of literacy?
+  relevant: Passages describing studies that combine methods or lenses (quantitative and qualitative,
+    or several theoretical frameworks) and what the combination reveals.
+  not_relevant: Descriptions of a single method that don't address combining approaches.
+- id: S05
+  kind: synthesis
+  question: What implications do the studies have for the preparation of literacy educators?
+  relevant: Passages drawing conclusions or recommendations for teacher education, professional development,
+    or how literacy educators are prepared.
+  not_relevant: Findings about current teachers or students that aren't connected to preparation.

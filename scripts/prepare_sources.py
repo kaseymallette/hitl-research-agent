@@ -2,8 +2,11 @@
 
 One process for every PDF (no per-source code, no tool switching):
 
-    python scripts/prepare_sources.py prepare --slug SLUG
-    python scripts/prepare_sources.py page    --slug SLUG --page N
+    python scripts/prepare_sources.py prepare --slug SLUG [--study water]
+    python scripts/prepare_sources.py page    --slug SLUG --page N [--study water]
+
+The manifest, PDFs, and output are the study's (``studies/<study>/``; ``water`` by
+default, or ``literacy_pilot``) unless ``--manifest`` or ``--output-root`` says otherwise.
 
 What it does:
 
@@ -50,9 +53,9 @@ from hitl_research_agent.inputs import (
 )
 from hitl_research_agent.models import SourceType
 
-STUDY = Path(__file__).resolve().parents[1] / "studies" / "water"
-DEFAULT_MANIFEST = STUDY / "data" / "sources.yaml"
-DEFAULT_OUTPUT_ROOT = STUDY / "outputs" / "preparation"
+STUDIES_ROOT = Path(__file__).resolve().parents[1] / "studies"
+STUDIES = ("water", "literacy_pilot")
+STUDY = STUDIES_ROOT / "water"  # PDF paths in the manifest are relative to it
 
 PARSER_NAME = "pymupdf4llm"
 PARSER_VERSION = pymupdf4llm.__version__ if hasattr(pymupdf4llm, "__version__") else "unknown"
@@ -220,6 +223,7 @@ class Extraction:
     printed_labels: dict[int, str | None]
     pages_without_text: list[int]
     reading_order_changes: list[dict[str, Any]] = field(default_factory=list)
+    pages_from_text_layer: list[int] = field(default_factory=list)
 
 
 def _parse_chunks(pdf: Path) -> tuple[pymupdf.Document, list[dict[str, Any]]]:
@@ -392,11 +396,34 @@ def _has_multilevel_header(markdown: str) -> bool:
     return sum(1 for c in cells if not c) >= 2 or any("<br>" in c for c in cells)
 
 
+def _has_invisible_text(page: pymupdf.Page) -> bool:
+    """Text drawn invisibly (render mode 3), as a scan's OCR layer is."""
+    return any(span["type"] == 3 for span in page.get_texttrace())
+
+
+def _text_layer_blocks(page: pymupdf.Page) -> list[tuple[str, str, dict[str, Any]]]:
+    """A page the parser returns nothing for because its text is invisible (a scan with
+    an OCR layer): the layer's text blocks, in reading order, as plain text. Recorded
+    as ``pages_from_text_layer``."""
+    return [
+        ("text", " ".join(body.split()), {"class": "text", "bbox": [x0, y0, x1, y1]})
+        for x0, y0, x1, y1, body, _no, block_type in page.get_text("blocks", sort=True)
+        if block_type == 0 and body.strip()
+    ]
+
+
 def extract_pdf(pdf: Path, image_dir: Path) -> Extraction:
     """Extract blocks in corrected reading order, and name what cannot be represented."""
     doc, chunks = _parse_chunks(pdf)
     heights = [doc[i].rect.height for i in range(len(doc))]
     per_page = [_classify_blocks(c, i + 1) for i, c in enumerate(chunks)]
+    from_text_layer = [
+        page_no
+        for page_no, parts in enumerate(per_page, start=1)
+        if not parts and _has_invisible_text(doc[page_no - 1])
+    ]
+    for page_no in from_text_layer:
+        per_page[page_no - 1] = _text_layer_blocks(doc[page_no - 1])
     recurring = _recurring_margin_lines(per_page, heights)
 
     blocks: list[Block] = []
@@ -477,6 +504,7 @@ def extract_pdf(pdf: Path, image_dir: Path) -> Extraction:
         printed_labels=_printed_labels(doc),
         pages_without_text=[n for n in range(1, len(doc) + 1) if not doc[n - 1].get_text().strip()],
         reading_order_changes=reading_order_changes,
+        pages_from_text_layer=from_text_layer,
     )
 
 
@@ -721,6 +749,7 @@ def prepare_source(
         "hyphenation_notes": prepared.hyphen_notes,
         "annotations": prepared.annotations,
         "pages_without_text_layer_ocr_off": extraction.pages_without_text,
+        "pages_from_text_layer": extraction.pages_from_text_layer,
         "preparation_limits": PREPARATION_LIMITS,
         "retained_images": sorted(p.name for p in (out / "images").glob("*.png")),
     }
@@ -733,6 +762,7 @@ def prepare_source(
         "annotations": len(prepared.annotations),
         "reading_order_changes": len(extraction.reading_order_changes),
         "pages_without_text_layer": extraction.pages_without_text,
+        "pages_from_text_layer": extraction.pages_from_text_layer,
         "elapsed_seconds": round(elapsed, 2),
         "directory": str(out),
     }
@@ -761,22 +791,27 @@ def main(argv: list[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="command", required=True)
     for name in ("prepare", "page"):
         p = sub.add_parser(name)
-        p.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
-        p.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
+        p.add_argument("--study", choices=STUDIES, default="water")
+        p.add_argument("--manifest", type=Path)
+        p.add_argument("--output-root", type=Path)
         p.add_argument("--slug", required=True)
         if name == "page":
             p.add_argument("--page", type=int, required=True, help="PDF page number to render")
     args = parser.parse_args(argv)
 
-    entries = {e.slug: e for e in load_manifest(args.manifest)}
+    global STUDY
+    STUDY = STUDIES_ROOT / args.study
+    manifest = args.manifest or STUDY / "data" / "sources.yaml"
+    output_root = args.output_root or STUDY / "outputs" / "preparation"
+    entries = {e.slug: e for e in load_manifest(manifest)}
     if args.slug not in entries:
         print(f"unknown slug {args.slug!r}", file=sys.stderr)
         return 2
     if args.command == "page":
-        print(render_page(entries[args.slug], args.output_root, args.page))
+        print(render_page(entries[args.slug], output_root, args.page))
         return 0
     summary = prepare_source(
-        entries[args.slug], args.output_root, max_characters=Settings().max_source_characters
+        entries[args.slug], output_root, max_characters=Settings().max_source_characters
     )
     print(json.dumps(summary, indent=2))
     if not summary["within_size_limit"]:

@@ -1,0 +1,1112 @@
+{
+  "reading_plan": "Source title: A Critical Analysis of Two Preservice Teachers' Knowledge of Struggling Readers: Raced, Classed, and Gendered? Source type: peer_reviewed_paper. The PDF consists of a publisher cover and a 13-page journal article (printed pp. 222-234). A first visual survey shows single-column scholarly prose, an abstract, theory, methods and assignment descriptions, two narrative cases with inset participant quotations, conclusions, implications, and references. It is moderately dense, becoming particularly dense in its critical-theory passages; there are no figures, tables, or equations. I will follow the printed order, mostly in stretches of about 200-400 words, slowing for theoretical distinctions and shifts within cases, with shorter steps at distinct examples or document boundaries. The abstract will be read as an opening announcement; later restatements will be noted as moves, with new detail recorded as it appears. Locations identify both PDF and printed pages.",
+  "reading_path": [
+    {
+      "location": "PDF p. 1, publisher cover; PDF p. 2 / printed p. 222, title and abstract",
+      "moves": "The publisher cover provides bibliographic metadata. The title poses a question about raced, classed, and gendered knowledge. The abstract announces a critical reanalysis, reports its broad finding, and recommends attention to formative discourse, before the body supplies its cases.",
+      "claims": [
+        {
+          "text": "The cover identifies the article as published in Reading Research and Instruction, 39:3, 222-234, in 2000, DOI 10.1080/19388070009558323; it gives 28 January 2010 as the online publication date.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "This analysis explored how preservice teachers' development of knowledge about struggling readers was located in their white, middle-class identities.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The abstract reports that a critical analysis of previously collected data on two preservice teachers examined acceptance, resistance, and negotiation of hegemonic ideologies and found differential mediation of knowledge through their cultured identities.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The abstract recommends probing more deeply into prospective teachers' formative discourse as one way of addressing the subjective nature of their knowledge.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The opening declares the article's critical perspective and concern with the cultural location of knowledge. The abstract is an initial announcement; the body will now establish the inquiry on its own terms."
+    },
+    {
+      "location": "PDF pp. 2-3 / printed pp. 222-223, original inquiry and dissatisfaction with its interpretation",
+      "moves": "The authors narrate the inquiry's origin, describe an earlier interpretive study and its findings, and qualify their initial satisfaction. They introduce the premise that literacy knowledge is subjective and situated in identity.",
+      "claims": [
+        {
+          "text": "The earlier inquiry used symbolic interactionism within an interpretive paradigm to understand participants' construction of a meaningful social world.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors identify their previous inquiry into how preservice teachers constructed knowledge about struggling readers.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Mallette, Kile, Smith, McKinney, & Readence, in press)",
+                  "reference_entry": "Mallette, M. H., Kile, R. S., Smith, M. M., McKinney, M., & Readence, J. E. (in press). Constructing meaning about literacy difficulties: Preservice teachers beginning to think about pedagogy. Teaching and Teacher Education."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Six participants were studied qualitatively over one semester in a reading methods course focused on reading difficulties; each acted as teacher-researcher with one struggling reader, observing, writing field notes, administering multiple literacy assessments, and producing a case study.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Participants began with personal stances about reading difficulties, apparent across their data sources, and used interactions with the children to confirm, question, or refute these stances.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors report these patterns from the original analysis of the data participants collected about the children.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The first findings prompted reconsideration of reading methods teaching but seemed shallow: interpretivism masked participants' construction of subjective literacy knowledge rooted in their raced, classed, and gendered identities.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Donmoyer is quoted as maintaining that all knowledge, whether ordinary folk knowledge or research knowledge, is subjective and reflects the knower's conceptions and metaphors.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Donmoyer (1996)",
+                  "reference_entry": "Donmoyer, R. (1996). The concept of a knowledge base. In F. B. Murray (Ed.), The teacher educator's handbook (pp. 92-119). San Francisco: Jossey-Bass."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The shift toward critical analysis arises from a stated limitation of the earlier lens. Experience-based meaning remains part of the account, but the authors now ask how cultural identity underlies its construction."
+    },
+    {
+      "location": "PDF p. 3 / printed p. 223, teacher education, Whiteness, and the paper's purpose",
+      "moves": "The authors state an educational necessity, characterize common beliefs and omissions among white preservice teachers, and delimit the present inquiry. They justify adding a critical lens to existing data.",
+      "claims": [
+        {
+          "text": "In teacher education, it is essential to consider the subjective nature of literacy knowledge when developing ways to best prepare teachers for working with students from diverse backgrounds.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "White preservice teachers often believe racism has nothing to do with them because they do not personally feel prejudiced.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Sleeter is cited for this characterization.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Sleeter, 1995)",
+                  "reference_entry": "Sleeter, C. E. (1995). Reflections on my use of multicultural and critical pedagogy when students are White. In C. E. Sleeter & P. McLaren (Eds.), Multicultural education, critical pedagogy, and the politics of difference (pp. 415-437). Albany: SUNY Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "White preservice teachers often ignore Whiteness and its embedding in an ideology that enables white people to maintain control and power.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Lawrence is cited for this ideological construct.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lawrence, 1997)",
+                  "reference_entry": "Lawrence, S. M. (1997). Beyond race awareness: White racial identity and multicultural teaching. Journal of Teacher Education, 48, 108-117."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The paper analyzes two representative but contrasting cases through a critical paradigm to explore how literacy knowledge development was located in white, middle-class identities.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "One theoretical lens offers only one perspective, whereas an additional lens affords another layer of interpretation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors invoke McCarthey to establish the limitation of a single theoretical lens.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "McCarthey (1998)",
+                  "reference_entry": "McCarthey, S. J. (1998). Constructing multiple subjectivities in classroom literacy contexts. Research in the Teaching of English, 32, 126-160."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The methodological dissatisfaction becomes a teacher education problem concerning diverse pupils. Whiteness is explicitly treated as an often-unexamined position of power, locating the authors' perspective before its theoretical elaboration."
+    },
+    {
+      "location": "PDF pp. 3-4 / printed pp. 223-224, A White Middle-Class Ideology of Reading",
+      "moves": "The authors define ideology through hegemony, identify meritocracy and dominant reading practices as relevant ideologies, assert structural inequality, and formulate their research question. They present meritocracy as false consciousness, not tentatively as a possible illusion.",
+      "claims": [
+        {
+          "text": "From a critical perspective, ideologies involve hegemonic relations in which dominant-group norms become reified over time and promote false consciousness; they also encompass acceptance, negotiation, and resistance of these norms.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Giroux provides the conception used as the analysis's foundation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Giroux, 1981)",
+                  "reference_entry": "Giroux, H. A. (1981). Ideology, culture, and the process of schooling. Philadelphia: Temple University Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Meritocracy is the idea that all children can succeed with hard work and perseverance, but it is merely an ideology: schools lack neutrality and therefore cannot enact it.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Schools do not provide an equal playing field for all students.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite three works for unequal schooling.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Anyon, 1981; Kozol, 1991; Oakes, 1985)",
+                  "reference_entry": "Anyon, J. (1981). Social class and school knowledge. Curriculum Inquiry, 11, 3-42."
+                },
+                {
+                  "citation_text": "(Anyon, 1981; Kozol, 1991; Oakes, 1985)",
+                  "reference_entry": "Kozol, J. (1991). Savage inequalities: Children in America's schools. New York: HarperCollins."
+                },
+                {
+                  "citation_text": "(Anyon, 1981; Kozol, 1991; Oakes, 1985)",
+                  "reference_entry": "Oakes. J. (1985). Keeping track: How schools structure inequality. New Haven, CT: Yale University Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors assert that this false consciousness drives education and was therefore essential to their study.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Reading instruction remains a commodity of the white middle-class; historically only the rich had opportunities to learn to read, and the idea that every child has a right to become literate is also an ideology.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Reading instruction reflects the dominant group so thoroughly that it is difficult to determine whether schools influence middle-class home reading practices or those homes influence school reading events.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Street is cited for this difficulty in determining the relationship.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Street (1995)",
+                  "reference_entry": "Street, B. V. (1995). Social literacies: Critical approaches to literacy in development, ethnography, and education. London: Longman."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Research consistently suggests that children from middle-class homes are more successful with reading instruction than children from lower socioeconomic backgrounds.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite research on literacy in homes and communities.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Heath, 1983; Taylor, 1997)",
+                  "reference_entry": "Heath, S. B. (1983). Ways with words: Language, life, and work in communities and classrooms. Cambridge, England: Cambridge University Press."
+                },
+                {
+                  "citation_text": "(Heath, 1983; Taylor, 1997)",
+                  "reference_entry": "Taylor, D. (1997). Preamble. In D. Taylor (Ed.), Many families, many literacies (pp. 1-5). Portsmouth, NH: Heinemann."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The section provides the norms through which the cases will be interpreted. The closing question asks how the two participants' meanings of reading difficulties reflect acceptance, negotiation, or resistance of these hegemonic ideologies, directly using the definition just introduced."
+    },
+    {
+      "location": "PDF p. 4 / printed p. 224, Method—Design, through immanent critique",
+      "moves": "The authors qualify their study's methodological status, distinguish retrospective analysis from critical research, identify Frankfurt School theory, and define immanent critique. They explain how this theory prompts a second reading of their data.",
+      "claims": [
+        {
+          "text": "The paper is a critical analysis informed by the critical paradigm, but does not constitute critical research.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The analysis occurred after the fact; the participants' original teacher-research focused on understanding reading difficulties, not race, class, and gender.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Critical research is action-oriented and requires reciprocity between researchers and researched.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Lather is cited for these requirements.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lather, 1986)",
+                  "reference_entry": "Lather, P. (1986). Research as praxis. Harvard Educational Review, 56, 257-277."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Patterns of identity issues during rereading compelled the authors to position participants as raced, classed, and gendered individuals.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The theory informing the analysis is neo-Marxist theory as framed by Horkheimer, Adorno, and Marcuse of the Frankfurt School.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Held is offered as a review of that tradition.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(see Held, 1980, for a review)",
+                  "reference_entry": "Held, D. (1980). Introduction to critical theory. Berkeley: University of California Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The social world contains contradictions between what is and what appears to be; critical theorists seek to uncover them through immanent critique, meaning criticism from within.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Giroux is quoted on penetrating objective appearances to expose concealed social relations.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Giroux (1983)",
+                  "reference_entry": "Giroux, H. A. (1983). Theory and resistance in education: A pedagogy for the opposition. South Hadley, MA: Bergin & Garvey."
+                }
+              ]
+            },
+            {
+              "text": "A quotation attributed to Horkheimer describes confronting the historically existent with its conceptual principles to criticize and transcend the relation between them.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Horkheimer, as cited in Held, 1980, p. 183)",
+                  "reference_entry": "Held, D. (1980). Introduction to critical theory. Berkeley: University of California Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors apply immanent critique by moving from the first study's description of participants' meanings to examining how their thoughts and ideas were situated in cultured identities.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The authors explicitly limit their claim to a retrospective critical analysis rather than reciprocal action research. The theoretical exposition explains why an account of participants' meanings can become an appearance to be examined for underlying social relations."
+    },
+    {
+      "location": "PDF pp. 4-5 / printed pp. 224-225, Method—Design, subject and object",
+      "moves": "The authors turn to a second theoretical concept, explain society as subject-object, and apply this dialectical relation to the preservice teachers' meanings. They resist reducing either subjective activity or social structure to the other.",
+      "claims": [
+        {
+          "text": "Society is a subject because people create it and an object because of its underlying structure; subject and object are related yet independent, and reducing one to the other displays a false identity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The article quotes Held's account of Adorno on society as subject-object, followed by the authors' explanation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Held, 1980, p. 217, emphasis in original)",
+                  "reference_entry": "Held, D. (1980). Introduction to critical theory. Berkeley: University of California Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Political, social, and cultural aspects crystallized over time shape reality, and through enacting these realities participants give their world meaning.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The meanings preservice teachers assigned to reading difficulties existed in a dialectical relationship between their constructions and the socio-historical structure in which they existed.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Guba and Lincoln are cited for this account.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Guba & Lincoln, 1994)",
+                  "reference_entry": "Guba, E. G., & Lincoln, Y. S. (1994). Competing paradigms in qualitative research. In N. K. Denzin & Y. S. Lincoln (Eds.), Handbook of qualitative research (pp. 105-117). Thousand Oaks, CA: Sage."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This builds on immanent critique by specifying the relation the authors seek. Participants actively construct meaning, while historically crystallized structures shape their realities; the authors place both within the same explanation."
+    },
+    {
+      "location": "PDF pp. 5-6 / printed pp. 225-226, The Two Cases",
+      "moves": "The authors justify purposive selection, describe the cohort and its schools, and introduce the participants through their ages, racial and class identities, prior experiences, and attitudes toward teacher education.",
+      "claims": [
+        {
+          "text": "Kaley and Gayle were purposively selected from six cases because they contrasted in the positioning of race, class, and gender in knowledge construction; the authors place them at opposite ends of a continuum, with the other four cases between them.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Both were preservice elementary teachers in a diagnosis and correction of reading difficulties course at an urban Southwestern university, in a cohort together for two consecutive semesters, spending one semester at each of two practicum schools.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The schools had markedly dissimilar cultures but both served diverse students considered at-risk by the district: Heather was a mathematics and technology magnet, while Medford used multi-age classes and the Accelerated Schools Project.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The project is identified through its cited volume.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Finnan, St. John, McCarthy, & Slovacek, 1996)",
+                  "reference_entry": "Finnan, C., St. John, E. P., McCarthy, J., & Slovacek, S. P. (Eds.). (1996). Accelerated schools in action: Lessons from the field. Thousand Oaks, CA: Sage."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Kaley was white, middle-class, and in her early twenties. She appeared especially resistant to teacher education expectations, and uncertainty over assignments often left her questioning coursework's value.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Gayle was white, middle-class, and in her late forties. After raising her children she chose education, was committed to the cohort, and was a resource for peers. She felt preschool teaching and motherhood gave her comfort around children, though not necessarily confidence.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The discussion turns from theoretical relations to the people and settings being interpreted. Shared racial and class positioning is held alongside contrasts in life stage, experience, and receptiveness to coursework."
+    },
+    {
+      "location": "PDF p. 6 / printed p. 226, Data Sources—Field Notes and Case Study",
+      "moves": "The authors describe how written evidence was generated, including training, instructor feedback, peer sharing, and a requirement that case-study assertions have data behind them. These are methodological descriptions rather than findings about the children.",
+      "claims": [
+        {
+          "text": "The critical analysis used four kinds of written course assignments.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Participants were required to take field notes for 30 minutes each week, after reading a chapter explaining field-note methods and practicing with a video.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The chapter is identified as part of Bogdan and Biklen's Qualitative research for education: An introduction to theory and methods (1992).",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Bogdan and Biklen",
+                  "reference_entry": "Bogdan, R. C., & Biklen, S. K. (1992). Qualitative research for education: An introduction to theory and methods (2nd ed.). Boston: Allyn and Bacon."
+                },
+                {
+                  "citation_text": "(1992)",
+                  "reference_entry": "Bogdan, R. C., & Biklen, S. K. (1992). Qualitative research for education: An introduction to theory and methods (2nd ed.). Boston: Allyn and Bacon."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The first author was also the course instructor; she periodically provided feedback and asked participants to make assertions about observations, and class time allowed sharing field notes with peers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The end-of-course case study had two directions: write a narrative about what had been learned about a struggling reader and support every assertion with data. Available evidence included field notes, assessments, student work samples, and other information from direct work with the child.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The written record emerges within an instructional setting. Later evidence will include assertions produced with feedback and assignment requirements, a context the authors make visible here."
+    },
+    {
+      "location": "PDF pp. 6-7 / printed pp. 226-227, Reflective Writing, Group Lesson Plan, and Data Analysis",
+      "moves": "The authors finish describing the assignments, then explain how a theme noticed in the original results led to an a priori coding system. The account moves from participants' tasks to the researchers' retrospective procedure.",
+      "claims": [
+        {
+          "text": "Beginning reflections addressed how children learn to read, what reading difficulties are, and why children have them. A midsemester reflection revisited reading difficulties through experience with the focal child; participants also wrote initial course goals and reflected on their achievement on the final day.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The final group lesson plan returned attention from one child to classroom instruction. Participants grouped by children's grade levels planned a lesson addressing needs and building on strengths, then taught it to a small practicum group including their focal children.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors saw acceptance, resistance, and negotiation of ideologies in participants' assertions while rereading the original results, and began immanent critique after discovering this theme.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "They applied an a priori or analytic coding system to each data source to seek indices of constructions situated in what they identified as a white middle-class ideology of reading and reading difficulties.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Bogdan and Biklen are cited for the coding system.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Bogdan & Biklen, 1992)",
+                  "reference_entry": "Bogdan, R. C., & Biklen, S. K. (1992). Qualitative research for education: An introduction to theory and methods (2nd ed.). Boston: Allyn and Bacon."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The method now operationalizes the theoretical concern through coding for a declared ideological category. The assignments supply repeated opportunities to state beliefs, reconsider experience, and implement instructional choices."
+    },
+    {
+      "location": "PDF p. 7 / printed p. 227, Results and Discussion; Kaley's initial beliefs and household description",
+      "moves": "The authors announce the interpretive result, introduce pseudonyms and the first child, and use Kaley's opening assignment and household description as evidence of assumptions about parental responsibility and normal family life.",
+      "claims": [
+        {
+          "text": "The authors report that critical analysis positioned participants as raced, classed, and gendered individuals and showed how that positioning formed a basis for knowledge of reading difficulties. All participant and student names are pseudonyms.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Kaley worked in a Heather third-grade classroom, selecting with her cooperating teacher an eight-year-old African American girl called Moesha, who lived near the school.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Kaley's expectations appeared rooted in white middle-class ideology: she believed parental support was key to Moesha's success, with the form of support grounded in her own identity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Her first-day assignment said children learn to read very young from their parents, attributed difficulties to insufficient early parental involvement, and maintained that showing children reading matters would definitely reduce difficulties.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "To the authors' knowledge, Kaley had not been exposed to research showing that parental responsibility for learning to read is rooted in specific cultural ideologies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Heath is offered as an example of such research.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(e.g., Heath, 1983)",
+                  "reference_entry": "Heath, S. B. (1983). Ways with words: Language, life, and work in communities and classrooms. Cambridge, England: Cambridge University Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Kaley imposed her white middle-class thinking on what counted as normal living arrangements.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "She described Moesha living with mother, father, stepfather, grandmother, and little brother; initially she considered this potentially awkward, then saw four adults available to help with schoolwork. She was saddened when Moesha said no one in her family read to her.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The theoretical category acquires concrete content in Kaley's statements. Her beliefs about parental reading practices and her response to a household become, in the authors' interpretation, culturally situated educational and personal judgments."
+    },
+    {
+      "location": "PDF p. 8 / printed p. 228, Kaley's parental-involvement lesson component",
+      "moves": "The authors trace continuity from conviction into an instructional intervention, report its intended coercive mechanism, and describe its outcome for Moesha.",
+      "claims": [
+        {
+          "text": "Kaley remained committed to parental support throughout the study.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "She named parental support and extension of classroom activities as one of Moesha's needs, and advocated a parental component in the group lesson plan.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The lesson required parents to sign a paper indicating the child had completed the assignment, and students would receive no grade without the signed slip. Kaley hoped this would force parental involvement, but it had no effect for Moesha.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors describe the group's signature condition and Kaley's disappointment at its failure to produce the intended effect for Moesha.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The belief now has an instructional consequence: a child's grade becomes dependent on an adult's signature. The reported failure to produce involvement does not prompt a change of conviction in this account."
+    },
+    {
+      "location": "PDF p. 8 / printed p. 228, Kaley's attitude assessment and transition to Gayle",
+      "moves": "The authors present a result contrary to Kaley's expectation, interpret her confusion through ideology, identify an assumption that pupils resemble the teacher, and acknowledge that they did not push her to question it. The contrast with Gayle initiates the next case.",
+      "claims": [
+        {
+          "text": "Because she believed school offered support unavailable at Moesha's home, Kaley expected Moesha to have a more positive attitude toward school reading than recreational reading.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Elementary Reading Attitude Survey showed the opposite pattern.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Kaley reported that on every question about reading at school Moesha chose Garfield responses scoring 2 or 1, the lowest scores. The authors identify and cite the instrument.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(McKenna & Kear, 1990)",
+                  "reference_entry": "McKenna, M.C., & Kear, D.J. (1990). Measuring attitudes toward reading: A new tool for teachers. The Reading Teacher, 43, 626-639."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors interpret Kaley's confusion as a reflection of a white middle-class ideology holding school to be the great equalizer: she expected Moesha to share her positive view of the institution that she believed would make Moesha a better reader.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Kaley, like many preservice teachers, believed her students would be much like her, regardless of whether they looked like her.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Lanier and Little are cited for the broader characterization.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lanier & Little, 1986)",
+                  "reference_entry": "Lanier, J. E., & Little, J. W. (1986). Research on teacher education. In M. C. Wittrock (Ed.), Handbook of research on teaching (3rd ed., pp. 527-569). New York: Macmillan."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Kaley never questioned her convictions about parental involvement or schools as extensions of her culture during the semester, and the researchers did not push her to do so. In contrast, Gayle began questioning her own and her student's raced, classed, and gendered identities.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The contradictory assessment makes Kaley's expectation visible while leaving her framework intact. The authors include their own teaching in this account, and the next case is introduced specifically through its differing trajectory of questioning."
+    },
+    {
+      "location": "PDF pp. 8-9 / printed pp. 228-229, Gayle's placement and diagnostic conception of reading difficulty",
+      "moves": "The second case opens with setting and pupil, then reconstructs Gayle's explanatory model. The authors affirm her pedagogical approach while distinguishing its academic attention from attention to the student's cultural identity.",
+      "claims": [
+        {
+          "text": "Gayle worked in a team-taught primary class covering grades 1-2 at Medford. Cooperating teachers selected a seven-year-old African American second-grade boy called Scott, who struggled to keep up and might benefit from extra attention.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Gayle initially worked within white middle-class thinking, focused primarily on academics, and did not focus on Scott's raced, classed, and gendered identity; she genuinely wanted to help him as a struggling reader.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Her pedagogy was theoretically sound: she used multiple assessments to identify strengths and needs and capitalized on one-to-one instruction.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite a text on reading assessment and instruction in characterizing the approach.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(cf. Gillet & Temple, 1994)",
+                  "reference_entry": "Gillet, J. W., & Temple, C. (1994). Understanding reading problems: Assessment and instruction (4th ed.). New York: HarperCollins."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Gayle began believing good instruction was necessary for overcoming reading difficulties; her account centered on instruction itself.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Her definition named poor teaching, omitted key concepts, absence during instruction, and uninteresting reading materials as possible causes.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Gayle extended her own experience of a correctable reading difficulty into a belief that diagnosing Scott's problem would enable her to correct it.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "She had struggled as a child because she needed glasses and became an avid reader after correction. Throughout the semester she repeatedly assessed Scott and used results to guide instruction.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "Gayle initially shares the overarching identity framework attributed to Kaley, but focuses on diagnosis and instruction rather than parental involvement. The authors recognize the pedagogical value of her work while specifying what it initially overlooks."
+    },
+    {
+      "location": "PDF p. 9 / printed p. 229, Gayle's judgments, assessment findings, and widening concern",
+      "moves": "The authors follow a change from judging participation and work quality to recognizing frustration. They show widening concern about reading difficulties while locating Gayle's interpretation within her own life and values.",
+      "claims": [
+        {
+          "text": "Gayle initially described Scott as a normal second-grade boy, wondered why he failed to complete work despite sufficient time, and criticized his coloring as scribbling and his cutting skills as needing improvement.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Her field notes asked why he did not participate in group reading and described him as quiet and nondisruptive but not learning.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "As she got to know him, Gayle understood his noncompletion as frustration; assessments showed preprimer-level reading and incomplete recognition of alphabet letters.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Her quoted reflection reports that Scott could read only three words and did not know all alphabet letters; she expressed shock and asked what happens to children who fail to get needed reading help.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Gayle began considering the prevalence and life consequences of reading difficulties, but the authors say her thinking remained centered in white middle-class identity and belief in correct diagnosis and good instruction.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Gayle returned to her own vision-related difficulties and the frightening prospect of never having learned to read. She considered reading important to herself and, correspondingly, to Scott.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "Learning more about Scott changes her explanation of his behavior. The broader questions still proceed by analogy with her own reading life, so the authors distinguish a growing concern from a shift away from her existing cultural center."
+    },
+    {
+      "location": "PDF pp. 9-10 / printed pp. 229-230, shooting, security, and Gayle's closing reflection",
+      "moves": "The narrative introduces a disruptive event, reports the child's fears through Gayle, and traces a reconsideration of teaching and learning. The authors qualify this change as emerging negotiation alongside continued meritocratic optimism.",
+      "claims": [
+        {
+          "text": "Near semester's end, Scott told Gayle that his brother had been shot in a gang-related drive-by shooting. He feared similar incidents, feared for his mother and sister, and felt responsible for keeping them safe.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The incident forced Gayle to consider Scott's identity and environmental influences and reexamine reading difficulties and teaching's complexities.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Her case study reported that Scott could not stop thinking about the shooting in school, did not know whether his brother would live, and had been too frightened at the hospital to know. She asked how he could learn while thinking only about survival.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Gayle began seeing Scott as a member of a culture different from her own, questioning education, and recognizing a need to be prepared for similar incidents in her classroom.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "She wrote that learning involves more than assessments and materials, and that a child must feel secure before grasping learning as a luxury.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Gayle remained optimistic and believed the status mobility system, in which educational gains lead to occupational gains, works for everyone; nonetheless, her developing subjective knowledge was embedded in equity and justice.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Ogbu is cited in the authors' description of this meritocratic belief.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Ogbu, 1991)",
+                  "reference_entry": "Ogbu, J. U. (1991). Low school performance as an adaptation: The case of blacks in Stockton, California. In M. A Gibson & J. U. Ogbu (Eds.), Minority status and schooling : A comparative study of immigrant and involuntary minorities (pp. 249-285). New York: Garland."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Gayle ended her case study reporting reading improvement but wishing for more; she recognized herself as a caring practicum student rather than a miracle worker who could make Scott's world right, and hoped her caring might make a small difference and encourage further reading and writing.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The quoted closing passage explicitly limits her contribution and expresses its possible, rather than certain, effect.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The shift is tied to an experience her earlier instructional account cannot encompass. Survival and security become conditions for learning, while her hope in education persists and her closing reflection limits what her own care can accomplish."
+    },
+    {
+      "location": "PDF pp. 10-11 / printed pp. 230-231, Summary and Conclusions—knowledge construction and Kaley",
+      "moves": "The authors restate the broad finding, apply knowledge's subjectivity to themselves, compare the participants' original assumptions, and identify dominant ideology as reinforcement for Kaley's conviction.",
+      "claims": [
+        {
+          "text": "The authors say knowledge reflects its creators' values and interests and that their analysis illustrates this for participants and researchers alike.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The conclusion opens with Banks' statement about knowledge, values, and interests.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Banks (1993)",
+                  "reference_entry": "Banks, J. A. (1993). The canon debate, knowledge construction, and multicultural education. Educational Researcher, 22(5), 4-14."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The researchers constructed knowledge about participants' subjectivities by locating their thoughts within research and theory on white middle-class ideology; they did not create the thoughts but provided a lens for interpreting them.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Both participants entered teacher education assuming pupils would be similar to themselves and share their values. Kaley never found a reason to question this assumption.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors revisit her blaming Moesha's difficulties on insufficient parental involvement without considering that her definition reflected her own ideology.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Kaley's ideology reinforced her belief because it represented the dominant ideology, arising from and reinforcing the dominant race's social history and culture.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Scheurich and Young are quoted about dominant-race history, culture, and knowledge.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Scheurich & Young, 1997, p. 8)",
+                  "reference_entry": "Scheurich, J. J., & Young, M. D. (1997). Coloring epistemologies: Are our research epistemologies racially biased? Educational Researcher, 26(4), 4-16."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The opening premise becomes reflexive: the researchers acknowledge their own interpretive construction. Kaley's persistence is now explained through the social authority of her values as well as her individual assumptions."
+    },
+    {
+      "location": "PDF p. 11 / printed p. 231, Summary and Conclusions—multiple literacies, Gayle, and subject-object",
+      "moves": "The authors deepen the contrast, identify alternatives excluded from Kaley's view, read Gayle's language as resistance, and return to subject-object relations. They restate the central finding with interpretive detail rather than introduce a new case.",
+      "claims": [
+        {
+          "text": "Kaley's notion of parental support was seemingly myopic: she did not consider how Moesha's parents did support school efforts, did not collaborate with them, and inscribed her own values onto them.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors specify her definition as reading to children and helping with homework.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Kaley's identification of literacy with storybook reading left no room for multiple literacies. Storybook reading is one literacy, more frequent in middle-class homes, that undoubtedly aids children from that socioeconomic background in school.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Gayle eventually resisted and negotiated hegemonic ideology by recognizing experiences unlike her own and entering a stage of disequilibrium that can generate reflection and questioning.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Goodwin is cited for conceptual and emotional disequilibrium prompting people to reexamine what they thought they knew.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Goodwin (1997)",
+                  "reference_entry": "Goodwin, A. L. (1997). Historical and contemporary perspectives on multicultural teacher education: Past lessons, new directions. In J. E. King, E. R. Hollins, & W. C. Hayman (Eds.), Preparing teachers for cultural diversity (pp. 5-22). New York: Teachers College Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Gayle grappled with good teaching as the answer, considered unfamiliar experiences, and began questioning environmental effects on meritocracy while retaining faith in education.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors read her reference to learning as a luxury as evidence she was beginning to see it as typically available to white middle-class pupils but not necessarily all pupils.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Returning to subject-object relations, the authors conclude that participants' experience-based literacy constructions were situated in ideologies and in what they believed they knew from raced, classed, and gendered life experiences.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The participants' different life stages and initial thinking about teaching seemed reflected in how they negotiated ideologies.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The cases are brought back into the earlier theory. Their difference concerns how each relates inherited beliefs to unfamiliar lives; Gayle's negotiation remains partial, with environmental limits entering her view without displacing belief in education."
+    },
+    {
+      "location": "PDF pp. 11-12 / printed pp. 231-232, Implications—teacher educators and identity exploration",
+      "moves": "The discussion shifts from interpretation to prescription, uses a conditional example to implicate teacher educators in reproducing inequality, and proposes an initial response while conceding there is no easy solution.",
+      "claims": [
+        {
+          "text": "Teacher educators must consider knowledge's subjective nature and help preservice teachers understand how educational knowledge is rooted in ideologies reflecting raced, classed, and gendered identities.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "If teacher educators unquestioningly support Kaley's account of parental involvement and reading difficulty, they fail to resist imposing white middle-class values on children of all cultures and participate in reproducing school inequalities.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Teacher educators may thereby participate in an unseen form of racism that may be the worst type of racism.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Scheurich and Young are invoked for this conditional inference.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Scheurich and Young (1997)",
+                  "reference_entry": "Scheurich, J. J., & Young, M. D. (1997). Coloring epistemologies: Are our research epistemologies racially biased? Educational Researcher, 26(4), 4-16."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "There is no easy solution to getting preservice teachers to consider dominant ideologies, but the authors suggest it must begin within preservice teachers through opportunities to explore their own ethnic identities.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Beliefs must be explored at a deeper level to examine how they reflect ideologies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite research establishing beliefs' strong role in learning to teach.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(see, e.g., Richardson, 1996)",
+                  "reference_entry": "Richardson, V. (1996). The role of attitudes and beliefs in learning to teach. In J. Sikula (Ed.), Handbook of research on teacher education (2nd ed., pp. 102-119). New York: Macmillan."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The authors' admission that they did not push Kaley gains practical significance: teacher educators must examine their own participation in sustaining assumptions. The proposed beginning is identity exploration, with difficulty explicitly acknowledged."
+    },
+    {
+      "location": "PDF p. 12 / printed p. 232, Implications—a culturally responsive curriculum",
+      "moves": "The authors recommend a curriculum integrated across teacher education, contrast it with a stand-alone course, cite values and modeling as requirements, and acknowledge a complex, prolonged process.",
+      "claims": [
+        {
+          "text": "A culturally responsive teacher education curriculum is one way to address subjective knowledge; programs must exceed the National Council for Accreditation of Teacher Education's minimum multicultural requirement.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Hidalgo, Chavez-Chavez, and Ramage are cited for developing critical and transformative teachers with a pedagogy of social action, advocacy, and celebration of diversity.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Hidalgo, Chavez-Chavez, & Ramage, 1996, p. 762)",
+                  "reference_entry": "Hidalgo, F., Chavez-Chavez, R., & Ramage, J.C. (1996). Multicultural education: Landscape for reform in the twenty-first century. In J. Sikula (Ed.), Handbook of research on teacher education (2nd ed., pp. 761-778). New York: Macmillan."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A culturally responsive perspective is best communicated through integration throughout pedagogy; knowledge in a stand-alone course may become compartmentalized and even discarded.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "A culturally responsive curriculum should infuse appreciation of diversity, the value of cooperation, and the importance of a caring community.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors attribute these three beliefs to Hidalgo and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Hidalgo et al. (1996)",
+                  "reference_entry": "Hidalgo, F., Chavez-Chavez, R., & Ramage, J.C. (1996). Multicultural education: Landscape for reform in the twenty-first century. In J. Sikula (Ed.), Handbook of research on teacher education (2nd ed., pp. 761-778). New York: Macmillan."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Teacher educators must model these beliefs if preservice teachers are to employ them successfully and must examine their own potentially parochial thinking.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Zimpher and Ashburn are cited for reinforcing the beliefs and emphasizing modeling and self-examination.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Zimpher and Ashburn (1992)",
+                  "reference_entry": "Zimpher, N.L., & Ashburn, E.A. (1992). Countering parochialism in teacher candidates. In M.E. Dilworth (Ed.), Diversity in teacher education: New expectations (pp. 40-41). San Francisco: Jossey-Bass."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Although the process may be complex and protracted, a culturally responsive perspective will enfranchise preservice teachers to examine their raced, classed, and gendered identities and confront the politics of social change.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The recommendations widen from personal exploration to program design and educators' own pedagogy. Modeling and integration are treated as means of making responsiveness part of learning to teach throughout a program."
+    },
+    {
+      "location": "PDF pp. 12-13 / printed pp. 232-233, Implications—revised case studies, home visits, and closing recommendation",
+      "moves": "The authors return to the assignment that generated the cases, recommend altering its focus and settings, emphasize multiple literacies, and extend recognition of pupils' identities to teacher educators. The last sentence calls for analysis of discourse.",
+      "claims": [
+        {
+          "text": "A case study can help preservice teachers explore their own and pupils' raced, classed, and gendered identities. A struggling-reader case is especially appropriate because minority and low-SES students are overrepresented in that population.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Anyon is cited for the population claim.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(see, e.g., Anyon, 1981)",
+                  "reference_entry": "Anyon, J. (1981). Social class and school knowledge. Curriculum Inquiry, 11, 3-42."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The case study must address not only why children struggle, but who those children are and how schools enhance or inhibit their growth.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Home and community visits must be included to help preservice teachers learn pupils' diverse backgrounds and reflect on their own backgrounds and ethnicity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite Wolf, Hill, and Ballentine on opportunities to learn about pupils' backgrounds.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(see e.g., Wolf, Hill, & Ballentine, 1999)",
+                  "reference_entry": "Wolf, S. A., Hill, L., & Ballentine, D. (1999). Teaching on fissured ground: Preparing preservice teachers for culturally conscious pedagogy. In T. Shanahan & F. V. Rodriguez-Brown (Eds.), National Reading Conference Yearbook 48 (pp. 423-436). Chicago: National Reading Conference."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Perhaps most importantly, preservice teachers should be compelled to consider what literacy is in both the home and school.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "Preservice teachers need experiences revealing multiple literacies; home and community visits can show differing literacy values, support questioning of their own values, and afford more opportunities to address hegemony and ideology.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Teachers should acknowledge rather than deny the influence of pupils' race, class, and gender on what they bring to classrooms; the authors extend the same principle to teacher educators.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "McCarthey is quoted on the influence of race, class, and gender in classroom settings.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "McCarthey (1998)",
+                  "reference_entry": "McCarthey, S. J. (1998). Constructing multiple subjectivities in classroom literacy contexts. Research in the Teaching of English, 32, 126-160."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Teacher educators need to analyze all forms of discourse in order to resist the tendency toward replication",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The close returns to the case-study method with concrete changes: attend to identity, examine schools, and enter home and community contexts. The final extension to teacher educators is consistent with the authors' acknowledgment that their own knowledge is culturally situated."
+    },
+    {
+      "location": "PDF pp. 13-14 / printed pp. 233-234, References and manuscript history",
+      "moves": "The article ends with its reference list and manuscript receipt, revision, and acceptance dates. These document the sources and publication process rather than extend the argument.",
+      "claims": [],
+      "meaning": "Matching reference entries have been retained beside the claims they support, without completing them from outside sources. The final page records receipt on November 1, 1999, revision receipt on November 22, 1999, and acceptance on January 3, 2000. No further substantive argument follows the recommendations."
+    }
+  ]
+}

@@ -1,0 +1,1132 @@
+{
+  "reading_plan": "Source title: Exploring the Value of a Summer Literacy Program on the Learning of At-Risk Adolescents. Source type: peer_reviewed_paper. A first look shows a 13-page journal research article (printed pp. 172–184) with a compact abstract, literature-based conceptual discussion, methods, quantitative and descriptive results, discussion, educational implications, references, and a final career/interview appendix. The single-column prose is moderately dense, with more compressed conceptual and statistical passages, extended tutor and student quotations, one results table, and the appendix table. I will follow its printed order at natural breaks, usually about 200–500 words, using shorter stretches for concentrated claims and keeping complete illustrative accounts together when needed. I will record claims and their offered support without adjudicating them; readings of tables will be paraphrased and identified as image readings.",
+  "reading_path": [
+    {
+      "location": "p. 172, title, abstract, and keywords",
+      "moves": "Introduces the study’s population, intervention, temporal scope, and interpretive framing in a compact research abstract.",
+      "claims": [
+        {
+          "text": "The study explores the short-term and long-term value of a summer literacy program for at-risk seventh- and eighth-grade students who were all scheduled for grade-level retention.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Students from an isolated, impoverished area received intensive tutoring and small group instruction on a university campus and were followed throughout the next academic year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Findings from the study indicated that the successes and failures of the students who participated in the program were situated in the context in which instruction occurred and the relationships they developed.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "The opening identifies a study of literacy learning over time and gives context and relationships a place in its framing. This is the abstract’s own preview; the body’s evidence has yet to unfold. The keywords bring adolescent literacy, affect, caring, and summer intervention together."
+    },
+    {
+      "location": "pp. 172–173, opening introduction",
+      "moves": "Establishes urgency through national statistics, identifies dropout predictors, and infers an educational need. Frames adolescent literacy support as something students deserve.",
+      "claims": [
+        {
+          "text": "In America, one high school student drops out every nine seconds.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite Lehr and colleagues for this national dropout frequency.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lehr, Johnson, Bremer, Cosio, & Thompson, 2004)",
+                  "reference_entry": "Lehr, C. A., Johnson, D. R., Bremer, C. D., Cosio, A., & Thompson, M. (2004). Increasing rates of school completion: Moving from policy and research to practice: A manual for policymakers, administrators, and educators. Minneapolis: University of Minnesota, Institute on Community Integration, National Center on Secondary Education and Transition."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "One out of every seven American children will never graduate from high school.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The figure is attributed to the Children’s Defense Fund.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Children’s Defense Fund, 2004)",
+                  "reference_entry": "Children’s Defense Fund. (2004). Key facts about American children. Retrieved December 20, 2005, from http://www.childrensdefense.org/data/keyfacts.aspx."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Dropouts tend to be older than peers; poor grades increase dropout risk; retention is the single biggest predictor of dropping out; positive school climate, attitudes, and belonging directly influence dropout tendency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The introduction cites research on predictive factors.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lehr et al., 2004; Rosenthal, 1998; Rumberger, 2005)",
+                  "reference_entry": "Lehr, C. A., Johnson, D. R., Bremer, C. D., Cosio, A., & Thompson, M. (2004). Increasing rates of school completion: Moving from policy and research to practice: A manual for policymakers, administrators, and educators. Minneapolis: University of Minnesota, Institute on Community Integration, National Center on Secondary Education and Transition."
+                },
+                {
+                  "citation_text": "(Lehr et al., 2004; Rosenthal, 1998; Rumberger, 2005)",
+                  "reference_entry": "Rosenthal, B. S. (1998). Nonschool correlates of dropout: An integrative review of the literature. Children & Youth Services Review, 20, 413–433."
+                },
+                {
+                  "citation_text": "(Lehr et al., 2004; Rosenthal, 1998; Rumberger, 2005)",
+                  "reference_entry": "Rumberger, R. W. (2005). Dropping out of middle school: A multilevel analysis of students and schools. American Educational Research Journal, 32, 583–625."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "More than eight million students in grades 4–12 are struggling readers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors report a federal estimate.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "United States Department of Education (2003)",
+                  "reference_entry": "United States Department of Education. (2003). Nation’s report card: Reading 2002. Washington, DC: National Center for Educational Statistics."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "One in four U.S. adolescents lacks the literacy skills needed for increased high school course demands.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Kamil is cited for the estimate.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Kamil, 2003)",
+                  "reference_entry": "Kamil, M. L. (2003). Adolescents and literacy: Reading for the 21st century. Washington, DC: Alliance for Excellent Education."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "There is an overwhelming need for programs improving adolescent literacy, and adolescence is a unique and vital period of literacy learning.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Alongside the preceding statistics, the authors invoke a position statement calling for comprehensive support of adolescents’ development as readers and writers.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Moore, Bean, Birdyshaw, & Rycik, 1999)",
+                  "reference_entry": "Moore, D. W., Bean, T. W., Birdyshaw, D., & Rycik, J. A. (1999). Adolescent literacy: A position statement for the Commission on Adolescent Literacy of the International Reading Association. Newark, DE: International Reading Association."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The introduction moves from the abstract’s particular program to a national rationale. It connects reading difficulties to educational exclusion and treats support as an obligation, establishing both an empirical and a normative reason for the inquiry."
+    },
+    {
+      "location": "p. 173, Conceptualizing Adolescent Literacy, first paragraph",
+      "moves": "Concedes variation among readers, reviews an intervention framework, and identifies instructional and assessment requirements.",
+      "claims": [
+        {
+          "text": "There is no one size fits all approach to meeting struggling adolescent readers’ literacy needs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Biancarosa and Snow identify 15 intervention elements spanning instruction and infrastructure and call for further research into combinations of them.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors summarize this framework, placing comprehension instruction first among its instructional elements.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Biancarosa and Snow (2004)",
+                  "reference_entry": "Biancarosa, G., & Snow, C. E. (2004). Reading next: A vision for action and research in middle and high school literacy: A report from Carnegie Corporation of New York. Washington, DC: Alliance for Excellent Education."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Direct and explicit instruction in comprehension strategies does indeed improve reading achievement.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Comprehension research is cited as the basis for this conclusion.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(e.g., Pearson & Fielding, 1991; Pressley, 2000)",
+                  "reference_entry": "Pearson P. D., & Fielding, L. (1991). Comprehension Instruction. In R. Barr, M. L. Kamil, P. Mosenthal, & P. D. Pearson (Eds.), Handbook of reading research (Vol. 2, pp. 815–860). NewYork: Longman."
+                },
+                {
+                  "citation_text": "(e.g., Pearson & Fielding, 1991; Pressley, 2000)",
+                  "reference_entry": "Pressley, G. M. (2000). What should comprehension instruction be the instruction of? In M. L. Kamil, P. B. Mosenthal, P. D. Pearson, & R. Barr (Eds.), Handbook of reading research (Vol. 3, pp. 545–562). Mahwah, NJ: Erlbaum."
+                },
+                {
+                  "citation_text": "(Biancarosa & Snow, 2004; National Institute of Child Health and Human Development, 2000)",
+                  "reference_entry": "Biancarosa, G., & Snow, C. E. (2004). Reading next: A vision for action and research in middle and high school literacy: A report from Carnegie Corporation of New York. Washington, DC: Alliance for Excellent Education."
+                },
+                {
+                  "citation_text": "(Biancarosa & Snow, 2004; National Institute of Child Health and Human Development, 2000)",
+                  "reference_entry": "National Institute of Child Health and Human Development. (2000). Report of the National Reading Panel. Teaching children to read: An evidence-based assessment of the scientific research literature on reading and its implications for reading instruction (NIH Publication No. 00–4769). Washington, DC: US Government Printing Office."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Professional development, ongoing formative assessment of students, and ongoing summative assessment of students and programs are essential to any intervention program.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "These three requirements are attributed to the intervention framework.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Biancarosa and Snow (2004)",
+                  "reference_entry": "Biancarosa, G., & Snow, C. E. (2004). Reading next: A vision for action and research in middle and high school literacy: A report from Carnegie Corporation of New York. Washington, DC: Alliance for Excellent Education."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "This supplies a research-based instructional foundation while acknowledging that no universal intervention suffices. The distinction between instruction and infrastructure leaves room for examining the conditions surrounding teaching."
+    },
+    {
+      "location": "p. 173, Conceptualizing Adolescent Literacy, affective lens paragraph",
+      "moves": "Adds an affective lens, interprets an existing framework, and supports the significance of school climate and belonging.",
+      "claims": [
+        {
+          "text": "Although Biancarosa and Snow do not explicitly identify affect, affect is embedded in elements such as motivation, self-directed learning, diverse texts, and teacher teams; their infrastructure emphasis also underscores academic climate.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors interpret features of the cited intervention framework.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Biancarosa and Snow (2004)",
+                  "reference_entry": "Biancarosa, G., & Snow, C. E. (2004). Reading next: A vision for action and research in middle and high school literacy: A report from Carnegie Corporation of New York. Washington, DC: Alliance for Excellent Education."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A keen awareness of academic purpose tends to foster a school community that contributes to effectiveness.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Shouse is cited for the connection between academic purpose and community.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Shouse, 1995)",
+                  "reference_entry": "Shouse, R. C. (1995, April). Academic press and school sense of community: Sources of friction, prospects for synthesis. Paper presented at the Annual Meeting of the American Educational Research Association, San Francisco, CA."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "School belonging and support can surpass the influence of personal friendships on adolescent academic motivation.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite research on belonging and motivation.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Goodenow & Grady, 1992)",
+                  "reference_entry": "Goodenow, C., & Grady, K. E. (1992). The relationship of school belonging and friends’ values to academic motivation among urban adolescent students. Journal of Experimental Education, 62(1), 60–71."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A safe, inviting, supportive environment is essential to adolescents’ successful educational experiences.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "A middle school association position paper supports this requirement.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(National Middle School Association [NMSA], 2003)",
+                  "reference_entry": "National Middle School Association. (2003). This we believe: Successful schools for young adolescents: A position paper of the National Middle School Association. Westerville, OH: Author."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The discussion builds on infrastructure by specifying its emotional and social dimensions. Academic motivation now depends partly on a student’s experience of the school as a community."
+    },
+    {
+      "location": "pp. 173–174, Conceptualizing Adolescent Literacy, teacher relationships through research questions",
+      "moves": "Identifies an omission in the framework, defines caring as reciprocal, reviews supporting studies, and derives the study’s two questions.",
+      "claims": [
+        {
+          "text": "Teacher–student relationships, especially caring, are equally important to belonging and noticeably absent from Biancarosa and Snow’s essential elements.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The text cites Diero and prints NSMA, 2003, with the letters in that order. The reference list contains National Middle School Association (2003), the organization already introduced as NMSA.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Diero, 2003, NSMA, 2003)",
+                  "reference_entry": "Diero, J. (2003). Do your students know you care? Educational Leadership, 60(2), 60–62."
+                },
+                {
+                  "citation_text": "(Diero, 2003, NSMA, 2003)",
+                  "reference_entry": "National Middle School Association. (2003). This we believe: Successful schools for young adolescents: A position paper of the National Middle School Association. Westerville, OH: Author."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Caring helps schools fulfill responsibility for students’ moral and social growth and involves appreciating students in their differences and complexities.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors draw on an ethic of caring.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Noddings (1988)",
+                  "reference_entry": "Noddings, N. (1988). An ethic of caring and its implications for instructional arrangements. American Journal of Education, 96, 215–230."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Caring must address true needs beyond perceived needs; it is reciprocal, involving both the carer and the cared-for person.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Noddings provides the conceptual account.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Noddings (2003)",
+                  "reference_entry": "Noddings, N. (2003). Caring: A feminine approach to ethics and moral education (2nd ed.). Berkeley: University of California Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Students’ perceptions of caring teachers include responsiveness to individuals, help with work, encouragement of success and positive feelings, good subject content, fun and humor, and counseling.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "These six themes come from a study of middle school children’s perceptions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Hayes (1994)",
+                  "reference_entry": "Hayes, C. B. (1994). The middle school child’s perceptions of caring teachers. American Journal of Education, 103(1), 1–19."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Perceiving teachers as caring correlates positively with motivation and academic effort, regardless of psychological distress and beliefs about personal control.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors report Wentzel’s finding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Wentzel (1997)",
+                  "reference_entry": "Wentzel, K. R. (1997). Student motivation in middle school: The role of perceived pedagogical caring. Journal of Educational Psychology, 89, 411–419."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Demonstrating knowledge’s relevance to students’ lives makes caring meaningful and lasting and helps students perceive teachers and school as caring.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Wilder is cited for this connection.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Wilder, 1999)",
+                  "reference_entry": "Wilder, M. (1999). Culture, race, and schooling: Toward a non-color-blind ethic of care. The Educational Forum, 63, 356–362."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Adolescent literacy learning must be examined as multifaceted, situated within academic and affective dimensions, attending to how instruction occurs and its context.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors connect their synthesis to instruction and infrastructure.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Biancarosa & Snow, 2004)",
+                  "reference_entry": "Biancarosa, G., & Snow, C. E. (2004). Reading next: A vision for action and research in middle and high school literacy: A report from Carnegie Corporation of New York. Washington, DC: Alliance for Excellent Education."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The study asks whether summer literacy participation increases at-risk adolescents’ reading scores and whether it has any long-term value.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The conceptual discussion reaches its own synthesis: caring is both a relational process and a condition of learning. The research questions follow from this combined academic and affective frame, rather than restricting value to a single test result."
+    },
+    {
+      "location": "p. 174, Method: Participants and Setting",
+      "moves": "Locates the inquiry socially and institutionally and defines the participant group through demographic and school performance information.",
+      "claims": [
+        {
+          "text": "Students lived in a rural Lower Mississippi Delta community, described as being in the poorest region of the United States.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The regional characterization is cited to a development commission report.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Lower Mississippi Delta Development Commission, 1990)",
+                  "reference_entry": "Lower Mississippi Delta Development Commission. (1990). The Delta iniatives: Realizing the dream. . . Fulfilling the potential (Final Report). Memphis, TN: Mississippi Delta Development Commission."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The school population was 93% African American and 7% white; 93% were from low-income families, and 75% of eighth graders did not meet state assessment standards.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The study began with 30 low-income students: 18 seventh graders and 12 eighth graders, 14 girls and 16 boys, 27 African American and three white.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "All participants had failed three of four core subjects and were to be retained under school board policy.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The method translates the introduction’s concern with retention into a specific cohort. Poverty, racial composition, and school performance locate the instructional setting; the common retention decision explains how students came to the program."
+    },
+    {
+      "location": "pp. 174–175, Overview of the Intervention and Intensive Literacy Instruction, before Marvin example",
+      "moves": "Describes the program’s promotion condition, schedule, staffing, assessments, and individualized instructional design.",
+      "claims": [
+        {
+          "text": "The district allowed 30 students scheduled for retention to attend a university summer literacy program 50 miles away, with promotion available if they were successful.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The program met three days a week for six weeks, from 9:00 am to 3:00 pm: two hours of intensive literacy tutoring, an hour of recreation, an hour of lunch, and two hours of small group instruction.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Each tutoring group included two graduate students near completion of master’s degrees in Reading and Language Studies and three to four pupils.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Tutors used a clinical model with formal and informal assessments of strengths and needs: Gates-McGinitie Reading Test, Qualitative Reading Inventory, Qualitative Spelling Inventory, a ten-minute free writing sample, Readers Self-Perception Scale, and an interest inventory.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Tutors developed individualized plans grounded in scientifically based reading research, choosing age-appropriate books matched to interests and abilities and strategies matched to weaknesses.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This establishes what participation entailed and how assessment was intended to guide instruction. The daily design includes social and recreational experiences alongside literacy work, giving substance to the earlier interest in instructional context."
+    },
+    {
+      "location": "pp. 175–176, illustrative clinical account of Marvin",
+      "moves": "Works through a detailed case, moving from diagnosis to strategy use and observed changes; qualifies improvement through a transfer limitation.",
+      "claims": [
+        {
+          "text": "Marvin’s Qualitative Reading Inventory 3 levels were independent at grade 3, instructional at grade 4, and frustration at grade 5.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The illustrative clinical report presents these diagnostic reading levels.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Marvin read about 86 words per minute on a fourth-grade passage; segmented reading and inconsistent attention to punctuation seemed to interfere with comprehension, and he neither sounded out unfamiliar words nor self-corrected.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The tutor records these observations during passage reading.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Marvin’s strengths included confidence that he was improving and extensive automatic sight-word recognition; his needs were comprehension and fluency.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The report synthesizes the informal diagnostic results.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "With reciprocal questioning, Marvin initially made statements instead of questions but, after extensive modeling, became more competent at generating questions and answering explicit questions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The ReQuest account describes the change from early difficulty to greater competence.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Direct Reading-Thinking Activity worked well for Marvin because he used background knowledge for predictions and enjoyed checking them against the text.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The tutor describes his use of predictions and verification.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Echo reading of We’re Going on a Bear Hunt in short phrases or sentences improved practiced fluency, and growing confidence brought a stronger, more expressive voice.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The tutor describes practice for Marvin’s voluntary reading to younger children.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Repeated reading improved Marvin’s fluency only on the repeatedly practiced text; the improvement did not transfer to other pieces.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The repeated-readings account explicitly restricts the observed gain to the familiar book.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The example makes individualized teaching visible at the level of a particular reader’s strengths, difficulties, and responses. Its final qualification is substantive: success with a practiced text does not itself demonstrate more general fluency."
+    },
+    {
+      "location": "p. 176, Recreation and Lunch; Small Group Instruction",
+      "moves": "Describes the program’s wider environment and gives the sequence of a purposeful career research task.",
+      "claims": [
+        {
+          "text": "Students chose swimming or basketball during recreation; for some, it was their first experience in a swimming pool. Each received a meal card with five dollars per day for lunch in the Student Center.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Afternoon groups of six were taught by local teachers and focused on careers. Students researched careers online, wrote interview questions, and interviewed university or community members.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Students used their research and interviews to create PowerPoint presentations, shared at a final luncheon with peers, families, and interviewees.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Selected careers represented a broad range of interests.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors direct the reader to the Appendix for the career/interview pairings.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The account turns from a tutor’s individualized work to shared activities, choices, and public presentation. The career task links reading, research, writing, speaking, and imagined futures within the university setting."
+    },
+    {
+      "location": "pp. 176–177, Data Collection and Data Analysis",
+      "moves": "Explains the evidence sources, follow-up contact, statistical procedures, and differently structured qualitative analyses; discloses an initial affective orientation.",
+      "claims": [
+        {
+          "text": "Summer data included GMRT pre- and post-test scores, tutoring lesson plans, observations of testing and tutoring, and clinical reports.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Follow-up included optional open-ended responses to letters sent in September, December, and June with stamped return envelopes; February reunion interviews and a basketball game; report cards; state scores; and promotion or retention information.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "GMRT pre- and post-test scores were analyzed using a dependent two-tailed t-test; NCEs were calculated from raw scores and grade levels, and an effect size was calculated.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Lesson plans, clinical reports, state assessments, and report cards were analyzed with an analytic coding scheme specifically seeking indices of success and failure.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Interviews, observations, and correspondence were analyzed with an open-ending coding scheme; the analysis began expecting affective themes and found self-perception, feelings about academic settings, and relationships with teachers compelling.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The methods operationalize the dual perspective already established: numerical and descriptive evidence will address different aspects of learning. Follow-up also maintains relationships with participants, while letters remain optional and open-ended. The authors state that the qualitative reading was oriented toward affect from its outset."
+    },
+    {
+      "location": "p. 177, Results opening; Summer Program statistics and Table 1",
+      "moves": "Accounts for completion and exclusions, reports paired test results, and interprets the effect size through a statistical reference.",
+      "claims": [
+        {
+          "text": "Twenty-seven of the initial 30 students completed tutoring and both tests, and all 27 were promoted to the next grade.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "One student was removed by the school liaison after bus trouble and was not promoted. Two were removed for behavior during tutoring and moved out of the district before the next school year.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The average NCE rose from 21.70 before the program to 31.03 afterward; the dependent two-tailed t-test indicated a statistically significant difference, p = .001.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 1 shows 27 observations for each test, means of 21.70 and 31.03, and standard deviations of 11.90 and 11.08 respectively. Its note reports t = 3.76, p = .001, and d = .43, labeled a medium effect size. These values are read from the table image.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "An effect size estimated from the average score difference and the traditional standard deviation for NCE scores was .43, approximately moderate for t-tests.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The effect-size interpretation is attributed to Cohen.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Cohen (1988)",
+                  "reference_entry": "Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2nd ed.). Hillsdale, NJ: Erlbaum."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The results begin with a bounded group of completers and immediate promotion, then provide the first quantitative answer to the score question. The result is presented as statistically significant and moderate in size, before descriptive evidence is introduced."
+    },
+    {
+      "location": "pp. 177–178, Summer Program, Andre and Denisha examples",
+      "moves": "Corroborates the test findings with tutor reports of comprehension, engagement, and practiced oral reading.",
+      "claims": [
+        {
+          "text": "Analysis of lesson plans, tutoring observations, and clinical reports supported the positive summer findings.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "In Andre’s report, reciprocal questions after individual paragraphs became a game with another student; work moved from oral to silent reading, and Andre began identifying important details and asking more meaningful questions.",
+              "form": "paraphrased",
+              "citations": []
+            },
+            {
+              "text": "Denisha enthusiastically chose Amazing Grace to read to a younger student, practiced daily for a couple of weeks with attention to expression, and read with excellent fluency at the performance.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The numerical gain is joined by accounts of how students participated and what tutors saw them do. Both examples place performance within an interpersonal activity: questioning a peer or reading to a younger listener."
+    },
+    {
+      "location": "p. 178, Summer Program, writers’ workshop example and qualification",
+      "moves": "Adds an example of evaluative comprehension, acknowledges a tradeoff between finishing a novel and completing writing, and concedes nonparticipation and ineffective strategies.",
+      "claims": [
+        {
+          "text": "A planned mini writers’ workshop reached only prewriting because students wanted to finish the novel and time was limited; students nonetheless stated whether they liked it and supplied reasons.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The tutor explains that the intended supported written response was not completed.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Tameeka’s objection to the novel’s constant racism demonstrated comprehension and higher-level thinking at Bloom’s evaluation level.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The tutor reports Tameeka’s reasoned dislike and shares having found the novel’s racism uncomfortable as well. The report invokes Bloom’s taxonomy without a citation marker or matching reference entry.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The tutor believed students felt accomplishment in finishing a novel of this size for the first time, despite disappointment at not completing the writing activity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Discussion of the novel’s ending revealed that no one in the group had previously finished a novel this large.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Some students did not participate and some chosen strategies seemed to have little effect.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "A tutor reported that LaTeesha remained uncomfortable reading alone and did not comprehend necessary story details.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Predominantly, statistical and descriptive summer data seemed to indicate quite compellingly that students showed indices of literacy growth.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The examples broaden success beyond test performance while retaining a concrete instructional cost: finishing the book displaced a completed writing product. The authors acknowledge counterexamples before restating their positive interpretation of the summer evidence."
+    },
+    {
+      "location": "p. 178, Subsequent Academic School Year",
+      "moves": "Turns to later academic outcomes, reports state results and grades, and contextualizes disappointing outcomes with summer reading levels and proximity to a cutoff.",
+      "claims": [
+        {
+          "text": "Of 17 students described here in connection with the eighth-grade state assessment, only 11 were tested: none exceeded standards, three met them, eight were below them, and none were at the lowest academic-warning level.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Despite significantly higher summer post-test scores, the students’ average reading level was fifth grade. Only two read at grade level in summer, and both were among the three who later met state standards.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Two of the eight below-standard students were only one point below the cutoff for meeting standards.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Final reading/language arts/English grades in the subsequent year were A: 0, B: 4, C: 1, D: 9, F: 10.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Subsequent-year outcomes were 10 promoted, 13 retained, three moved, and one dropped out.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The temporal turn complicates the immediate summer picture. The authors hold together low later achievement, substantial remaining distance from grade-level reading, and some near-threshold state scores, rather than treating the significant summer gain as equivalent to later proficiency."
+    },
+    {
+      "location": "p. 179, transition to affective results and Self-Perception, through Bianca’s letters",
+      "moves": "Explains why affective evidence is needed, contrasts student judgments with academic measures, and develops a personal case through correspondence.",
+      "claims": [
+        {
+          "text": "Understanding the academic dimension required exploring affect; interviews and correspondence yielded the three themes of self-perception, feelings about academic settings, and relationships with teachers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Midway through the school year, 86% of students believed they were doing well, but their reasons often involved factors other than academics.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Students mentioned turning in homework as well as less fighting, playing sports, fewer detentions, and fewer trips to crisis.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Bianca entered with extremely negative self-perception and frequent references to suicide; the researchers sought counseling, but her mother would not consent. She alone answered all three letters.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Bianca’s letters described positive involvement in school, continuing voluntary reading, and pride in a driving achievement.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "She described joining the pep club and a freshman fundraising group, Making a Difference. She reread the summer book, read the second in its trilogy, and read the third twice after the researchers obtained it. Her final letter reported a perfect driving-test score and her teacher’s claim that this had not happened in about thirteen years.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The shift follows the authors’ stated two-part conception of literacy. Student-defined success includes behavior, participation, and confidence, making the divergence from grades intelligible on its own terms. Bianca’s letters give this divergence a sustained individual form while also showing ongoing researcher involvement."
+    },
+    {
+      "location": "p. 179, Self-Perception, career choices; pp. 179–180, Feelings About Academic Settings",
+      "moves": "Extends self-perception to aspirations, distinguishes observed demeanor from retrospective accounts, and juxtaposes summer attachment with dissatisfaction at school.",
+      "claims": [
+        {
+          "text": "Students expressed confidence in career ambitions and did not describe limits to their ability to reach them.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The text lists football and basketball player, beautician, cook, restaurant owner, used car salesman, teacher, photographer, journalist, attorney, and business woman.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Students’ feelings about the summer setting were not immediately evident; after an early start and hour-long bus ride for 9:00 am tutoring, they often looked tired, quiet, and uninterested.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Retrospective interviews indicated that the summer program strengthened students’ sense of school’s importance, understanding, work, and purpose.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Students said the program made school seem more important, helped them understand and pull things together, and was associated with working more and fighting less.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Correspondence expressed positive feelings toward summer school and a desire to return.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Students wrote that they missed summer school, proposed returning to campus as in 2004, and wondered whether another summer program would take place.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Students also candidly expressed negative feelings about regular school.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Several disliked school because of others they called haters; some described the experience as same old, same old.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The section cautions against reading visible disengagement as a settled attitude. Later testimony differentiates students’ attachment to the summer setting from their experience of ordinary school, developing the significance of context without flattening their accounts into uniformly positive attitudes."
+    },
+    {
+      "location": "p. 180, Relationships with Teacher, regular-school paragraph",
+      "moves": "Offers a qualified glimpse of school relationships through failure rates, student reports, report-card discrepancies, and a teacher conversation.",
+      "claims": [
+        {
+          "text": "The researchers have only a glimpse of students’ relationships with their regular-school teachers.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Nine of ten ninth-grade students failed science and reported serious problems with the class.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Students said the teacher used unfamiliar words, they could not get the hang of the subject, and they hated the science teacher.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Report-card comments often conflicted with students’ perceptions, particularly about participation, excessive talking, and homework submission.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "During one conversation about possible further tutoring, teachers described about half the summer participants as having grades too low to make promotion possible.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The reported response was “doesn’t have a prayer.” The authors explain that this meant insufficient remaining opportunity to raise grades enough for promotion, and note that the conversation was not specifically part of this study.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The prior contrast between summer and school becomes a question of relationships. The authors qualify the reach of their insight and explain the teachers’ bleak phrase in terms of promotion arithmetic, while presenting a marked difference between how students and teachers described school participation."
+    },
+    {
+      "location": "pp. 180–181, Relationships with Teacher, summer relationships, correspondence, and synthesis",
+      "moves": "Infers a reciprocal process from observations, presents correspondence as especially compelling evidence, and synthesizes academic and affective results.",
+      "claims": [
+        {
+          "text": "Caring relationships in the summer program grew in authenticity and reciprocity.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Observations suggested that students softened their often harsh exterior as they perceived teachers’ genuine interest; as students became more responsive, teachers’ belief in their potential and commitment to literacy growth increased.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Students’ correspondence provided especially compelling evidence of attachment to summer teachers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Letters sent greetings to others, thanked teachers, described thinking about them, proposed a visit with a grandmother, and expressed missing and loving them.",
+              "form": "paraphrased",
+              "citations": []
+            },
+            {
+              "text": "First off, let me tell you that I miss you and I love you.",
+              "form": "verbatim",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Combining academic and affective findings provides a more holistic view: literacy learning was intricately tied to the relationships in which it occurred.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "In other words, growth in literacy seemed context specific and dependent.",
+          "form": "verbatim",
+          "support": []
+        }
+      ],
+      "meaning": "This brings the reported themes together rather than introducing a new outcome measure. The feedback between student responsiveness and teacher belief supplies the proposed relational process, while the correspondence conveys students’ side of that relationship. The synthesis retains the tentative word seemed."
+    },
+    {
+      "location": "p. 181, Discussion opening and Increasing Reading Scores",
+      "moves": "Restates the research questions and multifaceted framing, then qualifies the meaning of score gains with a plausible affective interpretation.",
+      "claims": [
+        {
+          "text": "Neither the reading-score question nor the long-term-value question is easily answered; understanding these students’ literacy learning is multifaceted.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "It is quite plausible that caring relationships and belonging led students to try harder on the post-test, so higher scores may better reflect their existing reading abilities rather than only newly acquired ability.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "This interpretation does not dismiss progress, because tutors documented growth in reading strategies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The discussion explicitly returns to the tutor reports accompanying the statistical gains.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The summer environment was safe for risks, learning, and growth and did not demand grade-level reading; therefore it provided opportunities for students to experience success.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The summer gains were not realized in the subsequent academic year: students continued to struggle, although they thought they were doing better.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The discussion brings the previously reported later academic outcomes and self-perceptions back into view.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The discussion reopens what the significant score change means rather than retracting it. Belonging and effort are offered as possibilities, not established mechanisms. The safe environment is part of the account of genuine success, while its relation to later school performance remains complicated."
+    },
+    {
+      "location": "pp. 181–182, Long-Term Value",
+      "moves": "Considers an unfavorable reading of later outcomes, reverses the denominator of success, explicitly limits causal interpretation, and emphasizes caring despite debatable literacy findings.",
+      "claims": [
+        {
+          "text": "The following year’s results could indicate little value for literacy growth.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The discussion says only three of eleven seventh graders met state standards and, of 24 students, thirteen were retained and one dropped out. Its seventh-grade label differs from the eighth-grade wording in the earlier Results passage; this record preserves the labels where they occur.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Success can also be viewed through the ten later promotions among 27 students who had all originally faced retention.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Whether measured by promotions or failures, neither construct has a causal relationship to the summer program; they offer a glimpse into students’ academic lives.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Immediate and long-term literacy findings are debatable, but the importance of caring relationships is quite compelling.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors report that, as students felt secure with tutors/teachers, they tried harder, paid attention, fought less, and wanted to please; positive attitudes and self-perceptions persisted in the summer setting and later communication with its teachers, while that confidence was not evident in their school environment.",
+              "form": "paraphrased",
+              "citations": []
+            },
+            {
+              "text": "The authors align this embrace of learning within caring relationships with earlier research.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Wentzel (1997)",
+                  "reference_entry": "Wentzel, K. R. (1997). Student motivation in middle school: The role of perceived pedagogical caring. Journal of Educational Psychology, 89, 411–419."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The discussion changes the evaluative frame from failures to promotions without granting either frame causal force. It distinguishes uncertainty about literacy outcomes from its more confident relational interpretation, retaining the setting-specific contrast established in the results."
+    },
+    {
+      "location": "p. 182, Educational Implications",
+      "moves": "Derives an educational recommendation from the combined lenses, restates reciprocity, and situates the recommendation within high-stakes testing pressures.",
+      "claims": [
+        {
+          "text": "Examining students’ successes and failures requires understanding the contexts in which they occurred and the relationships on which they were built; academic and affective lenses must interact.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Caring relationships are based on authenticity and reciprocity, begin with belief, and grow as caring is enacted.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors again invoke the account of caring.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Noddings, 2003)",
+                  "reference_entry": "Noddings, N. (2003). Caring: A feminine approach to ethics and moral education (2nd ed.). Berkeley: University of California Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "It seems imperative that teachers create contexts where students can succeed, because initial belief and success are where caring begins.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Under high-stakes testing pressure, scientifically based reading instruction is important, and the instructional environment and the instructor’s caring ethic may be equally important.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The close of the substantive argument moves from interpretation to practice. It treats opportunities for success as a way to initiate caring, and asks educators to give environment and relationships possible equal weight with research-based instruction. The recommendation preserves the authors’ seems and may rather than presenting an established equivalence."
+    },
+    {
+      "location": "pp. 182–183, References",
+      "moves": "Provides the bibliographic apparatus for the research, conceptual claims, statistics, and analytic interpretation cited earlier.",
+      "claims": [],
+      "meaning": "The argument pauses for its reference list rather than adding substantive findings. The entries connect the opening problem, intervention framework, caring literature, and effect-size interpretation to their cited works. Matching entries have been recorded with the claims they support, retaining the source’s own details and spellings rather than correcting them from elsewhere."
+    },
+    {
+      "location": "p. 184, Appendix: Career/Interviews",
+      "moves": "Supplies a tabular inventory of the career choices and interview pairings introduced in the program description.",
+      "claims": [
+        {
+          "text": "The Appendix table lists 30 numbered students, their selected careers, interview contacts generally identified by initials, and the contacts’ roles.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Reading the Appendix table image, rows 1–10 pair chef and restaurant with SN in University Catering; social work with DW, Professor Social Work; computer technology (two students) and video games with JK, CI Technology Specialist; pediatrician and OB with Dr. D, Physician Assistant; Air force Sniper with Col. T, Army Vet; and business with DT, CEO University Mall. These are the table’s career-to-contact pairings, not evidence that every contact held the exact career selected.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The Appendix table continues the range of sports, personal services, media, technical, educational, performance, and animal-related interests.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Reading the Appendix table image, rows 11–20 pair two WNBA choices with EO, Assistant Coach, Women’s Basketball; Pro Skateboard with MT, University Athletics; four Cosmo choices with PS, Director of Cosmo, Community College; photographer with Campus Photographer, with the contact-initials cell blank; journalist with PD, Communications; and football with TM, Assistant Coach, Men’s Football.",
+              "form": "paraphrased",
+              "citations": []
+            },
+            {
+              "text": "Reading the Appendix table image, rows 21–30 pair lawyer with JT, Lawyer; car sales and auto mechanic with JG, Chair, Automotive Tech; teacher with JW, CI Professor; music producer, rapper, actor, comic illustration, and a second actor with J, CC—Theater; and zoo keeper with TC, Doc Student. Abbreviated role labels are retained without expanding uncertain meanings.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The final page returns to the concrete design of the afternoon work. Its pairings substantiate the earlier description of diverse aspirations and show how university and community contacts were used to connect those aspirations with an interview activity; the appendix adds no new claim of measured learning or career attainment."
+    }
+  ]
+}

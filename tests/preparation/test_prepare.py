@@ -383,7 +383,7 @@ def test_excerpt_and_unset_provenance_fields_are_recorded(prep: ModuleType, tmp_
 
 
 def test_real_manifest_loads_and_keeps_unknown_fields_unset(prep: ModuleType) -> None:
-    entries = prep.load_manifest(prep.DEFAULT_MANIFEST)
+    entries = prep.load_manifest(prep.STUDY / "data" / "sources.yaml")
     li = next(e for e in entries if e.slug == "li_et_al_2025_making_ai_less_thirsty")
     assert li.publication_date is None
     assert li.retrieved_at.utcoffset() is not None

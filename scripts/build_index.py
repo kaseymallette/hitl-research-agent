@@ -1,7 +1,13 @@
-"""Water experiment: build and search the indexes the approaches retrieve from.
+"""Build and search the indexes the approaches retrieve from, for one study.
 
-    uv run python scripts/build_index.py build  {source_text,analyses}
-    uv run python scripts/build_index.py search {rag,structured} "QUESTION" [-k 5]
+    uv run python scripts/build_index.py build  {source_text,analyses} [--study water]
+                                         [--model text-embedding-3-large]
+    uv run python scripts/build_index.py search {rag,structured} "QUESTION" [-k 5] [--study water]
+
+Everything below is relative to ``studies/<study>/`` (``water`` by default, or
+``literacy_pilot``). Items are embedded with ``BAAI/bge-small-en-v1.5`` (local) unless
+``--model text-embedding-3-large`` asks for OpenAI's (the API key from the environment or
+``.env``); ``search`` uses whichever model the index was built with.
 
 ``source_text`` (original documents, standard RAG) reads each article's prepared text
 and page map from ``outputs/preparation`` (run ``prepare_sources.py prepare`` for every
@@ -39,7 +45,9 @@ from typing import Any
 import numpy as np
 import yaml
 
-STUDY = Path(__file__).resolve().parents[1] / "studies" / "water"
+STUDIES_ROOT = Path(__file__).resolve().parents[1] / "studies"
+STUDIES = ("water", "literacy_pilot")
+STUDY = STUDIES_ROOT / "water"
 MANIFEST = STUDY / "data" / "sources.yaml"
 PREPARATION = STUDY / "outputs" / "preparation"
 ANALYSES = STUDY / "outputs" / "analyses"
@@ -52,6 +60,12 @@ APPROACHES = {"rag": "source_text", "structured": "analyses"}
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 # BGE's recommended prefix for retrieval queries; passages are embedded without one.
 QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
+# The alternative `build --model` takes: OpenAI's embeddings, through the API key in the
+# environment or .env, with no query instruction. Chunk sizes are still counted with the
+# bge tokenizer, so the pieces and their IDs are the same whichever model embeds them.
+OPENAI_MODEL = "text-embedding-3-large"
+MODELS = (EMBEDDING_MODEL, OPENAI_MODEL)
+OPENAI_BATCH = 256
 # The model reads at most 512 tokens, including its two special tokens.
 MAX_TOKENS = 450
 # Article passages are cut to about the size of an analysis item (mean 177 tokens), so the
@@ -282,6 +296,16 @@ def analysis_records(
 # --------------------------------------------------------------------------- I/O
 
 
+def use_study(name: str) -> None:
+    """Point every input and the indexes at studies/<name>/."""
+    global STUDY, MANIFEST, PREPARATION, ANALYSES, INDEX_ROOT
+    STUDY = STUDIES_ROOT / name
+    MANIFEST = STUDY / "data" / "sources.yaml"
+    PREPARATION = STUDY / "outputs" / "preparation"
+    ANALYSES = STUDY / "outputs" / "analyses"
+    INDEX_ROOT = STUDY / "outputs" / "index"
+
+
 def _slugs() -> list[str]:
     return [s["slug"] for s in yaml.safe_load(MANIFEST.read_text(encoding="utf-8"))["sources"]]
 
@@ -296,6 +320,25 @@ def _token_counter() -> CountTokens:
 
 def _unit(vectors: np.ndarray) -> np.ndarray:
     return vectors / np.linalg.norm(vectors, axis=1, keepdims=True)
+
+
+def embed(model_name: str, texts: list[str]) -> np.ndarray:
+    """Unit-length vectors for the texts, in order, from the named model."""
+    if model_name == OPENAI_MODEL:
+        from openai import OpenAI
+
+        from hitl_research_agent.config import Settings
+
+        client = OpenAI(api_key=Settings().openai_api_key)
+        rows: list[list[float]] = []
+        for i in range(0, len(texts), OPENAI_BATCH):
+            response = client.embeddings.create(model=model_name, input=texts[i : i + OPENAI_BATCH])
+            rows += [d.embedding for d in sorted(response.data, key=lambda d: d.index)]
+        return _unit(np.array(rows, dtype=np.float32))
+    from fastembed import TextEmbedding
+
+    model = TextEmbedding(model_name=model_name)
+    return _unit(np.array(list(model.embed(texts)), dtype=np.float32))
 
 
 def _source_text_records(slug: str, count: CountTokens) -> Records:
@@ -327,9 +370,7 @@ def _analysis_records(slug: str, count: CountTokens) -> Records:
     return records, {name: hashlib.sha256(raw).hexdigest() for name, raw in files.items()}
 
 
-def build(name: str) -> int:
-    from fastembed import TextEmbedding
-
+def build(name: str, model_name: str = EMBEDDING_MODEL) -> int:
     count = _token_counter()
     records_for = _source_text_records if name == "source_text" else _analysis_records
     chunks: list[dict[str, Any]] = []
@@ -340,8 +381,7 @@ def build(name: str) -> int:
         chunks.extend(records)
         print(f"{slug}: {len(records)} chunks", file=sys.stderr)
 
-    model = TextEmbedding(model_name=EMBEDDING_MODEL)
-    vectors = _unit(np.array(list(model.embed([c["text"] for c in chunks])), dtype=np.float32))
+    vectors = embed(model_name, [c["text"] for c in chunks])
 
     out = INDEX_ROOT / name
     out.mkdir(parents=True, exist_ok=True)
@@ -351,8 +391,9 @@ def build(name: str) -> int:
     np.save(out / "embeddings.npy", vectors)
     index = {
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
-        "embedding_model": EMBEDDING_MODEL,
-        "query_instruction": QUERY_INSTRUCTION,
+        "embedding_model": model_name,
+        "query_instruction": QUERY_INSTRUCTION if model_name == EMBEDDING_MODEL else "",
+        "tokenizer": EMBEDDING_MODEL,
         "dimension": int(vectors.shape[1]),
         "max_tokens": SOURCE_MAX_TOKENS if name == "source_text" else MAX_TOKENS,
         "overlap_tokens": SOURCE_OVERLAP_TOKENS if name == "source_text" else 0,
@@ -388,11 +429,8 @@ def retrieve(
 ) -> list[tuple[float, dict[str, Any]]]:
     """The k items (all, if k is None) nearest the question in the approach's index,
     with the question embedded by the model and instruction the index was built with."""
-    from fastembed import TextEmbedding
-
     index, chunks, vectors = load_index(APPROACHES[approach])
-    model = TextEmbedding(model_name=index["embedding_model"])
-    query = _unit(np.array(list(model.embed([index["query_instruction"] + question]))))[0]
+    query = embed(index["embedding_model"], [index["query_instruction"] + question])[0]
     return nearest(chunks, vectors, query, k)
 
 
@@ -409,13 +447,18 @@ def main(argv: list[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="command", required=True)
     b = sub.add_parser("build", help="split, embed, and index one approach's material")
     b.add_argument("index", choices=INDEXES)
+    b.add_argument("--model", choices=MODELS, default=EMBEDDING_MODEL, help="embedding model")
     s = sub.add_parser("search", help="print the items nearest a question")
     s.add_argument("approach", choices=APPROACHES)
     s.add_argument("question")
     s.add_argument("-k", type=int, default=5)
+    for p in (b, s):
+        p.add_argument("--study", choices=STUDIES, help="default: water")
     args = parser.parse_args(argv)
+    if args.study is not None:
+        use_study(args.study)
     if args.command == "build":
-        return build(args.index)
+        return build(args.index, args.model)
     return search(args.approach, args.question, args.k)
 
 

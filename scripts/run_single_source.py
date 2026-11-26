@@ -4,11 +4,14 @@
     uv run python scripts/run_single_source.py <slug>
     uv run python scripts/run_single_source.py <slug> --only 03
     uv run python scripts/run_single_source.py <slug> --revise 01
+    uv run python scripts/run_single_source.py <slug> --study literacy_pilot
 
-The article is the `<slug>` entry in `studies/water/data/sources.yaml`. Each call is
+The article is the `<slug>` entry in `studies/<study>/data/sources.yaml` (the study is
+`water` unless `--study` says otherwise). Every study is analyzed with the water study's
+prompts and rubric, so their analyses are made the same way. Each call is
 its own Codex session (`codex exec`) on GPT-6.1 Sol at medium effort,
 signed in with ChatGPT rather than an API key, and writes one file to
-`studies/water/outputs/analyses/<slug>/`:
+`studies/<study>/outputs/analyses/<slug>/`:
 
     01_close_reading.json          the close reading
     02_claims_reference.md         the article's own claims, from the article alone
@@ -49,7 +52,10 @@ from typing import Any
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-STUDY = REPO_ROOT / "studies" / "water"
+STUDIES = ("water", "literacy_pilot")
+# The prompts and rubric every study is analyzed with.
+METHOD = REPO_ROOT / "studies" / "water"
+STUDY = METHOD
 SOURCES = STUDY / "data" / "sources.yaml"
 ANALYSES = STUDY / "outputs" / "analyses"
 LOGS = REPO_ROOT / ".codex_runs"
@@ -59,15 +65,15 @@ MODEL = "gpt-6.1-sol"
 EFFORT = "medium"
 TIMEOUT_SECONDS = 60 * 60
 
-PROMPTS = STUDY / "prompts"
+PROMPTS = METHOD / "prompts"
 CLOSE_READING_PROMPT = "prompts/01_close_reading.md"
 ARGUMENT_EVALUATION_PROMPT = "prompts/04_argument_evaluation.md"
 
 # Repository files a session may be given, under the name it sees them by.
 REPO_FILES = {
-    "RUBRIC.md": STUDY / "RUBRIC.md",
-    CLOSE_READING_PROMPT: STUDY / CLOSE_READING_PROMPT,
-    ARGUMENT_EVALUATION_PROMPT: STUDY / ARGUMENT_EVALUATION_PROMPT,
+    "RUBRIC.md": METHOD / "RUBRIC.md",
+    CLOSE_READING_PROMPT: METHOD / CLOSE_READING_PROMPT,
+    ARGUMENT_EVALUATION_PROMPT: METHOD / ARGUMENT_EVALUATION_PROMPT,
 }
 SOURCE_FIELDS = ("source_title", "source_type", "publisher", "doi")
 
@@ -143,6 +149,14 @@ REVISIONS = {
         "04_argument_evaluation_revise.md",
     ),
 }
+
+
+def use_study(name: str) -> None:
+    """Point the sources and analyses at studies/<name>/; the prompts stay the same."""
+    global STUDY, SOURCES, ANALYSES
+    STUDY = REPO_ROOT / "studies" / name
+    SOURCES = STUDY / "data" / "sources.yaml"
+    ANALYSES = STUDY / "outputs" / "analyses"
 
 
 class CallFailed(Exception):
@@ -259,13 +273,16 @@ def calls_to_run(only: str | None, revise: str | None, article_dir: Path) -> lis
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("slug", help="the article's slug in studies/water/data/sources.yaml")
+    parser.add_argument("slug", help="the article's slug in the study's data/sources.yaml")
+    parser.add_argument("--study", choices=STUDIES, help="default: water")
     choice = parser.add_mutually_exclusive_group()
     choice.add_argument("--only", choices=sorted(CALLS), help="rerun one call")
     choice.add_argument("--revise", choices=sorted(REVISIONS), help="revise 01 or 04 in place")
     parser.add_argument("--codex", type=Path, help="path to the Codex CLI")
     args = parser.parse_args(argv)
 
+    if args.study is not None:
+        use_study(args.study)
     entry = source_entry(args.slug)
     article_dir = ANALYSES / args.slug
     calls = calls_to_run(args.only, args.revise, article_dir)

@@ -1,0 +1,63 @@
+# Provenance manifest for the literacy pilot's three articles, read from the PDFs.
+# Unknown fields stay unset. The PDFs stay local (publisher-copyrighted).
+sources:
+  - slug: mallette_et_al_2000_preservice_teachers_knowledge_struggling_readers
+    pdf: "data/A critical analysis of two preservice teachers knowledge of struggling readers Raced classed and gendered.pdf"
+    source_title: "A Critical Analysis of Two Preservice Teachers' Knowledge of Struggling Readers: Raced, Classed, and Gendered?"
+    source_authors: [Maria H. Mallette, John E. Readence, Marilyn McKinney, Margaret M. Smith]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: 10.1080/19388070009558323
+    publisher: "Reading Research and Instruction (Taylor & Francis)"
+    url: "http://dx.doi.org/10.1080/19388070009558323"
+    retrieved_at: "2026-11-25T23:11:11+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: the article's first page (PDF page 2)
+      source_authors: the article's first-page byline, as printed
+      publication_date: "unset: the article prints only 'Spring 2000, 39 (3) 222-234'"
+      source_type: "'peer_reviewed_paper': a research article in Reading Research and Instruction; the PDF does not state that it was peer reviewed"
+      doi: the Taylor & Francis cover page
+      publisher: the Taylor & Francis cover page
+      url: the DOI link on the cover page
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
+
+  - slug: mallette_et_al_2009_summer_literacy_program_at_risk_adolescents
+    pdf: "data/Summerlit copy.pdf"
+    source_title: "Exploring the Value of a Summer Literacy Program on the Learning of At-Risk Adolescents"
+    source_authors: [Marla H. Mallette, James B. Schreiber, Crystal Caffey, Tina Carpenter, Martha Hunter]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: 10.1080/19388070802434907
+    publisher: "Literacy Research and Instruction (Association of Literacy Educators and Researchers)"
+    url: null
+    retrieved_at: "2026-11-25T23:11:15+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: the first page
+      source_authors: the first-page byline, as printed
+      publication_date: "unset: the first page prints 'Literacy Research and Instruction, 48: 172-184, 2009'"
+      source_type: "'peer_reviewed_paper': a research article in Literacy Research and Instruction; the PDF does not state that it was peer reviewed"
+      doi: the first page
+      publisher: "the first page ('Copyright © Association of Literacy Educators and Researchers')"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"
+
+  - slug: mallette_et_al_2005_what_matters_most_middle_level_educators
+    pdf: "data/What Matters Most copy.pdf"
+    source_title: "What Matters Most? A Survey of Accomplished Middle-Level Educators' Beliefs and Values About Literacy"
+    source_authors: [Marla H. Mallette, William A. Henk, Jan E. Waggoner, Carol J. DeLaney]
+    publication_date: null
+    source_type: peer_reviewed_paper
+    doi: null
+    publisher: "Action in Teacher Education"
+    url: null
+    retrieved_at: "2026-11-25T23:11:19+00:00"
+    is_excerpt: false
+    provenance_basis:
+      source_title: the first page
+      source_authors: the first-page byline, as printed
+      publication_date: "unset: the page footers print 'Action in Teacher Education Vol. 27, No. 2' and no year; the slug's 2005 is from the volume number and is to be confirmed"
+      source_type: "'peer_reviewed_paper': a research article in Action in Teacher Education; the PDF does not state that it was peer reviewed"
+      doi: "unset: not printed in the PDF"
+      publisher: "the page footers name the journal only"
+      retrieved_at: "when the PDF was added to the folder (macOS kMDItemDateAdded)"

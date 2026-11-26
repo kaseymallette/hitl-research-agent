@@ -1,0 +1,913 @@
+{
+  "reading_plan": "Source title: What Matters Most? A Survey of Accomplished Middle-Level Educators' Beliefs and Values About Literacy. Source type: peer_reviewed_paper. This is a two-column empirical journal article in Action in Teacher Education, with an abstract, literature-based framing, survey methods, quantitative and qualitative findings, discussion, three compact numerical tables, references, and author biographies; the PDF appends a copyright sheet. A first visual pass shows moderately dense academic prose, denser passages of theory, survey design, and statistics, and more accessible stretches of teacher examples. I will follow the printed order in generally 200–350-word units, allowing shorter natural boundaries for the abstract, methods subsections, statistical comparison, and closing material. I extracted text with macOS PDFKit and inspected rendered images of every page to check column order, tables, citation markers, and references. Readings of tables are paraphrased and name the table. Bibliographic entries retain the source’s wording and details, with page-wrap hyphenation and line breaks joined; no reference details are supplied from outside the document.",
+  "reading_path": [
+    {
+      "location": "p. 33 (PDF p. 1), title and abstract",
+      "moves": "The title frames the inquiry as a question about educators’ priorities and identifies its subjects as accomplished. The abstract introduces a mixed quantitative and qualitative survey, states its three concerns, and gives the authors’ own opening summary of findings and implications.",
+      "claims": [
+        {
+          "text": "Ninety teachers in award-winning middle schools responded to a survey about their identities as literacy teachers, their views of multiliteracies in adolescents’ lives, and the classroom value they assigned those literacies.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The abstract reports more favorable mean ratings for Basic Literacies than New Literacies, strong but variously interpreted support for literacy instruction across disciplines, and greatest agreement that every teacher is a literacy teacher.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Little support existed for developing students’ out-of-school literacies in schools.",
+          "form": "verbatim",
+          "support": []
+        },
+        {
+          "text": "The authors say these findings have strong implications for changing curricular emphases and bringing teacher practice together with adolescents’ interests and needs.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The opening establishes beliefs and values as the object of study. Its favorable language about accomplishment and its call to merge practice with adolescents’ lives establish a perspective, while the abstract’s claims remain an initial report to be unfolded in the body."
+    },
+    {
+      "location": "pp. 33–34 (PDF pp. 1–2), opening introduction through statement of purpose",
+      "moves": "The authors state a developmental premise, contrast it with historical instructional practice, then trace a change in the field and identify a research gap that motivates the study.",
+      "claims": [
+        {
+          "text": "Adolescence is a distinctive, vital period of literacy learning, and teachers must scaffold young adolescents toward more advanced literacy as a necessary part of reading development.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "A position statement on adolescent literacy is cited for the need for scaffolding.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Moore, Bean, Birdyshaw, & Rycik, 1999)",
+                  "reference_entry": "Moore, D. W., Bean, T. W., Birdyshaw, D., & Rycik, J. A. (1999). Adolescent literacy: A position statement for the Commission on Adolescent Literacy of the International Reading Association. Newark, DE: International Reading Association."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Exemplary middle-grades literacy programs exist but are often exceptional; instruction generally shifts from reading processes to acquiring subject matter. Historically, many teachers assigned literacy to English or language arts teachers rather than sharing responsibility.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Historical and curricular accounts support the claim of twentieth-century resistance to reading instruction across content areas.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(see, e.g., Moore, Readence, & Rickelman, 1983; O’Brien, Stewart, & Moje, 1995)",
+                  "reference_entry": "Moore, D. W., Readence, J. E., & Rickelman, R. J. (1983). An historical exploration of content area reading instruction. Reading Research Quarterly, 18, 419–438."
+                },
+                {
+                  "citation_text": "(see, e.g., Moore, Readence, & Rickelman, 1983; O’Brien, Stewart, & Moje, 1995)",
+                  "reference_entry": "O’Brien, D., Stewart, R., & Moje, E. B. (1995). Why content literacy is difficult to infuse into the secondary curriculum: Strategies, goals, and classroom realities. Reading Research Quarterly, 30, 442–463."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The late-1990s shift from secondary reading to adolescent literacy brought new understandings, followed by attention to literacy’s social and political character.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The terminology shift and the subsequent research direction are attributed to separate works.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Moore, 1996)",
+                  "reference_entry": "Moore, D. W. (1996). Contexts for literacy in secondary schools. In D. J. Leu, C. K. Kinzer, & K. A. Hinchman. Literacies for the 21st century: Research and practice (pp. 97–112). Chicago: National Reading Conference."
+                },
+                {
+                  "citation_text": "(Hinchman & Moje, 1998)",
+                  "reference_entry": "Hinchman, K. A., & Moje, E. B. (1998). Conversations: Locating the social and political in secondary school research. Reading Research Quarterly, 33, 117–128."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Research on secondary teachers’ beliefs about traditional literacy has been scarce, and studies of middle-school educators’ beliefs under the broader reconceptualization are even fewer.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite earlier work on secondary teachers’ beliefs for the first part of this gap.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Readence, Kile, & Mallette, 1998)",
+                  "reference_entry": "Readence, J. E., Kile, R. S., & Mallette, M. H. (1998). Secondary teachers’ beliefs about literacy: Emerging voices. In D. E. Alvermann, K. A. Hinchman, D. W. Moore, S. F. Phelps, & D. R. Waff (Eds.), Reconceptualizing the literacies in adolescents’ lives (pp. 129–148). Mahwah, NJ: Erlbaum."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The study therefore examines accomplished middle-school teachers’ definitions of their literacy-teaching roles, views of adolescents’ multiliteracies, and values concerning classroom use.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The move from a historical problem to a contemporary gap explains why beliefs are being surveyed. The contrast is between changing research conceptions and uncertain educator uptake; the authors have not yet reported what the teachers believe."
+    },
+    {
+      "location": "p. 34 (PDF p. 2), Adolescent Literacy, first two paragraphs",
+      "moves": "The authors define literacy broadly, provide a home-language example, and establish a social constructivist framework. They contrast everyday information exchange with the classroom’s division of subject matter.",
+      "claims": [
+        {
+          "text": "Literacy extends beyond academic reading and writing to many forms of communication, including multiple literacies characterized by socially situated ways of thinking, speaking, interacting, and valuing.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The broad view is attributed to Moje and colleagues and connected to Gee’s concept of multiple literacies.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Moje, Young, Readence, and Moore (2000)",
+                  "reference_entry": "Moje, E. B., Young, J. P., Readence, J. E., & Moore, D. W. (2000). Reinventing adolescent literacy for new times: Perennial and millennial issues. Journal of Adolescent and Adult Literacy, 43, 400–410."
+                },
+                {
+                  "citation_text": "Gee’s (1996)",
+                  "reference_entry": "Gee, J. P. (1996). Social linguistics and literacies: Ideologies in discourses (2nd ed.). London: Falmer Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Children learn culturally appropriate language and meaning-making practices at home that do not always coincide with academic literacy.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The encompassing conception of adolescent literacy rests on literacy being socially constructed, with learning occurring in situated contexts through interaction, dialogue, and negotiation of meaning.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The social construction of literacy and the account of situated learning have distinct cited foundations.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Bloome & Egan-Robertson, 1993)",
+                  "reference_entry": "Bloome, D., & Egan-Robertson, A. (1993). The social construction of intertextuality in classroom reading and writing lessons. Reading Research Quarterly, 36, 350–377."
+                },
+                {
+                  "citation_text": "(Luke, 2003)",
+                  "reference_entry": "Luke, C. (2003). Pedagogy, connectivity, multimodality, and interdisciplinarity. Reading Research Quarterly, 38, 397–402."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A socially interactive learning community draws on diverse everyday information sources; classroom time divisions by subject discourage exchanging information and using diverse texts and communication media.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "This defines the broader literacy against which teacher beliefs will be understood. The home example makes the distinction concrete, while the classroom comparison already favors permeability between social contexts and school practice."
+    },
+    {
+      "location": "p. 34 (PDF p. 2), Adolescent Literacy, research on print/media through final paragraph",
+      "moves": "The authors introduce supporting research, derive an instructional obligation from technological change, diagnose a mismatch between adolescent skills and social demands, and recommend adolescent-centered instruction.",
+      "claims": [
+        {
+          "text": "A growing constructivist and critical research literature examines adolescents’ literacy experiences in school and print and media literacies outside school.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite three examples of this body of work.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Alvermann, 2002; Finders, 1997; Moje, 2000)",
+                  "reference_entry": "Alvermann, D. E. (Ed.). (2002). Adolescents and literacies in a digital world. New York: Peter Lang."
+                },
+                {
+                  "citation_text": "(Alvermann, 2002; Finders, 1997; Moje, 2000)",
+                  "reference_entry": "Finders, M. (1997). Just girls: Hidden literacies and life in junior high. New York: Teachers College Press."
+                },
+                {
+                  "citation_text": "(Alvermann, 2002; Finders, 1997; Moje, 2000)",
+                  "reference_entry": "Moje, E. B. (2000). “All the stories they have”: Adolescents’ insights about literacy and learning in secondary schools. Newark, DE: International Reading Association."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Technological tools motivate students, and technology-mediated composing in social learning communities has the potential to promote academically related interests.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This suggestion is attributed to a study of adolescent girls’ technological literacy practices.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Chandler-Olcott and Mahar (2003)",
+                  "reference_entry": "Chandler-Olcott, K., & Mahar, D. (2003). “Tech-saviness” meets multiliteracies: Exploring adolescent girls’ technology-related literacy practices. Reading Research Quarterly, 38, 356–385."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Classroom instruction ought to reflect information and communication technologies’ continual redefinition of literacy demands.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "A framework of new Internet literacies supports the premise of changing demands.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Leu & Kinzer, 2003)",
+                  "reference_entry": "Leu, D. J., & Kinzer, C. K. (2003). Toward a theoretical framework of new literacies on the Internet: Central principles. In J. C. Richards & M. C. McKenna (Eds.), Integrating multiple literacies in K–8 classrooms: Cases, commentaries, and practical applications (pp. 18–37). Mahwah, NJ: Erlbaum."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Adolescents’ cultural, linguistic, and critical literacy skills are not keeping pace with information-age demands or higher reading standards.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The diagnosis is attributed to a commissioned paper on effective adolescent literacy instruction.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Alvermann, 2001)",
+                  "reference_entry": "Alvermann, D. E. (2001). Effective literacy instruction for adolescents [Executive summary and paper commissioned by the National Reading Conference]. Chicago: National Reading Conference."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The field demands placing adolescents at the center of instruction and dispelling narrow definitions limited to decoding and factual comprehension; such definitions fail to provide motivation and meaning in a media-saturated environment.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The transition toward adolescent literacy is cited for the criticism of narrow definitions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Stevens, 2002)",
+                  "reference_entry": "Stevens, L. P. (2002). Making the road by walking: The transition from content area literacy to adolescent literacy. Reading Research and Instruction, 41, 267–278."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Narrow definitions also fail to consider adolescents’ distinctive psychosocial needs, and adolescents deserve comprehensive support for their continuing development as readers and writers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors cite developmental needs and close with a quoted entitlement to comprehensive support.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Jackson & Davis, 2000)",
+                  "reference_entry": "Jackson, A. W., & Davis, G. A. (2000) Turning points 2000. Columbus, OH: National Middle School Association."
+                },
+                {
+                  "citation_text": "(Moore et al., 1999, p. 101)",
+                  "reference_entry": "Moore, D. W., Bean, T. W., Birdyshaw, D., & Rycik, J. A. (1999). Adolescent literacy: A position statement for the Commission on Adolescent Literacy of the International Reading Association. Newark, DE: International Reading Association."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The conceptual definition now becomes a normative case for changing instruction. Potential benefits of technology remain expressed as potential, while the claims that narrow definitions fail students and that instruction must center adolescents are stronger."
+    },
+    {
+      "location": "p. 35 (PDF p. 3), opening paragraphs and three research questions",
+      "moves": "The authors give examples of knowledge gained directly from adolescents, reason from educators’ daily proximity to students, and specify the inquiry’s questions.",
+      "claims": [
+        {
+          "text": "Researchers know what literature adolescents find engaging and why they choose to read by spending time with them, listening, and observing their interactions.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The examples are studies of reading preferences and motivations.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Worthy, Moorman, & Turner, 1999)",
+                  "reference_entry": "Worthy, J., Moorman, M., & Turner, M. (1999). What Johnny likes to read is hard to find in school. Reading Research Quarterly, 34, 12–53."
+                },
+                {
+                  "citation_text": "(Ivey & Broaddus, 2001)",
+                  "reference_entry": "Ivey, G., & Broaddus, K. (2001). “Just plain reading”: A survey of what makes students want to read in middle school. Reading Research Quarterly, 36, 350–377."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Because teachers and administrators presumably engage with adolescents daily, the authors ask whether educators share adolescent-literacy researchers’ beliefs.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The three study questions concern whether middle-grade educators recognize and value multiple literacies, how they define their teaching roles in literacy, and which aspects they value most.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The turn from the research literature to educators follows from their shared access to adolescents. This is a reason for asking about agreement, rather than an assumption that their beliefs actually agree."
+    },
+    {
+      "location": "p. 35 (PDF p. 3), Method—Genesis of the Survey: TQE Initiative",
+      "moves": "The authors explain the practical origin of the survey, describe the curriculum-design group, and connect the instrument to both scholarship and professional knowledge.",
+      "claims": [
+        {
+          "text": "A Teacher Quality Enhancement grant at a large Midwestern university required designing a new literacy course to strengthen preparation for teaching grades 5–8.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "An eight-person team debated which adolescent literacies to include and how much course time to allocate: three literacy-education faculty, two writing-assessment specialists, an adolescent-literature expert, a nationally board-certified middle-grades language-arts teacher, and a reading-education doctoral candidate.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The team decided that practicing educators’ perspectives needed to inform the course, leading to a survey intended to reflect adolescent-literacy research and capture beliefs and practices from distinguished middle-grades schools.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Survey results were intended to improve the course’s real-world applicability and also stand as research in their own right.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The survey’s origin makes the concern with relative value and instructional priorities concrete: the designers must allocate limited course time. The study serves both a curricular decision and a research purpose."
+    },
+    {
+      "location": "pp. 35–36 (PDF pp. 3–4), Participants and Data Collection—Sampling",
+      "moves": "The authors delimit the intended sample, explain the institutional designation used for selection, state a sampling assumption, and describe recruitment.",
+      "claims": [
+        {
+          "text": "The target sample comprised teachers and administrators at 12 Illinois schools serving grades 5–8 that had received Blue Ribbon designation within the preceding five years.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The authors describe Blue Ribbon Schools as a U.S. Department of Education program honoring high achievement or dramatic achievement gains, with criteria changed in 2002 to reflect No Child Left Behind’s standards and accountability goals.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "As reported here, a qualifying school must either have at least 40% of students from disadvantaged backgrounds and dramatic improvement on state assessments, or rank in the top 10% on state assessments.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Schools were in ethnically, culturally, and linguistically diverse areas. The authors selected them on the assumption that demonstrated innovation and academic excellence made acceptance of adolescent literacies most likely.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Administrators were telephoned to request participation by themselves and staff. Respondents had two weeks; principals were then telephoned again to encourage all teachers’ participation.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The sample is chosen for an expected favorable setting for adolescent literacy, giving substance to the title’s accomplishment framing. The account identifies an intended population and recruitment route, rather than yet establishing the final respondent group."
+    },
+    {
+      "location": "p. 36 (PDF p. 4), Instrumentation",
+      "moves": "The authors operationalize beliefs and values through demographics, open-ended responses, and scaled ratings, and explain a design choice intended to reduce priming.",
+      "claims": [
+        {
+          "text": "The survey collected teaching years, grades, subjects, education, certifications and endorsements, professional development, and gender.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Five open-ended prompts asked whether literacy instruction was a major teaching responsibility; how students used literacy personally; whether these uses should influence instruction; how school literacy instruction occurred; and reactions to every teacher being a literacy teacher.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The final section asked how much literacy topics should enter preparation of all middle-grades subject teachers and students’ literacy instruction. Examples included reading instruction and assessment, writing, struggling readers, content-area integration, media, Internet, critical and visual literacies, global communication, popular culture, literacy inside and outside school, and cultural and linguistic diversity.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Response options were Essential, Very Important, Somewhat Important, and Not Important, numbered 1 through 4 respectively. The scaled items followed open questions to reduce their influence on free-form responses.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The instrument translates the earlier questions into two forms of evidence. The scale direction matters for later comparisons: a lower mean expresses greater importance. The ordering is an explicit effort to preserve respondents’ own language before supplying categories."
+    },
+    {
+      "location": "p. 36 (PDF p. 4), Data Analyses",
+      "moves": "The authors describe concurrent quantitative and qualitative procedures, explain consolidation of related questions, and report resolution of a coding disagreement.",
+      "claims": [
+        {
+          "text": "Likert responses were analyzed through demographic frequency distributions, item means and standard deviations, correlations, and a t-test comparing scales.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Two researchers independently analyzed and coded the open-ended responses while quantitative analyses proceeded. Responses to three questions could be combined into a category concerning literacy across the curriculum.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The researchers report similar category formation for the remaining questions. Their only discrepancy concerned naming an out-of-school literacy-use category; rereading the responses and agreeing on a broad label resolved it.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The authors provide the procedure that will produce both numerical comparisons and interpretive categories. Combining questions is grounded in reported response convergence, while their description of agreement concerns the coding process rather than direct observation of classrooms."
+    },
+    {
+      "location": "pp. 36–37 (PDF pp. 4–5), Results, response and demographic account, with Table 1",
+      "moves": "The authors establish the achieved sample, report nonparticipation and subgroup comparisons, and justify analyzing teachers as one group. Table 1 supplies the teaching-background distribution.",
+      "claims": [
+        {
+          "text": "Seven of 12 administrators agreed to school participation; the others wanted to avoid inundating teachers with another survey. Of 345 surveys mailed to seven schools, 90 were returned, a 26% return rate. All seven schools were represented, with school return rates from 11% to 50%.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "No administrators returned surveys; every respondent was a teacher.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "ANOVAs found no significant differences by teaching years, education level, school building, or certification. Forty-nine teachers, reported as 54%, currently taught or had taught reading; the other 46% reported no reading-instruction experience. These two groups also showed no significant Likert-item differences, so the reported analysis combines the whole group.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The teachers represented varied subject backgrounds, and the reading category does not mean all 49 were currently reading teachers.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 1 lists teaching backgrounds as follows: reading 49; exploratory/related arts/electives 10; physical education 7; math 5; foreign language 4; special education 4; social studies 3; science and math 3; social studies and math 2; social studies and science 1; science 1; speech/language therapy 1. Table 1’s footnote explains that the reading group includes teachers who had taught reading at some point and had also marked other subjects.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The intended teacher-and-administrator study has become a teacher-only study. The authors use absence of significant subgroup differences to explain aggregation and retain the distinction between current subject teaching and past experience."
+    },
+    {
+      "location": "pp. 37–38 (PDF pp. 5–6), Quantitative Findings, descriptive comparisons and Tables 2–3",
+      "moves": "The authors define two item groups and compare their rating patterns. The accompanying tables provide the sample sizes, means, and dispersions underlying the prose.",
+      "claims": [
+        {
+          "text": "Basic Literacies—comprehension, vocabulary, word identification, fluency, writing, at-risk students, and content-area literature—were favorably rated, with means from 1.30 to 1.74, between Essential and Very Important.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 2 reports N, mean, and SD respectively: reading comprehension 88, 1.30, 0.68; vocabulary 87, 1.48, 0.74; word identification 86, 1.69, 0.76; fluency 87, 1.62, 0.77; writing 88, 1.40, 0.74; at-risk students 88, 1.51, 0.74; literature/content area 87, 1.74, 0.80.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The prose describes the Basic Literacy standard deviations as similar and hovering around .70.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "New Literacies were generally valued less, with means from 1.58 to 1.81; the authors interpret these as somewhat less essential than Basic Literacies.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Table 3 reports N, mean, and SD respectively: media 84, 1.81, 0.72; Internet 86, 1.67, 0.74; visual 84, 1.75, 0.67; global 83, 1.75, 0.76; diversity 86, 1.78, 0.77; critical 83, 1.58, 0.77; out-of-school 83, 1.77, 0.75.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The scale defined earlier allows the ranking to be read correctly. The authors’ comparison is relative: both groups’ item means fall between Essential and Very Important, but Basic Literacies receive the stronger ratings. Table readings here are paraphrases of the displayed elements."
+    },
+    {
+      "location": "p. 37 (PDF p. 5), Quantitative Findings, scale comparison through final sentence",
+      "moves": "The authors test the numerical comparison, anticipate an objection about educational significance, and interpret the relation between the scales.",
+      "claims": [
+        {
+          "text": "Basic and New Literacy grand means were 1.53 and 1.72 respectively. A correlated-samples t-test found a statistically significant difference, reported as t = 3.25, p < .0016. Both scales had alpha internal consistency estimates of nearly .90.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The numerical difference may appear small and raise questions about educational significance; the authors say qualitative analysis clarifies it.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The Basic and New Literacy scales correlated .52, which the authors interpret as sharing about 25% of their variance and therefore measuring decidedly different literacy aspects despite some similarity.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The argument moves beyond descriptive means to a reported statistical distinction. Rather than dismiss the small magnitude, the authors defer its practical interpretation to the qualitative evidence, creating the next section’s task."
+    },
+    {
+      "location": "p. 38 (PDF p. 6), Qualitative Findings, opening through responses about major teaching responsibilities",
+      "moves": "The authors present qualitative analysis as convergent with and explanatory of the quantitative results, consolidate three questions around a theme, and substantiate teachers’ stated responsibility with counts and examples.",
+      "claims": [
+        {
+          "text": "Responses from all disciplines strongly supported literacy across the curriculum; teachers said this theme was entering school-improvement plans and were beginning to embrace literacy teaching as everyone’s responsibility.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Of 87 respondents to the major-responsibility question, 69—nearly 80%—considered literacy a major responsibility, 10—approximately 12%—did not, and eight considered it part of teaching but not a major part.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Examples included integrating literacy into every curriculum area, mathematical vocabulary requiring literacy inferencing, and U.S. history requiring literacy skills to work with primary sources and historical materials, including context and vocabulary.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The open responses begin to show what favorable Basic Literacy ratings mean to teachers. Their subject-specific examples connect shared literacy responsibility to work already occurring in mathematics and history, without yet establishing the quality or extent of actual practice."
+    },
+    {
+      "location": "pp. 38–39 (PDF pp. 6–7), school literacy instruction, every-teacher statement, and cross-curricular conclusion",
+      "moves": "The authors distinguish varied interpretations of one prompt, compare response counts across questions, give representative statements, and draw a collective conclusion.",
+      "claims": [
+        {
+          "text": "Of 67 respondents describing school literacy instruction, 47 said it occurred across the curriculum; the other 20 described particular methods or their own instruction.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Illustrations included teachers explaining how to read for each content area, literacy across classes with primary emphasis in reading, English, and history, and similar reading-and-writing expectations in every subject. Other answers named classroom libraries, reading strategies, response writing, and literature-circle discussions.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The every-teacher statement elicited the greatest positive agreement: of 81 respondents, 76 were favorable, three negative, and two said it would hold in an ideal world.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "One teacher advocated incorporating literacy in all curricula for enrichment and lifelong use. Another explained that students must comprehend for teaching to work, making encouragement to read and understand a shared responsibility.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The authors conclude that these three questions collectively and strongly support literacy being valued across the curriculum in these Blue Ribbon schools. They regard responses across every grade level and subject area as making the finding more compelling.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The converging prompts substantiate a broad stated commitment while preserving variation in what teachers mean by school literacy instruction. This is the positive cross-curricular finding, now supported in the teachers’ own terms."
+    },
+    {
+      "location": "p. 39 (PDF p. 7), teachers’ descriptions of personal literacy uses",
+      "moves": "The discussion turns to the remaining two open questions. The authors inductively classify perceived out-of-school practices, supply examples for each category, and identify social uses across them.",
+      "claims": [
+        {
+          "text": "Teachers’ accounts of students’ personal literacy uses fell into four thematic categories: personal enjoyment, new literacies, school, and survival/functional.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Personal enjoyment included magazines, newspapers, novels, entertainment, diaries, journals, notes, and family reading. New literacies included video-game guides, Internet, e-mail, instant messaging, and media literacy. School-related uses included homework, mandatory independent reading, and current events. Survival/functional uses included business communication, menus, and managing everyday life.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "The authors identify numerous explicit or implied social uses of literacy involving communication and interaction among people.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "One teacher described e-mails as increasingly clumsy yet recognized new linguistic ground and more writing between students than in the teacher’s childhood, and also perceived more reading.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors present this respondent’s comparison with childhood as poignantly capturing the changing character of adolescents’ out-of-school literacies.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "Teachers show awareness of a varied literacy world beyond classrooms. The e-mail example carries both discomfort with linguistic form and recognition of increased participation; the authors preserve that combination before asking whether such practices should influence school."
+    },
+    {
+      "location": "pp. 39–40 (PDF pp. 7–8), influence of out-of-school literacies on instruction, through end of findings",
+      "moves": "The authors contrast recognition with willingness to integrate practices, count responses, and juxtapose competing rationales. They infer how resistant teachers delimit being literate.",
+      "claims": [
+        {
+          "text": "Among 70 respondents on out-of-school literacies influencing school instruction, only half were favorable; 19 were negative, 12 mixed, and four unclear about the meaning of out-of-school literacies.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Favorable teachers seemed to favor merging traditional and new literacies because instruction connected to students’ interests would increase enthusiasm, relevance, and effectiveness.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "One respondent said literacy instruction would be most effective when taught through middle-school students’ interests; other comments linked relevance with greater enthusiasm to learn.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "Teachers who resisted integration worried about future preparation and appropriate basic language skills. The authors infer that these teachers did not seem to treat students’ out-of-school literacies as part of being literate.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Respondents emphasized future jobs and life skills and valuing literacy. One opposed accepting URQT as a way of saying you are cute. Another resisted building a curriculum around e-mail and chat rooms in favor of acceptable formal use. A third wanted students using instant-message abbreviations to communicate in complete intelligent spoken and written sentences.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        }
+      ],
+      "meaning": "The central tension is now explicit: recognizing social and technological uses does not mean valuing their influence on instruction. The resistant examples make a tradeoff visible between drawing on present interests and prioritizing future formal communication, as these teachers understand it."
+    },
+    {
+      "location": "p. 40 (PDF p. 8), Discussion, first two paragraphs",
+      "moves": "The authors synthesize the two methods, return to the historical contrast, qualify what their study can establish, and evaluate weaker support for broad literacies.",
+      "claims": [
+        {
+          "text": "The quantitative and qualitative findings are mutually supportive in suggesting different values for Basic and New Literacies. The authors regard the Basic Literacy findings as positive and restate their conclusion about valuing literacy across subjects.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "They frame the favorable cross-curricular finding against a century of resistance described in earlier historical research.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Moore et al., 1983)",
+                  "reference_entry": "Moore, D. W., Readence, J. E., & Rickelman, R. J. (1983). An historical exploration of content area reading instruction. Reading Research Quarterly, 18, 419–438."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Knowing how teachers actually teach literacy across the curriculum is beyond this study’s scope. Briefly reported strategies provide only small glimpses of desirable practices teachers may or may not use.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Teachers showed some knowledge and appreciation of personal literacies but rarely mentioned sign systems, graffiti, drama, or music literacy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors identify these as elements of a broad, generative conception of literacy.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Moje et al., 2000)",
+                  "reference_entry": "Moje, E. B., Young, J. P., Readence, J. E., & Moore, D. W. (2000). Reinventing adolescent literacy for new times: Perennial and millennial issues. Journal of Adolescent and Adult Literacy, 43, 400–410."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The authors describe lukewarm support for bringing out-of-school literacies into school as even more disappointing, given research documenting their value in adolescents’ lives.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The evaluative comparison draws on research about adolescents’ literacies.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(see, e.g., Alvermann, 2002; Moje, 2000)",
+                  "reference_entry": "Alvermann, D. E. (Ed.). (2002). Adolescents and literacies in a digital world. New York: Peter Lang."
+                },
+                {
+                  "citation_text": "(see, e.g., Alvermann, 2002; Moje, 2000)",
+                  "reference_entry": "Moje, E. B. (2000). “All the stories they have”: Adolescents’ insights about literacy and learning in secondary schools. Newark, DE: International Reading Association."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The synthesis keeps a crucial boundary between reported values and observed instruction. The authors’ disappointment makes their commitment to a broader literacy conception explicit; this evaluates the findings against that conception while continuing to explain them."
+    },
+    {
+      "location": "p. 40 (PDF p. 8), Discussion, desire to connect with students through community values",
+      "moves": "The authors propose an explanation for resistance, use respondent examples to develop it, concede its institutional logic, and argue that it nevertheless misses students’ present needs.",
+      "claims": [
+        {
+          "text": "Although many teachers wanted to connect with students, they did not seem to recognize out-of-school literacies as a way to do so. Perhaps they regarded such uses as extensions of traditional school goals rather than influences on classroom practice.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Examples stressed using literacy to succeed in society and survive as adults. The authors infer that teachers see preparation for societal success as their job and do not believe integrating out-of-school literacies will accomplish it.",
+              "form": "paraphrased",
+              "citations": []
+            }
+          ]
+        },
+        {
+          "text": "This thinking makes sense in a standards-driven, high-stakes testing system, but fails to consider students’ needs and interests and therefore misses opportunities.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Respondents seemed to regard multiple literacies as habits needing repair, although instant messaging and chat rooms are real communication in students’ lives whether schools sanction them or not.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The disconnect highlights the dependence of literacy values and uses on what a community of users values.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The authors connect their interpretation with Hagood’s account of literacies in new times.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Hagood’s (2000)",
+                  "reference_entry": "Hagood, M. C. (2000). New times, new millennium, new literacies. Reading Research & Instruction, 39, 311–328."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The explanation begins tentatively with perhaps, then develops a stronger interpretation of teachers’ priorities. The concession contextualizes their reasoning without abandoning the authors’ stance that adolescents’ existing communicative lives matter educationally."
+    },
+    {
+      "location": "pp. 40–41 (PDF pp. 8–9), Discussion, Resnick paragraph through expanding what counts as texts",
+      "moves": "The authors broaden the institutional context through cited scholarship, argue for research on practices beyond school, and derive implications for school practice and conceptions of deficit.",
+      "claims": [
+        {
+          "text": "School is only one among the social forces determining the nature and extent of national literacy.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "Resnick is quoted for this account and is described as calling for research on literacy practices inside and outside school to understand the literacy crisis and possible solutions.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Resnick (2000)",
+                  "reference_entry": "Resnick, L. B. (2000). Literacy in school and out. In M. A. Gallego & S. Hollingsworth (Eds.), What counts as literacy: Challenging the school standard (pp. 27–41). New York: Teachers College Press."
+                },
+                {
+                  "citation_text": "(p. 27)",
+                  "reference_entry": "Resnick, L. B. (2000). Literacy in school and out. In M. A. Gallego & S. Hollingsworth (Eds.), What counts as literacy: Challenging the school standard (pp. 27–41). New York: Teachers College Press."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "With little systematic research on out-of-school literacy practices, educators cannot successfully confront the problem.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Because dominant school practice may oppose the practical and pleasurable literacies of everyday life, fundamental shifts in school practice would be necessary to address students’ unique needs relevantly.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Requirements to learn the dominant discourse of standard English do not entail remediating deficient literacies; they instead require expanding what counts as texts.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "A discussion of implications for teacher practice supports this reframing.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Gallego & Hollingsworth, 2000)",
+                  "reference_entry": "Gallego, M. A., & Hollingsworth, S. (2000). Conclusion: Implications for teacher practice. In M. A. Gallego & S. Hollingsworth (Eds.), What counts as literacy (pp. 292–297). New York: Teachers College Press."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "meaning": "The issue expands from individual teachers’ beliefs to relations among institutions and everyday practices. The standard-English discussion answers the earlier concern about formal competence by reframing the educational response as expansion rather than repair."
+    },
+    {
+      "location": "p. 41 (PDF p. 9), Discussion, curriculum and teacher-development implications",
+      "moves": "The authors invoke a responsive curriculum, locate their survey as a possible starting point, and recommend changes in preparation, professional development, teachers’ reflection, and testing.",
+      "claims": [
+        {
+          "text": "A challenging but responsive literacy curriculum should push adolescents to stretch their thinking and read their worlds in new ways.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "This curricular position is attributed to Moje and colleagues.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "Moje and colleagues (2000)",
+                  "reference_entry": "Moje, E. B., Young, J. P., Readence, J. E., & Moore, D. W. (2000). Reinventing adolescent literacy for new times: Perennial and millennial issues. Journal of Adolescent and Adult Literacy, 43, 400–410."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "A study of middle-level teachers’ instructional literacy values might be a starting point for such a curriculum. The present study would seem to have strong implications for preservice education and staff development that convey the value of literacy in its broadest, most authentic sense.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Teachers must examine their values and practices to keep pace with changing literacy forms and functions, and must place adolescents and their lives at the center of that change.",
+          "form": "paraphrased",
+          "support": [
+            {
+              "text": "The changing forms and functions of literacy are linked again to new-literacies theory.",
+              "form": "paraphrased",
+              "citations": [
+                {
+                  "citation_text": "(Leu & Kinzer, 2003)",
+                  "reference_entry": "Leu, D. J., & Kinzer, C. K. (2003). Toward a theoretical framework of new literacies on the Internet: Central principles. In J. C. Richards & M. C. McKenna (Eds.), Integrating multiple literacies in K–8 classrooms: Cases, commentaries, and practical applications (pp. 18–37). Mahwah, NJ: Erlbaum."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "State tests should somehow reflect New Literacies to give teachers license to value and seek a broader range of literacy outcomes.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The recommendations carry forward both the theoretical commitment to broad literacy and the institutional explanation involving testing. The wording keeps the survey’s curricular role tentative, while the obligations on teachers and the recommendation about tests are expressed firmly."
+    },
+    {
+      "location": "p. 41 (PDF p. 9), final Discussion paragraph",
+      "moves": "The authors situate adolescence within lifelong literacy, recommend reciprocal learning between researchers and educators, and state the study’s concluding purpose.",
+      "claims": [
+        {
+          "text": "Adolescent literacy is an important part of lifelong literacy; researchers studying it should learn from those working most closely with adolescents.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Literacy researchers in all areas can benefit from understanding adolescent literacy’s distinctive, important, continually changing character.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "Successful change in adolescent literacy instruction requires listening to people with a vested interest; the authors say this study sought to bring adolescent literacy into sharper pragmatic focus.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The closing returns to the survey’s original purpose of taking practitioners’ perspectives seriously. Even where teachers’ values differ from the authors’ preferred conception, those voices remain necessary to the change the authors advocate."
+    },
+    {
+      "location": "pp. 41–42 (PDF pp. 9–10), References and author biographies",
+      "moves": "The argument ends and the document supplies its bibliographic apparatus and author credentials. These sections identify cited works and the researchers’ professional settings rather than introduce another evidentiary argument.",
+      "claims": [
+        {
+          "text": "The biographies identify Marla H. Mallette, Jan E. Waggoner, and Carol J. Delaney with Southern Illinois University and William A. Henk with Marquette University, where he is dean of the School of Education.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The stated research interests include early literacy and technology, learning to teach literacy, affective dimensions of literacy and school instruction, middle-level and teacher education, adolescent practices inside and outside school, reading motivation, and critical literacy.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The references provide the document’s own matching entries for citations recorded above. The biographies locate the authors in literacy and teacher education, giving context for the curricular concern without adding another finding."
+    },
+    {
+      "location": "PDF p. 11, unnumbered copyright-information sheet",
+      "moves": "The appended reproduction notice identifies publication details and rights information; it is documentary packaging following the article.",
+      "claims": [
+        {
+          "text": "The appended notice identifies the source as Action Teach Educ 27 no2 Summ 2005 and supplies WN 0519604813010.",
+          "form": "paraphrased",
+          "support": []
+        },
+        {
+          "text": "The notice states that the magazine publisher holds copyright, that reproduction was by permission, and that further reproduction in violation of copyright is prohibited. It also carries a 1982–2005 H.W. Wilson Company copyright notice.",
+          "form": "paraphrased",
+          "support": []
+        }
+      ],
+      "meaning": "The PDF ends with provenance and reproduction information, after the research argument, references, and biographies have concluded."
+    }
+  ]
+}

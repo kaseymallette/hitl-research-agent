@@ -145,7 +145,13 @@ interventions and judging what the evidence can support.
 - **Analyses run in Codex, reading the PDF.** Water uses
   `scripts/run_single_source.py` (five automated calls); science of reading uses
   `scripts/workspace.py` (load, run the session, save). The two workflows stay
-  separate until it's clear what tracing claims between corpora needs.
+  separate until it's clear what tracing claims between corpora needs. The
+  literacy pilot uses the water workflow and the water prompts and rubric
+  (`--study literacy_pilot`), so its analyses are made the same way.
+- **Scanned pages.** A page the parser returns nothing for because its text is
+  invisible (a scan's OCR layer) is prepared from that text layer as plain
+  text, and the page is listed under `pages_from_text_layer`. No water page is
+  affected; one pilot article is a scan.
 - **Source PDFs that can't be redistributed stay local.** Only their
   `sources.yaml` entries are tracked. That covers all science of reading PDFs for now
   and three publisher-copyrighted water articles.
@@ -162,6 +168,13 @@ interventions and judging what the evidence can support.
   386) against analysis items of mean 177: structured RAG got about twice as
   many pieces. Passages are now cut at up to 200 tokens, and the traditional
   RAG trial answers were rerun.
+- **The pilot embeds with OpenAI.** Its indexes use `text-embedding-3-large`
+  (`build_index.py build --model`, with the API key in `.env`), for both
+  approaches. The first two trial questions, judged with the local
+  `bge-small` model, put the answer outside the top 10 when the question and
+  the text used different words (E02: "assessment instruments" against the
+  tests' names); with the larger model, the answers rank first. The pieces
+  and their IDs are unchanged. Water still uses `bge-small`.
 - **The structured-analyses index.** The same script splits each article's
   close reading into its reading-path steps (with their claims, support, and
   cited references), the claims reference into its entries (with the headings

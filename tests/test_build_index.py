@@ -333,3 +333,30 @@ def test_each_approach_searches_its_own_index(indexes: Path) -> None:
     assert [c["id"] for _, c in bi.retrieve("rag", "why?")] == ["s2", "s1"]
     assert [c["id"] for _, c in bi.retrieve("structured", "why?", 1)] == ["a1"]
     assert FakeEmbedding.seen == ["Q: why?", "Q: why?"]
+
+
+def test_openai_embeddings_are_batched_ordered_and_unit_length(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls: list[list[str]] = []
+
+    class Embeddings:
+        def create(self, model: str, input: list[str]) -> Any:
+            assert model == bi.OPENAI_MODEL
+            calls.append(input)
+            data = [
+                types.SimpleNamespace(index=i, embedding=[float(len(t)), 0.0])
+                for i, t in enumerate(input)
+            ]
+            return types.SimpleNamespace(data=list(reversed(data)))  # out of order on purpose
+
+    class FakeOpenAI:
+        def __init__(self, api_key: str | None) -> None:
+            self.embeddings = Embeddings()
+
+    monkeypatch.setitem(sys.modules, "openai", types.SimpleNamespace(OpenAI=FakeOpenAI))
+    monkeypatch.setattr(bi, "OPENAI_BATCH", 2)
+    vectors = bi.embed(bi.OPENAI_MODEL, ["a", "bb", "ccc"])
+    assert calls == [["a", "bb"], ["ccc"]]
+    assert vectors.shape == (3, 2)
+    assert np.allclose(np.linalg.norm(vectors, axis=1), 1.0)

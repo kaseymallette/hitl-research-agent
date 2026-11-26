@@ -91,6 +91,22 @@ Each question is answered from each approach's retrieved pieces, with the same m
 
 The two approaches side by side, overall and by kind of question, on retrieval (nDCG@10, precision, recall, F1) and on answers (nugget recall, support precision). Fifteen questions is a small benchmark (TREC tracks use about 50), so results are reported per question as well as averaged, and differences are described, not tested for significance.
 
+### Running it
+
+`data/sources.yaml` lists the articles and `data/topics.yaml` holds the approved questions. Every script takes `--study literacy_pilot`; the analyses use the water study's prompts and rubric, so both studies are analyzed the same way.
+
+```bash
+uv run python scripts/prepare_sources.py prepare --study literacy_pilot --slug SLUG   # each article
+uv run python scripts/run_single_source.py SLUG --study literacy_pilot                # each article
+uv run python scripts/build_index.py build source_text --study literacy_pilot --model text-embedding-3-large
+uv run python scripts/build_index.py build analyses --study literacy_pilot --model text-embedding-3-large
+uv run python scripts/pool.py
+```
+
+`pool.py` writes each approach's ranked list to `outputs/runs/<approach>.trec`, the pool with every piece's approach and rank to `outputs/judging/pool.json`, and the grading sheet to `outputs/judging/sheet.csv`, with `sheet.md` beside it for reading the pieces (`pool.py --markdown` rewrites it from the CSV; a full run on an existing pool needs `--archive NAME`, which moves the old runs and sheet to `outputs/archive/NAME/` and carries every grade to the same piece on the new sheet). The trial pool judged with the local `bge-small` model is kept as `archive/trial_bge_small/`. The sheet shows each piece's code (such as E01-07), question, criteria, article, and text, shuffled within each question, with no approach, rank, or score; it holds the articles' text, so git ignores it, as it does the prepared text and indexes.
+
+One article (Mallette et al., 2000) is a scan with an OCR text layer, which the PDF parser skips. For a page like that, `prepare_sources.py` takes the text layer's blocks as plain text and lists the page under `pages_from_text_layer` in its record. The OCR text is not checked against the page images.
+
 ## Phase 2: generated questions (after Phase 1's results)
 
 A model writes one question for each piece, a question that piece answers, for all four kinds of piece. Each question's correct answer is the piece it was written from. Searching with each question gives **recall@5, recall@10**, and **MRR** (how high the piece ranks on average, from 1 to 0) for each approach. If the generated questions rank the approaches the way the expert's judgments do, they can stand in where there is no expert, as in the water study.
