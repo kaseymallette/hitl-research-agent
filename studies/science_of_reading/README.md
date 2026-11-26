@@ -107,6 +107,7 @@ commands in `RUNBOOK.md` from the repository root.
 │   └── legislation/      legislation
 ├── evaluations/          the workspace template and Codex prompts; see evaluations/README.md
 ├── outputs/              saved results, per corpus and article: outputs/<corpus>/<slug>/
+├── questions/            my mom's questions, answered from the saved analyses
 ├── prompts/              the prompt originals; evaluations/prompts/ must match them
 │   ├── scholarly/        draft scholarly workspace: close reading, five-dimension discourse analysis, guide, scores
 │   └── legislation/      draft legislation workspace: close reading, five-dimension discourse analysis, guide, scores
