@@ -153,6 +153,12 @@ uv run mypy src
 
 ## Harness
 
+### Why Codex
+
+In earlier water-study tests, Codex narrowly beat the API and ChatGPT app, and medium effort beat high. A separate comparison favored reading the PDF directly over prepared text; the costlier model did not read better. Those [experiments are preserved on `wip-2026-11-25`](https://github.com/kaseymallette/hitl-research-agent/blob/wip-2026-11-25/studies/water/README.md#the-ab-experiments). These were tests on two articles, so they support the current setup rather than establish a general winner.
+
+The harness uses GPT-6.1 Sol at medium effort through Codex, within the ChatGPT plan without a separate API key. Each step runs in its own session with only the files it needs.
+
 Run these commands from the repository root.
 
 ### Scholarly articles
