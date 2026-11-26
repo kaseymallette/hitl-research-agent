@@ -61,7 +61,7 @@ The design choices:
 - **Independent sessions.** [`scripts/workspace.py`](scripts/workspace.py) loads one document (its PDF, extracted text, and page images) into a workspace outside the repository, so no session sees other runs or judgments. Saving copies the results to `outputs/<corpus>/<slug>/` and clears the workspace for the next one.
 - **The prompts are the requests.** Each session gets its prompt file from [`studies/science_of_reading/prompts/`](studies/science_of_reading/prompts/) exactly as written.
 - **The researcher decides.** The judgments are recorded, and the expert accepts or revises; nothing is withheld because an analysis is weak.
-- **Why Codex.** Blind head-to-head A/B tests chose GPT-6.1 Sol at medium effort, reading the PDF, run through Codex ([details](studies/water/README.md#the-ab-experiments)). It beat a costlier model and extracted text, and Codex runs within the ChatGPT plan.
+- **Why Codex.** Blind head-to-head A/B tests chose GPT-6.1 Sol at medium effort, reading the PDF, run through Codex ([details](https://github.com/kaseymallette/hitl-research-agent/blob/b887401/studies/water/README.md#the-ab-experiments)). It beat a costlier model and extracted text, and Codex runs within the ChatGPT plan.
 
 The commands for each run are in the study's [`RUNBOOK.md`](studies/science_of_reading/RUNBOOK.md).
 
@@ -101,20 +101,18 @@ Decisions and open questions are in [`docs/PROJECT.md`](docs/PROJECT.md).
 │   ├── PROJECT.md                 the questions, current decisions, and status
 │   └── ENGINEERING_DIRECTIVES.md  the coding baseline
 ├── studies/
-│   ├── science_of_reading/        the study: corpora, codebook, prompts, results, and answered questions
-│   ├── water/                     earlier work, where the analysis harness was built
-│   └── literacy_pilot/            earlier work: a retrieval comparison, not continued
+│   └── science_of_reading/        the study: corpora, codebook, prompts, results, and answered questions
 ├── scripts/
-│   ├── workspace.py               load a document into the Codex workspace, save its results
-│   ├── prepare_sources.py         extracts a PDF's text, tables, and figure crops
-│   └── run_single_source.py, build_index.py, answer.py, pool.py   earlier work
-├── src/hitl_research_agent/       the data models and input handling prepare_sources.py uses
+│   └── workspace.py               load a document into the Codex workspace, save its results
+├── src/hitl_research_agent/       the data models for a source's provenance
 └── tests/
 ```
 
 Earlier versions are kept as tags: `v1-final`, and `v2-final` (the A/B
 experiments, the decision records, the prompt log, and the API pipeline). The
 science of reading study was developed separately and is kept as `mom-research-final`.
+The water study, where the analysis harness was built, and the retrieval
+experiments are in git history and on the `wip-2026-11-25` branch.
 
 ## Setup and checks
 

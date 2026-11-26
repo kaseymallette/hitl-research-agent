@@ -27,23 +27,12 @@ htmlcov/
 .DS_Store
 
 
-# Codex event logs from scripts/run_single_source.py
-.codex_runs/
-
-# Publisher-copyrighted articles: kept locally, not redistributed (DOIs in studies/water/data/sources.yaml)
-studies/water/data/barnett_itzhaki_2026_water_footprint_artificial_intelligence.pdf
-studies/water/data/katakam_et_al_2027_desalination_systems_data_center_water_needs.pdf
-studies/water/data/kanbur_et_al_2020_desalination_integrated_data_center_cooling.pdf
-
 # Science of reading study: source PDFs stay local; only data/<corpus>/sources.yaml is tracked
 studies/science_of_reading/data/**/*.pdf
 # Proposal drafts, and the original submission with reviews
 studies/science_of_reading/proposal/
 
-# Water: prepared article text and the index built from it contain the copyrighted articles' text;
-# regenerate with scripts/prepare_sources.py and scripts/build_index.py
-studies/water/outputs/preparation/
-studies/water/outputs/index/
-
-# Literacy pilot: the articles stay local (likely publisher-copyrighted)
-studies/literacy_pilot/data/*.pdf
+# Earlier work kept only in git history and on its branch; local copies stay out of main
+studies/water/
+studies/literacy_pilot/
+.codex_runs/
