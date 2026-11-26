@@ -1,6 +1,6 @@
 # Scholarly harness
 
-Five separate Codex sessions compare baseline answers with answers informed by close reading. Run commands from the repository root.
+Five separate Codex sessions compare baseline answers with answers informed by close reading. Run commands from the repository root. Set `OPENAI_API_KEY` in your shell; the runner passes it to Codex as `CODEX_API_KEY` for API billing instead of ChatGPT sign-in. `CODEX_API_KEY` alone also works. If both are set, `OPENAI_API_KEY` takes precedence. A missing key stops the run before any session starts. API usage is billed separately; a ChatGPT Pro subscription is not required.
 
 ## Run an article
 

@@ -6,8 +6,8 @@
 
 The article is the `<slug>` entry in
 `studies/science_of_reading/data/scholarly/sources.yaml`. Each call is its own
-Codex session (`codex exec`) on GPT-6.1 Sol at medium effort, signed in with
-ChatGPT rather than an API key, and writes one file to
+Codex session (`codex exec`) on GPT-6.1 Sol at medium effort, billed through
+the API using OPENAI_API_KEY (or CODEX_API_KEY), and writes one file to
 `studies/science_of_reading/outputs/scholarly/<slug>/`:
 
     01_claims_reference.md        every claim in the article, quoted: the answer key
@@ -153,9 +153,17 @@ def run_call(
     call: Call, entry: dict[str, Any], article_dir: Path, codex: Path, log_dir: Path
 ) -> None:
     """Run one Codex session and copy its file into the article's folder."""
+    api_key = (
+        os.environ.get("OPENAI_API_KEY", "").strip() or os.environ.get("CODEX_API_KEY", "").strip()
+    )
+    if not api_key:
+        raise CallFailed("Set OPENAI_API_KEY (or CODEX_API_KEY) to run with API billing")
+    # CODEX_API_KEY overrides saved ChatGPT authentication for this invocation.
+    env = dict(os.environ)
+    env.pop("OPENAI_API_KEY", None)
+    env.pop("CODEX_ACCESS_TOKEN", None)
+    env["CODEX_API_KEY"] = api_key
     log_dir.mkdir(parents=True, exist_ok=True)
-    # No API key reaches Codex, so it runs on the ChatGPT sign-in and is never billed per token.
-    env = {key: value for key, value in os.environ.items() if key != "OPENAI_API_KEY"}
     with tempfile.TemporaryDirectory(prefix=f"scholarly_{call.label}-") as tmp:
         workspace = Path(tmp)
         stage(call, entry, article_dir, workspace)

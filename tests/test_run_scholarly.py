@@ -33,7 +33,9 @@ with open(os.environ["FAKE_RECORD"], "a") as record:
     record.write(json.dumps({
         "label": label,
         "files": files,
-        "api_key": "OPENAI_API_KEY" in os.environ,
+        "api_key": "CODEX_API_KEY" in os.environ,
+        "expected_key": os.environ.get("CODEX_API_KEY") == "sk-test-not-real",
+        "access_token": "CODEX_ACCESS_TOKEN" in os.environ,
         "model": args[args.index("--model") + 1],
     }) + "\\n")
 step = json.loads(os.environ["FAKE_PLAN"]).get(label, {})
@@ -91,6 +93,8 @@ def harness(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> ModuleType:
     monkeypatch.setattr(module, "ANALYSES", tmp_path / "analyses")
     monkeypatch.setattr(module, "LOGS", tmp_path / "logs")
     monkeypatch.setenv("OPENAI_API_KEY", "sk-test-not-real")
+    monkeypatch.delenv("CODEX_API_KEY", raising=False)
+    monkeypatch.delenv("CODEX_ACCESS_TOKEN", raising=False)
     monkeypatch.setenv("FAKE_RECORD", str(tmp_path / "record.jsonl"))
     codex = tmp_path / "codex"
     codex.write_text(f"#!{sys.executable}\n{FAKE_CODEX}")
@@ -154,11 +158,38 @@ def test_each_session_sees_only_what_its_call_reads(
     ]
 
 
-def test_no_api_key_reaches_codex(
+def test_api_key_reaches_codex_instead_of_chatgpt_token(
     harness: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    run(harness, tmp_path, monkeypatch, GOOD)
-    assert not any(s["api_key"] for s in sessions(tmp_path))
+    monkeypatch.setenv("CODEX_API_KEY", "a-different-key")
+    monkeypatch.setenv("CODEX_ACCESS_TOKEN", "a-chatgpt-token")
+    assert run(harness, tmp_path, monkeypatch, GOOD) == 0
+    assert all(s["api_key"] and s["expected_key"] for s in sessions(tmp_path))
+    assert not any(s["access_token"] for s in sessions(tmp_path))
+
+
+def test_codex_api_key_is_supported_without_openai_api_key(
+    harness: ModuleType, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.delenv("OPENAI_API_KEY")
+    monkeypatch.setenv("CODEX_API_KEY", "sk-test-not-real")
+    assert run(harness, tmp_path, monkeypatch, GOOD) == 0
+    assert all(s["expected_key"] for s in sessions(tmp_path))
+
+
+@pytest.mark.parametrize("key", ["", "   "])
+def test_missing_api_key_stops_before_starting_a_session(
+    harness: ModuleType,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    key: str,
+) -> None:
+    monkeypatch.setenv("OPENAI_API_KEY", key)
+    assert run(harness, tmp_path, monkeypatch, GOOD) == 1
+    assert sessions(tmp_path) == []
+    assert not article_dir(tmp_path).exists()
+    assert "Set OPENAI_API_KEY" in capsys.readouterr().err
 
 
 def test_a_stopped_run_picks_up_at_the_first_missing_file(

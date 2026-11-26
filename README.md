@@ -157,9 +157,9 @@ uv run mypy src
 
 In earlier water-study tests, Codex narrowly beat the API and ChatGPT app, and medium effort beat high. A separate comparison favored reading the PDF directly over prepared text; the costlier model did not read better. Those [experiments are preserved on `wip-2026-11-25`](https://github.com/kaseymallette/hitl-research-agent/blob/wip-2026-11-25/studies/water/README.md#the-ab-experiments). These were tests on two articles, so they support the current setup rather than establish a general winner.
 
-The harness uses GPT-6.1 Sol at medium effort through Codex, within the ChatGPT plan without a separate API key. Each step runs in its own session with only the files it needs.
+The harness uses GPT-6.1 Sol at medium effort through Codex with API billing. Each step runs in its own session with only the files it needs. A ChatGPT Pro subscription is not required; API usage is billed separately.
 
-Run these commands from the repository root.
+Run these commands from the repository root with `OPENAI_API_KEY` set in your shell. The scholarly runner passes it to Codex as `CODEX_API_KEY`, overriding saved ChatGPT sign-in. An existing `CODEX_API_KEY` also works; `OPENAI_API_KEY` takes precedence if both are set.
 
 ### Scholarly articles
 
@@ -178,6 +178,12 @@ uv run python scripts/run_scholarly.py <slug> --only 03
 ```
 
 ### Legislation
+
+For the manual legislation sessions, sign the Codex CLI in with your API key:
+
+```bash
+printenv OPENAI_API_KEY | codex login --with-api-key
+```
 
 Choose a law's slug from `studies/science_of_reading/data/legislation/sources.yaml` and load it:
 

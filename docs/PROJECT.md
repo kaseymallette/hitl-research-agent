@@ -24,8 +24,10 @@ works. Details are in
 - **The human decides what counts.** Each analysis is accepted, revised,
   rerun, or rejected before it is used.
 - **Analyses run in separate Codex sessions, reading the PDF.** The scholarly
-  runner uses GPT-6.1 Sol at medium effort. Each session sees only the files
-  its step needs.
+  runner uses GPT-6.1 Sol at medium effort with API billing, replacing
+  ChatGPT-plan authentication. It requires `OPENAI_API_KEY` or `CODEX_API_KEY`;
+  `OPENAI_API_KEY` takes precedence and is passed as `CODEX_API_KEY` to Codex.
+  Each session sees only the files its step needs.
 - **Legislation uses the workspace workflow.** `scripts/workspace.py` loads
   a law's PDF, extracted text, and page images into an external workspace.
   The close reading, claims reference, discourse analysis, and two judgments
